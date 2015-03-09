@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wall -Wextra -O3    CMakeFiles/hmm_generate.dir/hmm_generate_main.cpp.o  -o ../../../../bin/hmm_generate -rdynamic ../../../../lib/libmlpack.so.1.0 -larmadillo -lboost_program_options -lboost_unit_test_framework -lboost_random -lxml2 -lrt -Wl,-rpath,/home/azrathud/Downloads/mlpack-1.0.12/lib: 

@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wall -Wextra -O3    CMakeFiles/sparse_coding.dir/sparse_coding_main.cpp.o  -o ../../../../bin/sparse_coding -rdynamic ../../../../lib/libmlpack.so.1.0 -larmadillo -lboost_program_options -lboost_unit_test_framework -lboost_random -lxml2 -lrt -Wl,-rpath,/home/azrathud/Downloads/mlpack-1.0.12/lib: 
