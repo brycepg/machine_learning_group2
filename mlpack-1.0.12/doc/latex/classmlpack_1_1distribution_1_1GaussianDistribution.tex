@@ -1,0 +1,307 @@
+\section{mlpack\-:\-:distribution\-:\-:Gaussian\-Distribution Class Reference}
+\label{classmlpack_1_1distribution_1_1GaussianDistribution}\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+
+
+A single multivariate Gaussian distribution.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Gaussian\-Distribution} ()
+\begin{DoxyCompactList}\small\item\em Default constructor, which creates a Gaussian with zero dimension. \end{DoxyCompactList}\item 
+{\bf Gaussian\-Distribution} (const size\-\_\-t dimension)
+\begin{DoxyCompactList}\small\item\em Create a Gaussian distribution with zero mean and identity covariance with the given dimensionality. \end{DoxyCompactList}\item 
+{\bf Gaussian\-Distribution} (const arma\-::vec \&{\bf mean}, const arma\-::mat \&{\bf covariance})
+\begin{DoxyCompactList}\small\item\em Create a Gaussian distribution with the given mean and covariance. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf Covariance} () const 
+\begin{DoxyCompactList}\small\item\em Return the covariance matrix. \end{DoxyCompactList}\item 
+arma\-::mat \& {\bf Covariance} ()
+\begin{DoxyCompactList}\small\item\em Return a modifiable copy of the covariance. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Dimensionality} () const 
+\begin{DoxyCompactList}\small\item\em Return the dimensionality of this distribution. \end{DoxyCompactList}\item 
+void {\bf Estimate} (const arma\-::mat \&observations)
+\begin{DoxyCompactList}\small\item\em Estimate the Gaussian distribution directly from the given observations. \end{DoxyCompactList}\item 
+void {\bf Estimate} (const arma\-::mat \&observations, const arma\-::vec \&probabilities)
+\begin{DoxyCompactList}\small\item\em Estimate the Gaussian distribution from the given observations, taking into account the probability of each observation actually being from this distribution. \end{DoxyCompactList}\item 
+const arma\-::vec \& {\bf Mean} () const 
+\begin{DoxyCompactList}\small\item\em Return the mean. \end{DoxyCompactList}\item 
+arma\-::vec \& {\bf Mean} ()
+\begin{DoxyCompactList}\small\item\em Return a modifiable copy of the mean. \end{DoxyCompactList}\item 
+double {\bf Probability} (const arma\-::vec \&observation) const 
+\begin{DoxyCompactList}\small\item\em Return the probability of the given observation. \end{DoxyCompactList}\item 
+arma\-::vec {\bf Random} () const 
+\begin{DoxyCompactList}\small\item\em Return a randomly generated observation according to the probability distribution defined by this object. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Returns a string representation of this object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+arma\-::mat {\bf covariance}
+\begin{DoxyCompactList}\small\item\em Covariance of the distribution. \end{DoxyCompactList}\item 
+arma\-::vec {\bf mean}
+\begin{DoxyCompactList}\small\item\em Mean of the distribution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A single multivariate Gaussian distribution. 
+
+Definition at line 27 of file gaussian\-\_\-distribution.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!Gaussian\-Distribution@{Gaussian\-Distribution}}
+\index{Gaussian\-Distribution@{Gaussian\-Distribution}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{Gaussian\-Distribution}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Gaussian\-Distribution (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1distribution_1_1GaussianDistribution_ac73762f8e0e8cfbde9c8646ef0c2a5c0}
+
+
+Default constructor, which creates a Gaussian with zero dimension. 
+
+
+
+Definition at line 39 of file gaussian\-\_\-distribution.\-hpp.
+
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!Gaussian\-Distribution@{Gaussian\-Distribution}}
+\index{Gaussian\-Distribution@{Gaussian\-Distribution}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{Gaussian\-Distribution}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Gaussian\-Distribution (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{dimension}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1distribution_1_1GaussianDistribution_a974ca20051328ce4388b1a3b973f55bd}
+
+
+Create a Gaussian distribution with zero mean and identity covariance with the given dimensionality. 
+
+
+
+Definition at line 45 of file gaussian\-\_\-distribution.\-hpp.
+
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!Gaussian\-Distribution@{Gaussian\-Distribution}}
+\index{Gaussian\-Distribution@{Gaussian\-Distribution}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{Gaussian\-Distribution}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Gaussian\-Distribution (
+\begin{DoxyParamCaption}
+\item[{const arma\-::vec \&}]{mean, }
+\item[{const arma\-::mat \&}]{covariance}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1distribution_1_1GaussianDistribution_a669d7557eec4fa7582035ac4316b903a}
+
+
+Create a Gaussian distribution with the given mean and covariance. 
+
+
+
+Definition at line 53 of file gaussian\-\_\-distribution.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!Covariance@{Covariance}}
+\index{Covariance@{Covariance}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{Covariance}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::mat\& mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Covariance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1distribution_1_1GaussianDistribution_a33054fff004ef83bd2db02866d836379}
+
+
+Return the covariance matrix. 
+
+
+
+Definition at line 96 of file gaussian\-\_\-distribution.\-hpp.
+
+
+
+References covariance.
+
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!Covariance@{Covariance}}
+\index{Covariance@{Covariance}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{Covariance}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::mat\& mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Covariance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1distribution_1_1GaussianDistribution_a77a44d0f632a84bd6e40d68ba5f12245}
+
+
+Return a modifiable copy of the covariance. 
+
+
+
+Definition at line 98 of file gaussian\-\_\-distribution.\-hpp.
+
+
+
+References covariance.
+
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!Dimensionality@{Dimensionality}}
+\index{Dimensionality@{Dimensionality}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{Dimensionality}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Dimensionality (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1distribution_1_1GaussianDistribution_af80519bc5659be9718842f68721c36d5}
+
+
+Return the dimensionality of this distribution. 
+
+
+
+Definition at line 57 of file gaussian\-\_\-distribution.\-hpp.
+
+
+
+References mean.
+
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!Estimate@{Estimate}}
+\index{Estimate@{Estimate}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{Estimate}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Estimate (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{observations}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1distribution_1_1GaussianDistribution_a24eb3bb3cf090620325b2392acad95fd}
+
+
+Estimate the Gaussian distribution directly from the given observations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observations} & List of observations. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!Estimate@{Estimate}}
+\index{Estimate@{Estimate}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{Estimate}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Estimate (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{observations, }
+\item[{const arma\-::vec \&}]{probabilities}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1distribution_1_1GaussianDistribution_a47ffd4a3258152b17e67567a8ad8cf32}
+
+
+Estimate the Gaussian distribution from the given observations, taking into account the probability of each observation actually being from this distribution. 
+
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!Mean@{Mean}}
+\index{Mean@{Mean}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{Mean}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::vec\& mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Mean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1distribution_1_1GaussianDistribution_a2a64f63d99d78f778795a7e40cec6004}
+
+
+Return the mean. 
+
+
+
+Definition at line 91 of file gaussian\-\_\-distribution.\-hpp.
+
+
+
+References mean.
+
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!Mean@{Mean}}
+\index{Mean@{Mean}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{Mean}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::vec\& mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Mean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1distribution_1_1GaussianDistribution_acc79343195393c16d5fc57921e6cfeb2}
+
+
+Return a modifiable copy of the mean. 
+
+
+
+Definition at line 93 of file gaussian\-\_\-distribution.\-hpp.
+
+
+
+References mean.
+
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!Probability@{Probability}}
+\index{Probability@{Probability}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{Probability}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Probability (
+\begin{DoxyParamCaption}
+\item[{const arma\-::vec \&}]{observation}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1distribution_1_1GaussianDistribution_aa251b280010ecf47187a570e358a7983}
+
+
+Return the probability of the given observation. 
+
+
+
+Definition at line 62 of file gaussian\-\_\-distribution.\-hpp.
+
+
+
+References covariance, mean, and mlpack\-::gmm\-::phi().
+
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!Random@{Random}}
+\index{Random@{Random}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{Random}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::vec mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Random (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1distribution_1_1GaussianDistribution_a40794ed450cd4dc6602bd4f5b76cb9ee}
+
+
+Return a randomly generated observation according to the probability distribution defined by this object. 
+
+\begin{DoxyReturn}{Returns}
+Random observation from this Gaussian distribution. 
+\end{DoxyReturn}
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1distribution_1_1GaussianDistribution_adfa0d45d85389a4c45d1d35073e5bd75}
+
+
+Returns a string representation of this object. 
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!covariance@{covariance}}
+\index{covariance@{covariance}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{covariance}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::mat mlpack\-::distribution\-::\-Gaussian\-Distribution\-::covariance\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1distribution_1_1GaussianDistribution_a996e66f349b41a80685c867af5337d8e}
+
+
+Covariance of the distribution. 
+
+
+
+Definition at line 33 of file gaussian\-\_\-distribution.\-hpp.
+
+
+
+Referenced by Covariance(), and Probability().
+
+\index{mlpack\-::distribution\-::\-Gaussian\-Distribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}!mean@{mean}}
+\index{mean@{mean}!mlpack::distribution::GaussianDistribution@{mlpack\-::distribution\-::\-Gaussian\-Distribution}}
+\subsubsection[{mean}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::vec mlpack\-::distribution\-::\-Gaussian\-Distribution\-::mean\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1distribution_1_1GaussianDistribution_a792a82012b34799267f3840bbb980470}
+
+
+Mean of the distribution. 
+
+
+
+Definition at line 31 of file gaussian\-\_\-distribution.\-hpp.
+
+
+
+Referenced by Dimensionality(), Mean(), and Probability().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/dists/{\bf gaussian\-\_\-distribution.\-hpp}\end{DoxyCompactItemize}

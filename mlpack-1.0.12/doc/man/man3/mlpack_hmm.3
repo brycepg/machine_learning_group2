@@ -1,0 +1,73 @@
+.TH "mlpack::hmm" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::hmm \- 
+.PP
+Hidden Markov Models\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBHMM\fP"
+.br
+.RI "\fIA class that represents a Hidden Markov Model with an arbitrary type of emission distribution\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename Distribution > void \fBLoadHMM\fP (\fBHMM\fP< Distribution > &hmm, \fButil::SaveRestoreUtility\fP &sr)"
+.br
+.RI "\fILoad an \fBHMM\fP from file\&. \fP"
+.ti -1c
+.RI "template<typename Distribution > void \fBSaveHMM\fP (const \fBHMM\fP< Distribution > &hmm, \fButil::SaveRestoreUtility\fP &sr)"
+.br
+.RI "\fISave an \fBHMM\fP to file\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Hidden Markov Models\&. 
+
+
+.SH "Function Documentation"
+.PP 
+.SS "template<typename Distribution > void mlpack::hmm::LoadHMM (HMM< Distribution > &hmm, util::SaveRestoreUtility &sr)"
+
+.PP
+Load an \fBHMM\fP from file\&. This only works for GMMs, DiscreteDistributions, and GaussianDistributions\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDistribution\fP Distribution type of \fBHMM\fP\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsr\fP SaveRestoreUtility to use\&. 
+.RE
+.PP
+
+.SS "template<typename Distribution > void mlpack::hmm::SaveHMM (const HMM< Distribution > &hmm, util::SaveRestoreUtility &sr)"
+
+.PP
+Save an \fBHMM\fP to file\&. This only works for GMMs, DiscreteDistributions, and GaussianDistributions\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDistribution\fP Distribution type of \fBHMM\fP\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsr\fP SaveRestoreUtility to use\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

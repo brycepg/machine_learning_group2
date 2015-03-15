@@ -1,0 +1,133 @@
+.TH "mlpack::kernel::SphericalKernel" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::kernel::SphericalKernel \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSphericalKernel\fP ()"
+.br
+.ti -1c
+.RI "\fBSphericalKernel\fP (double b)"
+.br
+.ti -1c
+.RI "template<typename VecType > double \fBConvolutionIntegral\fP (const VecType &a, const VecType &b)"
+.br
+.RI "\fIObtains the convolution integral [integral K(||x-a||)K(||b-x||)dx] for the two vectors\&. \fP"
+.ti -1c
+.RI "template<typename VecType > double \fBEvaluate\fP (const VecType &a, const VecType &b)"
+.br
+.ti -1c
+.RI "double \fBEvaluate\fP (double t)"
+.br
+.ti -1c
+.RI "double \fBNormalizer\fP (size_t dimension)"
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturn a string representation of the kernel\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBbandwidth\fP"
+.br
+.ti -1c
+.RI "double \fBbandwidthSquared\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 24 of file spherical_kernel\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::kernel::SphericalKernel::SphericalKernel ()\fC [inline]\fP"
+
+.PP
+Definition at line 27 of file spherical_kernel\&.hpp\&.
+.SS "mlpack::kernel::SphericalKernel::SphericalKernel (doubleb)\fC [inline]\fP"
+
+.PP
+Definition at line 30 of file spherical_kernel\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename VecType > double mlpack::kernel::SphericalKernel::ConvolutionIntegral (const VecType &a, const VecType &b)\fC [inline]\fP"
+
+.PP
+Obtains the convolution integral [integral K(||x-a||)K(||b-x||)dx] for the two vectors\&. In this case, because our simple example kernel has no internal parameters, we can declare the function static\&. For a more complex example which cannot be declared static, see the \fBGaussianKernel\fP, which stores an internal parameter\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVecType\fP Type of vector (arma::vec, arma::spvec should be expected)\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP First vector\&. 
+.br
+\fIb\fP Second vector\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the convolution integral value\&. 
+.RE
+.PP
+
+.PP
+Definition at line 54 of file spherical_kernel\&.hpp\&.
+.PP
+References bandwidth, mlpack::metric::LMetric< Power, TakeRoot >::Evaluate(), mlpack::Log::Fatal, and Normalizer()\&.
+.SS "template<typename VecType > double mlpack::kernel::SphericalKernel::Evaluate (const VecType &a, const VecType &b)\fC [inline]\fP"
+
+.PP
+Definition at line 35 of file spherical_kernel\&.hpp\&.
+.PP
+References bandwidthSquared, and mlpack::metric::LMetric< Power, TakeRoot >::Evaluate()\&.
+.SS "double mlpack::kernel::SphericalKernel::Evaluate (doublet)\fC [inline]\fP"
+
+.PP
+Definition at line 85 of file spherical_kernel\&.hpp\&.
+.PP
+References bandwidth\&.
+.SS "double mlpack::kernel::SphericalKernel::Normalizer (size_tdimension)\fC [inline]\fP"
+
+.PP
+Definition at line 80 of file spherical_kernel\&.hpp\&.
+.PP
+References bandwidth, and M_PI\&.
+.PP
+Referenced by ConvolutionIntegral()\&.
+.SS "std::string mlpack::kernel::SphericalKernel::ToString () const\fC [inline]\fP"
+
+.PP
+Return a string representation of the kernel\&. 
+.PP
+Definition at line 91 of file spherical_kernel\&.hpp\&.
+.PP
+References bandwidth\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "double mlpack::kernel::SphericalKernel::bandwidth\fC [private]\fP"
+
+.PP
+Definition at line 100 of file spherical_kernel\&.hpp\&.
+.PP
+Referenced by ConvolutionIntegral(), Evaluate(), Normalizer(), and ToString()\&.
+.SS "double mlpack::kernel::SphericalKernel::bandwidthSquared\fC [private]\fP"
+
+.PP
+Definition at line 101 of file spherical_kernel\&.hpp\&.
+.PP
+Referenced by Evaluate()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

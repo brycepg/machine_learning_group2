@@ -1,0 +1,474 @@
+\section{mlpack\-:\-:decision\-\_\-stump\-:\-:Decision\-Stump$<$ Mat\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1decision__stump_1_1DecisionStump}\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump$<$ Mat\-Type $>$@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump$<$ Mat\-Type $>$}}
+
+
+This class implements a decision stump.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Decision\-Stump} (const Mat\-Type \&data, const arma\-::\-Row$<$ size\-\_\-t $>$ \&labels, const size\-\_\-t classes, size\-\_\-t inp\-Bucket\-Size)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+{\bf Decision\-Stump} (const {\bf Decision\-Stump}$<$$>$ \&other, const Mat\-Type \&data, const arma\-::rowvec \&weights, const arma\-::\-Row$<$ size\-\_\-t $>$ \&labels)
+\begin{DoxyCompactList}\small\item\em Alternate constructor which copies parameters bucket\-Size and num\-Class from an already initiated decision stump, other. \end{DoxyCompactList}\item 
+const arma\-::\-Col$<$ size\-\_\-t $>$ {\bf Bin\-Labels} () const 
+\begin{DoxyCompactList}\small\item\em Access the labels for each split bin. \end{DoxyCompactList}\item 
+arma\-::\-Col$<$ size\-\_\-t $>$ \& {\bf Bin\-Labels} ()
+\begin{DoxyCompactList}\small\item\em Modify the labels for each split bin (be careful!). \end{DoxyCompactList}\item 
+void {\bf Classify} (const Mat\-Type \&test, arma\-::\-Row$<$ size\-\_\-t $>$ \&predicted\-Labels)
+\begin{DoxyCompactList}\small\item\em Classification function. \end{DoxyCompactList}\item 
+const arma\-::vec \& {\bf Split} () const 
+\begin{DoxyCompactList}\small\item\em Access the splitting values. \end{DoxyCompactList}\item 
+arma\-::vec \& {\bf Split} ()
+\begin{DoxyCompactList}\small\item\em Modify the splitting values (be careful!). \end{DoxyCompactList}\item 
+int {\bf Split\-Attribute} () const 
+\begin{DoxyCompactList}\small\item\em Access the splitting attribute. \end{DoxyCompactList}\item 
+int \& {\bf Split\-Attribute} ()
+\begin{DoxyCompactList}\small\item\em Modify the splitting attribute (be careful!). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Label\-Type , bool is\-Weight$>$ }\\double {\bf Calculate\-Entropy} (arma\-::subview\-\_\-row$<$ Label\-Type $>$ labels, int begin, const arma\-::rowvec \&temp\-D)
+\begin{DoxyCompactList}\small\item\em Calculate the entropy of the given attribute. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename r\-Type $>$ }\\r\-Type {\bf Count\-Most\-Freq} (const arma\-::\-Row$<$ r\-Type $>$ \&sub\-Cols)
+\begin{DoxyCompactList}\small\item\em Count the most frequently occurring element in sub\-Cols. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename r\-Type $>$ }\\int {\bf Is\-Distinct} (const arma\-::\-Row$<$ r\-Type $>$ \&feature\-Row)
+\begin{DoxyCompactList}\small\item\em Returns 1 if all the values of feature\-Row are not same. \end{DoxyCompactList}\item 
+void {\bf Merge\-Ranges} ()
+\begin{DoxyCompactList}\small\item\em After the \char`\"{}split\char`\"{} matrix has been set up, merge ranges with identical class labels. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool is\-Weight$>$ }\\double {\bf Setup\-Split\-Attribute} (const arma\-::rowvec \&attribute, const arma\-::\-Row$<$ size\-\_\-t $>$ \&labels, const arma\-::rowvec \&weight\-D)
+\begin{DoxyCompactList}\small\item\em Sets up attribute as if it were splitting on it and finds entropy when splitting on attribute. \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool is\-Weight$>$ }\\void {\bf Train} (const Mat\-Type \&data, const arma\-::\-Row$<$ size\-\_\-t $>$ \&labels, const arma\-::rowvec \&weight\-D)
+\begin{DoxyCompactList}\small\item\em Train the decision stump on the given data and labels. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename r\-Type $>$ }\\void {\bf Train\-On\-Att} (const arma\-::rowvec \&attribute, const arma\-::\-Row$<$ size\-\_\-t $>$ \&labels)
+\begin{DoxyCompactList}\small\item\em After having decided the attribute on which to split, train on that attribute. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+arma\-::\-Col$<$ size\-\_\-t $>$ {\bf bin\-Labels}
+\begin{DoxyCompactList}\small\item\em Stores the labels for each splitting bin. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf bucket\-Size}
+\begin{DoxyCompactList}\small\item\em Size of bucket while determining splitting criterion. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf num\-Class}
+\begin{DoxyCompactList}\small\item\em Stores the number of classes. \end{DoxyCompactList}\item 
+arma\-::vec {\bf split}
+\begin{DoxyCompactList}\small\item\em Stores the splitting values after training. \end{DoxyCompactList}\item 
+int {\bf split\-Attribute}
+\begin{DoxyCompactList}\small\item\em Stores the value of the attribute on which to split. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Mat\-Type = arma\-::mat$>$class mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump$<$ Mat\-Type $>$}
+
+This class implements a decision stump. 
+
+It constructs a single level decision tree, i.\-e., a decision stump. It uses entropy to decide splitting ranges.
+
+The stump is parameterized by a splitting attribute (the dimension on which points are split), a vector of bin split values, and a vector of labels for each bin. Bin i is specified by the range [split[i], split[i + 1]). The last bin has range up to  (split[i + 1] does not exist in that case). Points that are below the first bin will take the label of the first bin.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Mat\-Type} & Type of matrix that is being used (sparse or dense). \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 36 of file decision\-\_\-stump.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Decision\-Stump@{Decision\-Stump}}
+\index{Decision\-Stump@{Decision\-Stump}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Decision\-Stump}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::{\bf Decision\-Stump} (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{data, }
+\item[{const arma\-::\-Row$<$ size\-\_\-t $>$ \&}]{labels, }
+\item[{const size\-\_\-t}]{classes, }
+\item[{size\-\_\-t}]{inp\-Bucket\-Size}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a6682e9edce2a3cac33153fd5a5bce47e}
+
+
+Constructor. 
+
+Train on the provided data. Generate a decision stump from data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Input, training data. \\
+\hline
+{\em labels} & Labels of training data. \\
+\hline
+{\em classes} & Number of distinct classes in labels. \\
+\hline
+{\em inp\-Bucket\-Size} & Minimum size of bucket when splitting. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Decision\-Stump@{Decision\-Stump}}
+\index{Decision\-Stump@{Decision\-Stump}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Decision\-Stump}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::{\bf Decision\-Stump} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Decision\-Stump}$<$$>$ \&}]{other, }
+\item[{const Mat\-Type \&}]{data, }
+\item[{const arma\-::rowvec \&}]{weights, }
+\item[{const arma\-::\-Row$<$ size\-\_\-t $>$ \&}]{labels}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a7d2bcdd39fffb82a02201c3a5c9e6543}
+
+
+Alternate constructor which copies parameters bucket\-Size and num\-Class from an already initiated decision stump, other. 
+
+It appropriately sets the weight vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other initiated Decision Stump object from which we copy the values. \\
+\hline
+{\em data} & The data on which to train this object on. \\
+\hline
+{\em D} & Weight vector to use while training. For boosting purposes. \\
+\hline
+{\em labels} & The labels of data. \\
+\hline
+{\em is\-Weight} & Whether we need to run a weighted Decision Stump. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Bin\-Labels@{Bin\-Labels}}
+\index{Bin\-Labels@{Bin\-Labels}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Bin\-Labels}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ const arma\-::\-Col$<$size\-\_\-t$>$ {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Bin\-Labels (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a6cc7931cae8b4a40b872ffcdeba8bad9}
+
+
+Access the labels for each split bin. 
+
+
+
+Definition at line 91 of file decision\-\_\-stump.\-hpp.
+
+
+
+References mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump$<$ Mat\-Type $>$\-::bin\-Labels.
+
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Bin\-Labels@{Bin\-Labels}}
+\index{Bin\-Labels@{Bin\-Labels}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Bin\-Labels}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ arma\-::\-Col$<$size\-\_\-t$>$\& {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Bin\-Labels (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a0f9269d1536f733d70d4dc68a5d6d9a1}
+
+
+Modify the labels for each split bin (be careful!). 
+
+
+
+Definition at line 93 of file decision\-\_\-stump.\-hpp.
+
+
+
+References mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump$<$ Mat\-Type $>$\-::bin\-Labels.
+
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Calculate\-Entropy@{Calculate\-Entropy}}
+\index{Calculate\-Entropy@{Calculate\-Entropy}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Calculate\-Entropy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ template$<$typename Label\-Type , bool is\-Weight$>$ double {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Calculate\-Entropy (
+\begin{DoxyParamCaption}
+\item[{arma\-::subview\-\_\-row$<$ Label\-Type $>$}]{labels, }
+\item[{int}]{begin, }
+\item[{const arma\-::rowvec \&}]{temp\-D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a9ab26a1978d9148a5ed560c23d100fee}
+
+
+Calculate the entropy of the given attribute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute} & The attribute of which we calculate the entropy. \\
+\hline
+{\em labels} & Corresponding labels of the attribute. \\
+\hline
+{\em is\-Weight} & Whether we need to run a weighted Decision Stump. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Classify@{Classify}}
+\index{Classify@{Classify}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Classify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ void {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Classify (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{test, }
+\item[{arma\-::\-Row$<$ size\-\_\-t $>$ \&}]{predicted\-Labels}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a487c14f8bf590e8804466018bf583938}
+
+
+Classification function. 
+
+After training, classify test, and put the predicted classes in predicted\-Labels.
+
+
+\begin{DoxyParams}{Parameters}
+{\em test} & Testing data or data to classify. \\
+\hline
+{\em predicted\-Labels} & Vector to store the predicted classes after classifying test data. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Count\-Most\-Freq@{Count\-Most\-Freq}}
+\index{Count\-Most\-Freq@{Count\-Most\-Freq}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Count\-Most\-Freq}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ template$<$typename r\-Type $>$ r\-Type {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Count\-Most\-Freq (
+\begin{DoxyParamCaption}
+\item[{const arma\-::\-Row$<$ r\-Type $>$ \&}]{sub\-Cols}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_af53ce11f2b14c02ddba3941c2ef86d46}
+
+
+Count the most frequently occurring element in sub\-Cols. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sub\-Cols} & The vector in which to find the most frequently occurring element. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Is\-Distinct@{Is\-Distinct}}
+\index{Is\-Distinct@{Is\-Distinct}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Is\-Distinct}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ template$<$typename r\-Type $>$ int {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Is\-Distinct (
+\begin{DoxyParamCaption}
+\item[{const arma\-::\-Row$<$ r\-Type $>$ \&}]{feature\-Row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a0632575259445c459ae25b39b84fec46}
+
+
+Returns 1 if all the values of feature\-Row are not same. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em feature\-Row} & The attribute which is checked for identical values. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Merge\-Ranges@{Merge\-Ranges}}
+\index{Merge\-Ranges@{Merge\-Ranges}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Merge\-Ranges}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ void {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Merge\-Ranges (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a54866a31124123b5df89197c377ab1d1}
+
+
+After the \char`\"{}split\char`\"{} matrix has been set up, merge ranges with identical class labels. 
+
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Setup\-Split\-Attribute@{Setup\-Split\-Attribute}}
+\index{Setup\-Split\-Attribute@{Setup\-Split\-Attribute}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Setup\-Split\-Attribute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ template$<$bool is\-Weight$>$ double {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Setup\-Split\-Attribute (
+\begin{DoxyParamCaption}
+\item[{const arma\-::rowvec \&}]{attribute, }
+\item[{const arma\-::\-Row$<$ size\-\_\-t $>$ \&}]{labels, }
+\item[{const arma\-::rowvec \&}]{weight\-D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a93a2514c965f1008034f908f5341f0f6}
+
+
+Sets up attribute as if it were splitting on it and finds entropy when splitting on attribute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute} & A row from the training data, which might be a candidate for the splitting attribute. \\
+\hline
+{\em is\-Weight} & Whether we need to run a weighted Decision Stump. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Split@{Split}}
+\index{Split@{Split}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Split}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ const arma\-::vec\& {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Split (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a2480c235fd94c1c2d5f62483ffaffa5c}
+
+
+Access the splitting values. 
+
+
+
+Definition at line 86 of file decision\-\_\-stump.\-hpp.
+
+
+
+References mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump$<$ Mat\-Type $>$\-::split.
+
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Split@{Split}}
+\index{Split@{Split}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Split}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ arma\-::vec\& {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Split (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a0428ba9a9720eb134f9d0329c36b9537}
+
+
+Modify the splitting values (be careful!). 
+
+
+
+Definition at line 88 of file decision\-\_\-stump.\-hpp.
+
+
+
+References mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump$<$ Mat\-Type $>$\-::split.
+
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Split\-Attribute@{Split\-Attribute}}
+\index{Split\-Attribute@{Split\-Attribute}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Split\-Attribute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ int {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Split\-Attribute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a81bb7f7ba6e83daf320fc9fb42da9934}
+
+
+Access the splitting attribute. 
+
+
+
+Definition at line 81 of file decision\-\_\-stump.\-hpp.
+
+
+
+References mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump$<$ Mat\-Type $>$\-::split\-Attribute.
+
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Split\-Attribute@{Split\-Attribute}}
+\index{Split\-Attribute@{Split\-Attribute}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Split\-Attribute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ int\& {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Split\-Attribute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_aeefc4b801e24b5b16e9e5a509cb67dce}
+
+
+Modify the splitting attribute (be careful!). 
+
+
+
+Definition at line 83 of file decision\-\_\-stump.\-hpp.
+
+
+
+References mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump$<$ Mat\-Type $>$\-::split\-Attribute.
+
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Train@{Train}}
+\index{Train@{Train}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Train}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ template$<$bool is\-Weight$>$ void {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Train (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{data, }
+\item[{const arma\-::\-Row$<$ size\-\_\-t $>$ \&}]{labels, }
+\item[{const arma\-::rowvec \&}]{weight\-D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a2711f0472235a131aa8fe1c4bfbf1946}
+
+
+Train the decision stump on the given data and labels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to train on. \\
+\hline
+{\em labels} & Labels for dataset. \\
+\hline
+{\em is\-Weight} & Whether we need to run a weighted Decision Stump. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!Train\-On\-Att@{Train\-On\-Att}}
+\index{Train\-On\-Att@{Train\-On\-Att}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{Train\-On\-Att}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ template$<$typename r\-Type $>$ void {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::Train\-On\-Att (
+\begin{DoxyParamCaption}
+\item[{const arma\-::rowvec \&}]{attribute, }
+\item[{const arma\-::\-Row$<$ size\-\_\-t $>$ \&}]{labels}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a998e93838c51ab1c19eb96c0c536aaad}
+
+
+After having decided the attribute on which to split, train on that attribute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute} & attribute is the attribute decided by the constructor on which we now train the decision stump. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!bin\-Labels@{bin\-Labels}}
+\index{bin\-Labels@{bin\-Labels}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{bin\-Labels}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ arma\-::\-Col$<$size\-\_\-t$>$ {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::bin\-Labels\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_ac56f4fc99d6f679857a0c01373613917}
+
+
+Stores the labels for each splitting bin. 
+
+
+
+Definition at line 109 of file decision\-\_\-stump.\-hpp.
+
+
+
+Referenced by mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump$<$ Mat\-Type $>$\-::\-Bin\-Labels().
+
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!bucket\-Size@{bucket\-Size}}
+\index{bucket\-Size@{bucket\-Size}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{bucket\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ size\-\_\-t {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::bucket\-Size\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_ac6d1a84c7b7e4058307648578d6662f3}
+
+
+Size of bucket while determining splitting criterion. 
+
+
+
+Definition at line 103 of file decision\-\_\-stump.\-hpp.
+
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!num\-Class@{num\-Class}}
+\index{num\-Class@{num\-Class}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{num\-Class}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ size\-\_\-t {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::num\-Class\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a577d50afe58f8ff48d3e5b0fea65f1f9}
+
+
+Stores the number of classes. 
+
+
+
+Definition at line 97 of file decision\-\_\-stump.\-hpp.
+
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!split@{split}}
+\index{split@{split}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{split}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ arma\-::vec {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::split\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a2b06f53397b241918f0e23a2a7c3bbce}
+
+
+Stores the splitting values after training. 
+
+
+
+Definition at line 106 of file decision\-\_\-stump.\-hpp.
+
+
+
+Referenced by mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump$<$ Mat\-Type $>$\-::\-Split().
+
+\index{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}!split\-Attribute@{split\-Attribute}}
+\index{split\-Attribute@{split\-Attribute}!mlpack::decision_stump::DecisionStump@{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}}
+\subsubsection[{split\-Attribute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type = arma\-::mat$>$ int {\bf mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}$<$ Mat\-Type $>$\-::split\-Attribute\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1decision__stump_1_1DecisionStump_a0d09065177121730c2c58b0a39b340b4}
+
+
+Stores the value of the attribute on which to split. 
+
+
+
+Definition at line 100 of file decision\-\_\-stump.\-hpp.
+
+
+
+Referenced by mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump$<$ Mat\-Type $>$\-::\-Split\-Attribute().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/decision\-\_\-stump/{\bf decision\-\_\-stump.\-hpp}\end{DoxyCompactItemize}

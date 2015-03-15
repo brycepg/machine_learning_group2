@@ -1,0 +1,9 @@
+digraph "src/mlpack/core/optimizers/sa" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_becda7b54266400a4fb5aab8b420973e {
+    graph [ bgcolor="#ddddee", pencolor="black", label="optimizers" fontname="Helvetica", fontsize="10", URL="dir_becda7b54266400a4fb5aab8b420973e.html"]
+  dir_c28fe4844ed6b7b9db8994d661f50b2e [shape=box, label="sa", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_c28fe4844ed6b7b9db8994d661f50b2e.html"];
+  }
+}

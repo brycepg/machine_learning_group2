@@ -1,0 +1,11 @@
+digraph "src/mlpack/core/optimizers/lrsdp" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_becda7b54266400a4fb5aab8b420973e {
+    graph [ bgcolor="#ddddee", pencolor="black", label="optimizers" fontname="Helvetica", fontsize="10", URL="dir_becda7b54266400a4fb5aab8b420973e.html"]
+  dir_a19aa43fa36eab6969cdb946fd06e96f [shape=box, label="lrsdp", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_a19aa43fa36eab6969cdb946fd06e96f.html"];
+  }
+  dir_c8df8996edc1870076bedbb0aeba2fd3 [shape=box label="aug_lagrangian" URL="dir_c8df8996edc1870076bedbb0aeba2fd3.html"];
+  dir_a19aa43fa36eab6969cdb946fd06e96f->dir_c8df8996edc1870076bedbb0aeba2fd3 [headlabel="2", labeldistance=1.5 headhref="dir_000013_000011.html"];
+}

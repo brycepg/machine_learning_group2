@@ -1,0 +1,16 @@
+digraph "src/mlpack/methods/perceptron" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_2217eda3f3f128182276a15ca80cc98e {
+    graph [ bgcolor="#ddddee", pencolor="black", label="methods" fontname="Helvetica", fontsize="10", URL="dir_2217eda3f3f128182276a15ca80cc98e.html"]
+  subgraph clusterdir_d1be4479dffdf1b9f98978aa2d42ca89 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_d1be4479dffdf1b9f98978aa2d42ca89.html"];
+    dir_d1be4479dffdf1b9f98978aa2d42ca89 [shape=plaintext label="perceptron"];
+    dir_8c39302dd7470d3c525c480db4b4f594 [shape=box label="initialization_methods" color="black" fillcolor="white" style="filled" URL="dir_8c39302dd7470d3c525c480db4b4f594.html"];
+    dir_83c113add47e749a90538be658ec31cd [shape=box label="learning_policies" color="black" fillcolor="white" style="filled" URL="dir_83c113add47e749a90538be658ec31cd.html"];
+  }
+  }
+  dir_d1be4479dffdf1b9f98978aa2d42ca89->dir_8c39302dd7470d3c525c480db4b4f594 [headlabel="2", labeldistance=1.5 headhref="dir_000024_000025.html"];
+  dir_d1be4479dffdf1b9f98978aa2d42ca89->dir_83c113add47e749a90538be658ec31cd [headlabel="1", labeldistance=1.5 headhref="dir_000024_000050.html"];
+}

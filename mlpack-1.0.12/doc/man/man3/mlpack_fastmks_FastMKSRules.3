@@ -1,0 +1,357 @@
+.TH "mlpack::fastmks::FastMKSRules< KernelType, TreeType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::fastmks::FastMKSRules< KernelType, TreeType > \- 
+.PP
+The base case and pruning rules for \fBFastMKS\fP (fast max-kernel search)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef 
+.br
+\fBneighbor::NeighborSearchTraversalInfo\fP
+.br
+< TreeType > \fBTraversalInfoType\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFastMKSRules\fP (const arma::mat &\fBreferenceSet\fP, const arma::mat &\fBquerySet\fP, arma::Mat< size_t > &\fBindices\fP, arma::mat &\fBproducts\fP, KernelType &\fBkernel\fP)"
+.br
+.ti -1c
+.RI "double \fBBaseCase\fP (const size_t queryIndex, const size_t referenceIndex)"
+.br
+.RI "\fICompute the base case (kernel value) between two points\&. \fP"
+.ti -1c
+.RI "size_t \fBBaseCases\fP () const "
+.br
+.RI "\fIGet the number of times \fBBaseCase()\fP was called\&. \fP"
+.ti -1c
+.RI "size_t & \fBBaseCases\fP ()"
+.br
+.RI "\fIModify the number of times \fBBaseCase()\fP was called\&. \fP"
+.ti -1c
+.RI "double \fBRescore\fP (const size_t queryIndex, TreeType &referenceNode, const double oldScore) const "
+.br
+.RI "\fIRe-evaluate the score for recursion order\&. \fP"
+.ti -1c
+.RI "double \fBRescore\fP (TreeType &queryNode, TreeType &referenceNode, const double oldScore) const "
+.br
+.RI "\fIRe-evaluate the score for recursion order\&. \fP"
+.ti -1c
+.RI "double \fBScore\fP (const size_t queryIndex, TreeType &referenceNode)"
+.br
+.RI "\fIGet the score for recursion order\&. \fP"
+.ti -1c
+.RI "double \fBScore\fP (TreeType &queryNode, TreeType &referenceNode)"
+.br
+.RI "\fIGet the score for recursion order\&. \fP"
+.ti -1c
+.RI "size_t \fBScores\fP () const "
+.br
+.RI "\fIGet the number of times \fBScore()\fP was called\&. \fP"
+.ti -1c
+.RI "size_t & \fBScores\fP ()"
+.br
+.RI "\fIModify the number of times \fBScore()\fP was called\&. \fP"
+.ti -1c
+.RI "const \fBTraversalInfoType\fP & \fBTraversalInfo\fP () const "
+.br
+.ti -1c
+.RI "\fBTraversalInfoType\fP & \fBTraversalInfo\fP ()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBCalculateBound\fP (TreeType &queryNode) const "
+.br
+.RI "\fICalculate the bound for a given query node\&. \fP"
+.ti -1c
+.RI "void \fBInsertNeighbor\fP (const size_t queryIndex, const size_t pos, const size_t neighbor, const double distance)"
+.br
+.RI "\fIUtility function to insert neighbor into list of results\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBbaseCases\fP"
+.br
+.RI "\fIFor benchmarking\&. \fP"
+.ti -1c
+.RI "arma::Mat< size_t > & \fBindices\fP"
+.br
+.RI "\fIThe indices of the maximum kernel results\&. \fP"
+.ti -1c
+.RI "KernelType & \fBkernel\fP"
+.br
+.RI "\fIThe instantiated kernel\&. \fP"
+.ti -1c
+.RI "double \fBlastKernel\fP"
+.br
+.RI "\fIThe last kernel evaluation resulting from \fBBaseCase()\fP\&. \fP"
+.ti -1c
+.RI "size_t \fBlastQueryIndex\fP"
+.br
+.RI "\fIThe last query index \fBBaseCase()\fP was called with\&. \fP"
+.ti -1c
+.RI "size_t \fBlastReferenceIndex\fP"
+.br
+.RI "\fIThe last reference index \fBBaseCase()\fP was called with\&. \fP"
+.ti -1c
+.RI "arma::mat & \fBproducts\fP"
+.br
+.RI "\fIThe maximum kernels\&. \fP"
+.ti -1c
+.RI "arma::vec \fBqueryKernels\fP"
+.br
+.RI "\fICached query set self-kernels (|| q || for each q)\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBquerySet\fP"
+.br
+.RI "\fIThe query dataset\&. \fP"
+.ti -1c
+.RI "arma::vec \fBreferenceKernels\fP"
+.br
+.RI "\fICached reference set self-kernels (|| r || for each r)\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBreferenceSet\fP"
+.br
+.RI "\fIThe reference dataset\&. \fP"
+.ti -1c
+.RI "size_t \fBscores\fP"
+.br
+.RI "\fIFor benchmarking\&. \fP"
+.ti -1c
+.RI "\fBTraversalInfoType\fP \fBtraversalInfo\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename KernelType, typename TreeType>class mlpack::fastmks::FastMKSRules< KernelType, TreeType >"
+The base case and pruning rules for \fBFastMKS\fP (fast max-kernel search)\&. 
+.PP
+Definition at line 29 of file fastmks_rules\&.hpp\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<typename KernelType , typename TreeType > typedef \fBneighbor::NeighborSearchTraversalInfo\fP<TreeType> \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::\fBTraversalInfoType\fP"
+
+.PP
+Definition at line 101 of file fastmks_rules\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename KernelType , typename TreeType > \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::\fBFastMKSRules\fP (const arma::mat &referenceSet, const arma::mat &querySet, arma::Mat< size_t > &indices, arma::mat &products, KernelType &kernel)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename KernelType , typename TreeType > double \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::BaseCase (const size_tqueryIndex, const size_treferenceIndex)"
+
+.PP
+Compute the base case (kernel value) between two points\&. 
+.SS "template<typename KernelType , typename TreeType > size_t \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::BaseCases () const\fC [inline]\fP"
+
+.PP
+Get the number of times \fBBaseCase()\fP was called\&. 
+.PP
+Definition at line 92 of file fastmks_rules\&.hpp\&.
+.PP
+References mlpack::fastmks::FastMKSRules< KernelType, TreeType >::baseCases\&.
+.SS "template<typename KernelType , typename TreeType > size_t& \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::BaseCases ()\fC [inline]\fP"
+
+.PP
+Modify the number of times \fBBaseCase()\fP was called\&. 
+.PP
+Definition at line 94 of file fastmks_rules\&.hpp\&.
+.PP
+References mlpack::fastmks::FastMKSRules< KernelType, TreeType >::baseCases\&.
+.SS "template<typename KernelType , typename TreeType > double \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::CalculateBound (TreeType &queryNode) const\fC [private]\fP"
+
+.PP
+Calculate the bound for a given query node\&. 
+.SS "template<typename KernelType , typename TreeType > void \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::InsertNeighbor (const size_tqueryIndex, const size_tpos, const size_tneighbor, const doubledistance)\fC [private]\fP"
+
+.PP
+Utility function to insert neighbor into list of results\&. 
+.SS "template<typename KernelType , typename TreeType > double \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::Rescore (const size_tqueryIndex, TreeType &referenceNode, const doubleoldScore) const"
+
+.PP
+Re-evaluate the score for recursion order\&. A low score indicates priority for recursion, while DBL_MAX indicates that a node should not be recursed into at all (it should be pruned)\&. This is used when the score has already been calculated, but another recursion may have modified the bounds for pruning\&. So the old score is checked against the new pruning bound\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP Index of query point\&. 
+.br
+\fIreferenceNode\fP Candidate node to be recursed into\&. 
+.br
+\fIoldScore\fP Old score produced by \fBScore()\fP (or \fBRescore()\fP)\&. 
+.RE
+.PP
+
+.SS "template<typename KernelType , typename TreeType > double \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::Rescore (TreeType &queryNode, TreeType &referenceNode, const doubleoldScore) const"
+
+.PP
+Re-evaluate the score for recursion order\&. A low score indicates priority for recursion, while DBL_MAX indicates that a node should not be recursed into at all (it should be pruned)\&. This is used when the score has already been calculated, but another recursion may have modified the bounds for pruning\&. So the old score is checked against the new pruning bound\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryNode\fP Candidate query node to be recursed into\&. 
+.br
+\fIreferenceNode\fP Candidate reference node to be recursed into\&. 
+.br
+\fIoldScore\fP Old score produced by \fBScore()\fP (or \fBRescore()\fP)\&. 
+.RE
+.PP
+
+.SS "template<typename KernelType , typename TreeType > double \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::Score (const size_tqueryIndex, TreeType &referenceNode)"
+
+.PP
+Get the score for recursion order\&. A low score indicates priority for recursion, while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP Index of query point\&. 
+.br
+\fIreferenceNode\fP Candidate to be recursed into\&. 
+.RE
+.PP
+
+.SS "template<typename KernelType , typename TreeType > double \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::Score (TreeType &queryNode, TreeType &referenceNode)"
+
+.PP
+Get the score for recursion order\&. A low score indicates priority for recursion, while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryNode\fP Candidate query node to be recursed into\&. 
+.br
+\fIreferenceNode\fP Candidate reference node to be recursed into\&. 
+.RE
+.PP
+
+.SS "template<typename KernelType , typename TreeType > size_t \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::Scores () const\fC [inline]\fP"
+
+.PP
+Get the number of times \fBScore()\fP was called\&. 
+.PP
+Definition at line 97 of file fastmks_rules\&.hpp\&.
+.PP
+References mlpack::fastmks::FastMKSRules< KernelType, TreeType >::scores\&.
+.SS "template<typename KernelType , typename TreeType > size_t& \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::Scores ()\fC [inline]\fP"
+
+.PP
+Modify the number of times \fBScore()\fP was called\&. 
+.PP
+Definition at line 99 of file fastmks_rules\&.hpp\&.
+.PP
+References mlpack::fastmks::FastMKSRules< KernelType, TreeType >::scores\&.
+.SS "template<typename KernelType , typename TreeType > const \fBTraversalInfoType\fP& \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::\fBTraversalInfo\fP () const\fC [inline]\fP"
+
+.PP
+Definition at line 103 of file fastmks_rules\&.hpp\&.
+.PP
+References mlpack::fastmks::FastMKSRules< KernelType, TreeType >::traversalInfo\&.
+.SS "template<typename KernelType , typename TreeType > \fBTraversalInfoType\fP& \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::\fBTraversalInfo\fP ()\fC [inline]\fP"
+
+.PP
+Definition at line 104 of file fastmks_rules\&.hpp\&.
+.PP
+References mlpack::fastmks::FastMKSRules< KernelType, TreeType >::traversalInfo\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename KernelType , typename TreeType > size_t \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::baseCases\fC [private]\fP"
+
+.PP
+For benchmarking\&. 
+.PP
+Definition at line 142 of file fastmks_rules\&.hpp\&.
+.PP
+Referenced by mlpack::fastmks::FastMKSRules< KernelType, TreeType >::BaseCases()\&.
+.SS "template<typename KernelType , typename TreeType > arma::Mat<size_t>& \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::indices\fC [private]\fP"
+
+.PP
+The indices of the maximum kernel results\&. 
+.PP
+Definition at line 113 of file fastmks_rules\&.hpp\&.
+.SS "template<typename KernelType , typename TreeType > KernelType& \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::kernel\fC [private]\fP"
+
+.PP
+The instantiated kernel\&. 
+.PP
+Definition at line 123 of file fastmks_rules\&.hpp\&.
+.SS "template<typename KernelType , typename TreeType > double \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::lastKernel\fC [private]\fP"
+
+.PP
+The last kernel evaluation resulting from \fBBaseCase()\fP\&. 
+.PP
+Definition at line 130 of file fastmks_rules\&.hpp\&.
+.SS "template<typename KernelType , typename TreeType > size_t \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::lastQueryIndex\fC [private]\fP"
+
+.PP
+The last query index \fBBaseCase()\fP was called with\&. 
+.PP
+Definition at line 126 of file fastmks_rules\&.hpp\&.
+.SS "template<typename KernelType , typename TreeType > size_t \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::lastReferenceIndex\fC [private]\fP"
+
+.PP
+The last reference index \fBBaseCase()\fP was called with\&. 
+.PP
+Definition at line 128 of file fastmks_rules\&.hpp\&.
+.SS "template<typename KernelType , typename TreeType > arma::mat& \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::products\fC [private]\fP"
+
+.PP
+The maximum kernels\&. 
+.PP
+Definition at line 115 of file fastmks_rules\&.hpp\&.
+.SS "template<typename KernelType , typename TreeType > arma::vec \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::queryKernels\fC [private]\fP"
+
+.PP
+Cached query set self-kernels (|| q || for each q)\&. 
+.PP
+Definition at line 118 of file fastmks_rules\&.hpp\&.
+.SS "template<typename KernelType , typename TreeType > const arma::mat& \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::querySet\fC [private]\fP"
+
+.PP
+The query dataset\&. 
+.PP
+Definition at line 110 of file fastmks_rules\&.hpp\&.
+.SS "template<typename KernelType , typename TreeType > arma::vec \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::referenceKernels\fC [private]\fP"
+
+.PP
+Cached reference set self-kernels (|| r || for each r)\&. 
+.PP
+Definition at line 120 of file fastmks_rules\&.hpp\&.
+.SS "template<typename KernelType , typename TreeType > const arma::mat& \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::referenceSet\fC [private]\fP"
+
+.PP
+The reference dataset\&. 
+.PP
+Definition at line 108 of file fastmks_rules\&.hpp\&.
+.SS "template<typename KernelType , typename TreeType > size_t \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::scores\fC [private]\fP"
+
+.PP
+For benchmarking\&. 
+.PP
+Definition at line 144 of file fastmks_rules\&.hpp\&.
+.PP
+Referenced by mlpack::fastmks::FastMKSRules< KernelType, TreeType >::Scores()\&.
+.SS "template<typename KernelType , typename TreeType > \fBTraversalInfoType\fP \fBmlpack::fastmks::FastMKSRules\fP< KernelType, TreeType >::traversalInfo\fC [private]\fP"
+
+.PP
+Definition at line 146 of file fastmks_rules\&.hpp\&.
+.PP
+Referenced by mlpack::fastmks::FastMKSRules< KernelType, TreeType >::TraversalInfo()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

@@ -1,0 +1,38 @@
+.TH "mlpack::gmm::NoConstraint" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::gmm::NoConstraint \- 
+.PP
+This class enforces no constraint on the covariance matrix\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBApplyConstraint\fP (const arma::mat &)"
+.br
+.RI "\fIDo nothing, and do not modify the covariance matrix\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class enforces no constraint on the covariance matrix\&. 
+
+It's faster this way, although depending on your situation you may end up with a non-invertible covariance matrix\&. 
+.PP
+Definition at line 27 of file no_constraint\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static void mlpack::gmm::NoConstraint::ApplyConstraint (const arma::mat &)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Do nothing, and do not modify the covariance matrix\&. 
+.PP
+Definition at line 31 of file no_constraint\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

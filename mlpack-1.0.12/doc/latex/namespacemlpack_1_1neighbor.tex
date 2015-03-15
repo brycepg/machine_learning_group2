@@ -1,0 +1,175 @@
+\section{mlpack\-:\-:neighbor Namespace Reference}
+\label{namespacemlpack_1_1neighbor}\index{mlpack\-::neighbor@{mlpack\-::neighbor}}
+
+
+Neighbor-\/search routines.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf Furthest\-Neighbor\-Sort}
+\begin{DoxyCompactList}\small\item\em This class implements the necessary methods for the Sort\-Policy template parameter of the \doxyref{Neighbor\-Search}{p.}{classmlpack_1_1neighbor_1_1NeighborSearch} class. \end{DoxyCompactList}\item 
+class {\bf L\-S\-H\-Search}
+\begin{DoxyCompactList}\small\item\em The \doxyref{L\-S\-H\-Search}{p.}{classmlpack_1_1neighbor_1_1LSHSearch} class -- This class builds a hash on the reference set and uses this hash to compute the distance-\/approximate nearest-\/neighbors of the given queries. \end{DoxyCompactList}\item 
+class {\bf Nearest\-Neighbor\-Sort}
+\begin{DoxyCompactList}\small\item\em This class implements the necessary methods for the Sort\-Policy template parameter of the \doxyref{Neighbor\-Search}{p.}{classmlpack_1_1neighbor_1_1NeighborSearch} class. \end{DoxyCompactList}\item 
+class {\bf Neighbor\-Search}
+\begin{DoxyCompactList}\small\item\em The \doxyref{Neighbor\-Search}{p.}{classmlpack_1_1neighbor_1_1NeighborSearch} class is a template class for performing distance-\/based neighbor searches. \end{DoxyCompactList}\item 
+class {\bf Neighbor\-Search\-Rules}
+\item 
+class {\bf Neighbor\-Search\-Stat}
+\begin{DoxyCompactList}\small\item\em Extra data for each node in the tree. \end{DoxyCompactList}\item 
+class {\bf Neighbor\-Search\-Traversal\-Info}
+\begin{DoxyCompactList}\small\item\em Traversal information for \doxyref{Neighbor\-Search}{p.}{classmlpack_1_1neighbor_1_1NeighborSearch}. \end{DoxyCompactList}\item 
+class {\bf R\-A\-Search\-Rules}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef {\bf Neighbor\-Search}\\*
+$<$ {\bf Furthest\-Neighbor\-Sort}, \\*
+{\bf metric\-::\-Euclidean\-Distance} $>$ {\bf Allk\-F\-N}
+\begin{DoxyCompactList}\small\item\em The Allk\-F\-N class is the all-\/k-\/furthest-\/neighbors method. \end{DoxyCompactList}\item 
+typedef {\bf Neighbor\-Search}\\*
+$<$ {\bf Nearest\-Neighbor\-Sort}, \\*
+{\bf metric\-::\-Euclidean\-Distance} $>$ {\bf Allk\-N\-N}
+\begin{DoxyCompactList}\small\item\em The Allk\-N\-N class is the all-\/k-\/nearest-\/neighbors method. \end{DoxyCompactList}\item 
+typedef {\bf R\-A\-Search}\\*
+$<$ {\bf Furthest\-Neighbor\-Sort} $>$ {\bf Allk\-R\-A\-F\-N}
+\begin{DoxyCompactList}\small\item\em The Allk\-R\-A\-F\-N class is the all-\/k-\/rank-\/approximate-\/farthest-\/neighbors method. \end{DoxyCompactList}\item 
+typedef {\bf R\-A\-Search} {\bf Allk\-R\-A\-N\-N}
+\begin{DoxyCompactList}\small\item\em The Allk\-R\-A\-N\-N class is the all-\/k-\/rank-\/approximate-\/nearest-\/neighbors method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Unmap} (const arma\-::\-Mat$<$ size\-\_\-t $>$ \&neighbors, const arma\-::mat \&distances, const std\-::vector$<$ size\-\_\-t $>$ \&reference\-Map, const std\-::vector$<$ size\-\_\-t $>$ \&query\-Map, arma\-::\-Mat$<$ size\-\_\-t $>$ \&neighbors\-Out, arma\-::mat \&distances\-Out, const bool square\-Root=false)
+\begin{DoxyCompactList}\small\item\em Assuming that the datasets have been mapped using the reference\-Map and the query\-Map (such as during kd-\/tree construction), unmap the columns of the distances and neighbors matrices into neighbors\-Out and distances\-Out, and also unmap the entries in each row of neighbors. \end{DoxyCompactList}\item 
+void {\bf Unmap} (const arma\-::\-Mat$<$ size\-\_\-t $>$ \&neighbors, const arma\-::mat \&distances, const std\-::vector$<$ size\-\_\-t $>$ \&reference\-Map, arma\-::\-Mat$<$ size\-\_\-t $>$ \&neighbors\-Out, arma\-::mat \&distances\-Out, const bool square\-Root=false)
+\begin{DoxyCompactList}\small\item\em Assuming that the datasets have been mapped using reference\-Map (such as during kd-\/tree construction), unmap the columns of the distances and neighbors matrices into neighbors\-Out and distances\-Out, and also unmap the entries in each row of neighbors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Neighbor-\/search routines. These include all-\/nearest-\/neighbors and all-\/furthest-\/neighbors searches. 
+
+\subsection{Typedef Documentation}
+\index{mlpack\-::neighbor@{mlpack\-::neighbor}!Allk\-F\-N@{Allk\-F\-N}}
+\index{Allk\-F\-N@{Allk\-F\-N}!mlpack::neighbor@{mlpack\-::neighbor}}
+\subsubsection[{Allk\-F\-N}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Neighbor\-Search}$<${\bf Furthest\-Neighbor\-Sort}, {\bf metric\-::\-Euclidean\-Distance}$>$ {\bf mlpack\-::neighbor\-::\-Allk\-F\-N}}\label{namespacemlpack_1_1neighbor_a0934c373db9c668f7ab95b182181db22}
+
+
+The Allk\-F\-N class is the all-\/k-\/furthest-\/neighbors method. 
+
+It returns L2 distances (Euclidean distances) for each of the k furthest neighbors. 
+
+Definition at line 40 of file typedef.\-hpp.
+
+\index{mlpack\-::neighbor@{mlpack\-::neighbor}!Allk\-N\-N@{Allk\-N\-N}}
+\index{Allk\-N\-N@{Allk\-N\-N}!mlpack::neighbor@{mlpack\-::neighbor}}
+\subsubsection[{Allk\-N\-N}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Neighbor\-Search}$<${\bf Nearest\-Neighbor\-Sort}, {\bf metric\-::\-Euclidean\-Distance}$>$ {\bf mlpack\-::neighbor\-::\-Allk\-N\-N}}\label{namespacemlpack_1_1neighbor_af730c334b56efb655152c975a3e15ace}
+
+
+The Allk\-N\-N class is the all-\/k-\/nearest-\/neighbors method. 
+
+It returns L2 distances (Euclidean distances) for each of the k nearest neighbors. 
+
+Definition at line 34 of file typedef.\-hpp.
+
+\index{mlpack\-::neighbor@{mlpack\-::neighbor}!Allk\-R\-A\-F\-N@{Allk\-R\-A\-F\-N}}
+\index{Allk\-R\-A\-F\-N@{Allk\-R\-A\-F\-N}!mlpack::neighbor@{mlpack\-::neighbor}}
+\subsubsection[{Allk\-R\-A\-F\-N}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf R\-A\-Search}$<${\bf Furthest\-Neighbor\-Sort}$>$ {\bf mlpack\-::neighbor\-::\-Allk\-R\-A\-F\-N}}\label{namespacemlpack_1_1neighbor_a5aabb8d778c133e9d794558527680f09}
+
+
+The Allk\-R\-A\-F\-N class is the all-\/k-\/rank-\/approximate-\/farthest-\/neighbors method. 
+
+It returns squared L2 distances (squared Euclidean distances) for each of the k rank-\/approximate farthest-\/neighbors. Squared distances are used because they are slightly faster than non-\/squared distances (they have one fewer call to sqrt()).
+
+The approximation is controlled with two parameters (see allkrann\-\_\-main.\-cpp) which can be specified at search time. So the tree building is done only once while the search can be performed multiple times with different approximation levels. 
+
+Definition at line 55 of file ra\-\_\-typedef.\-hpp.
+
+\index{mlpack\-::neighbor@{mlpack\-::neighbor}!Allk\-R\-A\-N\-N@{Allk\-R\-A\-N\-N}}
+\index{Allk\-R\-A\-N\-N@{Allk\-R\-A\-N\-N}!mlpack::neighbor@{mlpack\-::neighbor}}
+\subsubsection[{Allk\-R\-A\-N\-N}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf R\-A\-Search} {\bf mlpack\-::neighbor\-::\-Allk\-R\-A\-N\-N}}\label{namespacemlpack_1_1neighbor_a1d10ceee8731e0d5712ffbc7307f0d0d}
+
+
+The Allk\-R\-A\-N\-N class is the all-\/k-\/rank-\/approximate-\/nearest-\/neighbors method. 
+
+It returns squared L2 distances (squared Euclidean distances) for each of the k rank-\/approximate nearest-\/neighbors. Squared distances are used because they are slightly faster than non-\/squared distances (they have one fewer call to sqrt()).
+
+The approximation is controlled with two parameters (see allkrann\-\_\-main.\-cpp) which can be specified at search time. So the tree building is done only once while the search can be performed multiple times with different approximation levels. 
+
+Definition at line 41 of file ra\-\_\-typedef.\-hpp.
+
+
+
+\subsection{Function Documentation}
+\index{mlpack\-::neighbor@{mlpack\-::neighbor}!Unmap@{Unmap}}
+\index{Unmap@{Unmap}!mlpack::neighbor@{mlpack\-::neighbor}}
+\subsubsection[{Unmap}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::neighbor\-::\-Unmap (
+\begin{DoxyParamCaption}
+\item[{const arma\-::\-Mat$<$ size\-\_\-t $>$ \&}]{neighbors, }
+\item[{const arma\-::mat \&}]{distances, }
+\item[{const std\-::vector$<$ size\-\_\-t $>$ \&}]{reference\-Map, }
+\item[{const std\-::vector$<$ size\-\_\-t $>$ \&}]{query\-Map, }
+\item[{arma\-::\-Mat$<$ size\-\_\-t $>$ \&}]{neighbors\-Out, }
+\item[{arma\-::mat \&}]{distances\-Out, }
+\item[{const bool}]{square\-Root = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{namespacemlpack_1_1neighbor_a841bafc12b36517208ff283b095dec2f}
+
+
+Assuming that the datasets have been mapped using the reference\-Map and the query\-Map (such as during kd-\/tree construction), unmap the columns of the distances and neighbors matrices into neighbors\-Out and distances\-Out, and also unmap the entries in each row of neighbors. 
+
+This is useful for the dual-\/tree case.
+
+
+\begin{DoxyParams}{Parameters}
+{\em neighbors} & Matrix of neighbors resulting from neighbor search. \\
+\hline
+{\em distances} & Matrix of distances resulting from neighbor search. \\
+\hline
+{\em reference\-Map} & Mapping of reference set to old points. \\
+\hline
+{\em query\-Map} & Mapping of query set to old points. \\
+\hline
+{\em neighbors\-Out} & Matrix to store unmapped neighbors into. \\
+\hline
+{\em distances\-Out} & Matrix to store unmapped distances into. \\
+\hline
+{\em square\-Root} & If true, take the square root of the distances. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::neighbor@{mlpack\-::neighbor}!Unmap@{Unmap}}
+\index{Unmap@{Unmap}!mlpack::neighbor@{mlpack\-::neighbor}}
+\subsubsection[{Unmap}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::neighbor\-::\-Unmap (
+\begin{DoxyParamCaption}
+\item[{const arma\-::\-Mat$<$ size\-\_\-t $>$ \&}]{neighbors, }
+\item[{const arma\-::mat \&}]{distances, }
+\item[{const std\-::vector$<$ size\-\_\-t $>$ \&}]{reference\-Map, }
+\item[{arma\-::\-Mat$<$ size\-\_\-t $>$ \&}]{neighbors\-Out, }
+\item[{arma\-::mat \&}]{distances\-Out, }
+\item[{const bool}]{square\-Root = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{namespacemlpack_1_1neighbor_acc225558031fe27e3336544c50dd642d}
+
+
+Assuming that the datasets have been mapped using reference\-Map (such as during kd-\/tree construction), unmap the columns of the distances and neighbors matrices into neighbors\-Out and distances\-Out, and also unmap the entries in each row of neighbors. 
+
+This is useful for the single-\/tree case.
+
+
+\begin{DoxyParams}{Parameters}
+{\em neighbors} & Matrix of neighbors resulting from neighbor search. \\
+\hline
+{\em distances} & Matrix of distances resulting from neighbor search. \\
+\hline
+{\em reference\-Map} & Mapping of reference set to old points. \\
+\hline
+{\em neighbors\-Out} & Matrix to store unmapped neighbors into. \\
+\hline
+{\em distances\-Out} & Matrix to store unmapped distances into. \\
+\hline
+{\em square\-Root} & If true, take the square root of the distances. \\
+\hline
+\end{DoxyParams}

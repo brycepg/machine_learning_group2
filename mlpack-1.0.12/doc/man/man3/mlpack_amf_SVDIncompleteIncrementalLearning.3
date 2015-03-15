@@ -1,0 +1,147 @@
+.TH "mlpack::amf::SVDIncompleteIncrementalLearning" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::amf::SVDIncompleteIncrementalLearning \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSVDIncompleteIncrementalLearning\fP (double \fBu\fP=0\&.001, double \fBkw\fP=0, double \fBkh\fP=0)"
+.br
+.ti -1c
+.RI "template<typename MatType > void \fBHUpdate\fP (const MatType &V, const arma::mat &W, arma::mat &H)"
+.br
+.RI "\fIThe update rule for the encoding matrix H\&. \fP"
+.ti -1c
+.RI "template<typename MatType > void \fBInitialize\fP (const MatType &dataset, const size_t rank)"
+.br
+.ti -1c
+.RI "template<typename MatType > void \fBWUpdate\fP (const MatType &V, arma::mat &W, const arma::mat &H)"
+.br
+.RI "\fIThe update rule for the basis matrix W\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBcurrentUserIndex\fP"
+.br
+.ti -1c
+.RI "double \fBkh\fP"
+.br
+.ti -1c
+.RI "double \fBkw\fP"
+.br
+.ti -1c
+.RI "size_t \fBm\fP"
+.br
+.ti -1c
+.RI "size_t \fBn\fP"
+.br
+.ti -1c
+.RI "double \fBu\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file svd_incomplete_incremental_learning\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::amf::SVDIncompleteIncrementalLearning::SVDIncompleteIncrementalLearning (doubleu = \fC0\&.001\fP, doublekw = \fC0\fP, doublekh = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 11 of file svd_incomplete_incremental_learning\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename MatType > void mlpack::amf::SVDIncompleteIncrementalLearning::HUpdate (const MatType &V, const arma::mat &W, arma::mat &H)\fC [inline]\fP"
+
+.PP
+The update rule for the encoding matrix H\&. The function takes in all the matrices and only changes the value of the H matrix\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIV\fP Input matrix to be factorized\&. 
+.br
+\fIW\fP Basis matrix\&. 
+.br
+\fIH\fP Encoding matrix to be updated\&. 
+.RE
+.PP
+
+.PP
+Definition at line 73 of file svd_incomplete_incremental_learning\&.hpp\&.
+.PP
+References currentUserIndex, kh, m, n, and u\&.
+.SS "template<typename MatType > void mlpack::amf::SVDIncompleteIncrementalLearning::Initialize (const MatType &dataset, const size_trank)\fC [inline]\fP"
+
+.PP
+Definition at line 18 of file svd_incomplete_incremental_learning\&.hpp\&.
+.PP
+References currentUserIndex, m, and n\&.
+.SS "template<typename MatType > void mlpack::amf::SVDIncompleteIncrementalLearning::WUpdate (const MatType &V, arma::mat &W, const arma::mat &H)\fC [inline]\fP"
+
+.PP
+The update rule for the basis matrix W\&. The function takes in all the matrices and only changes the value of the W matrix\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIV\fP Input matrix to be factorized\&. 
+.br
+\fIW\fP Basis matrix to be updated\&. 
+.br
+\fIH\fP Encoding matrix\&.
+.RE
+.PP
+This file is part of mlpack 1\&.0\&.12\&.
+.PP
+mlpack is free software; you may redstribute it and/or modify it under the terms of the 3-clause BSD license\&. You should have received a copy of the 3-clause BSD license along with mlpack\&. If not, see http://www.opensource.org/licenses/BSD-3-Clause for more information\&. 
+.PP
+Definition at line 45 of file svd_incomplete_incremental_learning\&.hpp\&.
+.PP
+References currentUserIndex, kw, n, and u\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "size_t mlpack::amf::SVDIncompleteIncrementalLearning::currentUserIndex\fC [private]\fP"
+
+.PP
+Definition at line 101 of file svd_incomplete_incremental_learning\&.hpp\&.
+.PP
+Referenced by HUpdate(), Initialize(), and WUpdate()\&.
+.SS "double mlpack::amf::SVDIncompleteIncrementalLearning::kh\fC [private]\fP"
+
+.PP
+Definition at line 96 of file svd_incomplete_incremental_learning\&.hpp\&.
+.PP
+Referenced by HUpdate()\&.
+.SS "double mlpack::amf::SVDIncompleteIncrementalLearning::kw\fC [private]\fP"
+
+.PP
+Definition at line 95 of file svd_incomplete_incremental_learning\&.hpp\&.
+.PP
+Referenced by WUpdate()\&.
+.SS "size_t mlpack::amf::SVDIncompleteIncrementalLearning::m\fC [private]\fP"
+
+.PP
+Definition at line 99 of file svd_incomplete_incremental_learning\&.hpp\&.
+.PP
+Referenced by HUpdate(), and Initialize()\&.
+.SS "size_t mlpack::amf::SVDIncompleteIncrementalLearning::n\fC [private]\fP"
+
+.PP
+Definition at line 98 of file svd_incomplete_incremental_learning\&.hpp\&.
+.PP
+Referenced by HUpdate(), Initialize(), and WUpdate()\&.
+.SS "double mlpack::amf::SVDIncompleteIncrementalLearning::u\fC [private]\fP"
+
+.PP
+Definition at line 94 of file svd_incomplete_incremental_learning\&.hpp\&.
+.PP
+Referenced by HUpdate(), and WUpdate()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

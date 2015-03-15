@@ -1,0 +1,59 @@
+\section{mlpack\-:\-:perceptron\-:\-:Simple\-Weight\-Update Class Reference}
+\label{classmlpack_1_1perceptron_1_1SimpleWeightUpdate}\index{mlpack\-::perceptron\-::\-Simple\-Weight\-Update@{mlpack\-::perceptron\-::\-Simple\-Weight\-Update}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Update\-Weights} (const arma\-::mat \&train\-Data, arma\-::mat \&weight\-Vectors, const size\-\_\-t label\-Index, const size\-\_\-t vector\-Index, const size\-\_\-t row\-Index, const arma\-::rowvec \&D)
+\begin{DoxyCompactList}\small\item\em This function is called to update the weight\-Vectors matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 32 of file simple\-\_\-weight\-\_\-update.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::perceptron\-::\-Simple\-Weight\-Update@{mlpack\-::perceptron\-::\-Simple\-Weight\-Update}!Update\-Weights@{Update\-Weights}}
+\index{Update\-Weights@{Update\-Weights}!mlpack::perceptron::SimpleWeightUpdate@{mlpack\-::perceptron\-::\-Simple\-Weight\-Update}}
+\subsubsection[{Update\-Weights}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::perceptron\-::\-Simple\-Weight\-Update\-::\-Update\-Weights (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{train\-Data, }
+\item[{arma\-::mat \&}]{weight\-Vectors, }
+\item[{const size\-\_\-t}]{label\-Index, }
+\item[{const size\-\_\-t}]{vector\-Index, }
+\item[{const size\-\_\-t}]{row\-Index, }
+\item[{const arma\-::rowvec \&}]{D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1perceptron_1_1SimpleWeightUpdate_a2ac624df2a52d53cf2856fe441e3edc9}
+
+
+This function is called to update the weight\-Vectors matrix. 
+
+It decreases the weights of the incorrectly classified class while increasing the weight of the correct class it should have been classified to.
+
+
+\begin{DoxyParams}{Parameters}
+{\em train\-Data} & The training dataset. \\
+\hline
+{\em weight\-Vectors} & Matrix of weight vectors. \\
+\hline
+{\em row\-Index} & Index of the row which has been incorrectly predicted. \\
+\hline
+{\em label\-Index} & Index of the vector in train\-Data. \\
+\hline
+{\em vector\-Index} & Index of the class which should have been predicted. \\
+\hline
+{\em D} & Cost of mispredicting the label\-Index instance. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 47 of file simple\-\_\-weight\-\_\-update.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/perceptron/learning\-\_\-policies/{\bf simple\-\_\-weight\-\_\-update.\-hpp}\end{DoxyCompactItemize}

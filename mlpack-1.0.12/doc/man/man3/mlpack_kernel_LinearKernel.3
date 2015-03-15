@@ -1,0 +1,86 @@
+.TH "mlpack::kernel::LinearKernel" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::kernel::LinearKernel \- 
+.PP
+The simple linear kernel (dot product)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLinearKernel\fP ()"
+.br
+.RI "\fIThis constructor does nothing; the linear kernel has no parameters to store\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturn a string representation of the kernel\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename VecType > static double \fBEvaluate\fP (const VecType &a, const VecType &b)"
+.br
+.RI "\fISimple evaluation of the dot product\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The simple linear kernel (dot product)\&. 
+
+For any two vectors $ x $ and $ y $,
+.PP
+\[ K(x, y) = x^T y \].PP
+This kernel has no parameters and therefore the evaluation can be static\&. 
+.PP
+Definition at line 34 of file linear_kernel\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::kernel::LinearKernel::LinearKernel ()\fC [inline]\fP"
+
+.PP
+This constructor does nothing; the linear kernel has no parameters to store\&. 
+.PP
+Definition at line 41 of file linear_kernel\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename VecType > static double mlpack::kernel::LinearKernel::Evaluate (const VecType &a, const VecType &b)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Simple evaluation of the dot product\&. This evaluation uses Armadillo's dot() function\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVecType\fP Type of vector (should be arma::vec or arma::spvec)\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP First vector\&. 
+.br
+\fIb\fP Second vector\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+K(a, b)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 53 of file linear_kernel\&.hpp\&.
+.SS "std::string mlpack::kernel::LinearKernel::ToString () const\fC [inline]\fP"
+
+.PP
+Return a string representation of the kernel\&. 
+.PP
+Definition at line 59 of file linear_kernel\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

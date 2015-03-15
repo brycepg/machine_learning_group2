@@ -1,0 +1,128 @@
+.TH "mlpack::svd::RegularizedSVD< OptimizerType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::svd::RegularizedSVD< OptimizerType > \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRegularizedSVD\fP (const arma::mat &\fBdata\fP, arma::mat &u, arma::mat &v, const size_t \fBrank\fP, const size_t \fBiterations\fP=10, const double \fBalpha\fP=0\&.01, const double \fBlambda\fP=0\&.02)"
+.br
+.RI "\fIConstructor for Regularized SVD\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBalpha\fP"
+.br
+.RI "\fILearning rate for the SGD optimizer\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBdata\fP"
+.br
+.RI "\fIRating data\&. \fP"
+.ti -1c
+.RI "size_t \fBiterations\fP"
+.br
+.RI "\fINumber of optimization iterations\&. \fP"
+.ti -1c
+.RI "double \fBlambda\fP"
+.br
+.RI "\fIRegularization parameter for the optimization\&. \fP"
+.ti -1c
+.RI "\fBmlpack::optimization::SGD\fP
+.br
+< \fBRegularizedSVDFunction\fP > \fBoptimizer\fP"
+.br
+.RI "\fIDefault SGD optimizer for the class\&. \fP"
+.ti -1c
+.RI "size_t \fBrank\fP"
+.br
+.RI "\fIRank used for matrix factorization\&. \fP"
+.ti -1c
+.RI "\fBRegularizedSVDFunction\fP \fBrSVDFunc\fP"
+.br
+.RI "\fIFunction that will be held by the optimizer\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::SGD>class mlpack::svd::RegularizedSVD< OptimizerType >"
+
+.PP
+Definition at line 29 of file regularized_svd\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::SGD> \fBmlpack::svd::RegularizedSVD\fP< OptimizerType >::\fBRegularizedSVD\fP (const arma::mat &data, arma::mat &u, arma::mat &v, const size_trank, const size_titerations = \fC10\fP, const doublealpha = \fC0\&.01\fP, const doublelambda = \fC0\&.02\fP)"
+
+.PP
+Constructor for Regularized SVD\&. Obtains the user and item matrices after training on the passed data\&. The constructor initiates an object of class \fBRegularizedSVDFunction\fP for optimization\&. It uses the SGD optimizer by default\&. The optimizer uses a template specialization of Optimize()\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset for which SVD is calculated\&. 
+.br
+\fIu\fP User matrix in the matrix decomposition\&. 
+.br
+\fIv\fP Item matrix in the matrix decomposition\&. 
+.br
+\fIrank\fP Rank used for matrix factorization\&. 
+.br
+\fIiterations\fP Number of optimization iterations\&. 
+.br
+\fIlambda\fP Regularization parameter for the optimization\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::SGD> double \fBmlpack::svd::RegularizedSVD\fP< OptimizerType >::alpha\fC [private]\fP"
+
+.PP
+Learning rate for the SGD optimizer\&. 
+.PP
+Definition at line 62 of file regularized_svd\&.hpp\&.
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::SGD> const arma::mat& \fBmlpack::svd::RegularizedSVD\fP< OptimizerType >::data\fC [private]\fP"
+
+.PP
+Rating data\&. 
+.PP
+Definition at line 56 of file regularized_svd\&.hpp\&.
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::SGD> size_t \fBmlpack::svd::RegularizedSVD\fP< OptimizerType >::iterations\fC [private]\fP"
+
+.PP
+Number of optimization iterations\&. 
+.PP
+Definition at line 60 of file regularized_svd\&.hpp\&.
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::SGD> double \fBmlpack::svd::RegularizedSVD\fP< OptimizerType >::lambda\fC [private]\fP"
+
+.PP
+Regularization parameter for the optimization\&. 
+.PP
+Definition at line 64 of file regularized_svd\&.hpp\&.
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::SGD> \fBmlpack::optimization::SGD\fP<\fBRegularizedSVDFunction\fP> \fBmlpack::svd::RegularizedSVD\fP< OptimizerType >::optimizer\fC [private]\fP"
+
+.PP
+Default SGD optimizer for the class\&. 
+.PP
+Definition at line 68 of file regularized_svd\&.hpp\&.
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::SGD> size_t \fBmlpack::svd::RegularizedSVD\fP< OptimizerType >::rank\fC [private]\fP"
+
+.PP
+Rank used for matrix factorization\&. 
+.PP
+Definition at line 58 of file regularized_svd\&.hpp\&.
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::SGD> \fBRegularizedSVDFunction\fP \fBmlpack::svd::RegularizedSVD\fP< OptimizerType >::rSVDFunc\fC [private]\fP"
+
+.PP
+Function that will be held by the optimizer\&. 
+.PP
+Definition at line 66 of file regularized_svd\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

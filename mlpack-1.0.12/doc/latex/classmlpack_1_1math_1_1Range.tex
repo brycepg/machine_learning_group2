@@ -1,0 +1,480 @@
+\section{mlpack\-:\-:math\-:\-:Range Class Reference}
+\label{classmlpack_1_1math_1_1Range}\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}}
+
+
+Simple real-\/valued range.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Range} ()
+\begin{DoxyCompactList}\small\item\em The upper bound. \end{DoxyCompactList}\item 
+{\bf Range} (const double point)
+\item 
+{\bf Range} (const double {\bf lo}, const double {\bf hi})
+\begin{DoxyCompactList}\small\item\em Initializes to specified range. \end{DoxyCompactList}\item 
+bool {\bf Contains} (const double d) const 
+\begin{DoxyCompactList}\small\item\em Determines if a point is contained within the range. \end{DoxyCompactList}\item 
+bool {\bf Contains} (const {\bf Range} \&r) const 
+\begin{DoxyCompactList}\small\item\em Determines if another range overlaps with this one. \end{DoxyCompactList}\item 
+double {\bf Hi} () const 
+\begin{DoxyCompactList}\small\item\em Get the upper bound. \end{DoxyCompactList}\item 
+double \& {\bf Hi} ()
+\begin{DoxyCompactList}\small\item\em Modify the upper bound. \end{DoxyCompactList}\item 
+double {\bf Lo} () const 
+\begin{DoxyCompactList}\small\item\em Get the lower bound. \end{DoxyCompactList}\item 
+double \& {\bf Lo} ()
+\begin{DoxyCompactList}\small\item\em Modify the lower bound. \end{DoxyCompactList}\item 
+double {\bf Mid} () const 
+\begin{DoxyCompactList}\small\item\em Gets the midpoint of this range. \end{DoxyCompactList}\item 
+bool {\bf operator!=} (const {\bf Range} \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Compare with another range for strict equality. \end{DoxyCompactList}\item 
+{\bf Range} {\bf operator\&} (const {\bf Range} \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Shrinks this range to be the overlap with another range; this makes an empty set if there is no overlap. \end{DoxyCompactList}\item 
+{\bf Range} \& {\bf operator\&=} (const {\bf Range} \&rhs)
+\begin{DoxyCompactList}\small\item\em Shrinks this range to be the overlap with another range; this makes an empty set if there is no overlap. \end{DoxyCompactList}\item 
+{\bf Range} {\bf operator$\ast$} (const double d) const 
+\begin{DoxyCompactList}\small\item\em Scale the bounds by the given double. \end{DoxyCompactList}\item 
+{\bf Range} \& {\bf operator$\ast$=} (const double d)
+\begin{DoxyCompactList}\small\item\em Scale the bounds by the given double. \end{DoxyCompactList}\item 
+bool {\bf operator$<$} (const {\bf Range} \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Compare with another range. \end{DoxyCompactList}\item 
+bool {\bf operator==} (const {\bf Range} \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Compare with another range for strict equality. \end{DoxyCompactList}\item 
+bool {\bf operator$>$} (const {\bf Range} \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Compare with another range. \end{DoxyCompactList}\item 
+{\bf Range} {\bf operator$\vert$} (const {\bf Range} \&rhs) const 
+\begin{DoxyCompactList}\small\item\em Expands this range to include another range. \end{DoxyCompactList}\item 
+{\bf Range} \& {\bf operator$\vert$=} (const {\bf Range} \&rhs)
+\begin{DoxyCompactList}\small\item\em Expands this range to include another range. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Returns a string representation of an object. \end{DoxyCompactList}\item 
+double {\bf Width} () const 
+\begin{DoxyCompactList}\small\item\em Gets the span of the range (hi -\/ lo). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf hi}
+\begin{DoxyCompactList}\small\item\em The lower bound. \end{DoxyCompactList}\item 
+double {\bf lo}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Range} {\bf operator$\ast$} (const double d, const {\bf Range} \&r)
+\begin{DoxyCompactList}\small\item\em Scale the bounds by the given double. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Simple real-\/valued range. 
+
+It contains an upper and lower bound. 
+
+Definition at line 23 of file range.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!Range@{Range}}
+\index{Range@{Range}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{Range}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::math\-::\-Range\-::\-Range (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a8a5aeabaef5d727f500ba955b139b263}
+
+
+The upper bound. 
+
+Initialize to an empty set (where lo $>$ hi). \index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!Range@{Range}}
+\index{Range@{Range}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{Range}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::math\-::\-Range\-::\-Range (
+\begin{DoxyParamCaption}
+\item[{const double}]{point}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a2318857073e630837f2be3924213b85c}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!Range@{Range}}
+\index{Range@{Range}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{Range}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::math\-::\-Range\-::\-Range (
+\begin{DoxyParamCaption}
+\item[{const double}]{lo, }
+\item[{const double}]{hi}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a609f0b6b440ee1654af52d6d8a1a8590}
+
+
+Initializes to specified range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lo} & Lower bound of the range. \\
+\hline
+{\em hi} & Upper bound of the range. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!Contains@{Contains}}
+\index{Contains@{Contains}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{Contains}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::math\-::\-Range\-::\-Contains (
+\begin{DoxyParamCaption}
+\item[{const double}]{d}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a3337356564ac4403d2a3ec4988866356}
+
+
+Determines if a point is contained within the range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & Point to check. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!Contains@{Contains}}
+\index{Contains@{Contains}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{Contains}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::math\-::\-Range\-::\-Contains (
+\begin{DoxyParamCaption}
+\item[{const {\bf Range} \&}]{r}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a7b66ac00ec67e4c631cc84db7fa18b99}
+
+
+Determines if another range overlaps with this one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & Other range.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if ranges overlap at all. 
+\end{DoxyReturn}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!Hi@{Hi}}
+\index{Hi@{Hi}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{Hi}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::math\-::\-Range\-::\-Hi (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_af232dbdb206c335f4942c53e0fa9c2e4}
+
+
+Get the upper bound. 
+
+
+
+Definition at line 55 of file range.\-hpp.
+
+
+
+References hi.
+
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!Hi@{Hi}}
+\index{Hi@{Hi}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{Hi}]{\setlength{\rightskip}{0pt plus 5cm}double\& mlpack\-::math\-::\-Range\-::\-Hi (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_aa09d1c2ff55a79d97e250243551d8cda}
+
+
+Modify the upper bound. 
+
+
+
+Definition at line 57 of file range.\-hpp.
+
+
+
+References hi.
+
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!Lo@{Lo}}
+\index{Lo@{Lo}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{Lo}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::math\-::\-Range\-::\-Lo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a330be3ca9aa923c36de314935686f30a}
+
+
+Get the lower bound. 
+
+
+
+Definition at line 50 of file range.\-hpp.
+
+
+
+References lo.
+
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!Lo@{Lo}}
+\index{Lo@{Lo}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{Lo}]{\setlength{\rightskip}{0pt plus 5cm}double\& mlpack\-::math\-::\-Range\-::\-Lo (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_acee57ee3edafa76c20403bf24a6525dd}
+
+
+Modify the lower bound. 
+
+
+
+Definition at line 52 of file range.\-hpp.
+
+
+
+References lo.
+
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!Mid@{Mid}}
+\index{Mid@{Mid}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{Mid}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::math\-::\-Range\-::\-Mid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a810d9abb4e3441b2f788662ab05c9b7d}
+
+
+Gets the midpoint of this range. 
+
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::math\-::\-Range\-::operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Range} \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_adc2b21be2c7443bd7ff2f7c744dc0def}
+
+
+Compare with another range for strict equality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Other range. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!operator\&@{operator\&}}
+\index{operator\&@{operator\&}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{operator\&}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Range} mlpack\-::math\-::\-Range\-::operator\& (
+\begin{DoxyParamCaption}
+\item[{const {\bf Range} \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a17fa455e33070a95d37b31abc674a2b8}
+
+
+Shrinks this range to be the overlap with another range; this makes an empty set if there is no overlap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Other range. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!operator\&=@{operator\&=}}
+\index{operator\&=@{operator\&=}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{operator\&=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Range}\& mlpack\-::math\-::\-Range\-::operator\&= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Range} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_afb68118e8fd89e0fddfb7c0190c5a2ed}
+
+
+Shrinks this range to be the overlap with another range; this makes an empty set if there is no overlap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Other range. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Range} mlpack\-::math\-::\-Range\-::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const double}]{d}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a34e26ff88285b87443bf4cbb6016416b}
+
+
+Scale the bounds by the given double. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & Scaling factor. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Range}\& mlpack\-::math\-::\-Range\-::operator$\ast$= (
+\begin{DoxyParamCaption}
+\item[{const double}]{d}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a07191db32237a5f265c88769a070c5ec}
+
+
+Scale the bounds by the given double. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & Scaling factor. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::math\-::\-Range\-::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Range} \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a1d132c7cbc38130e6ba1f45ea7291304}
+
+
+Compare with another range. 
+
+For \doxyref{Range}{p.}{classmlpack_1_1math_1_1Range} objects x and y, x $<$ y means that x is strictly less than y and does not overlap at all.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Other range. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!operator==@{operator==}}
+\index{operator==@{operator==}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::math\-::\-Range\-::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Range} \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_acd104d2682a7662aa80ae1348031ad1c}
+
+
+Compare with another range for strict equality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Other range. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{operator$>$}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::math\-::\-Range\-::operator$>$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Range} \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a1be2e7f1b7143ddbc3abc034fe00903c}
+
+
+Compare with another range. 
+
+For \doxyref{Range}{p.}{classmlpack_1_1math_1_1Range} objects x and y, x $<$ y means that x is strictly less than y and does not overlap at all.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Other range. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!operator$\vert$@{operator$\vert$}}
+\index{operator$\vert$@{operator$\vert$}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{operator$\vert$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Range} mlpack\-::math\-::\-Range\-::operator$\vert$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Range} \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a967b0fa5583f27221771d915b876c678}
+
+
+Expands this range to include another range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & \doxyref{Range}{p.}{classmlpack_1_1math_1_1Range} to include. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!operator$\vert$=@{operator$\vert$=}}
+\index{operator$\vert$=@{operator$\vert$=}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{operator$\vert$=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Range}\& mlpack\-::math\-::\-Range\-::operator$\vert$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Range} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a8a084e29360e6c1339f58031ccf2ae06}
+
+
+Expands this range to include another range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & \doxyref{Range}{p.}{classmlpack_1_1math_1_1Range} to include. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mlpack\-::math\-::\-Range\-::\-To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a4e0190c40aa66d53ae836b6f43c932ac}
+
+
+Returns a string representation of an object. 
+
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!Width@{Width}}
+\index{Width@{Width}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{Width}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::math\-::\-Range\-::\-Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1math_1_1Range_a1c35eab9a3433f06d439a1b55e9c1444}
+
+
+Gets the span of the range (hi -\/ lo). 
+
+
+
+\subsection{Friends And Related Function Documentation}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Range} operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const double}]{d, }
+\item[{const {\bf Range} \&}]{r}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{classmlpack_1_1math_1_1Range_a0bc31859cb1aaf2782faef4204dbe621}
+
+
+Scale the bounds by the given double. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & Scaling factor. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!hi@{hi}}
+\index{hi@{hi}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{hi}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::math\-::\-Range\-::hi\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1math_1_1Range_a7b5406a7465a69bb00e6d0d4fdab7818}
+
+
+The lower bound. 
+
+
+
+Definition at line 27 of file range.\-hpp.
+
+
+
+Referenced by Hi().
+
+\index{mlpack\-::math\-::\-Range@{mlpack\-::math\-::\-Range}!lo@{lo}}
+\index{lo@{lo}!mlpack::math::Range@{mlpack\-::math\-::\-Range}}
+\subsubsection[{lo}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::math\-::\-Range\-::lo\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1math_1_1Range_a66c4a472b0e2121828fd4480821dd4f0}
+
+
+Definition at line 26 of file range.\-hpp.
+
+
+
+Referenced by Lo().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/math/{\bf range.\-hpp}\end{DoxyCompactItemize}

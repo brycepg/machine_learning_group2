@@ -1,0 +1,52 @@
+\section{src/mlpack/core/math/random.hpp File Reference}
+\label{random_8hpp}\index{src/mlpack/core/math/random.\-hpp@{src/mlpack/core/math/random.\-hpp}}
+
+
+Miscellaneous math random-\/related routines.  
+
+
+Include dependency graph for random.\-hpp\-:
+This graph shows which files directly or indirectly include this file\-:
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+{\bf mlpack}
+\begin{DoxyCompactList}\small\item\em Linear algebra utility functions, generally performed on matrices or vectors. \end{DoxyCompactList}\item 
+{\bf mlpack\-::math}
+\begin{DoxyCompactList}\small\item\em Miscellaneous math routines. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf mlpack\-::math\-::\-Rand\-Int} (const int hi\-Exclusive)
+\begin{DoxyCompactList}\small\item\em Generates a uniform random integer. \end{DoxyCompactList}\item 
+int {\bf mlpack\-::math\-::\-Rand\-Int} (const int lo, const int hi\-Exclusive)
+\begin{DoxyCompactList}\small\item\em Generates a uniform random integer. \end{DoxyCompactList}\item 
+double {\bf mlpack\-::math\-::\-Rand\-Normal} ()
+\begin{DoxyCompactList}\small\item\em Generates a normally distributed random number with mean 0 and variance 1. \end{DoxyCompactList}\item 
+double {\bf mlpack\-::math\-::\-Rand\-Normal} (const double mean, const double variance)
+\begin{DoxyCompactList}\small\item\em Generates a normally distributed random number with specified mean and variance. \end{DoxyCompactList}\item 
+double {\bf mlpack\-::math\-::\-Random} ()
+\begin{DoxyCompactList}\small\item\em Generates a uniform random number between 0 and 1. \end{DoxyCompactList}\item 
+double {\bf mlpack\-::math\-::\-Random} (const double lo, const double hi)
+\begin{DoxyCompactList}\small\item\em Generates a uniform random number in the specified range. \end{DoxyCompactList}\item 
+void {\bf mlpack\-::math\-::\-Random\-Seed} (const size\-\_\-t seed)
+\begin{DoxyCompactList}\small\item\em Set the random seed used by the random functions (\doxyref{Random()}{p.}{namespacemlpack_1_1math_a305db122ade561ba1fe874bd51e9797d} and \doxyref{Rand\-Int()}{p.}{namespacemlpack_1_1math_aad090ac225728d74c1b66bcf52f3ab95}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+boost\-::mt19937 {\bf mlpack\-::math\-::rand\-Gen}
+\item 
+boost\-::normal\-\_\-distribution {\bf mlpack\-::math\-::rand\-Normal\-Dist}
+\item 
+boost\-::uniform\-\_\-01\\*
+$<$ boost\-::mt19937, double $>$ {\bf mlpack\-::math\-::rand\-Uniform\-Dist}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Miscellaneous math random-\/related routines. This file is part of mlpack 1.\-0.\-12.
+
+mlpack is free software; you may redstribute it and/or modify it under the terms of the 3-\/clause B\-S\-D license. You should have received a copy of the 3-\/clause B\-S\-D license along with mlpack. If not, see {\tt http\-://www.\-opensource.\-org/licenses/\-B\-S\-D-\/3-\/\-Clause} for more information. 
+
+Definition in file {\bf random.\-hpp}.
+

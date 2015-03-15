@@ -1,0 +1,160 @@
+.TH "mlpack::amf::SVDCompleteIncrementalLearning< MatType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::amf::SVDCompleteIncrementalLearning< MatType > \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSVDCompleteIncrementalLearning\fP (double \fBu\fP=0\&.0001, double \fBkw\fP=0, double \fBkh\fP=0)"
+.br
+.ti -1c
+.RI "void \fBHUpdate\fP (const MatType &V, const arma::mat &W, arma::mat &H)"
+.br
+.RI "\fIThe update rule for the encoding matrix H\&. \fP"
+.ti -1c
+.RI "void \fBInitialize\fP (const MatType &dataset, const size_t rank)"
+.br
+.ti -1c
+.RI "void \fBWUpdate\fP (const MatType &V, arma::mat &W, const arma::mat &H)"
+.br
+.RI "\fIThe update rule for the basis matrix W\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBcurrentItemIndex\fP"
+.br
+.ti -1c
+.RI "size_t \fBcurrentUserIndex\fP"
+.br
+.ti -1c
+.RI "double \fBkh\fP"
+.br
+.ti -1c
+.RI "double \fBkw\fP"
+.br
+.ti -1c
+.RI "size_t \fBm\fP"
+.br
+.ti -1c
+.RI "size_t \fBn\fP"
+.br
+.ti -1c
+.RI "double \fBu\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class MatType>class mlpack::amf::SVDCompleteIncrementalLearning< MatType >"
+
+.PP
+Definition at line 12 of file svd_complete_incremental_learning\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class MatType > \fBmlpack::amf::SVDCompleteIncrementalLearning\fP< MatType >::\fBSVDCompleteIncrementalLearning\fP (doubleu = \fC0\&.0001\fP, doublekw = \fC0\fP, doublekh = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 15 of file svd_complete_incremental_learning\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class MatType > void \fBmlpack::amf::SVDCompleteIncrementalLearning\fP< MatType >::HUpdate (const MatType &V, const arma::mat &W, arma::mat &H)\fC [inline]\fP"
+
+.PP
+The update rule for the encoding matrix H\&. The function takes in all the matrices and only changes the value of the H matrix\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIV\fP Input matrix to be factorized\&. 
+.br
+\fIW\fP Basis matrix\&. 
+.br
+\fIH\fP Encoding matrix to be updated\&. 
+.RE
+.PP
+
+.PP
+Definition at line 83 of file svd_complete_incremental_learning\&.hpp\&.
+.PP
+References mlpack::amf::SVDCompleteIncrementalLearning< MatType >::currentItemIndex, mlpack::amf::SVDCompleteIncrementalLearning< MatType >::currentUserIndex, mlpack::amf::SVDCompleteIncrementalLearning< MatType >::kh, mlpack::amf::SVDCompleteIncrementalLearning< MatType >::m, mlpack::amf::SVDCompleteIncrementalLearning< MatType >::n, and mlpack::amf::SVDCompleteIncrementalLearning< MatType >::u\&.
+.SS "template<class MatType > void \fBmlpack::amf::SVDCompleteIncrementalLearning\fP< MatType >::Initialize (const MatType &dataset, const size_trank)\fC [inline]\fP"
+
+.PP
+Definition at line 21 of file svd_complete_incremental_learning\&.hpp\&.
+.PP
+References mlpack::amf::SVDCompleteIncrementalLearning< MatType >::currentItemIndex, mlpack::amf::SVDCompleteIncrementalLearning< MatType >::currentUserIndex, mlpack::amf::SVDCompleteIncrementalLearning< MatType >::m, and mlpack::amf::SVDCompleteIncrementalLearning< MatType >::n\&.
+.SS "template<class MatType > void \fBmlpack::amf::SVDCompleteIncrementalLearning\fP< MatType >::WUpdate (const MatType &V, arma::mat &W, const arma::mat &H)\fC [inline]\fP"
+
+.PP
+The update rule for the basis matrix W\&. The function takes in all the matrices and only changes the value of the W matrix\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIV\fP Input matrix to be factorized\&. 
+.br
+\fIW\fP Basis matrix to be updated\&. 
+.br
+\fIH\fP Encoding matrix\&.
+.RE
+.PP
+This file is part of mlpack 1\&.0\&.12\&.
+.PP
+mlpack is free software; you may redstribute it and/or modify it under the terms of the 3-clause BSD license\&. You should have received a copy of the 3-clause BSD license along with mlpack\&. If not, see http://www.opensource.org/licenses/BSD-3-Clause for more information\&. 
+.PP
+Definition at line 47 of file svd_complete_incremental_learning\&.hpp\&.
+.PP
+References mlpack::amf::SVDCompleteIncrementalLearning< MatType >::currentItemIndex, mlpack::amf::SVDCompleteIncrementalLearning< MatType >::currentUserIndex, mlpack::amf::SVDCompleteIncrementalLearning< MatType >::kw, mlpack::amf::SVDCompleteIncrementalLearning< MatType >::m, mlpack::amf::SVDCompleteIncrementalLearning< MatType >::n, and mlpack::amf::SVDCompleteIncrementalLearning< MatType >::u\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class MatType > size_t \fBmlpack::amf::SVDCompleteIncrementalLearning\fP< MatType >::currentItemIndex\fC [private]\fP"
+
+.PP
+Definition at line 118 of file svd_complete_incremental_learning\&.hpp\&.
+.PP
+Referenced by mlpack::amf::SVDCompleteIncrementalLearning< MatType >::HUpdate(), mlpack::amf::SVDCompleteIncrementalLearning< arma::sp_mat >::HUpdate(), mlpack::amf::SVDCompleteIncrementalLearning< MatType >::Initialize(), mlpack::amf::SVDCompleteIncrementalLearning< MatType >::WUpdate(), and mlpack::amf::SVDCompleteIncrementalLearning< arma::sp_mat >::WUpdate()\&.
+.SS "template<class MatType > size_t \fBmlpack::amf::SVDCompleteIncrementalLearning\fP< MatType >::currentUserIndex\fC [private]\fP"
+
+.PP
+Definition at line 117 of file svd_complete_incremental_learning\&.hpp\&.
+.PP
+Referenced by mlpack::amf::SVDCompleteIncrementalLearning< MatType >::HUpdate(), mlpack::amf::SVDCompleteIncrementalLearning< arma::sp_mat >::HUpdate(), mlpack::amf::SVDCompleteIncrementalLearning< MatType >::Initialize(), mlpack::amf::SVDCompleteIncrementalLearning< MatType >::WUpdate(), and mlpack::amf::SVDCompleteIncrementalLearning< arma::sp_mat >::WUpdate()\&.
+.SS "template<class MatType > double \fBmlpack::amf::SVDCompleteIncrementalLearning\fP< MatType >::kh\fC [private]\fP"
+
+.PP
+Definition at line 112 of file svd_complete_incremental_learning\&.hpp\&.
+.PP
+Referenced by mlpack::amf::SVDCompleteIncrementalLearning< MatType >::HUpdate(), and mlpack::amf::SVDCompleteIncrementalLearning< arma::sp_mat >::HUpdate()\&.
+.SS "template<class MatType > double \fBmlpack::amf::SVDCompleteIncrementalLearning\fP< MatType >::kw\fC [private]\fP"
+
+.PP
+Definition at line 111 of file svd_complete_incremental_learning\&.hpp\&.
+.PP
+Referenced by mlpack::amf::SVDCompleteIncrementalLearning< MatType >::WUpdate(), and mlpack::amf::SVDCompleteIncrementalLearning< arma::sp_mat >::WUpdate()\&.
+.SS "template<class MatType > size_t \fBmlpack::amf::SVDCompleteIncrementalLearning\fP< MatType >::m\fC [private]\fP"
+
+.PP
+Definition at line 115 of file svd_complete_incremental_learning\&.hpp\&.
+.PP
+Referenced by mlpack::amf::SVDCompleteIncrementalLearning< MatType >::HUpdate(), mlpack::amf::SVDCompleteIncrementalLearning< MatType >::Initialize(), mlpack::amf::SVDCompleteIncrementalLearning< arma::sp_mat >::Initialize(), and mlpack::amf::SVDCompleteIncrementalLearning< MatType >::WUpdate()\&.
+.SS "template<class MatType > size_t \fBmlpack::amf::SVDCompleteIncrementalLearning\fP< MatType >::n\fC [private]\fP"
+
+.PP
+Definition at line 114 of file svd_complete_incremental_learning\&.hpp\&.
+.PP
+Referenced by mlpack::amf::SVDCompleteIncrementalLearning< MatType >::HUpdate(), mlpack::amf::SVDCompleteIncrementalLearning< MatType >::Initialize(), mlpack::amf::SVDCompleteIncrementalLearning< arma::sp_mat >::Initialize(), and mlpack::amf::SVDCompleteIncrementalLearning< MatType >::WUpdate()\&.
+.SS "template<class MatType > double \fBmlpack::amf::SVDCompleteIncrementalLearning\fP< MatType >::u\fC [private]\fP"
+
+.PP
+Definition at line 110 of file svd_complete_incremental_learning\&.hpp\&.
+.PP
+Referenced by mlpack::amf::SVDCompleteIncrementalLearning< MatType >::HUpdate(), mlpack::amf::SVDCompleteIncrementalLearning< arma::sp_mat >::HUpdate(), mlpack::amf::SVDCompleteIncrementalLearning< MatType >::WUpdate(), and mlpack::amf::SVDCompleteIncrementalLearning< arma::sp_mat >::WUpdate()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

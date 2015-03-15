@@ -1,0 +1,318 @@
+.TH "mlpack::sparse_coding::SparseCoding< DictionaryInitializer >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::sparse_coding::SparseCoding< DictionaryInitializer > \- 
+.PP
+An implementation of Sparse Coding with Dictionary Learning that achieves sparsity via an l1-norm regularizer on the codes (LASSO) or an (l1+l2)-norm regularizer on the codes (the Elastic Net)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSparseCoding\fP (const arma::mat &\fBdata\fP, const size_t \fBatoms\fP, const double \fBlambda1\fP, const double \fBlambda2\fP=0)"
+.br
+.RI "\fISet the parameters to \fBSparseCoding\fP\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBCodes\fP () const "
+.br
+.RI "\fIAccess the sparse codes\&. \fP"
+.ti -1c
+.RI "arma::mat & \fBCodes\fP ()"
+.br
+.RI "\fIModify the sparse codes\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBData\fP () const "
+.br
+.RI "\fIAccess the data\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBDictionary\fP () const "
+.br
+.RI "\fIAccess the dictionary\&. \fP"
+.ti -1c
+.RI "arma::mat & \fBDictionary\fP ()"
+.br
+.RI "\fIModify the dictionary\&. \fP"
+.ti -1c
+.RI "void \fBEncode\fP (const size_t maxIterations=0, const double objTolerance=0\&.01, const double newtonTolerance=1e-6)"
+.br
+.RI "\fIRun Sparse Coding with Dictionary Learning\&. \fP"
+.ti -1c
+.RI "double \fBObjective\fP () const "
+.br
+.RI "\fICompute the objective function\&. \fP"
+.ti -1c
+.RI "void \fBOptimizeCode\fP ()"
+.br
+.RI "\fISparse code each point via LARS\&. \fP"
+.ti -1c
+.RI "double \fBOptimizeDictionary\fP (const arma::uvec &adjacencies, const double newtonTolerance=1e-6, const size_t maxIterations=50)"
+.br
+.RI "\fILearn dictionary via Newton method based on Lagrange dual\&. \fP"
+.ti -1c
+.RI "void \fBProjectDictionary\fP ()"
+.br
+.RI "\fIProject each atom of the dictionary back onto the unit ball, if necessary\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBatoms\fP"
+.br
+.RI "\fINumber of atoms\&. \fP"
+.ti -1c
+.RI "arma::mat \fBcodes\fP"
+.br
+.RI "\fISparse codes (columns are points)\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBdata\fP"
+.br
+.RI "\fIData matrix (columns are points)\&. \fP"
+.ti -1c
+.RI "arma::mat \fBdictionary\fP"
+.br
+.RI "\fIDictionary (columns are atoms)\&. \fP"
+.ti -1c
+.RI "double \fBlambda1\fP"
+.br
+.RI "\fIl1 regularization term\&. \fP"
+.ti -1c
+.RI "double \fBlambda2\fP"
+.br
+.RI "\fIl2 regularization term\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename DictionaryInitializer = DataDependentRandomInitializer>class mlpack::sparse_coding::SparseCoding< DictionaryInitializer >"
+An implementation of Sparse Coding with Dictionary Learning that achieves sparsity via an l1-norm regularizer on the codes (LASSO) or an (l1+l2)-norm regularizer on the codes (the Elastic Net)\&. 
+
+Let d be the number of dimensions in the original space, m the number of training points, and k the number of atoms in the dictionary (the dimension of the learned feature space)\&. The training data X is a d-by-m matrix where each column is a point and each row is a dimension\&. The dictionary D is a d-by-k matrix, and the sparse codes matrix Z is a k-by-m matrix\&. This program seeks to minimize the objective:
+.PP
+\[ \min_{D,Z} 0.5 ||X - D Z||_{F}^2\ + \lambda_1 \sum_{i=1}^m ||Z_i||_1 + 0.5 \lambda_2 \sum_{i=1}^m ||Z_i||_2^2 \].PP
+subject to $ ||D_j||_2 <= 1 $ for $ 1 <= j <= k $ where typically $ lambda_1 > 0 $ and $ lambda_2 = 0 $\&.
+.PP
+This problem is solved by an algorithm that alternates between a dictionary learning step and a sparse coding step\&. The dictionary learning step updates the dictionary D using a Newton method based on the Lagrange dual (see the paper below for details)\&. The sparse coding step involves solving a large number of sparse linear regression problems; this can be done efficiently using LARS, an algorithm that can solve the LASSO or the Elastic Net (papers below)\&.
+.PP
+Here are those papers:
+.PP
+.PP
+.nf
+@incollection{lee2007efficient,
+  title = {Efficient sparse coding algorithms},
+  author = {Honglak Lee and Alexis Battle and Rajat Raina and Andrew Y\&. Ng},
+  booktitle = {Advances in Neural Information Processing Systems 19},
+  editor = {B\&. Sch\"{o}lkopf and J\&. Platt and T\&. Hoffman},
+  publisher = {MIT Press},
+  address = {Cambridge, MA},
+  pages = {801--808},
+  year = {2007}
+}
+.fi
+.PP
+.PP
+.PP
+.nf
+@article{efron2004least,
+  title={Least angle regression},
+  author={Efron, B\&. and Hastie, T\&. and Johnstone, I\&. and Tibshirani, R\&.},
+  journal={The Annals of statistics},
+  volume={32},
+  number={2},
+  pages={407--499},
+  year={2004},
+  publisher={Institute of Mathematical Statistics}
+}
+.fi
+.PP
+.PP
+.PP
+.nf
+@article{zou2005regularization,
+  title={Regularization and variable selection via the elastic net},
+  author={Zou, H\&. and Hastie, T\&.},
+  journal={Journal of the Royal Statistical Society Series B},
+  volume={67},
+  number={2},
+  pages={301--320},
+  year={2005},
+  publisher={Royal Statistical Society}
+}
+.fi
+.PP
+.PP
+Before the method is run, the dictionary is initialized using the DictionaryInitializationPolicy class\&. Possible choices include the \fBRandomInitializer\fP, which provides an entirely random dictionary, the \fBDataDependentRandomInitializer\fP, which provides a random dictionary based loosely on characteristics of the dataset, and the \fBNothingInitializer\fP, which does not initialize the dictionary -- instead, the user should set the dictionary using the \fBDictionary()\fP mutator method\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDictionaryInitializationPolicy\fP The class to use to initialize the dictionary; must have 'void Initialize(const arma::mat& data, arma::mat& dictionary)' function\&. 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file sparse_coding\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::\fBSparseCoding\fP (const arma::mat &data, const size_tatoms, const doublelambda1, const doublelambda2 = \fC0\fP)"
+
+.PP
+Set the parameters to \fBSparseCoding\fP\&. lambda2 defaults to 0\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Data matrix 
+.br
+\fIatoms\fP Number of atoms in dictionary 
+.br
+\fIlambda1\fP Regularization parameter for l1-norm penalty 
+.br
+\fIlambda2\fP Regularization parameter for l2-norm penalty 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> const arma::mat& \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::Codes () const\fC [inline]\fP"
+
+.PP
+Access the sparse codes\&. 
+.PP
+Definition at line 182 of file sparse_coding\&.hpp\&.
+.PP
+References mlpack::sparse_coding::SparseCoding< DictionaryInitializer >::codes\&.
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> arma::mat& \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::Codes ()\fC [inline]\fP"
+
+.PP
+Modify the sparse codes\&. 
+.PP
+Definition at line 184 of file sparse_coding\&.hpp\&.
+.PP
+References mlpack::sparse_coding::SparseCoding< DictionaryInitializer >::codes\&.
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> const arma::mat& \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::Data () const\fC [inline]\fP"
+
+.PP
+Access the data\&. 
+.PP
+Definition at line 174 of file sparse_coding\&.hpp\&.
+.PP
+References mlpack::sparse_coding::SparseCoding< DictionaryInitializer >::data\&.
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> const arma::mat& \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::Dictionary () const\fC [inline]\fP"
+
+.PP
+Access the dictionary\&. 
+.PP
+Definition at line 177 of file sparse_coding\&.hpp\&.
+.PP
+References mlpack::sparse_coding::SparseCoding< DictionaryInitializer >::dictionary\&.
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> arma::mat& \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::Dictionary ()\fC [inline]\fP"
+
+.PP
+Modify the dictionary\&. 
+.PP
+Definition at line 179 of file sparse_coding\&.hpp\&.
+.PP
+References mlpack::sparse_coding::SparseCoding< DictionaryInitializer >::dictionary\&.
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> void \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::Encode (const size_tmaxIterations = \fC0\fP, const doubleobjTolerance = \fC0\&.01\fP, const doublenewtonTolerance = \fC1e-6\fP)"
+
+.PP
+Run Sparse Coding with Dictionary Learning\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxIterations\fP Maximum number of iterations to run algorithm\&. If 0, the algorithm will run until convergence (or forever)\&. 
+.br
+\fIobjTolerance\fP Tolerance for objective function\&. When an iteration of the algorithm produces an improvement smaller than this, the algorithm will terminate\&. 
+.br
+\fInewtonTolerance\fP Tolerance for the Newton's method dictionary optimization step\&. 
+.RE
+.PP
+
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> double \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::Objective () const"
+
+.PP
+Compute the objective function\&. 
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> void \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::OptimizeCode ()"
+
+.PP
+Sparse code each point via LARS\&. 
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> double \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::OptimizeDictionary (const arma::uvec &adjacencies, const doublenewtonTolerance = \fC1e-6\fP, const size_tmaxIterations = \fC50\fP)"
+
+.PP
+Learn dictionary via Newton method based on Lagrange dual\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIadjacencies\fP Indices of entries (unrolled column by column) of the coding matrix Z that are non-zero (the adjacency matrix for the bipartite graph of points and atoms)\&. 
+.br
+\fInewtonTolerance\fP Tolerance of the Newton's method optimizer\&. 
+.br
+\fImaxIterations\fP Maximum number of iterations to run the Newton's method\&. If 0, the method will run until convergence (or forever)\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the norm of the gradient of the Lagrange dual with respect to the dual variables 
+.RE
+.PP
+
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> void \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::ProjectDictionary ()"
+
+.PP
+Project each atom of the dictionary back onto the unit ball, if necessary\&. 
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> std::string \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::ToString () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> size_t \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::atoms\fC [private]\fP"
+
+.PP
+Number of atoms\&. 
+.PP
+Definition at line 191 of file sparse_coding\&.hpp\&.
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> arma::mat \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::codes\fC [private]\fP"
+
+.PP
+Sparse codes (columns are points)\&. 
+.PP
+Definition at line 200 of file sparse_coding\&.hpp\&.
+.PP
+Referenced by mlpack::sparse_coding::SparseCoding< DictionaryInitializer >::Codes()\&.
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> const arma::mat& \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::data\fC [private]\fP"
+
+.PP
+Data matrix (columns are points)\&. 
+.PP
+Definition at line 194 of file sparse_coding\&.hpp\&.
+.PP
+Referenced by mlpack::sparse_coding::SparseCoding< DictionaryInitializer >::Data()\&.
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> arma::mat \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::dictionary\fC [private]\fP"
+
+.PP
+Dictionary (columns are atoms)\&. 
+.PP
+Definition at line 197 of file sparse_coding\&.hpp\&.
+.PP
+Referenced by mlpack::sparse_coding::SparseCoding< DictionaryInitializer >::Dictionary()\&.
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> double \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::lambda1\fC [private]\fP"
+
+.PP
+l1 regularization term\&. 
+.PP
+Definition at line 203 of file sparse_coding\&.hpp\&.
+.SS "template<typename DictionaryInitializer  = DataDependentRandomInitializer> double \fBmlpack::sparse_coding::SparseCoding\fP< DictionaryInitializer >::lambda2\fC [private]\fP"
+
+.PP
+l2 regularization term\&. 
+.PP
+Definition at line 206 of file sparse_coding\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

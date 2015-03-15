@@ -1,0 +1,211 @@
+.TH "mlpack::amf::ValidationRMSETermination< MatType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::amf::ValidationRMSETermination< MatType > \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBValidationRMSETermination\fP (MatType &V, size_t \fBnum_test_points\fP, double \fBtolerance\fP=1e-5, size_t maxIterations=10000, size_t reverseStepTolerance=3)"
+.br
+.ti -1c
+.RI "const double & \fBIndex\fP ()"
+.br
+.ti -1c
+.RI "void \fBInitialize\fP (const MatType &)"
+.br
+.ti -1c
+.RI "bool \fBIsConverged\fP (arma::mat &\fBW\fP, arma::mat &\fBH\fP)"
+.br
+.ti -1c
+.RI "const size_t & \fBIteration\fP ()"
+.br
+.ti -1c
+.RI "const size_t & \fBMaxIterations\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBc_index\fP"
+.br
+.ti -1c
+.RI "double \fBc_indexOld\fP"
+.br
+.ti -1c
+.RI "arma::mat \fBH\fP"
+.br
+.ti -1c
+.RI "bool \fBisCopy\fP"
+.br
+.ti -1c
+.RI "size_t \fBiteration\fP"
+.br
+.ti -1c
+.RI "size_t \fBmaxIterations\fP"
+.br
+.ti -1c
+.RI "size_t \fBnum_test_points\fP"
+.br
+.ti -1c
+.RI "size_t \fBreverseStepCount\fP"
+.br
+.ti -1c
+.RI "size_t \fBreverseStepTolerance\fP"
+.br
+.ti -1c
+.RI "double \fBrmse\fP"
+.br
+.ti -1c
+.RI "double \fBrmseOld\fP"
+.br
+.ti -1c
+.RI "arma::Mat< double > \fBtest_points\fP"
+.br
+.ti -1c
+.RI "double \fBtolerance\fP"
+.br
+.ti -1c
+.RI "arma::mat \fBW\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class MatType>class mlpack::amf::ValidationRMSETermination< MatType >"
+
+.PP
+Definition at line 24 of file validation_RMSE_termination\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class MatType > \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::\fBValidationRMSETermination\fP (MatType &V, size_tnum_test_points, doubletolerance = \fC1e-5\fP, size_tmaxIterations = \fC10000\fP, size_treverseStepTolerance = \fC3\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 27 of file validation_RMSE_termination\&.hpp\&.
+.PP
+References mlpack::amf::ValidationRMSETermination< MatType >::num_test_points, and mlpack::amf::ValidationRMSETermination< MatType >::test_points\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class MatType > const double& \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::Index ()\fC [inline]\fP"
+
+.PP
+Definition at line 134 of file validation_RMSE_termination\&.hpp\&.
+.PP
+References mlpack::amf::ValidationRMSETermination< MatType >::rmse\&.
+.SS "template<class MatType > void \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::Initialize (const MatType &)\fC [inline]\fP"
+
+.PP
+Definition at line 60 of file validation_RMSE_termination\&.hpp\&.
+.PP
+References mlpack::amf::ValidationRMSETermination< MatType >::c_index, mlpack::amf::ValidationRMSETermination< MatType >::c_indexOld, mlpack::amf::ValidationRMSETermination< MatType >::isCopy, mlpack::amf::ValidationRMSETermination< MatType >::iteration, mlpack::amf::ValidationRMSETermination< MatType >::reverseStepCount, mlpack::amf::ValidationRMSETermination< MatType >::rmse, and mlpack::amf::ValidationRMSETermination< MatType >::rmseOld\&.
+.SS "template<class MatType > bool \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::IsConverged (arma::mat &W, arma::mat &H)\fC [inline]\fP"
+
+.PP
+Definition at line 74 of file validation_RMSE_termination\&.hpp\&.
+.PP
+References mlpack::amf::ValidationRMSETermination< MatType >::c_index, mlpack::amf::ValidationRMSETermination< MatType >::c_indexOld, mlpack::amf::ValidationRMSETermination< MatType >::H, mlpack::amf::ValidationRMSETermination< MatType >::isCopy, mlpack::amf::ValidationRMSETermination< MatType >::iteration, mlpack::amf::ValidationRMSETermination< MatType >::maxIterations, mlpack::amf::ValidationRMSETermination< MatType >::num_test_points, mlpack::amf::ValidationRMSETermination< MatType >::reverseStepCount, mlpack::amf::ValidationRMSETermination< MatType >::reverseStepTolerance, mlpack::amf::ValidationRMSETermination< MatType >::rmse, mlpack::amf::ValidationRMSETermination< MatType >::rmseOld, mlpack::amf::ValidationRMSETermination< MatType >::test_points, and mlpack::amf::ValidationRMSETermination< MatType >::W\&.
+.SS "template<class MatType > const size_t& \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::Iteration ()\fC [inline]\fP"
+
+.PP
+Definition at line 136 of file validation_RMSE_termination\&.hpp\&.
+.PP
+References mlpack::amf::ValidationRMSETermination< MatType >::iteration\&.
+.SS "template<class MatType > const size_t& \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::MaxIterations ()\fC [inline]\fP"
+
+.PP
+Definition at line 138 of file validation_RMSE_termination\&.hpp\&.
+.PP
+References mlpack::amf::ValidationRMSETermination< MatType >::maxIterations\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class MatType > double \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::c_index\fC [private]\fP"
+
+.PP
+Definition at line 158 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::Initialize(), and mlpack::amf::ValidationRMSETermination< MatType >::IsConverged()\&.
+.SS "template<class MatType > double \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::c_indexOld\fC [private]\fP"
+
+.PP
+Definition at line 157 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::Initialize(), and mlpack::amf::ValidationRMSETermination< MatType >::IsConverged()\&.
+.SS "template<class MatType > arma::mat \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::H\fC [private]\fP"
+
+.PP
+Definition at line 156 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::IsConverged()\&.
+.SS "template<class MatType > bool \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::isCopy\fC [private]\fP"
+
+.PP
+Definition at line 154 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::Initialize(), and mlpack::amf::ValidationRMSETermination< MatType >::IsConverged()\&.
+.SS "template<class MatType > size_t \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::iteration\fC [private]\fP"
+
+.PP
+Definition at line 144 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::Initialize(), mlpack::amf::ValidationRMSETermination< MatType >::IsConverged(), and mlpack::amf::ValidationRMSETermination< MatType >::Iteration()\&.
+.SS "template<class MatType > size_t \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::maxIterations\fC [private]\fP"
+
+.PP
+Definition at line 142 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::IsConverged(), and mlpack::amf::ValidationRMSETermination< MatType >::MaxIterations()\&.
+.SS "template<class MatType > size_t \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::num_test_points\fC [private]\fP"
+
+.PP
+Definition at line 143 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::IsConverged(), and mlpack::amf::ValidationRMSETermination< MatType >::ValidationRMSETermination()\&.
+.SS "template<class MatType > size_t \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::reverseStepCount\fC [private]\fP"
+
+.PP
+Definition at line 152 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::Initialize(), and mlpack::amf::ValidationRMSETermination< MatType >::IsConverged()\&.
+.SS "template<class MatType > size_t \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::reverseStepTolerance\fC [private]\fP"
+
+.PP
+Definition at line 151 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::IsConverged()\&.
+.SS "template<class MatType > double \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::rmse\fC [private]\fP"
+
+.PP
+Definition at line 149 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::Index(), mlpack::amf::ValidationRMSETermination< MatType >::Initialize(), and mlpack::amf::ValidationRMSETermination< MatType >::IsConverged()\&.
+.SS "template<class MatType > double \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::rmseOld\fC [private]\fP"
+
+.PP
+Definition at line 148 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::Initialize(), and mlpack::amf::ValidationRMSETermination< MatType >::IsConverged()\&.
+.SS "template<class MatType > arma::Mat<double> \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::test_points\fC [private]\fP"
+
+.PP
+Definition at line 146 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::IsConverged(), and mlpack::amf::ValidationRMSETermination< MatType >::ValidationRMSETermination()\&.
+.SS "template<class MatType > double \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::tolerance\fC [private]\fP"
+
+.PP
+Definition at line 141 of file validation_RMSE_termination\&.hpp\&.
+.SS "template<class MatType > arma::mat \fBmlpack::amf::ValidationRMSETermination\fP< MatType >::W\fC [private]\fP"
+
+.PP
+Definition at line 155 of file validation_RMSE_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::ValidationRMSETermination< MatType >::IsConverged()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

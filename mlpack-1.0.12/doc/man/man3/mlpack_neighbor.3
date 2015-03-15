@@ -1,0 +1,171 @@
+.TH "mlpack::neighbor" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::neighbor \- 
+.PP
+Neighbor-search routines\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBFurthestNeighborSort\fP"
+.br
+.RI "\fIThis class implements the necessary methods for the SortPolicy template parameter of the \fBNeighborSearch\fP class\&. \fP"
+.ti -1c
+.RI "class \fBLSHSearch\fP"
+.br
+.RI "\fIThe \fBLSHSearch\fP class -- This class builds a hash on the reference set and uses this hash to compute the distance-approximate nearest-neighbors of the given queries\&. \fP"
+.ti -1c
+.RI "class \fBNearestNeighborSort\fP"
+.br
+.RI "\fIThis class implements the necessary methods for the SortPolicy template parameter of the \fBNeighborSearch\fP class\&. \fP"
+.ti -1c
+.RI "class \fBNeighborSearch\fP"
+.br
+.RI "\fIThe \fBNeighborSearch\fP class is a template class for performing distance-based neighbor searches\&. \fP"
+.ti -1c
+.RI "class \fBNeighborSearchRules\fP"
+.br
+.ti -1c
+.RI "class \fBNeighborSearchStat\fP"
+.br
+.RI "\fIExtra data for each node in the tree\&. \fP"
+.ti -1c
+.RI "class \fBNeighborSearchTraversalInfo\fP"
+.br
+.RI "\fITraversal information for \fBNeighborSearch\fP\&. \fP"
+.ti -1c
+.RI "class \fBRASearchRules\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBNeighborSearch\fP
+.br
+< \fBFurthestNeighborSort\fP, 
+.br
+\fBmetric::EuclideanDistance\fP > \fBAllkFN\fP"
+.br
+.RI "\fIThe AllkFN class is the all-k-furthest-neighbors method\&. \fP"
+.ti -1c
+.RI "typedef \fBNeighborSearch\fP
+.br
+< \fBNearestNeighborSort\fP, 
+.br
+\fBmetric::EuclideanDistance\fP > \fBAllkNN\fP"
+.br
+.RI "\fIThe AllkNN class is the all-k-nearest-neighbors method\&. \fP"
+.ti -1c
+.RI "typedef \fBRASearch\fP
+.br
+< \fBFurthestNeighborSort\fP > \fBAllkRAFN\fP"
+.br
+.RI "\fIThe AllkRAFN class is the all-k-rank-approximate-farthest-neighbors method\&. \fP"
+.ti -1c
+.RI "typedef \fBRASearch\fP \fBAllkRANN\fP"
+.br
+.RI "\fIThe AllkRANN class is the all-k-rank-approximate-nearest-neighbors method\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBUnmap\fP (const arma::Mat< size_t > &neighbors, const arma::mat &distances, const std::vector< size_t > &referenceMap, const std::vector< size_t > &queryMap, arma::Mat< size_t > &neighborsOut, arma::mat &distancesOut, const bool squareRoot=false)"
+.br
+.RI "\fIAssuming that the datasets have been mapped using the referenceMap and the queryMap (such as during kd-tree construction), unmap the columns of the distances and neighbors matrices into neighborsOut and distancesOut, and also unmap the entries in each row of neighbors\&. \fP"
+.ti -1c
+.RI "void \fBUnmap\fP (const arma::Mat< size_t > &neighbors, const arma::mat &distances, const std::vector< size_t > &referenceMap, arma::Mat< size_t > &neighborsOut, arma::mat &distancesOut, const bool squareRoot=false)"
+.br
+.RI "\fIAssuming that the datasets have been mapped using referenceMap (such as during kd-tree construction), unmap the columns of the distances and neighbors matrices into neighborsOut and distancesOut, and also unmap the entries in each row of neighbors\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Neighbor-search routines\&. 
+
+These include all-nearest-neighbors and all-furthest-neighbors searches\&. 
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef \fBNeighborSearch\fP<\fBFurthestNeighborSort\fP, \fBmetric::EuclideanDistance\fP> \fBmlpack::neighbor::AllkFN\fP"
+
+.PP
+The AllkFN class is the all-k-furthest-neighbors method\&. It returns L2 distances (Euclidean distances) for each of the k furthest neighbors\&. 
+.PP
+Definition at line 40 of file typedef\&.hpp\&.
+.SS "typedef \fBNeighborSearch\fP<\fBNearestNeighborSort\fP, \fBmetric::EuclideanDistance\fP> \fBmlpack::neighbor::AllkNN\fP"
+
+.PP
+The AllkNN class is the all-k-nearest-neighbors method\&. It returns L2 distances (Euclidean distances) for each of the k nearest neighbors\&. 
+.PP
+Definition at line 34 of file typedef\&.hpp\&.
+.SS "typedef \fBRASearch\fP<\fBFurthestNeighborSort\fP> \fBmlpack::neighbor::AllkRAFN\fP"
+
+.PP
+The AllkRAFN class is the all-k-rank-approximate-farthest-neighbors method\&. It returns squared L2 distances (squared Euclidean distances) for each of the k rank-approximate farthest-neighbors\&. Squared distances are used because they are slightly faster than non-squared distances (they have one fewer call to sqrt())\&.
+.PP
+The approximation is controlled with two parameters (see allkrann_main\&.cpp) which can be specified at search time\&. So the tree building is done only once while the search can be performed multiple times with different approximation levels\&. 
+.PP
+Definition at line 55 of file ra_typedef\&.hpp\&.
+.SS "typedef \fBRASearch\fP \fBmlpack::neighbor::AllkRANN\fP"
+
+.PP
+The AllkRANN class is the all-k-rank-approximate-nearest-neighbors method\&. It returns squared L2 distances (squared Euclidean distances) for each of the k rank-approximate nearest-neighbors\&. Squared distances are used because they are slightly faster than non-squared distances (they have one fewer call to sqrt())\&.
+.PP
+The approximation is controlled with two parameters (see allkrann_main\&.cpp) which can be specified at search time\&. So the tree building is done only once while the search can be performed multiple times with different approximation levels\&. 
+.PP
+Definition at line 41 of file ra_typedef\&.hpp\&.
+.SH "Function Documentation"
+.PP 
+.SS "void mlpack::neighbor::Unmap (const arma::Mat< size_t > &neighbors, const arma::mat &distances, const std::vector< size_t > &referenceMap, const std::vector< size_t > &queryMap, arma::Mat< size_t > &neighborsOut, arma::mat &distancesOut, const boolsquareRoot = \fCfalse\fP)"
+
+.PP
+Assuming that the datasets have been mapped using the referenceMap and the queryMap (such as during kd-tree construction), unmap the columns of the distances and neighbors matrices into neighborsOut and distancesOut, and also unmap the entries in each row of neighbors\&. This is useful for the dual-tree case\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIneighbors\fP Matrix of neighbors resulting from neighbor search\&. 
+.br
+\fIdistances\fP Matrix of distances resulting from neighbor search\&. 
+.br
+\fIreferenceMap\fP Mapping of reference set to old points\&. 
+.br
+\fIqueryMap\fP Mapping of query set to old points\&. 
+.br
+\fIneighborsOut\fP Matrix to store unmapped neighbors into\&. 
+.br
+\fIdistancesOut\fP Matrix to store unmapped distances into\&. 
+.br
+\fIsquareRoot\fP If true, take the square root of the distances\&. 
+.RE
+.PP
+
+.SS "void mlpack::neighbor::Unmap (const arma::Mat< size_t > &neighbors, const arma::mat &distances, const std::vector< size_t > &referenceMap, arma::Mat< size_t > &neighborsOut, arma::mat &distancesOut, const boolsquareRoot = \fCfalse\fP)"
+
+.PP
+Assuming that the datasets have been mapped using referenceMap (such as during kd-tree construction), unmap the columns of the distances and neighbors matrices into neighborsOut and distancesOut, and also unmap the entries in each row of neighbors\&. This is useful for the single-tree case\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIneighbors\fP Matrix of neighbors resulting from neighbor search\&. 
+.br
+\fIdistances\fP Matrix of distances resulting from neighbor search\&. 
+.br
+\fIreferenceMap\fP Mapping of reference set to old points\&. 
+.br
+\fIneighborsOut\fP Matrix to store unmapped neighbors into\&. 
+.br
+\fIdistancesOut\fP Matrix to store unmapped distances into\&. 
+.br
+\fIsquareRoot\fP If true, take the square root of the distances\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

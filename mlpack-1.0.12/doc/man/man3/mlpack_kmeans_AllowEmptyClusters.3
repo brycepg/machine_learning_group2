@@ -1,0 +1,77 @@
+.TH "mlpack::kmeans::AllowEmptyClusters" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::kmeans::AllowEmptyClusters \- 
+.PP
+Policy which allows K-Means to create empty clusters without any error being reported\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAllowEmptyClusters\fP ()"
+.br
+.RI "\fIDefault constructor required by EmptyClusterPolicy policy\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename MatType > static size_t \fBEmptyCluster\fP (const MatType &, const size_t, const MatType &, arma::Col< size_t > &, arma::Col< size_t > &)"
+.br
+.RI "\fIThis function does nothing\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Policy which allows K-Means to create empty clusters without any error being reported\&. 
+.PP
+Definition at line 27 of file allow_empty_clusters\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::kmeans::AllowEmptyClusters::AllowEmptyClusters ()\fC [inline]\fP"
+
+.PP
+Default constructor required by EmptyClusterPolicy policy\&. 
+.PP
+Definition at line 31 of file allow_empty_clusters\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename MatType > static size_t mlpack::kmeans::AllowEmptyClusters::EmptyCluster (const MatType &, const size_t, const MatType &, arma::Col< size_t > &, arma::Col< size_t > &)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+This function does nothing\&. It is called by K-Means when K-Means detects an empty cluster\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMatType\fP Type of data (arma::mat or arma::spmat)\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset on which clustering is being performed\&. 
+.br
+\fIemptyCluster\fP Index of cluster which is empty\&. 
+.br
+\fIcentroids\fP Centroids of each cluster (one per column)\&. 
+.br
+\fIclusterCounts\fP Number of points in each cluster\&. 
+.br
+\fIassignments\fP Cluster assignments of each point\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of points changed (0)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 47 of file allow_empty_clusters\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

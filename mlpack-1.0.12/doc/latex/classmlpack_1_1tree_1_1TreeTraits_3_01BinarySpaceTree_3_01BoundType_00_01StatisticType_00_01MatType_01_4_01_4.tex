@@ -1,0 +1,81 @@
+\section{mlpack\-:\-:tree\-:\-:Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$ Class Template Reference}
+\label{classmlpack_1_1tree_1_1TreeTraits_3_01BinarySpaceTree_3_01BoundType_00_01StatisticType_00_01MatType_01_4_01_4}\index{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$@{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$}}
+
+
+This is a specialization of the Tree\-Type class to the \doxyref{Binary\-Space\-Tree}{p.}{classmlpack_1_1tree_1_1BinarySpaceTree} tree type.  
+
+
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const bool {\bf First\-Point\-Is\-Centroid} = false
+\begin{DoxyCompactList}\small\item\em There is no guarantee that the first point in a node is its centroid. \end{DoxyCompactList}\item 
+static const bool {\bf Has\-Overlapping\-Children} = false
+\begin{DoxyCompactList}\small\item\em Each binary space tree node has two children which represent non-\/overlapping subsets of the space which the node represents. \end{DoxyCompactList}\item 
+static const bool {\bf Has\-Self\-Children} = false
+\begin{DoxyCompactList}\small\item\em Points are not contained at multiple levels of the binary space tree. \end{DoxyCompactList}\item 
+static const bool {\bf Rearranges\-Dataset} = true
+\begin{DoxyCompactList}\small\item\em Points are rearranged during building of the tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Bound\-Type, typename Statistic\-Type, typename Mat\-Type$>$class mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$}
+
+This is a specialization of the Tree\-Type class to the \doxyref{Binary\-Space\-Tree}{p.}{classmlpack_1_1tree_1_1BinarySpaceTree} tree type. 
+
+It defines characteristics of the binary space tree, and is used to help write tree-\/independent (but still optimized) tree-\/based algorithms. See \doxyref{mlpack/core/tree/tree\-\_\-traits.\-hpp}{p.}{tree__traits_8hpp} for more information. 
+
+Definition at line 31 of file traits.\-hpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$@{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$}!First\-Point\-Is\-Centroid@{First\-Point\-Is\-Centroid}}
+\index{First\-Point\-Is\-Centroid@{First\-Point\-Is\-Centroid}!mlpack::tree::TreeTraits< BinarySpaceTree< BoundType, StatisticType, MatType > >@{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$}}
+\subsubsection[{First\-Point\-Is\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type , typename Mat\-Type $>$ const bool {\bf mlpack\-::tree\-::\-Tree\-Traits}$<$ {\bf Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$\-::First\-Point\-Is\-Centroid = false\hspace{0.3cm}{\ttfamily [static]}}\label{classmlpack_1_1tree_1_1TreeTraits_3_01BinarySpaceTree_3_01BoundType_00_01StatisticType_00_01MatType_01_4_01_4_a3ed7feedb763ac984f2d26a27d3a3003}
+
+
+There is no guarantee that the first point in a node is its centroid. 
+
+
+
+Definition at line 44 of file traits.\-hpp.
+
+\index{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$@{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$}!Has\-Overlapping\-Children@{Has\-Overlapping\-Children}}
+\index{Has\-Overlapping\-Children@{Has\-Overlapping\-Children}!mlpack::tree::TreeTraits< BinarySpaceTree< BoundType, StatisticType, MatType > >@{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$}}
+\subsubsection[{Has\-Overlapping\-Children}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type , typename Mat\-Type $>$ const bool {\bf mlpack\-::tree\-::\-Tree\-Traits}$<$ {\bf Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$\-::Has\-Overlapping\-Children = false\hspace{0.3cm}{\ttfamily [static]}}\label{classmlpack_1_1tree_1_1TreeTraits_3_01BinarySpaceTree_3_01BoundType_00_01StatisticType_00_01MatType_01_4_01_4_a1e79a2b75b09b841fcdf62177241da1b}
+
+
+Each binary space tree node has two children which represent non-\/overlapping subsets of the space which the node represents. 
+
+Therefore, children are not overlapping. 
+
+Definition at line 39 of file traits.\-hpp.
+
+\index{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$@{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$}!Has\-Self\-Children@{Has\-Self\-Children}}
+\index{Has\-Self\-Children@{Has\-Self\-Children}!mlpack::tree::TreeTraits< BinarySpaceTree< BoundType, StatisticType, MatType > >@{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$}}
+\subsubsection[{Has\-Self\-Children}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type , typename Mat\-Type $>$ const bool {\bf mlpack\-::tree\-::\-Tree\-Traits}$<$ {\bf Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$\-::Has\-Self\-Children = false\hspace{0.3cm}{\ttfamily [static]}}\label{classmlpack_1_1tree_1_1TreeTraits_3_01BinarySpaceTree_3_01BoundType_00_01StatisticType_00_01MatType_01_4_01_4_ae4e3794266a7ce53ba4ada5b365d2428}
+
+
+Points are not contained at multiple levels of the binary space tree. 
+
+
+
+Definition at line 49 of file traits.\-hpp.
+
+\index{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$@{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$}!Rearranges\-Dataset@{Rearranges\-Dataset}}
+\index{Rearranges\-Dataset@{Rearranges\-Dataset}!mlpack::tree::TreeTraits< BinarySpaceTree< BoundType, StatisticType, MatType > >@{mlpack\-::tree\-::\-Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$}}
+\subsubsection[{Rearranges\-Dataset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type , typename Mat\-Type $>$ const bool {\bf mlpack\-::tree\-::\-Tree\-Traits}$<$ {\bf Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$\-::Rearranges\-Dataset = true\hspace{0.3cm}{\ttfamily [static]}}\label{classmlpack_1_1tree_1_1TreeTraits_3_01BinarySpaceTree_3_01BoundType_00_01StatisticType_00_01MatType_01_4_01_4_a3fd37fadb176484f1bbe9d217aca9b73}
+
+
+Points are rearranged during building of the tree. 
+
+
+
+Definition at line 54 of file traits.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/tree/binary\-\_\-space\-\_\-tree/{\bf traits.\-hpp}\end{DoxyCompactItemize}

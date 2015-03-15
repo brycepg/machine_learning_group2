@@ -1,0 +1,143 @@
+.TH "mlpack::kernel::TriangularKernel" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::kernel::TriangularKernel \- 
+.PP
+The trivially simple triangular kernel, defined by\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTriangularKernel\fP (const double \fBbandwidth\fP=1\&.0)"
+.br
+.RI "\fIInitialize the triangular kernel with the given bandwidth (default 1\&.0)\&. \fP"
+.ti -1c
+.RI "double \fBBandwidth\fP () const "
+.br
+.RI "\fIGet the bandwidth of the kernel\&. \fP"
+.ti -1c
+.RI "double & \fBBandwidth\fP ()"
+.br
+.RI "\fIModify the bandwidth of the kernel\&. \fP"
+.ti -1c
+.RI "template<typename Vec1Type , typename Vec2Type > double \fBEvaluate\fP (const Vec1Type &a, const Vec2Type &b) const "
+.br
+.RI "\fIEvaluate the triangular kernel for the two given vectors\&. \fP"
+.ti -1c
+.RI "double \fBEvaluate\fP (const double distance) const "
+.br
+.RI "\fIEvaluate the triangular kernel given that the distance between the two points is known\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturn a string representation of the kernel\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBbandwidth\fP"
+.br
+.RI "\fIThe bandwidth of the kernel\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The trivially simple triangular kernel, defined by\&. 
+
+\[ K(x, y) = \max \{ 0, 1 - \frac{|| x - y ||_2}{b} \} \]
+.PP
+where $ b $ is the bandwidth of the kernel\&. 
+.PP
+Definition at line 32 of file triangular_kernel\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::kernel::TriangularKernel::TriangularKernel (const doublebandwidth = \fC1\&.0\fP)\fC [inline]\fP"
+
+.PP
+Initialize the triangular kernel with the given bandwidth (default 1\&.0)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbandwidth\fP Bandwidth of the triangular kernel\&. 
+.RE
+.PP
+
+.PP
+Definition at line 40 of file triangular_kernel\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double mlpack::kernel::TriangularKernel::Bandwidth () const\fC [inline]\fP"
+
+.PP
+Get the bandwidth of the kernel\&. 
+.PP
+Definition at line 67 of file triangular_kernel\&.hpp\&.
+.PP
+References bandwidth\&.
+.SS "double& mlpack::kernel::TriangularKernel::Bandwidth ()\fC [inline]\fP"
+
+.PP
+Modify the bandwidth of the kernel\&. 
+.PP
+Definition at line 69 of file triangular_kernel\&.hpp\&.
+.PP
+References bandwidth\&.
+.SS "template<typename Vec1Type , typename Vec2Type > double mlpack::kernel::TriangularKernel::Evaluate (const Vec1Type &a, const Vec2Type &b) const\fC [inline]\fP"
+
+.PP
+Evaluate the triangular kernel for the two given vectors\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP First vector\&. 
+.br
+\fIb\fP Second vector\&. 
+.RE
+.PP
+
+.PP
+Definition at line 49 of file triangular_kernel\&.hpp\&.
+.PP
+References bandwidth, and mlpack::metric::LMetric< Power, TakeRoot >::Evaluate()\&.
+.SS "double mlpack::kernel::TriangularKernel::Evaluate (const doubledistance) const\fC [inline]\fP"
+
+.PP
+Evaluate the triangular kernel given that the distance between the two points is known\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdistance\fP The distance between the two points\&. 
+.RE
+.PP
+
+.PP
+Definition at line 61 of file triangular_kernel\&.hpp\&.
+.PP
+References bandwidth\&.
+.SS "std::string mlpack::kernel::TriangularKernel::ToString () const\fC [inline]\fP"
+
+.PP
+Return a string representation of the kernel\&. 
+.PP
+Definition at line 72 of file triangular_kernel\&.hpp\&.
+.PP
+References bandwidth\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "double mlpack::kernel::TriangularKernel::bandwidth\fC [private]\fP"
+
+.PP
+The bandwidth of the kernel\&. 
+.PP
+Definition at line 82 of file triangular_kernel\&.hpp\&.
+.PP
+Referenced by Bandwidth(), Evaluate(), and ToString()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

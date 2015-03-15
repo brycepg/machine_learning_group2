@@ -1,0 +1,1053 @@
+\section{mlpack\-:\-:det\-:\-:D\-Tree Class Reference}
+\label{classmlpack_1_1det_1_1DTree}\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}}
+
+
+A density estimation tree is similar to both a decision tree and a space partitioning tree (like a kd-\/tree).  
+
+
+
+
+Collaboration diagram for mlpack\-:\-:det\-:\-:D\-Tree\-:
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf D\-Tree} ()
+\begin{DoxyCompactList}\small\item\em Create an empty density estimation tree. \end{DoxyCompactList}\item 
+{\bf D\-Tree} (const arma\-::vec \&{\bf max\-Vals}, const arma\-::vec \&{\bf min\-Vals}, const size\-\_\-t total\-Points)
+\begin{DoxyCompactList}\small\item\em Create a density estimation tree with the given bounds and the given number of total points. \end{DoxyCompactList}\item 
+{\bf D\-Tree} (arma\-::mat \&data)
+\begin{DoxyCompactList}\small\item\em Create a density estimation tree on the given data. \end{DoxyCompactList}\item 
+{\bf D\-Tree} (const arma\-::vec \&{\bf max\-Vals}, const arma\-::vec \&{\bf min\-Vals}, const size\-\_\-t {\bf start}, const size\-\_\-t {\bf end}, const double {\bf log\-Neg\-Error})
+\begin{DoxyCompactList}\small\item\em Create a child node of a density estimation tree given the bounding box specified by max\-Vals and min\-Vals, using the size given in start and end and the specified error. \end{DoxyCompactList}\item 
+{\bf D\-Tree} (const arma\-::vec \&{\bf max\-Vals}, const arma\-::vec \&{\bf min\-Vals}, const size\-\_\-t total\-Points, const size\-\_\-t {\bf start}, const size\-\_\-t {\bf end})
+\begin{DoxyCompactList}\small\item\em Create a child node of a density estimation tree given the bounding box specified by max\-Vals and min\-Vals, using the size given in start and end, and calculating the error with the total number of points given. \end{DoxyCompactList}\item 
+{\bf $\sim$\-D\-Tree} ()
+\begin{DoxyCompactList}\small\item\em Clean up memory allocated by the tree. \end{DoxyCompactList}\item 
+double {\bf Alpha\-Upper} () const 
+\begin{DoxyCompactList}\small\item\em Return the upper part of the alpha sum. \end{DoxyCompactList}\item 
+double {\bf Compute\-Value} (const arma\-::vec \&query) const 
+\begin{DoxyCompactList}\small\item\em Compute the logarithm of the density estimate of a given query point. \end{DoxyCompactList}\item 
+void {\bf Compute\-Variable\-Importance} (arma\-::vec \&importances) const 
+\begin{DoxyCompactList}\small\item\em Compute the variable importance of each dimension in the learned tree. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf End} () const 
+\begin{DoxyCompactList}\small\item\em Return the first index of a point not contained in this node. \end{DoxyCompactList}\item 
+int {\bf Find\-Bucket} (const arma\-::vec \&query) const 
+\begin{DoxyCompactList}\small\item\em Return the tag of the leaf containing the query. \end{DoxyCompactList}\item 
+double {\bf Grow} (arma\-::mat \&data, arma\-::\-Col$<$ size\-\_\-t $>$ \&old\-From\-New, const bool use\-Vol\-Reg=false, const size\-\_\-t max\-Leaf\-Size=10, const size\-\_\-t min\-Leaf\-Size=5)
+\begin{DoxyCompactList}\small\item\em Greedily expand the tree. \end{DoxyCompactList}\item 
+{\bf D\-Tree} $\ast$ {\bf Left} () const 
+\begin{DoxyCompactList}\small\item\em Return the left child. \end{DoxyCompactList}\item 
+double {\bf Log\-Negative\-Error} (const size\-\_\-t total\-Points) const 
+\begin{DoxyCompactList}\small\item\em Compute the log-\/negative-\/error for this point, given the total number of points in the dataset. \end{DoxyCompactList}\item 
+double {\bf Log\-Neg\-Error} () const 
+\begin{DoxyCompactList}\small\item\em Return the log negative error of this node. \end{DoxyCompactList}\item 
+double {\bf Log\-Volume} () const 
+\begin{DoxyCompactList}\small\item\em Return the inverse of the volume of this node. \end{DoxyCompactList}\item 
+const arma\-::vec \& {\bf Max\-Vals} () const 
+\begin{DoxyCompactList}\small\item\em Return the maximum values. \end{DoxyCompactList}\item 
+arma\-::vec \& {\bf Max\-Vals} ()
+\begin{DoxyCompactList}\small\item\em Modify the maximum values. \end{DoxyCompactList}\item 
+const arma\-::vec \& {\bf Min\-Vals} () const 
+\begin{DoxyCompactList}\small\item\em Return the minimum values. \end{DoxyCompactList}\item 
+arma\-::vec \& {\bf Min\-Vals} ()
+\begin{DoxyCompactList}\small\item\em Modify the minimum values. \end{DoxyCompactList}\item 
+double {\bf Prune\-And\-Update} (const double old\-Alpha, const size\-\_\-t points, const bool use\-Vol\-Reg=false)
+\begin{DoxyCompactList}\small\item\em Perform alpha pruning on a tree. \end{DoxyCompactList}\item 
+double {\bf Ratio} () const 
+\begin{DoxyCompactList}\small\item\em Return the ratio of points in this node to the points in the whole dataset. \end{DoxyCompactList}\item 
+{\bf D\-Tree} $\ast$ {\bf Right} () const 
+\begin{DoxyCompactList}\small\item\em Return the right child. \end{DoxyCompactList}\item 
+bool {\bf Root} () const 
+\begin{DoxyCompactList}\small\item\em Return whether or not this is the root of the tree. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Split\-Dim} () const 
+\begin{DoxyCompactList}\small\item\em Return the split dimension of this node. \end{DoxyCompactList}\item 
+double {\bf Split\-Value} () const 
+\begin{DoxyCompactList}\small\item\em Return the split value of this node. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Start} () const 
+\begin{DoxyCompactList}\small\item\em Return the starting index of points contained in this node. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Subtree\-Leaves} () const 
+\begin{DoxyCompactList}\small\item\em Return the number of leaves which are descendants of this node. \end{DoxyCompactList}\item 
+double {\bf Subtree\-Leaves\-Log\-Neg\-Error} () const 
+\begin{DoxyCompactList}\small\item\em Return the log negative error of all descendants of this node. \end{DoxyCompactList}\item 
+int {\bf Tag\-Tree} (const int tag=0)
+\begin{DoxyCompactList}\small\item\em Index the buckets for possible usage later; this results in every leaf in the tree having a specific tag (accessible with Bucket\-Tag()). \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Returns a string representation of this object. \end{DoxyCompactList}\item 
+bool {\bf Within\-Range} (const arma\-::vec \&query) const 
+\begin{DoxyCompactList}\small\item\em Return whether a query point is within the range of this node. \end{DoxyCompactList}\item 
+void {\bf Write\-Tree} (F\-I\-L\-E $\ast$fp, const size\-\_\-t level=0) const 
+\begin{DoxyCompactList}\small\item\em Print the tree in a depth-\/first manner (this function is called recursively). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf Find\-Split} (const arma\-::mat \&data, size\-\_\-t \&{\bf split\-Dim}, double \&{\bf split\-Value}, double \&left\-Error, double \&right\-Error, const size\-\_\-t min\-Leaf\-Size=5) const 
+\begin{DoxyCompactList}\small\item\em Find the dimension to split on. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Split\-Data} (arma\-::mat \&data, const size\-\_\-t {\bf split\-Dim}, const double {\bf split\-Value}, arma\-::\-Col$<$ size\-\_\-t $>$ \&old\-From\-New) const 
+\begin{DoxyCompactList}\small\item\em Split the data, returning the number of points left of the split. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf alpha\-Upper}
+\begin{DoxyCompactList}\small\item\em Upper part of alpha sum; used for pruning. \end{DoxyCompactList}\item 
+int {\bf bucket\-Tag}
+\begin{DoxyCompactList}\small\item\em The tag for the leaf, used for hashing points. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf end}
+\begin{DoxyCompactList}\small\item\em The index of the last point in the dataset contained in this node (and its children). \end{DoxyCompactList}\item 
+{\bf D\-Tree} $\ast$ {\bf left}
+\begin{DoxyCompactList}\small\item\em The left child. \end{DoxyCompactList}\item 
+double {\bf log\-Neg\-Error}
+\begin{DoxyCompactList}\small\item\em log-\/negative-\/\-L2-\/error of the node. \end{DoxyCompactList}\item 
+double {\bf log\-Volume}
+\begin{DoxyCompactList}\small\item\em The logarithm of the volume of the node. \end{DoxyCompactList}\item 
+arma\-::vec {\bf max\-Vals}
+\begin{DoxyCompactList}\small\item\em Upper half of bounding box for this node. \end{DoxyCompactList}\item 
+arma\-::vec {\bf min\-Vals}
+\begin{DoxyCompactList}\small\item\em Lower half of bounding box for this node. \end{DoxyCompactList}\item 
+double {\bf ratio}
+\begin{DoxyCompactList}\small\item\em Ratio of the number of points in the node to the total number of points. \end{DoxyCompactList}\item 
+{\bf D\-Tree} $\ast$ {\bf right}
+\begin{DoxyCompactList}\small\item\em The right child. \end{DoxyCompactList}\item 
+bool {\bf root}
+\begin{DoxyCompactList}\small\item\em If true, this node is the root of the tree. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf split\-Dim}
+\begin{DoxyCompactList}\small\item\em The splitting dimension for this node. \end{DoxyCompactList}\item 
+double {\bf split\-Value}
+\begin{DoxyCompactList}\small\item\em The split value on the splitting dimension for this node. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf start}
+\begin{DoxyCompactList}\small\item\em The index of the first point in the dataset contained in this node (and its children). \end{DoxyCompactList}\item 
+size\-\_\-t {\bf subtree\-Leaves}
+\begin{DoxyCompactList}\small\item\em Number of leaves of the subtree. \end{DoxyCompactList}\item 
+double {\bf subtree\-Leaves\-Log\-Neg\-Error}
+\begin{DoxyCompactList}\small\item\em Sum of the error of the leaves of the subtree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A density estimation tree is similar to both a decision tree and a space partitioning tree (like a kd-\/tree). 
+
+Each leaf represents a constant-\/density hyper-\/rectangle. The tree is constructed in such a way as to minimize the integrated square error between the probability distribution of the tree and the observed probability distribution of the data. Because the tree is similar to a decision tree, the density estimation tree can provide very fast density estimates for a given point.
+
+For more information, see the following paper\-:
+
+
+\begin{DoxyCode}
+@incollection\{ram2011,
+  author = \{Ram, Parikshit and Gray, Alexander G.\},
+  title = \{Density estimation trees\},
+  booktitle = \{\{Proceedings of the 17th ACM SIGKDD International Conference
+      on Knowledge Discovery and Data Mining\}\},
+  series = \{KDD \textcolor{stringliteral}{'11\},}
+\textcolor{stringliteral}{  year = \{2011\},}
+\textcolor{stringliteral}{  pages = \{627--635\}}
+\textcolor{stringliteral}{\}}
+\end{DoxyCode}
+ 
+
+Definition at line 46 of file dtree.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!D\-Tree@{D\-Tree}}
+\index{D\-Tree@{D\-Tree}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{D\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::det\-::\-D\-Tree\-::\-D\-Tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1det_1_1DTree_a9e6eb2a91f58315f6372c09c2cfa7071}
+
+
+Create an empty density estimation tree. 
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!D\-Tree@{D\-Tree}}
+\index{D\-Tree@{D\-Tree}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{D\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::det\-::\-D\-Tree\-::\-D\-Tree (
+\begin{DoxyParamCaption}
+\item[{const arma\-::vec \&}]{max\-Vals, }
+\item[{const arma\-::vec \&}]{min\-Vals, }
+\item[{const size\-\_\-t}]{total\-Points}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1det_1_1DTree_a7ba89b18f01035c70e60e2b1c89dc8de}
+
+
+Create a density estimation tree with the given bounds and the given number of total points. 
+
+Children will not be created.
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\-Vals} & Maximum values of the bounding box. \\
+\hline
+{\em min\-Vals} & Minimum values of the bounding box. \\
+\hline
+{\em total\-Points} & Total number of points in the dataset. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!D\-Tree@{D\-Tree}}
+\index{D\-Tree@{D\-Tree}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{D\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::det\-::\-D\-Tree\-::\-D\-Tree (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{data}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1det_1_1DTree_a63ff20d7fe2b47f0a2974e64d5ab99d6}
+
+
+Create a density estimation tree on the given data. 
+
+Children will be created following the procedure outlined in the paper. The data will be modified; it will be reordered similar to the way Binary\-Space\-Tree modifies datasets.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to build tree on. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!D\-Tree@{D\-Tree}}
+\index{D\-Tree@{D\-Tree}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{D\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::det\-::\-D\-Tree\-::\-D\-Tree (
+\begin{DoxyParamCaption}
+\item[{const arma\-::vec \&}]{max\-Vals, }
+\item[{const arma\-::vec \&}]{min\-Vals, }
+\item[{const size\-\_\-t}]{start, }
+\item[{const size\-\_\-t}]{end, }
+\item[{const double}]{log\-Neg\-Error}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1det_1_1DTree_a7f880cb12b0420d6945a0382f7d4fd5c}
+
+
+Create a child node of a density estimation tree given the bounding box specified by max\-Vals and min\-Vals, using the size given in start and end and the specified error. 
+
+Children of this node will not be created recursively.
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\-Vals} & Upper bound of bounding box. \\
+\hline
+{\em min\-Vals} & Lower bound of bounding box. \\
+\hline
+{\em start} & Start of points represented by this node in the data matrix. \\
+\hline
+{\em end} & End of points represented by this node in the data matrix. \\
+\hline
+{\em error} & log-\/negative error of this node. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!D\-Tree@{D\-Tree}}
+\index{D\-Tree@{D\-Tree}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{D\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::det\-::\-D\-Tree\-::\-D\-Tree (
+\begin{DoxyParamCaption}
+\item[{const arma\-::vec \&}]{max\-Vals, }
+\item[{const arma\-::vec \&}]{min\-Vals, }
+\item[{const size\-\_\-t}]{total\-Points, }
+\item[{const size\-\_\-t}]{start, }
+\item[{const size\-\_\-t}]{end}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1det_1_1DTree_a625e1a89feb3bedf1bd186a966cf7d0f}
+
+
+Create a child node of a density estimation tree given the bounding box specified by max\-Vals and min\-Vals, using the size given in start and end, and calculating the error with the total number of points given. 
+
+Children of this node will not be created recursively.
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\-Vals} & Upper bound of bounding box. \\
+\hline
+{\em min\-Vals} & Lower bound of bounding box. \\
+\hline
+{\em start} & Start of points represented by this node in the data matrix. \\
+\hline
+{\em end} & End of points represented by this node in the data matrix. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!$\sim$\-D\-Tree@{$\sim$\-D\-Tree}}
+\index{$\sim$\-D\-Tree@{$\sim$\-D\-Tree}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{$\sim$\-D\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::det\-::\-D\-Tree\-::$\sim$\-D\-Tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1det_1_1DTree_a6f5c5b404f0a90bd6f3ffd1a9ff5bbda}
+
+
+Clean up memory allocated by the tree. 
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Alpha\-Upper@{Alpha\-Upper}}
+\index{Alpha\-Upper@{Alpha\-Upper}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Alpha\-Upper}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::\-Alpha\-Upper (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_a69e31697e175ca0529cce896673da7ad}
+
+
+Return the upper part of the alpha sum. 
+
+
+
+Definition at line 276 of file dtree.\-hpp.
+
+
+
+References alpha\-Upper.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Compute\-Value@{Compute\-Value}}
+\index{Compute\-Value@{Compute\-Value}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Compute\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::\-Compute\-Value (
+\begin{DoxyParamCaption}
+\item[{const arma\-::vec \&}]{query}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1det_1_1DTree_ac19b2a4653a7567cec2e819c5f25f6d4}
+
+
+Compute the logarithm of the density estimate of a given query point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & Point to estimate density of. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Compute\-Variable\-Importance@{Compute\-Variable\-Importance}}
+\index{Compute\-Variable\-Importance@{Compute\-Variable\-Importance}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Compute\-Variable\-Importance}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::det\-::\-D\-Tree\-::\-Compute\-Variable\-Importance (
+\begin{DoxyParamCaption}
+\item[{arma\-::vec \&}]{importances}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1det_1_1DTree_a237a58b0976a58f52808b71fe988009d}
+
+
+Compute the variable importance of each dimension in the learned tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em importances} & Vector to store the calculated importances in. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!End@{End}}
+\index{End@{End}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{End}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::det\-::\-D\-Tree\-::\-End (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_a87cdfbd5090e2ceb263db46854b6cb96}
+
+
+Return the first index of a point not contained in this node. 
+
+
+
+Definition at line 253 of file dtree.\-hpp.
+
+
+
+References end.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Find\-Bucket@{Find\-Bucket}}
+\index{Find\-Bucket@{Find\-Bucket}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Find\-Bucket}]{\setlength{\rightskip}{0pt plus 5cm}int mlpack\-::det\-::\-D\-Tree\-::\-Find\-Bucket (
+\begin{DoxyParamCaption}
+\item[{const arma\-::vec \&}]{query}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1det_1_1DTree_ae6cf284650d3de8b8f8cfd1ce0f12879}
+
+
+Return the tag of the leaf containing the query. 
+
+This is useful for generating class memberships.
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & Query to search for. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Find\-Split@{Find\-Split}}
+\index{Find\-Split@{Find\-Split}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Find\-Split}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::det\-::\-D\-Tree\-::\-Find\-Split (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{data, }
+\item[{size\-\_\-t \&}]{split\-Dim, }
+\item[{double \&}]{split\-Value, }
+\item[{double \&}]{left\-Error, }
+\item[{double \&}]{right\-Error, }
+\item[{const size\-\_\-t}]{min\-Leaf\-Size = {\ttfamily 5}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_af7821a396e00293260c7ec67f7af1299}
+
+
+Find the dimension to split on. 
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Grow@{Grow}}
+\index{Grow@{Grow}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Grow}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::\-Grow (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{data, }
+\item[{arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{old\-From\-New, }
+\item[{const bool}]{use\-Vol\-Reg = {\ttfamily false}, }
+\item[{const size\-\_\-t}]{max\-Leaf\-Size = {\ttfamily 10}, }
+\item[{const size\-\_\-t}]{min\-Leaf\-Size = {\ttfamily 5}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1det_1_1DTree_ad0d492f126f551089212573e75b24c13}
+
+
+Greedily expand the tree. 
+
+The points in the dataset will be reordered during tree growth.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to build tree on. \\
+\hline
+{\em old\-From\-New} & Mappings from old points to new points. \\
+\hline
+{\em use\-Vol\-Reg} & If true, volume regularization is used. \\
+\hline
+{\em max\-Leaf\-Size} & Maximum size of a leaf. \\
+\hline
+{\em min\-Leaf\-Size} & Minimum size of a leaf. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Left@{Left}}
+\index{Left@{Left}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-Tree}$\ast$ mlpack\-::det\-::\-D\-Tree\-::\-Left (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_a71fdc36da3f80c2df165145fbd50a3a1}
+
+
+Return the left child. 
+
+
+
+Definition at line 270 of file dtree.\-hpp.
+
+
+
+References left.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Log\-Negative\-Error@{Log\-Negative\-Error}}
+\index{Log\-Negative\-Error@{Log\-Negative\-Error}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Log\-Negative\-Error}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::\-Log\-Negative\-Error (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{total\-Points}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1det_1_1DTree_ae37476f613e6f98d0ba0cdbd831536bb}
+
+
+Compute the log-\/negative-\/error for this point, given the total number of points in the dataset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em total\-Points} & Total number of points in the dataset. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Log\-Neg\-Error@{Log\-Neg\-Error}}
+\index{Log\-Neg\-Error@{Log\-Neg\-Error}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Log\-Neg\-Error}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::\-Log\-Neg\-Error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_acfe565c3956367a675444eb01850668c}
+
+
+Return the log negative error of this node. 
+
+
+
+Definition at line 259 of file dtree.\-hpp.
+
+
+
+References log\-Neg\-Error.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Log\-Volume@{Log\-Volume}}
+\index{Log\-Volume@{Log\-Volume}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Log\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::\-Log\-Volume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_a56558c87a559b7334c9ec02c451f5ada}
+
+
+Return the inverse of the volume of this node. 
+
+
+
+Definition at line 268 of file dtree.\-hpp.
+
+
+
+References log\-Volume.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Max\-Vals@{Max\-Vals}}
+\index{Max\-Vals@{Max\-Vals}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Max\-Vals}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::vec\& mlpack\-::det\-::\-D\-Tree\-::\-Max\-Vals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_a55dd0d5d36c5cdfd97a4812eaa64fd88}
+
+
+Return the maximum values. 
+
+
+
+Definition at line 279 of file dtree.\-hpp.
+
+
+
+References max\-Vals.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Max\-Vals@{Max\-Vals}}
+\index{Max\-Vals@{Max\-Vals}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Max\-Vals}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::vec\& mlpack\-::det\-::\-D\-Tree\-::\-Max\-Vals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_aed1fc87e58d41b1258376e204844fc45}
+
+
+Modify the maximum values. 
+
+
+
+Definition at line 281 of file dtree.\-hpp.
+
+
+
+References max\-Vals.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Min\-Vals@{Min\-Vals}}
+\index{Min\-Vals@{Min\-Vals}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Min\-Vals}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::vec\& mlpack\-::det\-::\-D\-Tree\-::\-Min\-Vals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_a78fda401273571ba572e5545407d6b63}
+
+
+Return the minimum values. 
+
+
+
+Definition at line 284 of file dtree.\-hpp.
+
+
+
+References min\-Vals.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Min\-Vals@{Min\-Vals}}
+\index{Min\-Vals@{Min\-Vals}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Min\-Vals}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::vec\& mlpack\-::det\-::\-D\-Tree\-::\-Min\-Vals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_a52289942a25e4973f979a95445aca3d8}
+
+
+Modify the minimum values. 
+
+
+
+Definition at line 286 of file dtree.\-hpp.
+
+
+
+References min\-Vals.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Prune\-And\-Update@{Prune\-And\-Update}}
+\index{Prune\-And\-Update@{Prune\-And\-Update}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Prune\-And\-Update}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::\-Prune\-And\-Update (
+\begin{DoxyParamCaption}
+\item[{const double}]{old\-Alpha, }
+\item[{const size\-\_\-t}]{points, }
+\item[{const bool}]{use\-Vol\-Reg = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1det_1_1DTree_a33039e778cccef853c2a552023ea8ce8}
+
+
+Perform alpha pruning on a tree. 
+
+Returns the new value of alpha.
+
+
+\begin{DoxyParams}{Parameters}
+{\em old\-Alpha} & Old value of alpha. \\
+\hline
+{\em points} & Total number of points in dataset. \\
+\hline
+{\em use\-Vol\-Reg} & If true, volume regularization is used. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New value of alpha. 
+\end{DoxyReturn}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Ratio@{Ratio}}
+\index{Ratio@{Ratio}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Ratio}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::\-Ratio (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_af4749bcf8edc2c03000414b80366286a}
+
+
+Return the ratio of points in this node to the points in the whole dataset. 
+
+
+
+Definition at line 266 of file dtree.\-hpp.
+
+
+
+References ratio.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Right@{Right}}
+\index{Right@{Right}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-Tree}$\ast$ mlpack\-::det\-::\-D\-Tree\-::\-Right (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_a149242c4bb5e1516f59d1c95649347b3}
+
+
+Return the right child. 
+
+
+
+Definition at line 272 of file dtree.\-hpp.
+
+
+
+References right.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Root@{Root}}
+\index{Root@{Root}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Root}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::det\-::\-D\-Tree\-::\-Root (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_ab8b465c7480f7e1e8bc37e4ad1df68fd}
+
+
+Return whether or not this is the root of the tree. 
+
+
+
+Definition at line 274 of file dtree.\-hpp.
+
+
+
+References root.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Split\-Data@{Split\-Data}}
+\index{Split\-Data@{Split\-Data}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Split\-Data}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::det\-::\-D\-Tree\-::\-Split\-Data (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{data, }
+\item[{const size\-\_\-t}]{split\-Dim, }
+\item[{const double}]{split\-Value, }
+\item[{arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{old\-From\-New}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_a75009b616091975fdbefa4b907596a0a}
+
+
+Split the data, returning the number of points left of the split. 
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Split\-Dim@{Split\-Dim}}
+\index{Split\-Dim@{Split\-Dim}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Split\-Dim}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::det\-::\-D\-Tree\-::\-Split\-Dim (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_ab9ea30e504d6c2f8864e311975eb428b}
+
+
+Return the split dimension of this node. 
+
+
+
+Definition at line 255 of file dtree.\-hpp.
+
+
+
+References split\-Dim.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Split\-Value@{Split\-Value}}
+\index{Split\-Value@{Split\-Value}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Split\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::\-Split\-Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_a02d33848fdb801ec17f05ade07b7d10f}
+
+
+Return the split value of this node. 
+
+
+
+Definition at line 257 of file dtree.\-hpp.
+
+
+
+References split\-Value.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Start@{Start}}
+\index{Start@{Start}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Start}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::det\-::\-D\-Tree\-::\-Start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_a8db5f557cbb1933d00f9f144ed99c0a7}
+
+
+Return the starting index of points contained in this node. 
+
+
+
+Definition at line 251 of file dtree.\-hpp.
+
+
+
+References start.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Subtree\-Leaves@{Subtree\-Leaves}}
+\index{Subtree\-Leaves@{Subtree\-Leaves}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Subtree\-Leaves}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::det\-::\-D\-Tree\-::\-Subtree\-Leaves (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_ad73aa98333190d67adc2849776cc498a}
+
+
+Return the number of leaves which are descendants of this node. 
+
+
+
+Definition at line 263 of file dtree.\-hpp.
+
+
+
+References subtree\-Leaves.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Subtree\-Leaves\-Log\-Neg\-Error@{Subtree\-Leaves\-Log\-Neg\-Error}}
+\index{Subtree\-Leaves\-Log\-Neg\-Error@{Subtree\-Leaves\-Log\-Neg\-Error}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Subtree\-Leaves\-Log\-Neg\-Error}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::\-Subtree\-Leaves\-Log\-Neg\-Error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1det_1_1DTree_a3c5bd201e880becdaa0db75e9b2362c1}
+
+
+Return the log negative error of all descendants of this node. 
+
+
+
+Definition at line 261 of file dtree.\-hpp.
+
+
+
+References subtree\-Leaves\-Log\-Neg\-Error.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Tag\-Tree@{Tag\-Tree}}
+\index{Tag\-Tree@{Tag\-Tree}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Tag\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}int mlpack\-::det\-::\-D\-Tree\-::\-Tag\-Tree (
+\begin{DoxyParamCaption}
+\item[{const int}]{tag = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1det_1_1DTree_afe1351001ece7d555f2e8548e3ec92c3}
+
+
+Index the buckets for possible usage later; this results in every leaf in the tree having a specific tag (accessible with Bucket\-Tag()). 
+
+This function calls itself recursively.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tag} & Tag for the next leaf; leave at 0 for the initial call. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mlpack\-::det\-::\-D\-Tree\-::\-To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1det_1_1DTree_a57932e027068baff05abfb902e0b8446}
+
+
+Returns a string representation of this object. 
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Within\-Range@{Within\-Range}}
+\index{Within\-Range@{Within\-Range}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Within\-Range}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::det\-::\-D\-Tree\-::\-Within\-Range (
+\begin{DoxyParamCaption}
+\item[{const arma\-::vec \&}]{query}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1det_1_1DTree_a63dea63bc1e7ea3719e6dbf5cb5b2c97}
+
+
+Return whether a query point is within the range of this node. 
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!Write\-Tree@{Write\-Tree}}
+\index{Write\-Tree@{Write\-Tree}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{Write\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::det\-::\-D\-Tree\-::\-Write\-Tree (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{fp, }
+\item[{const size\-\_\-t}]{level = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1det_1_1DTree_a12518a332ce5ba5afd2f07da7903e266}
+
+
+Print the tree in a depth-\/first manner (this function is called recursively). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & File to write the tree to. \\
+\hline
+{\em level} & Level of the tree (should start at 0). \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!alpha\-Upper@{alpha\-Upper}}
+\index{alpha\-Upper@{alpha\-Upper}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{alpha\-Upper}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::alpha\-Upper\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_acc86bb714519f66a0de6b44ef36d5524}
+
+
+Upper part of alpha sum; used for pruning. 
+
+
+
+Definition at line 242 of file dtree.\-hpp.
+
+
+
+Referenced by Alpha\-Upper().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!bucket\-Tag@{bucket\-Tag}}
+\index{bucket\-Tag@{bucket\-Tag}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{bucket\-Tag}]{\setlength{\rightskip}{0pt plus 5cm}int mlpack\-::det\-::\-D\-Tree\-::bucket\-Tag\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_a3e2b18a31fec540558bf72d66445607e}
+
+
+The tag for the leaf, used for hashing points. 
+
+
+
+Definition at line 239 of file dtree.\-hpp.
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!end@{end}}
+\index{end@{end}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::det\-::\-D\-Tree\-::end\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_ad4e24682f0ef2b6deec502d6c25d4ed5}
+
+
+The index of the last point in the dataset contained in this node (and its children). 
+
+
+
+Definition at line 207 of file dtree.\-hpp.
+
+
+
+Referenced by End().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!left@{left}}
+\index{left@{left}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-Tree}$\ast$ mlpack\-::det\-::\-D\-Tree\-::left\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_a1227f46ae7181c386be6ede54fce6246}
+
+
+The left child. 
+
+
+
+Definition at line 245 of file dtree.\-hpp.
+
+
+
+Referenced by Left().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!log\-Neg\-Error@{log\-Neg\-Error}}
+\index{log\-Neg\-Error@{log\-Neg\-Error}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{log\-Neg\-Error}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::log\-Neg\-Error\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_ace829ac2b00686e4deba51738abdc933}
+
+
+log-\/negative-\/\-L2-\/error of the node. 
+
+
+
+Definition at line 221 of file dtree.\-hpp.
+
+
+
+Referenced by Log\-Neg\-Error().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!log\-Volume@{log\-Volume}}
+\index{log\-Volume@{log\-Volume}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{log\-Volume}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::log\-Volume\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_af1e194fd1bc5b532a62d2fdca844f890}
+
+
+The logarithm of the volume of the node. 
+
+
+
+Definition at line 236 of file dtree.\-hpp.
+
+
+
+Referenced by Log\-Volume().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!max\-Vals@{max\-Vals}}
+\index{max\-Vals@{max\-Vals}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{max\-Vals}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::vec mlpack\-::det\-::\-D\-Tree\-::max\-Vals\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_ac5944ea68018a27fb01344afdbb60a73}
+
+
+Upper half of bounding box for this node. 
+
+
+
+Definition at line 210 of file dtree.\-hpp.
+
+
+
+Referenced by Max\-Vals().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!min\-Vals@{min\-Vals}}
+\index{min\-Vals@{min\-Vals}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{min\-Vals}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::vec mlpack\-::det\-::\-D\-Tree\-::min\-Vals\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_a1979dd16af92e64197c62bef74f5378e}
+
+
+Lower half of bounding box for this node. 
+
+
+
+Definition at line 212 of file dtree.\-hpp.
+
+
+
+Referenced by Min\-Vals().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!ratio@{ratio}}
+\index{ratio@{ratio}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{ratio}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::ratio\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_a186aee0714a3a707d322aa08cee34f6d}
+
+
+Ratio of the number of points in the node to the total number of points. 
+
+
+
+Definition at line 233 of file dtree.\-hpp.
+
+
+
+Referenced by Ratio().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!right@{right}}
+\index{right@{right}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-Tree}$\ast$ mlpack\-::det\-::\-D\-Tree\-::right\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_a7b849536a8a19c2e8bc1999d54e4cc9e}
+
+
+The right child. 
+
+
+
+Definition at line 247 of file dtree.\-hpp.
+
+
+
+Referenced by Right().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!root@{root}}
+\index{root@{root}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{root}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::det\-::\-D\-Tree\-::root\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_a8ba42f670ef753878df9f2e697473b05}
+
+
+If true, this node is the root of the tree. 
+
+
+
+Definition at line 230 of file dtree.\-hpp.
+
+
+
+Referenced by Root().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!split\-Dim@{split\-Dim}}
+\index{split\-Dim@{split\-Dim}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{split\-Dim}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::det\-::\-D\-Tree\-::split\-Dim\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_acb3d8ba06ad9128d65bd52d7b6a586c9}
+
+
+The splitting dimension for this node. 
+
+
+
+Definition at line 215 of file dtree.\-hpp.
+
+
+
+Referenced by Split\-Dim().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!split\-Value@{split\-Value}}
+\index{split\-Value@{split\-Value}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{split\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::split\-Value\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_ae2b715ebbc645a0f66037af903eb9575}
+
+
+The split value on the splitting dimension for this node. 
+
+
+
+Definition at line 218 of file dtree.\-hpp.
+
+
+
+Referenced by Split\-Value().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!start@{start}}
+\index{start@{start}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::det\-::\-D\-Tree\-::start\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_ae0dd3d04c990f793fad0a5d77659659d}
+
+
+The index of the first point in the dataset contained in this node (and its children). 
+
+
+
+Definition at line 204 of file dtree.\-hpp.
+
+
+
+Referenced by Start().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!subtree\-Leaves@{subtree\-Leaves}}
+\index{subtree\-Leaves@{subtree\-Leaves}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{subtree\-Leaves}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::det\-::\-D\-Tree\-::subtree\-Leaves\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_a131701db985141db1352bb913af75fae}
+
+
+Number of leaves of the subtree. 
+
+
+
+Definition at line 227 of file dtree.\-hpp.
+
+
+
+Referenced by Subtree\-Leaves().
+
+\index{mlpack\-::det\-::\-D\-Tree@{mlpack\-::det\-::\-D\-Tree}!subtree\-Leaves\-Log\-Neg\-Error@{subtree\-Leaves\-Log\-Neg\-Error}}
+\index{subtree\-Leaves\-Log\-Neg\-Error@{subtree\-Leaves\-Log\-Neg\-Error}!mlpack::det::DTree@{mlpack\-::det\-::\-D\-Tree}}
+\subsubsection[{subtree\-Leaves\-Log\-Neg\-Error}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::det\-::\-D\-Tree\-::subtree\-Leaves\-Log\-Neg\-Error\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1det_1_1DTree_a323f87f699b71c7a25f863ea416f8c56}
+
+
+Sum of the error of the leaves of the subtree. 
+
+
+
+Definition at line 224 of file dtree.\-hpp.
+
+
+
+Referenced by Subtree\-Leaves\-Log\-Neg\-Error().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/det/{\bf dtree.\-hpp}\end{DoxyCompactItemize}

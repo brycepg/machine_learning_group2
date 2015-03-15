@@ -1,0 +1,385 @@
+\section{mlpack\-:\-:regression\-:\-:Logistic\-Regression\-Function Class Reference}
+\label{classmlpack_1_1regression_1_1LogisticRegressionFunction}\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+
+
+The log-\/likelihood function for the logistic regression objective function.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Logistic\-Regression\-Function} (const arma\-::mat \&{\bf predictors}, const arma\-::vec \&{\bf responses}, const double {\bf lambda}=0)
+\item 
+{\bf Logistic\-Regression\-Function} (const arma\-::mat \&{\bf predictors}, const arma\-::vec \&{\bf responses}, const arma\-::mat \&{\bf initial\-Point}, const double {\bf lambda}=0)
+\item 
+double {\bf Evaluate} (const arma\-::mat \&parameters) const 
+\begin{DoxyCompactList}\small\item\em Evaluate the logistic regression log-\/likelihood function with the given parameters. \end{DoxyCompactList}\item 
+double {\bf Evaluate} (const arma\-::mat \&parameters, const size\-\_\-t i) const 
+\begin{DoxyCompactList}\small\item\em Evaluate the logistic regression log-\/likelihood function with the given parameters, but using only one data point. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf Get\-Initial\-Point} () const 
+\begin{DoxyCompactList}\small\item\em Return the initial point for the optimization. \end{DoxyCompactList}\item 
+void {\bf Gradient} (const arma\-::mat \&parameters, arma\-::mat \&gradient) const 
+\begin{DoxyCompactList}\small\item\em Evaluate the gradient of the logistic regression log-\/likelihood function with the given parameters. \end{DoxyCompactList}\item 
+void {\bf Gradient} (const arma\-::mat \&parameters, const size\-\_\-t i, arma\-::mat \&gradient) const 
+\begin{DoxyCompactList}\small\item\em Evaluate the gradient of the logistic regression log-\/likelihood function with the given parameters, and with respect to only one point in the dataset. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf Initial\-Point} () const 
+\begin{DoxyCompactList}\small\item\em Return the initial point for the optimization. \end{DoxyCompactList}\item 
+arma\-::mat \& {\bf Initial\-Point} ()
+\begin{DoxyCompactList}\small\item\em Modify the initial point for the optimization. \end{DoxyCompactList}\item 
+const double \& {\bf Lambda} () const 
+\begin{DoxyCompactList}\small\item\em Return the regularization parameter (lambda). \end{DoxyCompactList}\item 
+double \& {\bf Lambda} ()
+\begin{DoxyCompactList}\small\item\em Modify the regularization parameter (lambda). \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Functions} () const 
+\begin{DoxyCompactList}\small\item\em Return the number of separable functions (the number of predictor points). \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf Predictors} () const 
+\begin{DoxyCompactList}\small\item\em Return the matrix of predictors. \end{DoxyCompactList}\item 
+const arma\-::vec \& {\bf Responses} () const 
+\begin{DoxyCompactList}\small\item\em Return the vector of responses. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+arma\-::mat {\bf initial\-Point}
+\begin{DoxyCompactList}\small\item\em The initial point, from which to start the optimization. \end{DoxyCompactList}\item 
+double {\bf lambda}
+\begin{DoxyCompactList}\small\item\em The regularization parameter for L2-\/regularization. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf predictors}
+\begin{DoxyCompactList}\small\item\em The matrix of data points (predictors). \end{DoxyCompactList}\item 
+const arma\-::vec \& {\bf responses}
+\begin{DoxyCompactList}\small\item\em The vector of responses to the input data points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The log-\/likelihood function for the logistic regression objective function. 
+
+This is used by various mlpack optimizers to train a logistic regression model. 
+
+Definition at line 29 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Logistic\-Regression\-Function@{Logistic\-Regression\-Function}}
+\index{Logistic\-Regression\-Function@{Logistic\-Regression\-Function}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Logistic\-Regression\-Function}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Logistic\-Regression\-Function (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{predictors, }
+\item[{const arma\-::vec \&}]{responses, }
+\item[{const double}]{lambda = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_a0adaae473904177b6b2355bd691df0b5}
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Logistic\-Regression\-Function@{Logistic\-Regression\-Function}}
+\index{Logistic\-Regression\-Function@{Logistic\-Regression\-Function}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Logistic\-Regression\-Function}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Logistic\-Regression\-Function (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{predictors, }
+\item[{const arma\-::vec \&}]{responses, }
+\item[{const arma\-::mat \&}]{initial\-Point, }
+\item[{const double}]{lambda = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_aa417f4bdec73e40831f4327f991f360e}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Evaluate@{Evaluate}}
+\index{Evaluate@{Evaluate}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Evaluate}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Evaluate (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{parameters}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_aa83f6d344acdb6d0979c8890006a0cc3}
+
+
+Evaluate the logistic regression log-\/likelihood function with the given parameters. 
+
+Note that if a point has 0 probability of being classified directly with the given parameters, then \doxyref{Evaluate()}{p.}{classmlpack_1_1regression_1_1LogisticRegressionFunction_aa83f6d344acdb6d0979c8890006a0cc3} will return nan (this is kind of a corner case and should not happen for reasonable models).
+
+The optimum (minimum) of this function is 0.\-0, and occurs when each point is classified correctly with very high probability.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameters} & Vector of logistic regression parameters. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Evaluate@{Evaluate}}
+\index{Evaluate@{Evaluate}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Evaluate}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Evaluate (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{parameters, }
+\item[{const size\-\_\-t}]{i}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_aaaeeda89afcba68d91f764ff93d2d490}
+
+
+Evaluate the logistic regression log-\/likelihood function with the given parameters, but using only one data point. 
+
+This is useful for optimizers such as S\-G\-D, which require a separable objective function. Note that if the point has 0 probability of being classified correctly with the given parameters, then \doxyref{Evaluate()}{p.}{classmlpack_1_1regression_1_1LogisticRegressionFunction_aa83f6d344acdb6d0979c8890006a0cc3} will return nan (this is kind of a corner case and should not happen for reasonable models).
+
+The optimum (minimum) of this function is 0.\-0, and occurs when the point is classified correctly with very high probability.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameters} & Vector of logistic regression parameters. \\
+\hline
+{\em i} & Index of point to use for objective function evaluation. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Get\-Initial\-Point@{Get\-Initial\-Point}}
+\index{Get\-Initial\-Point@{Get\-Initial\-Point}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Get\-Initial\-Point}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::mat\& mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Get\-Initial\-Point (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_a84a7026f29bdf06bfda0c0d5a3b20b80}
+
+
+Return the initial point for the optimization. 
+
+
+
+Definition at line 109 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+
+
+References initial\-Point.
+
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Gradient@{Gradient}}
+\index{Gradient@{Gradient}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Gradient}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Gradient (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{parameters, }
+\item[{arma\-::mat \&}]{gradient}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_a91dd15e821cd8b333cb93a374ccc0355}
+
+
+Evaluate the gradient of the logistic regression log-\/likelihood function with the given parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameters} & Vector of logistic regression parameters. \\
+\hline
+{\em gradient} & Vector to output gradient into. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Gradient@{Gradient}}
+\index{Gradient@{Gradient}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Gradient}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Gradient (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{parameters, }
+\item[{const size\-\_\-t}]{i, }
+\item[{arma\-::mat \&}]{gradient}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_aab4b4118935422274d33bd6b486aca99}
+
+
+Evaluate the gradient of the logistic regression log-\/likelihood function with the given parameters, and with respect to only one point in the dataset. 
+
+This is useful for optimizers such as S\-G\-D, which require a separable objective function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameters} & Vector of logistic regression parameters. \\
+\hline
+{\em i} & Index of points to use for objective function gradient evaluation. \\
+\hline
+{\em gradient} & Vector to output gradient into. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Initial\-Point@{Initial\-Point}}
+\index{Initial\-Point@{Initial\-Point}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Initial\-Point}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::mat\& mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Initial\-Point (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_a1b4e212e09c0c9379aaf289ccc3386ff}
+
+
+Return the initial point for the optimization. 
+
+
+
+Definition at line 42 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+
+
+References initial\-Point.
+
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Initial\-Point@{Initial\-Point}}
+\index{Initial\-Point@{Initial\-Point}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Initial\-Point}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::mat\& mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Initial\-Point (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_abb5b5f60e91edbbcf678e25340e3349c}
+
+
+Modify the initial point for the optimization. 
+
+
+
+Definition at line 44 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+
+
+References initial\-Point.
+
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Lambda@{Lambda}}
+\index{Lambda@{Lambda}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Lambda}]{\setlength{\rightskip}{0pt plus 5cm}const double\& mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Lambda (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_a4596f278c21e1a9e9ba9979f1b7a207b}
+
+
+Return the regularization parameter (lambda). 
+
+
+
+Definition at line 47 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+
+
+References lambda.
+
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Lambda@{Lambda}}
+\index{Lambda@{Lambda}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Lambda}]{\setlength{\rightskip}{0pt plus 5cm}double\& mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Lambda (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_a1e7a750b50449bd2190b85dd1efd4e5d}
+
+
+Modify the regularization parameter (lambda). 
+
+
+
+Definition at line 49 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+
+
+References lambda.
+
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Num\-Functions@{Num\-Functions}}
+\index{Num\-Functions@{Num\-Functions}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Num\-Functions}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Num\-Functions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_ac5e0c8806791675a695dedb95f61c43f}
+
+
+Return the number of separable functions (the number of predictor points). 
+
+
+
+Definition at line 112 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Predictors@{Predictors}}
+\index{Predictors@{Predictors}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Predictors}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::mat\& mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Predictors (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_a7bc7d5f99f1b61dc7338ec8e41e3583b}
+
+
+Return the matrix of predictors. 
+
+
+
+Definition at line 52 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+
+
+References predictors.
+
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!Responses@{Responses}}
+\index{Responses@{Responses}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{Responses}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::vec\& mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::\-Responses (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_aa249eec86153ec776c609e75b84c7262}
+
+
+Return the vector of responses. 
+
+
+
+Definition at line 54 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+
+
+References responses.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!initial\-Point@{initial\-Point}}
+\index{initial\-Point@{initial\-Point}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{initial\-Point}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::mat mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::initial\-Point\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_ab03d97ce7a25a72e7ae8048d3b62496d}
+
+
+The initial point, from which to start the optimization. 
+
+
+
+Definition at line 116 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+
+
+Referenced by Get\-Initial\-Point(), and Initial\-Point().
+
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!lambda@{lambda}}
+\index{lambda@{lambda}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{lambda}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::lambda\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_a9d1505b41512900cd1bdea29335372bf}
+
+
+The regularization parameter for L2-\/regularization. 
+
+
+
+Definition at line 122 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+
+
+Referenced by Lambda().
+
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!predictors@{predictors}}
+\index{predictors@{predictors}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{predictors}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::mat\& mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::predictors\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_ac3cf98266eda80fb528cb7ee78edbfad}
+
+
+The matrix of data points (predictors). 
+
+
+
+Definition at line 118 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+
+
+Referenced by Predictors().
+
+\index{mlpack\-::regression\-::\-Logistic\-Regression\-Function@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}!responses@{responses}}
+\index{responses@{responses}!mlpack::regression::LogisticRegressionFunction@{mlpack\-::regression\-::\-Logistic\-Regression\-Function}}
+\subsubsection[{responses}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::vec\& mlpack\-::regression\-::\-Logistic\-Regression\-Function\-::responses\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1regression_1_1LogisticRegressionFunction_a7df4d7eb9e1527866a6db2d691bda69d}
+
+
+The vector of responses to the input data points. 
+
+
+
+Definition at line 120 of file logistic\-\_\-regression\-\_\-function.\-hpp.
+
+
+
+Referenced by Responses().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/logistic\-\_\-regression/{\bf logistic\-\_\-regression\-\_\-function.\-hpp}\end{DoxyCompactItemize}

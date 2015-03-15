@@ -1,0 +1,81 @@
+.TH "mlpack::util::Option< N >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::util::Option< N > \- 
+.PP
+A static object whose constructor registers a parameter with the \fBCLI\fP class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOption\fP (bool ignoreTemplate, N defaultValue, const std::string &identifier, const std::string &description, const std::string &parent=std::string(''), bool required=false)"
+.br
+.RI "\fIConstruct an \fBOption\fP object\&. \fP"
+.ti -1c
+.RI "\fBOption\fP (const std::string &identifier, const std::string &description, const std::string &parent=std::string(''))"
+.br
+.RI "\fIConstructs an \fBOption\fP object\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename N>class mlpack::util::Option< N >"
+A static object whose constructor registers a parameter with the \fBCLI\fP class\&. 
+
+This should not be used outside of \fBCLI\fP itself, and you should use the \fBPARAM_FLAG()\fP, \fBPARAM_DOUBLE()\fP, \fBPARAM_INT()\fP, \fBPARAM_STRING()\fP, or other similar macros to declare these objects instead of declaring them directly\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+core/io/cli\&.hpp, \fBmlpack::CLI\fP 
+.RE
+.PP
+
+.PP
+Definition at line 34 of file option\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename N > \fBmlpack::util::Option\fP< N >::\fBOption\fP (boolignoreTemplate, NdefaultValue, const std::string &identifier, const std::string &description, const std::string &parent = \fCstd::string('')\fP, boolrequired = \fCfalse\fP)"
+
+.PP
+Construct an \fBOption\fP object\&. When constructed, it will register itself with \fBCLI\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIignoreTemplate\fP Whether or not the template type matters for this option\&. Essentially differs options with no value (flags) from those that do, and thus require a type\&. 
+.br
+\fIdefaultValue\fP Default value this parameter will be initialized to\&. 
+.br
+\fIidentifier\fP The name of the option (no dashes in front; for --help, we would pass 'help')\&. 
+.br
+\fIdescription\fP A short string describing the option\&. 
+.br
+\fIparent\fP Full pathname of the parent module that 'owns' this option\&. The default is the root node (an empty string)\&. 
+.br
+\fIrequired\fP Whether or not the option is required at runtime\&. 
+.RE
+.PP
+
+.SS "template<typename N > \fBmlpack::util::Option\fP< N >::\fBOption\fP (const std::string &identifier, const std::string &description, const std::string &parent = \fCstd::string('')\fP)"
+
+.PP
+Constructs an \fBOption\fP object\&. When constructed, it will register a flag with \fBCLI\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidentifier\fP The name of the option (no dashes in front); for --help we would pass 'help'\&. 
+.br
+\fIdescription\fP A short string describing the option\&. 
+.br
+\fIparent\fP Full pathname of the parent module that 'owns' this option\&. The default is the root node (an empty string)\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

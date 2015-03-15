@@ -1,0 +1,59 @@
+.TH "src/mlpack/methods/gmm/phi.hpp" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/mlpack/methods/gmm/phi.hpp \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "\fBmlpack\fP"
+.br
+.RI "\fILinear algebra utility functions, generally performed on matrices or vectors\&. \fP"
+.ti -1c
+.RI "\fBmlpack::gmm\fP"
+.br
+.RI "\fIGaussian Mixture Models\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBmlpack::gmm::phi\fP (const double x, const double mean, const double var)"
+.br
+.RI "\fICalculates the univariate Gaussian probability density function\&. \fP"
+.ti -1c
+.RI "double \fBmlpack::gmm::phi\fP (const arma::vec &x, const arma::vec &mean, const arma::mat &cov)"
+.br
+.RI "\fICalculates the multivariate Gaussian probability density function\&. \fP"
+.ti -1c
+.RI "double \fBmlpack::gmm::phi\fP (const arma::vec &x, const arma::vec &mean, const arma::mat &cov, const std::vector< arma::mat > &d_cov, arma::vec &g_mean, arma::vec &g_cov)"
+.br
+.RI "\fICalculates the multivariate Gaussian probability density function and also the gradients with respect to the mean and the variance\&. \fP"
+.ti -1c
+.RI "void \fBmlpack::gmm::phi\fP (const arma::mat &x, const arma::vec &mean, const arma::mat &cov, arma::vec &probabilities)"
+.br
+.RI "\fICalculates the multivariate Gaussian probability density function for each data point (column) in the given matrix, with respect to the given mean and variance\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+\fBAuthor:\fP
+.RS 4
+Parikshit Ram (pram@cc.gatech.edu)
+.RE
+.PP
+This file computes the Gaussian probability density function
+.PP
+This file is part of mlpack 1\&.0\&.12\&.
+.PP
+mlpack is free software; you may redstribute it and/or modify it under the terms of the 3-clause BSD license\&. You should have received a copy of the 3-clause BSD license along with mlpack\&. If not, see http://www.opensource.org/licenses/BSD-3-Clause for more information\&. 
+.PP
+Definition in file \fBphi\&.hpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

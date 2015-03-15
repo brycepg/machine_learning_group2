@@ -1,0 +1,95 @@
+\section{mlpack Namespace Reference}
+\label{namespacemlpack}\index{mlpack@{mlpack}}
+
+
+Linear algebra utility functions, generally performed on matrices or vectors.  
+
+
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+{\bf amf}
+\begin{DoxyCompactList}\small\item\em Alternating Matrix Factorization. \end{DoxyCompactList}\item 
+{\bf bound}
+\item 
+{\bf cf}
+\begin{DoxyCompactList}\small\item\em Collaborative filtering. \end{DoxyCompactList}\item 
+{\bf data}
+\begin{DoxyCompactList}\small\item\em Functions to load and save matrices. \end{DoxyCompactList}\item 
+{\bf decision\-\_\-stump}
+\item 
+{\bf det}
+\begin{DoxyCompactList}\small\item\em Density Estimation Trees. \end{DoxyCompactList}\item 
+{\bf distribution}
+\begin{DoxyCompactList}\small\item\em Probability distributions. \end{DoxyCompactList}\item 
+{\bf emst}
+\begin{DoxyCompactList}\small\item\em Euclidean Minimum Spanning Trees. \end{DoxyCompactList}\item 
+{\bf fastmks}
+\begin{DoxyCompactList}\small\item\em Fast max-\/kernel search. \end{DoxyCompactList}\item 
+{\bf gmm}
+\begin{DoxyCompactList}\small\item\em Gaussian Mixture Models. \end{DoxyCompactList}\item 
+{\bf hmm}
+\begin{DoxyCompactList}\small\item\em Hidden Markov Models. \end{DoxyCompactList}\item 
+{\bf kernel}
+\begin{DoxyCompactList}\small\item\em Kernel functions. \end{DoxyCompactList}\item 
+{\bf kmeans}
+\begin{DoxyCompactList}\small\item\em K-\/\-Means clustering. \end{DoxyCompactList}\item 
+{\bf kpca}
+\item 
+{\bf lcc}
+\item 
+{\bf math}
+\begin{DoxyCompactList}\small\item\em Miscellaneous math routines. \end{DoxyCompactList}\item 
+{\bf metric}
+\item 
+{\bf mvu}
+\item 
+{\bf naive\-\_\-bayes}
+\begin{DoxyCompactList}\small\item\em The Naive Bayes Classifier. \end{DoxyCompactList}\item 
+{\bf nca}
+\begin{DoxyCompactList}\small\item\em Neighborhood Components Analysis. \end{DoxyCompactList}\item 
+{\bf neighbor}
+\begin{DoxyCompactList}\small\item\em Neighbor-\/search routines. \end{DoxyCompactList}\item 
+{\bf nn}
+\item 
+{\bf optimization}
+\item 
+{\bf pca}
+\item 
+{\bf perceptron}
+\item 
+{\bf radical}
+\item 
+{\bf range}
+\begin{DoxyCompactList}\small\item\em Range-\/search routines. \end{DoxyCompactList}\item 
+{\bf regression}
+\begin{DoxyCompactList}\small\item\em Regression methods. \end{DoxyCompactList}\item 
+{\bf sparse\-\_\-coding}
+\item 
+{\bf svd}
+\item 
+{\bf tree}
+\begin{DoxyCompactList}\small\item\em Trees and tree-\/building procedures. \end{DoxyCompactList}\item 
+{\bf util}
+\end{DoxyCompactItemize}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf C\-L\-I}
+\begin{DoxyCompactList}\small\item\em Parses the command line for parameters and holds user-\/specified parameters. \end{DoxyCompactList}\item 
+class {\bf Log}
+\begin{DoxyCompactList}\small\item\em Provides a convenient way to give formatted output. \end{DoxyCompactList}\item 
+struct {\bf Param\-Data}
+\begin{DoxyCompactList}\small\item\em Aids in the extensibility of \doxyref{C\-L\-I}{p.}{classmlpack_1_1CLI} by focusing potential changes into one structure. \end{DoxyCompactList}\item 
+class {\bf Timer}
+\begin{DoxyCompactList}\small\item\em The timer class provides a way for M\-L\-P\-A\-C\-K methods to be timed. \end{DoxyCompactList}\item 
+class {\bf Timers}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Linear algebra utility functions, generally performed on matrices or vectors. This class is used to update the weight\-Vectors matrix according to the simple update rule as discussed by Rosenblatt\-:
+
+if a vector x has been incorrectly classified by a weight w, then w = w -\/ x and w'= w'+ x
+
+where w' is the weight vector which correctly classifies x. 

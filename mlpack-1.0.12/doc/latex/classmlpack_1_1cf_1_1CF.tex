@@ -1,0 +1,540 @@
+\section{mlpack\-:\-:cf\-:\-:C\-F$<$ Factorizer\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1cf_1_1CF}\index{mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$@{mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$}}
+
+
+This class implements Collaborative Filtering (\doxyref{C\-F}{p.}{classmlpack_1_1cf_1_1CF}).  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf C\-F} (arma\-::mat \&{\bf data}, const size\-\_\-t {\bf num\-Users\-For\-Similarity}=5, const size\-\_\-t {\bf rank}=0)
+\begin{DoxyCompactList}\small\item\em Initialize the \doxyref{C\-F}{p.}{classmlpack_1_1cf_1_1CF} object. \end{DoxyCompactList}\item 
+const arma\-::sp\-\_\-mat \& {\bf Cleaned\-Data} () const 
+\begin{DoxyCompactList}\small\item\em Get the cleaned data matrix. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf Data} () const 
+\begin{DoxyCompactList}\small\item\em Get the data matrix. \end{DoxyCompactList}\item 
+void {\bf Factorizer} (const Factorizer\-Type \&f)
+\begin{DoxyCompactList}\small\item\em Sets factorizer for N\-M\-F. \end{DoxyCompactList}\item 
+void {\bf Get\-Recommendations} (const size\-\_\-t num\-Recs, arma\-::\-Mat$<$ size\-\_\-t $>$ \&recommendations)
+\begin{DoxyCompactList}\small\item\em Generates the given number of recommendations for all users. \end{DoxyCompactList}\item 
+void {\bf Get\-Recommendations} (const size\-\_\-t num\-Recs, arma\-::\-Mat$<$ size\-\_\-t $>$ \&recommendations, arma\-::\-Col$<$ size\-\_\-t $>$ \&users)
+\begin{DoxyCompactList}\small\item\em Generates the given number of recommendations for the specified users. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf H} () const 
+\begin{DoxyCompactList}\small\item\em Get the Item Matrix. \end{DoxyCompactList}\item 
+void {\bf Num\-Users\-For\-Similarity} (const size\-\_\-t num)
+\begin{DoxyCompactList}\small\item\em Sets number of users for calculating similarity. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Users\-For\-Similarity} () const 
+\begin{DoxyCompactList}\small\item\em Gets number of users for calculating similarity. \end{DoxyCompactList}\item 
+void {\bf Rank} (const size\-\_\-t rank\-Value)
+\begin{DoxyCompactList}\small\item\em Sets rank parameter for matrix factorization. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Rank} () const 
+\begin{DoxyCompactList}\small\item\em Gets rank parameter for matrix factorization. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf Rating} () const 
+\begin{DoxyCompactList}\small\item\em Get the Rating Matrix. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Returns a string representation of this object. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf W} () const 
+\begin{DoxyCompactList}\small\item\em Get the User Matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Clean\-Data} ()
+\begin{DoxyCompactList}\small\item\em Converts the User, Item, Value Matrix to User-\/\-Item Table. \end{DoxyCompactList}\item 
+void {\bf Insert\-Neighbor} (const size\-\_\-t query\-Index, const size\-\_\-t pos, const size\-\_\-t neighbor, const double value, arma\-::\-Mat$<$ size\-\_\-t $>$ \&recommendations, arma\-::mat \&values) const 
+\begin{DoxyCompactList}\small\item\em Helper function to insert a point into the recommendation matrices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+arma\-::sp\-\_\-mat {\bf cleaned\-Data}
+\begin{DoxyCompactList}\small\item\em Cleaned data matrix. \end{DoxyCompactList}\item 
+arma\-::mat {\bf data}
+\begin{DoxyCompactList}\small\item\em Initial data matrix. \end{DoxyCompactList}\item 
+Factorizer\-Type {\bf factorizer}
+\begin{DoxyCompactList}\small\item\em Instantiated factorizer object. \end{DoxyCompactList}\item 
+arma\-::mat {\bf h}
+\begin{DoxyCompactList}\small\item\em Item matrix. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf num\-Users\-For\-Similarity}
+\begin{DoxyCompactList}\small\item\em Number of users for similarity. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf rank}
+\begin{DoxyCompactList}\small\item\em Rank used for matrix factorization. \end{DoxyCompactList}\item 
+arma\-::mat {\bf rating}
+\begin{DoxyCompactList}\small\item\em Rating matrix. \end{DoxyCompactList}\item 
+arma\-::mat {\bf w}
+\begin{DoxyCompactList}\small\item\em User matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Factorizer\-Type = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$class mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$}
+
+This class implements Collaborative Filtering (\doxyref{C\-F}{p.}{classmlpack_1_1cf_1_1CF}). 
+
+This implementation presently supports Alternating Least Squares (A\-L\-S) for collaborative filtering.
+
+A simple example of how to run Collaborative Filtering is shown below.
+
+
+\begin{DoxyCode}
+\textcolor{keyword}{extern} arma::mat data; \textcolor{comment}{// (user, item, rating) table}
+\textcolor{keyword}{extern} arma::Col<size\_t> users; \textcolor{comment}{// users seeking recommendations}
+arma::Mat<size\_t> recommendations; \textcolor{comment}{// Recommendations}
+
+CF<> cf(data); \textcolor{comment}{// Default options.}
+
+\textcolor{comment}{// Generate 10 recommendations for all users.}
+cf.GetRecommendations(10, recommendations);
+
+\textcolor{comment}{// Generate 10 recommendations for specified users.}
+cf.GetRecommendations(10, recommendations, users);
+\end{DoxyCode}
+
+
+The data matrix is a (user, item, rating) table. Each column in the matrix should have three rows. The first represents the user; the second represents the item; and the third represents the rating. The user and item, while they are in a matrix that holds doubles, should hold integer (or size\-\_\-t) values. The user and item indices are assumed to start at 0.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Factorizer\-Type} & The type of matrix factorization to use to decompose the rating matrix (a W and H matrix). This must implement the method Apply(arma\-::sp\-\_\-mat\& data, size\-\_\-t rank, arma\-::mat\& W, arma\-::mat\& H). \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 68 of file cf.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!C\-F@{C\-F}}
+\index{C\-F@{C\-F}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{C\-F}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::{\bf C\-F} (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{data, }
+\item[{const size\-\_\-t}]{num\-Users\-For\-Similarity = {\ttfamily 5}, }
+\item[{const size\-\_\-t}]{rank = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1cf_1_1CF_a088dc005bba4bcc270d880f2c9d2c9bf}
+
+
+Initialize the \doxyref{C\-F}{p.}{classmlpack_1_1cf_1_1CF} object. 
+
+Store a reference to the data that we will be using. There are parameters that can be set; default values are provided for each of them. If the rank is left unset (or is set to 0), a simple density-\/based heuristic will be used to choose a rank.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Initial (user, item, rating) matrix. \\
+\hline
+{\em num\-Users\-For\-Similarity} & Size of the neighborhood. \\
+\hline
+{\em rank} & Rank parameter for matrix factorization. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!Clean\-Data@{Clean\-Data}}
+\index{Clean\-Data@{Clean\-Data}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{Clean\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ void {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::Clean\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1cf_1_1CF_a3a1637dd47d75356ff4557a39981964d}
+
+
+Converts the User, Item, Value Matrix to User-\/\-Item Table. 
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!Cleaned\-Data@{Cleaned\-Data}}
+\index{Cleaned\-Data@{Cleaned\-Data}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{Cleaned\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ const arma\-::sp\-\_\-mat\& {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::Cleaned\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1cf_1_1CF_a43bf552e111f0520462d67dc791cb1e7}
+
+
+Get the cleaned data matrix. 
+
+
+
+Definition at line 130 of file cf.\-hpp.
+
+
+
+References mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::cleaned\-Data.
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!Data@{Data}}
+\index{Data@{Data}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ const arma\-::mat\& {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1cf_1_1CF_ae01e49cc1845ada6a6907a5154f083bd}
+
+
+Get the data matrix. 
+
+
+
+Definition at line 128 of file cf.\-hpp.
+
+
+
+References mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::data.
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!Factorizer@{Factorizer}}
+\index{Factorizer@{Factorizer}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{Factorizer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ void {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::Factorizer (
+\begin{DoxyParamCaption}
+\item[{const Factorizer\-Type \&}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1cf_1_1CF_ab4ce1facfee7dec20ecdb7456dc30cfb}
+
+
+Sets factorizer for N\-M\-F. 
+
+
+
+Definition at line 116 of file cf.\-hpp.
+
+
+
+References mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::factorizer.
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!Get\-Recommendations@{Get\-Recommendations}}
+\index{Get\-Recommendations@{Get\-Recommendations}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{Get\-Recommendations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ void {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::Get\-Recommendations (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{num\-Recs, }
+\item[{arma\-::\-Mat$<$ size\-\_\-t $>$ \&}]{recommendations}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1cf_1_1CF_a9bc7e0f884730f936f720b8ed3b0b950}
+
+
+Generates the given number of recommendations for all users. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\-Recs} & Number of Recommendations \\
+\hline
+{\em recommendations} & Matrix to save recommendations into. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!Get\-Recommendations@{Get\-Recommendations}}
+\index{Get\-Recommendations@{Get\-Recommendations}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{Get\-Recommendations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ void {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::Get\-Recommendations (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{num\-Recs, }
+\item[{arma\-::\-Mat$<$ size\-\_\-t $>$ \&}]{recommendations, }
+\item[{arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{users}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1cf_1_1CF_a3e9f75bed36dbfb42b2c2430cd5a935e}
+
+
+Generates the given number of recommendations for the specified users. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\-Recs} & Number of Recommendations \\
+\hline
+{\em recommendations} & Matrix to save recommendations \\
+\hline
+{\em users} & Users for which recommendations are to be generated \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!H@{H}}
+\index{H@{H}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{H}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ const arma\-::mat\& {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::H (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1cf_1_1CF_af3e2ac2172abb1d300b7eb6f5598e059}
+
+
+Get the Item Matrix. 
+
+
+
+Definition at line 124 of file cf.\-hpp.
+
+
+
+References mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::h.
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!Insert\-Neighbor@{Insert\-Neighbor}}
+\index{Insert\-Neighbor@{Insert\-Neighbor}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{Insert\-Neighbor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ void {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::Insert\-Neighbor (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{query\-Index, }
+\item[{const size\-\_\-t}]{pos, }
+\item[{const size\-\_\-t}]{neighbor, }
+\item[{const double}]{value, }
+\item[{arma\-::\-Mat$<$ size\-\_\-t $>$ \&}]{recommendations, }
+\item[{arma\-::mat \&}]{values}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1cf_1_1CF_a5ebfa061aec5b5f1296605321a488ce9}
+
+
+Helper function to insert a point into the recommendation matrices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query\-Index} & Index of point whose recommendations we are inserting into. \\
+\hline
+{\em pos} & Position in list to insert into. \\
+\hline
+{\em neighbor} & Index of item being inserted as a recommendation. \\
+\hline
+{\em value} & Value of recommendation. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!Num\-Users\-For\-Similarity@{Num\-Users\-For\-Similarity}}
+\index{Num\-Users\-For\-Similarity@{Num\-Users\-For\-Similarity}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{Num\-Users\-For\-Similarity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ void {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::Num\-Users\-For\-Similarity (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{num}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1cf_1_1CF_a7077aa89f0074066b6553e74abc52773}
+
+
+Sets number of users for calculating similarity. 
+
+
+
+Definition at line 86 of file cf.\-hpp.
+
+
+
+References mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::num\-Users\-For\-Similarity, and mlpack\-::\-Log\-::\-Warn.
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!Num\-Users\-For\-Similarity@{Num\-Users\-For\-Similarity}}
+\index{Num\-Users\-For\-Similarity@{Num\-Users\-For\-Similarity}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{Num\-Users\-For\-Similarity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ size\-\_\-t {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::Num\-Users\-For\-Similarity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1cf_1_1CF_a8768b2168fc3df46fea2f71380b3107c}
+
+
+Gets number of users for calculating similarity. 
+
+
+
+Definition at line 98 of file cf.\-hpp.
+
+
+
+References mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::num\-Users\-For\-Similarity.
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!Rank@{Rank}}
+\index{Rank@{Rank}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{Rank}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ void {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::Rank (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{rank\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1cf_1_1CF_a0ac94756d07f3ee28a6b83093b43bf58}
+
+
+Sets rank parameter for matrix factorization. 
+
+
+
+Definition at line 104 of file cf.\-hpp.
+
+
+
+References mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::rank.
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!Rank@{Rank}}
+\index{Rank@{Rank}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{Rank}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ size\-\_\-t {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::Rank (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1cf_1_1CF_a3a4a659d658131d66eb237962fa09d26}
+
+
+Gets rank parameter for matrix factorization. 
+
+
+
+Definition at line 110 of file cf.\-hpp.
+
+
+
+References mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::rank.
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!Rating@{Rating}}
+\index{Rating@{Rating}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{Rating}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ const arma\-::mat\& {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::Rating (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1cf_1_1CF_a7d58c2661d58f64b611978872a1fd31d}
+
+
+Get the Rating Matrix. 
+
+
+
+Definition at line 126 of file cf.\-hpp.
+
+
+
+References mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::rating.
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ std\-::string {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1cf_1_1CF_aea9401ce2ea8684283e9d7b10a159e1a}
+
+
+Returns a string representation of this object. 
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!W@{W}}
+\index{W@{W}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{W}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ const arma\-::mat\& {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::W (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1cf_1_1CF_a5375c035d6507db8934b949abb5b0da9}
+
+
+Get the User Matrix. 
+
+
+
+Definition at line 122 of file cf.\-hpp.
+
+
+
+References mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::w.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!cleaned\-Data@{cleaned\-Data}}
+\index{cleaned\-Data@{cleaned\-Data}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{cleaned\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ arma\-::sp\-\_\-mat {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::cleaned\-Data\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1cf_1_1CF_a05a18cb2a0abcfc3e9521b4f92687aa9}
+
+
+Cleaned data matrix. 
+
+
+
+Definition at line 173 of file cf.\-hpp.
+
+
+
+Referenced by mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::\-Cleaned\-Data().
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!data@{data}}
+\index{data@{data}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ arma\-::mat {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::data\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1cf_1_1CF_a93a746c91803b719197f5184de5ed73f}
+
+
+Initial data matrix. 
+
+
+
+Definition at line 159 of file cf.\-hpp.
+
+
+
+Referenced by mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::\-Data().
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!factorizer@{factorizer}}
+\index{factorizer@{factorizer}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{factorizer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ Factorizer\-Type {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::factorizer\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1cf_1_1CF_a891af3b1dbcf08ce50f724c695f35d16}
+
+
+Instantiated factorizer object. 
+
+
+
+Definition at line 165 of file cf.\-hpp.
+
+
+
+Referenced by mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::\-Factorizer().
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!h@{h}}
+\index{h@{h}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{h}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ arma\-::mat {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::h\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1cf_1_1CF_ac1c2cd8a70431ef5f53ee4732b357491}
+
+
+Item matrix. 
+
+
+
+Definition at line 169 of file cf.\-hpp.
+
+
+
+Referenced by mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::\-H().
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!num\-Users\-For\-Similarity@{num\-Users\-For\-Similarity}}
+\index{num\-Users\-For\-Similarity@{num\-Users\-For\-Similarity}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{num\-Users\-For\-Similarity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ size\-\_\-t {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::num\-Users\-For\-Similarity\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1cf_1_1CF_ad9632f44ddf622d4f7842a4c3138ae16}
+
+
+Number of users for similarity. 
+
+
+
+Definition at line 161 of file cf.\-hpp.
+
+
+
+Referenced by mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::\-Num\-Users\-For\-Similarity().
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!rank@{rank}}
+\index{rank@{rank}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{rank}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ size\-\_\-t {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::rank\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1cf_1_1CF_a202f533939ba1ec88f124565a5a863a3}
+
+
+Rank used for matrix factorization. 
+
+
+
+Definition at line 163 of file cf.\-hpp.
+
+
+
+Referenced by mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::\-Rank().
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!rating@{rating}}
+\index{rating@{rating}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{rating}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ arma\-::mat {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::rating\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1cf_1_1CF_a2686eef4031e76b0665c19fe94ea0ddb}
+
+
+Rating matrix. 
+
+
+
+Definition at line 171 of file cf.\-hpp.
+
+
+
+Referenced by mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::\-Rating().
+
+\index{mlpack\-::cf\-::\-C\-F@{mlpack\-::cf\-::\-C\-F}!w@{w}}
+\index{w@{w}!mlpack::cf::CF@{mlpack\-::cf\-::\-C\-F}}
+\subsubsection[{w}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Factorizer\-Type  = amf\-::\-A\-M\-F$<$amf\-::\-Simple\-Residue\-Termination,                                       amf\-::\-Random\-Initialization,                                        amf\-::\-N\-M\-F\-A\-L\-S\-Update$>$$>$ arma\-::mat {\bf mlpack\-::cf\-::\-C\-F}$<$ Factorizer\-Type $>$\-::w\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1cf_1_1CF_a5f217010d19c1ae46d62dfca99a1f587}
+
+
+User matrix. 
+
+
+
+Definition at line 167 of file cf.\-hpp.
+
+
+
+Referenced by mlpack\-::cf\-::\-C\-F$<$ Factorizer\-Type $>$\-::\-W().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/cf/{\bf cf.\-hpp}\end{DoxyCompactItemize}

@@ -1,0 +1,299 @@
+\section{Traversal\-Info$<$ Tree\-Type $>$ Class Template Reference}
+\label{classTraversalInfo}\index{Traversal\-Info$<$ Tree\-Type $>$@{Traversal\-Info$<$ Tree\-Type $>$}}
+
+
+The \doxyref{Traversal\-Info}{p.}{classTraversalInfo} class holds traversal information which is used in dual-\/tree (and single-\/tree) traversals.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Traversal\-Info} ()
+\begin{DoxyCompactList}\small\item\em Create the \doxyref{Traversal\-Info}{p.}{classTraversalInfo} object and initialize the pointers to N\-U\-L\-L. \end{DoxyCompactList}\item 
+double {\bf Last\-Base\-Case} () const 
+\begin{DoxyCompactList}\small\item\em Get the base case associated with the last node combination. \end{DoxyCompactList}\item 
+double \& {\bf Last\-Base\-Case} ()
+\begin{DoxyCompactList}\small\item\em Modify the base case associated with the last node combination. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf Last\-Query\-Node} () const 
+\begin{DoxyCompactList}\small\item\em Get the last query node. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$\& {\bf Last\-Query\-Node} ()
+\begin{DoxyCompactList}\small\item\em Modify the last query node. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf Last\-Reference\-Node} () const 
+\begin{DoxyCompactList}\small\item\em Get the last reference node. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$\& {\bf Last\-Reference\-Node} ()
+\begin{DoxyCompactList}\small\item\em Modify the last reference node. \end{DoxyCompactList}\item 
+double {\bf Last\-Score} () const 
+\begin{DoxyCompactList}\small\item\em Get the score associated with the last query and reference nodes. \end{DoxyCompactList}\item 
+double \& {\bf Last\-Score} ()
+\begin{DoxyCompactList}\small\item\em Modify the score associated with the last query and reference nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf last\-Base\-Case}
+\begin{DoxyCompactList}\small\item\em The last base case. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf last\-Query\-Node}
+\begin{DoxyCompactList}\small\item\em The last query node. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf last\-Reference\-Node}
+\begin{DoxyCompactList}\small\item\em The last reference node. \end{DoxyCompactList}\item 
+double {\bf last\-Score}
+\begin{DoxyCompactList}\small\item\em The last score. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Tree\-Type$>$class Traversal\-Info$<$ Tree\-Type $>$}
+
+The \doxyref{Traversal\-Info}{p.}{classTraversalInfo} class holds traversal information which is used in dual-\/tree (and single-\/tree) traversals. 
+
+A traversal should be updating the members of this class before Score() is called. This class should be held as a member of the Rule\-Type class and the interface to it should be through a \doxyref{Traversal\-Info()}{p.}{classTraversalInfo_a0b131ec883039111f7118d81efa3c4c2} method.
+
+The information held by this class is the last node combination visited before the current node combination was recursed into, and the score resulting from when Score() was called on that combination. However, this information is identical for a query node and a reference node in a particular node combination, so traversals only need to update the \doxyref{Traversal\-Info}{p.}{classTraversalInfo} object in a query node (and the algorithms should only use the \doxyref{Traversal\-Info}{p.}{classTraversalInfo} object from a query node).
+
+In general, this auxiliary traversal information is used to try and make a prune without needing to call Base\-Case() or calculate the distance between nodes. Using this information you can place bounds on the distance between the two nodes quickly.
+
+If the traversal is not updating the members of this class correctly, a likely result is a null pointer dereference. Dual-\/tree algorithms should assume that the members are set properly and should not need to check for null pointers.
+
+There is one exception, which is the root node combination; the score can be set to 0 and the query and reference nodes can just be set to the root nodes; no algorithm should be able to prune the root combination anyway. 
+
+Definition at line 49 of file traversal\-\_\-info.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Traversal\-Info@{Traversal\-Info}!Traversal\-Info@{Traversal\-Info}}
+\index{Traversal\-Info@{Traversal\-Info}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{Traversal\-Info}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::{\bf Traversal\-Info} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classTraversalInfo_a0b131ec883039111f7118d81efa3c4c2}
+
+
+Create the \doxyref{Traversal\-Info}{p.}{classTraversalInfo} object and initialize the pointers to N\-U\-L\-L. 
+
+
+
+Definition at line 55 of file traversal\-\_\-info.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{Traversal\-Info@{Traversal\-Info}!Last\-Base\-Case@{Last\-Base\-Case}}
+\index{Last\-Base\-Case@{Last\-Base\-Case}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{Last\-Base\-Case}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ double {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Base\-Case (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classTraversalInfo_a254b924169d8680cbc8442c34eabe99b}
+
+
+Get the base case associated with the last node combination. 
+
+
+
+Definition at line 77 of file traversal\-\_\-info.\-hpp.
+
+
+
+References Traversal\-Info$<$ Tree\-Type $>$\-::last\-Base\-Case.
+
+\index{Traversal\-Info@{Traversal\-Info}!Last\-Base\-Case@{Last\-Base\-Case}}
+\index{Last\-Base\-Case@{Last\-Base\-Case}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{Last\-Base\-Case}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ double\& {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Base\-Case (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classTraversalInfo_a799c366a84d8eb95352b57b4e95bdaa7}
+
+
+Modify the base case associated with the last node combination. 
+
+
+
+Definition at line 79 of file traversal\-\_\-info.\-hpp.
+
+
+
+References Traversal\-Info$<$ Tree\-Type $>$\-::last\-Base\-Case.
+
+\index{Traversal\-Info@{Traversal\-Info}!Last\-Query\-Node@{Last\-Query\-Node}}
+\index{Last\-Query\-Node@{Last\-Query\-Node}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{Last\-Query\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ Tree\-Type$\ast$ {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Query\-Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classTraversalInfo_a47dba794b430d415f4014e0b9985650d}
+
+
+Get the last query node. 
+
+
+
+Definition at line 62 of file traversal\-\_\-info.\-hpp.
+
+
+
+References Traversal\-Info$<$ Tree\-Type $>$\-::last\-Query\-Node.
+
+\index{Traversal\-Info@{Traversal\-Info}!Last\-Query\-Node@{Last\-Query\-Node}}
+\index{Last\-Query\-Node@{Last\-Query\-Node}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{Last\-Query\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ Tree\-Type$\ast$\& {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Query\-Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classTraversalInfo_a22329f8c6869c60b6babb288a8d4cb37}
+
+
+Modify the last query node. 
+
+
+
+Definition at line 64 of file traversal\-\_\-info.\-hpp.
+
+
+
+References Traversal\-Info$<$ Tree\-Type $>$\-::last\-Query\-Node.
+
+\index{Traversal\-Info@{Traversal\-Info}!Last\-Reference\-Node@{Last\-Reference\-Node}}
+\index{Last\-Reference\-Node@{Last\-Reference\-Node}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{Last\-Reference\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ Tree\-Type$\ast$ {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Reference\-Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classTraversalInfo_a5ee0edf3c34c9f8450181f956c26967a}
+
+
+Get the last reference node. 
+
+
+
+Definition at line 67 of file traversal\-\_\-info.\-hpp.
+
+
+
+References Traversal\-Info$<$ Tree\-Type $>$\-::last\-Reference\-Node.
+
+\index{Traversal\-Info@{Traversal\-Info}!Last\-Reference\-Node@{Last\-Reference\-Node}}
+\index{Last\-Reference\-Node@{Last\-Reference\-Node}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{Last\-Reference\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ Tree\-Type$\ast$\& {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Reference\-Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classTraversalInfo_a42dca3e453921e1b00502f788934bc58}
+
+
+Modify the last reference node. 
+
+
+
+Definition at line 69 of file traversal\-\_\-info.\-hpp.
+
+
+
+References Traversal\-Info$<$ Tree\-Type $>$\-::last\-Reference\-Node.
+
+\index{Traversal\-Info@{Traversal\-Info}!Last\-Score@{Last\-Score}}
+\index{Last\-Score@{Last\-Score}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{Last\-Score}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ double {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Score (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classTraversalInfo_a5556ad4346f79f987432bda77c374124}
+
+
+Get the score associated with the last query and reference nodes. 
+
+
+
+Definition at line 72 of file traversal\-\_\-info.\-hpp.
+
+
+
+References Traversal\-Info$<$ Tree\-Type $>$\-::last\-Score.
+
+\index{Traversal\-Info@{Traversal\-Info}!Last\-Score@{Last\-Score}}
+\index{Last\-Score@{Last\-Score}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{Last\-Score}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ double\& {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Score (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classTraversalInfo_af2ebe73da2832f6dbb1cb3ecec75f5d1}
+
+
+Modify the score associated with the last query and reference nodes. 
+
+
+
+Definition at line 74 of file traversal\-\_\-info.\-hpp.
+
+
+
+References Traversal\-Info$<$ Tree\-Type $>$\-::last\-Score.
+
+
+
+\subsection{Member Data Documentation}
+\index{Traversal\-Info@{Traversal\-Info}!last\-Base\-Case@{last\-Base\-Case}}
+\index{last\-Base\-Case@{last\-Base\-Case}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{last\-Base\-Case}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ double {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::last\-Base\-Case\hspace{0.3cm}{\ttfamily [private]}}\label{classTraversalInfo_a6051d5e623f7b3c7c0db411271f2a3a1}
+
+
+The last base case. 
+
+
+
+Definition at line 89 of file traversal\-\_\-info.\-hpp.
+
+
+
+Referenced by Traversal\-Info$<$ Tree\-Type $>$\-::\-Last\-Base\-Case().
+
+\index{Traversal\-Info@{Traversal\-Info}!last\-Query\-Node@{last\-Query\-Node}}
+\index{last\-Query\-Node@{last\-Query\-Node}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{last\-Query\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ Tree\-Type$\ast$ {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::last\-Query\-Node\hspace{0.3cm}{\ttfamily [private]}}\label{classTraversalInfo_aa1324e2bb6477006e913af8e736c61cb}
+
+
+The last query node. 
+
+
+
+Definition at line 83 of file traversal\-\_\-info.\-hpp.
+
+
+
+Referenced by Traversal\-Info$<$ Tree\-Type $>$\-::\-Last\-Query\-Node().
+
+\index{Traversal\-Info@{Traversal\-Info}!last\-Reference\-Node@{last\-Reference\-Node}}
+\index{last\-Reference\-Node@{last\-Reference\-Node}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{last\-Reference\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ Tree\-Type$\ast$ {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::last\-Reference\-Node\hspace{0.3cm}{\ttfamily [private]}}\label{classTraversalInfo_a5768a7e8b51a7922e9574608ae2ef614}
+
+
+The last reference node. 
+
+
+
+Definition at line 85 of file traversal\-\_\-info.\-hpp.
+
+
+
+Referenced by Traversal\-Info$<$ Tree\-Type $>$\-::\-Last\-Reference\-Node().
+
+\index{Traversal\-Info@{Traversal\-Info}!last\-Score@{last\-Score}}
+\index{last\-Score@{last\-Score}!TraversalInfo@{Traversal\-Info}}
+\subsubsection[{last\-Score}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ double {\bf Traversal\-Info}$<$ Tree\-Type $>$\-::last\-Score\hspace{0.3cm}{\ttfamily [private]}}\label{classTraversalInfo_a0e9b68f7348146b7a768d27b18c81c37}
+
+
+The last score. 
+
+
+
+Definition at line 87 of file traversal\-\_\-info.\-hpp.
+
+
+
+Referenced by Traversal\-Info$<$ Tree\-Type $>$\-::\-Last\-Score().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/tree/{\bf traversal\-\_\-info.\-hpp}\end{DoxyCompactItemize}

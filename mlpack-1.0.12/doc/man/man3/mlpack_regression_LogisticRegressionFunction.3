@@ -1,0 +1,260 @@
+.TH "mlpack::regression::LogisticRegressionFunction" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::regression::LogisticRegressionFunction \- 
+.PP
+The log-likelihood function for the logistic regression objective function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLogisticRegressionFunction\fP (const arma::mat &\fBpredictors\fP, const arma::vec &\fBresponses\fP, const double \fBlambda\fP=0)"
+.br
+.ti -1c
+.RI "\fBLogisticRegressionFunction\fP (const arma::mat &\fBpredictors\fP, const arma::vec &\fBresponses\fP, const arma::mat &\fBinitialPoint\fP, const double \fBlambda\fP=0)"
+.br
+.ti -1c
+.RI "double \fBEvaluate\fP (const arma::mat &parameters) const "
+.br
+.RI "\fIEvaluate the logistic regression log-likelihood function with the given parameters\&. \fP"
+.ti -1c
+.RI "double \fBEvaluate\fP (const arma::mat &parameters, const size_t i) const "
+.br
+.RI "\fIEvaluate the logistic regression log-likelihood function with the given parameters, but using only one data point\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBGetInitialPoint\fP () const "
+.br
+.RI "\fIReturn the initial point for the optimization\&. \fP"
+.ti -1c
+.RI "void \fBGradient\fP (const arma::mat &parameters, arma::mat &gradient) const "
+.br
+.RI "\fIEvaluate the gradient of the logistic regression log-likelihood function with the given parameters\&. \fP"
+.ti -1c
+.RI "void \fBGradient\fP (const arma::mat &parameters, const size_t i, arma::mat &gradient) const "
+.br
+.RI "\fIEvaluate the gradient of the logistic regression log-likelihood function with the given parameters, and with respect to only one point in the dataset\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBInitialPoint\fP () const "
+.br
+.RI "\fIReturn the initial point for the optimization\&. \fP"
+.ti -1c
+.RI "arma::mat & \fBInitialPoint\fP ()"
+.br
+.RI "\fIModify the initial point for the optimization\&. \fP"
+.ti -1c
+.RI "const double & \fBLambda\fP () const "
+.br
+.RI "\fIReturn the regularization parameter (lambda)\&. \fP"
+.ti -1c
+.RI "double & \fBLambda\fP ()"
+.br
+.RI "\fIModify the regularization parameter (lambda)\&. \fP"
+.ti -1c
+.RI "size_t \fBNumFunctions\fP () const "
+.br
+.RI "\fIReturn the number of separable functions (the number of predictor points)\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBPredictors\fP () const "
+.br
+.RI "\fIReturn the matrix of predictors\&. \fP"
+.ti -1c
+.RI "const arma::vec & \fBResponses\fP () const "
+.br
+.RI "\fIReturn the vector of responses\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "arma::mat \fBinitialPoint\fP"
+.br
+.RI "\fIThe initial point, from which to start the optimization\&. \fP"
+.ti -1c
+.RI "double \fBlambda\fP"
+.br
+.RI "\fIThe regularization parameter for L2-regularization\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBpredictors\fP"
+.br
+.RI "\fIThe matrix of data points (predictors)\&. \fP"
+.ti -1c
+.RI "const arma::vec & \fBresponses\fP"
+.br
+.RI "\fIThe vector of responses to the input data points\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The log-likelihood function for the logistic regression objective function\&. 
+
+This is used by various mlpack optimizers to train a logistic regression model\&. 
+.PP
+Definition at line 29 of file logistic_regression_function\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::regression::LogisticRegressionFunction::LogisticRegressionFunction (const arma::mat &predictors, const arma::vec &responses, const doublelambda = \fC0\fP)"
+
+.SS "mlpack::regression::LogisticRegressionFunction::LogisticRegressionFunction (const arma::mat &predictors, const arma::vec &responses, const arma::mat &initialPoint, const doublelambda = \fC0\fP)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "double mlpack::regression::LogisticRegressionFunction::Evaluate (const arma::mat &parameters) const"
+
+.PP
+Evaluate the logistic regression log-likelihood function with the given parameters\&. Note that if a point has 0 probability of being classified directly with the given parameters, then \fBEvaluate()\fP will return nan (this is kind of a corner case and should not happen for reasonable models)\&.
+.PP
+The optimum (minimum) of this function is 0\&.0, and occurs when each point is classified correctly with very high probability\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Vector of logistic regression parameters\&. 
+.RE
+.PP
+
+.SS "double mlpack::regression::LogisticRegressionFunction::Evaluate (const arma::mat &parameters, const size_ti) const"
+
+.PP
+Evaluate the logistic regression log-likelihood function with the given parameters, but using only one data point\&. This is useful for optimizers such as SGD, which require a separable objective function\&. Note that if the point has 0 probability of being classified correctly with the given parameters, then \fBEvaluate()\fP will return nan (this is kind of a corner case and should not happen for reasonable models)\&.
+.PP
+The optimum (minimum) of this function is 0\&.0, and occurs when the point is classified correctly with very high probability\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Vector of logistic regression parameters\&. 
+.br
+\fIi\fP Index of point to use for objective function evaluation\&. 
+.RE
+.PP
+
+.SS "const arma::mat& mlpack::regression::LogisticRegressionFunction::GetInitialPoint () const\fC [inline]\fP"
+
+.PP
+Return the initial point for the optimization\&. 
+.PP
+Definition at line 109 of file logistic_regression_function\&.hpp\&.
+.PP
+References initialPoint\&.
+.SS "void mlpack::regression::LogisticRegressionFunction::Gradient (const arma::mat &parameters, arma::mat &gradient) const"
+
+.PP
+Evaluate the gradient of the logistic regression log-likelihood function with the given parameters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Vector of logistic regression parameters\&. 
+.br
+\fIgradient\fP Vector to output gradient into\&. 
+.RE
+.PP
+
+.SS "void mlpack::regression::LogisticRegressionFunction::Gradient (const arma::mat &parameters, const size_ti, arma::mat &gradient) const"
+
+.PP
+Evaluate the gradient of the logistic regression log-likelihood function with the given parameters, and with respect to only one point in the dataset\&. This is useful for optimizers such as SGD, which require a separable objective function\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Vector of logistic regression parameters\&. 
+.br
+\fIi\fP Index of points to use for objective function gradient evaluation\&. 
+.br
+\fIgradient\fP Vector to output gradient into\&. 
+.RE
+.PP
+
+.SS "const arma::mat& mlpack::regression::LogisticRegressionFunction::InitialPoint () const\fC [inline]\fP"
+
+.PP
+Return the initial point for the optimization\&. 
+.PP
+Definition at line 42 of file logistic_regression_function\&.hpp\&.
+.PP
+References initialPoint\&.
+.SS "arma::mat& mlpack::regression::LogisticRegressionFunction::InitialPoint ()\fC [inline]\fP"
+
+.PP
+Modify the initial point for the optimization\&. 
+.PP
+Definition at line 44 of file logistic_regression_function\&.hpp\&.
+.PP
+References initialPoint\&.
+.SS "const double& mlpack::regression::LogisticRegressionFunction::Lambda () const\fC [inline]\fP"
+
+.PP
+Return the regularization parameter (lambda)\&. 
+.PP
+Definition at line 47 of file logistic_regression_function\&.hpp\&.
+.PP
+References lambda\&.
+.SS "double& mlpack::regression::LogisticRegressionFunction::Lambda ()\fC [inline]\fP"
+
+.PP
+Modify the regularization parameter (lambda)\&. 
+.PP
+Definition at line 49 of file logistic_regression_function\&.hpp\&.
+.PP
+References lambda\&.
+.SS "size_t mlpack::regression::LogisticRegressionFunction::NumFunctions () const\fC [inline]\fP"
+
+.PP
+Return the number of separable functions (the number of predictor points)\&. 
+.PP
+Definition at line 112 of file logistic_regression_function\&.hpp\&.
+.SS "const arma::mat& mlpack::regression::LogisticRegressionFunction::Predictors () const\fC [inline]\fP"
+
+.PP
+Return the matrix of predictors\&. 
+.PP
+Definition at line 52 of file logistic_regression_function\&.hpp\&.
+.PP
+References predictors\&.
+.SS "const arma::vec& mlpack::regression::LogisticRegressionFunction::Responses () const\fC [inline]\fP"
+
+.PP
+Return the vector of responses\&. 
+.PP
+Definition at line 54 of file logistic_regression_function\&.hpp\&.
+.PP
+References responses\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "arma::mat mlpack::regression::LogisticRegressionFunction::initialPoint\fC [private]\fP"
+
+.PP
+The initial point, from which to start the optimization\&. 
+.PP
+Definition at line 116 of file logistic_regression_function\&.hpp\&.
+.PP
+Referenced by GetInitialPoint(), and InitialPoint()\&.
+.SS "double mlpack::regression::LogisticRegressionFunction::lambda\fC [private]\fP"
+
+.PP
+The regularization parameter for L2-regularization\&. 
+.PP
+Definition at line 122 of file logistic_regression_function\&.hpp\&.
+.PP
+Referenced by Lambda()\&.
+.SS "const arma::mat& mlpack::regression::LogisticRegressionFunction::predictors\fC [private]\fP"
+
+.PP
+The matrix of data points (predictors)\&. 
+.PP
+Definition at line 118 of file logistic_regression_function\&.hpp\&.
+.PP
+Referenced by Predictors()\&.
+.SS "const arma::vec& mlpack::regression::LogisticRegressionFunction::responses\fC [private]\fP"
+
+.PP
+The vector of responses to the input data points\&. 
+.PP
+Definition at line 120 of file logistic_regression_function\&.hpp\&.
+.PP
+Referenced by Responses()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

@@ -1,0 +1,115 @@
+\section{mlpack\-:\-:amf Namespace Reference}
+\label{namespacemlpack_1_1amf}\index{mlpack\-::amf@{mlpack\-::amf}}
+
+
+Alternating Matrix Factorization.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf A\-M\-F}
+\begin{DoxyCompactList}\small\item\em This class implements \doxyref{A\-M\-F}{p.}{classmlpack_1_1amf_1_1AMF} (alternating matrix factorization) on the given matrix V. \end{DoxyCompactList}\item 
+class {\bf Average\-Initialization}
+\begin{DoxyCompactList}\small\item\em This initialization rule initializes matrix W and H to root of average of V with uniform noise. \end{DoxyCompactList}\item 
+class {\bf Complete\-Incremental\-Termination}
+\item 
+class {\bf Incomplete\-Incremental\-Termination}
+\item 
+class {\bf N\-M\-F\-A\-L\-S\-Update}
+\begin{DoxyCompactList}\small\item\em This class implements a method titled 'Alternating Least Squares' described in the paper 'Positive Matrix Factorization\-: A Non-\/negative Factor Model with Optimal Utilization of Error Estimates of Data Values' by P Paatero and U Tapper. \end{DoxyCompactList}\item 
+class {\bf N\-M\-F\-Multiplicative\-Distance\-Update}
+\begin{DoxyCompactList}\small\item\em The multiplicative distance update rules for matrices W and H. \end{DoxyCompactList}\item 
+class {\bf N\-M\-F\-Multiplicative\-Divergence\-Update}
+\begin{DoxyCompactList}\small\item\em This follows a method described in the paper 'Algorithms for Non-\/negative Matrix Factorization' by D. \end{DoxyCompactList}\item 
+class {\bf Random\-Acol\-Initialization}
+\begin{DoxyCompactList}\small\item\em This class initializes the W matrix of the \doxyref{A\-M\-F}{p.}{classmlpack_1_1amf_1_1AMF} algorithm by averaging p randomly chosen columns of V. \end{DoxyCompactList}\item 
+class {\bf Random\-Initialization}
+\item 
+class {\bf Simple\-Residue\-Termination}
+\begin{DoxyCompactList}\small\item\em This class implements a simple residue-\/based termination policy. \end{DoxyCompactList}\item 
+class {\bf Simple\-Tolerance\-Termination}
+\begin{DoxyCompactList}\small\item\em This class implements residue tolerance termination policy. \end{DoxyCompactList}\item 
+class {\bf S\-V\-D\-Batch\-Learning}
+\begin{DoxyCompactList}\small\item\em This class implements S\-V\-D batch learning with momentum. \end{DoxyCompactList}\item 
+class {\bf S\-V\-D\-Complete\-Incremental\-Learning}
+\item 
+class {\bf S\-V\-D\-Complete\-Incremental\-Learning$<$ arma\-::sp\-\_\-mat $>$}
+\item 
+class {\bf S\-V\-D\-Incomplete\-Incremental\-Learning}
+\item 
+class {\bf Validation\-R\-M\-S\-E\-Termination}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$$>$ }\\void {\bf S\-V\-D\-Batch\-Learning\-::\-H\-Update$<$ arma\-::sp\-\_\-mat $>$} (const arma\-::sp\-\_\-mat \&V, const arma\-::mat \&W, arma\-::mat \&H)
+\item 
+{\footnotesize template$<$$>$ }\\void {\bf S\-V\-D\-Batch\-Learning\-::\-W\-Update$<$ arma\-::sp\-\_\-mat $>$} (const arma\-::sp\-\_\-mat \&V, arma\-::mat \&W, const arma\-::mat \&H)
+\begin{DoxyCompactList}\small\item\em T\-O\-D\-O \-: Merge this template specialized function for sparse matrix using common row\-\_\-col\-\_\-iterator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void {\bf S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-H\-Update$<$ arma\-::sp\-\_\-mat $>$} (const arma\-::sp\-\_\-mat \&V, const arma\-::mat \&W, arma\-::mat \&H)
+\item 
+{\footnotesize template$<$$>$ }\\void {\bf S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-W\-Update$<$ arma\-::sp\-\_\-mat $>$} (const arma\-::sp\-\_\-mat \&V, arma\-::mat \&W, const arma\-::mat \&H)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Alternating Matrix Factorization. 
+
+\subsection{Function Documentation}
+\index{mlpack\-::amf@{mlpack\-::amf}!S\-V\-D\-Batch\-Learning\-::\-H\-Update$<$ arma\-::sp\-\_\-mat $>$@{S\-V\-D\-Batch\-Learning\-::\-H\-Update$<$ arma\-::sp\-\_\-mat $>$}}
+\index{S\-V\-D\-Batch\-Learning\-::\-H\-Update$<$ arma\-::sp\-\_\-mat $>$@{S\-V\-D\-Batch\-Learning\-::\-H\-Update$<$ arma\-::sp\-\_\-mat $>$}!mlpack::amf@{mlpack\-::amf}}
+\subsubsection[{S\-V\-D\-Batch\-Learning\-::\-H\-Update$<$ arma\-::sp\-\_\-mat $>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$$>$ void {\bf mlpack\-::amf\-::\-S\-V\-D\-Batch\-Learning\-::\-H\-Update}$<$ arma\-::sp\-\_\-mat $>$ (
+\begin{DoxyParamCaption}
+\item[{const arma\-::sp\-\_\-mat \&}]{V, }
+\item[{const arma\-::mat \&}]{W, }
+\item[{arma\-::mat \&}]{H}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{namespacemlpack_1_1amf_aff87130b0b4854026fdb315627b93916}
+
+
+Definition at line 189 of file svd\-\_\-batch\-\_\-learning.\-hpp.
+
+\index{mlpack\-::amf@{mlpack\-::amf}!S\-V\-D\-Batch\-Learning\-::\-W\-Update$<$ arma\-::sp\-\_\-mat $>$@{S\-V\-D\-Batch\-Learning\-::\-W\-Update$<$ arma\-::sp\-\_\-mat $>$}}
+\index{S\-V\-D\-Batch\-Learning\-::\-W\-Update$<$ arma\-::sp\-\_\-mat $>$@{S\-V\-D\-Batch\-Learning\-::\-W\-Update$<$ arma\-::sp\-\_\-mat $>$}!mlpack::amf@{mlpack\-::amf}}
+\subsubsection[{S\-V\-D\-Batch\-Learning\-::\-W\-Update$<$ arma\-::sp\-\_\-mat $>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$$>$ void {\bf mlpack\-::amf\-::\-S\-V\-D\-Batch\-Learning\-::\-W\-Update}$<$ arma\-::sp\-\_\-mat $>$ (
+\begin{DoxyParamCaption}
+\item[{const arma\-::sp\-\_\-mat \&}]{V, }
+\item[{arma\-::mat \&}]{W, }
+\item[{const arma\-::mat \&}]{H}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{namespacemlpack_1_1amf_afe7f98a0fec98543b68a87ed1f044af0}
+
+
+T\-O\-D\-O \-: Merge this template specialized function for sparse matrix using common row\-\_\-col\-\_\-iterator. 
+
+W\-Update function specialization for sparse matrix 
+
+Definition at line 158 of file svd\-\_\-batch\-\_\-learning.\-hpp.
+
+\index{mlpack\-::amf@{mlpack\-::amf}!S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-H\-Update$<$ arma\-::sp\-\_\-mat $>$@{S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-H\-Update$<$ arma\-::sp\-\_\-mat $>$}}
+\index{S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-H\-Update$<$ arma\-::sp\-\_\-mat $>$@{S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-H\-Update$<$ arma\-::sp\-\_\-mat $>$}!mlpack::amf@{mlpack\-::amf}}
+\subsubsection[{S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-H\-Update$<$ arma\-::sp\-\_\-mat $>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$$>$ void {\bf mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-H\-Update}$<$ arma\-::sp\-\_\-mat $>$ (
+\begin{DoxyParamCaption}
+\item[{const arma\-::sp\-\_\-mat \&}]{V, }
+\item[{const arma\-::mat \&}]{W, }
+\item[{arma\-::mat \&}]{H}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{namespacemlpack_1_1amf_a1e85a4f6a4f543e56b2f8b1587cd2dd6}
+
+
+Definition at line 127 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+
+\index{mlpack\-::amf@{mlpack\-::amf}!S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-W\-Update$<$ arma\-::sp\-\_\-mat $>$@{S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-W\-Update$<$ arma\-::sp\-\_\-mat $>$}}
+\index{S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-W\-Update$<$ arma\-::sp\-\_\-mat $>$@{S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-W\-Update$<$ arma\-::sp\-\_\-mat $>$}!mlpack::amf@{mlpack\-::amf}}
+\subsubsection[{S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-W\-Update$<$ arma\-::sp\-\_\-mat $>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$$>$ void {\bf mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-W\-Update}$<$ arma\-::sp\-\_\-mat $>$ (
+\begin{DoxyParamCaption}
+\item[{const arma\-::sp\-\_\-mat \&}]{V, }
+\item[{arma\-::mat \&}]{W, }
+\item[{const arma\-::mat \&}]{H}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{namespacemlpack_1_1amf_acbc9573bcb3df2b5dd1d20cd7a1e4c85}
+
+
+Definition at line 106 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+

@@ -1,0 +1,9 @@
+digraph "src/mlpack/methods/neighbor_search/sort_policies" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_b1fd5cef51dc63e208dea419d88d4471 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="neighbor_search" fontname="Helvetica", fontsize="10", URL="dir_b1fd5cef51dc63e208dea419d88d4471.html"]
+  dir_2d8784b552a572a7492f65051c1eeaf4 [shape=box, label="sort_policies", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_2d8784b552a572a7492f65051c1eeaf4.html"];
+  }
+}

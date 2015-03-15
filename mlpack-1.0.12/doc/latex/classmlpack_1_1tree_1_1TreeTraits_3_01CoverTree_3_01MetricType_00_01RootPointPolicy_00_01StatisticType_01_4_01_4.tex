@@ -1,0 +1,81 @@
+\section{mlpack\-:\-:tree\-:\-:Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$ Class Template Reference}
+\label{classmlpack_1_1tree_1_1TreeTraits_3_01CoverTree_3_01MetricType_00_01RootPointPolicy_00_01StatisticType_01_4_01_4}\index{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$@{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$}}
+
+
+The specialization of the \doxyref{Tree\-Traits}{p.}{classmlpack_1_1tree_1_1TreeTraits} class for the \doxyref{Cover\-Tree}{p.}{classmlpack_1_1tree_1_1CoverTree} tree type.  
+
+
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const bool {\bf First\-Point\-Is\-Centroid} = true
+\begin{DoxyCompactList}\small\item\em Each cover tree node contains only one point, and that point is its centroid. \end{DoxyCompactList}\item 
+static const bool {\bf Has\-Overlapping\-Children} = true
+\begin{DoxyCompactList}\small\item\em The cover tree (or, this implementation of it) does not require that children represent non-\/overlapping subsets of the parent node. \end{DoxyCompactList}\item 
+static const bool {\bf Has\-Self\-Children} = true
+\begin{DoxyCompactList}\small\item\em Cover trees do have self-\/children. \end{DoxyCompactList}\item 
+static const bool {\bf Rearranges\-Dataset} = false
+\begin{DoxyCompactList}\small\item\em Points are not rearranged when the tree is built. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Metric\-Type, typename Root\-Point\-Policy, typename Statistic\-Type$>$class mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$}
+
+The specialization of the \doxyref{Tree\-Traits}{p.}{classmlpack_1_1tree_1_1TreeTraits} class for the \doxyref{Cover\-Tree}{p.}{classmlpack_1_1tree_1_1CoverTree} tree type. 
+
+It defines characteristics of the cover tree, and is used to help write tree-\/independent (but still optimized) tree-\/based algorithms. See \doxyref{mlpack/core/tree/tree\-\_\-traits.\-hpp}{p.}{tree__traits_8hpp} for more information. 
+
+Definition at line 32 of file traits.\-hpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$@{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$}!First\-Point\-Is\-Centroid@{First\-Point\-Is\-Centroid}}
+\index{First\-Point\-Is\-Centroid@{First\-Point\-Is\-Centroid}!mlpack::tree::TreeTraits< CoverTree< MetricType, RootPointPolicy, StatisticType > >@{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$}}
+\subsubsection[{First\-Point\-Is\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type , typename Root\-Point\-Policy , typename Statistic\-Type $>$ const bool {\bf mlpack\-::tree\-::\-Tree\-Traits}$<$ {\bf Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$\-::First\-Point\-Is\-Centroid = true\hspace{0.3cm}{\ttfamily [static]}}\label{classmlpack_1_1tree_1_1TreeTraits_3_01CoverTree_3_01MetricType_00_01RootPointPolicy_00_01StatisticType_01_4_01_4_a68a2dc02ccdd4f3b4453cfe64825161d}
+
+
+Each cover tree node contains only one point, and that point is its centroid. 
+
+
+
+Definition at line 45 of file traits.\-hpp.
+
+\index{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$@{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$}!Has\-Overlapping\-Children@{Has\-Overlapping\-Children}}
+\index{Has\-Overlapping\-Children@{Has\-Overlapping\-Children}!mlpack::tree::TreeTraits< CoverTree< MetricType, RootPointPolicy, StatisticType > >@{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$}}
+\subsubsection[{Has\-Overlapping\-Children}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type , typename Root\-Point\-Policy , typename Statistic\-Type $>$ const bool {\bf mlpack\-::tree\-::\-Tree\-Traits}$<$ {\bf Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$\-::Has\-Overlapping\-Children = true\hspace{0.3cm}{\ttfamily [static]}}\label{classmlpack_1_1tree_1_1TreeTraits_3_01CoverTree_3_01MetricType_00_01RootPointPolicy_00_01StatisticType_01_4_01_4_aea3e1c5207606d16a60e40c6829189f3}
+
+
+The cover tree (or, this implementation of it) does not require that children represent non-\/overlapping subsets of the parent node. 
+
+
+
+Definition at line 39 of file traits.\-hpp.
+
+\index{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$@{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$}!Has\-Self\-Children@{Has\-Self\-Children}}
+\index{Has\-Self\-Children@{Has\-Self\-Children}!mlpack::tree::TreeTraits< CoverTree< MetricType, RootPointPolicy, StatisticType > >@{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$}}
+\subsubsection[{Has\-Self\-Children}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type , typename Root\-Point\-Policy , typename Statistic\-Type $>$ const bool {\bf mlpack\-::tree\-::\-Tree\-Traits}$<$ {\bf Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$\-::Has\-Self\-Children = true\hspace{0.3cm}{\ttfamily [static]}}\label{classmlpack_1_1tree_1_1TreeTraits_3_01CoverTree_3_01MetricType_00_01RootPointPolicy_00_01StatisticType_01_4_01_4_ab56e2deb205af704dd6cf07feaf8561f}
+
+
+Cover trees do have self-\/children. 
+
+
+
+Definition at line 50 of file traits.\-hpp.
+
+\index{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$@{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$}!Rearranges\-Dataset@{Rearranges\-Dataset}}
+\index{Rearranges\-Dataset@{Rearranges\-Dataset}!mlpack::tree::TreeTraits< CoverTree< MetricType, RootPointPolicy, StatisticType > >@{mlpack\-::tree\-::\-Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$}}
+\subsubsection[{Rearranges\-Dataset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type , typename Root\-Point\-Policy , typename Statistic\-Type $>$ const bool {\bf mlpack\-::tree\-::\-Tree\-Traits}$<$ {\bf Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$\-::Rearranges\-Dataset = false\hspace{0.3cm}{\ttfamily [static]}}\label{classmlpack_1_1tree_1_1TreeTraits_3_01CoverTree_3_01MetricType_00_01RootPointPolicy_00_01StatisticType_01_4_01_4_a469a7cb1db2a87ac72e296b1e958c4ed}
+
+
+Points are not rearranged when the tree is built. 
+
+
+
+Definition at line 55 of file traits.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/tree/cover\-\_\-tree/{\bf traits.\-hpp}\end{DoxyCompactItemize}

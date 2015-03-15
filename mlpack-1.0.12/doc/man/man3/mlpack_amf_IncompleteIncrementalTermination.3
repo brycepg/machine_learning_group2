@@ -1,0 +1,122 @@
+.TH "mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy > \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIncompleteIncrementalTermination\fP (TerminationPolicy \fBt_policy\fP=TerminationPolicy())"
+.br
+.RI "\fIEmpty constructor\&. \fP"
+.ti -1c
+.RI "const double & \fBIndex\fP ()"
+.br
+.ti -1c
+.RI "template<class MatType > void \fBInitialize\fP (const MatType &V)"
+.br
+.ti -1c
+.RI "bool \fBIsConverged\fP (arma::mat &W, arma::mat &H)"
+.br
+.ti -1c
+.RI "const size_t & \fBIteration\fP ()"
+.br
+.ti -1c
+.RI "const size_t & \fBMaxIterations\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBincrementalIndex\fP"
+.br
+.ti -1c
+.RI "size_t \fBiteration\fP"
+.br
+.ti -1c
+.RI "TerminationPolicy \fBt_policy\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class TerminationPolicy>class mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >"
+
+.PP
+Definition at line 21 of file incomplete_incremental_termination\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class TerminationPolicy > \fBmlpack::amf::IncompleteIncrementalTermination\fP< TerminationPolicy >::\fBIncompleteIncrementalTermination\fP (TerminationPolicyt_policy = \fCTerminationPolicy()\fP)\fC [inline]\fP"
+
+.PP
+Empty constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt_policy\fP object of wrapped class\&. 
+.RE
+.PP
+
+.PP
+Definition at line 29 of file incomplete_incremental_termination\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class TerminationPolicy > const double& \fBmlpack::amf::IncompleteIncrementalTermination\fP< TerminationPolicy >::Index ()\fC [inline]\fP"
+
+.PP
+Definition at line 49 of file incomplete_incremental_termination\&.hpp\&.
+.PP
+References mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::t_policy\&.
+.SS "template<class TerminationPolicy > template<class MatType > void \fBmlpack::amf::IncompleteIncrementalTermination\fP< TerminationPolicy >::Initialize (const MatType &V)\fC [inline]\fP"
+
+.PP
+Definition at line 33 of file incomplete_incremental_termination\&.hpp\&.
+.PP
+References mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::incrementalIndex, mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::iteration, and mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::t_policy\&.
+.SS "template<class TerminationPolicy > bool \fBmlpack::amf::IncompleteIncrementalTermination\fP< TerminationPolicy >::IsConverged (arma::mat &W, arma::mat &H)\fC [inline]\fP"
+
+.PP
+Definition at line 41 of file incomplete_incremental_termination\&.hpp\&.
+.PP
+References mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::incrementalIndex, mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::iteration, and mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::t_policy\&.
+.SS "template<class TerminationPolicy > const size_t& \fBmlpack::amf::IncompleteIncrementalTermination\fP< TerminationPolicy >::Iteration ()\fC [inline]\fP"
+
+.PP
+Definition at line 53 of file incomplete_incremental_termination\&.hpp\&.
+.PP
+References mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::iteration\&.
+.SS "template<class TerminationPolicy > const size_t& \fBmlpack::amf::IncompleteIncrementalTermination\fP< TerminationPolicy >::MaxIterations ()\fC [inline]\fP"
+
+.PP
+Definition at line 57 of file incomplete_incremental_termination\&.hpp\&.
+.PP
+References mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::t_policy\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<class TerminationPolicy > size_t \fBmlpack::amf::IncompleteIncrementalTermination\fP< TerminationPolicy >::incrementalIndex\fC [private]\fP"
+
+.PP
+Definition at line 65 of file incomplete_incremental_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::Initialize(), and mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::IsConverged()\&.
+.SS "template<class TerminationPolicy > size_t \fBmlpack::amf::IncompleteIncrementalTermination\fP< TerminationPolicy >::iteration\fC [private]\fP"
+
+.PP
+Definition at line 66 of file incomplete_incremental_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::Initialize(), mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::IsConverged(), and mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::Iteration()\&.
+.SS "template<class TerminationPolicy > TerminationPolicy \fBmlpack::amf::IncompleteIncrementalTermination\fP< TerminationPolicy >::t_policy\fC [private]\fP"
+
+.PP
+Definition at line 63 of file incomplete_incremental_termination\&.hpp\&.
+.PP
+Referenced by mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::Index(), mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::Initialize(), mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::IsConverged(), and mlpack::amf::IncompleteIncrementalTermination< TerminationPolicy >::MaxIterations()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

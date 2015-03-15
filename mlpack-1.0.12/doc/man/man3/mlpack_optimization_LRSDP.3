@@ -1,0 +1,245 @@
+.TH "mlpack::optimization::LRSDP" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::optimization::LRSDP \- 
+.PP
+\fBLRSDP\fP is the implementation of Monteiro and Burer's formulation of low-rank semidefinite programs (LR-SDP)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLRSDP\fP (const size_t numConstraints, const arma::mat &initialPoint)"
+.br
+.RI "\fICreate an \fBLRSDP\fP to be optimized\&. \fP"
+.ti -1c
+.RI "\fBLRSDP\fP (const size_t numConstraints, const arma::mat &initialPoint, \fBAugLagrangian\fP< \fBLRSDPFunction\fP > &augLagrangian)"
+.br
+.RI "\fICreate an \fBLRSDP\fP to be optimized, passing in an already-created \fBAugLagrangian\fP object\&. \fP"
+.ti -1c
+.RI "const std::vector< arma::mat > & \fBA\fP () const "
+.br
+.RI "\fIReturn the vector of A matrices (which correspond to the constraints)\&. \fP"
+.ti -1c
+.RI "std::vector< arma::mat > & \fBA\fP ()"
+.br
+.RI "\fIModify the veector of A matrices (which correspond to the constraints)\&. \fP"
+.ti -1c
+.RI "const arma::uvec & \fBAModes\fP () const "
+.br
+.RI "\fIReturn the vector of modes for the A matrices\&. \fP"
+.ti -1c
+.RI "arma::uvec & \fBAModes\fP ()"
+.br
+.RI "\fIModify the vector of modes for the A matrices\&. \fP"
+.ti -1c
+.RI "const \fBAugLagrangian\fP
+.br
+< \fBLRSDPFunction\fP > & \fBAugLag\fP () const "
+.br
+.RI "\fIReturn the augmented Lagrangian object\&. \fP"
+.ti -1c
+.RI "\fBAugLagrangian\fP< \fBLRSDPFunction\fP > & \fBAugLag\fP ()"
+.br
+.RI "\fIModify the augmented Lagrangian object\&. \fP"
+.ti -1c
+.RI "const arma::vec & \fBB\fP () const "
+.br
+.RI "\fIReturn the vector of B values\&. \fP"
+.ti -1c
+.RI "arma::vec & \fBB\fP ()"
+.br
+.RI "\fIModify the vector of B values\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBC\fP () const "
+.br
+.RI "\fIReturn the objective function matrix (C)\&. \fP"
+.ti -1c
+.RI "arma::mat & \fBC\fP ()"
+.br
+.RI "\fIModify the objective function matrix (C)\&. \fP"
+.ti -1c
+.RI "const \fBLRSDPFunction\fP & \fBFunction\fP () const "
+.br
+.RI "\fIReturn the function to be optimized\&. \fP"
+.ti -1c
+.RI "\fBLRSDPFunction\fP & \fBFunction\fP ()"
+.br
+.RI "\fIModify the function to be optimized\&. \fP"
+.ti -1c
+.RI "double \fBOptimize\fP (arma::mat &coordinates)"
+.br
+.RI "\fIOptimize the \fBLRSDP\fP and return the final objective value\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturn a string representation of the object\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBAugLagrangian\fP< \fBLRSDPFunction\fP > \fBaugLag\fP"
+.br
+.RI "\fIThe \fBAugLagrangian\fP object which will be used for optimization\&. \fP"
+.ti -1c
+.RI "\fBLRSDPFunction\fP \fBfunction\fP"
+.br
+.RI "\fIFunction to optimize, which the \fBAugLagrangian\fP object holds\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBLRSDP\fP is the implementation of Monteiro and Burer's formulation of low-rank semidefinite programs (LR-SDP)\&. 
+
+This solver uses the augmented Lagrangian optimizer to solve low-rank semidefinite programs\&. 
+.PP
+Definition at line 31 of file lrsdp\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::optimization::LRSDP::LRSDP (const size_tnumConstraints, const arma::mat &initialPoint)"
+
+.PP
+Create an \fBLRSDP\fP to be optimized\&. The solution will end up being a matrix of size (rank) x (rows)\&. To construct each constraint and the objective function, use the functions \fBA()\fP, \fBB()\fP, and \fBC()\fP to set them correctly\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumConstraints\fP Number of constraints in the problem\&. 
+.br
+\fIrank\fP Rank of the solution (<= rows)\&. 
+.br
+\fIrows\fP Number of rows in the solution\&. 
+.RE
+.PP
+
+.SS "mlpack::optimization::LRSDP::LRSDP (const size_tnumConstraints, const arma::mat &initialPoint, \fBAugLagrangian\fP< \fBLRSDPFunction\fP > &augLagrangian)"
+
+.PP
+Create an \fBLRSDP\fP to be optimized, passing in an already-created \fBAugLagrangian\fP object\&. The given initial point should be set to the size (rows) x (rank), where (rank) is the reduced rank of the problem\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumConstraints\fP Number of constraints in the problem\&. 
+.br
+\fIinitialPoint\fP Initial point of the optimization\&. 
+.br
+\fIauglag\fP Pre-initialized AugLagrangian<LRSDP> object\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "const std::vector<arma::mat>& mlpack::optimization::LRSDP::A () const\fC [inline]\fP"
+
+.PP
+Return the vector of A matrices (which correspond to the constraints)\&. 
+.PP
+Definition at line 73 of file lrsdp\&.hpp\&.
+.SS "std::vector<arma::mat>& mlpack::optimization::LRSDP::A ()\fC [inline]\fP"
+
+.PP
+Modify the veector of A matrices (which correspond to the constraints)\&. 
+.PP
+Definition at line 75 of file lrsdp\&.hpp\&.
+.SS "const arma::uvec& mlpack::optimization::LRSDP::AModes () const\fC [inline]\fP"
+
+.PP
+Return the vector of modes for the A matrices\&. 
+.PP
+Definition at line 78 of file lrsdp\&.hpp\&.
+.SS "arma::uvec& mlpack::optimization::LRSDP::AModes ()\fC [inline]\fP"
+
+.PP
+Modify the vector of modes for the A matrices\&. 
+.PP
+Definition at line 80 of file lrsdp\&.hpp\&.
+.SS "const \fBAugLagrangian\fP<\fBLRSDPFunction\fP>& mlpack::optimization::LRSDP::AugLag () const\fC [inline]\fP"
+
+.PP
+Return the augmented Lagrangian object\&. 
+.PP
+Definition at line 93 of file lrsdp\&.hpp\&.
+.PP
+References augLag\&.
+.SS "\fBAugLagrangian\fP<\fBLRSDPFunction\fP>& mlpack::optimization::LRSDP::AugLag ()\fC [inline]\fP"
+
+.PP
+Modify the augmented Lagrangian object\&. 
+.PP
+Definition at line 95 of file lrsdp\&.hpp\&.
+.PP
+References augLag\&.
+.SS "const arma::vec& mlpack::optimization::LRSDP::B () const\fC [inline]\fP"
+
+.PP
+Return the vector of B values\&. 
+.PP
+Definition at line 83 of file lrsdp\&.hpp\&.
+.SS "arma::vec& mlpack::optimization::LRSDP::B ()\fC [inline]\fP"
+
+.PP
+Modify the vector of B values\&. 
+.PP
+Definition at line 85 of file lrsdp\&.hpp\&.
+.SS "const arma::mat& mlpack::optimization::LRSDP::C () const\fC [inline]\fP"
+
+.PP
+Return the objective function matrix (C)\&. 
+.PP
+Definition at line 68 of file lrsdp\&.hpp\&.
+.SS "arma::mat& mlpack::optimization::LRSDP::C ()\fC [inline]\fP"
+
+.PP
+Modify the objective function matrix (C)\&. 
+.PP
+Definition at line 70 of file lrsdp\&.hpp\&.
+.SS "const \fBLRSDPFunction\fP& mlpack::optimization::LRSDP::Function () const\fC [inline]\fP"
+
+.PP
+Return the function to be optimized\&. 
+.PP
+Definition at line 88 of file lrsdp\&.hpp\&.
+.SS "\fBLRSDPFunction\fP& mlpack::optimization::LRSDP::Function ()\fC [inline]\fP"
+
+.PP
+Modify the function to be optimized\&. 
+.PP
+Definition at line 90 of file lrsdp\&.hpp\&.
+.SS "double mlpack::optimization::LRSDP::Optimize (arma::mat &coordinates)"
+
+.PP
+Optimize the \fBLRSDP\fP and return the final objective value\&. The given coordinates will be modified to contain the final solution\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcoordinates\fP Starting coordinates for the optimization\&. 
+.RE
+.PP
+
+.SS "std::string mlpack::optimization::LRSDP::ToString () const"
+
+.PP
+Return a string representation of the object\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBAugLagrangian\fP<\fBLRSDPFunction\fP> mlpack::optimization::LRSDP::augLag\fC [private]\fP"
+
+.PP
+The \fBAugLagrangian\fP object which will be used for optimization\&. 
+.PP
+Definition at line 105 of file lrsdp\&.hpp\&.
+.PP
+Referenced by AugLag()\&.
+.SS "\fBLRSDPFunction\fP mlpack::optimization::LRSDP::function\fC [private]\fP"
+
+.PP
+Function to optimize, which the \fBAugLagrangian\fP object holds\&. 
+.PP
+Definition at line 102 of file lrsdp\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

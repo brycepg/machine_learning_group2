@@ -1,0 +1,190 @@
+\section{mlpack\-:\-:gmm Namespace Reference}
+\label{namespacemlpack_1_1gmm}\index{mlpack\-::gmm@{mlpack\-::gmm}}
+
+
+Gaussian Mixture Models.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf Diagonal\-Constraint}
+\begin{DoxyCompactList}\small\item\em Force a covariance matrix to be diagonal. \end{DoxyCompactList}\item 
+class {\bf Eigenvalue\-Ratio\-Constraint}
+\begin{DoxyCompactList}\small\item\em Given a vector of eigenvalue ratios, ensure that the covariance matrix always has those eigenvalue ratios. \end{DoxyCompactList}\item 
+class {\bf E\-M\-Fit}
+\begin{DoxyCompactList}\small\item\em This class contains methods which can fit a \doxyref{G\-M\-M}{p.}{classmlpack_1_1gmm_1_1GMM} to observations using the E\-M algorithm. \end{DoxyCompactList}\item 
+class {\bf G\-M\-M}
+\begin{DoxyCompactList}\small\item\em A Gaussian Mixture Model (\doxyref{G\-M\-M}{p.}{classmlpack_1_1gmm_1_1GMM}). \end{DoxyCompactList}\item 
+class {\bf No\-Constraint}
+\begin{DoxyCompactList}\small\item\em This class enforces no constraint on the covariance matrix. \end{DoxyCompactList}\item 
+class {\bf Positive\-Definite\-Constraint}
+\begin{DoxyCompactList}\small\item\em Given a covariance matrix, force the matrix to be positive definite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf phi} (const double x, const double mean, const double var)
+\begin{DoxyCompactList}\small\item\em Calculates the univariate Gaussian probability density function. \end{DoxyCompactList}\item 
+double {\bf phi} (const arma\-::vec \&x, const arma\-::vec \&mean, const arma\-::mat \&cov)
+\begin{DoxyCompactList}\small\item\em Calculates the multivariate Gaussian probability density function. \end{DoxyCompactList}\item 
+double {\bf phi} (const arma\-::vec \&x, const arma\-::vec \&mean, const arma\-::mat \&cov, const std\-::vector$<$ arma\-::mat $>$ \&d\-\_\-cov, arma\-::vec \&g\-\_\-mean, arma\-::vec \&g\-\_\-cov)
+\begin{DoxyCompactList}\small\item\em Calculates the multivariate Gaussian probability density function and also the gradients with respect to the mean and the variance. \end{DoxyCompactList}\item 
+void {\bf phi} (const arma\-::mat \&x, const arma\-::vec \&mean, const arma\-::mat \&cov, arma\-::vec \&probabilities)
+\begin{DoxyCompactList}\small\item\em Calculates the multivariate Gaussian probability density function for each data point (column) in the given matrix, with respect to the given mean and variance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Gaussian Mixture Models. 
+
+\subsection{Function Documentation}
+\index{mlpack\-::gmm@{mlpack\-::gmm}!phi@{phi}}
+\index{phi@{phi}!mlpack::gmm@{mlpack\-::gmm}}
+\subsubsection[{phi}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::gmm\-::phi (
+\begin{DoxyParamCaption}
+\item[{const double}]{x, }
+\item[{const double}]{mean, }
+\item[{const double}]{var}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{namespacemlpack_1_1gmm_a4866725ed32abed26295702c50f42ec7}
+
+
+Calculates the univariate Gaussian probability density function. 
+
+Example use\-: 
+\begin{DoxyCode}
+\textcolor{keywordtype}{double} x, mean, var;
+....
+\textcolor{keywordtype}{double} f = phi(x, mean, var);
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Observation. \\
+\hline
+{\em mean} & Mean of univariate Gaussian. \\
+\hline
+{\em var} & Variance of univariate Gaussian. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Probability of x being observed from the given univariate Gaussian. 
+\end{DoxyReturn}
+
+
+Definition at line 38 of file phi.\-hpp.
+
+
+
+References M\-\_\-\-P\-I.
+
+
+
+Referenced by mlpack\-::distribution\-::\-Gaussian\-Distribution\-::\-Probability().
+
+\index{mlpack\-::gmm@{mlpack\-::gmm}!phi@{phi}}
+\index{phi@{phi}!mlpack::gmm@{mlpack\-::gmm}}
+\subsubsection[{phi}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::gmm\-::phi (
+\begin{DoxyParamCaption}
+\item[{const arma\-::vec \&}]{x, }
+\item[{const arma\-::vec \&}]{mean, }
+\item[{const arma\-::mat \&}]{cov}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{namespacemlpack_1_1gmm_a6e347e8f2fe3b031089c32f4c02d54bf}
+
+
+Calculates the multivariate Gaussian probability density function. 
+
+Example use\-: 
+\begin{DoxyCode}
+\textcolor{keyword}{extern} arma::vec x, mean;
+\textcolor{keyword}{extern} arma::mat cov;
+....
+\textcolor{keywordtype}{double} f = phi(x, mean, cov);
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Observation. \\
+\hline
+{\em mean} & Mean of multivariate Gaussian. \\
+\hline
+{\em cov} & Covariance of multivariate Gaussian. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Probability of x being observed from the given multivariate Gaussian. 
+\end{DoxyReturn}
+
+
+Definition at line 60 of file phi.\-hpp.
+
+
+
+References M\-\_\-\-P\-I.
+
+\index{mlpack\-::gmm@{mlpack\-::gmm}!phi@{phi}}
+\index{phi@{phi}!mlpack::gmm@{mlpack\-::gmm}}
+\subsubsection[{phi}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::gmm\-::phi (
+\begin{DoxyParamCaption}
+\item[{const arma\-::vec \&}]{x, }
+\item[{const arma\-::vec \&}]{mean, }
+\item[{const arma\-::mat \&}]{cov, }
+\item[{const std\-::vector$<$ arma\-::mat $>$ \&}]{d\-\_\-cov, }
+\item[{arma\-::vec \&}]{g\-\_\-mean, }
+\item[{arma\-::vec \&}]{g\-\_\-cov}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{namespacemlpack_1_1gmm_ad430f8537b1e49279b1afab67e6ba5f2}
+
+
+Calculates the multivariate Gaussian probability density function and also the gradients with respect to the mean and the variance. 
+
+Example use\-: 
+\begin{DoxyCode}
+\textcolor{keyword}{extern} arma::vec x, mean, g\_mean, g\_cov;
+std::vector<arma::mat> d\_cov; \textcolor{comment}{// the dSigma}
+....
+\textcolor{keywordtype}{double} f = phi(x, mean, cov, d\_cov, &g\_mean, &g\_cov);
+\end{DoxyCode}
+ 
+
+Definition at line 86 of file phi.\-hpp.
+
+
+
+References M\-\_\-\-P\-I.
+
+\index{mlpack\-::gmm@{mlpack\-::gmm}!phi@{phi}}
+\index{phi@{phi}!mlpack::gmm@{mlpack\-::gmm}}
+\subsubsection[{phi}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::gmm\-::phi (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{x, }
+\item[{const arma\-::vec \&}]{mean, }
+\item[{const arma\-::mat \&}]{cov, }
+\item[{arma\-::vec \&}]{probabilities}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{namespacemlpack_1_1gmm_a1c3e6c204edbb42c077015e7db99bb42}
+
+
+Calculates the multivariate Gaussian probability density function for each data point (column) in the given matrix, with respect to the given mean and variance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & List of observations. \\
+\hline
+{\em mean} & Mean of multivariate Gaussian. \\
+\hline
+{\em cov} & Covariance of multivariate Gaussian. \\
+\hline
+{\em probabilities} & Output probabilities for each input observation. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 130 of file phi.\-hpp.
+
+
+
+References M\-\_\-\-P\-I.
+

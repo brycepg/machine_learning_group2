@@ -1,0 +1,9 @@
+digraph "src/mlpack/methods/perceptron/learning_policies" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_d1be4479dffdf1b9f98978aa2d42ca89 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="perceptron" fontname="Helvetica", fontsize="10", URL="dir_d1be4479dffdf1b9f98978aa2d42ca89.html"]
+  dir_83c113add47e749a90538be658ec31cd [shape=box, label="learning_policies", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_83c113add47e749a90538be658ec31cd.html"];
+  }
+}

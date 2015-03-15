@@ -1,0 +1,716 @@
+.TH "mlpack::det::DTree" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::det::DTree \- 
+.PP
+A density estimation tree is similar to both a decision tree and a space partitioning tree (like a kd-tree)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDTree\fP ()"
+.br
+.RI "\fICreate an empty density estimation tree\&. \fP"
+.ti -1c
+.RI "\fBDTree\fP (const arma::vec &\fBmaxVals\fP, const arma::vec &\fBminVals\fP, const size_t totalPoints)"
+.br
+.RI "\fICreate a density estimation tree with the given bounds and the given number of total points\&. \fP"
+.ti -1c
+.RI "\fBDTree\fP (arma::mat &data)"
+.br
+.RI "\fICreate a density estimation tree on the given data\&. \fP"
+.ti -1c
+.RI "\fBDTree\fP (const arma::vec &\fBmaxVals\fP, const arma::vec &\fBminVals\fP, const size_t \fBstart\fP, const size_t \fBend\fP, const double \fBlogNegError\fP)"
+.br
+.RI "\fICreate a child node of a density estimation tree given the bounding box specified by maxVals and minVals, using the size given in start and end and the specified error\&. \fP"
+.ti -1c
+.RI "\fBDTree\fP (const arma::vec &\fBmaxVals\fP, const arma::vec &\fBminVals\fP, const size_t totalPoints, const size_t \fBstart\fP, const size_t \fBend\fP)"
+.br
+.RI "\fICreate a child node of a density estimation tree given the bounding box specified by maxVals and minVals, using the size given in start and end, and calculating the error with the total number of points given\&. \fP"
+.ti -1c
+.RI "\fB~DTree\fP ()"
+.br
+.RI "\fIClean up memory allocated by the tree\&. \fP"
+.ti -1c
+.RI "double \fBAlphaUpper\fP () const "
+.br
+.RI "\fIReturn the upper part of the alpha sum\&. \fP"
+.ti -1c
+.RI "double \fBComputeValue\fP (const arma::vec &query) const "
+.br
+.RI "\fICompute the logarithm of the density estimate of a given query point\&. \fP"
+.ti -1c
+.RI "void \fBComputeVariableImportance\fP (arma::vec &importances) const "
+.br
+.RI "\fICompute the variable importance of each dimension in the learned tree\&. \fP"
+.ti -1c
+.RI "size_t \fBEnd\fP () const "
+.br
+.RI "\fIReturn the first index of a point not contained in this node\&. \fP"
+.ti -1c
+.RI "int \fBFindBucket\fP (const arma::vec &query) const "
+.br
+.RI "\fIReturn the tag of the leaf containing the query\&. \fP"
+.ti -1c
+.RI "double \fBGrow\fP (arma::mat &data, arma::Col< size_t > &oldFromNew, const bool useVolReg=false, const size_t maxLeafSize=10, const size_t minLeafSize=5)"
+.br
+.RI "\fIGreedily expand the tree\&. \fP"
+.ti -1c
+.RI "\fBDTree\fP * \fBLeft\fP () const "
+.br
+.RI "\fIReturn the left child\&. \fP"
+.ti -1c
+.RI "double \fBLogNegativeError\fP (const size_t totalPoints) const "
+.br
+.RI "\fICompute the log-negative-error for this point, given the total number of points in the dataset\&. \fP"
+.ti -1c
+.RI "double \fBLogNegError\fP () const "
+.br
+.RI "\fIReturn the log negative error of this node\&. \fP"
+.ti -1c
+.RI "double \fBLogVolume\fP () const "
+.br
+.RI "\fIReturn the inverse of the volume of this node\&. \fP"
+.ti -1c
+.RI "const arma::vec & \fBMaxVals\fP () const "
+.br
+.RI "\fIReturn the maximum values\&. \fP"
+.ti -1c
+.RI "arma::vec & \fBMaxVals\fP ()"
+.br
+.RI "\fIModify the maximum values\&. \fP"
+.ti -1c
+.RI "const arma::vec & \fBMinVals\fP () const "
+.br
+.RI "\fIReturn the minimum values\&. \fP"
+.ti -1c
+.RI "arma::vec & \fBMinVals\fP ()"
+.br
+.RI "\fIModify the minimum values\&. \fP"
+.ti -1c
+.RI "double \fBPruneAndUpdate\fP (const double oldAlpha, const size_t points, const bool useVolReg=false)"
+.br
+.RI "\fIPerform alpha pruning on a tree\&. \fP"
+.ti -1c
+.RI "double \fBRatio\fP () const "
+.br
+.RI "\fIReturn the ratio of points in this node to the points in the whole dataset\&. \fP"
+.ti -1c
+.RI "\fBDTree\fP * \fBRight\fP () const "
+.br
+.RI "\fIReturn the right child\&. \fP"
+.ti -1c
+.RI "bool \fBRoot\fP () const "
+.br
+.RI "\fIReturn whether or not this is the root of the tree\&. \fP"
+.ti -1c
+.RI "size_t \fBSplitDim\fP () const "
+.br
+.RI "\fIReturn the split dimension of this node\&. \fP"
+.ti -1c
+.RI "double \fBSplitValue\fP () const "
+.br
+.RI "\fIReturn the split value of this node\&. \fP"
+.ti -1c
+.RI "size_t \fBStart\fP () const "
+.br
+.RI "\fIReturn the starting index of points contained in this node\&. \fP"
+.ti -1c
+.RI "size_t \fBSubtreeLeaves\fP () const "
+.br
+.RI "\fIReturn the number of leaves which are descendants of this node\&. \fP"
+.ti -1c
+.RI "double \fBSubtreeLeavesLogNegError\fP () const "
+.br
+.RI "\fIReturn the log negative error of all descendants of this node\&. \fP"
+.ti -1c
+.RI "int \fBTagTree\fP (const int tag=0)"
+.br
+.RI "\fIIndex the buckets for possible usage later; this results in every leaf in the tree having a specific tag (accessible with BucketTag())\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturns a string representation of this object\&. \fP"
+.ti -1c
+.RI "bool \fBWithinRange\fP (const arma::vec &query) const "
+.br
+.RI "\fIReturn whether a query point is within the range of this node\&. \fP"
+.ti -1c
+.RI "void \fBWriteTree\fP (FILE *fp, const size_t level=0) const "
+.br
+.RI "\fIPrint the tree in a depth-first manner (this function is called recursively)\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBFindSplit\fP (const arma::mat &data, size_t &\fBsplitDim\fP, double &\fBsplitValue\fP, double &leftError, double &rightError, const size_t minLeafSize=5) const "
+.br
+.RI "\fIFind the dimension to split on\&. \fP"
+.ti -1c
+.RI "size_t \fBSplitData\fP (arma::mat &data, const size_t \fBsplitDim\fP, const double \fBsplitValue\fP, arma::Col< size_t > &oldFromNew) const "
+.br
+.RI "\fISplit the data, returning the number of points left of the split\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBalphaUpper\fP"
+.br
+.RI "\fIUpper part of alpha sum; used for pruning\&. \fP"
+.ti -1c
+.RI "int \fBbucketTag\fP"
+.br
+.RI "\fIThe tag for the leaf, used for hashing points\&. \fP"
+.ti -1c
+.RI "size_t \fBend\fP"
+.br
+.RI "\fIThe index of the last point in the dataset contained in this node (and its children)\&. \fP"
+.ti -1c
+.RI "\fBDTree\fP * \fBleft\fP"
+.br
+.RI "\fIThe left child\&. \fP"
+.ti -1c
+.RI "double \fBlogNegError\fP"
+.br
+.RI "\fIlog-negative-L2-error of the node\&. \fP"
+.ti -1c
+.RI "double \fBlogVolume\fP"
+.br
+.RI "\fIThe logarithm of the volume of the node\&. \fP"
+.ti -1c
+.RI "arma::vec \fBmaxVals\fP"
+.br
+.RI "\fIUpper half of bounding box for this node\&. \fP"
+.ti -1c
+.RI "arma::vec \fBminVals\fP"
+.br
+.RI "\fILower half of bounding box for this node\&. \fP"
+.ti -1c
+.RI "double \fBratio\fP"
+.br
+.RI "\fIRatio of the number of points in the node to the total number of points\&. \fP"
+.ti -1c
+.RI "\fBDTree\fP * \fBright\fP"
+.br
+.RI "\fIThe right child\&. \fP"
+.ti -1c
+.RI "bool \fBroot\fP"
+.br
+.RI "\fIIf true, this node is the root of the tree\&. \fP"
+.ti -1c
+.RI "size_t \fBsplitDim\fP"
+.br
+.RI "\fIThe splitting dimension for this node\&. \fP"
+.ti -1c
+.RI "double \fBsplitValue\fP"
+.br
+.RI "\fIThe split value on the splitting dimension for this node\&. \fP"
+.ti -1c
+.RI "size_t \fBstart\fP"
+.br
+.RI "\fIThe index of the first point in the dataset contained in this node (and its children)\&. \fP"
+.ti -1c
+.RI "size_t \fBsubtreeLeaves\fP"
+.br
+.RI "\fINumber of leaves of the subtree\&. \fP"
+.ti -1c
+.RI "double \fBsubtreeLeavesLogNegError\fP"
+.br
+.RI "\fISum of the error of the leaves of the subtree\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A density estimation tree is similar to both a decision tree and a space partitioning tree (like a kd-tree)\&. 
+
+Each leaf represents a constant-density hyper-rectangle\&. The tree is constructed in such a way as to minimize the integrated square error between the probability distribution of the tree and the observed probability distribution of the data\&. Because the tree is similar to a decision tree, the density estimation tree can provide very fast density estimates for a given point\&.
+.PP
+For more information, see the following paper:
+.PP
+.PP
+.nf
+@incollection{ram2011,
+  author = {Ram, Parikshit and Gray, Alexander G\&.},
+  title = {Density estimation trees},
+  booktitle = {{Proceedings of the 17th ACM SIGKDD International Conference
+      on Knowledge Discovery and Data Mining}},
+  series = {KDD '11},
+  year = {2011},
+  pages = {627--635}
+}
+.fi
+.PP
+ 
+.PP
+Definition at line 46 of file dtree\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::det::DTree::DTree ()"
+
+.PP
+Create an empty density estimation tree\&. 
+.SS "mlpack::det::DTree::DTree (const arma::vec &maxVals, const arma::vec &minVals, const size_ttotalPoints)"
+
+.PP
+Create a density estimation tree with the given bounds and the given number of total points\&. Children will not be created\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxVals\fP Maximum values of the bounding box\&. 
+.br
+\fIminVals\fP Minimum values of the bounding box\&. 
+.br
+\fItotalPoints\fP Total number of points in the dataset\&. 
+.RE
+.PP
+
+.SS "mlpack::det::DTree::DTree (arma::mat &data)"
+
+.PP
+Create a density estimation tree on the given data\&. Children will be created following the procedure outlined in the paper\&. The data will be modified; it will be reordered similar to the way BinarySpaceTree modifies datasets\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset to build tree on\&. 
+.RE
+.PP
+
+.SS "mlpack::det::DTree::DTree (const arma::vec &maxVals, const arma::vec &minVals, const size_tstart, const size_tend, const doublelogNegError)"
+
+.PP
+Create a child node of a density estimation tree given the bounding box specified by maxVals and minVals, using the size given in start and end and the specified error\&. Children of this node will not be created recursively\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxVals\fP Upper bound of bounding box\&. 
+.br
+\fIminVals\fP Lower bound of bounding box\&. 
+.br
+\fIstart\fP Start of points represented by this node in the data matrix\&. 
+.br
+\fIend\fP End of points represented by this node in the data matrix\&. 
+.br
+\fIerror\fP log-negative error of this node\&. 
+.RE
+.PP
+
+.SS "mlpack::det::DTree::DTree (const arma::vec &maxVals, const arma::vec &minVals, const size_ttotalPoints, const size_tstart, const size_tend)"
+
+.PP
+Create a child node of a density estimation tree given the bounding box specified by maxVals and minVals, using the size given in start and end, and calculating the error with the total number of points given\&. Children of this node will not be created recursively\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxVals\fP Upper bound of bounding box\&. 
+.br
+\fIminVals\fP Lower bound of bounding box\&. 
+.br
+\fIstart\fP Start of points represented by this node in the data matrix\&. 
+.br
+\fIend\fP End of points represented by this node in the data matrix\&. 
+.RE
+.PP
+
+.SS "mlpack::det::DTree::~DTree ()"
+
+.PP
+Clean up memory allocated by the tree\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "double mlpack::det::DTree::AlphaUpper () const\fC [inline]\fP"
+
+.PP
+Return the upper part of the alpha sum\&. 
+.PP
+Definition at line 276 of file dtree\&.hpp\&.
+.PP
+References alphaUpper\&.
+.SS "double mlpack::det::DTree::ComputeValue (const arma::vec &query) const"
+
+.PP
+Compute the logarithm of the density estimate of a given query point\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP Point to estimate density of\&. 
+.RE
+.PP
+
+.SS "void mlpack::det::DTree::ComputeVariableImportance (arma::vec &importances) const"
+
+.PP
+Compute the variable importance of each dimension in the learned tree\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimportances\fP Vector to store the calculated importances in\&. 
+.RE
+.PP
+
+.SS "size_t mlpack::det::DTree::End () const\fC [inline]\fP"
+
+.PP
+Return the first index of a point not contained in this node\&. 
+.PP
+Definition at line 253 of file dtree\&.hpp\&.
+.PP
+References end\&.
+.SS "int mlpack::det::DTree::FindBucket (const arma::vec &query) const"
+
+.PP
+Return the tag of the leaf containing the query\&. This is useful for generating class memberships\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP Query to search for\&. 
+.RE
+.PP
+
+.SS "bool mlpack::det::DTree::FindSplit (const arma::mat &data, size_t &splitDim, double &splitValue, double &leftError, double &rightError, const size_tminLeafSize = \fC5\fP) const\fC [private]\fP"
+
+.PP
+Find the dimension to split on\&. 
+.SS "double mlpack::det::DTree::Grow (arma::mat &data, arma::Col< size_t > &oldFromNew, const booluseVolReg = \fCfalse\fP, const size_tmaxLeafSize = \fC10\fP, const size_tminLeafSize = \fC5\fP)"
+
+.PP
+Greedily expand the tree\&. The points in the dataset will be reordered during tree growth\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset to build tree on\&. 
+.br
+\fIoldFromNew\fP Mappings from old points to new points\&. 
+.br
+\fIuseVolReg\fP If true, volume regularization is used\&. 
+.br
+\fImaxLeafSize\fP Maximum size of a leaf\&. 
+.br
+\fIminLeafSize\fP Minimum size of a leaf\&. 
+.RE
+.PP
+
+.SS "\fBDTree\fP* mlpack::det::DTree::Left () const\fC [inline]\fP"
+
+.PP
+Return the left child\&. 
+.PP
+Definition at line 270 of file dtree\&.hpp\&.
+.PP
+References left\&.
+.SS "double mlpack::det::DTree::LogNegativeError (const size_ttotalPoints) const"
+
+.PP
+Compute the log-negative-error for this point, given the total number of points in the dataset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItotalPoints\fP Total number of points in the dataset\&. 
+.RE
+.PP
+
+.SS "double mlpack::det::DTree::LogNegError () const\fC [inline]\fP"
+
+.PP
+Return the log negative error of this node\&. 
+.PP
+Definition at line 259 of file dtree\&.hpp\&.
+.PP
+References logNegError\&.
+.SS "double mlpack::det::DTree::LogVolume () const\fC [inline]\fP"
+
+.PP
+Return the inverse of the volume of this node\&. 
+.PP
+Definition at line 268 of file dtree\&.hpp\&.
+.PP
+References logVolume\&.
+.SS "const arma::vec& mlpack::det::DTree::MaxVals () const\fC [inline]\fP"
+
+.PP
+Return the maximum values\&. 
+.PP
+Definition at line 279 of file dtree\&.hpp\&.
+.PP
+References maxVals\&.
+.SS "arma::vec& mlpack::det::DTree::MaxVals ()\fC [inline]\fP"
+
+.PP
+Modify the maximum values\&. 
+.PP
+Definition at line 281 of file dtree\&.hpp\&.
+.PP
+References maxVals\&.
+.SS "const arma::vec& mlpack::det::DTree::MinVals () const\fC [inline]\fP"
+
+.PP
+Return the minimum values\&. 
+.PP
+Definition at line 284 of file dtree\&.hpp\&.
+.PP
+References minVals\&.
+.SS "arma::vec& mlpack::det::DTree::MinVals ()\fC [inline]\fP"
+
+.PP
+Modify the minimum values\&. 
+.PP
+Definition at line 286 of file dtree\&.hpp\&.
+.PP
+References minVals\&.
+.SS "double mlpack::det::DTree::PruneAndUpdate (const doubleoldAlpha, const size_tpoints, const booluseVolReg = \fCfalse\fP)"
+
+.PP
+Perform alpha pruning on a tree\&. Returns the new value of alpha\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoldAlpha\fP Old value of alpha\&. 
+.br
+\fIpoints\fP Total number of points in dataset\&. 
+.br
+\fIuseVolReg\fP If true, volume regularization is used\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+New value of alpha\&. 
+.RE
+.PP
+
+.SS "double mlpack::det::DTree::Ratio () const\fC [inline]\fP"
+
+.PP
+Return the ratio of points in this node to the points in the whole dataset\&. 
+.PP
+Definition at line 266 of file dtree\&.hpp\&.
+.PP
+References ratio\&.
+.SS "\fBDTree\fP* mlpack::det::DTree::Right () const\fC [inline]\fP"
+
+.PP
+Return the right child\&. 
+.PP
+Definition at line 272 of file dtree\&.hpp\&.
+.PP
+References right\&.
+.SS "bool mlpack::det::DTree::Root () const\fC [inline]\fP"
+
+.PP
+Return whether or not this is the root of the tree\&. 
+.PP
+Definition at line 274 of file dtree\&.hpp\&.
+.PP
+References root\&.
+.SS "size_t mlpack::det::DTree::SplitData (arma::mat &data, const size_tsplitDim, const doublesplitValue, arma::Col< size_t > &oldFromNew) const\fC [private]\fP"
+
+.PP
+Split the data, returning the number of points left of the split\&. 
+.SS "size_t mlpack::det::DTree::SplitDim () const\fC [inline]\fP"
+
+.PP
+Return the split dimension of this node\&. 
+.PP
+Definition at line 255 of file dtree\&.hpp\&.
+.PP
+References splitDim\&.
+.SS "double mlpack::det::DTree::SplitValue () const\fC [inline]\fP"
+
+.PP
+Return the split value of this node\&. 
+.PP
+Definition at line 257 of file dtree\&.hpp\&.
+.PP
+References splitValue\&.
+.SS "size_t mlpack::det::DTree::Start () const\fC [inline]\fP"
+
+.PP
+Return the starting index of points contained in this node\&. 
+.PP
+Definition at line 251 of file dtree\&.hpp\&.
+.PP
+References start\&.
+.SS "size_t mlpack::det::DTree::SubtreeLeaves () const\fC [inline]\fP"
+
+.PP
+Return the number of leaves which are descendants of this node\&. 
+.PP
+Definition at line 263 of file dtree\&.hpp\&.
+.PP
+References subtreeLeaves\&.
+.SS "double mlpack::det::DTree::SubtreeLeavesLogNegError () const\fC [inline]\fP"
+
+.PP
+Return the log negative error of all descendants of this node\&. 
+.PP
+Definition at line 261 of file dtree\&.hpp\&.
+.PP
+References subtreeLeavesLogNegError\&.
+.SS "int mlpack::det::DTree::TagTree (const inttag = \fC0\fP)"
+
+.PP
+Index the buckets for possible usage later; this results in every leaf in the tree having a specific tag (accessible with BucketTag())\&. This function calls itself recursively\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItag\fP Tag for the next leaf; leave at 0 for the initial call\&. 
+.RE
+.PP
+
+.SS "std::string mlpack::det::DTree::ToString () const"
+
+.PP
+Returns a string representation of this object\&. 
+.SS "bool mlpack::det::DTree::WithinRange (const arma::vec &query) const"
+
+.PP
+Return whether a query point is within the range of this node\&. 
+.SS "void mlpack::det::DTree::WriteTree (FILE *fp, const size_tlevel = \fC0\fP) const"
+
+.PP
+Print the tree in a depth-first manner (this function is called recursively)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfp\fP File to write the tree to\&. 
+.br
+\fIlevel\fP Level of the tree (should start at 0)\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "double mlpack::det::DTree::alphaUpper\fC [private]\fP"
+
+.PP
+Upper part of alpha sum; used for pruning\&. 
+.PP
+Definition at line 242 of file dtree\&.hpp\&.
+.PP
+Referenced by AlphaUpper()\&.
+.SS "int mlpack::det::DTree::bucketTag\fC [private]\fP"
+
+.PP
+The tag for the leaf, used for hashing points\&. 
+.PP
+Definition at line 239 of file dtree\&.hpp\&.
+.SS "size_t mlpack::det::DTree::end\fC [private]\fP"
+
+.PP
+The index of the last point in the dataset contained in this node (and its children)\&. 
+.PP
+Definition at line 207 of file dtree\&.hpp\&.
+.PP
+Referenced by End()\&.
+.SS "\fBDTree\fP* mlpack::det::DTree::left\fC [private]\fP"
+
+.PP
+The left child\&. 
+.PP
+Definition at line 245 of file dtree\&.hpp\&.
+.PP
+Referenced by Left()\&.
+.SS "double mlpack::det::DTree::logNegError\fC [private]\fP"
+
+.PP
+log-negative-L2-error of the node\&. 
+.PP
+Definition at line 221 of file dtree\&.hpp\&.
+.PP
+Referenced by LogNegError()\&.
+.SS "double mlpack::det::DTree::logVolume\fC [private]\fP"
+
+.PP
+The logarithm of the volume of the node\&. 
+.PP
+Definition at line 236 of file dtree\&.hpp\&.
+.PP
+Referenced by LogVolume()\&.
+.SS "arma::vec mlpack::det::DTree::maxVals\fC [private]\fP"
+
+.PP
+Upper half of bounding box for this node\&. 
+.PP
+Definition at line 210 of file dtree\&.hpp\&.
+.PP
+Referenced by MaxVals()\&.
+.SS "arma::vec mlpack::det::DTree::minVals\fC [private]\fP"
+
+.PP
+Lower half of bounding box for this node\&. 
+.PP
+Definition at line 212 of file dtree\&.hpp\&.
+.PP
+Referenced by MinVals()\&.
+.SS "double mlpack::det::DTree::ratio\fC [private]\fP"
+
+.PP
+Ratio of the number of points in the node to the total number of points\&. 
+.PP
+Definition at line 233 of file dtree\&.hpp\&.
+.PP
+Referenced by Ratio()\&.
+.SS "\fBDTree\fP* mlpack::det::DTree::right\fC [private]\fP"
+
+.PP
+The right child\&. 
+.PP
+Definition at line 247 of file dtree\&.hpp\&.
+.PP
+Referenced by Right()\&.
+.SS "bool mlpack::det::DTree::root\fC [private]\fP"
+
+.PP
+If true, this node is the root of the tree\&. 
+.PP
+Definition at line 230 of file dtree\&.hpp\&.
+.PP
+Referenced by Root()\&.
+.SS "size_t mlpack::det::DTree::splitDim\fC [private]\fP"
+
+.PP
+The splitting dimension for this node\&. 
+.PP
+Definition at line 215 of file dtree\&.hpp\&.
+.PP
+Referenced by SplitDim()\&.
+.SS "double mlpack::det::DTree::splitValue\fC [private]\fP"
+
+.PP
+The split value on the splitting dimension for this node\&. 
+.PP
+Definition at line 218 of file dtree\&.hpp\&.
+.PP
+Referenced by SplitValue()\&.
+.SS "size_t mlpack::det::DTree::start\fC [private]\fP"
+
+.PP
+The index of the first point in the dataset contained in this node (and its children)\&. 
+.PP
+Definition at line 204 of file dtree\&.hpp\&.
+.PP
+Referenced by Start()\&.
+.SS "size_t mlpack::det::DTree::subtreeLeaves\fC [private]\fP"
+
+.PP
+Number of leaves of the subtree\&. 
+.PP
+Definition at line 227 of file dtree\&.hpp\&.
+.PP
+Referenced by SubtreeLeaves()\&.
+.SS "double mlpack::det::DTree::subtreeLeavesLogNegError\fC [private]\fP"
+
+.PP
+Sum of the error of the leaves of the subtree\&. 
+.PP
+Definition at line 224 of file dtree\&.hpp\&.
+.PP
+Referenced by SubtreeLeavesLogNegError()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

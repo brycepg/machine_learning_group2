@@ -1,0 +1,78 @@
+.TH "mlpack::util" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::util \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCLIDeleter\fP"
+.br
+.RI "\fIExtremely simple class whose only job is to delete the existing \fBCLI\fP object at the end of execution\&. \fP"
+.ti -1c
+.RI "class \fBNullOutStream\fP"
+.br
+.RI "\fIUsed for \fBLog::Debug\fP when not compiled with debugging symbols\&. \fP"
+.ti -1c
+.RI "class \fBOption\fP"
+.br
+.RI "\fIA static object whose constructor registers a parameter with the \fBCLI\fP class\&. \fP"
+.ti -1c
+.RI "class \fBPrefixedOutStream\fP"
+.br
+.RI "\fIAllows us to output to an ostream with a prefix at the beginning of each line, in the same way we would output to cout or cerr\&. \fP"
+.ti -1c
+.RI "class \fBProgramDoc\fP"
+.br
+.RI "\fIA static object whose constructor registers program documentation with the \fBCLI\fP class\&. \fP"
+.ti -1c
+.RI "class \fBSaveRestoreUtility\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBGetVersion\fP ()"
+.br
+.RI "\fIThis will return either 'mlpack x\&.y\&.z' or 'mlpack trunk-rXXXXX' depending on whether or not this is a stable version of mlpack or an svn revision\&. \fP"
+.ti -1c
+.RI "std::string \fBIndent\fP (std::string input, const size_t howManyTabs=1)"
+.br
+.RI "\fIA utility function that replaces all all newlines with a number of spaces depending on the indentation level\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static \fBCLIDeleter\fP \fBcliDeleter\fP"
+.br
+.RI "\fIDeclare the deleter\&. \fP"
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "std::string mlpack::util::GetVersion ()"
+
+.PP
+This will return either 'mlpack x\&.y\&.z' or 'mlpack trunk-rXXXXX' depending on whether or not this is a stable version of mlpack or an svn revision\&. 
+.SS "std::string mlpack::util::Indent (std::stringinput, const size_thowManyTabs = \fC1\fP)"
+
+.PP
+A utility function that replaces all all newlines with a number of spaces depending on the indentation level\&. 
+.PP
+Referenced by mlpack::kernel::PSpectrumStringKernel::ToString()\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBCLIDeleter\fP mlpack::util::cliDeleter\fC [static]\fP"
+
+.PP
+Declare the deleter\&. 
+.PP
+Definition at line 35 of file cli_deleter\&.hpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

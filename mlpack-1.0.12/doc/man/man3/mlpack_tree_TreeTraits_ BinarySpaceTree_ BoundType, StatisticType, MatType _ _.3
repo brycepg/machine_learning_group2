@@ -1,0 +1,70 @@
+.TH "mlpack::tree::TreeTraits< BinarySpaceTree< BoundType, StatisticType, MatType > >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::tree::TreeTraits< BinarySpaceTree< BoundType, StatisticType, MatType > > \- 
+.PP
+This is a specialization of the TreeType class to the \fBBinarySpaceTree\fP tree type\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const bool \fBFirstPointIsCentroid\fP = false"
+.br
+.RI "\fIThere is no guarantee that the first point in a node is its centroid\&. \fP"
+.ti -1c
+.RI "static const bool \fBHasOverlappingChildren\fP = false"
+.br
+.RI "\fIEach binary space tree node has two children which represent non-overlapping subsets of the space which the node represents\&. \fP"
+.ti -1c
+.RI "static const bool \fBHasSelfChildren\fP = false"
+.br
+.RI "\fIPoints are not contained at multiple levels of the binary space tree\&. \fP"
+.ti -1c
+.RI "static const bool \fBRearrangesDataset\fP = true"
+.br
+.RI "\fIPoints are rearranged during building of the tree\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename BoundType, typename StatisticType, typename MatType>class mlpack::tree::TreeTraits< BinarySpaceTree< BoundType, StatisticType, MatType > >"
+This is a specialization of the TreeType class to the \fBBinarySpaceTree\fP tree type\&. 
+
+It defines characteristics of the binary space tree, and is used to help write tree-independent (but still optimized) tree-based algorithms\&. See \fBmlpack/core/tree/tree_traits\&.hpp\fP for more information\&. 
+.PP
+Definition at line 31 of file traits\&.hpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename BoundType , typename StatisticType , typename MatType > const bool \fBmlpack::tree::TreeTraits\fP< \fBBinarySpaceTree\fP< BoundType, StatisticType, MatType > >::FirstPointIsCentroid = false\fC [static]\fP"
+
+.PP
+There is no guarantee that the first point in a node is its centroid\&. 
+.PP
+Definition at line 44 of file traits\&.hpp\&.
+.SS "template<typename BoundType , typename StatisticType , typename MatType > const bool \fBmlpack::tree::TreeTraits\fP< \fBBinarySpaceTree\fP< BoundType, StatisticType, MatType > >::HasOverlappingChildren = false\fC [static]\fP"
+
+.PP
+Each binary space tree node has two children which represent non-overlapping subsets of the space which the node represents\&. Therefore, children are not overlapping\&. 
+.PP
+Definition at line 39 of file traits\&.hpp\&.
+.SS "template<typename BoundType , typename StatisticType , typename MatType > const bool \fBmlpack::tree::TreeTraits\fP< \fBBinarySpaceTree\fP< BoundType, StatisticType, MatType > >::HasSelfChildren = false\fC [static]\fP"
+
+.PP
+Points are not contained at multiple levels of the binary space tree\&. 
+.PP
+Definition at line 49 of file traits\&.hpp\&.
+.SS "template<typename BoundType , typename StatisticType , typename MatType > const bool \fBmlpack::tree::TreeTraits\fP< \fBBinarySpaceTree\fP< BoundType, StatisticType, MatType > >::RearrangesDataset = true\fC [static]\fP"
+
+.PP
+Points are rearranged during building of the tree\&. 
+.PP
+Definition at line 54 of file traits\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

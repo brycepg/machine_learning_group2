@@ -1,0 +1,36 @@
+\section{src/mlpack/methods/gmm/phi.hpp File Reference}
+\label{phi_8hpp}\index{src/mlpack/methods/gmm/phi.\-hpp@{src/mlpack/methods/gmm/phi.\-hpp}}
+Include dependency graph for phi.\-hpp\-:
+This graph shows which files directly or indirectly include this file\-:
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+{\bf mlpack}
+\begin{DoxyCompactList}\small\item\em Linear algebra utility functions, generally performed on matrices or vectors. \end{DoxyCompactList}\item 
+{\bf mlpack\-::gmm}
+\begin{DoxyCompactList}\small\item\em Gaussian Mixture Models. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf mlpack\-::gmm\-::phi} (const double x, const double mean, const double var)
+\begin{DoxyCompactList}\small\item\em Calculates the univariate Gaussian probability density function. \end{DoxyCompactList}\item 
+double {\bf mlpack\-::gmm\-::phi} (const arma\-::vec \&x, const arma\-::vec \&mean, const arma\-::mat \&cov)
+\begin{DoxyCompactList}\small\item\em Calculates the multivariate Gaussian probability density function. \end{DoxyCompactList}\item 
+double {\bf mlpack\-::gmm\-::phi} (const arma\-::vec \&x, const arma\-::vec \&mean, const arma\-::mat \&cov, const std\-::vector$<$ arma\-::mat $>$ \&d\-\_\-cov, arma\-::vec \&g\-\_\-mean, arma\-::vec \&g\-\_\-cov)
+\begin{DoxyCompactList}\small\item\em Calculates the multivariate Gaussian probability density function and also the gradients with respect to the mean and the variance. \end{DoxyCompactList}\item 
+void {\bf mlpack\-::gmm\-::phi} (const arma\-::mat \&x, const arma\-::vec \&mean, const arma\-::mat \&cov, arma\-::vec \&probabilities)
+\begin{DoxyCompactList}\small\item\em Calculates the multivariate Gaussian probability density function for each data point (column) in the given matrix, with respect to the given mean and variance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Parikshit Ram ({\tt pram@cc.\-gatech.\-edu})
+\end{DoxyAuthor}
+This file computes the Gaussian probability density function
+
+This file is part of mlpack 1.\-0.\-12.
+
+mlpack is free software; you may redstribute it and/or modify it under the terms of the 3-\/clause B\-S\-D license. You should have received a copy of the 3-\/clause B\-S\-D license along with mlpack. If not, see {\tt http\-://www.\-opensource.\-org/licenses/\-B\-S\-D-\/3-\/\-Clause} for more information. 
+
+Definition in file {\bf phi.\-hpp}.
+

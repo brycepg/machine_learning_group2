@@ -1,0 +1,217 @@
+\section{mlpack\-:\-:tree\-:\-:Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-:\-:Dual\-Tree\-Traverser$<$ Rule\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser}\index{mlpack\-::tree\-::\-Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::\-Dual\-Tree\-Traverser$<$ Rule\-Type $>$@{mlpack\-::tree\-::\-Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::\-Dual\-Tree\-Traverser$<$ Rule\-Type $>$}}
+
+
+A dual-\/tree cover tree traverser; see dual\-\_\-tree\-\_\-traverser.\-hpp.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf Dual\-Cover\-Tree\-Map\-Entry}
+\begin{DoxyCompactList}\small\item\em Struct used for traversal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Dual\-Tree\-Traverser} (Rule\-Type \&{\bf rule})
+\begin{DoxyCompactList}\small\item\em Initialize the dual tree traverser with the given rule type. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Base\-Cases} () const 
+\item 
+size\-\_\-t {\bf Num\-Prunes} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of pruned nodes. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Num\-Prunes} ()
+\begin{DoxyCompactList}\small\item\em Modify the number of pruned nodes. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Scores} () const 
+\item 
+size\-\_\-t {\bf Num\-Visited} () const 
+\item 
+void {\bf Traverse} ({\bf Cover\-Tree} \&query\-Node, {\bf Cover\-Tree} \&reference\-Node)
+\begin{DoxyCompactList}\small\item\em Traverse the two specified trees. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Prune\-Map} ({\bf Cover\-Tree} \&query\-Node, std\-::map$<$ int, std\-::vector$<$ {\bf Dual\-Cover\-Tree\-Map\-Entry} $>$ $>$ \&reference\-Map, std\-::map$<$ int, std\-::vector$<$ {\bf Dual\-Cover\-Tree\-Map\-Entry} $>$ $>$ \&child\-Map)
+\begin{DoxyCompactList}\small\item\em Prepare map for recursion. \end{DoxyCompactList}\item 
+void {\bf Reference\-Recursion} ({\bf Cover\-Tree} \&query\-Node, std\-::map$<$ int, std\-::vector$<$ {\bf Dual\-Cover\-Tree\-Map\-Entry} $>$ $>$ \&reference\-Map)
+\item 
+void {\bf Traverse} ({\bf Cover\-Tree} \&query\-Node, std\-::map$<$ int, std\-::vector$<$ {\bf Dual\-Cover\-Tree\-Map\-Entry} $>$ $>$ \&reference\-Map)
+\begin{DoxyCompactList}\small\item\em Helper function for traversal of the two trees. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\-\_\-t {\bf num\-Prunes}
+\begin{DoxyCompactList}\small\item\em The number of pruned nodes. \end{DoxyCompactList}\item 
+Rule\-Type \& {\bf rule}
+\begin{DoxyCompactList}\small\item\em The instantiated rule set for pruning branches. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Metric\-Type = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy = First\-Point\-Is\-Root, typename Statistic\-Type = Empty\-Statistic$>$template$<$typename Rule\-Type$>$class mlpack\-::tree\-::\-Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::\-Dual\-Tree\-Traverser$<$ Rule\-Type $>$}
+
+A dual-\/tree cover tree traverser; see dual\-\_\-tree\-\_\-traverser.\-hpp. 
+
+Definition at line 216 of file cover\-\_\-tree.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}!Dual\-Tree\-Traverser@{Dual\-Tree\-Traverser}}
+\index{Dual\-Tree\-Traverser@{Dual\-Tree\-Traverser}!mlpack::tree::CoverTree::DualTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Dual\-Tree\-Traverser}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::{\bf Dual\-Tree\-Traverser} (
+\begin{DoxyParamCaption}
+\item[{Rule\-Type \&}]{rule}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser_acfe674afb88388ba3c24f7887b03fbaa}
+
+
+Initialize the dual tree traverser with the given rule type. 
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Base\-Cases@{Num\-Base\-Cases}}
+\index{Num\-Base\-Cases@{Num\-Base\-Cases}!mlpack::tree::CoverTree::DualTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Base\-Cases}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Base\-Cases (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser_a4a34d728c32906fe211a1a04c4683d82}
+
+
+Definition at line 50 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Prunes@{Num\-Prunes}}
+\index{Num\-Prunes@{Num\-Prunes}!mlpack::tree::CoverTree::DualTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Prunes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Prunes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser_afad02311b0a118d824dd91a6bd3cd02d}
+
+
+Get the number of pruned nodes. 
+
+
+
+Definition at line 42 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Prunes@{Num\-Prunes}}
+\index{Num\-Prunes@{Num\-Prunes}!mlpack::tree::CoverTree::DualTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Prunes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ size\-\_\-t\& {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Prunes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser_a62daf3b3264288d63bd0f4fb9ef9cf79}
+
+
+Modify the number of pruned nodes. 
+
+
+
+Definition at line 44 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Scores@{Num\-Scores}}
+\index{Num\-Scores@{Num\-Scores}!mlpack::tree::CoverTree::DualTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Scores}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Scores (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser_a849e5666f0644c9c13ed99c2e0e8d011}
+
+
+Definition at line 49 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Visited@{Num\-Visited}}
+\index{Num\-Visited@{Num\-Visited}!mlpack::tree::CoverTree::DualTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Visited}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Visited (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser_a3ad50e2be3ebae7330bccb873051dd34}
+
+
+Definition at line 48 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}!Prune\-Map@{Prune\-Map}}
+\index{Prune\-Map@{Prune\-Map}!mlpack::tree::CoverTree::DualTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Prune\-Map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ void {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Prune\-Map (
+\begin{DoxyParamCaption}
+\item[{{\bf Cover\-Tree} \&}]{query\-Node, }
+\item[{std\-::map$<$ int, std\-::vector$<$ {\bf Dual\-Cover\-Tree\-Map\-Entry} $>$ $>$ \&}]{reference\-Map, }
+\item[{std\-::map$<$ int, std\-::vector$<$ {\bf Dual\-Cover\-Tree\-Map\-Entry} $>$ $>$ \&}]{child\-Map}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser_af45b2ca57936f57d770f915bf680e936}
+
+
+Prepare map for recursion. 
+
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}!Reference\-Recursion@{Reference\-Recursion}}
+\index{Reference\-Recursion@{Reference\-Recursion}!mlpack::tree::CoverTree::DualTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Reference\-Recursion}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ void {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Reference\-Recursion (
+\begin{DoxyParamCaption}
+\item[{{\bf Cover\-Tree} \&}]{query\-Node, }
+\item[{std\-::map$<$ int, std\-::vector$<$ {\bf Dual\-Cover\-Tree\-Map\-Entry} $>$ $>$ \&}]{reference\-Map}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser_a28dbe80950ec9605d8949837d70bf6c2}
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}!Traverse@{Traverse}}
+\index{Traverse@{Traverse}!mlpack::tree::CoverTree::DualTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Traverse}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ void {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Traverse (
+\begin{DoxyParamCaption}
+\item[{{\bf Cover\-Tree} \&}]{query\-Node, }
+\item[{{\bf Cover\-Tree} \&}]{reference\-Node}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser_aa8f9e67497bd516291af92bd1acf6a01}
+
+
+Traverse the two specified trees. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query\-Node} & Root of query tree. \\
+\hline
+{\em reference\-Node} & Root of reference tree. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}!Traverse@{Traverse}}
+\index{Traverse@{Traverse}!mlpack::tree::CoverTree::DualTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Traverse}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ void {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Traverse (
+\begin{DoxyParamCaption}
+\item[{{\bf Cover\-Tree} \&}]{query\-Node, }
+\item[{std\-::map$<$ int, std\-::vector$<$ {\bf Dual\-Cover\-Tree\-Map\-Entry} $>$ $>$ \&}]{reference\-Map}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser_a2a8c583fc3d1348876c988b09823d480}
+
+
+Helper function for traversal of the two trees. 
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}!num\-Prunes@{num\-Prunes}}
+\index{num\-Prunes@{num\-Prunes}!mlpack::tree::CoverTree::DualTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{num\-Prunes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::num\-Prunes\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser_a38db60cfcf8a1ece2860120fedaf67ca}
+
+
+The number of pruned nodes. 
+
+
+
+Definition at line 57 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}!rule@{rule}}
+\index{rule@{rule}!mlpack::tree::CoverTree::DualTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{rule}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ Rule\-Type\& {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::rule\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1DualTreeTraverser_ae8e9a89f3d4aa6eecb9dba27607d30c1}
+
+
+The instantiated rule set for pruning branches. 
+
+
+
+Definition at line 54 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/tree/cover\-\_\-tree/{\bf cover\-\_\-tree.\-hpp}\item 
+src/mlpack/core/tree/cover\-\_\-tree/{\bf dual\-\_\-tree\-\_\-traverser.\-hpp}\end{DoxyCompactItemize}

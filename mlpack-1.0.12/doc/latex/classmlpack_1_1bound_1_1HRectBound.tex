@@ -1,0 +1,528 @@
+\section{mlpack\-:\-:bound\-:\-:H\-Rect\-Bound$<$ Power, Take\-Root $>$ Class Template Reference}
+\label{classmlpack_1_1bound_1_1HRectBound}\index{mlpack\-::bound\-::\-H\-Rect\-Bound$<$ Power, Take\-Root $>$@{mlpack\-::bound\-::\-H\-Rect\-Bound$<$ Power, Take\-Root $>$}}
+
+
+Hyper-\/rectangle bound for an L-\/metric.  
+
+
+
+
+Collaboration diagram for mlpack\-:\-:bound\-:\-:H\-Rect\-Bound$<$ Power, Take\-Root $>$\-:
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef {\bf metric\-::\-L\-Metric}$<$ Power, \\*
+Take\-Root $>$ {\bf Metric\-Type}
+\begin{DoxyCompactList}\small\item\em This is the metric type that this bound is using. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf H\-Rect\-Bound} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor; creates a bound of dimensionality 0. \end{DoxyCompactList}\item 
+{\bf H\-Rect\-Bound} (const size\-\_\-t dimension)
+\begin{DoxyCompactList}\small\item\em Initializes to specified dimensionality with each dimension the empty set. \end{DoxyCompactList}\item 
+{\bf H\-Rect\-Bound} (const {\bf H\-Rect\-Bound} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor; necessary to prevent memory leaks. \end{DoxyCompactList}\item 
+{\bf $\sim$\-H\-Rect\-Bound} ()
+\begin{DoxyCompactList}\small\item\em Destructor\-: clean up memory. \end{DoxyCompactList}\item 
+void {\bf Centroid} (arma\-::vec \&centroid) const 
+\begin{DoxyCompactList}\small\item\em Calculates the centroid of the range, placing it into the given vector. \end{DoxyCompactList}\item 
+void {\bf Clear} ()
+\begin{DoxyCompactList}\small\item\em Resets all dimensions to the empty set (so that this bound contains nothing). \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Vec\-Type $>$ }\\bool {\bf Contains} (const Vec\-Type \&point) const 
+\begin{DoxyCompactList}\small\item\em Determines if a point is within this bound. \end{DoxyCompactList}\item 
+double {\bf Diameter} () const 
+\begin{DoxyCompactList}\small\item\em Returns the diameter of the hyperrectangle (that is, the longest diagonal). \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Dim} () const 
+\begin{DoxyCompactList}\small\item\em Gets the dimensionality. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Vec\-Type $>$ }\\double {\bf Max\-Distance} (const Vec\-Type \&point, typename boost\-::enable\-\_\-if$<$ {\bf Is\-Vector}$<$ Vec\-Type $>$ $>$ $\ast$=0) const 
+\begin{DoxyCompactList}\small\item\em Calculates maximum bound-\/to-\/point squared distance. \end{DoxyCompactList}\item 
+double {\bf Max\-Distance} (const {\bf H\-Rect\-Bound} \&other) const 
+\begin{DoxyCompactList}\small\item\em Computes maximum distance. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Vec\-Type $>$ }\\double {\bf Min\-Distance} (const Vec\-Type \&point, typename boost\-::enable\-\_\-if$<$ {\bf Is\-Vector}$<$ Vec\-Type $>$ $>$ $\ast$=0) const 
+\begin{DoxyCompactList}\small\item\em Calculates minimum bound-\/to-\/point distance. \end{DoxyCompactList}\item 
+double {\bf Min\-Distance} (const {\bf H\-Rect\-Bound} \&other) const 
+\begin{DoxyCompactList}\small\item\em Calculates minimum bound-\/to-\/bound distance. \end{DoxyCompactList}\item 
+double {\bf Min\-Width} () const 
+\begin{DoxyCompactList}\small\item\em Get the minimum width of the bound. \end{DoxyCompactList}\item 
+double \& {\bf Min\-Width} ()
+\begin{DoxyCompactList}\small\item\em Modify the minimum width of the bound. \end{DoxyCompactList}\item 
+{\bf H\-Rect\-Bound} \& {\bf operator=} (const {\bf H\-Rect\-Bound} \&other)
+\begin{DoxyCompactList}\small\item\em Same as copy constructor; necessary to prevent memory leaks. \end{DoxyCompactList}\item 
+{\bf math\-::\-Range} \& {\bf operator[$\,$]} (const size\-\_\-t i)
+\begin{DoxyCompactList}\small\item\em Get the range for a particular dimension. \end{DoxyCompactList}\item 
+const {\bf math\-::\-Range} \& {\bf operator[$\,$]} (const size\-\_\-t i) const 
+\begin{DoxyCompactList}\small\item\em Modify the range for a particular dimension. No bounds checking. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\{\bf H\-Rect\-Bound} \& {\bf operator$\vert$=} (const Mat\-Type \&data)
+\begin{DoxyCompactList}\small\item\em Expands this region to include new points. \end{DoxyCompactList}\item 
+{\bf H\-Rect\-Bound} \& {\bf operator$\vert$=} (const {\bf H\-Rect\-Bound} \&other)
+\begin{DoxyCompactList}\small\item\em Expands this region to encompass another bound. \end{DoxyCompactList}\item 
+{\bf math\-::\-Range} {\bf Range\-Distance} (const {\bf H\-Rect\-Bound} \&other) const 
+\begin{DoxyCompactList}\small\item\em Calculates minimum and maximum bound-\/to-\/bound distance. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Vec\-Type $>$ }\\{\bf math\-::\-Range} {\bf Range\-Distance} (const Vec\-Type \&point, typename boost\-::enable\-\_\-if$<$ {\bf Is\-Vector}$<$ Vec\-Type $>$ $>$ $\ast$=0) const 
+\begin{DoxyCompactList}\small\item\em Calculates minimum and maximum bound-\/to-\/point distance. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Returns a string representation of this object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf Metric\-Type} {\bf Metric} ()
+\begin{DoxyCompactList}\small\item\em Return the metric associated with this bound. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf math\-::\-Range} $\ast$ {\bf bounds}
+\begin{DoxyCompactList}\small\item\em The bounds for each dimension. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf dim}
+\begin{DoxyCompactList}\small\item\em The dimensionality of the bound. \end{DoxyCompactList}\item 
+double {\bf min\-Width}
+\begin{DoxyCompactList}\small\item\em Cached minimum width of bound. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$int Power = 2, bool Take\-Root = true$>$class mlpack\-::bound\-::\-H\-Rect\-Bound$<$ Power, Take\-Root $>$}
+
+Hyper-\/rectangle bound for an L-\/metric. 
+
+This should be used in conjunction with the L\-Metric class. Be sure to use the same template parameters for L\-Metric as you do for \doxyref{H\-Rect\-Bound}{p.}{classmlpack_1_1bound_1_1HRectBound} -- otherwise odd results may occur.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Power} & The metric to use; use 2 for Euclidean (L2). \\
+\hline
+{\em Take\-Root} & Whether or not the root should be taken (see L\-Metric documentation). \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 36 of file hrectbound.\-hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Metric\-Type@{Metric\-Type}}
+\index{Metric\-Type@{Metric\-Type}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Metric\-Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ typedef {\bf metric\-::\-L\-Metric}$<$Power, Take\-Root$>$ {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::{\bf Metric\-Type}}\label{classmlpack_1_1bound_1_1HRectBound_a648210783e2dc8792281f229d607e1f2}
+
+
+This is the metric type that this bound is using. 
+
+
+
+Definition at line 40 of file hrectbound.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!H\-Rect\-Bound@{H\-Rect\-Bound}}
+\index{H\-Rect\-Bound@{H\-Rect\-Bound}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{H\-Rect\-Bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::{\bf H\-Rect\-Bound} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1bound_1_1HRectBound_a8930725868fc05f51b046ca319b2f9ac}
+
+
+Empty constructor; creates a bound of dimensionality 0. 
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!H\-Rect\-Bound@{H\-Rect\-Bound}}
+\index{H\-Rect\-Bound@{H\-Rect\-Bound}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{H\-Rect\-Bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::{\bf H\-Rect\-Bound} (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{dimension}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1bound_1_1HRectBound_aa26137bda9f450313bcb80449ec3e075}
+
+
+Initializes to specified dimensionality with each dimension the empty set. 
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!H\-Rect\-Bound@{H\-Rect\-Bound}}
+\index{H\-Rect\-Bound@{H\-Rect\-Bound}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{H\-Rect\-Bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::{\bf H\-Rect\-Bound} (
+\begin{DoxyParamCaption}
+\item[{const {\bf H\-Rect\-Bound}$<$ Power, Take\-Root $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1bound_1_1HRectBound_ac5fda1278e8cb0838ca8cf07c321859f}
+
+
+Copy constructor; necessary to prevent memory leaks. 
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!$\sim$\-H\-Rect\-Bound@{$\sim$\-H\-Rect\-Bound}}
+\index{$\sim$\-H\-Rect\-Bound@{$\sim$\-H\-Rect\-Bound}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{$\sim$\-H\-Rect\-Bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::$\sim${\bf H\-Rect\-Bound} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1bound_1_1HRectBound_ab9b0591d95d3ea3a4683e29a314a930d}
+
+
+Destructor\-: clean up memory. 
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Centroid@{Centroid}}
+\index{Centroid@{Centroid}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ void {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Centroid (
+\begin{DoxyParamCaption}
+\item[{arma\-::vec \&}]{centroid}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1bound_1_1HRectBound_a7da35183cec27a7f816ef573ab5b58fd}
+
+
+Calculates the centroid of the range, placing it into the given vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em centroid} & Vector which the centroid will be written to. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Clear@{Clear}}
+\index{Clear@{Clear}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ void {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1bound_1_1HRectBound_ae50b0eab827b5cbbad5bcbddba34d862}
+
+
+Resets all dimensions to the empty set (so that this bound contains nothing). 
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Contains@{Contains}}
+\index{Contains@{Contains}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Contains}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ template$<$typename Vec\-Type $>$ bool {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Contains (
+\begin{DoxyParamCaption}
+\item[{const Vec\-Type \&}]{point}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1bound_1_1HRectBound_a7e530a912f4337f99d0fd633a6457dfc}
+
+
+Determines if a point is within this bound. 
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Diameter@{Diameter}}
+\index{Diameter@{Diameter}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Diameter}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ double {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Diameter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1bound_1_1HRectBound_ad6d5c381d9782798576a1a4b58225ebd}
+
+
+Returns the diameter of the hyperrectangle (that is, the longest diagonal). 
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Dim@{Dim}}
+\index{Dim@{Dim}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Dim}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ size\-\_\-t {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Dim (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1bound_1_1HRectBound_a817b948f422bc214ff067872feed5244}
+
+
+Gets the dimensionality. 
+
+
+
+Definition at line 68 of file hrectbound.\-hpp.
+
+
+
+References mlpack\-::bound\-::\-H\-Rect\-Bound$<$ Power, Take\-Root $>$\-::dim.
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Max\-Distance@{Max\-Distance}}
+\index{Max\-Distance@{Max\-Distance}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Max\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ template$<$typename Vec\-Type $>$ double {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Max\-Distance (
+\begin{DoxyParamCaption}
+\item[{const Vec\-Type \&}]{point, }
+\item[{typename boost\-::enable\-\_\-if$<$ {\bf Is\-Vector}$<$ Vec\-Type $>$ $>$ $\ast$}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1bound_1_1HRectBound_ac413df94eec1451be7c0f6a05dc38b88}
+
+
+Calculates maximum bound-\/to-\/point squared distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & Point to which the maximum distance is requested. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Max\-Distance@{Max\-Distance}}
+\index{Max\-Distance@{Max\-Distance}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Max\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ double {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Max\-Distance (
+\begin{DoxyParamCaption}
+\item[{const {\bf H\-Rect\-Bound}$<$ Power, Take\-Root $>$ \&}]{other}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1bound_1_1HRectBound_ad6c7b783fb8ec880818e3a5f75890cc5}
+
+
+Computes maximum distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Bound to which the maximum distance is requested. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Metric@{Metric}}
+\index{Metric@{Metric}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ static {\bf Metric\-Type} {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Metric (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classmlpack_1_1bound_1_1HRectBound_a22f9e22b30f1f2635530356b7f861a83}
+
+
+Return the metric associated with this bound. 
+
+Because it is an L\-Metric, it cannot store state, so we can make it on the fly. It is also static because the metric is only dependent on the template arguments. 
+
+Definition at line 175 of file hrectbound.\-hpp.
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Min\-Distance@{Min\-Distance}}
+\index{Min\-Distance@{Min\-Distance}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Min\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ template$<$typename Vec\-Type $>$ double {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Min\-Distance (
+\begin{DoxyParamCaption}
+\item[{const Vec\-Type \&}]{point, }
+\item[{typename boost\-::enable\-\_\-if$<$ {\bf Is\-Vector}$<$ Vec\-Type $>$ $>$ $\ast$}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1bound_1_1HRectBound_a7fd6e1237439c89ee82c372c2bc8852f}
+
+
+Calculates minimum bound-\/to-\/point distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & Point to which the minimum distance is requested. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Min\-Distance@{Min\-Distance}}
+\index{Min\-Distance@{Min\-Distance}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Min\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ double {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Min\-Distance (
+\begin{DoxyParamCaption}
+\item[{const {\bf H\-Rect\-Bound}$<$ Power, Take\-Root $>$ \&}]{other}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1bound_1_1HRectBound_a7a5541662850f1a39be12b1713d491f2}
+
+
+Calculates minimum bound-\/to-\/bound distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Bound to which the minimum distance is requested. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Min\-Width@{Min\-Width}}
+\index{Min\-Width@{Min\-Width}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Min\-Width}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ double {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Min\-Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1bound_1_1HRectBound_aab03515befc033a43617767247afe805}
+
+
+Get the minimum width of the bound. 
+
+
+
+Definition at line 77 of file hrectbound.\-hpp.
+
+
+
+References mlpack\-::bound\-::\-H\-Rect\-Bound$<$ Power, Take\-Root $>$\-::min\-Width.
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Min\-Width@{Min\-Width}}
+\index{Min\-Width@{Min\-Width}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Min\-Width}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ double\& {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Min\-Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1bound_1_1HRectBound_a95f2b8c27f9bd74e0d079994c4e01752}
+
+
+Modify the minimum width of the bound. 
+
+
+
+Definition at line 79 of file hrectbound.\-hpp.
+
+
+
+References mlpack\-::bound\-::\-H\-Rect\-Bound$<$ Power, Take\-Root $>$\-::min\-Width.
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!operator=@{operator=}}
+\index{operator=@{operator=}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ {\bf H\-Rect\-Bound}\& {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf H\-Rect\-Bound}$<$ Power, Take\-Root $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1bound_1_1HRectBound_a54f4e4900e401ac504db78f46a0c1265}
+
+
+Same as copy constructor; necessary to prevent memory leaks. 
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!operator[$\,$]@{operator[]}}
+\index{operator[$\,$]@{operator[]}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ {\bf math\-::\-Range}\& {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::operator[$\,$] (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1bound_1_1HRectBound_ad8f7a529f60dd0511362aeb3a3556fbf}
+
+
+Get the range for a particular dimension. 
+
+No bounds checking. Be careful\-: this may make \doxyref{Min\-Width()}{p.}{classmlpack_1_1bound_1_1HRectBound_a95f2b8c27f9bd74e0d079994c4e01752} invalid. 
+
+Definition at line 72 of file hrectbound.\-hpp.
+
+
+
+References mlpack\-::bound\-::\-H\-Rect\-Bound$<$ Power, Take\-Root $>$\-::bounds.
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!operator[$\,$]@{operator[]}}
+\index{operator[$\,$]@{operator[]}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ const {\bf math\-::\-Range}\& {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::operator[$\,$] (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1bound_1_1HRectBound_a5773efe5cb4b7e3d705fee79125d6c64}
+
+
+Modify the range for a particular dimension. No bounds checking. 
+
+
+
+Definition at line 74 of file hrectbound.\-hpp.
+
+
+
+References mlpack\-::bound\-::\-H\-Rect\-Bound$<$ Power, Take\-Root $>$\-::bounds.
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!operator$\vert$=@{operator$\vert$=}}
+\index{operator$\vert$=@{operator$\vert$=}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{operator$\vert$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ template$<$typename Mat\-Type $>$ {\bf H\-Rect\-Bound}\& {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::operator$\vert$= (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{data}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1bound_1_1HRectBound_abcee078b7b66648c146381f1a3289f3c}
+
+
+Expands this region to include new points. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Mat\-Type} & Type of matrix; could be Mat, Sp\-Mat, a subview, or just a vector. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data points to expand this region to include. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!operator$\vert$=@{operator$\vert$=}}
+\index{operator$\vert$=@{operator$\vert$=}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{operator$\vert$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ {\bf H\-Rect\-Bound}\& {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::operator$\vert$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf H\-Rect\-Bound}$<$ Power, Take\-Root $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1bound_1_1HRectBound_a8cd78d6f9373929e464131bb1fe1d5c6}
+
+
+Expands this region to encompass another bound. 
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Range\-Distance@{Range\-Distance}}
+\index{Range\-Distance@{Range\-Distance}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Range\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ {\bf math\-::\-Range} {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Range\-Distance (
+\begin{DoxyParamCaption}
+\item[{const {\bf H\-Rect\-Bound}$<$ Power, Take\-Root $>$ \&}]{other}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1bound_1_1HRectBound_afdbae46007b5e64f908546f7977227e3}
+
+
+Calculates minimum and maximum bound-\/to-\/bound distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Bound to which the minimum and maximum distances are requested. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!Range\-Distance@{Range\-Distance}}
+\index{Range\-Distance@{Range\-Distance}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{Range\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ template$<$typename Vec\-Type $>$ {\bf math\-::\-Range} {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::Range\-Distance (
+\begin{DoxyParamCaption}
+\item[{const Vec\-Type \&}]{point, }
+\item[{typename boost\-::enable\-\_\-if$<$ {\bf Is\-Vector}$<$ Vec\-Type $>$ $>$ $\ast$}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1bound_1_1HRectBound_afbf15da386cb3b7ffb7c57633599d553}
+
+
+Calculates minimum and maximum bound-\/to-\/point distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & Point to which the minimum and maximum distances are requested. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ std\-::string {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1bound_1_1HRectBound_ac11d484ceed212e4fefb6579b5940a0b}
+
+
+Returns a string representation of this object. 
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!bounds@{bounds}}
+\index{bounds@{bounds}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{bounds}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ {\bf math\-::\-Range}$\ast$ {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::bounds\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1bound_1_1HRectBound_ade2a58c775d774d55db2ff9e489c1be2}
+
+
+The bounds for each dimension. 
+
+
+
+Definition at line 181 of file hrectbound.\-hpp.
+
+
+
+Referenced by mlpack\-::bound\-::\-H\-Rect\-Bound$<$ Power, Take\-Root $>$\-::operator[$\,$]().
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!dim@{dim}}
+\index{dim@{dim}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{dim}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ size\-\_\-t {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::dim\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1bound_1_1HRectBound_a56ae024d620903f873a3897556b74e44}
+
+
+The dimensionality of the bound. 
+
+
+
+Definition at line 179 of file hrectbound.\-hpp.
+
+
+
+Referenced by mlpack\-::bound\-::\-H\-Rect\-Bound$<$ Power, Take\-Root $>$\-::\-Dim().
+
+\index{mlpack\-::bound\-::\-H\-Rect\-Bound@{mlpack\-::bound\-::\-H\-Rect\-Bound}!min\-Width@{min\-Width}}
+\index{min\-Width@{min\-Width}!mlpack::bound::HRectBound@{mlpack\-::bound\-::\-H\-Rect\-Bound}}
+\subsubsection[{min\-Width}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power = 2, bool Take\-Root = true$>$ double {\bf mlpack\-::bound\-::\-H\-Rect\-Bound}$<$ Power, Take\-Root $>$\-::min\-Width\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1bound_1_1HRectBound_ad703de867e592a066dbe13f28e1d36fa}
+
+
+Cached minimum width of bound. 
+
+
+
+Definition at line 183 of file hrectbound.\-hpp.
+
+
+
+Referenced by mlpack\-::bound\-::\-H\-Rect\-Bound$<$ Power, Take\-Root $>$\-::\-Min\-Width().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/tree/{\bf hrectbound.\-hpp}\end{DoxyCompactItemize}

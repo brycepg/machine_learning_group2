@@ -1,0 +1,67 @@
+.TH "mlpack::kernel::CosineDistance" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::kernel::CosineDistance \- 
+.PP
+The cosine distance (or cosine similarity)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturns a string representation of this object\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename VecType > static double \fBEvaluate\fP (const VecType &a, const VecType &b)"
+.br
+.RI "\fIComputes the cosine distance between two points\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The cosine distance (or cosine similarity)\&. 
+
+It is defined by
+.PP
+\[ d(a, b) = \frac{a^T b}{|| a || || b ||} \].PP
+and this class assumes the standard L2 inner product\&. 
+.PP
+Definition at line 32 of file cosine_distance\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename VecType > static double mlpack::kernel::CosineDistance::Evaluate (const VecType &a, const VecType &b)\fC [static]\fP"
+
+.PP
+Computes the cosine distance between two points\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP First vector\&. 
+.br
+\fIb\fP Second vector\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+d(a, b)\&. 
+.RE
+.PP
+
+.SS "std::string mlpack::kernel::CosineDistance::ToString () const\fC [inline]\fP"
+
+.PP
+Returns a string representation of this object\&. 
+.PP
+Definition at line 48 of file cosine_distance\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

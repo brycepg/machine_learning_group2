@@ -1,0 +1,412 @@
+\section{mlpack\-:\-:optimization\-:\-:L\-R\-S\-D\-P\-Function Class Reference}
+\label{classmlpack_1_1optimization_1_1LRSDPFunction}\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+
+
+The objective function that \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP} is trying to optimize.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf L\-R\-S\-D\-P\-Function} (const size\-\_\-t num\-Constraints, const arma\-::mat \&{\bf initial\-Point})
+\begin{DoxyCompactList}\small\item\em Construct the \doxyref{L\-R\-S\-D\-P\-Function}{p.}{classmlpack_1_1optimization_1_1LRSDPFunction} with the given initial point and number of constraints. \end{DoxyCompactList}\item 
+const std\-::vector$<$ arma\-::mat $>$ \& {\bf A} () const 
+\begin{DoxyCompactList}\small\item\em Return the vector of A matrices (which correspond to the constraints). \end{DoxyCompactList}\item 
+std\-::vector$<$ arma\-::mat $>$ \& {\bf A} ()
+\begin{DoxyCompactList}\small\item\em Modify the veector of A matrices (which correspond to the constraints). \end{DoxyCompactList}\item 
+const arma\-::uvec \& {\bf A\-Modes} () const 
+\begin{DoxyCompactList}\small\item\em Return the vector of modes for the A matrices. \end{DoxyCompactList}\item 
+arma\-::uvec \& {\bf A\-Modes} ()
+\begin{DoxyCompactList}\small\item\em Modify the vector of modes for the A matrices. \end{DoxyCompactList}\item 
+const arma\-::vec \& {\bf B} () const 
+\begin{DoxyCompactList}\small\item\em Return the vector of B values. \end{DoxyCompactList}\item 
+arma\-::vec \& {\bf B} ()
+\begin{DoxyCompactList}\small\item\em Modify the vector of B values. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf C} () const 
+\begin{DoxyCompactList}\small\item\em Return the objective function matrix (C). \end{DoxyCompactList}\item 
+arma\-::mat \& {\bf C} ()
+\begin{DoxyCompactList}\small\item\em Modify the objective function matrix (C). \end{DoxyCompactList}\item 
+double {\bf Evaluate} (const arma\-::mat \&coordinates) const 
+\begin{DoxyCompactList}\small\item\em Evaluate the objective function of the \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP} (no constraints) at the given coordinates. \end{DoxyCompactList}\item 
+double {\bf Evaluate\-Constraint} (const size\-\_\-t index, const arma\-::mat \&coordinates) const 
+\begin{DoxyCompactList}\small\item\em Evaluate a particular constraint of the \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP} at the given coordinates. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf Get\-Initial\-Point} () const 
+\begin{DoxyCompactList}\small\item\em Get the initial point of the \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP}. \end{DoxyCompactList}\item 
+void {\bf Gradient} (const arma\-::mat \&coordinates, arma\-::mat \&gradient) const 
+\begin{DoxyCompactList}\small\item\em Evaluate the gradient of the \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP} (no constraints) at the given coordinates. \end{DoxyCompactList}\item 
+void {\bf Gradient\-Constraint} (const size\-\_\-t index, const arma\-::mat \&coordinates, arma\-::mat \&gradient) const 
+\begin{DoxyCompactList}\small\item\em Evaluate the gradient of a particular constraint of the \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP} at the given coordinates. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Constraints} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of constraints in the \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP}. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Return string representation of object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::vector$<$ arma\-::mat $>$ {\bf a}
+\begin{DoxyCompactList}\small\item\em A\-\_\-i for each constraint. \end{DoxyCompactList}\item 
+arma\-::uvec {\bf a\-Modes}
+\begin{DoxyCompactList}\small\item\em 1 if entries in matrix, 0 for normal. \end{DoxyCompactList}\item 
+arma\-::vec {\bf b}
+\begin{DoxyCompactList}\small\item\em b\-\_\-i for each constraint. \end{DoxyCompactList}\item 
+arma\-::mat {\bf c}
+\begin{DoxyCompactList}\small\item\em Objective function matrix c. \end{DoxyCompactList}\item 
+arma\-::mat {\bf initial\-Point}
+\begin{DoxyCompactList}\small\item\em Initial point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The objective function that \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP} is trying to optimize. 
+
+Definition at line 27 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!L\-R\-S\-D\-P\-Function@{L\-R\-S\-D\-P\-Function}}
+\index{L\-R\-S\-D\-P\-Function@{L\-R\-S\-D\-P\-Function}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{L\-R\-S\-D\-P\-Function}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-L\-R\-S\-D\-P\-Function (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{num\-Constraints, }
+\item[{const arma\-::mat \&}]{initial\-Point}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a6255c5d6e8611d61257aa5d30fe93b43}
+
+
+Construct the \doxyref{L\-R\-S\-D\-P\-Function}{p.}{classmlpack_1_1optimization_1_1LRSDPFunction} with the given initial point and number of constraints. 
+
+Set the A, B, and C matrices for each constraint using the \doxyref{A()}{p.}{classmlpack_1_1optimization_1_1LRSDPFunction_a00a9256f03c063df5a81d1dbcb4d6ff3}, \doxyref{B()}{p.}{classmlpack_1_1optimization_1_1LRSDPFunction_a9da813b6246add29f94c1b0d53fba732}, and \doxyref{C()}{p.}{classmlpack_1_1optimization_1_1LRSDPFunction_a18175f47120fda4063e944fd981c84c9} functions. 
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!A@{A}}
+\index{A@{A}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{A}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$arma\-::mat$>$\& mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-A (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a18cfad944f2afa161bcaedcb3667fb20}
+
+
+Return the vector of A matrices (which correspond to the constraints). 
+
+
+
+Definition at line 75 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+References a.
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!A@{A}}
+\index{A@{A}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{A}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$arma\-::mat$>$\& mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-A (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a00a9256f03c063df5a81d1dbcb4d6ff3}
+
+
+Modify the veector of A matrices (which correspond to the constraints). 
+
+
+
+Definition at line 77 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+References a.
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!A\-Modes@{A\-Modes}}
+\index{A\-Modes@{A\-Modes}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{A\-Modes}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::uvec\& mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-A\-Modes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a9128b99c43b339b458268193d988eb4a}
+
+
+Return the vector of modes for the A matrices. 
+
+
+
+Definition at line 80 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+References a\-Modes.
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!A\-Modes@{A\-Modes}}
+\index{A\-Modes@{A\-Modes}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{A\-Modes}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::uvec\& mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-A\-Modes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a4a751eafec89acabc5f72a2814cfea98}
+
+
+Modify the vector of modes for the A matrices. 
+
+
+
+Definition at line 82 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+References a\-Modes.
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!B@{B}}
+\index{B@{B}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{B}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::vec\& mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-B (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a536581bca67331effd351bcc37d7a95a}
+
+
+Return the vector of B values. 
+
+
+
+Definition at line 85 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+References b.
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!B@{B}}
+\index{B@{B}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{B}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::vec\& mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-B (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a9da813b6246add29f94c1b0d53fba732}
+
+
+Modify the vector of B values. 
+
+
+
+Definition at line 87 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+References b.
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!C@{C}}
+\index{C@{C}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{C}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::mat\& mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-C (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a92636526e0b7c2731b0d333b3070b821}
+
+
+Return the objective function matrix (C). 
+
+
+
+Definition at line 70 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+References c.
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!C@{C}}
+\index{C@{C}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{C}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::mat\& mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-C (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a18175f47120fda4063e944fd981c84c9}
+
+
+Modify the objective function matrix (C). 
+
+
+
+Definition at line 72 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+References c.
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!Evaluate@{Evaluate}}
+\index{Evaluate@{Evaluate}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{Evaluate}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-Evaluate (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{coordinates}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1optimization_1_1LRSDPFunction_ae7ab1c5b77b6fb4e08ab1d0564798cbb}
+
+
+Evaluate the objective function of the \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP} (no constraints) at the given coordinates. 
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!Evaluate\-Constraint@{Evaluate\-Constraint}}
+\index{Evaluate\-Constraint@{Evaluate\-Constraint}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{Evaluate\-Constraint}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-Evaluate\-Constraint (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{index, }
+\item[{const arma\-::mat \&}]{coordinates}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a6e68e79d15785ae1c8065fa45ef357c4}
+
+
+Evaluate a particular constraint of the \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP} at the given coordinates. 
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!Get\-Initial\-Point@{Get\-Initial\-Point}}
+\index{Get\-Initial\-Point@{Get\-Initial\-Point}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{Get\-Initial\-Point}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::mat\& mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-Get\-Initial\-Point (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a544cda78ac16653c68dad11433873283}
+
+
+Get the initial point of the \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP}. 
+
+
+
+Definition at line 67 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+References initial\-Point.
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!Gradient@{Gradient}}
+\index{Gradient@{Gradient}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{Gradient}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-Gradient (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{coordinates, }
+\item[{arma\-::mat \&}]{gradient}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1optimization_1_1LRSDPFunction_ac441eaac2734f0e1e9d372799d4e2b0a}
+
+
+Evaluate the gradient of the \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP} (no constraints) at the given coordinates. 
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!Gradient\-Constraint@{Gradient\-Constraint}}
+\index{Gradient\-Constraint@{Gradient\-Constraint}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{Gradient\-Constraint}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-Gradient\-Constraint (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{index, }
+\item[{const arma\-::mat \&}]{coordinates, }
+\item[{arma\-::mat \&}]{gradient}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a8f666196c035e97cf91dafddf4d54b3e}
+
+
+Evaluate the gradient of a particular constraint of the \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP} at the given coordinates. 
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!Num\-Constraints@{Num\-Constraints}}
+\index{Num\-Constraints@{Num\-Constraints}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{Num\-Constraints}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-Num\-Constraints (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_ada3ae06814a7ab8432052e8ae7f79c0f}
+
+
+Get the number of constraints in the \doxyref{L\-R\-S\-D\-P}{p.}{classmlpack_1_1optimization_1_1LRSDP}. 
+
+
+
+Definition at line 64 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+References b.
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::\-To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a2ebe85a7cfe444e0bcfe68f168041e22}
+
+
+Return string representation of object. 
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!a@{a}}
+\index{a@{a}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{a}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$arma\-::mat$>$ mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::a\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_ae8bef956625d0df806c5ba9c4cab2a89}
+
+
+A\-\_\-i for each constraint. 
+
+
+
+Definition at line 96 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+Referenced by A().
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!a\-Modes@{a\-Modes}}
+\index{a\-Modes@{a\-Modes}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{a\-Modes}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::uvec mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::a\-Modes\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a5ff1075cda2043c429a1a8e5d419d296}
+
+
+1 if entries in matrix, 0 for normal. 
+
+
+
+Definition at line 103 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+Referenced by A\-Modes().
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!b@{b}}
+\index{b@{b}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{b}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::vec mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::b\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_a90862f9538741ee846cafafb1f73d5f4}
+
+
+b\-\_\-i for each constraint. 
+
+
+
+Definition at line 98 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+Referenced by B(), and Num\-Constraints().
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!c@{c}}
+\index{c@{c}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{c}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::mat mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::c\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_aa3a0bad72ae7b740aac8e05407171baf}
+
+
+Objective function matrix c. 
+
+
+
+Definition at line 94 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+Referenced by C().
+
+\index{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}!initial\-Point@{initial\-Point}}
+\index{initial\-Point@{initial\-Point}!mlpack::optimization::LRSDPFunction@{mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function}}
+\subsubsection[{initial\-Point}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::mat mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function\-::initial\-Point\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1LRSDPFunction_ab2e00dafa57835fee9a6ac43a8916929}
+
+
+Initial point. 
+
+
+
+Definition at line 101 of file lrsdp\-\_\-function.\-hpp.
+
+
+
+Referenced by Get\-Initial\-Point().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/optimizers/lrsdp/{\bf lrsdp\-\_\-function.\-hpp}\end{DoxyCompactItemize}

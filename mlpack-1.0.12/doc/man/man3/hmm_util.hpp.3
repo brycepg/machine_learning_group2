@@ -1,0 +1,51 @@
+.TH "src/mlpack/methods/hmm/hmm_util.hpp" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/mlpack/methods/hmm/hmm_util.hpp \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "\fBmlpack\fP"
+.br
+.RI "\fILinear algebra utility functions, generally performed on matrices or vectors\&. \fP"
+.ti -1c
+.RI "\fBmlpack::hmm\fP"
+.br
+.RI "\fIHidden Markov Models\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename Distribution > void \fBmlpack::hmm::LoadHMM\fP (HMM< Distribution > &hmm, util::SaveRestoreUtility &sr)"
+.br
+.RI "\fILoad an \fBHMM\fP from file\&. \fP"
+.ti -1c
+.RI "template<typename Distribution > void \fBmlpack::hmm::SaveHMM\fP (const HMM< Distribution > &hmm, util::SaveRestoreUtility &sr)"
+.br
+.RI "\fISave an \fBHMM\fP to file\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+\fBAuthor:\fP
+.RS 4
+Ryan Curtin
+.RE
+.PP
+Save/load utilities for HMMs\&. This should be eventually merged into the HMM class itself\&.
+.PP
+This file is part of mlpack 1\&.0\&.12\&.
+.PP
+mlpack is free software; you may redstribute it and/or modify it under the terms of the 3-clause BSD license\&. You should have received a copy of the 3-clause BSD license along with mlpack\&. If not, see http://www.opensource.org/licenses/BSD-3-Clause for more information\&. 
+.PP
+Definition in file \fBhmm_util\&.hpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

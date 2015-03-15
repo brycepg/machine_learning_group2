@@ -1,0 +1,45 @@
+.TH "mlpack::gmm::PositiveDefiniteConstraint" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::gmm::PositiveDefiniteConstraint \- 
+.PP
+Given a covariance matrix, force the matrix to be positive definite\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBApplyConstraint\fP (arma::mat &covariance)"
+.br
+.RI "\fIApply the positive definiteness constraint to the given covariance matrix\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Given a covariance matrix, force the matrix to be positive definite\&. 
+.PP
+Definition at line 25 of file positive_definite_constraint\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static void mlpack::gmm::PositiveDefiniteConstraint::ApplyConstraint (arma::mat &covariance)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Apply the positive definiteness constraint to the given covariance matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcovariance\fP Covariance matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 33 of file positive_definite_constraint\&.hpp\&.
+.PP
+References mlpack::Log::Debug\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

@@ -1,0 +1,365 @@
+.TH "mlpack::math::Range" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::math::Range \- 
+.PP
+Simple real-valued range\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRange\fP ()"
+.br
+.RI "\fIThe upper bound\&. \fP"
+.ti -1c
+.RI "\fBRange\fP (const double point)"
+.br
+.ti -1c
+.RI "\fBRange\fP (const double \fBlo\fP, const double \fBhi\fP)"
+.br
+.RI "\fIInitializes to specified range\&. \fP"
+.ti -1c
+.RI "bool \fBContains\fP (const double d) const "
+.br
+.RI "\fIDetermines if a point is contained within the range\&. \fP"
+.ti -1c
+.RI "bool \fBContains\fP (const \fBRange\fP &r) const "
+.br
+.RI "\fIDetermines if another range overlaps with this one\&. \fP"
+.ti -1c
+.RI "double \fBHi\fP () const "
+.br
+.RI "\fIGet the upper bound\&. \fP"
+.ti -1c
+.RI "double & \fBHi\fP ()"
+.br
+.RI "\fIModify the upper bound\&. \fP"
+.ti -1c
+.RI "double \fBLo\fP () const "
+.br
+.RI "\fIGet the lower bound\&. \fP"
+.ti -1c
+.RI "double & \fBLo\fP ()"
+.br
+.RI "\fIModify the lower bound\&. \fP"
+.ti -1c
+.RI "double \fBMid\fP () const "
+.br
+.RI "\fIGets the midpoint of this range\&. \fP"
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBRange\fP &rhs) const "
+.br
+.RI "\fICompare with another range for strict equality\&. \fP"
+.ti -1c
+.RI "\fBRange\fP \fBoperator&\fP (const \fBRange\fP &rhs) const "
+.br
+.RI "\fIShrinks this range to be the overlap with another range; this makes an empty set if there is no overlap\&. \fP"
+.ti -1c
+.RI "\fBRange\fP & \fBoperator&=\fP (const \fBRange\fP &rhs)"
+.br
+.RI "\fIShrinks this range to be the overlap with another range; this makes an empty set if there is no overlap\&. \fP"
+.ti -1c
+.RI "\fBRange\fP \fBoperator*\fP (const double d) const "
+.br
+.RI "\fIScale the bounds by the given double\&. \fP"
+.ti -1c
+.RI "\fBRange\fP & \fBoperator*=\fP (const double d)"
+.br
+.RI "\fIScale the bounds by the given double\&. \fP"
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBRange\fP &rhs) const "
+.br
+.RI "\fICompare with another range\&. \fP"
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBRange\fP &rhs) const "
+.br
+.RI "\fICompare with another range for strict equality\&. \fP"
+.ti -1c
+.RI "bool \fBoperator>\fP (const \fBRange\fP &rhs) const "
+.br
+.RI "\fICompare with another range\&. \fP"
+.ti -1c
+.RI "\fBRange\fP \fBoperator|\fP (const \fBRange\fP &rhs) const "
+.br
+.RI "\fIExpands this range to include another range\&. \fP"
+.ti -1c
+.RI "\fBRange\fP & \fBoperator|=\fP (const \fBRange\fP &rhs)"
+.br
+.RI "\fIExpands this range to include another range\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturns a string representation of an object\&. \fP"
+.ti -1c
+.RI "double \fBWidth\fP () const "
+.br
+.RI "\fIGets the span of the range (hi - lo)\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBhi\fP"
+.br
+.RI "\fIThe lower bound\&. \fP"
+.ti -1c
+.RI "double \fBlo\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "\fBRange\fP \fBoperator*\fP (const double d, const \fBRange\fP &r)"
+.br
+.RI "\fIScale the bounds by the given double\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Simple real-valued range\&. 
+
+It contains an upper and lower bound\&. 
+.PP
+Definition at line 23 of file range\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::math::Range::Range ()\fC [inline]\fP"
+
+.PP
+The upper bound\&. Initialize to an empty set (where lo > hi)\&. 
+.SS "mlpack::math::Range::Range (const doublepoint)\fC [inline]\fP"
+
+.SS "mlpack::math::Range::Range (const doublelo, const doublehi)\fC [inline]\fP"
+
+.PP
+Initializes to specified range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlo\fP Lower bound of the range\&. 
+.br
+\fIhi\fP Upper bound of the range\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool mlpack::math::Range::Contains (const doubled) const\fC [inline]\fP"
+
+.PP
+Determines if a point is contained within the range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP Point to check\&. 
+.RE
+.PP
+
+.SS "bool mlpack::math::Range::Contains (const \fBRange\fP &r) const\fC [inline]\fP"
+
+.PP
+Determines if another range overlaps with this one\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP Other range\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if ranges overlap at all\&. 
+.RE
+.PP
+
+.SS "double mlpack::math::Range::Hi () const\fC [inline]\fP"
+
+.PP
+Get the upper bound\&. 
+.PP
+Definition at line 55 of file range\&.hpp\&.
+.PP
+References hi\&.
+.SS "double& mlpack::math::Range::Hi ()\fC [inline]\fP"
+
+.PP
+Modify the upper bound\&. 
+.PP
+Definition at line 57 of file range\&.hpp\&.
+.PP
+References hi\&.
+.SS "double mlpack::math::Range::Lo () const\fC [inline]\fP"
+
+.PP
+Get the lower bound\&. 
+.PP
+Definition at line 50 of file range\&.hpp\&.
+.PP
+References lo\&.
+.SS "double& mlpack::math::Range::Lo ()\fC [inline]\fP"
+
+.PP
+Modify the lower bound\&. 
+.PP
+Definition at line 52 of file range\&.hpp\&.
+.PP
+References lo\&.
+.SS "double mlpack::math::Range::Mid () const\fC [inline]\fP"
+
+.PP
+Gets the midpoint of this range\&. 
+.SS "bool mlpack::math::Range::operator!= (const \fBRange\fP &rhs) const\fC [inline]\fP"
+
+.PP
+Compare with another range for strict equality\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Other range\&. 
+.RE
+.PP
+
+.SS "\fBRange\fP mlpack::math::Range::operator& (const \fBRange\fP &rhs) const\fC [inline]\fP"
+
+.PP
+Shrinks this range to be the overlap with another range; this makes an empty set if there is no overlap\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Other range\&. 
+.RE
+.PP
+
+.SS "\fBRange\fP& mlpack::math::Range::operator&= (const \fBRange\fP &rhs)\fC [inline]\fP"
+
+.PP
+Shrinks this range to be the overlap with another range; this makes an empty set if there is no overlap\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Other range\&. 
+.RE
+.PP
+
+.SS "\fBRange\fP mlpack::math::Range::operator* (const doubled) const\fC [inline]\fP"
+
+.PP
+Scale the bounds by the given double\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP Scaling factor\&. 
+.RE
+.PP
+
+.SS "\fBRange\fP& mlpack::math::Range::operator*= (const doubled)\fC [inline]\fP"
+
+.PP
+Scale the bounds by the given double\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP Scaling factor\&. 
+.RE
+.PP
+
+.SS "bool mlpack::math::Range::operator< (const \fBRange\fP &rhs) const\fC [inline]\fP"
+
+.PP
+Compare with another range\&. For \fBRange\fP objects x and y, x < y means that x is strictly less than y and does not overlap at all\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Other range\&. 
+.RE
+.PP
+
+.SS "bool mlpack::math::Range::operator== (const \fBRange\fP &rhs) const\fC [inline]\fP"
+
+.PP
+Compare with another range for strict equality\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Other range\&. 
+.RE
+.PP
+
+.SS "bool mlpack::math::Range::operator> (const \fBRange\fP &rhs) const\fC [inline]\fP"
+
+.PP
+Compare with another range\&. For \fBRange\fP objects x and y, x < y means that x is strictly less than y and does not overlap at all\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Other range\&. 
+.RE
+.PP
+
+.SS "\fBRange\fP mlpack::math::Range::operator| (const \fBRange\fP &rhs) const\fC [inline]\fP"
+
+.PP
+Expands this range to include another range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP \fBRange\fP to include\&. 
+.RE
+.PP
+
+.SS "\fBRange\fP& mlpack::math::Range::operator|= (const \fBRange\fP &rhs)\fC [inline]\fP"
+
+.PP
+Expands this range to include another range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP \fBRange\fP to include\&. 
+.RE
+.PP
+
+.SS "std::string mlpack::math::Range::ToString () const\fC [inline]\fP"
+
+.PP
+Returns a string representation of an object\&. 
+.SS "double mlpack::math::Range::Width () const\fC [inline]\fP"
+
+.PP
+Gets the span of the range (hi - lo)\&. 
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "\fBRange\fP operator* (const doubled, const \fBRange\fP &r)\fC [friend]\fP"
+
+.PP
+Scale the bounds by the given double\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP Scaling factor\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "double mlpack::math::Range::hi\fC [private]\fP"
+
+.PP
+The lower bound\&. 
+.PP
+Definition at line 27 of file range\&.hpp\&.
+.PP
+Referenced by Hi()\&.
+.SS "double mlpack::math::Range::lo\fC [private]\fP"
+
+.PP
+Definition at line 26 of file range\&.hpp\&.
+.PP
+Referenced by Lo()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

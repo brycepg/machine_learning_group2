@@ -1,0 +1,1535 @@
+\section{mlpack\-:\-:tree\-:\-:Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1tree_1_1BinarySpaceTree}\index{mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$@{mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$}}
+
+
+A binary space partitioning tree, such as a K\-D-\/tree or a ball tree.  
+
+
+
+
+Collaboration diagram for mlpack\-:\-:tree\-:\-:Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-:
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf Dual\-Tree\-Traverser}
+\begin{DoxyCompactList}\small\item\em A dual-\/tree traverser for binary space trees; see dual\-\_\-tree\-\_\-traverser.\-hpp. \end{DoxyCompactList}\item 
+class {\bf Single\-Tree\-Traverser}
+\begin{DoxyCompactList}\small\item\em A single-\/tree traverser for binary space trees; see single\-\_\-tree\-\_\-traverser.\-hpp for implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef Mat\-Type {\bf Mat}
+\begin{DoxyCompactList}\small\item\em So other classes can use Tree\-Type\-::\-Mat. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Binary\-Space\-Tree} (Mat\-Type \&data, const size\-\_\-t {\bf max\-Leaf\-Size}=20)
+\begin{DoxyCompactList}\small\item\em Construct this as the root node of a binary space tree using the given dataset. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} (Mat\-Type \&data, std\-::vector$<$ size\-\_\-t $>$ \&old\-From\-New, const size\-\_\-t {\bf max\-Leaf\-Size}=20)
+\begin{DoxyCompactList}\small\item\em Construct this as the root node of a binary space tree using the given dataset. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} (Mat\-Type \&data, std\-::vector$<$ size\-\_\-t $>$ \&old\-From\-New, std\-::vector$<$ size\-\_\-t $>$ \&new\-From\-Old, const size\-\_\-t {\bf max\-Leaf\-Size}=20)
+\begin{DoxyCompactList}\small\item\em Construct this as the root node of a binary space tree using the given dataset. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} (Mat\-Type \&data, const size\-\_\-t {\bf begin}, const size\-\_\-t {\bf count}, {\bf Binary\-Space\-Tree} $\ast${\bf parent}=N\-U\-L\-L, const size\-\_\-t {\bf max\-Leaf\-Size}=20)
+\begin{DoxyCompactList}\small\item\em Construct this node on a subset of the given matrix, starting at column begin and using count points. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} (Mat\-Type \&data, const size\-\_\-t {\bf begin}, const size\-\_\-t {\bf count}, std\-::vector$<$ size\-\_\-t $>$ \&old\-From\-New, {\bf Binary\-Space\-Tree} $\ast${\bf parent}=N\-U\-L\-L, const size\-\_\-t {\bf max\-Leaf\-Size}=20)
+\begin{DoxyCompactList}\small\item\em Construct this node on a subset of the given matrix, starting at column begin\-\_\-in and using count\-\_\-in points. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} (Mat\-Type \&data, const size\-\_\-t {\bf begin}, const size\-\_\-t {\bf count}, std\-::vector$<$ size\-\_\-t $>$ \&old\-From\-New, std\-::vector$<$ size\-\_\-t $>$ \&new\-From\-Old, {\bf Binary\-Space\-Tree} $\ast${\bf parent}=N\-U\-L\-L, const size\-\_\-t {\bf max\-Leaf\-Size}=20)
+\begin{DoxyCompactList}\small\item\em Construct this node on a subset of the given matrix, starting at column begin\-\_\-in and using count\-\_\-in points. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} (const {\bf Binary\-Space\-Tree} \&other)
+\begin{DoxyCompactList}\small\item\em Create a binary space tree by copying the other tree. \end{DoxyCompactList}\item 
+{\bf $\sim$\-Binary\-Space\-Tree} ()
+\begin{DoxyCompactList}\small\item\em Deletes this node, deallocating the memory for the children and calling their destructors in turn. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Begin} () const 
+\begin{DoxyCompactList}\small\item\em Return the index of the beginning point of this subset. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Begin} ()
+\begin{DoxyCompactList}\small\item\em Modify the index of the beginning point of this subset. \end{DoxyCompactList}\item 
+const Bound\-Type \& {\bf Bound} () const 
+\begin{DoxyCompactList}\small\item\em Return the bound object for this node. \end{DoxyCompactList}\item 
+Bound\-Type \& {\bf Bound} ()
+\begin{DoxyCompactList}\small\item\em Return the bound object for this node. \end{DoxyCompactList}\item 
+void {\bf Centroid} (arma\-::vec \&centroid)
+\begin{DoxyCompactList}\small\item\em Get the centroid of the node and store it in the given vector. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} \& {\bf Child} (const size\-\_\-t child) const 
+\begin{DoxyCompactList}\small\item\em Return the specified child (0 will be left, 1 will be right). \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Count} () const 
+\begin{DoxyCompactList}\small\item\em Return the number of points in this subset. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Count} ()
+\begin{DoxyCompactList}\small\item\em Modify the number of points in this subset. \end{DoxyCompactList}\item 
+const Mat\-Type \& {\bf Dataset} () const 
+\begin{DoxyCompactList}\small\item\em Get the dataset which the tree is built on. \end{DoxyCompactList}\item 
+Mat\-Type \& {\bf Dataset} ()
+\begin{DoxyCompactList}\small\item\em Modify the dataset which the tree is built on. Be careful! \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Descendant} (const size\-\_\-t index) const 
+\begin{DoxyCompactList}\small\item\em Return the index (with reference to the dataset) of a particular descendant of this node. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf End} () const 
+\begin{DoxyCompactList}\small\item\em Gets the index one beyond the last index in the subset. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Extend\-Tree} (const size\-\_\-t level)
+\begin{DoxyCompactList}\small\item\em Fills the tree to the specified level. \end{DoxyCompactList}\item 
+const {\bf Binary\-Space\-Tree} $\ast$ {\bf Find\-By\-Begin\-Count} (size\-\_\-t {\bf begin}, size\-\_\-t {\bf count}) const 
+\begin{DoxyCompactList}\small\item\em Find a node in this tree by its begin and count (const). \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} $\ast$ {\bf Find\-By\-Begin\-Count} (size\-\_\-t {\bf begin}, size\-\_\-t {\bf count})
+\begin{DoxyCompactList}\small\item\em Find a node in this tree by its begin and count. \end{DoxyCompactList}\item 
+double {\bf Furthest\-Descendant\-Distance} () const 
+\begin{DoxyCompactList}\small\item\em Return the furthest possible descendant distance. \end{DoxyCompactList}\item 
+double {\bf Furthest\-Point\-Distance} () const 
+\begin{DoxyCompactList}\small\item\em Return the furthest distance to a point held in this node. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Get\-Split\-Dimension} () const 
+\begin{DoxyCompactList}\small\item\em Returns the dimension this parent's children are split on. \end{DoxyCompactList}\item 
+bool {\bf Is\-Leaf} () const 
+\begin{DoxyCompactList}\small\item\em Return whether or not this node is a leaf (true if it has no children). \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} $\ast$ {\bf Left} () const 
+\begin{DoxyCompactList}\small\item\em Gets the left child of this node. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} $\ast$\& {\bf Left} ()
+\begin{DoxyCompactList}\small\item\em Modify the left child of this node. \end{DoxyCompactList}\item 
+double {\bf Max\-Distance} (const {\bf Binary\-Space\-Tree} $\ast$other) const 
+\begin{DoxyCompactList}\small\item\em Return the maximum distance to another node. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Vec\-Type $>$ }\\double {\bf Max\-Distance} (const Vec\-Type \&point, typename boost\-::enable\-\_\-if$<$ {\bf Is\-Vector}$<$ Vec\-Type $>$ $>$\-::type $\ast$=0) const 
+\begin{DoxyCompactList}\small\item\em Return the maximum distance to another point. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Max\-Leaf\-Size} () const 
+\begin{DoxyCompactList}\small\item\em Return the max leaf size. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Max\-Leaf\-Size} ()
+\begin{DoxyCompactList}\small\item\em Modify the max leaf size. \end{DoxyCompactList}\item 
+Bound\-Type\-::\-Metric\-Type {\bf Metric} () const 
+\begin{DoxyCompactList}\small\item\em Get the metric which the tree uses. \end{DoxyCompactList}\item 
+double {\bf Min\-Distance} (const {\bf Binary\-Space\-Tree} $\ast$other) const 
+\begin{DoxyCompactList}\small\item\em Return the minimum distance to another node. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Vec\-Type $>$ }\\double {\bf Min\-Distance} (const Vec\-Type \&point, typename boost\-::enable\-\_\-if$<$ {\bf Is\-Vector}$<$ Vec\-Type $>$ $>$\-::type $\ast$=0) const 
+\begin{DoxyCompactList}\small\item\em Return the minimum distance to another point. \end{DoxyCompactList}\item 
+double {\bf Minimum\-Bound\-Distance} () const 
+\begin{DoxyCompactList}\small\item\em Return the minimum distance from the center of the node to any bound edge. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Children} () const 
+\begin{DoxyCompactList}\small\item\em Return the number of children in this node. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Descendants} () const 
+\begin{DoxyCompactList}\small\item\em Return the number of descendants of this node. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Points} () const 
+\begin{DoxyCompactList}\small\item\em Return the number of points in this node (0 if not a leaf). \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} $\ast$ {\bf Parent} () const 
+\begin{DoxyCompactList}\small\item\em Gets the parent of this node. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} $\ast$\& {\bf Parent} ()
+\begin{DoxyCompactList}\small\item\em Modify the parent of this node. \end{DoxyCompactList}\item 
+double {\bf Parent\-Distance} () const 
+\begin{DoxyCompactList}\small\item\em Return the distance from the center of this node to the center of the parent node. \end{DoxyCompactList}\item 
+double \& {\bf Parent\-Distance} ()
+\begin{DoxyCompactList}\small\item\em Modify the distance from the center of this node to the center of the parent node. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Point} (const size\-\_\-t index) const 
+\begin{DoxyCompactList}\small\item\em Return the index (with reference to the dataset) of a particular point in this node. \end{DoxyCompactList}\item 
+{\bf math\-::\-Range} {\bf Range\-Distance} (const {\bf Binary\-Space\-Tree} $\ast$other) const 
+\begin{DoxyCompactList}\small\item\em Return the minimum and maximum distance to another node. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Vec\-Type $>$ }\\{\bf math\-::\-Range} {\bf Range\-Distance} (const Vec\-Type \&point, typename boost\-::enable\-\_\-if$<$ {\bf Is\-Vector}$<$ Vec\-Type $>$ $>$\-::type $\ast$=0) const 
+\begin{DoxyCompactList}\small\item\em Return the minimum and maximum distance to another point. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} $\ast$ {\bf Right} () const 
+\begin{DoxyCompactList}\small\item\em Gets the right child of this node. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} $\ast$\& {\bf Right} ()
+\begin{DoxyCompactList}\small\item\em Modify the right child of this node. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Split\-Dimension} () const 
+\begin{DoxyCompactList}\small\item\em Get the split dimension for this node. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Split\-Dimension} ()
+\begin{DoxyCompactList}\small\item\em Modify the split dimension for this node. \end{DoxyCompactList}\item 
+const Statistic\-Type \& {\bf Stat} () const 
+\begin{DoxyCompactList}\small\item\em Return the statistic object for this node. \end{DoxyCompactList}\item 
+Statistic\-Type \& {\bf Stat} ()
+\begin{DoxyCompactList}\small\item\em Return the statistic object for this node. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Returns a string representation of this object. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Tree\-Depth} () const 
+\begin{DoxyCompactList}\small\item\em Obtains the number of levels below this node in the tree, starting with this. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Tree\-Size} () const 
+\begin{DoxyCompactList}\small\item\em Obtains the number of nodes in the tree, starting with this. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool {\bf Has\-Self\-Children} ()
+\begin{DoxyCompactList}\small\item\em Returns false\-: this tree type does not have self children. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Binary\-Space\-Tree} (const size\-\_\-t {\bf begin}, const size\-\_\-t {\bf count}, Bound\-Type {\bf bound}, Statistic\-Type {\bf stat}, const int {\bf max\-Leaf\-Size}=20)
+\begin{DoxyCompactList}\small\item\em Private copy constructor, available only to fill (pad) the tree to a specified level. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} $\ast$ {\bf Copy\-Me} ()
+\item 
+void {\bf Split\-Node} (Mat\-Type \&data)
+\begin{DoxyCompactList}\small\item\em Splits the current node, assigning its left and right children recursively. \end{DoxyCompactList}\item 
+void {\bf Split\-Node} (Mat\-Type \&data, std\-::vector$<$ size\-\_\-t $>$ \&old\-From\-New)
+\begin{DoxyCompactList}\small\item\em Splits the current node, assigning its left and right children recursively. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\-\_\-t {\bf begin}
+\begin{DoxyCompactList}\small\item\em The index of the first point in the dataset contained in this node (and its children). \end{DoxyCompactList}\item 
+Bound\-Type {\bf bound}
+\begin{DoxyCompactList}\small\item\em The bound object for this node. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf count}
+\begin{DoxyCompactList}\small\item\em The number of points of the dataset contained in this node (and its children). \end{DoxyCompactList}\item 
+Mat\-Type \& {\bf dataset}
+\begin{DoxyCompactList}\small\item\em The dataset. \end{DoxyCompactList}\item 
+double {\bf furthest\-Descendant\-Distance}
+\begin{DoxyCompactList}\small\item\em The worst possible distance to the furthest descendant, cached to speed things up. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} $\ast$ {\bf left}
+\begin{DoxyCompactList}\small\item\em The left child node. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf max\-Leaf\-Size}
+\begin{DoxyCompactList}\small\item\em The max leaf size. \end{DoxyCompactList}\item 
+double {\bf minimum\-Bound\-Distance}
+\begin{DoxyCompactList}\small\item\em The minimum distance from the center to any edge of the bound. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} $\ast$ {\bf parent}
+\begin{DoxyCompactList}\small\item\em The parent node (N\-U\-L\-L if this is the root of the tree). \end{DoxyCompactList}\item 
+double {\bf parent\-Distance}
+\begin{DoxyCompactList}\small\item\em The distance from the centroid of this node to the centroid of the parent. \end{DoxyCompactList}\item 
+{\bf Binary\-Space\-Tree} $\ast$ {\bf right}
+\begin{DoxyCompactList}\small\item\em The right child node. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf split\-Dimension}
+\begin{DoxyCompactList}\small\item\em The dimension this node split on if it is a parent. \end{DoxyCompactList}\item 
+Statistic\-Type {\bf stat}
+\begin{DoxyCompactList}\small\item\em Any extra data contained in the node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Bound\-Type, typename Statistic\-Type = Empty\-Statistic, typename Mat\-Type = arma\-::mat, typename Split\-Type = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$class mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$}
+
+A binary space partitioning tree, such as a K\-D-\/tree or a ball tree. 
+
+Once the bound and type of dataset is defined, the tree will construct itself. Call the constructor with the dataset to build the tree on, and the entire tree will be built.
+
+This particular tree does not allow growth, so you cannot add or delete nodes from it. If you need to add or delete a node, the better procedure is to rebuild the tree entirely.
+
+This tree does take one runtime parameter in the constructor, which is the max leaf size to be used.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Bound\-Type} & The bound used for each node. The valid types of bounds and the necessary skeleton interface for this class can be found in bounds/. \\
+\hline
+{\em Statistic\-Type} & Extra data contained in the node. See \doxyref{statistic.\-hpp}{p.}{statistic_8hpp} for the necessary skeleton interface. \\
+\hline
+{\em Mat\-Type} & The dataset class. \\
+\hline
+{\em Split\-Type} & The class that partitions the dataset/points at a particular node into two parts. Its definition decides the way this split is done. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 51 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Mat@{Mat}}
+\index{Mat@{Mat}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Mat}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ typedef Mat\-Type {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Mat}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a2bbf1d59d6f1602011fe0e97be383aa4}
+
+
+So other classes can use Tree\-Type\-::\-Mat. 
+
+
+
+Definition at line 86 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Binary\-Space\-Tree@{Binary\-Space\-Tree}}
+\index{Binary\-Space\-Tree@{Binary\-Space\-Tree}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Binary\-Space\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Binary\-Space\-Tree} (
+\begin{DoxyParamCaption}
+\item[{Mat\-Type \&}]{data, }
+\item[{const size\-\_\-t}]{max\-Leaf\-Size = {\ttfamily 20}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a4d626344c5e612a494f9df1d6c5a1544}
+
+
+Construct this as the root node of a binary space tree using the given dataset. 
+
+This will modify the ordering of the points in the dataset!
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to create tree from. This will be modified! \\
+\hline
+{\em max\-Leaf\-Size} & Size of each leaf in the tree. \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Copy\-Me().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Binary\-Space\-Tree@{Binary\-Space\-Tree}}
+\index{Binary\-Space\-Tree@{Binary\-Space\-Tree}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Binary\-Space\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Binary\-Space\-Tree} (
+\begin{DoxyParamCaption}
+\item[{Mat\-Type \&}]{data, }
+\item[{std\-::vector$<$ size\-\_\-t $>$ \&}]{old\-From\-New, }
+\item[{const size\-\_\-t}]{max\-Leaf\-Size = {\ttfamily 20}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a67e3443db6786dd7be38132953eb8595}
+
+
+Construct this as the root node of a binary space tree using the given dataset. 
+
+This will modify the ordering of points in the dataset! A mapping of the old point indices to the new point indices is filled.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to create tree from. This will be modified! \\
+\hline
+{\em old\-From\-New} & Vector which will be filled with the old positions for each new point. \\
+\hline
+{\em max\-Leaf\-Size} & Size of each leaf in the tree. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Binary\-Space\-Tree@{Binary\-Space\-Tree}}
+\index{Binary\-Space\-Tree@{Binary\-Space\-Tree}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Binary\-Space\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Binary\-Space\-Tree} (
+\begin{DoxyParamCaption}
+\item[{Mat\-Type \&}]{data, }
+\item[{std\-::vector$<$ size\-\_\-t $>$ \&}]{old\-From\-New, }
+\item[{std\-::vector$<$ size\-\_\-t $>$ \&}]{new\-From\-Old, }
+\item[{const size\-\_\-t}]{max\-Leaf\-Size = {\ttfamily 20}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1BinarySpaceTree_aae0011ff2896a948d89912e7560e385f}
+
+
+Construct this as the root node of a binary space tree using the given dataset. 
+
+This will modify the ordering of points in the dataset! A mapping of the old point indices to the new point indices is filled, as well as a mapping of the new point indices to the old point indices.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to create tree from. This will be modified! \\
+\hline
+{\em old\-From\-New} & Vector which will be filled with the old positions for each new point. \\
+\hline
+{\em new\-From\-Old} & Vector which will be filled with the new positions for each old point. \\
+\hline
+{\em max\-Leaf\-Size} & Size of each leaf in the tree. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Binary\-Space\-Tree@{Binary\-Space\-Tree}}
+\index{Binary\-Space\-Tree@{Binary\-Space\-Tree}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Binary\-Space\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Binary\-Space\-Tree} (
+\begin{DoxyParamCaption}
+\item[{Mat\-Type \&}]{data, }
+\item[{const size\-\_\-t}]{begin, }
+\item[{const size\-\_\-t}]{count, }
+\item[{{\bf Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$ $\ast$}]{parent = {\ttfamily NULL}, }
+\item[{const size\-\_\-t}]{max\-Leaf\-Size = {\ttfamily 20}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a7ca82d90a4749611a9d30b6e9a540aec}
+
+
+Construct this node on a subset of the given matrix, starting at column begin and using count points. 
+
+The ordering of that subset of points will be modified! This is used for recursive tree-\/building by the other constructors which don't specify point indices.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to create tree from. This will be modified! \\
+\hline
+{\em begin} & Index of point to start tree construction with. \\
+\hline
+{\em count} & Number of points to use to construct tree. \\
+\hline
+{\em max\-Leaf\-Size} & Size of each leaf in the tree. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Binary\-Space\-Tree@{Binary\-Space\-Tree}}
+\index{Binary\-Space\-Tree@{Binary\-Space\-Tree}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Binary\-Space\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Binary\-Space\-Tree} (
+\begin{DoxyParamCaption}
+\item[{Mat\-Type \&}]{data, }
+\item[{const size\-\_\-t}]{begin, }
+\item[{const size\-\_\-t}]{count, }
+\item[{std\-::vector$<$ size\-\_\-t $>$ \&}]{old\-From\-New, }
+\item[{{\bf Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$ $\ast$}]{parent = {\ttfamily NULL}, }
+\item[{const size\-\_\-t}]{max\-Leaf\-Size = {\ttfamily 20}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ad93bae3e06e6c0330d7f1514a70fd1cb}
+
+
+Construct this node on a subset of the given matrix, starting at column begin\-\_\-in and using count\-\_\-in points. 
+
+The ordering of that subset of points will be modified! This is used for recursive tree-\/building by the other constructors which don't specify point indices.
+
+A mapping of the old point indices to the new point indices is filled, but it is expected that the vector is already allocated with size greater than or equal to (begin\-\_\-in + count\-\_\-in), and if that is not true, invalid memory reads (and writes) will occur.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to create tree from. This will be modified! \\
+\hline
+{\em begin} & Index of point to start tree construction with. \\
+\hline
+{\em count} & Number of points to use to construct tree. \\
+\hline
+{\em old\-From\-New} & Vector which will be filled with the old positions for each new point. \\
+\hline
+{\em max\-Leaf\-Size} & Size of each leaf in the tree. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Binary\-Space\-Tree@{Binary\-Space\-Tree}}
+\index{Binary\-Space\-Tree@{Binary\-Space\-Tree}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Binary\-Space\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Binary\-Space\-Tree} (
+\begin{DoxyParamCaption}
+\item[{Mat\-Type \&}]{data, }
+\item[{const size\-\_\-t}]{begin, }
+\item[{const size\-\_\-t}]{count, }
+\item[{std\-::vector$<$ size\-\_\-t $>$ \&}]{old\-From\-New, }
+\item[{std\-::vector$<$ size\-\_\-t $>$ \&}]{new\-From\-Old, }
+\item[{{\bf Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$ $\ast$}]{parent = {\ttfamily NULL}, }
+\item[{const size\-\_\-t}]{max\-Leaf\-Size = {\ttfamily 20}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1BinarySpaceTree_aa8401399387996ae118bf2d3614d9463}
+
+
+Construct this node on a subset of the given matrix, starting at column begin\-\_\-in and using count\-\_\-in points. 
+
+The ordering of that subset of points will be modified! This is used for recursive tree-\/building by the other constructors which don't specify point indices.
+
+A mapping of the old point indices to the new point indices is filled, as well as a mapping of the new point indices to the old point indices. It is expected that the vector is already allocated with size greater than or equal to (begin\-\_\-in + count\-\_\-in), and if that is not true, invalid memory reads (and writes) will occur.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to create tree from. This will be modified! \\
+\hline
+{\em begin} & Index of point to start tree construction with. \\
+\hline
+{\em count} & Number of points to use to construct tree. \\
+\hline
+{\em old\-From\-New} & Vector which will be filled with the old positions for each new point. \\
+\hline
+{\em new\-From\-Old} & Vector which will be filled with the new positions for each old point. \\
+\hline
+{\em max\-Leaf\-Size} & Size of each leaf in the tree. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Binary\-Space\-Tree@{Binary\-Space\-Tree}}
+\index{Binary\-Space\-Tree@{Binary\-Space\-Tree}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Binary\-Space\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Binary\-Space\-Tree} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$ \&}]{other}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a2c05357afa3f4ea2c34ef8e215a8c180}
+
+
+Create a binary space tree by copying the other tree. 
+
+Be careful! This can take a long time and use a lot of memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Tree to be replicated. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!$\sim$\-Binary\-Space\-Tree@{$\sim$\-Binary\-Space\-Tree}}
+\index{$\sim$\-Binary\-Space\-Tree@{$\sim$\-Binary\-Space\-Tree}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{$\sim$\-Binary\-Space\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::$\sim${\bf Binary\-Space\-Tree} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ab53e43d9ed9049c96b49ffa6d446081c}
+
+
+Deletes this node, deallocating the memory for the children and calling their destructors in turn. 
+
+This will invalidate any pointers or references to any nodes which are children of this one. \index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Binary\-Space\-Tree@{Binary\-Space\-Tree}}
+\index{Binary\-Space\-Tree@{Binary\-Space\-Tree}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Binary\-Space\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Binary\-Space\-Tree} (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{begin, }
+\item[{const size\-\_\-t}]{count, }
+\item[{Bound\-Type}]{bound, }
+\item[{Statistic\-Type}]{stat, }
+\item[{const int}]{max\-Leaf\-Size = {\ttfamily 20}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ab0149788431100e8ea5a652af3a2e46b}
+
+
+Private copy constructor, available only to fill (pad) the tree to a specified level. 
+
+
+
+Definition at line 452 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Begin@{Begin}}
+\index{Begin@{Begin}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a8aa140f243d8f88eee0bb86aa5c0f2db}
+
+
+Return the index of the beginning point of this subset. 
+
+
+
+Definition at line 430 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::begin.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Begin@{Begin}}
+\index{Begin@{Begin}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a4933c9c5ca99373ce59eda5964f1db90}
+
+
+Modify the index of the beginning point of this subset. 
+
+
+
+Definition at line 432 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::begin.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Bound@{Bound}}
+\index{Bound@{Bound}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ const Bound\-Type\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Bound (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_acabd88d94d59d7d61e8bb457d63c0998}
+
+
+Return the bound object for this node. 
+
+
+
+Definition at line 252 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::bound.
+
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Max\-Distance(), mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Min\-Distance(), and mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Range\-Distance().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Bound@{Bound}}
+\index{Bound@{Bound}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ Bound\-Type\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Bound (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ae6de50ed25840dc1b60094bf6dd5f0a9}
+
+
+Return the bound object for this node. 
+
+
+
+Definition at line 254 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::bound.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Centroid@{Centroid}}
+\index{Centroid@{Centroid}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ void {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Centroid (
+\begin{DoxyParamCaption}
+\item[{arma\-::vec \&}]{centroid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_aa3ec14c8c57d71b8ce7b55aed9d5641d}
+
+
+Get the centroid of the node and store it in the given vector. 
+
+
+
+Definition at line 301 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::bound.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Child@{Child}}
+\index{Child@{Child}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Child}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf Binary\-Space\-Tree}\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Child (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{child}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a42dac7e78438a80c040859ced988129a}
+
+
+Return the specified child (0 will be left, 1 will be right). 
+
+If the index is greater than 1, this will return the right child.
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & Index of child to return. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Copy\-Me@{Copy\-Me}}
+\index{Copy\-Me@{Copy\-Me}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Copy\-Me}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf Binary\-Space\-Tree}$\ast$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Copy\-Me (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a5c7cd8b403c03f39da112951aa397876}
+
+
+Definition at line 465 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::begin, mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Binary\-Space\-Tree(), mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::bound, mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::count, mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::max\-Leaf\-Size, and mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::stat.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Count@{Count}}
+\index{Count@{Count}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a8dee1a789417572f5dbaccba4b4208af}
+
+
+Return the number of points in this subset. 
+
+
+
+Definition at line 440 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::count.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Count@{Count}}
+\index{Count@{Count}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a6415515627373cd92d7e82c51f9c77d0}
+
+
+Modify the number of points in this subset. 
+
+
+
+Definition at line 442 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::count.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Dataset@{Dataset}}
+\index{Dataset@{Dataset}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Dataset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ const Mat\-Type\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Dataset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_af65c998ba66cdd05d5a9607fa450e3fc}
+
+
+Get the dataset which the tree is built on. 
+
+
+
+Definition at line 293 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::dataset.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Dataset@{Dataset}}
+\index{Dataset@{Dataset}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Dataset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ Mat\-Type\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Dataset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a376762f6e47e7224d002f14f34340f41}
+
+
+Modify the dataset which the tree is built on. Be careful! 
+
+
+
+Definition at line 295 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::dataset.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Descendant@{Descendant}}
+\index{Descendant@{Descendant}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Descendant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Descendant (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{index}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a188090db1c8b6d814f6b2537b68820b0}
+
+
+Return the index (with reference to the dataset) of a particular descendant of this node. 
+
+The index should be greater than zero but less than the number of descendants.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of the descendant. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!End@{End}}
+\index{End@{End}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{End}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::End (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a72e01f768b3da17d0865c3528e595863}
+
+
+Gets the index one beyond the last index in the subset. 
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Extend\-Tree@{Extend\-Tree}}
+\index{Extend\-Tree@{Extend\-Tree}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Extend\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Extend\-Tree (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{level}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a25706aa03a505c3f4202806523e26bf0}
+
+
+Fills the tree to the specified level. 
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Find\-By\-Begin\-Count@{Find\-By\-Begin\-Count}}
+\index{Find\-By\-Begin\-Count@{Find\-By\-Begin\-Count}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Find\-By\-Begin\-Count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ const {\bf Binary\-Space\-Tree}$\ast$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Find\-By\-Begin\-Count (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{begin, }
+\item[{size\-\_\-t}]{count}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ad128b60dbce0a29450071331e8d149b6}
+
+
+Find a node in this tree by its begin and count (const). 
+
+Every node is uniquely identified by these two numbers. This is useful for communicating position over the network, when pointers would be invalid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em begin} & The \doxyref{begin()}{p.}{classmlpack_1_1tree_1_1BinarySpaceTree_a7f77f48d5cd8489e34e283585cd2bd4d} of the node to find. \\
+\hline
+{\em count} & The \doxyref{count()}{p.}{classmlpack_1_1tree_1_1BinarySpaceTree_adb7f7bd7e79ac2acb43aaafdd49f8a5f} of the node to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The found node, or N\-U\-L\-L if not found. 
+\end{DoxyReturn}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Find\-By\-Begin\-Count@{Find\-By\-Begin\-Count}}
+\index{Find\-By\-Begin\-Count@{Find\-By\-Begin\-Count}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Find\-By\-Begin\-Count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf Binary\-Space\-Tree}$\ast$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Find\-By\-Begin\-Count (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{begin, }
+\item[{size\-\_\-t}]{count}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a3c0a1d18c85435b95392066489b8c897}
+
+
+Find a node in this tree by its begin and count. 
+
+Every node is uniquely identified by these two numbers. This is useful for communicating position over the network, when pointers would be invalid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em begin} & The \doxyref{begin()}{p.}{classmlpack_1_1tree_1_1BinarySpaceTree_a7f77f48d5cd8489e34e283585cd2bd4d} of the node to find. \\
+\hline
+{\em count} & The \doxyref{count()}{p.}{classmlpack_1_1tree_1_1BinarySpaceTree_adb7f7bd7e79ac2acb43aaafdd49f8a5f} of the node to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The found node, or N\-U\-L\-L if not found. 
+\end{DoxyReturn}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Furthest\-Descendant\-Distance@{Furthest\-Descendant\-Distance}}
+\index{Furthest\-Descendant\-Distance@{Furthest\-Descendant\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Furthest\-Descendant\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ double {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Furthest\-Descendant\-Distance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ad39c2e2d78b31da2bf928b55224c5af5}
+
+
+Return the furthest possible descendant distance. 
+
+This returns the maximum distance from the centroid to the edge of the bound and not the empirical quantity which is the actual furthest descendant distance. So the actual furthest descendant distance may be less than what this method returns (but it will never be greater than this). \index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Furthest\-Point\-Distance@{Furthest\-Point\-Distance}}
+\index{Furthest\-Point\-Distance@{Furthest\-Point\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Furthest\-Point\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ double {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Furthest\-Point\-Distance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ae6ef3bdf9da6b4cbad51a8a9cfa7dfbd}
+
+
+Return the furthest distance to a point held in this node. 
+
+If this is not a leaf node, then the distance is 0 because the node holds no points. \index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Get\-Split\-Dimension@{Get\-Split\-Dimension}}
+\index{Get\-Split\-Dimension@{Get\-Split\-Dimension}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Get\-Split\-Dimension}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Get\-Split\-Dimension (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a3904c48f408936b6113bed09551b5631}
+
+
+Returns the dimension this parent's children are split on. 
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Has\-Self\-Children@{Has\-Self\-Children}}
+\index{Has\-Self\-Children@{Has\-Self\-Children}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Has\-Self\-Children}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ static bool {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Has\-Self\-Children (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a0ff76bb479ed98101167d9381b0b1cc2}
+
+
+Returns false\-: this tree type does not have self children. 
+
+
+
+Definition at line 445 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Is\-Leaf@{Is\-Leaf}}
+\index{Is\-Leaf@{Is\-Leaf}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Is\-Leaf}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ bool {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Is\-Leaf (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a8a243afa955f19a521f72e6804c99c88}
+
+
+Return whether or not this node is a leaf (true if it has no children). 
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Left@{Left}}
+\index{Left@{Left}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Left}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf Binary\-Space\-Tree}$\ast$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Left (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ab9150f417796ff31690539f134cd8714}
+
+
+Gets the left child of this node. 
+
+
+
+Definition at line 273 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::left.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Left@{Left}}
+\index{Left@{Left}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Left}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf Binary\-Space\-Tree}$\ast$\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Left (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ae7449c06b0eea95c75809d297731d33c}
+
+
+Modify the left child of this node. 
+
+
+
+Definition at line 275 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::left.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Max\-Distance@{Max\-Distance}}
+\index{Max\-Distance@{Max\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Max\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ double {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Max\-Distance (
+\begin{DoxyParamCaption}
+\item[{const {\bf Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$ $\ast$}]{other}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a1815f3a8cc43a68694a2e86d21ca31be}
+
+
+Return the maximum distance to another node. 
+
+
+
+Definition at line 375 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::bound, and mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Bound().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Max\-Distance@{Max\-Distance}}
+\index{Max\-Distance@{Max\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Max\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Vec\-Type $>$ double {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Max\-Distance (
+\begin{DoxyParamCaption}
+\item[{const Vec\-Type \&}]{point, }
+\item[{typename boost\-::enable\-\_\-if$<$ {\bf Is\-Vector}$<$ Vec\-Type $>$ $>$\-::type $\ast$}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a091d11a34665541ff234ebfa07f2960c}
+
+
+Return the maximum distance to another point. 
+
+
+
+Definition at line 397 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::bound.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Max\-Leaf\-Size@{Max\-Leaf\-Size}}
+\index{Max\-Leaf\-Size@{Max\-Leaf\-Size}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Max\-Leaf\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Max\-Leaf\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a4d64e114cd1b50050b55d7b2f098dfbb}
+
+
+Return the max leaf size. 
+
+
+
+Definition at line 265 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::max\-Leaf\-Size.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Max\-Leaf\-Size@{Max\-Leaf\-Size}}
+\index{Max\-Leaf\-Size@{Max\-Leaf\-Size}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Max\-Leaf\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Max\-Leaf\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_abaac7c0e82cf6ce70ab7ac024c2c202e}
+
+
+Modify the max leaf size. 
+
+
+
+Definition at line 267 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::max\-Leaf\-Size.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Metric@{Metric}}
+\index{Metric@{Metric}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ Bound\-Type\-::\-Metric\-Type {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Metric (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a8aa8aec167ab785b064cc805fb4704f7}
+
+
+Get the metric which the tree uses. 
+
+
+
+Definition at line 298 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::bound.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Min\-Distance@{Min\-Distance}}
+\index{Min\-Distance@{Min\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Min\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ double {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Min\-Distance (
+\begin{DoxyParamCaption}
+\item[{const {\bf Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$ $\ast$}]{other}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a366fdfb3cc3e42907e70a673452496e3}
+
+
+Return the minimum distance to another node. 
+
+
+
+Definition at line 369 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::bound, and mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Bound().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Min\-Distance@{Min\-Distance}}
+\index{Min\-Distance@{Min\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Min\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Vec\-Type $>$ double {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Min\-Distance (
+\begin{DoxyParamCaption}
+\item[{const Vec\-Type \&}]{point, }
+\item[{typename boost\-::enable\-\_\-if$<$ {\bf Is\-Vector}$<$ Vec\-Type $>$ $>$\-::type $\ast$}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a99244a7f5169d27c1951743ac6597bd6}
+
+
+Return the minimum distance to another point. 
+
+
+
+Definition at line 388 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::bound.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Minimum\-Bound\-Distance@{Minimum\-Bound\-Distance}}
+\index{Minimum\-Bound\-Distance@{Minimum\-Bound\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Minimum\-Bound\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ double {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Minimum\-Bound\-Distance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ae5225a27e0e7915f1c24689198192eb3}
+
+
+Return the minimum distance from the center of the node to any bound edge. 
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Num\-Children@{Num\-Children}}
+\index{Num\-Children@{Num\-Children}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Num\-Children}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Num\-Children (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a2b25c68883b85592885ce252afcf6426}
+
+
+Return the number of children in this node. 
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Num\-Descendants@{Num\-Descendants}}
+\index{Num\-Descendants@{Num\-Descendants}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Num\-Descendants}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Num\-Descendants (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a11924af1d6cbd6a8287d5191128b20bf}
+
+
+Return the number of descendants of this node. 
+
+For a non-\/leaf in a binary space tree, this is the number of points at the descendant leaves. For a leaf, this is the number of points in the leaf. \index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Num\-Points@{Num\-Points}}
+\index{Num\-Points@{Num\-Points}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Num\-Points}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Num\-Points (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a354ac7cd830e70d789a89c9f53a4e401}
+
+
+Return the number of points in this node (0 if not a leaf). 
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Parent@{Parent}}
+\index{Parent@{Parent}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Parent}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf Binary\-Space\-Tree}$\ast$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Parent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a996c7dfd6e90335fd017cbf82ead14fc}
+
+
+Gets the parent of this node. 
+
+
+
+Definition at line 283 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::parent.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Parent@{Parent}}
+\index{Parent@{Parent}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Parent}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf Binary\-Space\-Tree}$\ast$\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Parent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ab0d94d73b0a9166fd1f3dc425b50e4b0}
+
+
+Modify the parent of this node. 
+
+
+
+Definition at line 285 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::parent.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Parent\-Distance@{Parent\-Distance}}
+\index{Parent\-Distance@{Parent\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Parent\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ double {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Parent\-Distance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_aca22a1cfdab9c4d79fb94dbc929c6f1d}
+
+
+Return the distance from the center of this node to the center of the parent node. 
+
+
+
+Definition at line 326 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::parent\-Distance.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Parent\-Distance@{Parent\-Distance}}
+\index{Parent\-Distance@{Parent\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Parent\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ double\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Parent\-Distance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ab79d2d4a4727d01f2e82e6500322eecf}
+
+
+Modify the distance from the center of this node to the center of the parent node. 
+
+
+
+Definition at line 329 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::parent\-Distance.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Point@{Point}}
+\index{Point@{Point}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Point}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Point (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{index}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ac71fa4a26f507a9086b75e2b80858f76}
+
+
+Return the index (with reference to the dataset) of a particular point in this node. 
+
+This will happily return invalid indices if the given index is greater than the number of points in this node (obtained with \doxyref{Num\-Points()}{p.}{classmlpack_1_1tree_1_1BinarySpaceTree_a354ac7cd830e70d789a89c9f53a4e401}) -- be careful.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of point for which a dataset index is wanted. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Range\-Distance@{Range\-Distance}}
+\index{Range\-Distance@{Range\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Range\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf math\-::\-Range} {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Range\-Distance (
+\begin{DoxyParamCaption}
+\item[{const {\bf Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$ $\ast$}]{other}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ad9f3ccd239468eaf58289c1fc824c1b5}
+
+
+Return the minimum and maximum distance to another node. 
+
+
+
+Definition at line 381 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::bound, and mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Bound().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Range\-Distance@{Range\-Distance}}
+\index{Range\-Distance@{Range\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Range\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Vec\-Type $>$ {\bf math\-::\-Range} {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Range\-Distance (
+\begin{DoxyParamCaption}
+\item[{const Vec\-Type \&}]{point, }
+\item[{typename boost\-::enable\-\_\-if$<$ {\bf Is\-Vector}$<$ Vec\-Type $>$ $>$\-::type $\ast$}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a9b633a9029fecf145fe8a963190d9fdd}
+
+
+Return the minimum and maximum distance to another point. 
+
+
+
+Definition at line 407 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::bound.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Right@{Right}}
+\index{Right@{Right}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Right}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf Binary\-Space\-Tree}$\ast$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Right (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_aadef4f2734db7fc7ad684bec9245834a}
+
+
+Gets the right child of this node. 
+
+
+
+Definition at line 278 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::right.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Right@{Right}}
+\index{Right@{Right}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Right}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf Binary\-Space\-Tree}$\ast$\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Right (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a944e6d2c8def2db232f8830ad96d35dc}
+
+
+Modify the right child of this node. 
+
+
+
+Definition at line 280 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::right.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Split\-Dimension@{Split\-Dimension}}
+\index{Split\-Dimension@{Split\-Dimension}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Split\-Dimension}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Split\-Dimension (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a8bb9b11453c44c151b39a38ad021772b}
+
+
+Get the split dimension for this node. 
+
+
+
+Definition at line 288 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::split\-Dimension.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Split\-Dimension@{Split\-Dimension}}
+\index{Split\-Dimension@{Split\-Dimension}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Split\-Dimension}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Split\-Dimension (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_ad9b6150d2357645b6754e83ce9ccea2a}
+
+
+Modify the split dimension for this node. 
+
+
+
+Definition at line 290 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::split\-Dimension.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Split\-Node@{Split\-Node}}
+\index{Split\-Node@{Split\-Node}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Split\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ void {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Split\-Node (
+\begin{DoxyParamCaption}
+\item[{Mat\-Type \&}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a8424b427b03d49fd3c66e7588cb76bbc}
+
+
+Splits the current node, assigning its left and right children recursively. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset which we are using. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Split\-Node@{Split\-Node}}
+\index{Split\-Node@{Split\-Node}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Split\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ void {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Split\-Node (
+\begin{DoxyParamCaption}
+\item[{Mat\-Type \&}]{data, }
+\item[{std\-::vector$<$ size\-\_\-t $>$ \&}]{old\-From\-New}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_aa6f216d857c26c4df6ec089cf986735b}
+
+
+Splits the current node, assigning its left and right children recursively. 
+
+Also returns a list of the changed indices.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset which we are using. \\
+\hline
+{\em old\-From\-New} & Vector holding permuted indices. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Stat@{Stat}}
+\index{Stat@{Stat}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Stat}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ const Statistic\-Type\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Stat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a0de5f4a9b5347c3b7163e963a149a573}
+
+
+Return the statistic object for this node. 
+
+
+
+Definition at line 257 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::stat.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Stat@{Stat}}
+\index{Stat@{Stat}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Stat}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ Statistic\-Type\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Stat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_af0d24f62db40713a3952e1a45b5f2424}
+
+
+Return the statistic object for this node. 
+
+
+
+Definition at line 259 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+References mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::stat.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ std\-::string {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a0353f2a1686ab905c2cc884bf3bac81a}
+
+
+Returns a string representation of this object. 
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Tree\-Depth@{Tree\-Depth}}
+\index{Tree\-Depth@{Tree\-Depth}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Tree\-Depth}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Tree\-Depth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a3c0834c30945ad1ea96f29ade8e3adec}
+
+
+Obtains the number of levels below this node in the tree, starting with this. 
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!Tree\-Size@{Tree\-Size}}
+\index{Tree\-Size@{Tree\-Size}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{Tree\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::Tree\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a5e8f86b327d5be00f98ba4a453a4299a}
+
+
+Obtains the number of nodes in the tree, starting with this. 
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!begin@{begin}}
+\index{begin@{begin}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::begin\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a7f77f48d5cd8489e34e283585cd2bd4d}
+
+
+The index of the first point in the dataset contained in this node (and its children). 
+
+
+
+Definition at line 62 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Begin(), and mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Copy\-Me().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!bound@{bound}}
+\index{bound@{bound}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{bound}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ Bound\-Type {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::bound\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a69a2848ae91344a1034c0a03f1ca21e6}
+
+
+The bound object for this node. 
+
+
+
+Definition at line 69 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Bound(), mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Centroid(), mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Copy\-Me(), mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Max\-Distance(), mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Metric(), mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Min\-Distance(), and mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Range\-Distance().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!count@{count}}
+\index{count@{count}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::count\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_adb7f7bd7e79ac2acb43aaafdd49f8a5f}
+
+
+The number of points of the dataset contained in this node (and its children). 
+
+
+
+Definition at line 65 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Copy\-Me(), and mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Count().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!dataset@{dataset}}
+\index{dataset@{dataset}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{dataset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ Mat\-Type\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::dataset\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_aae9d12fcab3dab7ef4adaa65058dcd1c}
+
+
+The dataset. 
+
+
+
+Definition at line 82 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Dataset().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!furthest\-Descendant\-Distance@{furthest\-Descendant\-Distance}}
+\index{furthest\-Descendant\-Distance@{furthest\-Descendant\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{furthest\-Descendant\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ double {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::furthest\-Descendant\-Distance\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a70a903fc083c7653da686a5aa7512b2e}
+
+
+The worst possible distance to the furthest descendant, cached to speed things up. 
+
+
+
+Definition at line 78 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!left@{left}}
+\index{left@{left}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{left}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf Binary\-Space\-Tree}$\ast$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::left\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a4741e027f9c58a895d450a5048e2f107}
+
+
+The left child node. 
+
+
+
+Definition at line 55 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Left().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!max\-Leaf\-Size@{max\-Leaf\-Size}}
+\index{max\-Leaf\-Size@{max\-Leaf\-Size}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{max\-Leaf\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::max\-Leaf\-Size\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a1ae5e6741c142de5da64c83943c46e34}
+
+
+The max leaf size. 
+
+
+
+Definition at line 67 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Copy\-Me(), and mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Max\-Leaf\-Size().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!minimum\-Bound\-Distance@{minimum\-Bound\-Distance}}
+\index{minimum\-Bound\-Distance@{minimum\-Bound\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{minimum\-Bound\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ double {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::minimum\-Bound\-Distance\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a56da021a94ea1c0495b9099947916f08}
+
+
+The minimum distance from the center to any edge of the bound. 
+
+
+
+Definition at line 80 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!parent@{parent}}
+\index{parent@{parent}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{parent}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf Binary\-Space\-Tree}$\ast$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::parent\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_aa50b5a529658b8bac777fcad961502d9}
+
+
+The parent node (N\-U\-L\-L if this is the root of the tree). 
+
+
+
+Definition at line 59 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Parent().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!parent\-Distance@{parent\-Distance}}
+\index{parent\-Distance@{parent\-Distance}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{parent\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ double {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::parent\-Distance\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a749d8be8cf6fc9f13772d9896621e0c3}
+
+
+The distance from the centroid of this node to the centroid of the parent. 
+
+
+
+Definition at line 75 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Parent\-Distance().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!right@{right}}
+\index{right@{right}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{right}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ {\bf Binary\-Space\-Tree}$\ast$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::right\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a883c0e940dd2687ad757415739d93b90}
+
+
+The right child node. 
+
+
+
+Definition at line 57 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Right().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!split\-Dimension@{split\-Dimension}}
+\index{split\-Dimension@{split\-Dimension}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{split\-Dimension}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::split\-Dimension\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_a758adc4abac3d32124471fbf1b8af29a}
+
+
+The dimension this node split on if it is a parent. 
+
+
+
+Definition at line 73 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Split\-Dimension().
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}!stat@{stat}}
+\index{stat@{stat}!mlpack::tree::BinarySpaceTree@{mlpack\-::tree\-::\-Binary\-Space\-Tree}}
+\subsubsection[{stat}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ Statistic\-Type {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::stat\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_acbca8580c70a89e1e4c4f414b9a19aa8}
+
+
+Any extra data contained in the node. 
+
+
+
+Definition at line 71 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+Referenced by mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Copy\-Me(), and mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Stat().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/tree/binary\-\_\-space\-\_\-tree/{\bf binary\-\_\-space\-\_\-tree.\-hpp}\end{DoxyCompactItemize}

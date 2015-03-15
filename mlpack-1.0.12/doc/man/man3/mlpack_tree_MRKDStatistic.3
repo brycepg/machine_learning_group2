@@ -1,0 +1,305 @@
+.TH "mlpack::tree::MRKDStatistic" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::tree::MRKDStatistic \- 
+.PP
+Statistic for multi-resolution kd-trees\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMRKDStatistic\fP ()"
+.br
+.RI "\fIInitialize an empty statistic\&. \fP"
+.ti -1c
+.RI "template<typename TreeType > \fBMRKDStatistic\fP (const TreeType &)"
+.br
+.RI "\fIThis constructor is called when a node is finished initializing\&. \fP"
+.ti -1c
+.RI "size_t \fBBegin\fP () const "
+.br
+.RI "\fIGet the index of the initial item in the dataset\&. \fP"
+.ti -1c
+.RI "size_t & \fBBegin\fP ()"
+.br
+.RI "\fIModify the index of the initial item in the dataset\&. \fP"
+.ti -1c
+.RI "const arma::colvec & \fBCenterOfMass\fP () const "
+.br
+.RI "\fIGet the center of mass\&. \fP"
+.ti -1c
+.RI "arma::colvec & \fBCenterOfMass\fP ()"
+.br
+.RI "\fIModify the center of mass\&. \fP"
+.ti -1c
+.RI "size_t \fBCount\fP () const "
+.br
+.RI "\fIGet the number of items in the dataset\&. \fP"
+.ti -1c
+.RI "size_t & \fBCount\fP ()"
+.br
+.RI "\fIModify the number of items in the dataset\&. \fP"
+.ti -1c
+.RI "size_t \fBDominatingCentroid\fP () const "
+.br
+.RI "\fIGet the index of the dominating centroid\&. \fP"
+.ti -1c
+.RI "size_t & \fBDominatingCentroid\fP ()"
+.br
+.RI "\fIModify the index of the dominating centroid\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturns a string representation of this object\&. \fP"
+.ti -1c
+.RI "const std::vector< size_t > & \fBWhitelist\fP () const "
+.br
+.RI "\fIAccess the whitelist\&. \fP"
+.ti -1c
+.RI "std::vector< size_t > & \fBWhitelist\fP ()"
+.br
+.RI "\fIModify the whitelist\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBbegin\fP"
+.br
+.RI "\fIThe initial item in the dataset, so we don't have to make a copy\&. \fP"
+.ti -1c
+.RI "arma::colvec \fBcenterOfMass\fP"
+.br
+.RI "\fIThe center of mass for this dataset\&. \fP"
+.ti -1c
+.RI "size_t \fBcount\fP"
+.br
+.RI "\fIThe number of items in the dataset\&. \fP"
+.ti -1c
+.RI "const arma::mat * \fBdataset\fP"
+.br
+.RI "\fIThe data points this object contains\&. \fP"
+.ti -1c
+.RI "size_t \fBdominatingCentroid\fP"
+.br
+.RI "\fIThe index of the dominating centroid of the associated hyperrectangle\&. \fP"
+.ti -1c
+.RI "bool \fBisWhitelistValid\fP"
+.br
+.RI "\fIWhether or not the whitelist is valid\&. \fP"
+.ti -1c
+.RI "const \fBMRKDStatistic\fP * \fBleftStat\fP"
+.br
+.RI "\fIThe left child\&. \fP"
+.ti -1c
+.RI "const \fBMRKDStatistic\fP * \fBparentStat\fP"
+.br
+.RI "\fIA link to the parent node; NULL if this is the root\&. \fP"
+.ti -1c
+.RI "const \fBMRKDStatistic\fP * \fBrightStat\fP"
+.br
+.RI "\fIThe right child\&. \fP"
+.ti -1c
+.RI "double \fBsumOfSquaredNorms\fP"
+.br
+.RI "\fIThe sum of the squared Euclidean norms for this dataset\&. \fP"
+.ti -1c
+.RI "std::vector< size_t > \fBwhitelist\fP"
+.br
+.RI "\fIThe list of centroids that cannot own this hyperrectangle\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Statistic for multi-resolution kd-trees\&. 
+.PP
+Definition at line 25 of file mrkd_statistic\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::tree::MRKDStatistic::MRKDStatistic ()"
+
+.PP
+Initialize an empty statistic\&. 
+.SS "template<typename TreeType > mlpack::tree::MRKDStatistic::MRKDStatistic (const TreeType &)"
+
+.PP
+This constructor is called when a node is finished initializing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInode\fP The node that has been finished\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "size_t mlpack::tree::MRKDStatistic::Begin () const\fC [inline]\fP"
+
+.PP
+Get the index of the initial item in the dataset\&. 
+.PP
+Definition at line 45 of file mrkd_statistic\&.hpp\&.
+.PP
+References begin\&.
+.SS "size_t& mlpack::tree::MRKDStatistic::Begin ()\fC [inline]\fP"
+
+.PP
+Modify the index of the initial item in the dataset\&. 
+.PP
+Definition at line 47 of file mrkd_statistic\&.hpp\&.
+.PP
+References begin\&.
+.SS "const arma::colvec& mlpack::tree::MRKDStatistic::CenterOfMass () const\fC [inline]\fP"
+
+.PP
+Get the center of mass\&. 
+.PP
+Definition at line 55 of file mrkd_statistic\&.hpp\&.
+.PP
+References centerOfMass\&.
+.SS "arma::colvec& mlpack::tree::MRKDStatistic::CenterOfMass ()\fC [inline]\fP"
+
+.PP
+Modify the center of mass\&. 
+.PP
+Definition at line 57 of file mrkd_statistic\&.hpp\&.
+.PP
+References centerOfMass\&.
+.SS "size_t mlpack::tree::MRKDStatistic::Count () const\fC [inline]\fP"
+
+.PP
+Get the number of items in the dataset\&. 
+.PP
+Definition at line 50 of file mrkd_statistic\&.hpp\&.
+.PP
+References count\&.
+.SS "size_t& mlpack::tree::MRKDStatistic::Count ()\fC [inline]\fP"
+
+.PP
+Modify the number of items in the dataset\&. 
+.PP
+Definition at line 52 of file mrkd_statistic\&.hpp\&.
+.PP
+References count\&.
+.SS "size_t mlpack::tree::MRKDStatistic::DominatingCentroid () const\fC [inline]\fP"
+
+.PP
+Get the index of the dominating centroid\&. 
+.PP
+Definition at line 60 of file mrkd_statistic\&.hpp\&.
+.PP
+References dominatingCentroid\&.
+.SS "size_t& mlpack::tree::MRKDStatistic::DominatingCentroid ()\fC [inline]\fP"
+
+.PP
+Modify the index of the dominating centroid\&. 
+.PP
+Definition at line 62 of file mrkd_statistic\&.hpp\&.
+.PP
+References dominatingCentroid\&.
+.SS "std::string mlpack::tree::MRKDStatistic::ToString () const"
+
+.PP
+Returns a string representation of this object\&. 
+.SS "const std::vector<size_t>& mlpack::tree::MRKDStatistic::Whitelist () const\fC [inline]\fP"
+
+.PP
+Access the whitelist\&. 
+.PP
+Definition at line 65 of file mrkd_statistic\&.hpp\&.
+.PP
+References whitelist\&.
+.SS "std::vector<size_t>& mlpack::tree::MRKDStatistic::Whitelist ()\fC [inline]\fP"
+
+.PP
+Modify the whitelist\&. 
+.PP
+Definition at line 67 of file mrkd_statistic\&.hpp\&.
+.PP
+References whitelist\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "size_t mlpack::tree::MRKDStatistic::begin\fC [private]\fP"
+
+.PP
+The initial item in the dataset, so we don't have to make a copy\&. 
+.PP
+Definition at line 73 of file mrkd_statistic\&.hpp\&.
+.PP
+Referenced by Begin()\&.
+.SS "arma::colvec mlpack::tree::MRKDStatistic::centerOfMass\fC [private]\fP"
+
+.PP
+The center of mass for this dataset\&. 
+.PP
+Definition at line 85 of file mrkd_statistic\&.hpp\&.
+.PP
+Referenced by CenterOfMass()\&.
+.SS "size_t mlpack::tree::MRKDStatistic::count\fC [private]\fP"
+
+.PP
+The number of items in the dataset\&. 
+.PP
+Definition at line 75 of file mrkd_statistic\&.hpp\&.
+.PP
+Referenced by Count()\&.
+.SS "const arma::mat* mlpack::tree::MRKDStatistic::dataset\fC [private]\fP"
+
+.PP
+The data points this object contains\&. 
+.PP
+Definition at line 71 of file mrkd_statistic\&.hpp\&.
+.SS "size_t mlpack::tree::MRKDStatistic::dominatingCentroid\fC [private]\fP"
+
+.PP
+The index of the dominating centroid of the associated hyperrectangle\&. 
+.PP
+Definition at line 91 of file mrkd_statistic\&.hpp\&.
+.PP
+Referenced by DominatingCentroid()\&.
+.SS "bool mlpack::tree::MRKDStatistic::isWhitelistValid\fC [private]\fP"
+
+.PP
+Whether or not the whitelist is valid\&. 
+.PP
+Definition at line 96 of file mrkd_statistic\&.hpp\&.
+.SS "const \fBMRKDStatistic\fP* mlpack::tree::MRKDStatistic::leftStat\fC [private]\fP"
+
+.PP
+The left child\&. 
+.PP
+Definition at line 77 of file mrkd_statistic\&.hpp\&.
+.SS "const \fBMRKDStatistic\fP* mlpack::tree::MRKDStatistic::parentStat\fC [private]\fP"
+
+.PP
+A link to the parent node; NULL if this is the root\&. 
+.PP
+Definition at line 81 of file mrkd_statistic\&.hpp\&.
+.SS "const \fBMRKDStatistic\fP* mlpack::tree::MRKDStatistic::rightStat\fC [private]\fP"
+
+.PP
+The right child\&. 
+.PP
+Definition at line 79 of file mrkd_statistic\&.hpp\&.
+.SS "double mlpack::tree::MRKDStatistic::sumOfSquaredNorms\fC [private]\fP"
+
+.PP
+The sum of the squared Euclidean norms for this dataset\&. 
+.PP
+Definition at line 87 of file mrkd_statistic\&.hpp\&.
+.SS "std::vector<size_t> mlpack::tree::MRKDStatistic::whitelist\fC [private]\fP"
+
+.PP
+The list of centroids that cannot own this hyperrectangle\&. 
+.PP
+Definition at line 94 of file mrkd_statistic\&.hpp\&.
+.PP
+Referenced by Whitelist()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

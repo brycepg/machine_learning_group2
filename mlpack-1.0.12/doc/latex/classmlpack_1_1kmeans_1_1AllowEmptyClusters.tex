@@ -1,0 +1,92 @@
+\section{mlpack\-:\-:kmeans\-:\-:Allow\-Empty\-Clusters Class Reference}
+\label{classmlpack_1_1kmeans_1_1AllowEmptyClusters}\index{mlpack\-::kmeans\-::\-Allow\-Empty\-Clusters@{mlpack\-::kmeans\-::\-Allow\-Empty\-Clusters}}
+
+
+Policy which allows K-\/\-Means to create empty clusters without any error being reported.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Allow\-Empty\-Clusters} ()
+\begin{DoxyCompactList}\small\item\em Default constructor required by Empty\-Cluster\-Policy policy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\static size\-\_\-t {\bf Empty\-Cluster} (const Mat\-Type \&, const size\-\_\-t, const Mat\-Type \&, arma\-::\-Col$<$ size\-\_\-t $>$ \&, arma\-::\-Col$<$ size\-\_\-t $>$ \&)
+\begin{DoxyCompactList}\small\item\em This function does nothing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Policy which allows K-\/\-Means to create empty clusters without any error being reported. 
+
+Definition at line 27 of file allow\-\_\-empty\-\_\-clusters.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::kmeans\-::\-Allow\-Empty\-Clusters@{mlpack\-::kmeans\-::\-Allow\-Empty\-Clusters}!Allow\-Empty\-Clusters@{Allow\-Empty\-Clusters}}
+\index{Allow\-Empty\-Clusters@{Allow\-Empty\-Clusters}!mlpack::kmeans::AllowEmptyClusters@{mlpack\-::kmeans\-::\-Allow\-Empty\-Clusters}}
+\subsubsection[{Allow\-Empty\-Clusters}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::kmeans\-::\-Allow\-Empty\-Clusters\-::\-Allow\-Empty\-Clusters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1AllowEmptyClusters_a8879ce327a1c1e5e5943309dfd9e2fea}
+
+
+Default constructor required by Empty\-Cluster\-Policy policy. 
+
+
+
+Definition at line 31 of file allow\-\_\-empty\-\_\-clusters.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::kmeans\-::\-Allow\-Empty\-Clusters@{mlpack\-::kmeans\-::\-Allow\-Empty\-Clusters}!Empty\-Cluster@{Empty\-Cluster}}
+\index{Empty\-Cluster@{Empty\-Cluster}!mlpack::kmeans::AllowEmptyClusters@{mlpack\-::kmeans\-::\-Allow\-Empty\-Clusters}}
+\subsubsection[{Empty\-Cluster}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type $>$ static size\-\_\-t mlpack\-::kmeans\-::\-Allow\-Empty\-Clusters\-::\-Empty\-Cluster (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{, }
+\item[{const size\-\_\-t}]{, }
+\item[{const Mat\-Type \&}]{, }
+\item[{arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{, }
+\item[{arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classmlpack_1_1kmeans_1_1AllowEmptyClusters_a6c1b517a17c6bc3fe6fba29908b8f8c9}
+
+
+This function does nothing. 
+
+It is called by K-\/\-Means when K-\/\-Means detects an empty cluster.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Mat\-Type} & Type of data (arma\-::mat or arma\-::spmat). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset on which clustering is being performed. \\
+\hline
+{\em empty\-Cluster} & Index of cluster which is empty. \\
+\hline
+{\em centroids} & Centroids of each cluster (one per column). \\
+\hline
+{\em cluster\-Counts} & Number of points in each cluster. \\
+\hline
+{\em assignments} & Cluster assignments of each point.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of points changed (0). 
+\end{DoxyReturn}
+
+
+Definition at line 47 of file allow\-\_\-empty\-\_\-clusters.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/kmeans/{\bf allow\-\_\-empty\-\_\-clusters.\-hpp}\end{DoxyCompactItemize}

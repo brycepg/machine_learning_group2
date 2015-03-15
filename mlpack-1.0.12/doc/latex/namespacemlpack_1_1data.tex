@@ -1,0 +1,164 @@
+\section{mlpack\-:\-:data Namespace Reference}
+\label{namespacemlpack_1_1data}\index{mlpack\-::data@{mlpack\-::data}}
+
+
+Functions to load and save matrices.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename e\-T $>$ }\\bool {\bf Load} (const std\-::string \&filename, arma\-::\-Mat$<$ e\-T $>$ \&matrix, bool fatal=false, bool transpose=true)
+\begin{DoxyCompactList}\small\item\em Loads a matrix from file, guessing the filetype from the extension. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename e\-T $>$ }\\void {\bf Normalize\-Labels} (const arma\-::\-Col$<$ e\-T $>$ \&labels\-In, arma\-::\-Col$<$ size\-\_\-t $>$ \&labels, arma\-::\-Col$<$ e\-T $>$ \&mapping)
+\begin{DoxyCompactList}\small\item\em Given a set of labels of a particular datatype, convert them to unsigned labels in the range [0, n) where n is the number of different labels. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename e\-T $>$ }\\void {\bf Revert\-Labels} (const arma\-::\-Col$<$ size\-\_\-t $>$ \&labels, const arma\-::\-Col$<$ e\-T $>$ \&mapping, arma\-::\-Col$<$ e\-T $>$ \&labels\-Out)
+\begin{DoxyCompactList}\small\item\em Given a set of labels that have been mapped to the range [0, n), map them back to the original labels given by the 'mapping' vector. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename e\-T $>$ }\\bool {\bf Save} (const std\-::string \&filename, const arma\-::\-Mat$<$ e\-T $>$ \&matrix, bool fatal=false, bool transpose=true)
+\begin{DoxyCompactList}\small\item\em Saves a matrix to file, guessing the filetype from the extension. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to load and save matrices. 
+
+\subsection{Function Documentation}
+\index{mlpack\-::data@{mlpack\-::data}!Load@{Load}}
+\index{Load@{Load}!mlpack::data@{mlpack\-::data}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename e\-T $>$ bool mlpack\-::data\-::\-Load (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{arma\-::\-Mat$<$ e\-T $>$ \&}]{matrix, }
+\item[{bool}]{fatal = {\ttfamily false}, }
+\item[{bool}]{transpose = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{namespacemlpack_1_1data_afe333d8414c1184e2ce9985d1b4f7a76}
+
+
+Loads a matrix from file, guessing the filetype from the extension. 
+
+This will transpose the matrix at load time. If the filetype cannot be determined, an error will be given.
+
+The supported types of files are the same as found in Armadillo\-:
+
+
+\begin{DoxyItemize}
+\item C\-S\-V (csv\-\_\-ascii), denoted by .csv, or optionally .txt
+\item A\-S\-C\-I\-I (raw\-\_\-ascii), denoted by .txt
+\item Armadillo A\-S\-C\-I\-I (arma\-\_\-ascii), also denoted by .txt
+\item P\-G\-M (pgm\-\_\-binary), denoted by .pgm
+\item P\-P\-M (ppm\-\_\-binary), denoted by .ppm
+\item Raw binary (raw\-\_\-binary), denoted by .bin
+\item Armadillo binary (arma\-\_\-binary), denoted by .bin
+\item H\-D\-F5, denoted by .hdf, .hdf5, .h5, or .he5
+\end{DoxyItemize}
+
+If the file extension is not one of those types, an error will be given. This is preferable to Armadillo's default behavior of loading an unknown filetype as raw\-\_\-binary, which can have very confusing effects.
+
+If the parameter 'fatal' is set to true, the program will exit with an error if the matrix does not load successfully. The parameter 'transpose' controls whether or not the matrix is transposed after loading. In most cases, because data is generally stored in a row-\/major format and M\-L\-P\-A\-C\-K requires column-\/major matrices, this should be left at its default value of 'true'.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of file to load. \\
+\hline
+{\em matrix} & Matrix to load contents of file into. \\
+\hline
+{\em fatal} & If an error should be reported as fatal (default false). \\
+\hline
+{\em transpose} & If true, transpose the matrix after loading. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean value indicating success or failure of load. 
+\end{DoxyReturn}
+\index{mlpack\-::data@{mlpack\-::data}!Normalize\-Labels@{Normalize\-Labels}}
+\index{Normalize\-Labels@{Normalize\-Labels}!mlpack::data@{mlpack\-::data}}
+\subsubsection[{Normalize\-Labels}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename e\-T $>$ void mlpack\-::data\-::\-Normalize\-Labels (
+\begin{DoxyParamCaption}
+\item[{const arma\-::\-Col$<$ e\-T $>$ \&}]{labels\-In, }
+\item[{arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{labels, }
+\item[{arma\-::\-Col$<$ e\-T $>$ \&}]{mapping}
+\end{DoxyParamCaption}
+)}\label{namespacemlpack_1_1data_ac5269946401fdbd1cde1364455eaca9d}
+
+
+Given a set of labels of a particular datatype, convert them to unsigned labels in the range [0, n) where n is the number of different labels. 
+
+Also, a reverse mapping from the new label to the old value is stored in the 'mapping' vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em labels\-In} & Input labels of arbitrary datatype. \\
+\hline
+{\em labels} & Vector that unsigned labels will be stored in. \\
+\hline
+{\em mapping} & Reverse mapping to convert new labels back to old labels. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::data@{mlpack\-::data}!Revert\-Labels@{Revert\-Labels}}
+\index{Revert\-Labels@{Revert\-Labels}!mlpack::data@{mlpack\-::data}}
+\subsubsection[{Revert\-Labels}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename e\-T $>$ void mlpack\-::data\-::\-Revert\-Labels (
+\begin{DoxyParamCaption}
+\item[{const arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{labels, }
+\item[{const arma\-::\-Col$<$ e\-T $>$ \&}]{mapping, }
+\item[{arma\-::\-Col$<$ e\-T $>$ \&}]{labels\-Out}
+\end{DoxyParamCaption}
+)}\label{namespacemlpack_1_1data_a2ffc12da5ff505f9a645d2c7440ec338}
+
+
+Given a set of labels that have been mapped to the range [0, n), map them back to the original labels given by the 'mapping' vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em labels} & Set of normalized labels to convert. \\
+\hline
+{\em mapping} & Mapping to use to convert labels. \\
+\hline
+{\em labels\-Out} & Vector to store new labels in. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::data@{mlpack\-::data}!Save@{Save}}
+\index{Save@{Save}!mlpack::data@{mlpack\-::data}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename e\-T $>$ bool mlpack\-::data\-::\-Save (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename, }
+\item[{const arma\-::\-Mat$<$ e\-T $>$ \&}]{matrix, }
+\item[{bool}]{fatal = {\ttfamily false}, }
+\item[{bool}]{transpose = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{namespacemlpack_1_1data_a3121ae4ba5e760d980f0c673d1359245}
+
+
+Saves a matrix to file, guessing the filetype from the extension. 
+
+This will transpose the matrix at save time. If the filetype cannot be determined, an error will be given.
+
+The supported types of files are the same as found in Armadillo\-:
+
+
+\begin{DoxyItemize}
+\item C\-S\-V (csv\-\_\-ascii), denoted by .csv, or optionally .txt
+\item A\-S\-C\-I\-I (raw\-\_\-ascii), denoted by .txt
+\item Armadillo A\-S\-C\-I\-I (arma\-\_\-ascii), also denoted by .txt
+\item P\-G\-M (pgm\-\_\-binary), denoted by .pgm
+\item P\-P\-M (ppm\-\_\-binary), denoted by .ppm
+\item Raw binary (raw\-\_\-binary), denoted by .bin
+\item Armadillo binary (arma\-\_\-binary), denoted by .bin
+\item H\-D\-F5 (hdf5\-\_\-binary), denoted by .hdf5, .hdf, .h5, or .he5
+\end{DoxyItemize}
+
+If the file extension is not one of those types, an error will be given. If the 'fatal' parameter is set to true, an error will cause the program to exit. If the 'transpose' parameter is set to true, the matrix will be transposed before saving. Generally, because M\-L\-P\-A\-C\-K stores matrices in a column-\/major format and most datasets are stored on disk as row-\/major, this parameter should be left at its default value of 'true'.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of file to save to. \\
+\hline
+{\em matrix} & Matrix to save into file. \\
+\hline
+{\em fatal} & If an error should be reported as fatal (default false). \\
+\hline
+{\em transpose} & If true, transpose the matrix before saving. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean value indicating success or failure of save. 
+\end{DoxyReturn}

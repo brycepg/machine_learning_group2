@@ -1,0 +1,37 @@
+.TH "mlpack::emst::DualTreeBoruvka< MetricType, TreeType >::SortEdgesHelper" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::emst::DualTreeBoruvka< MetricType, TreeType >::SortEdgesHelper \- 
+.PP
+For sorting the edge list after the computation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator()\fP (const \fBEdgePair\fP &pairA, const \fBEdgePair\fP &pairB)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename MetricType = metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>, DTBStat>>struct mlpack::emst::DualTreeBoruvka< MetricType, TreeType >::SortEdgesHelper"
+For sorting the edge list after the computation\&. 
+.PP
+Definition at line 121 of file dtb\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename MetricType  = metric::EuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2>, DTBStat>> bool \fBmlpack::emst::DualTreeBoruvka\fP< MetricType, TreeType >::SortEdgesHelper::operator() (const \fBEdgePair\fP &pairA, const \fBEdgePair\fP &pairB)\fC [inline]\fP"
+
+.PP
+Definition at line 123 of file dtb\&.hpp\&.
+.PP
+References mlpack::emst::EdgePair::Distance()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

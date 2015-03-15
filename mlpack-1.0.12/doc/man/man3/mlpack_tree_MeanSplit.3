@@ -1,0 +1,134 @@
+.TH "mlpack::tree::MeanSplit< BoundType, MatType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::tree::MeanSplit< BoundType, MatType > \- 
+.PP
+A binary space partitioning tree node is split into its left and right child\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBSplitNode\fP (const BoundType &bound, MatType &data, const size_t begin, const size_t count, size_t &splitDimension, size_t &splitCol)"
+.br
+.RI "\fISplit the node according to the mean value in the dimension with maximum width\&. \fP"
+.ti -1c
+.RI "static bool \fBSplitNode\fP (const BoundType &bound, MatType &data, const size_t begin, const size_t count, size_t &splitDimension, size_t &splitCol, std::vector< size_t > &oldFromNew)"
+.br
+.RI "\fISplit the node according to the mean value in the dimension with maximum width and return a list of changed indices\&. \fP"
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static size_t \fBPerformSplit\fP (MatType &data, const size_t begin, const size_t count, const size_t splitDimension, const double splitVal)"
+.br
+.RI "\fIReorder the dataset into two parts such that they lie on either side of splitCol\&. \fP"
+.ti -1c
+.RI "static size_t \fBPerformSplit\fP (MatType &data, const size_t begin, const size_t count, const size_t splitDimension, const double splitVal, std::vector< size_t > &oldFromNew)"
+.br
+.RI "\fIReorder the dataset into two parts such that they lie on either side of splitCol\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename BoundType, typename MatType = arma::mat>class mlpack::tree::MeanSplit< BoundType, MatType >"
+A binary space partitioning tree node is split into its left and right child\&. 
+
+The split is done in the dimension that has the maximum width\&. The points are divided into two parts based on the mean in this dimension\&. 
+.PP
+Definition at line 30 of file mean_split\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename BoundType , typename MatType  = arma::mat> static size_t \fBmlpack::tree::MeanSplit\fP< BoundType, MatType >::PerformSplit (MatType &data, const size_tbegin, const size_tcount, const size_tsplitDimension, const doublesplitVal)\fC [static]\fP, \fC [private]\fP"
+
+.PP
+Reorder the dataset into two parts such that they lie on either side of splitCol\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The dataset used by the binary space tree\&. 
+.br
+\fIbegin\fP Index of the starting point in the dataset that belongs to this node\&. 
+.br
+\fIcount\fP Number of points in this node\&. 
+.br
+\fIsplitDimension\fP The dimension to split the node on\&. 
+.br
+\fIsplitVal\fP The split in dimension splitDimension is based on this value\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename MatType  = arma::mat> static size_t \fBmlpack::tree::MeanSplit\fP< BoundType, MatType >::PerformSplit (MatType &data, const size_tbegin, const size_tcount, const size_tsplitDimension, const doublesplitVal, std::vector< size_t > &oldFromNew)\fC [static]\fP, \fC [private]\fP"
+
+.PP
+Reorder the dataset into two parts such that they lie on either side of splitCol\&. Also returns a list of changed indices\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The dataset used by the binary space tree\&. 
+.br
+\fIbegin\fP Index of the starting point in the dataset that belongs to this node\&. 
+.br
+\fIcount\fP Number of points in this node\&. 
+.br
+\fIsplitDimension\fP The dimension to split the node on\&. 
+.br
+\fIsplitVal\fP The split in dimension splitDimension is based on this value\&. 
+.br
+\fIoldFromNew\fP Vector which will be filled with the old positions for each new point\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename MatType  = arma::mat> static bool \fBmlpack::tree::MeanSplit\fP< BoundType, MatType >::SplitNode (const BoundType &bound, MatType &data, const size_tbegin, const size_tcount, size_t &splitDimension, size_t &splitCol)\fC [static]\fP"
+
+.PP
+Split the node according to the mean value in the dimension with maximum width\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbound\fP The bound used for this node\&. 
+.br
+\fIdata\fP The dataset used by the binary space tree\&. 
+.br
+\fIbegin\fP Index of the starting point in the dataset that belongs to this node\&. 
+.br
+\fIcount\fP Number of points in this node\&. 
+.br
+\fIsplitDimension\fP This will be filled with the dimension the node is to be split on\&. 
+.br
+\fIsplitCol\fP The index at which the dataset is divided into two parts after the rearrangement\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename MatType  = arma::mat> static bool \fBmlpack::tree::MeanSplit\fP< BoundType, MatType >::SplitNode (const BoundType &bound, MatType &data, const size_tbegin, const size_tcount, size_t &splitDimension, size_t &splitCol, std::vector< size_t > &oldFromNew)\fC [static]\fP"
+
+.PP
+Split the node according to the mean value in the dimension with maximum width and return a list of changed indices\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbound\fP The bound used for this node\&. 
+.br
+\fIdata\fP The dataset used by the binary space tree\&. 
+.br
+\fIbegin\fP Index of the starting point in the dataset that belongs to this node\&. 
+.br
+\fIcount\fP Number of points in this node\&. 
+.br
+\fIsplitDimension\fP This will be filled with the dimension the node is to be split on\&. 
+.br
+\fIsplitCol\fP The index at which the dataset is divided into two parts after the rearrangement\&. 
+.br
+\fIoldFromNew\fP Vector which will be filled with the old positions for each new point\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

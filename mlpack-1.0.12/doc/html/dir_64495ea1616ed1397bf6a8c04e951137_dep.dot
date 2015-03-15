@@ -1,0 +1,9 @@
+digraph "src/mlpack/methods/pca" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_2217eda3f3f128182276a15ca80cc98e {
+    graph [ bgcolor="#ddddee", pencolor="black", label="methods" fontname="Helvetica", fontsize="10", URL="dir_2217eda3f3f128182276a15ca80cc98e.html"]
+  dir_64495ea1616ed1397bf6a8c04e951137 [shape=box, label="pca", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_64495ea1616ed1397bf6a8c04e951137.html"];
+  }
+}

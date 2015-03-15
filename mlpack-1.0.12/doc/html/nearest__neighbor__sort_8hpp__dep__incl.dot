@@ -1,0 +1,27 @@
+digraph "src/mlpack/methods/neighbor_search/sort_policies/nearest_neighbor_sort.hpp"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="src/mlpack/methods\l/neighbor_search/sort\l_policies/nearest_neighbor\l_sort.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="src/mlpack/methods\l/lsh/lsh_search.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lsh__search_8hpp.html"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="src/mlpack/methods\l/neighbor_search/neighbor\l_search.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$neighbor__search_8hpp.html"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="src/mlpack/methods\l/cf/cf.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cf_8hpp.html"];
+  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="src/mlpack/methods\l/neighbor_search/typedef.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$typedef_8hpp.html"];
+  Node5 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="src/mlpack/methods\l/rann/ra_query_stat.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ra__query__stat_8hpp.html"];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="src/mlpack/methods\l/rann/ra_search.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ra__search_8hpp.html"];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="src/mlpack/methods\l/rann/ra_typedef.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ra__typedef_8hpp.html"];
+  Node8 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="src/mlpack/methods\l/rann/ra_search_rules.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ra__search__rules_8hpp.html"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

@@ -1,0 +1,11 @@
+digraph "src/mlpack/core/tree/cover_tree" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_4aa60ae374a0cb1df2b77a4723eecc54 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="tree" fontname="Helvetica", fontsize="10", URL="dir_4aa60ae374a0cb1df2b77a4723eecc54.html"]
+  dir_99c4623ed086f7710d9e7ec0a5a6a00c [shape=box, label="cover_tree", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_99c4623ed086f7710d9e7ec0a5a6a00c.html"];
+  }
+  dir_f49c0cad6d7713ea1863882a9c623a32 [shape=box label="metrics" URL="dir_f49c0cad6d7713ea1863882a9c623a32.html"];
+  dir_99c4623ed086f7710d9e7ec0a5a6a00c->dir_f49c0cad6d7713ea1863882a9c623a32 [headlabel="1", labeldistance=1.5 headhref="dir_000018_000009.html"];
+}

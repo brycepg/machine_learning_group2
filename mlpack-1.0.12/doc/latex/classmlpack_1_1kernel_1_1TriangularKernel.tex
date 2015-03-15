@@ -1,0 +1,195 @@
+\section{mlpack\-:\-:kernel\-:\-:Triangular\-Kernel Class Reference}
+\label{classmlpack_1_1kernel_1_1TriangularKernel}\index{mlpack\-::kernel\-::\-Triangular\-Kernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}}
+
+
+The trivially simple triangular kernel, defined by.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Triangular\-Kernel} (const double {\bf bandwidth}=1.\-0)
+\begin{DoxyCompactList}\small\item\em Initialize the triangular kernel with the given bandwidth (default 1.\-0). \end{DoxyCompactList}\item 
+double {\bf Bandwidth} () const 
+\begin{DoxyCompactList}\small\item\em Get the bandwidth of the kernel. \end{DoxyCompactList}\item 
+double \& {\bf Bandwidth} ()
+\begin{DoxyCompactList}\small\item\em Modify the bandwidth of the kernel. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Vec1\-Type , typename Vec2\-Type $>$ }\\double {\bf Evaluate} (const Vec1\-Type \&a, const Vec2\-Type \&b) const 
+\begin{DoxyCompactList}\small\item\em Evaluate the triangular kernel for the two given vectors. \end{DoxyCompactList}\item 
+double {\bf Evaluate} (const double distance) const 
+\begin{DoxyCompactList}\small\item\em Evaluate the triangular kernel given that the distance between the two points is known. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Return a string representation of the kernel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf bandwidth}
+\begin{DoxyCompactList}\small\item\em The bandwidth of the kernel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The trivially simple triangular kernel, defined by. 
+
+\[ K(x, y) = \max \{ 0, 1 - \frac{|| x - y ||_2}{b} \} \]
+
+where $ b $ is the bandwidth of the kernel. 
+
+Definition at line 32 of file triangular\-\_\-kernel.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::kernel\-::\-Triangular\-Kernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}!Triangular\-Kernel@{Triangular\-Kernel}}
+\index{Triangular\-Kernel@{Triangular\-Kernel}!mlpack::kernel::TriangularKernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}}
+\subsubsection[{Triangular\-Kernel}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::kernel\-::\-Triangular\-Kernel\-::\-Triangular\-Kernel (
+\begin{DoxyParamCaption}
+\item[{const double}]{bandwidth = {\ttfamily 1.0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kernel_1_1TriangularKernel_a71b77a810c6e82b37a621c4b64166ff6}
+
+
+Initialize the triangular kernel with the given bandwidth (default 1.\-0). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bandwidth} & Bandwidth of the triangular kernel. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 40 of file triangular\-\_\-kernel.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::kernel\-::\-Triangular\-Kernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}!Bandwidth@{Bandwidth}}
+\index{Bandwidth@{Bandwidth}!mlpack::kernel::TriangularKernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}}
+\subsubsection[{Bandwidth}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::kernel\-::\-Triangular\-Kernel\-::\-Bandwidth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kernel_1_1TriangularKernel_a4b2c7cb8ee064de83c0fdd0cf9e60c5c}
+
+
+Get the bandwidth of the kernel. 
+
+
+
+Definition at line 67 of file triangular\-\_\-kernel.\-hpp.
+
+
+
+References bandwidth.
+
+\index{mlpack\-::kernel\-::\-Triangular\-Kernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}!Bandwidth@{Bandwidth}}
+\index{Bandwidth@{Bandwidth}!mlpack::kernel::TriangularKernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}}
+\subsubsection[{Bandwidth}]{\setlength{\rightskip}{0pt plus 5cm}double\& mlpack\-::kernel\-::\-Triangular\-Kernel\-::\-Bandwidth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kernel_1_1TriangularKernel_a61014458600135098f2e52812ff9d8fb}
+
+
+Modify the bandwidth of the kernel. 
+
+
+
+Definition at line 69 of file triangular\-\_\-kernel.\-hpp.
+
+
+
+References bandwidth.
+
+\index{mlpack\-::kernel\-::\-Triangular\-Kernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}!Evaluate@{Evaluate}}
+\index{Evaluate@{Evaluate}!mlpack::kernel::TriangularKernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}}
+\subsubsection[{Evaluate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Vec1\-Type , typename Vec2\-Type $>$ double mlpack\-::kernel\-::\-Triangular\-Kernel\-::\-Evaluate (
+\begin{DoxyParamCaption}
+\item[{const Vec1\-Type \&}]{a, }
+\item[{const Vec2\-Type \&}]{b}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kernel_1_1TriangularKernel_a25320ba4146739712e7a974eb5cab91d}
+
+
+Evaluate the triangular kernel for the two given vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & First vector. \\
+\hline
+{\em b} & Second vector. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 49 of file triangular\-\_\-kernel.\-hpp.
+
+
+
+References bandwidth, and mlpack\-::metric\-::\-L\-Metric$<$ Power, Take\-Root $>$\-::\-Evaluate().
+
+\index{mlpack\-::kernel\-::\-Triangular\-Kernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}!Evaluate@{Evaluate}}
+\index{Evaluate@{Evaluate}!mlpack::kernel::TriangularKernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}}
+\subsubsection[{Evaluate}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::kernel\-::\-Triangular\-Kernel\-::\-Evaluate (
+\begin{DoxyParamCaption}
+\item[{const double}]{distance}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kernel_1_1TriangularKernel_a7819d40b5ceeca3a960a08ce8b48f375}
+
+
+Evaluate the triangular kernel given that the distance between the two points is known. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & The distance between the two points. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 61 of file triangular\-\_\-kernel.\-hpp.
+
+
+
+References bandwidth.
+
+\index{mlpack\-::kernel\-::\-Triangular\-Kernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::kernel::TriangularKernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mlpack\-::kernel\-::\-Triangular\-Kernel\-::\-To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kernel_1_1TriangularKernel_aef6d7f054551d44cf18fdaf14fbd1a18}
+
+
+Return a string representation of the kernel. 
+
+
+
+Definition at line 72 of file triangular\-\_\-kernel.\-hpp.
+
+
+
+References bandwidth.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::kernel\-::\-Triangular\-Kernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}!bandwidth@{bandwidth}}
+\index{bandwidth@{bandwidth}!mlpack::kernel::TriangularKernel@{mlpack\-::kernel\-::\-Triangular\-Kernel}}
+\subsubsection[{bandwidth}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::kernel\-::\-Triangular\-Kernel\-::bandwidth\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1kernel_1_1TriangularKernel_ad05db54dd3d43d48f6be76611e99cbbe}
+
+
+The bandwidth of the kernel. 
+
+
+
+Definition at line 82 of file triangular\-\_\-kernel.\-hpp.
+
+
+
+Referenced by Bandwidth(), Evaluate(), and To\-String().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/kernels/{\bf triangular\-\_\-kernel.\-hpp}\end{DoxyCompactItemize}

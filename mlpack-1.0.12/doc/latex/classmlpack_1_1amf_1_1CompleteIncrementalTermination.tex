@@ -1,0 +1,195 @@
+\section{mlpack\-:\-:amf\-:\-:Complete\-Incremental\-Termination$<$ Termination\-Policy $>$ Class Template Reference}
+\label{classmlpack_1_1amf_1_1CompleteIncrementalTermination}\index{mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Complete\-Incremental\-Termination} (Termination\-Policy {\bf t\-\_\-policy}=Termination\-Policy())
+\begin{DoxyCompactList}\small\item\em Empty constructor. \end{DoxyCompactList}\item 
+const double \& {\bf Index} ()
+\item 
+{\footnotesize template$<$class Mat\-Type $>$ }\\void {\bf Initialize} (const Mat\-Type \&V)
+\item 
+void {\bf Initialize} (const arma\-::sp\-\_\-mat \&V)
+\item 
+bool {\bf Is\-Converged} (arma\-::mat \&W, arma\-::mat \&H)
+\item 
+const size\-\_\-t \& {\bf Iteration} ()
+\item 
+const size\-\_\-t \& {\bf Max\-Iterations} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\-\_\-t {\bf incremental\-Index}
+\item 
+size\-\_\-t {\bf iteration}
+\item 
+Termination\-Policy {\bf t\-\_\-policy}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Termination\-Policy$>$class mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$}
+
+
+
+Definition at line 23 of file complete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::amf\-::\-Complete\-Incremental\-Termination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}!Complete\-Incremental\-Termination@{Complete\-Incremental\-Termination}}
+\index{Complete\-Incremental\-Termination@{Complete\-Incremental\-Termination}!mlpack::amf::CompleteIncrementalTermination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}}
+\subsubsection[{Complete\-Incremental\-Termination}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ {\bf mlpack\-::amf\-::\-Complete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::{\bf Complete\-Incremental\-Termination} (
+\begin{DoxyParamCaption}
+\item[{Termination\-Policy}]{t\-\_\-policy = {\ttfamily TerminationPolicy()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1CompleteIncrementalTermination_aaf39b7fdcf8b999ede4a05e663117e57}
+
+
+Empty constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\-\_\-policy} & object of wrapped class. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 31 of file complete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::amf\-::\-Complete\-Incremental\-Termination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}!Index@{Index}}
+\index{Index@{Index}!mlpack::amf::CompleteIncrementalTermination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}}
+\subsubsection[{Index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ const double\& {\bf mlpack\-::amf\-::\-Complete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1CompleteIncrementalTermination_a812b4d05d821b94786f51f544344acf9}
+
+
+Definition at line 59 of file complete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::t\-\_\-policy.
+
+\index{mlpack\-::amf\-::\-Complete\-Incremental\-Termination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!mlpack::amf::CompleteIncrementalTermination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}}
+\subsubsection[{Initialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ template$<$class Mat\-Type $>$ void {\bf mlpack\-::amf\-::\-Complete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::Initialize (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{V}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1CompleteIncrementalTermination_a12cf75c5679d9aeb7243dd63fbf847fc}
+
+
+Definition at line 35 of file complete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::incremental\-Index, mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::iteration, and mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::t\-\_\-policy.
+
+\index{mlpack\-::amf\-::\-Complete\-Incremental\-Termination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!mlpack::amf::CompleteIncrementalTermination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}}
+\subsubsection[{Initialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ void {\bf mlpack\-::amf\-::\-Complete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::Initialize (
+\begin{DoxyParamCaption}
+\item[{const arma\-::sp\-\_\-mat \&}]{V}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1CompleteIncrementalTermination_a07f21b801cf300e1e52dd67702ac0846}
+
+
+Definition at line 43 of file complete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::incremental\-Index, mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::iteration, and mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::t\-\_\-policy.
+
+\index{mlpack\-::amf\-::\-Complete\-Incremental\-Termination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}!Is\-Converged@{Is\-Converged}}
+\index{Is\-Converged@{Is\-Converged}!mlpack::amf::CompleteIncrementalTermination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}}
+\subsubsection[{Is\-Converged}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ bool {\bf mlpack\-::amf\-::\-Complete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::Is\-Converged (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{W, }
+\item[{arma\-::mat \&}]{H}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1CompleteIncrementalTermination_a94b0c441d69976cc3236b8c65bbd0e00}
+
+
+Definition at line 51 of file complete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::incremental\-Index, mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::iteration, and mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::t\-\_\-policy.
+
+\index{mlpack\-::amf\-::\-Complete\-Incremental\-Termination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}!Iteration@{Iteration}}
+\index{Iteration@{Iteration}!mlpack::amf::CompleteIncrementalTermination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}}
+\subsubsection[{Iteration}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ const size\-\_\-t\& {\bf mlpack\-::amf\-::\-Complete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::Iteration (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1CompleteIncrementalTermination_a0ce188a58571fba50f52c12f0913bd4e}
+
+
+Definition at line 63 of file complete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::iteration.
+
+\index{mlpack\-::amf\-::\-Complete\-Incremental\-Termination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}!Max\-Iterations@{Max\-Iterations}}
+\index{Max\-Iterations@{Max\-Iterations}!mlpack::amf::CompleteIncrementalTermination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}}
+\subsubsection[{Max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ const size\-\_\-t\& {\bf mlpack\-::amf\-::\-Complete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::Max\-Iterations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1CompleteIncrementalTermination_a568946e91f47e79a9b32bd459ed82cf8}
+
+
+Definition at line 68 of file complete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::t\-\_\-policy.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::amf\-::\-Complete\-Incremental\-Termination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}!incremental\-Index@{incremental\-Index}}
+\index{incremental\-Index@{incremental\-Index}!mlpack::amf::CompleteIncrementalTermination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}}
+\subsubsection[{incremental\-Index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ size\-\_\-t {\bf mlpack\-::amf\-::\-Complete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::incremental\-Index\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1CompleteIncrementalTermination_a134ea89b74d69c39a046beba23fe7255}
+
+
+Definition at line 76 of file complete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Initialize(), and mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Is\-Converged().
+
+\index{mlpack\-::amf\-::\-Complete\-Incremental\-Termination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}!iteration@{iteration}}
+\index{iteration@{iteration}!mlpack::amf::CompleteIncrementalTermination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}}
+\subsubsection[{iteration}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ size\-\_\-t {\bf mlpack\-::amf\-::\-Complete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::iteration\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1CompleteIncrementalTermination_a843f39ac9cd3a552e40696e30b44874d}
+
+
+Definition at line 77 of file complete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Initialize(), mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Is\-Converged(), and mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Iteration().
+
+\index{mlpack\-::amf\-::\-Complete\-Incremental\-Termination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}!t\-\_\-policy@{t\-\_\-policy}}
+\index{t\-\_\-policy@{t\-\_\-policy}!mlpack::amf::CompleteIncrementalTermination@{mlpack\-::amf\-::\-Complete\-Incremental\-Termination}}
+\subsubsection[{t\-\_\-policy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ Termination\-Policy {\bf mlpack\-::amf\-::\-Complete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::t\-\_\-policy\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1CompleteIncrementalTermination_aea4baf9ded21272dd01e5b47a90ccc17}
+
+
+Definition at line 74 of file complete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Index(), mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Initialize(), mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Is\-Converged(), and mlpack\-::amf\-::\-Complete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Max\-Iterations().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/amf/termination\-\_\-policies/{\bf complete\-\_\-incremental\-\_\-termination.\-hpp}\end{DoxyCompactItemize}

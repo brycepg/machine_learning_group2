@@ -1,0 +1,354 @@
+.TH "mlpack::neighbor::LSHSearch< SortPolicy >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::neighbor::LSHSearch< SortPolicy > \- 
+.PP
+The \fBLSHSearch\fP class -- This class builds a hash on the reference set and uses this hash to compute the distance-approximate nearest-neighbors of the given queries\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLSHSearch\fP (const arma::mat &\fBreferenceSet\fP, const arma::mat &\fBquerySet\fP, const size_t \fBnumProj\fP, const size_t \fBnumTables\fP, const double \fBhashWidth\fP=0\&.0, const size_t \fBsecondHashSize\fP=99901, const size_t \fBbucketSize\fP=500)"
+.br
+.RI "\fIThis function initializes the LSH class\&. \fP"
+.ti -1c
+.RI "\fBLSHSearch\fP (const arma::mat &\fBreferenceSet\fP, const size_t \fBnumProj\fP, const size_t \fBnumTables\fP, const double \fBhashWidth\fP=0\&.0, const size_t \fBsecondHashSize\fP=99901, const size_t \fBbucketSize\fP=500)"
+.br
+.RI "\fIThis function initializes the LSH class\&. \fP"
+.ti -1c
+.RI "void \fBSearch\fP (const size_t k, arma::Mat< size_t > &resultingNeighbors, arma::mat &distances, const size_t numTablesToSearch=0)"
+.br
+.RI "\fICompute the nearest neighbors and store the output in the given matrices\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBBaseCase\fP (const size_t queryIndex, const size_t referenceIndex)"
+.br
+.RI "\fIThis is a helper function that computes the distance of the query to the neighbor candidates and appropriately stores the best 'k' candidates\&. \fP"
+.ti -1c
+.RI "void \fBBuildHash\fP ()"
+.br
+.RI "\fIThis function builds a hash table with two levels of hashing as presented in the paper\&. \fP"
+.ti -1c
+.RI "void \fBInsertNeighbor\fP (const size_t queryIndex, const size_t pos, const size_t neighbor, const double distance)"
+.br
+.RI "\fIThis is a helper function that efficiently inserts better neighbor candidates into an existing set of neighbor candidates\&. \fP"
+.ti -1c
+.RI "void \fBReturnIndicesFromTable\fP (const size_t queryIndex, arma::uvec &referenceIndices, size_t numTablesToSearch)"
+.br
+.RI "\fIThis function takes a query and hashes it into each of the hash tables to get keys for the query and then the key is hashed to a bucket of the second hash table and all the points (if any) in those buckets are collected as the potential neighbor candidates\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "arma::Col< size_t > \fBbucketContentSize\fP"
+.br
+.RI "\fIThe number of elements present in each hash bucket; should be secondHashSize\&. \fP"
+.ti -1c
+.RI "arma::Col< size_t > \fBbucketRowInHashTable\fP"
+.br
+.RI "\fIFor a particular hash value, points to the row in secondHashTable corresponding to this value\&. \fP"
+.ti -1c
+.RI "const size_t \fBbucketSize\fP"
+.br
+.RI "\fIThe bucket size of the second hash\&. \fP"
+.ti -1c
+.RI "arma::mat * \fBdistancePtr\fP"
+.br
+.RI "\fIThe pointer to the nearest neighbor distances\&. \fP"
+.ti -1c
+.RI "double \fBhashWidth\fP"
+.br
+.RI "\fIThe hash width\&. \fP"
+.ti -1c
+.RI "\fBmetric::SquaredEuclideanDistance\fP \fBmetric\fP"
+.br
+.RI "\fIInstantiation of the metric\&. \fP"
+.ti -1c
+.RI "arma::Mat< size_t > * \fBneighborPtr\fP"
+.br
+.RI "\fIThe pointer to the nearest neighbor indices\&. \fP"
+.ti -1c
+.RI "const size_t \fBnumProj\fP"
+.br
+.RI "\fIThe number of projections\&. \fP"
+.ti -1c
+.RI "const size_t \fBnumTables\fP"
+.br
+.RI "\fIThe number of hash tables\&. \fP"
+.ti -1c
+.RI "arma::mat \fBoffsets\fP"
+.br
+.RI "\fIThe list of the offset 'b' for each of the projection for each table\&. \fP"
+.ti -1c
+.RI "std::vector< arma::mat > \fBprojections\fP"
+.br
+.RI "\fIThe std::vector containing the projection matrix of each table\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBquerySet\fP"
+.br
+.RI "\fIQuery dataset (may not be given)\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBreferenceSet\fP"
+.br
+.RI "\fIReference dataset\&. \fP"
+.ti -1c
+.RI "const size_t \fBsecondHashSize\fP"
+.br
+.RI "\fIThe big prime representing the size of the second hash\&. \fP"
+.ti -1c
+.RI "arma::Mat< size_t > \fBsecondHashTable\fP"
+.br
+.RI "\fIThe final hash table; should be (< secondHashSize) x bucketSize\&. \fP"
+.ti -1c
+.RI "arma::vec \fBsecondHashWeights\fP"
+.br
+.RI "\fIThe weights of the second hash\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename SortPolicy = NearestNeighborSort>class mlpack::neighbor::LSHSearch< SortPolicy >"
+The \fBLSHSearch\fP class -- This class builds a hash on the reference set and uses this hash to compute the distance-approximate nearest-neighbors of the given queries\&. 
+
+
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISortPolicy\fP The sort policy for distances; see \fBNearestNeighborSort\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 51 of file lsh_search\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename SortPolicy  = NearestNeighborSort> \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::\fBLSHSearch\fP (const arma::mat &referenceSet, const arma::mat &querySet, const size_tnumProj, const size_tnumTables, const doublehashWidth = \fC0\&.0\fP, const size_tsecondHashSize = \fC99901\fP, const size_tbucketSize = \fC500\fP)"
+
+.PP
+This function initializes the LSH class\&. It builds the hash on the reference set with 2-stable distributions\&. See the individual functions performing the hashing for details on how the hashing is done\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceSet\fP Set of reference points\&. 
+.br
+\fIquerySet\fP Set of query points\&. 
+.br
+\fInumProj\fP Number of projections in each hash table (anything between 10-50 might be a decent choice)\&. 
+.br
+\fInumTables\fP Total number of hash tables (anything between 10-20 should suffice)\&. 
+.br
+\fIhashWidth\fP The width of hash for every table\&. If 0 (the default) is provided, then the hash width is automatically obtained by computing the average pairwise distance of 25 pairs\&. This should be a reasonable upper bound on the nearest-neighbor distance in general\&. 
+.br
+\fIsecondHashSize\fP The size of the second hash table\&. This should be a large prime number\&. 
+.br
+\fIbucketSize\fP The size of the bucket in the second hash table\&. This is the maximum number of points that can be hashed into single bucket\&. Default values are already provided here\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy  = NearestNeighborSort> \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::\fBLSHSearch\fP (const arma::mat &referenceSet, const size_tnumProj, const size_tnumTables, const doublehashWidth = \fC0\&.0\fP, const size_tsecondHashSize = \fC99901\fP, const size_tbucketSize = \fC500\fP)"
+
+.PP
+This function initializes the LSH class\&. It builds the hash on the reference set with 2-stable distributions\&. See the individual functions performing the hashing for details on how the hashing is done\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceSet\fP Set of reference points and the set of queries\&. 
+.br
+\fInumProj\fP Number of projections in each hash table (anything between 10-50 might be a decent choice)\&. 
+.br
+\fInumTables\fP Total number of hash tables (anything between 10-20 should suffice)\&. 
+.br
+\fIhashWidth\fP The width of hash for every table\&. If 0 (the default) is provided, then the hash width is automatically obtained by computing the average pairwise distance of 25 pairs\&. This should be a reasonable upper bound on the nearest-neighbor distance in general\&. 
+.br
+\fIsecondHashSize\fP The size of the second hash table\&. This should be a large prime number\&. 
+.br
+\fIbucketSize\fP The size of the bucket in the second hash table\&. This is the maximum number of points that can be hashed into single bucket\&. Default values are already provided here\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename SortPolicy  = NearestNeighborSort> double \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::BaseCase (const size_tqueryIndex, const size_treferenceIndex)\fC [private]\fP"
+
+.PP
+This is a helper function that computes the distance of the query to the neighbor candidates and appropriately stores the best 'k' candidates\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP The index of the query in question 
+.br
+\fIreferenceIndex\fP The index of the neighbor candidate in question 
+.RE
+.PP
+
+.SS "template<typename SortPolicy  = NearestNeighborSort> void \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::BuildHash ()\fC [private]\fP"
+
+.PP
+This function builds a hash table with two levels of hashing as presented in the paper\&. This function first hashes the points with 'numProj' random projections to a single hash table creating (key, point ID) pairs where the key is a 'numProj'-dimensional integer vector\&.
+.PP
+Then each key in this hash table is hashed into a second hash table using a standard hash\&.
+.PP
+This function does not have any parameters and relies on parameters which are private members of this class, intialized during the class intialization\&. 
+.SS "template<typename SortPolicy  = NearestNeighborSort> void \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::InsertNeighbor (const size_tqueryIndex, const size_tpos, const size_tneighbor, const doubledistance)\fC [private]\fP"
+
+.PP
+This is a helper function that efficiently inserts better neighbor candidates into an existing set of neighbor candidates\&. This function is only called by the 'BaseCase' function\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP This is the index of the query being processed currently 
+.br
+\fIpos\fP The position of the neighbor candidate in the current list of neighbor candidates\&. 
+.br
+\fIneighbor\fP The neighbor candidate that is being inserted into the list of the best 'k' candidates for the query in question\&. 
+.br
+\fIdistance\fP The distance of the query to the neighbor candidate\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy  = NearestNeighborSort> void \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::ReturnIndicesFromTable (const size_tqueryIndex, arma::uvec &referenceIndices, size_tnumTablesToSearch)\fC [private]\fP"
+
+.PP
+This function takes a query and hashes it into each of the hash tables to get keys for the query and then the key is hashed to a bucket of the second hash table and all the points (if any) in those buckets are collected as the potential neighbor candidates\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP The index of the query currently being processed\&. 
+.br
+\fIreferenceIndices\fP The list of neighbor candidates obtained from hashing the query into all the hash tables and eventually into multiple buckets of the second hash table\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy  = NearestNeighborSort> void \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::Search (const size_tk, arma::Mat< size_t > &resultingNeighbors, arma::mat &distances, const size_tnumTablesToSearch = \fC0\fP)"
+
+.PP
+Compute the nearest neighbors and store the output in the given matrices\&. The matrices will be set to the size of n columns by k rows, where n is the number of points in the query dataset and k is the number of neighbors being searched for\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP Number of neighbors to search for\&. 
+.br
+\fIresultingNeighbors\fP Matrix storing lists of neighbors for each query point\&. 
+.br
+\fIdistances\fP Matrix storing distances of neighbors for each query point\&. 
+.br
+\fInumTablesToSearch\fP This parameter allows the user to have control over the number of hash tables to be searched\&. This allows the user to pick the number of tables it can afford for the time available without having to build hashing for every table size\&. By default, this is set to zero in which case all tables are considered\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy  = NearestNeighborSort> std::string \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::ToString () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename SortPolicy  = NearestNeighborSort> arma::Col<size_t> \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::bucketContentSize\fC [private]\fP"
+
+.PP
+The number of elements present in each hash bucket; should be secondHashSize\&. 
+.PP
+Definition at line 229 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> arma::Col<size_t> \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::bucketRowInHashTable\fC [private]\fP"
+
+.PP
+For a particular hash value, points to the row in secondHashTable corresponding to this value\&. Should be secondHashSize\&. 
+.PP
+Definition at line 233 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> const size_t \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::bucketSize\fC [private]\fP"
+
+.PP
+The bucket size of the second hash\&. 
+.PP
+Definition at line 219 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> arma::mat* \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::distancePtr\fC [private]\fP"
+
+.PP
+The pointer to the nearest neighbor distances\&. 
+.PP
+Definition at line 236 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> double \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::hashWidth\fC [private]\fP"
+
+.PP
+The hash width\&. 
+.PP
+Definition at line 210 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> \fBmetric::SquaredEuclideanDistance\fP \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::metric\fC [private]\fP"
+
+.PP
+Instantiation of the metric\&. 
+.PP
+Definition at line 222 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> arma::Mat<size_t>* \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::neighborPtr\fC [private]\fP"
+
+.PP
+The pointer to the nearest neighbor indices\&. 
+.PP
+Definition at line 239 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> const size_t \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::numProj\fC [private]\fP"
+
+.PP
+The number of projections\&. 
+.PP
+Definition at line 198 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> const size_t \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::numTables\fC [private]\fP"
+
+.PP
+The number of hash tables\&. 
+.PP
+Definition at line 201 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> arma::mat \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::offsets\fC [private]\fP"
+
+.PP
+The list of the offset 'b' for each of the projection for each table\&. 
+.PP
+Definition at line 207 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> std::vector<arma::mat> \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::projections\fC [private]\fP"
+
+.PP
+The std::vector containing the projection matrix of each table\&. 
+.PP
+Definition at line 204 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> const arma::mat& \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::querySet\fC [private]\fP"
+
+.PP
+Query dataset (may not be given)\&. 
+.PP
+Definition at line 195 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> const arma::mat& \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::referenceSet\fC [private]\fP"
+
+.PP
+Reference dataset\&. 
+.PP
+Definition at line 192 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> const size_t \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::secondHashSize\fC [private]\fP"
+
+.PP
+The big prime representing the size of the second hash\&. 
+.PP
+Definition at line 213 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> arma::Mat<size_t> \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::secondHashTable\fC [private]\fP"
+
+.PP
+The final hash table; should be (< secondHashSize) x bucketSize\&. 
+.PP
+Definition at line 225 of file lsh_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort> arma::vec \fBmlpack::neighbor::LSHSearch\fP< SortPolicy >::secondHashWeights\fC [private]\fP"
+
+.PP
+The weights of the second hash\&. 
+.PP
+Definition at line 216 of file lsh_search\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

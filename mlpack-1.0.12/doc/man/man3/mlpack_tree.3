@@ -1,0 +1,90 @@
+.TH "mlpack::tree" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::tree \- 
+.PP
+Trees and tree-building procedures\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBBinarySpaceTree\fP"
+.br
+.RI "\fIA binary space partitioning tree, such as a KD-tree or a ball tree\&. \fP"
+.ti -1c
+.RI "class \fBCompareCosineNode\fP"
+.br
+.ti -1c
+.RI "class \fBCosineTree\fP"
+.br
+.ti -1c
+.RI "class \fBCoverTree\fP"
+.br
+.RI "\fIA cover tree is a tree specifically designed to speed up nearest-neighbor computation in high-dimensional spaces\&. \fP"
+.ti -1c
+.RI "class \fBEmptyStatistic\fP"
+.br
+.RI "\fIEmpty statistic if you are not interested in storing statistics in your tree\&. \fP"
+.ti -1c
+.RI "class \fBExampleTree\fP"
+.br
+.RI "\fIThis is not an actual space tree but instead an example tree that exists to show and document all the functions that mlpack trees must implement\&. \fP"
+.ti -1c
+.RI "class \fBFirstPointIsRoot\fP"
+.br
+.RI "\fIThis class is meant to be used as a choice for the policy class RootPointPolicy of the \fBCoverTree\fP class\&. \fP"
+.ti -1c
+.RI "class \fBMeanSplit\fP"
+.br
+.RI "\fIA binary space partitioning tree node is split into its left and right child\&. \fP"
+.ti -1c
+.RI "class \fBMRKDStatistic\fP"
+.br
+.RI "\fIStatistic for multi-resolution kd-trees\&. \fP"
+.ti -1c
+.RI "class \fBTreeTraits\fP"
+.br
+.RI "\fIThe \fBTreeTraits\fP class provides compile-time information on the characteristics of a given tree type\&. \fP"
+.ti -1c
+.RI "class \fBTreeTraits< BinarySpaceTree< BoundType, StatisticType, MatType > >\fP"
+.br
+.RI "\fIThis is a specialization of the TreeType class to the \fBBinarySpaceTree\fP tree type\&. \fP"
+.ti -1c
+.RI "class \fBTreeTraits< CoverTree< MetricType, RootPointPolicy, StatisticType > >\fP"
+.br
+.RI "\fIThe specialization of the \fBTreeTraits\fP class for the \fBCoverTree\fP tree type\&. \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef 
+.br
+boost::heap::priority_queue
+.br
+< \fBCosineTree\fP 
+.br
+*, boost::heap::compare
+.br
+< \fBCompareCosineNode\fP > > \fBCosineNodeQueue\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Trees and tree-building procedures\&. 
+
+
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef boost::heap::priority_queue<\fBCosineTree\fP*, boost::heap::compare<\fBCompareCosineNode\fP> > \fBmlpack::tree::CosineNodeQueue\fP"
+
+.PP
+Definition at line 26 of file cosine_tree\&.hpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

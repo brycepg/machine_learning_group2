@@ -1,0 +1,280 @@
+\section{mlpack\-:\-:nca\-:\-:N\-C\-A$<$ Metric\-Type, Optimizer\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1nca_1_1NCA}\index{mlpack\-::nca\-::\-N\-C\-A$<$ Metric\-Type, Optimizer\-Type $>$@{mlpack\-::nca\-::\-N\-C\-A$<$ Metric\-Type, Optimizer\-Type $>$}}
+
+
+An implementation of Neighborhood Components Analysis, both a linear dimensionality reduction technique and a distance learning technique.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf N\-C\-A} (const arma\-::mat \&{\bf dataset}, const arma\-::\-Col$<$ size\-\_\-t $>$ \&{\bf labels}, Metric\-Type {\bf metric}=Metric\-Type())
+\begin{DoxyCompactList}\small\item\em Construct the Neighborhood Components Analysis object. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf Dataset} () const 
+\begin{DoxyCompactList}\small\item\em Get the dataset reference. \end{DoxyCompactList}\item 
+const arma\-::\-Col$<$ size\-\_\-t $>$ \& {\bf Labels} () const 
+\begin{DoxyCompactList}\small\item\em Get the labels reference. \end{DoxyCompactList}\item 
+void {\bf Learn\-Distance} (arma\-::mat \&output\-Matrix)
+\begin{DoxyCompactList}\small\item\em Perform Neighborhood Components Analysis. \end{DoxyCompactList}\item 
+const Optimizer\-Type\\*
+$<$ {\bf Softmax\-Error\-Function}\\*
+$<$ Metric\-Type $>$ $>$ \& {\bf Optimizer} () const 
+\begin{DoxyCompactList}\small\item\em Get the optimizer. \end{DoxyCompactList}\item 
+Optimizer\-Type\\*
+$<$ {\bf Softmax\-Error\-Function}\\*
+$<$ Metric\-Type $>$ $>$ \& {\bf Optimizer} ()
+\item 
+std\-::string {\bf To\-String} () const 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const arma\-::mat \& {\bf dataset}
+\begin{DoxyCompactList}\small\item\em Dataset reference. \end{DoxyCompactList}\item 
+{\bf Softmax\-Error\-Function}$<$ Metric\-Type $>$ {\bf error\-Function}
+\begin{DoxyCompactList}\small\item\em The function to optimize. \end{DoxyCompactList}\item 
+const arma\-::\-Col$<$ size\-\_\-t $>$ \& {\bf labels}
+\begin{DoxyCompactList}\small\item\em Labels reference. \end{DoxyCompactList}\item 
+Metric\-Type {\bf metric}
+\begin{DoxyCompactList}\small\item\em Metric to be used. \end{DoxyCompactList}\item 
+Optimizer\-Type\\*
+$<$ {\bf Softmax\-Error\-Function}\\*
+$<$ Metric\-Type $>$ $>$ {\bf optimizer}
+\begin{DoxyCompactList}\small\item\em The optimizer to use. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Metric\-Type = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$class mlpack\-::nca\-::\-N\-C\-A$<$ Metric\-Type, Optimizer\-Type $>$}
+
+An implementation of Neighborhood Components Analysis, both a linear dimensionality reduction technique and a distance learning technique. 
+
+The method seeks to improve k-\/nearest-\/neighbor classification on a dataset by scaling the dimensions. The method is nonparametric, and does not require a value of k. It works by using stochastic (\char`\"{}soft\char`\"{}) neighbor assignments and using optimization techniques over the gradient of the accuracy of the neighbor assignments.
+
+For more details, see the following published paper\-:
+
+
+\begin{DoxyCode}
+@inproceedings\{Goldberger2004,
+  author = \{Goldberger, Jacob and Roweis, Sam and Hinton, Geoff and
+      Salakhutdinov, Ruslan\},
+  booktitle = \{Advances in Neural Information Processing Systems 17\},
+  pages = \{513--520\},
+  publisher = \{MIT Press\},
+  title = \{\{Neighbourhood Components Analysis\}\},
+  year = \{2004\}
+\}
+\end{DoxyCode}
+ 
+
+Definition at line 51 of file nca.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::nca\-::\-N\-C\-A@{mlpack\-::nca\-::\-N\-C\-A}!N\-C\-A@{N\-C\-A}}
+\index{N\-C\-A@{N\-C\-A}!mlpack::nca::NCA@{mlpack\-::nca\-::\-N\-C\-A}}
+\subsubsection[{N\-C\-A}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$ {\bf mlpack\-::nca\-::\-N\-C\-A}$<$ Metric\-Type, Optimizer\-Type $>$\-::{\bf N\-C\-A} (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{dataset, }
+\item[{const arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{labels, }
+\item[{Metric\-Type}]{metric = {\ttfamily MetricType()}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1nca_1_1NCA_a19856b3a227862ae95e159b22618f3d3}
+
+
+Construct the Neighborhood Components Analysis object. 
+
+This simply stores the reference to the dataset and labels as well as the parameters for optimization before the actual optimization is performed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dataset} & Input dataset. \\
+\hline
+{\em labels} & Input dataset labels. \\
+\hline
+{\em step\-Size} & Step size for stochastic gradient descent. \\
+\hline
+{\em max\-Iterations} & Maximum iterations for stochastic gradient descent. \\
+\hline
+{\em tolerance} & Tolerance for termination of stochastic gradient descent. \\
+\hline
+{\em shuffle} & Whether or not to shuffle the dataset during S\-G\-D. \\
+\hline
+{\em metric} & Instantiated metric to use. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::nca\-::\-N\-C\-A@{mlpack\-::nca\-::\-N\-C\-A}!Dataset@{Dataset}}
+\index{Dataset@{Dataset}!mlpack::nca::NCA@{mlpack\-::nca\-::\-N\-C\-A}}
+\subsubsection[{Dataset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$ const arma\-::mat\& {\bf mlpack\-::nca\-::\-N\-C\-A}$<$ Metric\-Type, Optimizer\-Type $>$\-::Dataset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1nca_1_1NCA_aa71006c7c95a57abf850a7d7d23ee681}
+
+
+Get the dataset reference. 
+
+
+
+Definition at line 83 of file nca.\-hpp.
+
+
+
+References mlpack\-::nca\-::\-N\-C\-A$<$ Metric\-Type, Optimizer\-Type $>$\-::dataset.
+
+\index{mlpack\-::nca\-::\-N\-C\-A@{mlpack\-::nca\-::\-N\-C\-A}!Labels@{Labels}}
+\index{Labels@{Labels}!mlpack::nca::NCA@{mlpack\-::nca\-::\-N\-C\-A}}
+\subsubsection[{Labels}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$ const arma\-::\-Col$<$size\-\_\-t$>$\& {\bf mlpack\-::nca\-::\-N\-C\-A}$<$ Metric\-Type, Optimizer\-Type $>$\-::Labels (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1nca_1_1NCA_a34f89f4cf6a9103152b0cd8868e28073}
+
+
+Get the labels reference. 
+
+
+
+Definition at line 85 of file nca.\-hpp.
+
+
+
+References mlpack\-::nca\-::\-N\-C\-A$<$ Metric\-Type, Optimizer\-Type $>$\-::labels.
+
+\index{mlpack\-::nca\-::\-N\-C\-A@{mlpack\-::nca\-::\-N\-C\-A}!Learn\-Distance@{Learn\-Distance}}
+\index{Learn\-Distance@{Learn\-Distance}!mlpack::nca::NCA@{mlpack\-::nca\-::\-N\-C\-A}}
+\subsubsection[{Learn\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$ void {\bf mlpack\-::nca\-::\-N\-C\-A}$<$ Metric\-Type, Optimizer\-Type $>$\-::Learn\-Distance (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{output\-Matrix}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1nca_1_1NCA_ab986c503437c2c2c0cbd9f47a02b9f9a}
+
+
+Perform Neighborhood Components Analysis. 
+
+The output distance learning matrix is written into the passed reference. If \doxyref{Learn\-Distance()}{p.}{classmlpack_1_1nca_1_1NCA_ab986c503437c2c2c0cbd9f47a02b9f9a} is called with an output\-Matrix which has the correct size (dataset.\-n\-\_\-rows x dataset.\-n\-\_\-rows), that matrix will be used as the starting point for optimization.
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\-\_\-matrix} & Covariance matrix of Mahalanobis distance. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::nca\-::\-N\-C\-A@{mlpack\-::nca\-::\-N\-C\-A}!Optimizer@{Optimizer}}
+\index{Optimizer@{Optimizer}!mlpack::nca::NCA@{mlpack\-::nca\-::\-N\-C\-A}}
+\subsubsection[{Optimizer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$ const Optimizer\-Type$<${\bf Softmax\-Error\-Function}$<$Metric\-Type$>$ $>$\& {\bf mlpack\-::nca\-::\-N\-C\-A}$<$ Metric\-Type, Optimizer\-Type $>$\-::Optimizer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1nca_1_1NCA_aced0927300b593f25ebf47c4550f0084}
+
+
+Get the optimizer. 
+
+
+
+Definition at line 88 of file nca.\-hpp.
+
+
+
+References mlpack\-::nca\-::\-N\-C\-A$<$ Metric\-Type, Optimizer\-Type $>$\-::optimizer.
+
+\index{mlpack\-::nca\-::\-N\-C\-A@{mlpack\-::nca\-::\-N\-C\-A}!Optimizer@{Optimizer}}
+\index{Optimizer@{Optimizer}!mlpack::nca::NCA@{mlpack\-::nca\-::\-N\-C\-A}}
+\subsubsection[{Optimizer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$ Optimizer\-Type$<${\bf Softmax\-Error\-Function}$<$Metric\-Type$>$ $>$\& {\bf mlpack\-::nca\-::\-N\-C\-A}$<$ Metric\-Type, Optimizer\-Type $>$\-::Optimizer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1nca_1_1NCA_a7637894d6d48a1a4624ecbe7df26a9a7}
+
+
+Definition at line 90 of file nca.\-hpp.
+
+
+
+References mlpack\-::nca\-::\-N\-C\-A$<$ Metric\-Type, Optimizer\-Type $>$\-::optimizer.
+
+\index{mlpack\-::nca\-::\-N\-C\-A@{mlpack\-::nca\-::\-N\-C\-A}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::nca::NCA@{mlpack\-::nca\-::\-N\-C\-A}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$ std\-::string {\bf mlpack\-::nca\-::\-N\-C\-A}$<$ Metric\-Type, Optimizer\-Type $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1nca_1_1NCA_aa14f92cf74e2adfffc2d8d0fe6e66862}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::nca\-::\-N\-C\-A@{mlpack\-::nca\-::\-N\-C\-A}!dataset@{dataset}}
+\index{dataset@{dataset}!mlpack::nca::NCA@{mlpack\-::nca\-::\-N\-C\-A}}
+\subsubsection[{dataset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$ const arma\-::mat\& {\bf mlpack\-::nca\-::\-N\-C\-A}$<$ Metric\-Type, Optimizer\-Type $>$\-::dataset\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1nca_1_1NCA_ac487cf1f5402ba9a908ec4ef3081df6e}
+
+
+Dataset reference. 
+
+
+
+Definition at line 98 of file nca.\-hpp.
+
+
+
+Referenced by mlpack\-::nca\-::\-N\-C\-A$<$ Metric\-Type, Optimizer\-Type $>$\-::\-Dataset().
+
+\index{mlpack\-::nca\-::\-N\-C\-A@{mlpack\-::nca\-::\-N\-C\-A}!error\-Function@{error\-Function}}
+\index{error\-Function@{error\-Function}!mlpack::nca::NCA@{mlpack\-::nca\-::\-N\-C\-A}}
+\subsubsection[{error\-Function}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$ {\bf Softmax\-Error\-Function}$<$Metric\-Type$>$ {\bf mlpack\-::nca\-::\-N\-C\-A}$<$ Metric\-Type, Optimizer\-Type $>$\-::error\-Function\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1nca_1_1NCA_a26fbbdee3f3b88e3f9d50fadfe6a2d86}
+
+
+The function to optimize. 
+
+
+
+Definition at line 106 of file nca.\-hpp.
+
+\index{mlpack\-::nca\-::\-N\-C\-A@{mlpack\-::nca\-::\-N\-C\-A}!labels@{labels}}
+\index{labels@{labels}!mlpack::nca::NCA@{mlpack\-::nca\-::\-N\-C\-A}}
+\subsubsection[{labels}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$ const arma\-::\-Col$<$size\-\_\-t$>$\& {\bf mlpack\-::nca\-::\-N\-C\-A}$<$ Metric\-Type, Optimizer\-Type $>$\-::labels\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1nca_1_1NCA_a762cb7813b08134e1544f2da30d81b48}
+
+
+Labels reference. 
+
+
+
+Definition at line 100 of file nca.\-hpp.
+
+
+
+Referenced by mlpack\-::nca\-::\-N\-C\-A$<$ Metric\-Type, Optimizer\-Type $>$\-::\-Labels().
+
+\index{mlpack\-::nca\-::\-N\-C\-A@{mlpack\-::nca\-::\-N\-C\-A}!metric@{metric}}
+\index{metric@{metric}!mlpack::nca::NCA@{mlpack\-::nca\-::\-N\-C\-A}}
+\subsubsection[{metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$ Metric\-Type {\bf mlpack\-::nca\-::\-N\-C\-A}$<$ Metric\-Type, Optimizer\-Type $>$\-::metric\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1nca_1_1NCA_a71324ff6da7977d717c7da5461b4a150}
+
+
+Metric to be used. 
+
+
+
+Definition at line 103 of file nca.\-hpp.
+
+\index{mlpack\-::nca\-::\-N\-C\-A@{mlpack\-::nca\-::\-N\-C\-A}!optimizer@{optimizer}}
+\index{optimizer@{optimizer}!mlpack::nca::NCA@{mlpack\-::nca\-::\-N\-C\-A}}
+\subsubsection[{optimizer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, template$<$ typename $>$ class Optimizer\-Type = optimization\-::\-S\-G\-D$>$ Optimizer\-Type$<${\bf Softmax\-Error\-Function}$<$Metric\-Type$>$ $>$ {\bf mlpack\-::nca\-::\-N\-C\-A}$<$ Metric\-Type, Optimizer\-Type $>$\-::optimizer\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1nca_1_1NCA_adf45426906d25fb7b257ae213c8381ad}
+
+
+The optimizer to use. 
+
+
+
+Definition at line 109 of file nca.\-hpp.
+
+
+
+Referenced by mlpack\-::nca\-::\-N\-C\-A$<$ Metric\-Type, Optimizer\-Type $>$\-::\-Optimizer().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/nca/{\bf nca.\-hpp}\end{DoxyCompactItemize}

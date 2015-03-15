@@ -1,0 +1,341 @@
+.TH "mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy > \- 
+.PP
+This class implements K-Means clustering\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBKMeans\fP (const size_t \fBmaxIterations\fP=1000, const double \fBoverclusteringFactor\fP=1\&.0, const MetricType \fBmetric\fP=MetricType(), const InitialPartitionPolicy \fBpartitioner\fP=InitialPartitionPolicy(), const EmptyClusterPolicy \fBemptyClusterAction\fP=EmptyClusterPolicy())"
+.br
+.RI "\fICreate a K-Means object and (optionally) set the parameters which K-Means will be run with\&. \fP"
+.ti -1c
+.RI "template<typename MatType > void \fBCluster\fP (const MatType &data, const size_t clusters, arma::Col< size_t > &assignments, const bool initialGuess=false) const "
+.br
+.RI "\fIPerform k-means clustering on the data, returning a list of cluster assignments\&. \fP"
+.ti -1c
+.RI "template<typename MatType > void \fBCluster\fP (const MatType &data, const size_t clusters, arma::Col< size_t > &assignments, MatType &centroids, const bool initialAssignmentGuess=false, const bool initialCentroidGuess=false) const "
+.br
+.RI "\fIPerform k-means clustering on the data, returning a list of cluster assignments and also the centroids of each cluster\&. \fP"
+.ti -1c
+.RI "const EmptyClusterPolicy & \fBEmptyClusterAction\fP () const "
+.br
+.RI "\fIGet the empty cluster policy\&. \fP"
+.ti -1c
+.RI "EmptyClusterPolicy & \fBEmptyClusterAction\fP ()"
+.br
+.RI "\fIModify the empty cluster policy\&. \fP"
+.ti -1c
+.RI "size_t \fBMaxIterations\fP () const "
+.br
+.RI "\fIGet the maximum number of iterations\&. \fP"
+.ti -1c
+.RI "size_t & \fBMaxIterations\fP ()"
+.br
+.RI "\fISet the maximum number of iterations\&. \fP"
+.ti -1c
+.RI "const MetricType & \fBMetric\fP () const "
+.br
+.RI "\fIGet the distance metric\&. \fP"
+.ti -1c
+.RI "MetricType & \fBMetric\fP ()"
+.br
+.RI "\fIModify the distance metric\&. \fP"
+.ti -1c
+.RI "double \fBOverclusteringFactor\fP () const "
+.br
+.RI "\fIReturn the overclustering factor\&. \fP"
+.ti -1c
+.RI "double & \fBOverclusteringFactor\fP ()"
+.br
+.RI "\fISet the overclustering factor\&. Must be greater than 1\&. \fP"
+.ti -1c
+.RI "const InitialPartitionPolicy & \fBPartitioner\fP () const "
+.br
+.RI "\fIGet the initial partitioning policy\&. \fP"
+.ti -1c
+.RI "InitialPartitionPolicy & \fBPartitioner\fP ()"
+.br
+.RI "\fIModify the initial partitioning policy\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "EmptyClusterPolicy \fBemptyClusterAction\fP"
+.br
+.RI "\fIInstantiated empty cluster policy\&. \fP"
+.ti -1c
+.RI "size_t \fBmaxIterations\fP"
+.br
+.RI "\fIMaximum number of iterations before giving up\&. \fP"
+.ti -1c
+.RI "MetricType \fBmetric\fP"
+.br
+.RI "\fIInstantiated distance metric\&. \fP"
+.ti -1c
+.RI "double \fBoverclusteringFactor\fP"
+.br
+.RI "\fIFactor controlling how many clusters are actually found\&. \fP"
+.ti -1c
+.RI "InitialPartitionPolicy \fBpartitioner\fP"
+.br
+.RI "\fIInstantiated initial partitioning policy\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename MetricType = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy = RandomPartition, typename EmptyClusterPolicy = MaxVarianceNewCluster>class mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >"
+This class implements K-Means clustering\&. 
+
+This implementation supports overclustering, which means that more clusters than are requested will be found; then, those clusters will be merged together to produce the desired number of clusters\&.
+.PP
+Two template parameters can (optionally) be supplied: the policy for how to find the initial partition of the data, and the actions to be taken when an empty cluster is encountered, as well as the distance metric to be used\&.
+.PP
+A simple example of how to run K-Means clustering is shown below\&.
+.PP
+.PP
+.nf
+extern arma::mat data; // Dataset we want to run K-Means on\&.
+arma::Col<size_t> assignments; // Cluster assignments\&.
+
+KMeans<> k; // Default options\&.
+k\&.Cluster(data, 3, assignments); // 3 clusters\&.
+
+// Cluster using the Manhattan distance, 100 iterations maximum, and an
+// overclustering factor of 4\&.0\&.
+KMeans<metric::ManhattanDistance> k(100, 4\&.0);
+k\&.Cluster(data, 6, assignments); // 6 clusters\&.
+.fi
+.PP
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMetricType\fP The distance metric to use for this \fBKMeans\fP; see \fBmetric::LMetric\fP for an example\&. 
+.br
+\fIInitialPartitionPolicy\fP Initial partitioning policy; must implement a default constructor and 'void Cluster(const arma::mat&, const size_t, arma::Col<size_t>&)'\&. 
+.br
+\fIEmptyClusterPolicy\fP Policy for what to do on an empty cluster; must implement a default constructor and 'void EmptyCluster(const arma::mat&, arma::Col<size_t&)'\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBRandomPartition\fP, \fBRefinedStart\fP, \fBAllowEmptyClusters\fP, \fBMaxVarianceNewCluster\fP 
+.RE
+.PP
+
+.PP
+Definition at line 67 of file kmeans\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::\fBKMeans\fP (const size_tmaxIterations = \fC1000\fP, const doubleoverclusteringFactor = \fC1\&.0\fP, const MetricTypemetric = \fCMetricType()\fP, const InitialPartitionPolicypartitioner = \fCInitialPartitionPolicy()\fP, const EmptyClusterPolicyemptyClusterAction = \fCEmptyClusterPolicy()\fP)"
+
+.PP
+Create a K-Means object and (optionally) set the parameters which K-Means will be run with\&. This implementation allows a few strategies to improve the performance of K-Means, including 'overclustering' and disallowing empty clusters\&.
+.PP
+The overclustering factor controls how many clusters are actually found; for instance, with an overclustering factor of 4, if K-Means is run to find 3 clusters, it will actually find 12, then merge the nearest clusters until only 3 are left\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxIterations\fP Maximum number of iterations allowed before giving up (0 is valid, but the algorithm may never terminate)\&. 
+.br
+\fIoverclusteringFactor\fP Factor controlling how many extra clusters are found and then merged to get the desired number of clusters\&. 
+.br
+\fImetric\fP Optional MetricType object; for when the metric has state it needs to store\&. 
+.br
+\fIpartitioner\fP Optional InitialPartitionPolicy object; for when a specially initialized partitioning policy is required\&. 
+.br
+\fIemptyClusterAction\fP Optional EmptyClusterPolicy object; for when a specially initialized empty cluster policy is required\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> template<typename MatType > void \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::Cluster (const MatType &data, const size_tclusters, arma::Col< size_t > &assignments, const boolinitialGuess = \fCfalse\fP) const"
+
+.PP
+Perform k-means clustering on the data, returning a list of cluster assignments\&. Optionally, the vector of assignments can be set to an initial guess of the cluster assignments; to do this, set initialGuess to true\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMatType\fP Type of matrix (arma::mat or arma::sp_mat)\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset to cluster\&. 
+.br
+\fIclusters\fP Number of clusters to compute\&. 
+.br
+\fIassignments\fP Vector to store cluster assignments in\&. 
+.br
+\fIinitialGuess\fP If true, then it is assumed that assignments has a list of initial cluster assignments\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> template<typename MatType > void \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::Cluster (const MatType &data, const size_tclusters, arma::Col< size_t > &assignments, MatType &centroids, const boolinitialAssignmentGuess = \fCfalse\fP, const boolinitialCentroidGuess = \fCfalse\fP) const"
+
+.PP
+Perform k-means clustering on the data, returning a list of cluster assignments and also the centroids of each cluster\&. Optionally, the vector of assignments can be set to an initial guess of the cluster assignments; to do this, set initialAssignmentGuess to true\&. Another way to set initial cluster guesses is to fill the centroids matrix with the centroid guesses, and then set initialCentroidGuess to true\&. initialAssignmentGuess supersedes initialCentroidGuess, so if both are set to true, the assignments vector is used\&.
+.PP
+Note that if the overclustering factor is greater than 1, the centroids matrix will be resized in the method\&. Regardless of the overclustering factor, the centroid guess matrix (if initialCentroidGuess is set to true) should have the same number of rows as the data matrix, and number of columns equal to 'clusters'\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMatType\fP Type of matrix (arma::mat or arma::sp_mat)\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset to cluster\&. 
+.br
+\fIclusters\fP Number of clusters to compute\&. 
+.br
+\fIassignments\fP Vector to store cluster assignments in\&. 
+.br
+\fIcentroids\fP Matrix in which centroids are stored\&. 
+.br
+\fIinitialAssignmentGuess\fP If true, then it is assumed that assignments has a list of initial cluster assignments\&. 
+.br
+\fIinitialCentroidGuess\fP If true, then it is assumed that centroids contains the initial centroids of each cluster\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> const EmptyClusterPolicy& \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::EmptyClusterAction () const\fC [inline]\fP"
+
+.PP
+Get the empty cluster policy\&. 
+.PP
+Definition at line 173 of file kmeans\&.hpp\&.
+.PP
+References mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::emptyClusterAction\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> EmptyClusterPolicy& \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::EmptyClusterAction ()\fC [inline]\fP"
+
+.PP
+Modify the empty cluster policy\&. 
+.PP
+Definition at line 176 of file kmeans\&.hpp\&.
+.PP
+References mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::emptyClusterAction\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> size_t \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::MaxIterations () const\fC [inline]\fP"
+
+.PP
+Get the maximum number of iterations\&. 
+.PP
+Definition at line 158 of file kmeans\&.hpp\&.
+.PP
+References mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::maxIterations\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> size_t& \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::MaxIterations ()\fC [inline]\fP"
+
+.PP
+Set the maximum number of iterations\&. 
+.PP
+Definition at line 160 of file kmeans\&.hpp\&.
+.PP
+References mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::maxIterations\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> const MetricType& \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::Metric () const\fC [inline]\fP"
+
+.PP
+Get the distance metric\&. 
+.PP
+Definition at line 163 of file kmeans\&.hpp\&.
+.PP
+References mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::metric\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> MetricType& \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::Metric ()\fC [inline]\fP"
+
+.PP
+Modify the distance metric\&. 
+.PP
+Definition at line 165 of file kmeans\&.hpp\&.
+.PP
+References mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::metric\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> double \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::OverclusteringFactor () const\fC [inline]\fP"
+
+.PP
+Return the overclustering factor\&. 
+.PP
+Definition at line 153 of file kmeans\&.hpp\&.
+.PP
+References mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::overclusteringFactor\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> double& \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::OverclusteringFactor ()\fC [inline]\fP"
+
+.PP
+Set the overclustering factor\&. Must be greater than 1\&. 
+.PP
+Definition at line 155 of file kmeans\&.hpp\&.
+.PP
+References mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::overclusteringFactor\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> const InitialPartitionPolicy& \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::Partitioner () const\fC [inline]\fP"
+
+.PP
+Get the initial partitioning policy\&. 
+.PP
+Definition at line 168 of file kmeans\&.hpp\&.
+.PP
+References mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::partitioner\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> InitialPartitionPolicy& \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::Partitioner ()\fC [inline]\fP"
+
+.PP
+Modify the initial partitioning policy\&. 
+.PP
+Definition at line 170 of file kmeans\&.hpp\&.
+.PP
+References mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::partitioner\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> std::string \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::ToString () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> EmptyClusterPolicy \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::emptyClusterAction\fC [private]\fP"
+
+.PP
+Instantiated empty cluster policy\&. 
+.PP
+Definition at line 191 of file kmeans\&.hpp\&.
+.PP
+Referenced by mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::EmptyClusterAction()\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> size_t \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::maxIterations\fC [private]\fP"
+
+.PP
+Maximum number of iterations before giving up\&. 
+.PP
+Definition at line 185 of file kmeans\&.hpp\&.
+.PP
+Referenced by mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::MaxIterations()\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> MetricType \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::metric\fC [private]\fP"
+
+.PP
+Instantiated distance metric\&. 
+.PP
+Definition at line 187 of file kmeans\&.hpp\&.
+.PP
+Referenced by mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::Metric()\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> double \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::overclusteringFactor\fC [private]\fP"
+
+.PP
+Factor controlling how many clusters are actually found\&. 
+.PP
+Definition at line 183 of file kmeans\&.hpp\&.
+.PP
+Referenced by mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::OverclusteringFactor()\&.
+.SS "template<typename MetricType  = metric::SquaredEuclideanDistance, typename InitialPartitionPolicy  = RandomPartition, typename EmptyClusterPolicy  = MaxVarianceNewCluster> InitialPartitionPolicy \fBmlpack::kmeans::KMeans\fP< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::partitioner\fC [private]\fP"
+
+.PP
+Instantiated initial partitioning policy\&. 
+.PP
+Definition at line 189 of file kmeans\&.hpp\&.
+.PP
+Referenced by mlpack::kmeans::KMeans< MetricType, InitialPartitionPolicy, EmptyClusterPolicy >::Partitioner()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

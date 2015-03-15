@@ -1,0 +1,113 @@
+.TH "mlpack::svd::QUIC_SVD" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::svd::QUIC_SVD \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQUIC_SVD\fP (const arma::mat &\fBdataset\fP, arma::mat &u, arma::mat &v, arma::mat &sigma, const double \fBepsilon\fP=0\&.03, const double \fBdelta\fP=0\&.1)"
+.br
+.RI "\fIConstructor which implements the QUIC-SVD algorithm\&. \fP"
+.ti -1c
+.RI "void \fBExtractSVD\fP (arma::mat &u, arma::mat &v, arma::mat &sigma)"
+.br
+.RI "\fIThis function uses the vector subspace created using a cosine tree to calculate an approximate SVD of the original matrix\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "arma::mat \fBbasis\fP"
+.br
+.RI "\fISubspace basis of the input dataset\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBdataset\fP"
+.br
+.RI "\fIMatrix for which cosine tree is constructed\&. \fP"
+.ti -1c
+.RI "double \fBdelta\fP"
+.br
+.RI "\fICumulative probability for Monte Carlo error lower bound\&. \fP"
+.ti -1c
+.RI "double \fBepsilon\fP"
+.br
+.RI "\fIError tolerance fraction for calculated subspace\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 23 of file quic_svd\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::svd::QUIC_SVD::QUIC_SVD (const arma::mat &dataset, arma::mat &u, arma::mat &v, arma::mat &sigma, const doubleepsilon = \fC0\&.03\fP, const doubledelta = \fC0\&.1\fP)"
+
+.PP
+Constructor which implements the QUIC-SVD algorithm\&. The function calls the CosineTree constructor to create a subspace basis, where the original matrix's projection has minimum reconstruction error\&. The constructor then uses the \fBExtractSVD()\fP function to calculate the SVD of the original dataset in that subspace\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataset\fP Matrix for which SVD is calculated\&. 
+.br
+\fIu\fP First unitary matrix\&. 
+.br
+\fIv\fP Second unitary matrix\&. 
+.br
+\fIsigma\fP Diagonal matrix of singular values\&. 
+.br
+\fIepsilon\fP Error tolerance fraction for calculated subspace\&. 
+.br
+\fIdelta\fP Cumulative probability for Monte Carlo error lower bound\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void mlpack::svd::QUIC_SVD::ExtractSVD (arma::mat &u, arma::mat &v, arma::mat &sigma)"
+
+.PP
+This function uses the vector subspace created using a cosine tree to calculate an approximate SVD of the original matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIu\fP First unitary matrix\&. 
+.br
+\fIv\fP Second unitary matrix\&. 
+.br
+\fIsigma\fP Diagonal matrix of singular values\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "arma::mat mlpack::svd::QUIC_SVD::basis\fC [private]\fP"
+
+.PP
+Subspace basis of the input dataset\&. 
+.PP
+Definition at line 68 of file quic_svd\&.hpp\&.
+.SS "const arma::mat& mlpack::svd::QUIC_SVD::dataset\fC [private]\fP"
+
+.PP
+Matrix for which cosine tree is constructed\&. 
+.PP
+Definition at line 62 of file quic_svd\&.hpp\&.
+.SS "double mlpack::svd::QUIC_SVD::delta\fC [private]\fP"
+
+.PP
+Cumulative probability for Monte Carlo error lower bound\&. 
+.PP
+Definition at line 66 of file quic_svd\&.hpp\&.
+.SS "double mlpack::svd::QUIC_SVD::epsilon\fC [private]\fP"
+
+.PP
+Error tolerance fraction for calculated subspace\&. 
+.PP
+Definition at line 64 of file quic_svd\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

@@ -1,0 +1,70 @@
+.TH "mlpack::tree::TreeTraits< CoverTree< MetricType, RootPointPolicy, StatisticType > >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::tree::TreeTraits< CoverTree< MetricType, RootPointPolicy, StatisticType > > \- 
+.PP
+The specialization of the \fBTreeTraits\fP class for the \fBCoverTree\fP tree type\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const bool \fBFirstPointIsCentroid\fP = true"
+.br
+.RI "\fIEach cover tree node contains only one point, and that point is its centroid\&. \fP"
+.ti -1c
+.RI "static const bool \fBHasOverlappingChildren\fP = true"
+.br
+.RI "\fIThe cover tree (or, this implementation of it) does not require that children represent non-overlapping subsets of the parent node\&. \fP"
+.ti -1c
+.RI "static const bool \fBHasSelfChildren\fP = true"
+.br
+.RI "\fICover trees do have self-children\&. \fP"
+.ti -1c
+.RI "static const bool \fBRearrangesDataset\fP = false"
+.br
+.RI "\fIPoints are not rearranged when the tree is built\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename MetricType, typename RootPointPolicy, typename StatisticType>class mlpack::tree::TreeTraits< CoverTree< MetricType, RootPointPolicy, StatisticType > >"
+The specialization of the \fBTreeTraits\fP class for the \fBCoverTree\fP tree type\&. 
+
+It defines characteristics of the cover tree, and is used to help write tree-independent (but still optimized) tree-based algorithms\&. See \fBmlpack/core/tree/tree_traits\&.hpp\fP for more information\&. 
+.PP
+Definition at line 32 of file traits\&.hpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename MetricType , typename RootPointPolicy , typename StatisticType > const bool \fBmlpack::tree::TreeTraits\fP< \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > >::FirstPointIsCentroid = true\fC [static]\fP"
+
+.PP
+Each cover tree node contains only one point, and that point is its centroid\&. 
+.PP
+Definition at line 45 of file traits\&.hpp\&.
+.SS "template<typename MetricType , typename RootPointPolicy , typename StatisticType > const bool \fBmlpack::tree::TreeTraits\fP< \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > >::HasOverlappingChildren = true\fC [static]\fP"
+
+.PP
+The cover tree (or, this implementation of it) does not require that children represent non-overlapping subsets of the parent node\&. 
+.PP
+Definition at line 39 of file traits\&.hpp\&.
+.SS "template<typename MetricType , typename RootPointPolicy , typename StatisticType > const bool \fBmlpack::tree::TreeTraits\fP< \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > >::HasSelfChildren = true\fC [static]\fP"
+
+.PP
+Cover trees do have self-children\&. 
+.PP
+Definition at line 50 of file traits\&.hpp\&.
+.SS "template<typename MetricType , typename RootPointPolicy , typename StatisticType > const bool \fBmlpack::tree::TreeTraits\fP< \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > >::RearrangesDataset = false\fC [static]\fP"
+
+.PP
+Points are not rearranged when the tree is built\&. 
+.PP
+Definition at line 55 of file traits\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

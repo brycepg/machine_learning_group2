@@ -1,0 +1,95 @@
+\section{mlpack\-:\-:util\-:\-:Option$<$ N $>$ Class Template Reference}
+\label{classmlpack_1_1util_1_1Option}\index{mlpack\-::util\-::\-Option$<$ N $>$@{mlpack\-::util\-::\-Option$<$ N $>$}}
+
+
+A static object whose constructor registers a parameter with the \doxyref{C\-L\-I}{p.}{classmlpack_1_1CLI} class.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Option} (bool ignore\-Template, N default\-Value, const std\-::string \&identifier, const std\-::string \&description, const std\-::string \&parent=std\-::string(\char`\"{}\char`\"{}), bool required=false)
+\begin{DoxyCompactList}\small\item\em Construct an \doxyref{Option}{p.}{classmlpack_1_1util_1_1Option} object. \end{DoxyCompactList}\item 
+{\bf Option} (const std\-::string \&identifier, const std\-::string \&description, const std\-::string \&parent=std\-::string(\char`\"{}\char`\"{}))
+\begin{DoxyCompactList}\small\item\em Constructs an \doxyref{Option}{p.}{classmlpack_1_1util_1_1Option} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename N$>$class mlpack\-::util\-::\-Option$<$ N $>$}
+
+A static object whose constructor registers a parameter with the \doxyref{C\-L\-I}{p.}{classmlpack_1_1CLI} class. 
+
+This should not be used outside of \doxyref{C\-L\-I}{p.}{classmlpack_1_1CLI} itself, and you should use the \doxyref{P\-A\-R\-A\-M\-\_\-\-F\-L\-A\-G()}{p.}{cli_8hpp_a59a38dfe16c56a278bd89817216a3739}, \doxyref{P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E()}{p.}{cli_8hpp_a1a9d3e5240e7cd31251d789943b37650}, \doxyref{P\-A\-R\-A\-M\-\_\-\-I\-N\-T()}{p.}{cli_8hpp_a21d3b801f589c973f940f5f9a0935223}, \doxyref{P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G()}{p.}{cli_8hpp_a2768e717e7b598be9447c140f95e90d5}, or other similar macros to declare these objects instead of declaring them directly.
+
+\begin{DoxySeeAlso}{See Also}
+core/io/cli.\-hpp, \doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI} 
+\end{DoxySeeAlso}
+
+
+Definition at line 34 of file option.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::util\-::\-Option@{mlpack\-::util\-::\-Option}!Option@{Option}}
+\index{Option@{Option}!mlpack::util::Option@{mlpack\-::util\-::\-Option}}
+\subsubsection[{Option}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename N $>$ {\bf mlpack\-::util\-::\-Option}$<$ N $>$\-::{\bf Option} (
+\begin{DoxyParamCaption}
+\item[{bool}]{ignore\-Template, }
+\item[{N}]{default\-Value, }
+\item[{const std\-::string \&}]{identifier, }
+\item[{const std\-::string \&}]{description, }
+\item[{const std\-::string \&}]{parent = {\ttfamily std\-:\-:string(\char`\"{}\char`\"{})}, }
+\item[{bool}]{required = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1Option_a328800c789205875c91e48ef042738f2}
+
+
+Construct an \doxyref{Option}{p.}{classmlpack_1_1util_1_1Option} object. 
+
+When constructed, it will register itself with \doxyref{C\-L\-I}{p.}{classmlpack_1_1CLI}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ignore\-Template} & Whether or not the template type matters for this option. Essentially differs options with no value (flags) from those that do, and thus require a type. \\
+\hline
+{\em default\-Value} & Default value this parameter will be initialized to. \\
+\hline
+{\em identifier} & The name of the option (no dashes in front; for --help, we would pass \char`\"{}help\char`\"{}). \\
+\hline
+{\em description} & A short string describing the option. \\
+\hline
+{\em parent} & Full pathname of the parent module that \char`\"{}owns\char`\"{} this option. The default is the root node (an empty string). \\
+\hline
+{\em required} & Whether or not the option is required at runtime. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::util\-::\-Option@{mlpack\-::util\-::\-Option}!Option@{Option}}
+\index{Option@{Option}!mlpack::util::Option@{mlpack\-::util\-::\-Option}}
+\subsubsection[{Option}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename N $>$ {\bf mlpack\-::util\-::\-Option}$<$ N $>$\-::{\bf Option} (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{identifier, }
+\item[{const std\-::string \&}]{description, }
+\item[{const std\-::string \&}]{parent = {\ttfamily std\-:\-:string(\char`\"{}\char`\"{})}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1Option_af3312285b7d037d22cbeef7c89b0bc8c}
+
+
+Constructs an \doxyref{Option}{p.}{classmlpack_1_1util_1_1Option} object. 
+
+When constructed, it will register a flag with \doxyref{C\-L\-I}{p.}{classmlpack_1_1CLI}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em identifier} & The name of the option (no dashes in front); for --help we would pass \char`\"{}help\char`\"{}. \\
+\hline
+{\em description} & A short string describing the option. \\
+\hline
+{\em parent} & Full pathname of the parent module that \char`\"{}owns\char`\"{} this option. The default is the root node (an empty string). \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/util/{\bf option.\-hpp}\end{DoxyCompactItemize}

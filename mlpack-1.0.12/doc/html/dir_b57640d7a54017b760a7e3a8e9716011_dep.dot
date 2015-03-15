@@ -1,0 +1,9 @@
+digraph "src/mlpack/methods/amf/termination_policies" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_a3ffaa2d195dc9172e51a3924a7fb231 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="amf" fontname="Helvetica", fontsize="10", URL="dir_a3ffaa2d195dc9172e51a3924a7fb231.html"]
+  dir_b57640d7a54017b760a7e3a8e9716011 [shape=box, label="termination_policies", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_b57640d7a54017b760a7e3a8e9716011.html"];
+  }
+}

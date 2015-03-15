@@ -1,0 +1,42 @@
+.TH "src/mlpack/methods/amf/update_rules/svd_batch_learning.hpp" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/mlpack/methods/amf/update_rules/svd_batch_learning.hpp \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBmlpack::amf::SVDBatchLearning\fP"
+.br
+.RI "\fIThis class implements SVD batch learning with momentum\&. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "\fBmlpack\fP"
+.br
+.RI "\fILinear algebra utility functions, generally performed on matrices or vectors\&. \fP"
+.ti -1c
+.RI "\fBmlpack::amf\fP"
+.br
+.RI "\fIAlternating Matrix Factorization\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<> void \fBmlpack::amf::SVDBatchLearning::HUpdate< arma::sp_mat >\fP (const arma::sp_mat &V, const arma::mat &W, arma::mat &H)"
+.br
+.ti -1c
+.RI "template<> void \fBmlpack::amf::SVDBatchLearning::WUpdate< arma::sp_mat >\fP (const arma::sp_mat &V, arma::mat &W, const arma::mat &H)"
+.br
+.RI "\fITODO : Merge this template specialized function for sparse matrix using common row_col_iterator\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

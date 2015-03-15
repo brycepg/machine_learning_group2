@@ -1,0 +1,48 @@
+.TH "mlpack::perceptron::SimpleWeightUpdate" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::perceptron::SimpleWeightUpdate \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBUpdateWeights\fP (const arma::mat &trainData, arma::mat &weightVectors, const size_t labelIndex, const size_t vectorIndex, const size_t rowIndex, const arma::rowvec &D)"
+.br
+.RI "\fIThis function is called to update the weightVectors matrix\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 32 of file simple_weight_update\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void mlpack::perceptron::SimpleWeightUpdate::UpdateWeights (const arma::mat &trainData, arma::mat &weightVectors, const size_tlabelIndex, const size_tvectorIndex, const size_trowIndex, const arma::rowvec &D)\fC [inline]\fP"
+
+.PP
+This function is called to update the weightVectors matrix\&. It decreases the weights of the incorrectly classified class while increasing the weight of the correct class it should have been classified to\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrainData\fP The training dataset\&. 
+.br
+\fIweightVectors\fP Matrix of weight vectors\&. 
+.br
+\fIrowIndex\fP Index of the row which has been incorrectly predicted\&. 
+.br
+\fIlabelIndex\fP Index of the vector in trainData\&. 
+.br
+\fIvectorIndex\fP Index of the class which should have been predicted\&. 
+.br
+\fID\fP Cost of mispredicting the labelIndex instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 47 of file simple_weight_update\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

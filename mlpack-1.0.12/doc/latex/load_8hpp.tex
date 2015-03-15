@@ -1,0 +1,30 @@
+\section{src/mlpack/core/data/load.hpp File Reference}
+\label{load_8hpp}\index{src/mlpack/core/data/load.\-hpp@{src/mlpack/core/data/load.\-hpp}}
+Include dependency graph for load.\-hpp\-:
+This graph shows which files directly or indirectly include this file\-:
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+{\bf mlpack}
+\begin{DoxyCompactList}\small\item\em Linear algebra utility functions, generally performed on matrices or vectors. \end{DoxyCompactList}\item 
+{\bf mlpack\-::data}
+\begin{DoxyCompactList}\small\item\em Functions to load and save matrices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename e\-T $>$ }\\bool {\bf mlpack\-::data\-::\-Load} (const std\-::string \&filename, arma\-::\-Mat$<$ e\-T $>$ \&matrix, bool fatal=false, bool transpose=true)
+\begin{DoxyCompactList}\small\item\em Loads a matrix from file, guessing the filetype from the extension. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ryan Curtin
+\end{DoxyAuthor}
+Load an Armadillo matrix from file. This is necessary because Armadillo does not transpose matrices on input, and it allows us to give better error output.
+
+This file is part of mlpack 1.\-0.\-12.
+
+mlpack is free software; you may redstribute it and/or modify it under the terms of the 3-\/clause B\-S\-D license. You should have received a copy of the 3-\/clause B\-S\-D license along with mlpack. If not, see {\tt http\-://www.\-opensource.\-org/licenses/\-B\-S\-D-\/3-\/\-Clause} for more information. 
+
+Definition in file {\bf load.\-hpp}.
+

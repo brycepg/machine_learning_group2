@@ -1,0 +1,273 @@
+.TH "mlpack::optimization::SGD< DecomposableFunctionType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::optimization::SGD< DecomposableFunctionType > \- 
+.PP
+Stochastic Gradient Descent is a technique for minimizing a function which can be expressed as a sum of other functions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSGD\fP (DecomposableFunctionType &\fBfunction\fP, const double \fBstepSize\fP=0\&.01, const size_t \fBmaxIterations\fP=100000, const double \fBtolerance\fP=1e-5, const bool shuffle=true)"
+.br
+.RI "\fIConstruct the \fBSGD\fP optimizer with the given function and parameters\&. \fP"
+.ti -1c
+.RI "const DecomposableFunctionType & \fBFunction\fP () const "
+.br
+.RI "\fIGet the instantiated function to be optimized\&. \fP"
+.ti -1c
+.RI "DecomposableFunctionType & \fBFunction\fP ()"
+.br
+.RI "\fIModify the instantiated function\&. \fP"
+.ti -1c
+.RI "size_t \fBMaxIterations\fP () const "
+.br
+.RI "\fIGet the maximum number of iterations (0 indicates no limit)\&. \fP"
+.ti -1c
+.RI "size_t & \fBMaxIterations\fP ()"
+.br
+.RI "\fIModify the maximum number of iterations (0 indicates no limit)\&. \fP"
+.ti -1c
+.RI "double \fBOptimize\fP (arma::mat &iterate)"
+.br
+.RI "\fIOptimize the given function using stochastic gradient descent\&. \fP"
+.ti -1c
+.RI "template<> double \fBOptimize\fP (arma::mat &parameters)"
+.br
+.ti -1c
+.RI "bool \fBShuffle\fP () const "
+.br
+.RI "\fIGet whether or not the individual functions are shuffled\&. \fP"
+.ti -1c
+.RI "bool & \fBShuffle\fP ()"
+.br
+.RI "\fIModify whether or not the individual functions are shuffled\&. \fP"
+.ti -1c
+.RI "double \fBStepSize\fP () const "
+.br
+.RI "\fIGet the step size\&. \fP"
+.ti -1c
+.RI "double & \fBStepSize\fP ()"
+.br
+.RI "\fIModify the step size\&. \fP"
+.ti -1c
+.RI "double \fBTolerance\fP () const "
+.br
+.RI "\fIGet the tolerance for termination\&. \fP"
+.ti -1c
+.RI "double & \fBTolerance\fP ()"
+.br
+.RI "\fIModify the tolerance for termination\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "DecomposableFunctionType & \fBfunction\fP"
+.br
+.RI "\fIThe instantiated function\&. \fP"
+.ti -1c
+.RI "size_t \fBmaxIterations\fP"
+.br
+.RI "\fIThe maximum number of allowed iterations\&. \fP"
+.ti -1c
+.RI "bool \fBshuffle\fP"
+.br
+.RI "\fIControls whether or not the individual functions are shuffled when iterating\&. \fP"
+.ti -1c
+.RI "double \fBstepSize\fP"
+.br
+.RI "\fIThe step size for each example\&. \fP"
+.ti -1c
+.RI "double \fBtolerance\fP"
+.br
+.RI "\fIThe tolerance for termination\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename DecomposableFunctionType>class mlpack::optimization::SGD< DecomposableFunctionType >"
+Stochastic Gradient Descent is a technique for minimizing a function which can be expressed as a sum of other functions\&. 
+
+That is, suppose we have
+.PP
+\[ f(A) = \sum_{i = 0}^{n} f_i(A) \].PP
+and our task is to minimize $ A $\&. Stochastic gradient descent iterates over each function $ f_i(A) $, producing the following update scheme:
+.PP
+\[ A_{j + 1} = A_j + \alpha \nabla f_i(A) \].PP
+where $ \alpha $ is a parameter which specifies the step size\&. $ i $ is chosen according to $ j $ (the iteration number)\&. The \fBSGD\fP class supports either scanning through each of the $ n $ functions $ f_i(A) $ linearly, or in a random sequence\&. The algorithm continues until $ j $ reaches the maximum number of iterations -- or when a full sequence of updates through each of the $ n $ functions $ f_i(A) $ produces an improvement within a certain tolerance $ \epsilon $\&. That is,
+.PP
+\[ | f(A_{j + n}) - f(A_j) | < \epsilon. \].PP
+The parameter $\epsilon$ is specified by the tolerance parameter to the constructor; $n$ is specified by the maxIterations parameter\&.
+.PP
+This class is useful for data-dependent functions whose objective function can be expressed as a sum of objective functions operating on an individual point\&. Then, \fBSGD\fP considers the gradient of the objective function operating on an individual point in its update of $ A $\&.
+.PP
+For \fBSGD\fP to work, a DecomposableFunctionType template parameter is required\&. This class must implement the following function:
+.PP
+size_t NumFunctions(); double Evaluate(const arma::mat& coordinates, const size_t i); void Gradient(const arma::mat& coordinates, const size_t i, arma::mat& gradient);
+.PP
+NumFunctions() should return the number of functions ( $n$), and in the other two functions, the parameter i refers to which individual function (or gradient) is being evaluated\&. So, for the case of a data-dependent function, such as NCA (see \fBmlpack::nca::NCA\fP), NumFunctions() should return the number of points in the dataset, and Evaluate(coordinates, 0) will evaluate the objective function on the first point in the dataset (presumably, the dataset is held internally in the DecomposableFunctionType)\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIDecomposableFunctionType\fP Decomposable objective function type to be minimized\&. 
+.RE
+.PP
+
+.PP
+Definition at line 78 of file sgd\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename DecomposableFunctionType> \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::\fBSGD\fP (DecomposableFunctionType &function, const doublestepSize = \fC0\&.01\fP, const size_tmaxIterations = \fC100000\fP, const doubletolerance = \fC1e-5\fP, const boolshuffle = \fCtrue\fP)"
+
+.PP
+Construct the \fBSGD\fP optimizer with the given function and parameters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfunction\fP Function to be optimized (minimized)\&. 
+.br
+\fIstepSize\fP Step size for each iteration\&. 
+.br
+\fImaxIterations\fP Maximum number of iterations allowed (0 means no limit)\&. 
+.br
+\fItolerance\fP Maximum absolute tolerance to terminate algorithm\&. 
+.br
+\fIshuffle\fP If true, the function order is shuffled; otherwise, each function is visited in linear order\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename DecomposableFunctionType> const DecomposableFunctionType& \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::Function () const\fC [inline]\fP"
+
+.PP
+Get the instantiated function to be optimized\&. 
+.PP
+Definition at line 109 of file sgd\&.hpp\&.
+.SS "template<typename DecomposableFunctionType> DecomposableFunctionType& \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::Function ()\fC [inline]\fP"
+
+.PP
+Modify the instantiated function\&. 
+.PP
+Definition at line 111 of file sgd\&.hpp\&.
+.SS "template<typename DecomposableFunctionType> size_t \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::MaxIterations () const\fC [inline]\fP"
+
+.PP
+Get the maximum number of iterations (0 indicates no limit)\&. 
+.PP
+Definition at line 119 of file sgd\&.hpp\&.
+.SS "template<typename DecomposableFunctionType> size_t& \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::MaxIterations ()\fC [inline]\fP"
+
+.PP
+Modify the maximum number of iterations (0 indicates no limit)\&. 
+.PP
+Definition at line 121 of file sgd\&.hpp\&.
+.SS "template<typename DecomposableFunctionType> double \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::Optimize (arma::mat &iterate)"
+
+.PP
+Optimize the given function using stochastic gradient descent\&. The given starting point will be modified to store the finishing point of the algorithm, and the final objective value is returned\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiterate\fP Starting point (will be modified)\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Objective value of the final point\&. 
+.RE
+.PP
+
+.SS "template<> double \fBmlpack::optimization::SGD\fP< \fBmlpack::svd::RegularizedSVDFunction\fP >::Optimize (arma::mat &parameters)"
+Used because the gradient affects only a small number of parameters per example, and thus the normal abstraction does not work as fast as we might like it to\&. 
+.SS "template<typename DecomposableFunctionType> bool \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::Shuffle () const\fC [inline]\fP"
+
+.PP
+Get whether or not the individual functions are shuffled\&. 
+.PP
+Definition at line 129 of file sgd\&.hpp\&.
+.SS "template<typename DecomposableFunctionType> bool& \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::Shuffle ()\fC [inline]\fP"
+
+.PP
+Modify whether or not the individual functions are shuffled\&. 
+.PP
+Definition at line 131 of file sgd\&.hpp\&.
+.SS "template<typename DecomposableFunctionType> double \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::StepSize () const\fC [inline]\fP"
+
+.PP
+Get the step size\&. 
+.PP
+Definition at line 114 of file sgd\&.hpp\&.
+.SS "template<typename DecomposableFunctionType> double& \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::StepSize ()\fC [inline]\fP"
+
+.PP
+Modify the step size\&. 
+.PP
+Definition at line 116 of file sgd\&.hpp\&.
+.SS "template<typename DecomposableFunctionType> double \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::Tolerance () const\fC [inline]\fP"
+
+.PP
+Get the tolerance for termination\&. 
+.PP
+Definition at line 124 of file sgd\&.hpp\&.
+.SS "template<typename DecomposableFunctionType> double& \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::Tolerance ()\fC [inline]\fP"
+
+.PP
+Modify the tolerance for termination\&. 
+.PP
+Definition at line 126 of file sgd\&.hpp\&.
+.SS "template<typename DecomposableFunctionType> std::string \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::ToString () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename DecomposableFunctionType> DecomposableFunctionType& \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::function\fC [private]\fP"
+
+.PP
+The instantiated function\&. 
+.PP
+Definition at line 138 of file sgd\&.hpp\&.
+.SS "template<typename DecomposableFunctionType> size_t \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::maxIterations\fC [private]\fP"
+
+.PP
+The maximum number of allowed iterations\&. 
+.PP
+Definition at line 144 of file sgd\&.hpp\&.
+.PP
+Referenced by mlpack::optimization::SGD< mlpack::svd::RegularizedSVDFunction >::MaxIterations()\&.
+.SS "template<typename DecomposableFunctionType> bool \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::shuffle\fC [private]\fP"
+
+.PP
+Controls whether or not the individual functions are shuffled when iterating\&. 
+.PP
+Definition at line 151 of file sgd\&.hpp\&.
+.PP
+Referenced by mlpack::optimization::SGD< mlpack::svd::RegularizedSVDFunction >::Shuffle()\&.
+.SS "template<typename DecomposableFunctionType> double \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::stepSize\fC [private]\fP"
+
+.PP
+The step size for each example\&. 
+.PP
+Definition at line 141 of file sgd\&.hpp\&.
+.PP
+Referenced by mlpack::optimization::SGD< mlpack::svd::RegularizedSVDFunction >::StepSize()\&.
+.SS "template<typename DecomposableFunctionType> double \fBmlpack::optimization::SGD\fP< DecomposableFunctionType >::tolerance\fC [private]\fP"
+
+.PP
+The tolerance for termination\&. 
+.PP
+Definition at line 147 of file sgd\&.hpp\&.
+.PP
+Referenced by mlpack::optimization::SGD< mlpack::svd::RegularizedSVDFunction >::Tolerance()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

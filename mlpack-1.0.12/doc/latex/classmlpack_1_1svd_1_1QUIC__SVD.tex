@@ -1,0 +1,140 @@
+\section{mlpack\-:\-:svd\-:\-:Q\-U\-I\-C\-\_\-\-S\-V\-D Class Reference}
+\label{classmlpack_1_1svd_1_1QUIC__SVD}\index{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Q\-U\-I\-C\-\_\-\-S\-V\-D} (const arma\-::mat \&{\bf dataset}, arma\-::mat \&u, arma\-::mat \&v, arma\-::mat \&sigma, const double {\bf epsilon}=0.\-03, const double {\bf delta}=0.\-1)
+\begin{DoxyCompactList}\small\item\em Constructor which implements the Q\-U\-I\-C-\/\-S\-V\-D algorithm. \end{DoxyCompactList}\item 
+void {\bf Extract\-S\-V\-D} (arma\-::mat \&u, arma\-::mat \&v, arma\-::mat \&sigma)
+\begin{DoxyCompactList}\small\item\em This function uses the vector subspace created using a cosine tree to calculate an approximate S\-V\-D of the original matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+arma\-::mat {\bf basis}
+\begin{DoxyCompactList}\small\item\em Subspace basis of the input dataset. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf dataset}
+\begin{DoxyCompactList}\small\item\em Matrix for which cosine tree is constructed. \end{DoxyCompactList}\item 
+double {\bf delta}
+\begin{DoxyCompactList}\small\item\em Cumulative probability for Monte Carlo error lower bound. \end{DoxyCompactList}\item 
+double {\bf epsilon}
+\begin{DoxyCompactList}\small\item\em Error tolerance fraction for calculated subspace. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 23 of file quic\-\_\-svd.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}!Q\-U\-I\-C\-\_\-\-S\-V\-D@{Q\-U\-I\-C\-\_\-\-S\-V\-D}}
+\index{Q\-U\-I\-C\-\_\-\-S\-V\-D@{Q\-U\-I\-C\-\_\-\-S\-V\-D}!mlpack::svd::QUIC_SVD@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}}
+\subsubsection[{Q\-U\-I\-C\-\_\-\-S\-V\-D}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{dataset, }
+\item[{arma\-::mat \&}]{u, }
+\item[{arma\-::mat \&}]{v, }
+\item[{arma\-::mat \&}]{sigma, }
+\item[{const double}]{epsilon = {\ttfamily 0.03}, }
+\item[{const double}]{delta = {\ttfamily 0.1}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1svd_1_1QUIC__SVD_a50b669016c6e12d71adc9d44fa03c396}
+
+
+Constructor which implements the Q\-U\-I\-C-\/\-S\-V\-D algorithm. 
+
+The function calls the Cosine\-Tree constructor to create a subspace basis, where the original matrix's projection has minimum reconstruction error. The constructor then uses the \doxyref{Extract\-S\-V\-D()}{p.}{classmlpack_1_1svd_1_1QUIC__SVD_a3f3703d346ccc7371856cb6c9ad01bac} function to calculate the S\-V\-D of the original dataset in that subspace.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dataset} & Matrix for which S\-V\-D is calculated. \\
+\hline
+{\em u} & First unitary matrix. \\
+\hline
+{\em v} & Second unitary matrix. \\
+\hline
+{\em sigma} & Diagonal matrix of singular values. \\
+\hline
+{\em epsilon} & Error tolerance fraction for calculated subspace. \\
+\hline
+{\em delta} & Cumulative probability for Monte Carlo error lower bound. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}!Extract\-S\-V\-D@{Extract\-S\-V\-D}}
+\index{Extract\-S\-V\-D@{Extract\-S\-V\-D}!mlpack::svd::QUIC_SVD@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}}
+\subsubsection[{Extract\-S\-V\-D}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D\-::\-Extract\-S\-V\-D (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{u, }
+\item[{arma\-::mat \&}]{v, }
+\item[{arma\-::mat \&}]{sigma}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1svd_1_1QUIC__SVD_a3f3703d346ccc7371856cb6c9ad01bac}
+
+
+This function uses the vector subspace created using a cosine tree to calculate an approximate S\-V\-D of the original matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & First unitary matrix. \\
+\hline
+{\em v} & Second unitary matrix. \\
+\hline
+{\em sigma} & Diagonal matrix of singular values. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}!basis@{basis}}
+\index{basis@{basis}!mlpack::svd::QUIC_SVD@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}}
+\subsubsection[{basis}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::mat mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D\-::basis\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1svd_1_1QUIC__SVD_a00d52875872211ed480e4289eca6f31d}
+
+
+Subspace basis of the input dataset. 
+
+
+
+Definition at line 68 of file quic\-\_\-svd.\-hpp.
+
+\index{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}!dataset@{dataset}}
+\index{dataset@{dataset}!mlpack::svd::QUIC_SVD@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}}
+\subsubsection[{dataset}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::mat\& mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D\-::dataset\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1svd_1_1QUIC__SVD_a82e3070801f9ee44b36f37852154c7ea}
+
+
+Matrix for which cosine tree is constructed. 
+
+
+
+Definition at line 62 of file quic\-\_\-svd.\-hpp.
+
+\index{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}!delta@{delta}}
+\index{delta@{delta}!mlpack::svd::QUIC_SVD@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}}
+\subsubsection[{delta}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D\-::delta\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1svd_1_1QUIC__SVD_a9f83bb5ad88e85d44ae9c1400c684acc}
+
+
+Cumulative probability for Monte Carlo error lower bound. 
+
+
+
+Definition at line 66 of file quic\-\_\-svd.\-hpp.
+
+\index{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}!epsilon@{epsilon}}
+\index{epsilon@{epsilon}!mlpack::svd::QUIC_SVD@{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}}
+\subsubsection[{epsilon}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D\-::epsilon\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1svd_1_1QUIC__SVD_a9d48a3abebc9f1b994ab4d985667597a}
+
+
+Error tolerance fraction for calculated subspace. 
+
+
+
+Definition at line 64 of file quic\-\_\-svd.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/quic\-\_\-svd/{\bf quic\-\_\-svd.\-hpp}\end{DoxyCompactItemize}

@@ -1,0 +1,73 @@
+\section{mlpack\-:\-:hmm Namespace Reference}
+\label{namespacemlpack_1_1hmm}\index{mlpack\-::hmm@{mlpack\-::hmm}}
+
+
+Hidden Markov Models.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf H\-M\-M}
+\begin{DoxyCompactList}\small\item\em A class that represents a Hidden Markov Model with an arbitrary type of emission distribution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Distribution $>$ }\\void {\bf Load\-H\-M\-M} ({\bf H\-M\-M}$<$ Distribution $>$ \&hmm, {\bf util\-::\-Save\-Restore\-Utility} \&sr)
+\begin{DoxyCompactList}\small\item\em Load an \doxyref{H\-M\-M}{p.}{classmlpack_1_1hmm_1_1HMM} from file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Distribution $>$ }\\void {\bf Save\-H\-M\-M} (const {\bf H\-M\-M}$<$ Distribution $>$ \&hmm, {\bf util\-::\-Save\-Restore\-Utility} \&sr)
+\begin{DoxyCompactList}\small\item\em Save an \doxyref{H\-M\-M}{p.}{classmlpack_1_1hmm_1_1HMM} to file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Hidden Markov Models. 
+
+\subsection{Function Documentation}
+\index{mlpack\-::hmm@{mlpack\-::hmm}!Load\-H\-M\-M@{Load\-H\-M\-M}}
+\index{Load\-H\-M\-M@{Load\-H\-M\-M}!mlpack::hmm@{mlpack\-::hmm}}
+\subsubsection[{Load\-H\-M\-M}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distribution $>$ void mlpack\-::hmm\-::\-Load\-H\-M\-M (
+\begin{DoxyParamCaption}
+\item[{H\-M\-M$<$ Distribution $>$ \&}]{hmm, }
+\item[{util\-::\-Save\-Restore\-Utility \&}]{sr}
+\end{DoxyParamCaption}
+)}\label{namespacemlpack_1_1hmm_a468164bc69d714ebbe29dc8313a51946}
+
+
+Load an \doxyref{H\-M\-M}{p.}{classmlpack_1_1hmm_1_1HMM} from file. 
+
+This only works for G\-M\-Ms, Discrete\-Distributions, and Gaussian\-Distributions.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Distribution} & Distribution type of \doxyref{H\-M\-M}{p.}{classmlpack_1_1hmm_1_1HMM}. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sr} & Save\-Restore\-Utility to use. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::hmm@{mlpack\-::hmm}!Save\-H\-M\-M@{Save\-H\-M\-M}}
+\index{Save\-H\-M\-M@{Save\-H\-M\-M}!mlpack::hmm@{mlpack\-::hmm}}
+\subsubsection[{Save\-H\-M\-M}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distribution $>$ void mlpack\-::hmm\-::\-Save\-H\-M\-M (
+\begin{DoxyParamCaption}
+\item[{const H\-M\-M$<$ Distribution $>$ \&}]{hmm, }
+\item[{util\-::\-Save\-Restore\-Utility \&}]{sr}
+\end{DoxyParamCaption}
+)}\label{namespacemlpack_1_1hmm_a2c6f718352896f83590a499f83d221d8}
+
+
+Save an \doxyref{H\-M\-M}{p.}{classmlpack_1_1hmm_1_1HMM} to file. 
+
+This only works for G\-M\-Ms, Discrete\-Distributions, and Gaussian\-Distributions.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Distribution} & Distribution type of \doxyref{H\-M\-M}{p.}{classmlpack_1_1hmm_1_1HMM}. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sr} & Save\-Restore\-Utility to use. \\
+\hline
+\end{DoxyParams}

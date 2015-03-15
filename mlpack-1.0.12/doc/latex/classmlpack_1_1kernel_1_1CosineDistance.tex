@@ -1,0 +1,75 @@
+\section{mlpack\-:\-:kernel\-:\-:Cosine\-Distance Class Reference}
+\label{classmlpack_1_1kernel_1_1CosineDistance}\index{mlpack\-::kernel\-::\-Cosine\-Distance@{mlpack\-::kernel\-::\-Cosine\-Distance}}
+
+
+The cosine distance (or cosine similarity).  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Returns a string representation of this object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Vec\-Type $>$ }\\static double {\bf Evaluate} (const Vec\-Type \&a, const Vec\-Type \&b)
+\begin{DoxyCompactList}\small\item\em Computes the cosine distance between two points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The cosine distance (or cosine similarity). 
+
+It is defined by
+
+\[ d(a, b) = \frac{a^T b}{|| a || || b ||} \]
+
+and this class assumes the standard L2 inner product. 
+
+Definition at line 32 of file cosine\-\_\-distance.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::kernel\-::\-Cosine\-Distance@{mlpack\-::kernel\-::\-Cosine\-Distance}!Evaluate@{Evaluate}}
+\index{Evaluate@{Evaluate}!mlpack::kernel::CosineDistance@{mlpack\-::kernel\-::\-Cosine\-Distance}}
+\subsubsection[{Evaluate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Vec\-Type $>$ static double mlpack\-::kernel\-::\-Cosine\-Distance\-::\-Evaluate (
+\begin{DoxyParamCaption}
+\item[{const Vec\-Type \&}]{a, }
+\item[{const Vec\-Type \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classmlpack_1_1kernel_1_1CosineDistance_a673f12ef78a7ad1f90d34c8e5e74fe5f}
+
+
+Computes the cosine distance between two points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & First vector. \\
+\hline
+{\em b} & Second vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+d(a, b). 
+\end{DoxyReturn}
+\index{mlpack\-::kernel\-::\-Cosine\-Distance@{mlpack\-::kernel\-::\-Cosine\-Distance}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::kernel::CosineDistance@{mlpack\-::kernel\-::\-Cosine\-Distance}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mlpack\-::kernel\-::\-Cosine\-Distance\-::\-To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kernel_1_1CosineDistance_afe6ddc29db6a2655565cb036e1b3da39}
+
+
+Returns a string representation of this object. 
+
+
+
+Definition at line 48 of file cosine\-\_\-distance.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/kernels/{\bf cosine\-\_\-distance.\-hpp}\end{DoxyCompactItemize}

@@ -1,0 +1,163 @@
+.TH "mlpack::perceptron::Perceptron< LearnPolicy, WeightInitializationPolicy, MatType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::perceptron::Perceptron< LearnPolicy, WeightInitializationPolicy, MatType > \- 
+.PP
+This class implements a simple perceptron (i\&.e\&., a single layer neural network)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPerceptron\fP (const MatType &data, const arma::Row< size_t > &labels, int iterations)"
+.br
+.RI "\fIConstructor - constructs the perceptron by building the weightVectors matrix, which is later used in Classification\&. \fP"
+.ti -1c
+.RI "\fBPerceptron\fP (const \fBPerceptron\fP<> &other, MatType &data, const arma::rowvec &D, const arma::Row< size_t > &labels)"
+.br
+.RI "\fIAlternate constructor which copies parameters from an already initiated perceptron\&. \fP"
+.ti -1c
+.RI "void \fBClassify\fP (const MatType &test, arma::Row< size_t > &predictedLabels)"
+.br
+.RI "\fIClassification function\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBTrain\fP (const arma::rowvec &D)"
+.br
+.RI "\fITraining Function\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "arma::Row< size_t > \fBclassLabels\fP"
+.br
+.RI "\fIStores the class labels for the input data\&. \fP"
+.ti -1c
+.RI "size_t \fBiter\fP"
+.br
+.RI "\fITo store the number of iterations\&. \fP"
+.ti -1c
+.RI "arma::mat \fBtrainData\fP"
+.br
+.RI "\fIStores the training data to be used later on in UpdateWeights\&. \fP"
+.ti -1c
+.RI "arma::mat \fBweightVectors\fP"
+.br
+.RI "\fIStores the weight vectors for each of the input class labels\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename LearnPolicy = SimpleWeightUpdate, typename WeightInitializationPolicy = ZeroInitialization, typename MatType = arma::mat>class mlpack::perceptron::Perceptron< LearnPolicy, WeightInitializationPolicy, MatType >"
+This class implements a simple perceptron (i\&.e\&., a single layer neural network)\&. 
+
+It converges if the supplied training dataset is linearly separable\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fILearnPolicy\fP Options of \fBSimpleWeightUpdate\fP and GradientDescent\&. 
+.br
+\fIWeightInitializationPolicy\fP Option of \fBZeroInitialization\fP and \fBRandomInitialization\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file perceptron\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename LearnPolicy = SimpleWeightUpdate, typename WeightInitializationPolicy = ZeroInitialization, typename MatType = arma::mat> \fBmlpack::perceptron::Perceptron\fP< LearnPolicy, WeightInitializationPolicy, MatType >::\fBPerceptron\fP (const MatType &data, const arma::Row< size_t > &labels, intiterations)"
+
+.PP
+Constructor - constructs the perceptron by building the weightVectors matrix, which is later used in Classification\&. It adds a bias input vector of 1 to the input data to take care of the bias weights\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Input, training data\&. 
+.br
+\fIlabels\fP Labels of dataset\&. 
+.br
+\fIiterations\fP Maximum number of iterations for the perceptron learning algorithm\&. 
+.RE
+.PP
+
+.SS "template<typename LearnPolicy = SimpleWeightUpdate, typename WeightInitializationPolicy = ZeroInitialization, typename MatType = arma::mat> \fBmlpack::perceptron::Perceptron\fP< LearnPolicy, WeightInitializationPolicy, MatType >::\fBPerceptron\fP (const \fBPerceptron\fP<> &other, MatType &data, const arma::rowvec &D, const arma::Row< size_t > &labels)"
+
+.PP
+Alternate constructor which copies parameters from an already initiated perceptron\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP The other initiated \fBPerceptron\fP object from which we copy the values from\&. 
+.br
+\fIdata\fP The data on which to train this \fBPerceptron\fP object on\&. 
+.br
+\fID\fP Weight vector to use while training\&. For boosting purposes\&. 
+.br
+\fIlabels\fP The labels of data\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename LearnPolicy = SimpleWeightUpdate, typename WeightInitializationPolicy = ZeroInitialization, typename MatType = arma::mat> void \fBmlpack::perceptron::Perceptron\fP< LearnPolicy, WeightInitializationPolicy, MatType >::Classify (const MatType &test, arma::Row< size_t > &predictedLabels)"
+
+.PP
+Classification function\&. After training, use the weightVectors matrix to classify test, and put the predicted classes in predictedLabels\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItest\fP Testing data or data to classify\&. 
+.br
+\fIpredictedLabels\fP Vector to store the predicted classes after classifying test\&. 
+.RE
+.PP
+
+.SS "template<typename LearnPolicy = SimpleWeightUpdate, typename WeightInitializationPolicy = ZeroInitialization, typename MatType = arma::mat> void \fBmlpack::perceptron::Perceptron\fP< LearnPolicy, WeightInitializationPolicy, MatType >::Train (const arma::rowvec &D)\fC [private]\fP"
+
+.PP
+Training Function\&. It trains on trainData using the cost matrix D
+.PP
+\fBParameters:\fP
+.RS 4
+\fID\fP Cost matrix\&. Stores the cost of mispredicting instances 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename LearnPolicy = SimpleWeightUpdate, typename WeightInitializationPolicy = ZeroInitialization, typename MatType = arma::mat> arma::Row<size_t> \fBmlpack::perceptron::Perceptron\fP< LearnPolicy, WeightInitializationPolicy, MatType >::classLabels\fC [private]\fP"
+
+.PP
+Stores the class labels for the input data\&. 
+.PP
+Definition at line 80 of file perceptron\&.hpp\&.
+.SS "template<typename LearnPolicy = SimpleWeightUpdate, typename WeightInitializationPolicy = ZeroInitialization, typename MatType = arma::mat> size_t \fBmlpack::perceptron::Perceptron\fP< LearnPolicy, WeightInitializationPolicy, MatType >::iter\fC [private]\fP"
+
+.PP
+To store the number of iterations\&. 
+.PP
+Definition at line 77 of file perceptron\&.hpp\&.
+.SS "template<typename LearnPolicy = SimpleWeightUpdate, typename WeightInitializationPolicy = ZeroInitialization, typename MatType = arma::mat> arma::mat \fBmlpack::perceptron::Perceptron\fP< LearnPolicy, WeightInitializationPolicy, MatType >::trainData\fC [private]\fP"
+
+.PP
+Stores the training data to be used later on in UpdateWeights\&. 
+.PP
+Definition at line 86 of file perceptron\&.hpp\&.
+.SS "template<typename LearnPolicy = SimpleWeightUpdate, typename WeightInitializationPolicy = ZeroInitialization, typename MatType = arma::mat> arma::mat \fBmlpack::perceptron::Perceptron\fP< LearnPolicy, WeightInitializationPolicy, MatType >::weightVectors\fC [private]\fP"
+
+.PP
+Stores the weight vectors for each of the input class labels\&. 
+.PP
+Definition at line 83 of file perceptron\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

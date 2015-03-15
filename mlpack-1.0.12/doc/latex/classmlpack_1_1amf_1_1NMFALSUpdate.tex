@@ -1,0 +1,124 @@
+\section{mlpack\-:\-:amf\-:\-:N\-M\-F\-A\-L\-S\-Update Class Reference}
+\label{classmlpack_1_1amf_1_1NMFALSUpdate}\index{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update@{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update}}
+
+
+This class implements a method titled 'Alternating Least Squares' described in the paper 'Positive Matrix Factorization\-: A Non-\/negative Factor Model with Optimal Utilization of Error Estimates of Data Values' by P Paatero and U Tapper.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf N\-M\-F\-A\-L\-S\-Update} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor required for the Update\-Rule template. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\void {\bf Initialize} (const Mat\-Type \&dataset, const size\-\_\-t rank)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\static void {\bf H\-Update} (const Mat\-Type \&V, const arma\-::mat \&W, arma\-::mat \&H)
+\begin{DoxyCompactList}\small\item\em The update rule for the encoding matrix H. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\static void {\bf W\-Update} (const Mat\-Type \&V, arma\-::mat \&W, const arma\-::mat \&H)
+\begin{DoxyCompactList}\small\item\em The update rule for the basis matrix W. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class implements a method titled 'Alternating Least Squares' described in the paper 'Positive Matrix Factorization\-: A Non-\/negative Factor Model with Optimal Utilization of Error Estimates of Data Values' by P Paatero and U Tapper. 
+
+It uses least squares projection formula to reduce the error value of $ \sqrt{\sum_i \sum_j(V-WH)^2} $ by alternately calculating W and H respectively while holding the other matrix constant. 
+
+Definition at line 30 of file nmf\-\_\-als.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update@{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update}!N\-M\-F\-A\-L\-S\-Update@{N\-M\-F\-A\-L\-S\-Update}}
+\index{N\-M\-F\-A\-L\-S\-Update@{N\-M\-F\-A\-L\-S\-Update}!mlpack::amf::NMFALSUpdate@{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update}}
+\subsubsection[{N\-M\-F\-A\-L\-S\-Update}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update\-::\-N\-M\-F\-A\-L\-S\-Update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1NMFALSUpdate_a4d1783987920c1882aaf4189b4f474bd}
+
+
+Empty constructor required for the Update\-Rule template. 
+
+
+
+Definition at line 34 of file nmf\-\_\-als.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update@{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update}!H\-Update@{H\-Update}}
+\index{H\-Update@{H\-Update}!mlpack::amf::NMFALSUpdate@{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update}}
+\subsubsection[{H\-Update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type $>$ static void mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update\-::\-H\-Update (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{V, }
+\item[{const arma\-::mat \&}]{W, }
+\item[{arma\-::mat \&}]{H}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classmlpack_1_1amf_1_1NMFALSUpdate_a95953ee6655a287ff502a358189b4bee}
+
+
+The update rule for the encoding matrix H. 
+
+The formula used is \[ H = \frac{W^TV}{W^TW} \] The function takes in all the matrices and only changes the value of the H matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em V} & Input matrix to be factorized. \\
+\hline
+{\em W} & Basis matrix. \\
+\hline
+{\em H} & Encoding matrix to be updated. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 87 of file nmf\-\_\-als.\-hpp.
+
+\index{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update@{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!mlpack::amf::NMFALSUpdate@{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update}}
+\subsubsection[{Initialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type $>$ void mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update\-::\-Initialize (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{dataset, }
+\item[{const size\-\_\-t}]{rank}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1NMFALSUpdate_a1c92824aec051bb9eda102b0f8b096b4}
+
+
+Definition at line 37 of file nmf\-\_\-als.\-hpp.
+
+\index{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update@{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update}!W\-Update@{W\-Update}}
+\index{W\-Update@{W\-Update}!mlpack::amf::NMFALSUpdate@{mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update}}
+\subsubsection[{W\-Update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type $>$ static void mlpack\-::amf\-::\-N\-M\-F\-A\-L\-S\-Update\-::\-W\-Update (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{V, }
+\item[{arma\-::mat \&}]{W, }
+\item[{const arma\-::mat \&}]{H}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classmlpack_1_1amf_1_1NMFALSUpdate_a0eb0c482aa6e596e2f3679b40640a72a}
+
+
+The update rule for the basis matrix W. 
+
+The formula used is \[ W^T = \frac{HV^T}{HH^T} \] The function takes in all the matrices and only changes the value of the W matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em V} & Input matrix to be factorized. \\
+\hline
+{\em W} & Basis matrix to be updated. \\
+\hline
+{\em H} & Encoding matrix. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 56 of file nmf\-\_\-als.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/amf/update\-\_\-rules/{\bf nmf\-\_\-als.\-hpp}\end{DoxyCompactItemize}

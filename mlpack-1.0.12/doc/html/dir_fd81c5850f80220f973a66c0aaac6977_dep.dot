@@ -1,0 +1,9 @@
+digraph "src/mlpack/methods/hmm" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_2217eda3f3f128182276a15ca80cc98e {
+    graph [ bgcolor="#ddddee", pencolor="black", label="methods" fontname="Helvetica", fontsize="10", URL="dir_2217eda3f3f128182276a15ca80cc98e.html"]
+  dir_fd81c5850f80220f973a66c0aaac6977 [shape=box, label="hmm", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_fd81c5850f80220f973a66c0aaac6977.html"];
+  }
+}

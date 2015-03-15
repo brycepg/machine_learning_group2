@@ -1,0 +1,56 @@
+\section{mlpack\-:\-:tree Namespace Reference}
+\label{namespacemlpack_1_1tree}\index{mlpack\-::tree@{mlpack\-::tree}}
+
+
+Trees and tree-\/building procedures.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf Binary\-Space\-Tree}
+\begin{DoxyCompactList}\small\item\em A binary space partitioning tree, such as a K\-D-\/tree or a ball tree. \end{DoxyCompactList}\item 
+class {\bf Compare\-Cosine\-Node}
+\item 
+class {\bf Cosine\-Tree}
+\item 
+class {\bf Cover\-Tree}
+\begin{DoxyCompactList}\small\item\em A cover tree is a tree specifically designed to speed up nearest-\/neighbor computation in high-\/dimensional spaces. \end{DoxyCompactList}\item 
+class {\bf Empty\-Statistic}
+\begin{DoxyCompactList}\small\item\em Empty statistic if you are not interested in storing statistics in your tree. \end{DoxyCompactList}\item 
+class {\bf Example\-Tree}
+\begin{DoxyCompactList}\small\item\em This is not an actual space tree but instead an example tree that exists to show and document all the functions that mlpack trees must implement. \end{DoxyCompactList}\item 
+class {\bf First\-Point\-Is\-Root}
+\begin{DoxyCompactList}\small\item\em This class is meant to be used as a choice for the policy class Root\-Point\-Policy of the \doxyref{Cover\-Tree}{p.}{classmlpack_1_1tree_1_1CoverTree} class. \end{DoxyCompactList}\item 
+class {\bf Mean\-Split}
+\begin{DoxyCompactList}\small\item\em A binary space partitioning tree node is split into its left and right child. \end{DoxyCompactList}\item 
+class {\bf M\-R\-K\-D\-Statistic}
+\begin{DoxyCompactList}\small\item\em Statistic for multi-\/resolution kd-\/trees. \end{DoxyCompactList}\item 
+class {\bf Tree\-Traits}
+\begin{DoxyCompactList}\small\item\em The \doxyref{Tree\-Traits}{p.}{classmlpack_1_1tree_1_1TreeTraits} class provides compile-\/time information on the characteristics of a given tree type. \end{DoxyCompactList}\item 
+class {\bf Tree\-Traits$<$ Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type $>$ $>$}
+\begin{DoxyCompactList}\small\item\em This is a specialization of the Tree\-Type class to the \doxyref{Binary\-Space\-Tree}{p.}{classmlpack_1_1tree_1_1BinarySpaceTree} tree type. \end{DoxyCompactList}\item 
+class {\bf Tree\-Traits$<$ Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$ $>$}
+\begin{DoxyCompactList}\small\item\em The specialization of the \doxyref{Tree\-Traits}{p.}{classmlpack_1_1tree_1_1TreeTraits} class for the \doxyref{Cover\-Tree}{p.}{classmlpack_1_1tree_1_1CoverTree} tree type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \\*
+boost\-::heap\-::priority\-\_\-queue\\*
+$<$ {\bf Cosine\-Tree} \\*
+$\ast$, boost\-::heap\-::compare\\*
+$<$ {\bf Compare\-Cosine\-Node} $>$ $>$ {\bf Cosine\-Node\-Queue}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Trees and tree-\/building procedures. 
+
+\subsection{Typedef Documentation}
+\index{mlpack\-::tree@{mlpack\-::tree}!Cosine\-Node\-Queue@{Cosine\-Node\-Queue}}
+\index{Cosine\-Node\-Queue@{Cosine\-Node\-Queue}!mlpack::tree@{mlpack\-::tree}}
+\subsubsection[{Cosine\-Node\-Queue}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::heap\-::priority\-\_\-queue$<${\bf Cosine\-Tree}$\ast$, boost\-::heap\-::compare$<${\bf Compare\-Cosine\-Node}$>$ $>$ {\bf mlpack\-::tree\-::\-Cosine\-Node\-Queue}}\label{namespacemlpack_1_1tree_a84f2fb164d4b443c3409e1b88633745b}
+
+
+Definition at line 26 of file cosine\-\_\-tree.\-hpp.
+

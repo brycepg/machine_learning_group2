@@ -1,0 +1,334 @@
+.TH "mlpack::range::RangeSearch< MetricType, TreeType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::range::RangeSearch< MetricType, TreeType > \- 
+.PP
+The \fBRangeSearch\fP class is a template class for performing range searches\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRangeSearch\fP (const typename TreeType::Mat &\fBreferenceSet\fP, const typename TreeType::Mat &\fBquerySet\fP, const bool \fBnaive\fP=false, const bool \fBsingleMode\fP=false, const MetricType \fBmetric\fP=MetricType())"
+.br
+.RI "\fIInitialize the \fBRangeSearch\fP object with a different reference set and a query set\&. \fP"
+.ti -1c
+.RI "\fBRangeSearch\fP (const typename TreeType::Mat &\fBreferenceSet\fP, const bool \fBnaive\fP=false, const bool \fBsingleMode\fP=false, const MetricType \fBmetric\fP=MetricType())"
+.br
+.RI "\fIInitialize the \fBRangeSearch\fP object with only a reference set, which will also be used as a query set\&. \fP"
+.ti -1c
+.RI "\fBRangeSearch\fP (TreeType *\fBreferenceTree\fP, TreeType *\fBqueryTree\fP, const typename TreeType::Mat &\fBreferenceSet\fP, const typename TreeType::Mat &\fBquerySet\fP, const bool \fBsingleMode\fP=false, const MetricType \fBmetric\fP=MetricType())"
+.br
+.RI "\fIInitialize the \fBRangeSearch\fP object with the given datasets and pre-constructed trees\&. \fP"
+.ti -1c
+.RI "\fBRangeSearch\fP (TreeType *\fBreferenceTree\fP, const typename TreeType::Mat &\fBreferenceSet\fP, const bool \fBsingleMode\fP=false, const MetricType \fBmetric\fP=MetricType())"
+.br
+.RI "\fIInitialize the \fBRangeSearch\fP object with the given reference dataset and pre-constructed tree\&. \fP"
+.ti -1c
+.RI "\fB~RangeSearch\fP ()"
+.br
+.RI "\fIDestroy the \fBRangeSearch\fP object\&. \fP"
+.ti -1c
+.RI "void \fBSearch\fP (const \fBmath::Range\fP &range, std::vector< std::vector< size_t > > &neighbors, std::vector< std::vector< double > > &distances)"
+.br
+.RI "\fISearch for all points in the given range, returning the results in the neighbors and distances objects\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBhasQuerySet\fP"
+.br
+.RI "\fIIf true, a query set was passed; if false, the query set is the reference set\&. \fP"
+.ti -1c
+.RI "MetricType \fBmetric\fP"
+.br
+.RI "\fIInstantiated distance metric\&. \fP"
+.ti -1c
+.RI "bool \fBnaive\fP"
+.br
+.RI "\fIIf true, O(n^2) naive computation is used\&. \fP"
+.ti -1c
+.RI "size_t \fBnumPrunes\fP"
+.br
+.RI "\fIThe number of pruned nodes during computation\&. \fP"
+.ti -1c
+.RI "std::vector< size_t > \fBoldFromNewQueries\fP"
+.br
+.RI "\fIMappings to old query indices (used when this object builds trees)\&. \fP"
+.ti -1c
+.RI "std::vector< size_t > \fBoldFromNewReferences\fP"
+.br
+.RI "\fIMappings to old reference indices (used when this object builds trees)\&. \fP"
+.ti -1c
+.RI "TreeType::Mat \fBqueryCopy\fP"
+.br
+.RI "\fICopy of query matrix; used when a tree is built internally\&. \fP"
+.ti -1c
+.RI "const TreeType::Mat & \fBquerySet\fP"
+.br
+.RI "\fIQuery set (data should be accessed using this)\&. \fP"
+.ti -1c
+.RI "TreeType * \fBqueryTree\fP"
+.br
+.RI "\fIQuery tree (may be NULL)\&. \fP"
+.ti -1c
+.RI "TreeType::Mat \fBreferenceCopy\fP"
+.br
+.RI "\fICopy of reference matrix; used when a tree is built internally\&. \fP"
+.ti -1c
+.RI "const TreeType::Mat & \fBreferenceSet\fP"
+.br
+.RI "\fIReference set (data should be accessed using this)\&. \fP"
+.ti -1c
+.RI "TreeType * \fBreferenceTree\fP"
+.br
+.RI "\fIReference tree\&. \fP"
+.ti -1c
+.RI "bool \fBsingleMode\fP"
+.br
+.RI "\fIIf true, single-tree computation is used\&. \fP"
+.ti -1c
+.RI "bool \fBtreeOwner\fP"
+.br
+.RI "\fIIf true, this object is responsible for deleting the trees\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>>class mlpack::range::RangeSearch< MetricType, TreeType >"
+The \fBRangeSearch\fP class is a template class for performing range searches\&. 
+
+It is implemented in the style of a generalized tree-independent dual-tree algorithm; for more details on the actual algorithm, see the \fBRangeSearchRules\fP class\&. 
+.PP
+Definition at line 35 of file range_search\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::\fBRangeSearch\fP (const typename TreeType::Mat &referenceSet, const typename TreeType::Mat &querySet, const boolnaive = \fCfalse\fP, const boolsingleMode = \fCfalse\fP, const MetricTypemetric = \fCMetricType()\fP)"
+
+.PP
+Initialize the \fBRangeSearch\fP object with a different reference set and a query set\&. Optionally, perform the computation in naive mode or single-tree mode, and set the leaf size used for tree-building\&. Additionally, an instantiated metric can be given, for cases where the distance metric holds data\&.
+.PP
+This method will copy the matrices to internal copies, which are rearranged during tree-building\&. You can avoid this extra copy by pre-constructing the trees and passing them using a different constructor\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceSet\fP Reference dataset\&. 
+.br
+\fIquerySet\fP Query dataset\&. 
+.br
+\fInaive\fP Whether the computation should be done in O(n^2) naive mode\&. 
+.br
+\fIsingleMode\fP Whether single-tree computation should be used (as opposed to dual-tree computation)\&. 
+.br
+\fIleafSize\fP The leaf size to be used during tree construction\&. 
+.br
+\fImetric\fP Instantiated distance metric\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::\fBRangeSearch\fP (const typename TreeType::Mat &referenceSet, const boolnaive = \fCfalse\fP, const boolsingleMode = \fCfalse\fP, const MetricTypemetric = \fCMetricType()\fP)"
+
+.PP
+Initialize the \fBRangeSearch\fP object with only a reference set, which will also be used as a query set\&. Optionally, perform the computation in naive mode or single-tree mode, and set the leaf size used for tree-building\&. Additionally an instantiated metric can be given, for cases where the distance metric holds data\&.
+.PP
+This method will copy the reference matrix to an internal copy, which is rearranged during tree-building\&. You can avoid this extra copy by pre-constructing the reference tree and passing it using a different constructor\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceSet\fP Reference dataset\&. 
+.br
+\fInaive\fP Whether the computation should be done in O(n^2) naive mode\&. 
+.br
+\fIsingleMode\fP Whether single-tree computation should be used (as opposed to dual-tree computation)\&. 
+.br
+\fIleafSize\fP The leaf size to be used during tree construction\&. 
+.br
+\fImetric\fP Instantiated distance metric\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::\fBRangeSearch\fP (TreeType *referenceTree, TreeType *queryTree, const typename TreeType::Mat &referenceSet, const typename TreeType::Mat &querySet, const boolsingleMode = \fCfalse\fP, const MetricTypemetric = \fCMetricType()\fP)"
+
+.PP
+Initialize the \fBRangeSearch\fP object with the given datasets and pre-constructed trees\&. It is assumed that the points in referenceSet and querySet correspond to the points in referenceTree and queryTree, respectively\&. Optionally, choose to use single-tree mode\&. Naive mode is not available as an option for this constructor; instead, to run naive computation, construct a tree with all the points in one leaf (i\&.e\&. leafSize = number of points)\&. Additionally, an instantiated distance metric can be given, for cases where the distance metric holds data\&.
+.PP
+There is no copying of the data matrices in this constructor (because tree-building is not necessary), so this is the constructor to use when copies absolutely must be avoided\&.
+.PP
+\fBNote:\fP
+.RS 4
+Because tree-building (at least with BinarySpaceTree) modifies the ordering of a matrix, be sure you pass the modified matrix to this object! In addition, mapping the points of the matrix back to their original indices is not done when this constructor is used\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceTree\fP Pre-built tree for reference points\&. 
+.br
+\fIqueryTree\fP Pre-built tree for query points\&. 
+.br
+\fIreferenceSet\fP Set of reference points corresponding to referenceTree\&. 
+.br
+\fIquerySet\fP Set of query points corresponding to queryTree\&. 
+.br
+\fIsingleMode\fP Whether single-tree computation should be used (as opposed to dual-tree computation)\&. 
+.br
+\fImetric\fP Instantiated distance metric\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::\fBRangeSearch\fP (TreeType *referenceTree, const typename TreeType::Mat &referenceSet, const boolsingleMode = \fCfalse\fP, const MetricTypemetric = \fCMetricType()\fP)"
+
+.PP
+Initialize the \fBRangeSearch\fP object with the given reference dataset and pre-constructed tree\&. It is assumed that the points in referenceSet correspond to the points in referenceTree\&. Optionally, choose to use single-tree mode\&. Naive mode is not available as an option for this constructor; instead, to run naive computation, construct a tree with all the points in one leaf (i\&.e\&. leafSize = number of points)\&. Additionally, an instantiated distance metric can be given, for the case where the distance metric holds data\&.
+.PP
+There is no copying of the data matrices in this constructor (because tree-building is not necessary), so this is the constructor to use when copies absolutely must be avoided\&.
+.PP
+\fBNote:\fP
+.RS 4
+Because tree-building (at least with BinarySpaceTree) modifies the ordering of a matrix, be sure you pass the modified matrix to this object! In addition, mapping the points of the matrix back to their original indices is not done when this constructor is used\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceTree\fP Pre-built tree for reference points\&. 
+.br
+\fIreferenceSet\fP Set of reference points corresponding to referenceTree\&. 
+.br
+\fIsingleMode\fP Whether single-tree computation should be used (as opposed to dual-tree computation)\&. 
+.br
+\fImetric\fP Instantiated distance metric\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::~\fBRangeSearch\fP ()"
+
+.PP
+Destroy the \fBRangeSearch\fP object\&. If trees were created, they will be deleted\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> void \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::Search (const \fBmath::Range\fP &range, std::vector< std::vector< size_t > > &neighbors, std::vector< std::vector< double > > &distances)"
+
+.PP
+Search for all points in the given range, returning the results in the neighbors and distances objects\&. Each entry in the external vector corresponds to a query point\&. Each of these entries holds a vector which contains the indices and distances of the reference points falling into the given range\&.
+.PP
+That is:
+.PP
+.IP "\(bu" 2
+neighbors\&.size() and distances\&.size() both equal the number of query points\&.
+.IP "\(bu" 2
+neighbors[i] contains the indices of all the points in the reference set which have distances inside the given range to query point i\&.
+.IP "\(bu" 2
+distances[i] contains all of the distances corresponding to the indices contained in neighbors[i]\&.
+.IP "\(bu" 2
+neighbors[i] and distances[i] are not sorted in any particular order\&.
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrange\fP Range of distances in which to search\&. 
+.br
+\fIneighbors\fP Object which will hold the list of neighbors for each point which fell into the given range, for each query point\&. 
+.br
+\fIdistances\fP Object which will hold the list of distances for each point which fell into the given range, for each query point\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> std::string \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::ToString () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> bool \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::hasQuerySet\fC [private]\fP"
+
+.PP
+If true, a query set was passed; if false, the query set is the reference set\&. 
+.PP
+Definition at line 219 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> MetricType \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::metric\fC [private]\fP"
+
+.PP
+Instantiated distance metric\&. 
+.PP
+Definition at line 227 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> bool \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::naive\fC [private]\fP"
+
+.PP
+If true, O(n^2) naive computation is used\&. 
+.PP
+Definition at line 222 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> size_t \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::numPrunes\fC [private]\fP"
+
+.PP
+The number of pruned nodes during computation\&. 
+.PP
+Definition at line 230 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> std::vector<size_t> \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::oldFromNewQueries\fC [private]\fP"
+
+.PP
+Mappings to old query indices (used when this object builds trees)\&. 
+.PP
+Definition at line 213 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> std::vector<size_t> \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::oldFromNewReferences\fC [private]\fP"
+
+.PP
+Mappings to old reference indices (used when this object builds trees)\&. 
+.PP
+Definition at line 211 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> TreeType::Mat \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::queryCopy\fC [private]\fP"
+
+.PP
+Copy of query matrix; used when a tree is built internally\&. 
+.PP
+Definition at line 198 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> const TreeType::Mat& \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::querySet\fC [private]\fP"
+
+.PP
+Query set (data should be accessed using this)\&. 
+.PP
+Definition at line 203 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> TreeType* \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::queryTree\fC [private]\fP"
+
+.PP
+Query tree (may be NULL)\&. 
+.PP
+Definition at line 208 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> TreeType::Mat \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::referenceCopy\fC [private]\fP"
+
+.PP
+Copy of reference matrix; used when a tree is built internally\&. 
+.PP
+Definition at line 196 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> const TreeType::Mat& \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::referenceSet\fC [private]\fP"
+
+.PP
+Reference set (data should be accessed using this)\&. 
+.PP
+Definition at line 201 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> TreeType* \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::referenceTree\fC [private]\fP"
+
+.PP
+Reference tree\&. 
+.PP
+Definition at line 206 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> bool \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::singleMode\fC [private]\fP"
+
+.PP
+If true, single-tree computation is used\&. 
+.PP
+Definition at line 224 of file range_search\&.hpp\&.
+.SS "template<typename MetricType = mlpack::metric::EuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,                                                   RangeSearchStat>> bool \fBmlpack::range::RangeSearch\fP< MetricType, TreeType >::treeOwner\fC [private]\fP"
+
+.PP
+If true, this object is responsible for deleting the trees\&. 
+.PP
+Definition at line 216 of file range_search\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

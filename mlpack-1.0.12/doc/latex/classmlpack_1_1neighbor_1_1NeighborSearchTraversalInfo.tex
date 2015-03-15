@@ -1,0 +1,293 @@
+\section{mlpack\-:\-:neighbor\-:\-:Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo}\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$}}
+
+
+Traversal information for \doxyref{Neighbor\-Search}{p.}{classmlpack_1_1neighbor_1_1NeighborSearch}.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Neighbor\-Search\-Traversal\-Info} ()
+\begin{DoxyCompactList}\small\item\em Create the \doxyref{Traversal\-Info}{p.}{classTraversalInfo} object and initialize the pointers to N\-U\-L\-L. \end{DoxyCompactList}\item 
+double {\bf Last\-Base\-Case} () const 
+\begin{DoxyCompactList}\small\item\em Get the base case associated with the last node combination. \end{DoxyCompactList}\item 
+double \& {\bf Last\-Base\-Case} ()
+\begin{DoxyCompactList}\small\item\em Modify the base case associated with the last node combination. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf Last\-Query\-Node} () const 
+\begin{DoxyCompactList}\small\item\em Get the last query node. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$\& {\bf Last\-Query\-Node} ()
+\begin{DoxyCompactList}\small\item\em Modify the last query node. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf Last\-Reference\-Node} () const 
+\begin{DoxyCompactList}\small\item\em Get the last reference node. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$\& {\bf Last\-Reference\-Node} ()
+\begin{DoxyCompactList}\small\item\em Modify the last reference node. \end{DoxyCompactList}\item 
+double {\bf Last\-Score} () const 
+\begin{DoxyCompactList}\small\item\em Get the score associated with the last query and reference nodes. \end{DoxyCompactList}\item 
+double \& {\bf Last\-Score} ()
+\begin{DoxyCompactList}\small\item\em Modify the score associated with the last query and reference nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf last\-Base\-Case}
+\begin{DoxyCompactList}\small\item\em The last base case. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf last\-Query\-Node}
+\begin{DoxyCompactList}\small\item\em The last query node. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf last\-Reference\-Node}
+\begin{DoxyCompactList}\small\item\em The last reference node. \end{DoxyCompactList}\item 
+double {\bf last\-Score}
+\begin{DoxyCompactList}\small\item\em The last distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Tree\-Type$>$class mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$}
+
+Traversal information for \doxyref{Neighbor\-Search}{p.}{classmlpack_1_1neighbor_1_1NeighborSearch}. 
+
+This information is used to make parent-\/child prunes or parent-\/parent prunes in Score() without needing to evaluate the distance between two nodes.
+
+The information held by this class is the last node combination visited before the current node combination was recursed into and the distance between the node centroids. 
+
+Definition at line 31 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!Neighbor\-Search\-Traversal\-Info@{Neighbor\-Search\-Traversal\-Info}}
+\index{Neighbor\-Search\-Traversal\-Info@{Neighbor\-Search\-Traversal\-Info}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{Neighbor\-Search\-Traversal\-Info}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::{\bf Neighbor\-Search\-Traversal\-Info} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_a05b28aee41e44e3c5fdbce3b8bc83e6b}
+
+
+Create the \doxyref{Traversal\-Info}{p.}{classTraversalInfo} object and initialize the pointers to N\-U\-L\-L. 
+
+
+
+Definition at line 37 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!Last\-Base\-Case@{Last\-Base\-Case}}
+\index{Last\-Base\-Case@{Last\-Base\-Case}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{Last\-Base\-Case}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ double {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Base\-Case (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_aa61bbde5d455fadb0c980160442a1f38}
+
+
+Get the base case associated with the last node combination. 
+
+
+
+Definition at line 59 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+References mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$\-::last\-Base\-Case.
+
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!Last\-Base\-Case@{Last\-Base\-Case}}
+\index{Last\-Base\-Case@{Last\-Base\-Case}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{Last\-Base\-Case}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ double\& {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Base\-Case (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_a2f5cef68b63d87273c85aae5f51e4ee8}
+
+
+Modify the base case associated with the last node combination. 
+
+
+
+Definition at line 61 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+References mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$\-::last\-Base\-Case.
+
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!Last\-Query\-Node@{Last\-Query\-Node}}
+\index{Last\-Query\-Node@{Last\-Query\-Node}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{Last\-Query\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ Tree\-Type$\ast$ {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Query\-Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_af282a86e1f448aac484d166e6639bc8e}
+
+
+Get the last query node. 
+
+
+
+Definition at line 44 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+References mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$\-::last\-Query\-Node.
+
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!Last\-Query\-Node@{Last\-Query\-Node}}
+\index{Last\-Query\-Node@{Last\-Query\-Node}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{Last\-Query\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ Tree\-Type$\ast$\& {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Query\-Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_a6bbe62eac1c8fca1405965c30da89f7b}
+
+
+Modify the last query node. 
+
+
+
+Definition at line 46 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+References mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$\-::last\-Query\-Node.
+
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!Last\-Reference\-Node@{Last\-Reference\-Node}}
+\index{Last\-Reference\-Node@{Last\-Reference\-Node}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{Last\-Reference\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ Tree\-Type$\ast$ {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Reference\-Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_aa493b54c587e0efe427c4700132a9649}
+
+
+Get the last reference node. 
+
+
+
+Definition at line 49 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+References mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$\-::last\-Reference\-Node.
+
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!Last\-Reference\-Node@{Last\-Reference\-Node}}
+\index{Last\-Reference\-Node@{Last\-Reference\-Node}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{Last\-Reference\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ Tree\-Type$\ast$\& {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Reference\-Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_a2a5ceae77d43621df22de731506f8940}
+
+
+Modify the last reference node. 
+
+
+
+Definition at line 51 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+References mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$\-::last\-Reference\-Node.
+
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!Last\-Score@{Last\-Score}}
+\index{Last\-Score@{Last\-Score}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{Last\-Score}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ double {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Score (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_ae8f1bb573fea387c7aeefbb93a94bbcb}
+
+
+Get the score associated with the last query and reference nodes. 
+
+
+
+Definition at line 54 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+References mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$\-::last\-Score.
+
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!Last\-Score@{Last\-Score}}
+\index{Last\-Score@{Last\-Score}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{Last\-Score}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ double\& {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::Last\-Score (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_a8b8c753976702bfb871a8f57b4f2cc37}
+
+
+Modify the score associated with the last query and reference nodes. 
+
+
+
+Definition at line 56 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+References mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$\-::last\-Score.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!last\-Base\-Case@{last\-Base\-Case}}
+\index{last\-Base\-Case@{last\-Base\-Case}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{last\-Base\-Case}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ double {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::last\-Base\-Case\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_a42539719fba0059b30c70113daf44ded}
+
+
+The last base case. 
+
+
+
+Definition at line 71 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+Referenced by mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$\-::\-Last\-Base\-Case().
+
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!last\-Query\-Node@{last\-Query\-Node}}
+\index{last\-Query\-Node@{last\-Query\-Node}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{last\-Query\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ Tree\-Type$\ast$ {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::last\-Query\-Node\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_aab37f24def932102ce6bff6eb5f87cfc}
+
+
+The last query node. 
+
+
+
+Definition at line 65 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+Referenced by mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$\-::\-Last\-Query\-Node().
+
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!last\-Reference\-Node@{last\-Reference\-Node}}
+\index{last\-Reference\-Node@{last\-Reference\-Node}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{last\-Reference\-Node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ Tree\-Type$\ast$ {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::last\-Reference\-Node\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_ad5c81142e3ad646ac108e0ba22c15337}
+
+
+The last reference node. 
+
+
+
+Definition at line 67 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+Referenced by mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$\-::\-Last\-Reference\-Node().
+
+\index{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}!last\-Score@{last\-Score}}
+\index{last\-Score@{last\-Score}!mlpack::neighbor::NeighborSearchTraversalInfo@{mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}}
+\subsubsection[{last\-Score}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ double {\bf mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info}$<$ Tree\-Type $>$\-::last\-Score\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1NeighborSearchTraversalInfo_a85e4c0543752991043445469c8790c4c}
+
+
+The last distance. 
+
+
+
+Definition at line 69 of file ns\-\_\-traversal\-\_\-info.\-hpp.
+
+
+
+Referenced by mlpack\-::neighbor\-::\-Neighbor\-Search\-Traversal\-Info$<$ Tree\-Type $>$\-::\-Last\-Score().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/neighbor\-\_\-search/{\bf ns\-\_\-traversal\-\_\-info.\-hpp}\end{DoxyCompactItemize}

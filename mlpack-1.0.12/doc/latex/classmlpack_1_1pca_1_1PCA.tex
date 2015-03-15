@@ -1,0 +1,257 @@
+\section{mlpack\-:\-:pca\-:\-:P\-C\-A Class Reference}
+\label{classmlpack_1_1pca_1_1PCA}\index{mlpack\-::pca\-::\-P\-C\-A@{mlpack\-::pca\-::\-P\-C\-A}}
+
+
+This class implements principal components analysis (\doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA}).  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf P\-C\-A} (const bool {\bf scale\-Data}=false)
+\begin{DoxyCompactList}\small\item\em Create the \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} object, specifying if the data should be scaled in each dimension by standard deviation when \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} is performed. \end{DoxyCompactList}\item 
+void {\bf Apply} (const arma\-::mat \&data, arma\-::mat \&transformed\-Data, arma\-::vec \&eigval, arma\-::mat \&eigvec) const 
+\begin{DoxyCompactList}\small\item\em Apply Principal Component Analysis to the provided data set. \end{DoxyCompactList}\item 
+void {\bf Apply} (const arma\-::mat \&data, arma\-::mat \&transformed\-Data, arma\-::vec \&eig\-Val) const 
+\begin{DoxyCompactList}\small\item\em Apply Principal Component Analysis to the provided data set. \end{DoxyCompactList}\item 
+double {\bf Apply} (arma\-::mat \&data, const size\-\_\-t new\-Dimension) const 
+\begin{DoxyCompactList}\small\item\em Use \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} for dimensionality reduction on the given dataset. \end{DoxyCompactList}\item 
+double {\bf Apply} (arma\-::mat \&data, const int new\-Dimension) const 
+\begin{DoxyCompactList}\small\item\em This overload is here to make sure int gets casted right to size\-\_\-t. \end{DoxyCompactList}\item 
+double {\bf Apply} (arma\-::mat \&data, const double var\-Retained) const 
+\begin{DoxyCompactList}\small\item\em Use \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} for dimensionality reduction on the given dataset. \end{DoxyCompactList}\item 
+bool {\bf Scale\-Data} () const 
+\begin{DoxyCompactList}\small\item\em Get whether or not this \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} object will scale (by standard deviation) the data when \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} is performed. \end{DoxyCompactList}\item 
+bool \& {\bf Scale\-Data} ()
+\begin{DoxyCompactList}\small\item\em Modify whether or not this \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} object will scale (by standard deviation) the data when \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} is performed. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf scale\-Data}
+\begin{DoxyCompactList}\small\item\em Whether or not the data will be scaled by standard deviation when \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} is performed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class implements principal components analysis (\doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA}). 
+
+This is a common, widely-\/used technique that is often used for either dimensionality reduction or transforming data into a better basis. Further information on \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} can be found in almost any statistics or machine learning textbook, and all over the internet. 
+
+Definition at line 30 of file pca.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::pca\-::\-P\-C\-A@{mlpack\-::pca\-::\-P\-C\-A}!P\-C\-A@{P\-C\-A}}
+\index{P\-C\-A@{P\-C\-A}!mlpack::pca::PCA@{mlpack\-::pca\-::\-P\-C\-A}}
+\subsubsection[{P\-C\-A}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::pca\-::\-P\-C\-A\-::\-P\-C\-A (
+\begin{DoxyParamCaption}
+\item[{const bool}]{scale\-Data = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1pca_1_1PCA_ac113cb144eef816ceb973f689ab62428}
+
+
+Create the \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} object, specifying if the data should be scaled in each dimension by standard deviation when \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} is performed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scale\-Data} & Whether or not to scale the data. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::pca\-::\-P\-C\-A@{mlpack\-::pca\-::\-P\-C\-A}!Apply@{Apply}}
+\index{Apply@{Apply}!mlpack::pca::PCA@{mlpack\-::pca\-::\-P\-C\-A}}
+\subsubsection[{Apply}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::pca\-::\-P\-C\-A\-::\-Apply (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{data, }
+\item[{arma\-::mat \&}]{transformed\-Data, }
+\item[{arma\-::vec \&}]{eigval, }
+\item[{arma\-::mat \&}]{eigvec}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1pca_1_1PCA_adace529d2ef0c4f6af66fca9d237bc03}
+
+
+Apply Principal Component Analysis to the provided data set. 
+
+It is safe to pass the same matrix reference for both data and transformed\-Data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data matrix. \\
+\hline
+{\em transformed\-Data} & Matrix to put results of \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} into. \\
+\hline
+{\em eigval} & Vector to put eigenvalues into. \\
+\hline
+{\em eigvec} & Matrix to put eigenvectors (loadings) into. \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by Apply().
+
+\index{mlpack\-::pca\-::\-P\-C\-A@{mlpack\-::pca\-::\-P\-C\-A}!Apply@{Apply}}
+\index{Apply@{Apply}!mlpack::pca::PCA@{mlpack\-::pca\-::\-P\-C\-A}}
+\subsubsection[{Apply}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::pca\-::\-P\-C\-A\-::\-Apply (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{data, }
+\item[{arma\-::mat \&}]{transformed\-Data, }
+\item[{arma\-::vec \&}]{eig\-Val}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1pca_1_1PCA_acbc28c696fdfd77d6864e0d4f2ca433a}
+
+
+Apply Principal Component Analysis to the provided data set. 
+
+It is safe to pass the same matrix reference for both data and transformed\-Data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data matrix. \\
+\hline
+{\em transformed\-Data} & Matrix to store results of \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} in. \\
+\hline
+{\em eigval} & Vector to put eigenvalues into. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::pca\-::\-P\-C\-A@{mlpack\-::pca\-::\-P\-C\-A}!Apply@{Apply}}
+\index{Apply@{Apply}!mlpack::pca::PCA@{mlpack\-::pca\-::\-P\-C\-A}}
+\subsubsection[{Apply}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::pca\-::\-P\-C\-A\-::\-Apply (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{data, }
+\item[{const size\-\_\-t}]{new\-Dimension}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1pca_1_1PCA_a56ec709aa78c7f760a675808916a7793}
+
+
+Use \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} for dimensionality reduction on the given dataset. 
+
+This will save the new\-Dimension largest principal components of the data and remove the rest. The parameter returned is the amount of variance of the data that is retained; this is a value between 0 and 1. For instance, a value of 0.\-9 indicates that 90\% of the variance present in the data was retained.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data matrix. \\
+\hline
+{\em new\-Dimension} & New dimension of the data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Amount of the variance of the data retained (between 0 and 1). 
+\end{DoxyReturn}
+\index{mlpack\-::pca\-::\-P\-C\-A@{mlpack\-::pca\-::\-P\-C\-A}!Apply@{Apply}}
+\index{Apply@{Apply}!mlpack::pca::PCA@{mlpack\-::pca\-::\-P\-C\-A}}
+\subsubsection[{Apply}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::pca\-::\-P\-C\-A\-::\-Apply (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{data, }
+\item[{const int}]{new\-Dimension}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1pca_1_1PCA_a91560515f98cd0414ebe2b62188f614e}
+
+
+This overload is here to make sure int gets casted right to size\-\_\-t. 
+
+
+
+Definition at line 81 of file pca.\-hpp.
+
+
+
+References Apply().
+
+\index{mlpack\-::pca\-::\-P\-C\-A@{mlpack\-::pca\-::\-P\-C\-A}!Apply@{Apply}}
+\index{Apply@{Apply}!mlpack::pca::PCA@{mlpack\-::pca\-::\-P\-C\-A}}
+\subsubsection[{Apply}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::pca\-::\-P\-C\-A\-::\-Apply (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{data, }
+\item[{const double}]{var\-Retained}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1pca_1_1PCA_a5b23b7e5e147d65c707b318bfc4f2a2a}
+
+
+Use \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} for dimensionality reduction on the given dataset. 
+
+This will save as many dimensions as necessary to retain at least the given amount of variance (specified by parameter var\-Retained). The amount should be between 0 and 1; if the amount is 0, then only 1 dimension will be retained. If the amount is 1, then all dimensions will be retained.
+
+The method returns the actual amount of variance retained, which will always be greater than or equal to the var\-Retained parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data matrix. \\
+\hline
+{\em var\-Retained} & Lower bound on amount of variance to retain; should be between 0 and 1. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Actual amount of variance retained (between 0 and 1). 
+\end{DoxyReturn}
+\index{mlpack\-::pca\-::\-P\-C\-A@{mlpack\-::pca\-::\-P\-C\-A}!Scale\-Data@{Scale\-Data}}
+\index{Scale\-Data@{Scale\-Data}!mlpack::pca::PCA@{mlpack\-::pca\-::\-P\-C\-A}}
+\subsubsection[{Scale\-Data}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::pca\-::\-P\-C\-A\-::\-Scale\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1pca_1_1PCA_aa2d6faab68d1c2cfeb82935f15c2addc}
+
+
+Get whether or not this \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} object will scale (by standard deviation) the data when \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} is performed. 
+
+
+
+Definition at line 105 of file pca.\-hpp.
+
+
+
+References scale\-Data.
+
+\index{mlpack\-::pca\-::\-P\-C\-A@{mlpack\-::pca\-::\-P\-C\-A}!Scale\-Data@{Scale\-Data}}
+\index{Scale\-Data@{Scale\-Data}!mlpack::pca::PCA@{mlpack\-::pca\-::\-P\-C\-A}}
+\subsubsection[{Scale\-Data}]{\setlength{\rightskip}{0pt plus 5cm}bool\& mlpack\-::pca\-::\-P\-C\-A\-::\-Scale\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1pca_1_1PCA_a9c82a9f1047107f860294da2b6012a78}
+
+
+Modify whether or not this \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} object will scale (by standard deviation) the data when \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} is performed. 
+
+
+
+Definition at line 108 of file pca.\-hpp.
+
+
+
+References scale\-Data.
+
+\index{mlpack\-::pca\-::\-P\-C\-A@{mlpack\-::pca\-::\-P\-C\-A}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::pca::PCA@{mlpack\-::pca\-::\-P\-C\-A}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mlpack\-::pca\-::\-P\-C\-A\-::\-To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1pca_1_1PCA_a9e5cff393c2927ff05522f498088d820}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::pca\-::\-P\-C\-A@{mlpack\-::pca\-::\-P\-C\-A}!scale\-Data@{scale\-Data}}
+\index{scale\-Data@{scale\-Data}!mlpack::pca::PCA@{mlpack\-::pca\-::\-P\-C\-A}}
+\subsubsection[{scale\-Data}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::pca\-::\-P\-C\-A\-::scale\-Data\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1pca_1_1PCA_ae5ad5257b9ef72487adfb48d15c0cde4}
+
+
+Whether or not the data will be scaled by standard deviation when \doxyref{P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA} is performed. 
+
+
+
+Definition at line 116 of file pca.\-hpp.
+
+
+
+Referenced by Scale\-Data().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/pca/{\bf pca.\-hpp}\end{DoxyCompactItemize}

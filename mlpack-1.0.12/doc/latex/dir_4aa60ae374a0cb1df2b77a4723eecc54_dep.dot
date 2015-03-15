@@ -1,0 +1,21 @@
+digraph "src/mlpack/core/tree" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_4fe3ec57c84c6ad35450b5bbf87898f0 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="core" fontname="Helvetica", fontsize="10", URL="dir_4fe3ec57c84c6ad35450b5bbf87898f0.html"]
+  subgraph clusterdir_4aa60ae374a0cb1df2b77a4723eecc54 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_4aa60ae374a0cb1df2b77a4723eecc54.html"];
+    dir_4aa60ae374a0cb1df2b77a4723eecc54 [shape=plaintext label="tree"];
+    dir_a1576826d045c2c1d577adde55308f0f [shape=box label="binary_space_tree" color="black" fillcolor="white" style="filled" URL="dir_a1576826d045c2c1d577adde55308f0f.html"];
+    dir_9c9698c323d9e711499953999cc67a40 [shape=box label="cosine_tree" color="black" fillcolor="white" style="filled" URL="dir_9c9698c323d9e711499953999cc67a40.html"];
+    dir_99c4623ed086f7710d9e7ec0a5a6a00c [shape=box label="cover_tree" color="black" fillcolor="white" style="filled" URL="dir_99c4623ed086f7710d9e7ec0a5a6a00c.html"];
+  }
+  }
+  dir_f49c0cad6d7713ea1863882a9c623a32 [shape=box label="metrics" URL="dir_f49c0cad6d7713ea1863882a9c623a32.html"];
+  dir_9ad81086302dc6a18a7fe6365a98af87 [shape=box label="math" URL="dir_9ad81086302dc6a18a7fe6365a98af87.html"];
+  dir_4aa60ae374a0cb1df2b77a4723eecc54->dir_a1576826d045c2c1d577adde55308f0f [headlabel="4", labeldistance=1.5 headhref="dir_000016_000017.html"];
+  dir_4aa60ae374a0cb1df2b77a4723eecc54->dir_99c4623ed086f7710d9e7ec0a5a6a00c [headlabel="4", labeldistance=1.5 headhref="dir_000016_000018.html"];
+  dir_4aa60ae374a0cb1df2b77a4723eecc54->dir_9ad81086302dc6a18a7fe6365a98af87 [headlabel="2", labeldistance=1.5 headhref="dir_000016_000008.html"];
+  dir_99c4623ed086f7710d9e7ec0a5a6a00c->dir_f49c0cad6d7713ea1863882a9c623a32 [headlabel="1", labeldistance=1.5 headhref="dir_000018_000009.html"];
+}

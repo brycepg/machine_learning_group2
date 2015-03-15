@@ -1,0 +1,90 @@
+.TH "mlpack::amf::NMFMultiplicativeDistanceUpdate" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::amf::NMFMultiplicativeDistanceUpdate \- 
+.PP
+The multiplicative distance update rules for matrices W and H\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNMFMultiplicativeDistanceUpdate\fP ()"
+.br
+.ti -1c
+.RI "template<typename MatType > void \fBInitialize\fP (const MatType &dataset, const size_t rank)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename MatType > static void \fBHUpdate\fP (const MatType &V, const arma::mat &W, arma::mat &H)"
+.br
+.RI "\fIThe update rule for the encoding matrix H\&. \fP"
+.ti -1c
+.RI "template<typename MatType > static void \fBWUpdate\fP (const MatType &V, arma::mat &W, const arma::mat &H)"
+.br
+.RI "\fIThe update rule for the basis matrix W\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The multiplicative distance update rules for matrices W and H\&. 
+
+This follows a method described in the paper 'Algorithms for Non-negative Matrix Factorization' by D\&. D\&. Lee and H\&. S\&. Seung\&. This is a multiplicative rule that ensures that the Frobenius norm $ \sqrt{\sum_i \sum_j(V-WH)^2} $ is non-increasing between subsequent iterations\&. Both of the update rules for W and H are defined in this file\&. 
+.PP
+Definition at line 30 of file nmf_mult_dist\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::amf::NMFMultiplicativeDistanceUpdate::NMFMultiplicativeDistanceUpdate ()\fC [inline]\fP"
+
+.PP
+Definition at line 34 of file nmf_mult_dist\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename MatType > static void mlpack::amf::NMFMultiplicativeDistanceUpdate::HUpdate (const MatType &V, const arma::mat &W, arma::mat &H)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+The update rule for the encoding matrix H\&. The formula used is \[ H_{a\mu} \leftarrow H_{a\mu} \frac{(W^T V)_{a\mu}}{(W^T WH)_{a\mu}} \] The function takes in all the matrices and only changes the value of the H matrix\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIV\fP Input matrix to be factorized\&. 
+.br
+\fIW\fP Basis matrix\&. 
+.br
+\fIH\fP Encoding matrix to be updated\&. 
+.RE
+.PP
+
+.PP
+Definition at line 76 of file nmf_mult_dist\&.hpp\&.
+.SS "template<typename MatType > void mlpack::amf::NMFMultiplicativeDistanceUpdate::Initialize (const MatType &dataset, const size_trank)\fC [inline]\fP"
+
+.PP
+Definition at line 37 of file nmf_mult_dist\&.hpp\&.
+.SS "template<typename MatType > static void mlpack::amf::NMFMultiplicativeDistanceUpdate::WUpdate (const MatType &V, arma::mat &W, const arma::mat &H)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+The update rule for the basis matrix W\&. The formula used is \[ W_{ia} \leftarrow W_{ia} \frac{(VH^T)_{ia}}{(WHH^T)_{ia}} \] The function takes in all the matrices and only changes the value of the W matrix\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIV\fP Input matrix to be factorized\&. 
+.br
+\fIW\fP Basis matrix to be updated\&. 
+.br
+\fIH\fP Encoding matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 56 of file nmf_mult_dist\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

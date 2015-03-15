@@ -1,0 +1,11 @@
+digraph "src/mlpack/core/dists" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_4fe3ec57c84c6ad35450b5bbf87898f0 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="core" fontname="Helvetica", fontsize="10", URL="dir_4fe3ec57c84c6ad35450b5bbf87898f0.html"]
+  dir_47ddeeba9f5b7b3714cb3f4dfec86c00 [shape=box, label="dists", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_47ddeeba9f5b7b3714cb3f4dfec86c00.html"];
+  }
+  dir_2217eda3f3f128182276a15ca80cc98e [shape=box label="methods" fillcolor="white" style="filled" color="red" URL="dir_2217eda3f3f128182276a15ca80cc98e.html"];
+  dir_47ddeeba9f5b7b3714cb3f4dfec86c00->dir_2217eda3f3f128182276a15ca80cc98e [headlabel="1", labeldistance=1.5 headhref="dir_000006_000021.html"];
+}

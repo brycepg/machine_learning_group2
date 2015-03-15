@@ -1,0 +1,16 @@
+digraph "src/mlpack/methods/neighbor_search/ns_traversal_info.hpp"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="src/mlpack/methods\l/neighbor_search/ns\l_traversal_info.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="src/mlpack/methods\l/emst/dtb_rules.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dtb__rules_8hpp.html"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="src/mlpack/methods\l/fastmks/fastmks_rules.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$fastmks__rules_8hpp.html"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="src/mlpack/methods\l/neighbor_search/neighbor\l_search_rules.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$neighbor__search__rules_8hpp.html"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="src/mlpack/methods\l/range_search/range\l_search_rules.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$range__search__rules_8hpp.html"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="src/mlpack/methods\l/rann/ra_search_rules.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ra__search__rules_8hpp.html"];
+}

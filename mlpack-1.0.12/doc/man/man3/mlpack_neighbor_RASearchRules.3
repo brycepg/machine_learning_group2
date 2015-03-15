@@ -1,0 +1,477 @@
+.TH "mlpack::neighbor::RASearchRules< SortPolicy, MetricType, TreeType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::neighbor::RASearchRules< SortPolicy, MetricType, TreeType > \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef 
+.br
+\fBneighbor::NeighborSearchTraversalInfo\fP
+.br
+< TreeType > \fBTraversalInfoType\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRASearchRules\fP (const arma::mat &\fBreferenceSet\fP, const arma::mat &\fBquerySet\fP, arma::Mat< size_t > &\fBneighbors\fP, arma::mat &\fBdistances\fP, MetricType &\fBmetric\fP, const double tau=5, const double \fBalpha\fP=0\&.95, const bool naive=false, const bool \fBsampleAtLeaves\fP=false, const bool \fBfirstLeafExact\fP=false, const size_t \fBsingleSampleLimit\fP=20)"
+.br
+.ti -1c
+.RI "double \fBBaseCase\fP (const size_t queryIndex, const size_t referenceIndex)"
+.br
+.ti -1c
+.RI "size_t \fBNumDistComputations\fP ()"
+.br
+.ti -1c
+.RI "size_t \fBNumEffectiveSamples\fP ()"
+.br
+.ti -1c
+.RI "double \fBRescore\fP (const size_t queryIndex, TreeType &referenceNode, const double oldScore)"
+.br
+.RI "\fIRe-evaluate the score for recursion order\&. \fP"
+.ti -1c
+.RI "double \fBRescore\fP (TreeType &queryNode, TreeType &referenceNode, const double oldScore)"
+.br
+.RI "\fIRe-evaluate the score for recursion order\&. \fP"
+.ti -1c
+.RI "double \fBScore\fP (const size_t queryIndex, TreeType &referenceNode)"
+.br
+.RI "\fIGet the score for recursion order\&. \fP"
+.ti -1c
+.RI "double \fBScore\fP (const size_t queryIndex, TreeType &referenceNode, const double baseCaseResult)"
+.br
+.RI "\fIGet the score for recursion order\&. \fP"
+.ti -1c
+.RI "double \fBScore\fP (TreeType &queryNode, TreeType &referenceNode)"
+.br
+.RI "\fIGet the score for recursion order\&. \fP"
+.ti -1c
+.RI "double \fBScore\fP (TreeType &queryNode, TreeType &referenceNode, const double baseCaseResult)"
+.br
+.RI "\fIGet the score for recursion order, passing the base case result (in the situation where it may be needed to calculate the recursion order)\&. \fP"
+.ti -1c
+.RI "const \fBTraversalInfoType\fP & \fBTraversalInfo\fP () const "
+.br
+.ti -1c
+.RI "\fBTraversalInfoType\fP & \fBTraversalInfo\fP ()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBInsertNeighbor\fP (const size_t queryIndex, const size_t pos, const size_t neighbor, const double distance)"
+.br
+.RI "\fIInsert a point into the neighbors and distances matrices; this is a helper function\&. \fP"
+.ti -1c
+.RI "size_t \fBMinimumSamplesReqd\fP (const size_t n, const size_t k, const double tau, const double \fBalpha\fP) const "
+.br
+.RI "\fICompute the minimum number of samples required to guarantee the given rank-approximation and success probability\&. \fP"
+.ti -1c
+.RI "void \fBObtainDistinctSamples\fP (const size_t numSamples, const size_t rangeUpperBound, arma::uvec &distinctSamples) const "
+.br
+.RI "\fIPick up desired number of samples (with replacement) from a given range of integers so that only the distinct samples are returned from the range [0 - specified upper bound) \fP"
+.ti -1c
+.RI "double \fBScore\fP (const size_t queryIndex, TreeType &referenceNode, const double distance, const double bestDistance)"
+.br
+.RI "\fIPerform actual scoring for single-tree case\&. \fP"
+.ti -1c
+.RI "double \fBScore\fP (TreeType &queryNode, TreeType &referenceNode, const double distance, const double bestDistance)"
+.br
+.RI "\fIPerform actual scoring for dual-tree case\&. \fP"
+.ti -1c
+.RI "double \fBSuccessProbability\fP (const size_t n, const size_t k, const size_t m, const size_t t) const "
+.br
+.RI "\fICompute the success probability of obtaining 'k'-neighbors from a set of size 'n' within the top 't' neighbors if 'm' samples are made\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "arma::mat & \fBdistances\fP"
+.br
+.RI "\fIThe matrix the resultant neighbor distances should be stored in\&. \fP"
+.ti -1c
+.RI "bool \fBfirstLeafExact\fP"
+.br
+.RI "\fIWhether to do exact computation on the first leaf before any sampling\&. \fP"
+.ti -1c
+.RI "MetricType & \fBmetric\fP"
+.br
+.RI "\fIThe instantiated metric\&. \fP"
+.ti -1c
+.RI "arma::Mat< size_t > & \fBneighbors\fP"
+.br
+.RI "\fIThe matrix the resultant neighbor indices should be stored in\&. \fP"
+.ti -1c
+.RI "size_t \fBnumDistComputations\fP"
+.br
+.ti -1c
+.RI "arma::Col< size_t > \fBnumSamplesMade\fP"
+.br
+.RI "\fIThe number of samples made for every query\&. \fP"
+.ti -1c
+.RI "size_t \fBnumSamplesReqd\fP"
+.br
+.RI "\fIThe minimum number of samples required per query\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBquerySet\fP"
+.br
+.RI "\fIThe query set\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBreferenceSet\fP"
+.br
+.RI "\fIThe reference set\&. \fP"
+.ti -1c
+.RI "bool \fBsampleAtLeaves\fP"
+.br
+.RI "\fIWhether to sample at leaves or just use all of it\&. \fP"
+.ti -1c
+.RI "double \fBsamplingRatio\fP"
+.br
+.RI "\fIThe sampling ratio\&. \fP"
+.ti -1c
+.RI "size_t \fBsingleSampleLimit\fP"
+.br
+.RI "\fIThe limit on the largest node that can be approximated by sampling\&. \fP"
+.ti -1c
+.RI "\fBTraversalInfoType\fP \fBtraversalInfo\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBRASearch< SortPolicy, MetricType, TreeType >\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename SortPolicy, typename MetricType, typename TreeType>class mlpack::neighbor::RASearchRules< SortPolicy, MetricType, TreeType >"
+
+.PP
+Definition at line 26 of file ra_search_rules\&.hpp\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > typedef \fBneighbor::NeighborSearchTraversalInfo\fP<TreeType> \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::\fBTraversalInfoType\fP"
+
+.PP
+Definition at line 197 of file ra_search_rules\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::\fBRASearchRules\fP (const arma::mat &referenceSet, const arma::mat &querySet, arma::Mat< size_t > &neighbors, arma::mat &distances, MetricType &metric, const doubletau = \fC5\fP, const doublealpha = \fC0\&.95\fP, const boolnaive = \fCfalse\fP, const boolsampleAtLeaves = \fCfalse\fP, const boolfirstLeafExact = \fCfalse\fP, const size_tsingleSampleLimit = \fC20\fP)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > double \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::BaseCase (const size_tqueryIndex, const size_treferenceIndex)"
+
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > void \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::InsertNeighbor (const size_tqueryIndex, const size_tpos, const size_tneighbor, const doubledistance)\fC [private]\fP"
+
+.PP
+Insert a point into the neighbors and distances matrices; this is a helper function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP Index of point whose neighbors we are inserting into\&. 
+.br
+\fIpos\fP Position in list to insert into\&. 
+.br
+\fIneighbor\fP Index of reference point which is being inserted\&. 
+.br
+\fIdistance\fP Distance from query point to reference point\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > size_t \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::MinimumSamplesReqd (const size_tn, const size_tk, const doubletau, const doublealpha) const\fC [private]\fP"
+
+.PP
+Compute the minimum number of samples required to guarantee the given rank-approximation and success probability\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP Size of the set to be sampled from\&. 
+.br
+\fIk\fP The number of neighbors required within the rank-approximation\&. 
+.br
+\fItau\fP The rank-approximation in percentile of the data\&. 
+.br
+\fIalpha\fP The success probability desired\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > size_t \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::NumDistComputations ()\fC [inline]\fP"
+
+.PP
+Definition at line 188 of file ra_search_rules\&.hpp\&.
+.PP
+References mlpack::neighbor::RASearchRules< SortPolicy, MetricType, TreeType >::numDistComputations\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > size_t \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::NumEffectiveSamples ()\fC [inline]\fP"
+
+.PP
+Definition at line 189 of file ra_search_rules\&.hpp\&.
+.PP
+References mlpack::neighbor::RASearchRules< SortPolicy, MetricType, TreeType >::numSamplesMade\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > void \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::ObtainDistinctSamples (const size_tnumSamples, const size_trangeUpperBound, arma::uvec &distinctSamples) const\fC [private]\fP"
+
+.PP
+Pick up desired number of samples (with replacement) from a given range of integers so that only the distinct samples are returned from the range [0 - specified upper bound) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumSamples\fP Number of random samples\&. 
+.br
+\fIrangeUpperBound\fP The upper bound on the range of integers\&. 
+.br
+\fIdistinctSamples\fP The list of the distinct samples\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > double \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::Rescore (const size_tqueryIndex, TreeType &referenceNode, const doubleoldScore)"
+
+.PP
+Re-evaluate the score for recursion order\&. A low score indicates priority for recursion, while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&. This is used when the score has already been calculated, but another recursion may have modified the bounds for pruning\&. So the old score is checked against the new pruning bound\&.
+.PP
+For rank-approximation, it also checks if the number of samples left for a query to satisfy the rank constraint is small enough at this point of the algorithm, then this node is approximated by sampling and given a new score of 'DBL_MAX'\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP Index of query point\&. 
+.br
+\fIreferenceNode\fP Candidate node to be recursed into\&. 
+.br
+\fIoldScore\fP Old score produced by \fBScore()\fP (or \fBRescore()\fP)\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > double \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::Rescore (TreeType &queryNode, TreeType &referenceNode, const doubleoldScore)"
+
+.PP
+Re-evaluate the score for recursion order\&. A low score indicates priority for recursion, while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&. This is used when the score has already been calculated, but another recursion may have modified the bounds for pruning\&. So the old score is checked against the new pruning bound\&.
+.PP
+For the rank-approximation, we check if the referenceNode can be approximated by sampling\&. If it can be, enough samples are made for every query in the queryNode\&. No further query-tree traversal is performed\&.
+.PP
+The 'NumSamplesMade' query stat is propagated up the tree\&. And then if pruning occurs (by distance or by sampling), the 'NumSamplesMade' stat is not propagated down the tree\&. If no pruning occurs, the stat is propagated down the tree\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryNode\fP Candidate query node to recurse into\&. 
+.br
+\fIreferenceNode\fP Candidate reference node to recurse into\&. 
+.br
+\fIoldScore\fP Old score produced by Socre() (or \fBRescore()\fP)\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > double \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::Score (const size_tqueryIndex, TreeType &referenceNode)"
+
+.PP
+Get the score for recursion order\&. A low score indicates priority for recursion, while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&.
+.PP
+For rank-approximation, the scoring function first checks if pruning by distance is possible\&. If yes, then the node is given the score of 'DBL_MAX' and the expected number of samples from that node are added to the number of samples made for the query\&.
+.PP
+If no, then the function tries to see if the node can be pruned by approximation\&. If number of samples required from this node is small enough, then that number of samples are acquired from this node and the score is set to be 'DBL_MAX'\&.
+.PP
+If the pruning by approximation is not possible either, the algorithm continues with the usual tree-traversal\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP Index of query point\&. 
+.br
+\fIreferenceNode\fP Candidate node to be recursed into\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > double \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::Score (const size_tqueryIndex, TreeType &referenceNode, const doublebaseCaseResult)"
+
+.PP
+Get the score for recursion order\&. A low score indicates priority for recursion, while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&.
+.PP
+For rank-approximation, the scoring function first checks if pruning by distance is possible\&. If yes, then the node is given the score of 'DBL_MAX' and the expected number of samples from that node are added to the number of samples made for the query\&.
+.PP
+If no, then the function tries to see if the node can be pruned by approximation\&. If number of samples required from this node is small enough, then that number of samples are acquired from this node and the score is set to be 'DBL_MAX'\&.
+.PP
+If the pruning by approximation is not possible either, the algorithm continues with the usual tree-traversal\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP Index of query point\&. 
+.br
+\fIreferenceNode\fP Candidate node to be recursed into\&. 
+.br
+\fIbaseCaseResult\fP Result of BaseCase(queryIndex, referenceNode)\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > double \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::Score (TreeType &queryNode, TreeType &referenceNode)"
+
+.PP
+Get the score for recursion order\&. A low score indicates priority for recursionm while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&.
+.PP
+For the rank-approximation, we check if the referenceNode can be approximated by sampling\&. If it can be, enough samples are made for every query in the queryNode\&. No further query-tree traversal is performed\&.
+.PP
+The 'NumSamplesMade' query stat is propagated up the tree\&. And then if pruning occurs (by distance or by sampling), the 'NumSamplesMade' stat is not propagated down the tree\&. If no pruning occurs, the stat is propagated down the tree\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryNode\fP Candidate query node to recurse into\&. 
+.br
+\fIreferenceNode\fP Candidate reference node to recurse into\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > double \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::Score (TreeType &queryNode, TreeType &referenceNode, const doublebaseCaseResult)"
+
+.PP
+Get the score for recursion order, passing the base case result (in the situation where it may be needed to calculate the recursion order)\&. A low score indicates priority for recursion, while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&.
+.PP
+For the rank-approximation, we check if the referenceNode can be approximated by sampling\&. If it can be, enough samples are made for every query in the queryNode\&. No further query-tree traversal is performed\&.
+.PP
+The 'NumSamplesMade' query stat is propagated up the tree\&. And then if pruning occurs (by distance or by sampling), the 'NumSamplesMade' stat is not propagated down the tree\&. If no pruning occurs, the stat is propagated down the tree\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryNode\fP Candidate query node to recurse into\&. 
+.br
+\fIreferenceNode\fP Candidate reference node to recurse into\&. 
+.br
+\fIbaseCaseResult\fP Result of BaseCase(queryIndex, referenceNode)\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > double \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::Score (const size_tqueryIndex, TreeType &referenceNode, const doubledistance, const doublebestDistance)\fC [private]\fP"
+
+.PP
+Perform actual scoring for single-tree case\&. 
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > double \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::Score (TreeType &queryNode, TreeType &referenceNode, const doubledistance, const doublebestDistance)\fC [private]\fP"
+
+.PP
+Perform actual scoring for dual-tree case\&. 
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > double \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::SuccessProbability (const size_tn, const size_tk, const size_tm, const size_tt) const\fC [private]\fP"
+
+.PP
+Compute the success probability of obtaining 'k'-neighbors from a set of size 'n' within the top 't' neighbors if 'm' samples are made\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP Size of the set being sampled from\&. 
+.br
+\fIk\fP The number of neighbors required within the rank-approximation\&. 
+.br
+\fIm\fP The number of random samples\&. 
+.br
+\fIt\fP The desired rank-approximation\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > const \fBTraversalInfoType\fP& \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::\fBTraversalInfo\fP () const\fC [inline]\fP"
+
+.PP
+Definition at line 199 of file ra_search_rules\&.hpp\&.
+.PP
+References mlpack::neighbor::RASearchRules< SortPolicy, MetricType, TreeType >::traversalInfo\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > \fBTraversalInfoType\fP& \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::\fBTraversalInfo\fP ()\fC [inline]\fP"
+
+.PP
+Definition at line 200 of file ra_search_rules\&.hpp\&.
+.PP
+References mlpack::neighbor::RASearchRules< SortPolicy, MetricType, TreeType >::traversalInfo\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > friend class \fBRASearch\fP< SortPolicy, MetricType, TreeType >\fC [friend]\fP"
+
+.PP
+Definition at line 315 of file ra_search_rules\&.hpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > arma::mat& \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::distances\fC [private]\fP"
+
+.PP
+The matrix the resultant neighbor distances should be stored in\&. 
+.PP
+Definition at line 213 of file ra_search_rules\&.hpp\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > bool \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::firstLeafExact\fC [private]\fP"
+
+.PP
+Whether to do exact computation on the first leaf before any sampling\&. 
+.PP
+Definition at line 222 of file ra_search_rules\&.hpp\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > MetricType& \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::metric\fC [private]\fP"
+
+.PP
+The instantiated metric\&. 
+.PP
+Definition at line 216 of file ra_search_rules\&.hpp\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > arma::Mat<size_t>& \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::neighbors\fC [private]\fP"
+
+.PP
+The matrix the resultant neighbor indices should be stored in\&. 
+.PP
+Definition at line 210 of file ra_search_rules\&.hpp\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > size_t \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::numDistComputations\fC [private]\fP"
+
+.PP
+Definition at line 237 of file ra_search_rules\&.hpp\&.
+.PP
+Referenced by mlpack::neighbor::RASearchRules< SortPolicy, MetricType, TreeType >::NumDistComputations()\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > arma::Col<size_t> \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::numSamplesMade\fC [private]\fP"
+
+.PP
+The number of samples made for every query\&. 
+.PP
+Definition at line 231 of file ra_search_rules\&.hpp\&.
+.PP
+Referenced by mlpack::neighbor::RASearchRules< SortPolicy, MetricType, TreeType >::NumEffectiveSamples()\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > size_t \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::numSamplesReqd\fC [private]\fP"
+
+.PP
+The minimum number of samples required per query\&. 
+.PP
+Definition at line 228 of file ra_search_rules\&.hpp\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > const arma::mat& \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::querySet\fC [private]\fP"
+
+.PP
+The query set\&. 
+.PP
+Definition at line 207 of file ra_search_rules\&.hpp\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > const arma::mat& \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::referenceSet\fC [private]\fP"
+
+.PP
+The reference set\&. 
+.PP
+Definition at line 204 of file ra_search_rules\&.hpp\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > bool \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::sampleAtLeaves\fC [private]\fP"
+
+.PP
+Whether to sample at leaves or just use all of it\&. 
+.PP
+Definition at line 219 of file ra_search_rules\&.hpp\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > double \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::samplingRatio\fC [private]\fP"
+
+.PP
+The sampling ratio\&. 
+.PP
+Definition at line 234 of file ra_search_rules\&.hpp\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > size_t \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::singleSampleLimit\fC [private]\fP"
+
+.PP
+The limit on the largest node that can be approximated by sampling\&. 
+.PP
+Definition at line 225 of file ra_search_rules\&.hpp\&.
+.SS "template<typename SortPolicy , typename MetricType , typename TreeType > \fBTraversalInfoType\fP \fBmlpack::neighbor::RASearchRules\fP< SortPolicy, MetricType, TreeType >::traversalInfo\fC [private]\fP"
+
+.PP
+Definition at line 239 of file ra_search_rules\&.hpp\&.
+.PP
+Referenced by mlpack::neighbor::RASearchRules< SortPolicy, MetricType, TreeType >::TraversalInfo()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

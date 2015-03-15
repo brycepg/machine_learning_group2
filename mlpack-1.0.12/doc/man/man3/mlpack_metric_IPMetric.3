@@ -1,0 +1,119 @@
+.TH "mlpack::metric::IPMetric< KernelType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::metric::IPMetric< KernelType > \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIPMetric\fP ()"
+.br
+.RI "\fICreate the \fBIPMetric\fP without an instantiated kernel\&. \fP"
+.ti -1c
+.RI "\fBIPMetric\fP (KernelType &\fBkernel\fP)"
+.br
+.RI "\fICreate the \fBIPMetric\fP with an instantiated kernel\&. \fP"
+.ti -1c
+.RI "\fB~IPMetric\fP ()"
+.br
+.RI "\fIDestroy the \fBIPMetric\fP object\&. \fP"
+.ti -1c
+.RI "template<typename Vec1Type , typename Vec2Type > double \fBEvaluate\fP (const Vec1Type &a, const Vec2Type &b)"
+.br
+.RI "\fIEvaluate the metric\&. \fP"
+.ti -1c
+.RI "const KernelType & \fBKernel\fP () const "
+.br
+.RI "\fIGet the kernel\&. \fP"
+.ti -1c
+.RI "KernelType & \fBKernel\fP ()"
+.br
+.RI "\fIModify the kernel\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturns a string representation of this object\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "KernelType & \fBkernel\fP"
+.br
+.RI "\fIThe reference to the kernel that is being used\&. \fP"
+.ti -1c
+.RI "KernelType * \fBlocalKernel\fP"
+.br
+.RI "\fIThe locally stored kernel, if it is necessary\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename KernelType>class mlpack::metric::IPMetric< KernelType >"
+
+.PP
+Definition at line 22 of file ip_metric\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename KernelType > \fBmlpack::metric::IPMetric\fP< KernelType >::\fBIPMetric\fP ()"
+
+.PP
+Create the \fBIPMetric\fP without an instantiated kernel\&. 
+.SS "template<typename KernelType > \fBmlpack::metric::IPMetric\fP< KernelType >::\fBIPMetric\fP (KernelType &kernel)"
+
+.PP
+Create the \fBIPMetric\fP with an instantiated kernel\&. 
+.SS "template<typename KernelType > \fBmlpack::metric::IPMetric\fP< KernelType >::~\fBIPMetric\fP ()"
+
+.PP
+Destroy the \fBIPMetric\fP object\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename KernelType > template<typename Vec1Type , typename Vec2Type > double \fBmlpack::metric::IPMetric\fP< KernelType >::Evaluate (const Vec1Type &a, const Vec2Type &b)"
+
+.PP
+Evaluate the metric\&. 
+.SS "template<typename KernelType > const KernelType& \fBmlpack::metric::IPMetric\fP< KernelType >::Kernel () const\fC [inline]\fP"
+
+.PP
+Get the kernel\&. 
+.PP
+Definition at line 41 of file ip_metric\&.hpp\&.
+.PP
+References mlpack::metric::IPMetric< KernelType >::kernel\&.
+.SS "template<typename KernelType > KernelType& \fBmlpack::metric::IPMetric\fP< KernelType >::Kernel ()\fC [inline]\fP"
+
+.PP
+Modify the kernel\&. 
+.PP
+Definition at line 43 of file ip_metric\&.hpp\&.
+.PP
+References mlpack::metric::IPMetric< KernelType >::kernel\&.
+.SS "template<typename KernelType > std::string \fBmlpack::metric::IPMetric\fP< KernelType >::ToString () const"
+
+.PP
+Returns a string representation of this object\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename KernelType > KernelType& \fBmlpack::metric::IPMetric\fP< KernelType >::kernel\fC [private]\fP"
+
+.PP
+The reference to the kernel that is being used\&. 
+.PP
+Definition at line 52 of file ip_metric\&.hpp\&.
+.PP
+Referenced by mlpack::metric::IPMetric< KernelType >::Kernel()\&.
+.SS "template<typename KernelType > KernelType* \fBmlpack::metric::IPMetric\fP< KernelType >::localKernel\fC [private]\fP"
+
+.PP
+The locally stored kernel, if it is necessary\&. 
+.PP
+Definition at line 50 of file ip_metric\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

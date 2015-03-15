@@ -1,0 +1,558 @@
+\section{src/mlpack/core/util/cli.hpp File Reference}
+\label{cli_8hpp}\index{src/mlpack/core/util/cli.\-hpp@{src/mlpack/core/util/cli.\-hpp}}
+Include dependency graph for cli.\-hpp\-:
+This graph shows which files directly or indirectly include this file\-:
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf mlpack\-::\-C\-L\-I}
+\begin{DoxyCompactList}\small\item\em Parses the command line for parameters and holds user-\/specified parameters. \end{DoxyCompactList}\item 
+struct {\bf mlpack\-::\-Param\-Data}
+\begin{DoxyCompactList}\small\item\em Aids in the extensibility of \doxyref{C\-L\-I}{p.}{classmlpack_1_1CLI} by focusing potential changes into one structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+{\bf mlpack}
+\begin{DoxyCompactList}\small\item\em Linear algebra utility functions, generally performed on matrices or vectors. \end{DoxyCompactList}\item 
+{\bf mlpack\-::util}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf P\-A\-R\-A\-M}(T, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F, R\-E\-Q)
+\begin{DoxyCompactList}\small\item\em Define an input parameter. \end{DoxyCompactList}\item 
+\#define {\bf P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E}(I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F)~{\bf P\-A\-R\-A\-M}(double, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F, false)
+\begin{DoxyCompactList}\small\item\em Define a double parameter. \end{DoxyCompactList}\item 
+\#define {\bf P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-R\-E\-Q}(I\-D, D\-E\-S\-C, A\-L\-I\-A\-S)
+\begin{DoxyCompactList}\small\item\em Define a required double parameter. \end{DoxyCompactList}\item 
+\#define {\bf P\-A\-R\-A\-M\-\_\-\-F\-L\-A\-G}(I\-D, D\-E\-S\-C, A\-L\-I\-A\-S)~P\-A\-R\-A\-M\-\_\-\-F\-L\-A\-G\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L(I\-D, D\-E\-S\-C, A\-L\-I\-A\-S);
+\begin{DoxyCompactList}\small\item\em Define a flag parameter. \end{DoxyCompactList}\item 
+\#define {\bf P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T}(I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F)~{\bf P\-A\-R\-A\-M}(float, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F, false)
+\begin{DoxyCompactList}\small\item\em Define a floating-\/point parameter. \end{DoxyCompactList}\item 
+\#define {\bf P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-R\-E\-Q}(I\-D, D\-E\-S\-C, A\-L\-I\-A\-S)
+\begin{DoxyCompactList}\small\item\em Define a required floating-\/point parameter. \end{DoxyCompactList}\item 
+\#define {\bf P\-A\-R\-A\-M\-\_\-\-I\-N\-T}(I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F)~{\bf P\-A\-R\-A\-M}(int, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F, false)
+\begin{DoxyCompactList}\small\item\em Define an integer parameter. \end{DoxyCompactList}\item 
+\#define {\bf P\-A\-R\-A\-M\-\_\-\-I\-N\-T\-\_\-\-R\-E\-Q}(I\-D, D\-E\-S\-C, A\-L\-I\-A\-S)~{\bf P\-A\-R\-A\-M}(int, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, 0, true)
+\begin{DoxyCompactList}\small\item\em Define a required integer parameter. \end{DoxyCompactList}\item 
+\#define {\bf P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G}(I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F)~{\bf P\-A\-R\-A\-M}(std\-::string, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F, false)
+\begin{DoxyCompactList}\small\item\em Define a string parameter. \end{DoxyCompactList}\item 
+\#define {\bf P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G\-\_\-\-R\-E\-Q}(I\-D, D\-E\-S\-C, A\-L\-I\-A\-S)
+\begin{DoxyCompactList}\small\item\em Define a required string parameter. \end{DoxyCompactList}\item 
+\#define {\bf P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R}(T, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S)~{\bf P\-A\-R\-A\-M}(std\-::vector$<$T$>$, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, std\-::vector$<$T$>$(), false)
+\begin{DoxyCompactList}\small\item\em Define a vector parameter. \end{DoxyCompactList}\item 
+\#define {\bf P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R\-\_\-\-R\-E\-Q}(T, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S)
+\begin{DoxyCompactList}\small\item\em Define a required vector parameter. \end{DoxyCompactList}\item 
+\#define {\bf P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O}(N\-A\-M\-E, D\-E\-S\-C)
+\begin{DoxyCompactList}\small\item\em Document an executable. \end{DoxyCompactList}\item 
+\#define {\bf T\-Y\-P\-E\-N\-A\-M\-E}(x)~(std\-::string(typeid(x).name()))
+\begin{DoxyCompactList}\small\item\em The T\-Y\-P\-E\-N\-A\-M\-E macro is used internally to convert a type into a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Matthew Amidon
+\end{DoxyAuthor}
+This file implements the C\-L\-I subsystem which is intended to replace F\-X. This can be used more or less regardless of context. In the future, it might be expanded to include file I/\-O.
+
+This file is part of mlpack 1.\-0.\-12.
+
+mlpack is free software; you may redstribute it and/or modify it under the terms of the 3-\/clause B\-S\-D license. You should have received a copy of the 3-\/clause B\-S\-D license along with mlpack. If not, see {\tt http\-://www.\-opensource.\-org/licenses/\-B\-S\-D-\/3-\/\-Clause} for more information. 
+
+Definition in file {\bf cli.\-hpp}.
+
+
+
+\subsection{Macro Definition Documentation}
+\index{cli.\-hpp@{cli.\-hpp}!P\-A\-R\-A\-M@{P\-A\-R\-A\-M}}
+\index{P\-A\-R\-A\-M@{P\-A\-R\-A\-M}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-A\-R\-A\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-A\-M(
+\begin{DoxyParamCaption}
+\item[{}]{T, }
+\item[{}]{I\-D, }
+\item[{}]{D\-E\-S\-C, }
+\item[{}]{A\-L\-I\-A\-S, }
+\item[{}]{D\-E\-F, }
+\item[{}]{R\-E\-Q}
+\end{DoxyParamCaption}
+)}\label{cli_8hpp_afb392ad44d93a829f51070137eb311fc}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keyword}{static} mlpack::util::Option<T> \
+      JOIN(JOIN(io\_option\_dummy\_object\_, \_\_LINE\_\_), opt) (\textcolor{keyword}{false}, DEF, ID, \(\backslash\)
+      DESC, ALIAS, REQ);
+\end{DoxyCode}
+
+
+Define an input parameter. 
+
+Don't use this function; use the other ones above that call it. Note that we are using the {\bfseries L\-I\-N\-E} macro for naming these actual parameters when {\bfseries C\-O\-U\-N\-T\-E\-R} does not exist, which is a bit of an ugly hack... but this is the preprocessor, after all. We don't have much choice other than ugliness.
+
+
+\begin{DoxyParams}{Parameters}
+{\em T} & Type of the parameter. \\
+\hline
+{\em I\-D} & Name of the parameter. \\
+\hline
+{\em D\-E\-S\-C} & Description of the parameter (1-\/2 sentences). \\
+\hline
+{\em A\-L\-I\-A\-S} & Alias for this parameter (one letter). \\
+\hline
+{\em D\-E\-F} & Default value of the parameter. \\
+\hline
+{\em R\-E\-Q} & Whether or not parameter is required (boolean value). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 349 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E@{P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E}}
+\index{P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E@{P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E(
+\begin{DoxyParamCaption}
+\item[{}]{I\-D, }
+\item[{}]{D\-E\-S\-C, }
+\item[{}]{A\-L\-I\-A\-S, }
+\item[{}]{D\-E\-F}
+\end{DoxyParamCaption}
+)~{\bf P\-A\-R\-A\-M}(double, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F, false)}\label{cli_8hpp_a1a9d3e5240e7cd31251d789943b37650}
+
+
+Define a double parameter. 
+
+The parameter can then be specified on the command line with --I\-D=value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\-D} & Name of the parameter. \\
+\hline
+{\em D\-E\-S\-C} & Quick description of the parameter (1-\/2 sentences). \\
+\hline
+{\em A\-L\-I\-A\-S} & An alias for the parameter (one letter). \\
+\hline
+{\em D\-E\-F} & Default value of the parameter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI}, \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Bug}
+\item[{\bf Bug}]The {\bfseries C\-O\-U\-N\-T\-E\-R} variable is used in most cases to guarantee a unique global identifier for options declared using the P\-A\-R\-A\-M\-\_\-$\ast$() macros. However, not all compilers have this support--most notably, gcc $<$ 4.\-3. In that case, the {\bfseries L\-I\-N\-E} macro is used as an attempt to get a unique global identifier, but collisions are still possible, and they produce bizarre error messages. See {\tt http\-://mlpack.\-org/trac/ticket/74} for more information. \end{DoxyRefDesc}
+
+
+Definition at line 138 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-R\-E\-Q@{P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-R\-E\-Q}}
+\index{P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-R\-E\-Q@{P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-R\-E\-Q}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-R\-E\-Q}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-R\-E\-Q(
+\begin{DoxyParamCaption}
+\item[{}]{I\-D, }
+\item[{}]{D\-E\-S\-C, }
+\item[{}]{A\-L\-I\-A\-S}
+\end{DoxyParamCaption}
+)}\label{cli_8hpp_ad0004d6f36256f219edff7278b2f532e}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+PARAM(\textcolor{keywordtype}{double}, ID, DESC, ALIAS, \(\backslash\)
+    0.0f, \textcolor{keyword}{true})
+\end{DoxyCode}
+
+
+Define a required double parameter. 
+
+The parameter must then be specified on the command line with --I\-D=value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\-D} & Name of the parameter. \\
+\hline
+{\em D\-E\-S\-C} & Quick description of the parameter (1-\/2 sentences). \\
+\hline
+{\em A\-L\-I\-A\-S} & An alias for the parameter (one letter).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI}, \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Bug}
+\item[{\bf Bug}]The {\bfseries C\-O\-U\-N\-T\-E\-R} variable is used in most cases to guarantee a unique global identifier for options declared using the P\-A\-R\-A\-M\-\_\-$\ast$() macros. However, not all compilers have this support--most notably, gcc $<$ 4.\-3. In that case, the {\bfseries L\-I\-N\-E} macro is used as an attempt to get a unique global identifier, but collisions are still possible, and they produce bizarre error messages. See {\tt http\-://mlpack.\-org/trac/ticket/74} for more information. \end{DoxyRefDesc}
+
+
+Definition at line 259 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!P\-A\-R\-A\-M\-\_\-\-F\-L\-A\-G@{P\-A\-R\-A\-M\-\_\-\-F\-L\-A\-G}}
+\index{P\-A\-R\-A\-M\-\_\-\-F\-L\-A\-G@{P\-A\-R\-A\-M\-\_\-\-F\-L\-A\-G}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-A\-R\-A\-M\-\_\-\-F\-L\-A\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-A\-M\-\_\-\-F\-L\-A\-G(
+\begin{DoxyParamCaption}
+\item[{}]{I\-D, }
+\item[{}]{D\-E\-S\-C, }
+\item[{}]{A\-L\-I\-A\-S}
+\end{DoxyParamCaption}
+)~P\-A\-R\-A\-M\-\_\-\-F\-L\-A\-G\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L(I\-D, D\-E\-S\-C, A\-L\-I\-A\-S);}\label{cli_8hpp_a59a38dfe16c56a278bd89817216a3739}
+
+
+Define a flag parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\-D} & Name of the parameter. \\
+\hline
+{\em D\-E\-S\-C} & Quick description of the parameter (1-\/2 sentences). \\
+\hline
+{\em A\-L\-I\-A\-S} & An alias for the parameter (one letter).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI}, \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Bug}
+\item[{\bf Bug}]The {\bfseries C\-O\-U\-N\-T\-E\-R} variable is used in most cases to guarantee a unique global identifier for options declared using the P\-A\-R\-A\-M\-\_\-$\ast$() macros. However, not all compilers have this support--most notably, gcc $<$ 4.\-3. In that case, the {\bfseries L\-I\-N\-E} macro is used as an attempt to get a unique global identifier, but collisions are still possible, and they produce bizarre error messages. See {\tt http\-://mlpack.\-org/trac/ticket/74} for more information. \end{DoxyRefDesc}
+
+
+Definition at line 66 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T@{P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T}}
+\index{P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T@{P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T(
+\begin{DoxyParamCaption}
+\item[{}]{I\-D, }
+\item[{}]{D\-E\-S\-C, }
+\item[{}]{A\-L\-I\-A\-S, }
+\item[{}]{D\-E\-F}
+\end{DoxyParamCaption}
+)~{\bf P\-A\-R\-A\-M}(float, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F, false)}\label{cli_8hpp_a040791b10025c1130682b70accb70fb4}
+
+
+Define a floating-\/point parameter. 
+
+You should use P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E instead.
+
+The parameter can then be specified on the command line with --I\-D=value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\-D} & Name of the parameter. \\
+\hline
+{\em D\-E\-S\-C} & Quick description of the parameter (1-\/2 sentences). \\
+\hline
+{\em A\-L\-I\-A\-S} & An alias for the parameter (one letter). \\
+\hline
+{\em D\-E\-F} & Default value of the parameter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI}, \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Bug}
+\item[{\bf Bug}]The {\bfseries C\-O\-U\-N\-T\-E\-R} variable is used in most cases to guarantee a unique global identifier for options declared using the P\-A\-R\-A\-M\-\_\-$\ast$() macros. However, not all compilers have this support--most notably, gcc $<$ 4.\-3. In that case, the {\bfseries L\-I\-N\-E} macro is used as an attempt to get a unique global identifier, but collisions are still possible, and they produce bizarre error messages. See {\tt http\-://mlpack.\-org/trac/ticket/74} for more information. \end{DoxyRefDesc}
+
+
+Definition at line 114 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-R\-E\-Q@{P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-R\-E\-Q}}
+\index{P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-R\-E\-Q@{P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-R\-E\-Q}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-R\-E\-Q}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-A\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-R\-E\-Q(
+\begin{DoxyParamCaption}
+\item[{}]{I\-D, }
+\item[{}]{D\-E\-S\-C, }
+\item[{}]{A\-L\-I\-A\-S}
+\end{DoxyParamCaption}
+)}\label{cli_8hpp_aca62681c4be1d48034f5e35db17a24ed}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+PARAM(\textcolor{keywordtype}{float}, ID, DESC, ALIAS, 0.0f, \(\backslash\)
+    \textcolor{keyword}{true})
+\end{DoxyCode}
+
+
+Define a required floating-\/point parameter. 
+
+You should probably use a double instead.
+
+The parameter must then be specified on the command line with --I\-D=value. If A\-L\-I\-A\-S is equal to D\-E\-F\-\_\-\-M\-O\-D (which is set using the \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00} macro), the parameter can be specified with just --I\-D=value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\-D} & Name of the parameter. \\
+\hline
+{\em D\-E\-S\-C} & Quick description of the parameter (1-\/2 sentences). \\
+\hline
+{\em A\-L\-I\-A\-S} & An alias for the parameter (one letter).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI}, \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Bug}
+\item[{\bf Bug}]The {\bfseries C\-O\-U\-N\-T\-E\-R} variable is used in most cases to guarantee a unique global identifier for options declared using the P\-A\-R\-A\-M\-\_\-$\ast$() macros. However, not all compilers have this support--most notably, gcc $<$ 4.\-3. In that case, the {\bfseries L\-I\-N\-E} macro is used as an attempt to get a unique global identifier, but collisions are still possible, and they produce bizarre error messages. See {\tt http\-://mlpack.\-org/trac/ticket/74} for more information. \end{DoxyRefDesc}
+
+
+Definition at line 236 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!P\-A\-R\-A\-M\-\_\-\-I\-N\-T@{P\-A\-R\-A\-M\-\_\-\-I\-N\-T}}
+\index{P\-A\-R\-A\-M\-\_\-\-I\-N\-T@{P\-A\-R\-A\-M\-\_\-\-I\-N\-T}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-A\-R\-A\-M\-\_\-\-I\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-A\-M\-\_\-\-I\-N\-T(
+\begin{DoxyParamCaption}
+\item[{}]{I\-D, }
+\item[{}]{D\-E\-S\-C, }
+\item[{}]{A\-L\-I\-A\-S, }
+\item[{}]{D\-E\-F}
+\end{DoxyParamCaption}
+)~{\bf P\-A\-R\-A\-M}(int, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F, false)}\label{cli_8hpp_a21d3b801f589c973f940f5f9a0935223}
+
+
+Define an integer parameter. 
+
+The parameter can then be specified on the command line with --I\-D=value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\-D} & Name of the parameter. \\
+\hline
+{\em D\-E\-S\-C} & Quick description of the parameter (1-\/2 sentences). \\
+\hline
+{\em A\-L\-I\-A\-S} & An alias for the parameter (one letter). \\
+\hline
+{\em D\-E\-F} & Default value of the parameter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI}, \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Bug}
+\item[{\bf Bug}]The {\bfseries C\-O\-U\-N\-T\-E\-R} variable is used in most cases to guarantee a unique global identifier for options declared using the P\-A\-R\-A\-M\-\_\-$\ast$() macros. However, not all compilers have this support--most notably, gcc $<$ 4.\-3. In that case, the {\bfseries L\-I\-N\-E} macro is used as an attempt to get a unique global identifier, but collisions are still possible, and they produce bizarre error messages. See {\tt http\-://mlpack.\-org/trac/ticket/74} for more information. \end{DoxyRefDesc}
+
+
+Definition at line 90 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!P\-A\-R\-A\-M\-\_\-\-I\-N\-T\-\_\-\-R\-E\-Q@{P\-A\-R\-A\-M\-\_\-\-I\-N\-T\-\_\-\-R\-E\-Q}}
+\index{P\-A\-R\-A\-M\-\_\-\-I\-N\-T\-\_\-\-R\-E\-Q@{P\-A\-R\-A\-M\-\_\-\-I\-N\-T\-\_\-\-R\-E\-Q}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-A\-R\-A\-M\-\_\-\-I\-N\-T\-\_\-\-R\-E\-Q}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-A\-M\-\_\-\-I\-N\-T\-\_\-\-R\-E\-Q(
+\begin{DoxyParamCaption}
+\item[{}]{I\-D, }
+\item[{}]{D\-E\-S\-C, }
+\item[{}]{A\-L\-I\-A\-S}
+\end{DoxyParamCaption}
+)~{\bf P\-A\-R\-A\-M}(int, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, 0, true)}\label{cli_8hpp_a1e12ea8adedf8584ff9a063acffd9aae}
+
+
+Define a required integer parameter. 
+
+The parameter must then be specified on the command line with --I\-D=value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\-D} & Name of the parameter. \\
+\hline
+{\em D\-E\-S\-C} & Quick description of the parameter (1-\/2 sentences). \\
+\hline
+{\em A\-L\-I\-A\-S} & An alias for the parameter (one letter).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI}, \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Bug}
+\item[{\bf Bug}]The {\bfseries C\-O\-U\-N\-T\-E\-R} variable is used in most cases to guarantee a unique global identifier for options declared using the P\-A\-R\-A\-M\-\_\-$\ast$() macros. However, not all compilers have this support--most notably, gcc $<$ 4.\-3. In that case, the {\bfseries L\-I\-N\-E} macro is used as an attempt to get a unique global identifier, but collisions are still possible, and they produce bizarre error messages. See {\tt http\-://mlpack.\-org/trac/ticket/74} for more information. \end{DoxyRefDesc}
+
+
+Definition at line 212 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G@{P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G}}
+\index{P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G@{P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G(
+\begin{DoxyParamCaption}
+\item[{}]{I\-D, }
+\item[{}]{D\-E\-S\-C, }
+\item[{}]{A\-L\-I\-A\-S, }
+\item[{}]{D\-E\-F}
+\end{DoxyParamCaption}
+)~{\bf P\-A\-R\-A\-M}(std\-::string, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, D\-E\-F, false)}\label{cli_8hpp_a2768e717e7b598be9447c140f95e90d5}
+
+
+Define a string parameter. 
+
+The parameter can then be specified on the command line with --I\-D=value. If A\-L\-I\-A\-S is equal to D\-E\-F\-\_\-\-M\-O\-D (which is set using the \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00} macro), the parameter can be specified with just --I\-D=value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\-D} & Name of the parameter. \\
+\hline
+{\em D\-E\-S\-C} & Quick description of the parameter (1-\/2 sentences). \\
+\hline
+{\em A\-L\-I\-A\-S} & An alias for the parameter (one letter). \\
+\hline
+{\em D\-E\-F} & Default value of the parameter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI}, \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Bug}
+\item[{\bf Bug}]The {\bfseries C\-O\-U\-N\-T\-E\-R} variable is used in most cases to guarantee a unique global identifier for options declared using the P\-A\-R\-A\-M\-\_\-$\ast$() macros. However, not all compilers have this support--most notably, gcc $<$ 4.\-3. In that case, the {\bfseries L\-I\-N\-E} macro is used as an attempt to get a unique global identifier, but collisions are still possible, and they produce bizarre error messages. See {\tt http\-://mlpack.\-org/trac/ticket/74} for more information. \end{DoxyRefDesc}
+
+
+Definition at line 163 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G\-\_\-\-R\-E\-Q@{P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G\-\_\-\-R\-E\-Q}}
+\index{P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G\-\_\-\-R\-E\-Q@{P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G\-\_\-\-R\-E\-Q}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G\-\_\-\-R\-E\-Q}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G\-\_\-\-R\-E\-Q(
+\begin{DoxyParamCaption}
+\item[{}]{I\-D, }
+\item[{}]{D\-E\-S\-C, }
+\item[{}]{A\-L\-I\-A\-S}
+\end{DoxyParamCaption}
+)}\label{cli_8hpp_af6574ccc9a7d5a86d9ae6525f8a923ba}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+PARAM(std::string, ID, DESC, \(\backslash\)
+    ALIAS, \textcolor{stringliteral}{""}, \textcolor{keyword}{true});
+\end{DoxyCode}
+
+
+Define a required string parameter. 
+
+The parameter must then be specified on the command line with --I\-D=value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\-D} & Name of the parameter. \\
+\hline
+{\em D\-E\-S\-C} & Quick description of the parameter (1-\/2 sentences). \\
+\hline
+{\em A\-L\-I\-A\-S} & An alias for the parameter (one letter).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI}, \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Bug}
+\item[{\bf Bug}]The {\bfseries C\-O\-U\-N\-T\-E\-R} variable is used in most cases to guarantee a unique global identifier for options declared using the P\-A\-R\-A\-M\-\_\-$\ast$() macros. However, not all compilers have this support--most notably, gcc $<$ 4.\-3. In that case, the {\bfseries L\-I\-N\-E} macro is used as an attempt to get a unique global identifier, but collisions are still possible, and they produce bizarre error messages. See {\tt http\-://mlpack.\-org/trac/ticket/74} for more information. \end{DoxyRefDesc}
+
+
+Definition at line 282 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R@{P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R}}
+\index{P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R@{P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R(
+\begin{DoxyParamCaption}
+\item[{}]{T, }
+\item[{}]{I\-D, }
+\item[{}]{D\-E\-S\-C, }
+\item[{}]{A\-L\-I\-A\-S}
+\end{DoxyParamCaption}
+)~{\bf P\-A\-R\-A\-M}(std\-::vector$<$T$>$, I\-D, D\-E\-S\-C, A\-L\-I\-A\-S, std\-::vector$<$T$>$(), false)}\label{cli_8hpp_a446a90f3717b3273083ec3697f662e96}
+
+
+Define a vector parameter. 
+
+The parameter can then be specified on the command line with --I\-D=value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\-D} & Name of the parameter. \\
+\hline
+{\em D\-E\-S\-C} & Quick description of the parameter (1-\/2 sentences). \\
+\hline
+{\em A\-L\-I\-A\-S} & An alias for the parameter (one letter). \\
+\hline
+{\em D\-E\-F} & Default value of the parameter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI}, \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Bug}
+\item[{\bf Bug}]The {\bfseries C\-O\-U\-N\-T\-E\-R} variable is used in most cases to guarantee a unique global identifier for options declared using the P\-A\-R\-A\-M\-\_\-$\ast$() macros. However, not all compilers have this support--most notably, gcc $<$ 4.\-3. In that case, the {\bfseries L\-I\-N\-E} macro is used as an attempt to get a unique global identifier, but collisions are still possible, and they produce bizarre error messages. See {\tt http\-://mlpack.\-org/trac/ticket/74} for more information. \end{DoxyRefDesc}
+
+
+Definition at line 187 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R\-\_\-\-R\-E\-Q@{P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R\-\_\-\-R\-E\-Q}}
+\index{P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R\-\_\-\-R\-E\-Q@{P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R\-\_\-\-R\-E\-Q}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R\-\_\-\-R\-E\-Q}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R\-\_\-\-R\-E\-Q(
+\begin{DoxyParamCaption}
+\item[{}]{T, }
+\item[{}]{I\-D, }
+\item[{}]{D\-E\-S\-C, }
+\item[{}]{A\-L\-I\-A\-S}
+\end{DoxyParamCaption}
+)}\label{cli_8hpp_aadb8fefcd7aeead1aac49c494d0829d0}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+PARAM(std::vector<T>, ID, DESC, \(\backslash\)
+    ALIAS, std::vector<T>(), \textcolor{keyword}{true});
+\end{DoxyCode}
+
+
+Define a required vector parameter. 
+
+The parameter must then be specified on the command line with --I\-D=value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\-D} & Name of the parameter. \\
+\hline
+{\em D\-E\-S\-C} & Quick description of the parameter (1-\/2 sentences). \\
+\hline
+{\em A\-L\-I\-A\-S} & An alias for the parameter (one letter).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI}, \doxyref{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O()}{p.}{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Bug}
+\item[{\bf Bug}]The {\bfseries C\-O\-U\-N\-T\-E\-R} variable is used in most cases to guarantee a unique global identifier for options declared using the P\-A\-R\-A\-M\-\_\-$\ast$() macros. However, not all compilers have this support--most notably, gcc $<$ 4.\-3. In that case, the {\bfseries L\-I\-N\-E} macro is used as an attempt to get a unique global identifier, but collisions are still possible, and they produce bizarre error messages. See {\tt http\-://mlpack.\-org/trac/ticket/74} for more information. \end{DoxyRefDesc}
+
+
+Definition at line 305 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O@{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O}}
+\index{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O@{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-R\-O\-G\-R\-A\-M\-\_\-\-I\-N\-F\-O(
+\begin{DoxyParamCaption}
+\item[{}]{N\-A\-M\-E, }
+\item[{}]{D\-E\-S\-C}
+\end{DoxyParamCaption}
+)}\label{cli_8hpp_ad781e52fa8bee6ec70cabb646fa16e00}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keyword}{static} mlpack::util::ProgramDoc \(\backslash\)
+    io\_programdoc\_dummy\_object = mlpack::util::ProgramDoc(NAME, DESC);
+\end{DoxyCode}
+
+
+Document an executable. 
+
+Only one instance of this macro should be present in your program! Therefore, use it in the main.\-cpp (or corresponding executable) in your program.
+
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mlpack\-::\-C\-L\-I}{p.}{classmlpack_1_1CLI}, \doxyref{P\-A\-R\-A\-M\-\_\-\-F\-L\-A\-G()}{p.}{cli_8hpp_a59a38dfe16c56a278bd89817216a3739}, \doxyref{P\-A\-R\-A\-M\-\_\-\-I\-N\-T()}{p.}{cli_8hpp_a21d3b801f589c973f940f5f9a0935223}, \doxyref{P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E()}{p.}{cli_8hpp_a1a9d3e5240e7cd31251d789943b37650}, \doxyref{P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G()}{p.}{cli_8hpp_a2768e717e7b598be9447c140f95e90d5}, \doxyref{P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R()}{p.}{cli_8hpp_a446a90f3717b3273083ec3697f662e96}, \doxyref{P\-A\-R\-A\-M\-\_\-\-I\-N\-T\-\_\-\-R\-E\-Q()}{p.}{cli_8hpp_a1e12ea8adedf8584ff9a063acffd9aae}, \doxyref{P\-A\-R\-A\-M\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-R\-E\-Q()}{p.}{cli_8hpp_ad0004d6f36256f219edff7278b2f532e}, \doxyref{P\-A\-R\-A\-M\-\_\-\-S\-T\-R\-I\-N\-G\-\_\-\-R\-E\-Q()}{p.}{cli_8hpp_af6574ccc9a7d5a86d9ae6525f8a923ba}, \doxyref{P\-A\-R\-A\-M\-\_\-\-V\-E\-C\-T\-O\-R\-\_\-\-R\-E\-Q()}{p.}{cli_8hpp_aadb8fefcd7aeead1aac49c494d0829d0}.
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em N\-A\-M\-E} & Short string representing the name of the program. \\
+\hline
+{\em D\-E\-S\-C} & Long string describing what the program does and possibly a simple usage example. Newlines should not be used here; this is taken care of by C\-L\-I (however, you can explicitly specify newlines to denote new paragraphs). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 46 of file cli.\-hpp.
+
+\index{cli.\-hpp@{cli.\-hpp}!T\-Y\-P\-E\-N\-A\-M\-E@{T\-Y\-P\-E\-N\-A\-M\-E}}
+\index{T\-Y\-P\-E\-N\-A\-M\-E@{T\-Y\-P\-E\-N\-A\-M\-E}!cli.hpp@{cli.\-hpp}}
+\subsubsection[{T\-Y\-P\-E\-N\-A\-M\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-Y\-P\-E\-N\-A\-M\-E(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~(std\-::string(typeid(x).name()))}\label{cli_8hpp_ac909d914008cce49fa42ddd10b9b36c5}
+
+
+The T\-Y\-P\-E\-N\-A\-M\-E macro is used internally to convert a type into a string. 
+
+
+
+Definition at line 364 of file cli.\-hpp.
+

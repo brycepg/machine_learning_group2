@@ -1,0 +1,321 @@
+.TH "mlpack::math" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::math \- 
+.PP
+Miscellaneous math routines\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBRange\fP"
+.br
+.RI "\fISimple real-valued range\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCenter\fP (const arma::mat &x, arma::mat &xCentered)"
+.br
+.RI "\fICreates a centered matrix, where centering is done by subtracting the sum over the columns (a column vector) from each column of the matrix\&. \fP"
+.ti -1c
+.RI "double \fBClampNonNegative\fP (const double d)"
+.br
+.RI "\fIForces a number to be non-negative, turning negative numbers into zero\&. \fP"
+.ti -1c
+.RI "double \fBClampNonPositive\fP (const double d)"
+.br
+.RI "\fIForces a number to be non-positive, turning positive numbers into zero\&. \fP"
+.ti -1c
+.RI "double \fBClampRange\fP (double value, const double rangeMin, const double rangeMax)"
+.br
+.RI "\fIClamp a number between a particular range\&. \fP"
+.ti -1c
+.RI "void \fBOrthogonalize\fP (const arma::mat &x, arma::mat &W)"
+.br
+.RI "\fIOrthogonalize x and return the result in W, using eigendecomposition\&. \fP"
+.ti -1c
+.RI "void \fBOrthogonalize\fP (arma::mat &x)"
+.br
+.RI "\fIOrthogonalize x in-place\&. \fP"
+.ti -1c
+.RI "int \fBRandInt\fP (const int hiExclusive)"
+.br
+.RI "\fIGenerates a uniform random integer\&. \fP"
+.ti -1c
+.RI "int \fBRandInt\fP (const int lo, const int hiExclusive)"
+.br
+.RI "\fIGenerates a uniform random integer\&. \fP"
+.ti -1c
+.RI "double \fBRandNormal\fP ()"
+.br
+.RI "\fIGenerates a normally distributed random number with mean 0 and variance 1\&. \fP"
+.ti -1c
+.RI "double \fBRandNormal\fP (const double mean, const double variance)"
+.br
+.RI "\fIGenerates a normally distributed random number with specified mean and variance\&. \fP"
+.ti -1c
+.RI "double \fBRandom\fP ()"
+.br
+.RI "\fIGenerates a uniform random number between 0 and 1\&. \fP"
+.ti -1c
+.RI "double \fBRandom\fP (const double lo, const double hi)"
+.br
+.RI "\fIGenerates a uniform random number in the specified range\&. \fP"
+.ti -1c
+.RI "void \fBRandomSeed\fP (const size_t seed)"
+.br
+.RI "\fISet the random seed used by the random functions (\fBRandom()\fP and \fBRandInt()\fP)\&. \fP"
+.ti -1c
+.RI "void \fBRandVector\fP (arma::vec &v)"
+.br
+.RI "\fIOverwrites a dimension-N vector to a random vector on the unit sphere in R^N\&. \fP"
+.ti -1c
+.RI "void \fBRemoveRows\fP (const arma::mat &input, const std::vector< size_t > &rowsToRemove, arma::mat &output)"
+.br
+.RI "\fIRemove a certain set of rows in a matrix while copying to a second matrix\&. \fP"
+.ti -1c
+.RI "void \fBVectorPower\fP (arma::vec &vec, const double power)"
+.br
+.RI "\fIAuxiliary function to raise vector elements to a specific power\&. \fP"
+.ti -1c
+.RI "void \fBWhitenUsingEig\fP (const arma::mat &x, arma::mat &xWhitened, arma::mat &whiteningMatrix)"
+.br
+.RI "\fIWhitens a matrix using the eigendecomposition of the covariance matrix\&. \fP"
+.ti -1c
+.RI "void \fBWhitenUsingSVD\fP (const arma::mat &x, arma::mat &xWhitened, arma::mat &whiteningMatrix)"
+.br
+.RI "\fIWhitens a matrix using the singular value decomposition of the covariance matrix\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "boost::mt19937 \fBrandGen\fP"
+.br
+.ti -1c
+.RI "boost::normal_distribution \fBrandNormalDist\fP"
+.br
+.ti -1c
+.RI "boost::uniform_01
+.br
+< boost::mt19937, double > \fBrandUniformDist\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Miscellaneous math routines\&. 
+
+
+.SH "Function Documentation"
+.PP 
+.SS "void mlpack::math::Center (const arma::mat &x, arma::mat &xCentered)"
+
+.PP
+Creates a centered matrix, where centering is done by subtracting the sum over the columns (a column vector) from each column of the matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Input matrix 
+.br
+\fIxCentered\fP Matrix to write centered output into 
+.RE
+.PP
+
+.SS "double mlpack::math::ClampNonNegative (const doubled)\fC [inline]\fP"
+
+.PP
+Forces a number to be non-negative, turning negative numbers into zero\&. Avoids branching costs (this is a measurable improvement)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP Double to clamp\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 if d < 0, d otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file clamp\&.hpp\&.
+.PP
+Referenced by ClampRange()\&.
+.SS "double mlpack::math::ClampNonPositive (const doubled)\fC [inline]\fP"
+
+.PP
+Forces a number to be non-positive, turning positive numbers into zero\&. Avoids branching costs (this is a measurable improvement)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP Double to clamp\&. 
+.br
+\fI0\fP if d > 0, d otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 42 of file clamp\&.hpp\&.
+.PP
+Referenced by ClampRange()\&.
+.SS "double mlpack::math::ClampRange (doublevalue, const doublerangeMin, const doublerangeMax)\fC [inline]\fP"
+
+.PP
+Clamp a number between a particular range\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The number to clamp\&. 
+.br
+\fIrangeMin\fP The first of the range\&. 
+.br
+\fIrangeMax\fP The last of the range\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+max(rangeMin, min(rangeMax, d))\&. 
+.RE
+.PP
+
+.PP
+Definition at line 55 of file clamp\&.hpp\&.
+.PP
+References ClampNonNegative(), and ClampNonPositive()\&.
+.SS "void mlpack::math::Orthogonalize (const arma::mat &x, arma::mat &W)"
+
+.PP
+Orthogonalize x and return the result in W, using eigendecomposition\&. We will be using the formula $ W = x (x^T x)^{-0.5} $\&. 
+.SS "void mlpack::math::Orthogonalize (arma::mat &x)"
+
+.PP
+Orthogonalize x in-place\&. This could be sped up by a custom implementation\&. 
+.SS "int mlpack::math::RandInt (const inthiExclusive)\fC [inline]\fP"
+
+.PP
+Generates a uniform random integer\&. 
+.PP
+Definition at line 98 of file random\&.hpp\&.
+.PP
+References randGen, and randUniformDist\&.
+.PP
+Referenced by mlpack::sparse_coding::DataDependentRandomInitializer::Initialize(), mlpack::amf::RandomAcolInitialization< p >::Initialize(), and mlpack::kernel::RandomSelection::Select()\&.
+.SS "int mlpack::math::RandInt (const intlo, const inthiExclusive)\fC [inline]\fP"
+
+.PP
+Generates a uniform random integer\&. 
+.PP
+Definition at line 112 of file random\&.hpp\&.
+.PP
+References randGen, and randUniformDist\&.
+.SS "double mlpack::math::RandNormal ()\fC [inline]\fP"
+
+.PP
+Generates a normally distributed random number with mean 0 and variance 1\&. 
+.PP
+Definition at line 129 of file random\&.hpp\&.
+.PP
+References randGen, and randNormalDist\&.
+.SS "double mlpack::math::RandNormal (const doublemean, const doublevariance)\fC [inline]\fP"
+
+.PP
+Generates a normally distributed random number with specified mean and variance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImean\fP Mean of distribution\&. 
+.br
+\fIvariance\fP Variance of distribution\&. 
+.RE
+.PP
+
+.PP
+Definition at line 141 of file random\&.hpp\&.
+.PP
+References randGen, and randNormalDist\&.
+.SS "double mlpack::math::Random ()\fC [inline]\fP"
+
+.PP
+Generates a uniform random number between 0 and 1\&. 
+.PP
+Definition at line 70 of file random\&.hpp\&.
+.PP
+References randGen, and randUniformDist\&.
+.SS "double mlpack::math::Random (const doublelo, const doublehi)\fC [inline]\fP"
+
+.PP
+Generates a uniform random number in the specified range\&. 
+.PP
+Definition at line 84 of file random\&.hpp\&.
+.PP
+References randGen, and randUniformDist\&.
+.SS "void mlpack::math::RandomSeed (const size_tseed)\fC [inline]\fP"
+
+.PP
+Set the random seed used by the random functions (\fBRandom()\fP and \fBRandInt()\fP)\&. The seed is casted to a 32-bit integer before being given to the random number generator, but a size_t is taken as a parameter for API consistency\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIseed\fP Seed for the random number generator\&. 
+.RE
+.PP
+
+.PP
+Definition at line 55 of file random\&.hpp\&.
+.PP
+References randGen\&.
+.SS "void mlpack::math::RandVector (arma::vec &v)"
+
+.PP
+Overwrites a dimension-N vector to a random vector on the unit sphere in R^N\&. 
+.SS "void mlpack::math::RemoveRows (const arma::mat &input, const std::vector< size_t > &rowsToRemove, arma::mat &output)"
+
+.PP
+Remove a certain set of rows in a matrix while copying to a second matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP Input matrix to copy\&. 
+.br
+\fIrowsToRemove\fP Vector containing indices of rows to be removed\&. 
+.br
+\fIoutput\fP Matrix to copy non-removed rows into\&. 
+.RE
+.PP
+
+.SS "void mlpack::math::VectorPower (arma::vec &vec, const doublepower)"
+
+.PP
+Auxiliary function to raise vector elements to a specific power\&. The sign is ignored in the power operation and then re-added\&. Useful for eigenvalues\&. 
+.SS "void mlpack::math::WhitenUsingEig (const arma::mat &x, arma::mat &xWhitened, arma::mat &whiteningMatrix)"
+
+.PP
+Whitens a matrix using the eigendecomposition of the covariance matrix\&. Whitening means the covariance matrix of the result is the identity matrix\&. 
+.SS "void mlpack::math::WhitenUsingSVD (const arma::mat &x, arma::mat &xWhitened, arma::mat &whiteningMatrix)"
+
+.PP
+Whitens a matrix using the singular value decomposition of the covariance matrix\&. Whitening means the covariance matrix of the result is the identity matrix\&. 
+.SH "Variable Documentation"
+.PP 
+.SS "boost::mt19937 mlpack::math::randGen"
+
+.PP
+Referenced by RandInt(), RandNormal(), Random(), and RandomSeed()\&.
+.SS "boost::normal_distribution mlpack::math::randNormalDist"
+
+.PP
+Referenced by RandNormal()\&.
+.SS "boost::uniform_01<boost::mt19937, double> mlpack::math::randUniformDist"
+
+.PP
+Referenced by RandInt(), and Random()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

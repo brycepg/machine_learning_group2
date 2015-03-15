@@ -1,0 +1,11 @@
+digraph "src/mlpack/methods/gmm" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_2217eda3f3f128182276a15ca80cc98e {
+    graph [ bgcolor="#ddddee", pencolor="black", label="methods" fontname="Helvetica", fontsize="10", URL="dir_2217eda3f3f128182276a15ca80cc98e.html"]
+  dir_25a49701d3e8349cd2fe0c30f5736013 [shape=box, label="gmm", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_25a49701d3e8349cd2fe0c30f5736013.html"];
+  }
+  dir_db48f86cd517b0746c8865c406f00fa6 [shape=box label="kmeans" URL="dir_db48f86cd517b0746c8865c406f00fa6.html"];
+  dir_25a49701d3e8349cd2fe0c30f5736013->dir_db48f86cd517b0746c8865c406f00fa6 [headlabel="1", labeldistance=1.5 headhref="dir_000033_000038.html"];
+}

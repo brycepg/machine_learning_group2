@@ -1,0 +1,355 @@
+.TH "rstutorial" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+rstutorial \- RangeSearch tutorial (range_search) 
+
+.SH "Introduction"
+.PP
+Range search is a simple machine learning task which aims to find all the neighbors of a point that fall into a certain range of distances\&. In this setting, we have a \fBquery\fP and a \fBreference\fP dataset\&. Given a certain range, for each point in the \fBquery\fP dataset, we wish to know all points in the \fBreference\fP dataset which have distances within that given range to the given query point\&.
+.PP
+Alternately, if the query and reference datasets are the same, the problem can be stated more simply: for each point in the dataset, we wish to know all points which have distance in the given range to that point\&.
+.PP
+\fBmlpack\fP provides:
+.PP
+.IP "\(bu" 2
+a \fBsimple command-line executable\fP to run range search
+.IP "\(bu" 2
+a \fBsimple C++ interface\fP to perform range search
+.IP "\(bu" 2
+a \fBgeneric, extensible, and powerful C++ class (RangeSearch)\fP for complex usage
+.PP
+.SH "Table of Contents"
+.PP
+A list of all the sections this tutorial contains\&.
+.PP
+.IP "\(bu" 2
+\fBIntroduction\fP
+.IP "\(bu" 2
+\fBTable of Contents\fP
+.IP "\(bu" 2
+\fBThe 'range_search' command-line executable\fP
+.IP "  \(bu" 4
+\fBOne dataset, points with distance <= 0\&.01\fP
+.IP "  \(bu" 4
+\fBQuery and reference dataset, range [1\&.0, 1\&.5]\fP
+.IP "  \(bu" 4
+\fBOne dataset, range [4\&.1 4\&.2], leaf size of 15 points\fP
+.PP
+
+.IP "\(bu" 2
+\fBThe 'RangeSearch' class\fP
+.IP "  \(bu" 4
+\fBDistance less than 2\&.0 on a single dataset\fP
+.IP "  \(bu" 4
+\fBRange [3\&.0, 4\&.0] on a query and reference dataset\fP
+.IP "  \(bu" 4
+\fBNaive (exhaustive) search for distance greater than 5\&.0 on one dataset\fP
+.PP
+
+.IP "\(bu" 2
+\fBThe extensible 'RangeSearch' class\fP
+.IP "  \(bu" 4
+\fBMetricType policy class\fP
+.IP "  \(bu" 4
+\fBTreeType policy class\fP
+.PP
+
+.IP "\(bu" 2
+\fBFurther documentation\fP
+.PP
+.SH "The 'range_search' command-line executable"
+.PP
+\fBmlpack\fP provides an exectuable, range_search, which can be used to perform range searches quickly and simply from the command-line\&. This program will perform the range search and place the resulting neighbor index list into one file and their corresponding distances into another file\&. These files are organized such that the first row corresponds to the neighbors (or distances) of the first query point, and the second row corresponds to the neighbors (or distances) of the second query point, and so forth\&. The neighbors of a specific point are not arranged in any specific order\&.
+.PP
+Because a range search may return different numbers of points (including zero), the output file is technically not a valid CSV and may not be loadable by other programs\&. Therefore, if you need the results in a certain format, it may be better to use the \fBC++ interface\fP to manually export the data in the preferred format\&.
+.PP
+Below are several examples of simple usage (and the resultant output)\&. The '-v' option is used so that output is given\&. Further documentation on each individual option can be found by typing
+.PP
+.PP
+.nf
+$ range_search --help
+.fi
+.PP
+.SS "One dataset, points with distance <= 0\&.01"
+.PP
+.nf
+$ range_search -r dataset\&.csv -n neighbors_out\&.csv -d distances_out\&.csv -M 0\&.01 -v
+[INFO ] Loading 'dataset\&.csv' as CSV data\&.
+[INFO ] Loaded reference data from 'dataset\&.csv'\&.
+[INFO ] Building reference tree\&.\&.\&.
+[INFO ] Trees built\&.
+[INFO ] Computing neighbors within range [0, 0\&.01]\&.
+[INFO ] Number of pruned nodes during computation: 0\&.
+[INFO ] Neighbors computed\&.
+[INFO ] Re-mapping indices\&.\&.\&.
+[INFO ]
+[INFO ] Execution parameters:
+[INFO ]   distances_file: distances_out\&.csv
+[INFO ]   help: false
+[INFO ]   info: ""
+[INFO ]   leaf_size: 20
+[INFO ]   max: 2\&.5
+[INFO ]   min: 0
+[INFO ]   naive: false
+[INFO ]   neighbors_file: neighbors_out\&.csv
+[INFO ]   query_file: ""
+[INFO ]   reference_file: dataset\&.csv
+[INFO ]   single_mode: false
+[INFO ]   verbose: true
+[INFO ]
+[INFO ] Program timers:
+[INFO ]   range_search/computing_neighbors: 1\&.564744s
+[INFO ]   total_time: 3\&.841249s
+[INFO ]   tree_building: 0\&.005112s
+.fi
+.PP
+.PP
+Convenient program timers are given for different parts of the calculation at the bottom of the output, as well as the parameters the simulation was run with\&. Now, if we look at the output files:
+.PP
+.PP
+.nf
+$ head neighbors_out\&.csv
+344, 862
+703
+
+397, 277, 319, 443
+840, 827
+876, 732
+569, 222, 563
+437, 361, 97, 928
+961, 419, 547, 695
+113, 843, 634, 982, 689
+
+$ head distances_out\&.csv
+0\&.0058751, 0\&.00358331
+0\&.00567406
+
+0\&.000432393, 0\&.00577239, 0\&.00221909, 0\&.00841252
+0\&.00501577, 0\&.00810424
+0\&.00898339, 0\&.0032354
+0\&.00945658, 0\&.00893871, 0\&.006213
+0\&.00979697, 0\&.00490745, 0\&.00833828, 0\&.00902167
+0\&.00957553, 0\&.00657434, 0\&.0028044, 0\&.00303588
+0\&.00199936, 0\&.00843088, 0\&.00968861, 0\&.00159429, 0\&.00539645
+.fi
+.PP
+.PP
+We can see that points 344 and 862 are within distance 0\&.01 of point 0\&. We can also see that point 2 has no points within a distance of 0\&.01 -- that line is empty\&.
+.SS "Query and reference dataset, range [1\&.0, 1\&.5]"
+.PP
+.nf
+$ range_search -q query_dataset\&.csv -r reference_dataset\&.csv -n \
+> neighbors_out\&.csv -d distances_out\&.csv -m 1\&.0 -M 1\&.5 -v
+[INFO ] Loading 'dataset\&.csv' as CSV data\&.
+[INFO ] Loaded reference data from 'dataset\&.csv'\&.
+[INFO ] Building reference tree\&.\&.\&.
+[INFO ] Loading 'dataset\&.csv' as CSV data\&.
+[INFO ] Loaded query data from 'dataset\&.csv'\&.
+[INFO ] Building query tree\&.\&.\&.
+[INFO ] Tree built\&.
+[INFO ] Computing neighbors within range [1, 1\&.5]\&.
+[INFO ] Number of pruned nodes during computation: 1110\&.
+[INFO ] Neighbors computed\&.
+[INFO ] Re-mapping indices\&.\&.\&.
+[INFO ]
+[INFO ] Execution parameters:
+[INFO ]   distances_file: distances_out\&.csv
+[INFO ]   help: false
+[INFO ]   info: ""
+[INFO ]   leaf_size: 20
+[INFO ]   max: 1\&.5
+[INFO ]   min: 1
+[INFO ]   naive: false
+[INFO ]   neighbors_file: neighbors_out\&.csv
+[INFO ]   query_file: dataset\&.csv
+[INFO ]   reference_file: dataset\&.csv
+[INFO ]   single_mode: false
+[INFO ]   verbose: true
+[INFO ]
+[INFO ] Program timers:
+[INFO ]   range_search/computing_neighbors: 0\&.466848s
+[INFO ]   total_time: 0\&.725183s
+[INFO ]   tree_building: 0\&.004769s
+.fi
+.PP
+.SS "One dataset, range [4\&.1 4\&.2], leaf size of 15 points"
+The \fBmlpack\fP implementation of range search is a dual-tree algorithm; when $kd$-trees are used, the leaf size of the tree can be changed\&. Depending on the characteristics of the dataset, a larger or smaller leaf size can provide faster computation\&. The leaf size is modifiable through the command-line interface, as shown below\&.
+.PP
+.PP
+.nf
+$ range_search -r dataset\&.csv -n neighbors_out\&.csv -d distances_out\&.csv -m 4\&.1 \
+> -M 4\&.2 -l 15 -v
+[INFO ] Loading 'dataset\&.csv' as CSV data\&.
+[INFO ] Loaded reference data from 'dataset\&.csv'\&.
+[INFO ] Building reference tree\&.\&.\&.
+[INFO ] Trees built\&.
+[INFO ] Computing neighbors within range [4\&.1, 4\&.2]\&.
+[INFO ] Number of pruned nodes during computation: 1\&.
+[INFO ] Neighbors computed\&.
+[INFO ] Re-mapping indices\&.\&.\&.
+[INFO ]
+[INFO ] Execution parameters:
+[INFO ]   distances_file: distances_out\&.csv
+[INFO ]   help: false
+[INFO ]   info: ""
+[INFO ]   leaf_size: 20
+[INFO ]   max: 4\&.2
+[INFO ]   min: 4\&.1
+[INFO ]   naive: false
+[INFO ]   neighbors_file: neighbors_out\&.csv
+[INFO ]   query_file: ""
+[INFO ]   reference_file: dataset\&.csv
+[INFO ]   single_mode: false
+[INFO ]   verbose: true
+[INFO ]
+[INFO ] Program timers:
+[INFO ]   range_search/computing_neighbors: 0\&.003857s
+[INFO ]   total_time: 0\&.056154s
+[INFO ]   tree_building: 0\&.004831s
+.fi
+.PP
+.PP
+Further documentation on options should be found by using the --help option\&.
+.SH "The 'RangeSearch' class"
+.PP
+The 'RangeSearch' class is an extensible template class which allows a high level of flexibility\&. However, all of the template arguments have default parameters, allowing a user to simply use 'RangeSearch<>' for simple usage without worrying about the exact necessary template parameters\&.
+.PP
+The class bears many similarities to the \fBNeighborSearch\fP class; usage generally consists of calling the constructor with one or two datasets, and then calling the 'Search()' method to perform the actual range search\&.
+.PP
+The 'Search()' method stores the results in two vector-of-vector objects\&. This is necessary because each query point may have a different number of neighbors in the specified distance range\&. The structure of those two objects is very similar to the output files --neighbors_file and --distances_file for the CLI interface (see above)\&. A handful of examples of simple usage of the RangeSearch class are given below\&.
+.PP
+Using the AllkNN class is particularly simple; first, the object must be constructed and given a dataset\&. Then, the method is run, and two matrices are returned: one which holds the indices of the nearest neighbors, and one which holds the distances of the nearest neighbors\&. These are of the same structure as the output --neighbors_file and --reference_file for the CLI interface (see above)\&. A handful of examples of simple usage of the AllkNN class are given below\&.
+.SS "Distance less than 2\&.0 on a single dataset"
+.PP
+.nf
+#include <mlpack/methods/range_search/range_search\&.hpp>
+
+using namespace mlpack::range;
+
+// Our dataset matrix, which is column-major\&.
+extern arma::mat data;
+
+RangeSearch<> a(data);
+
+// The vector-of-vector objects we will store output in\&.
+std::vector<std::vector<size_t> > resultingNeighbors;
+std::vector<std::vector<double> > resultingDistances;
+
+// The range we will use\&.
+math::Range r(0\&.0, 2\&.0); // [0\&.0, 2\&.0]\&.
+
+a\&.Search(r, resultingNeighbors, resultingDistances);
+.fi
+.PP
+.PP
+The output of the search is stored in resultingNeighbors and resultingDistances\&.
+.SS "Range [3\&.0, 4\&.0] on a query and reference dataset"
+.PP
+.nf
+#include <mlpack/methods/range_search/range_search\&.hpp>
+
+using namespace mlpack::range;
+
+// Our dataset matrices, which are column-major\&.
+extern arma::mat queryData, referenceData;
+
+RangeSearch<> a(referenceData, queryData);
+
+// The vector-of-vector objects we will store output in\&.
+std::vector<std::vector<size_t> > resultingNeighbors;
+std::vector<std::vector<double> > resultingDistances;
+
+// The range we will use\&.
+math::Range r(3\&.0, 4\&.0); // [3\&.0, 4\&.0]\&.
+
+a\&.Search(r, resultingNeighbors, resultingDistances);
+.fi
+.PP
+.SS "Naive (exhaustive) search for distance greater than 5\&.0 on one dataset"
+This example uses the O(n^2) naive search (not the tree-based search)\&.
+.PP
+.PP
+.nf
+#include <mlpack/methods/range_search/range_search\&.hpp>
+
+using namespace mlpack::range;
+
+// Our dataset matrix, which is column-major\&.
+extern arma::mat dataset;
+
+// The 'true' option indicates that we will use naive calculation\&.
+RangeSearch<> a(dataset, true);
+
+// The vector-of-vector objects we will store output in\&.
+std::vector<std::vector<size_t> > resultingNeighbors;
+std::vector<std::vector<double> > resultingDistances;
+
+// The range we will use\&.  The upper bound is DBL_MAX\&.
+math::Range r(5\&.0, DBL_MAX); // [5\&.0, inf)\&.
+
+a\&.Search(r, resultingNeighbors, resultingDistances);
+.fi
+.PP
+.PP
+Needless to say, naive search can be very slow\&.\&.\&.
+.SH "The extensible 'RangeSearch' class"
+.PP
+Similar to the \fBNeighborSearch class\fP, the RangeSearch class is very extensible, having the following template arguments:
+.PP
+.PP
+.nf
+template<
+  typename MetricType = mlpack::metric::EuclideanDistance,
+  typename TreeType = mlpack::tree::BinarySpaceTree<bound::HRectBound<2>,
+                                                    tree::EmptyStatistic>
+>
+class RangeSearch;
+.fi
+.PP
+.PP
+By choosing different components for each of these template classes, a very arbitrary range searching object can be constructed\&.
+.SS "MetricType policy class"
+The MetricType policy class allows the range search to take place in any arbitrary metric space\&. The \fBmlpack::metric::LMetric\fP class is a good example implementation\&. A MetricType class must provide the following functions:
+.PP
+.PP
+.nf
+// Empty constructor is required\&.
+MetricType();
+
+// Compute the distance between two points\&.
+template<typename VecType>
+double Evaluate(const VecType& a, const VecType& b);
+.fi
+.PP
+.PP
+Internally, the RangeSearch class keeps an instantiated MetricType class (which can be given in the constructor)\&. This is useful for a metric like the Mahalanobis distance (\fBmlpack::metric::MahalanobisDistance\fP), which must store state (the covariance matrix)\&. Therefore, you can write a non-static MetricType class and use it seamlessly with RangeSearch\&.
+.SS "TreeType policy class"
+The RangeSearch class also allows a custom tree to be used\&. The standard \fBmlpack\fP tree, \fBmlpack::tree::BinarySpaceTree\fP, is also highly extensible in its own right, and its documentation should be consulted for more information\&.
+.PP
+A simple usage of the TreeType policy could be to use a different type of bound with the existing \fBmlpack::tree::BinarySpaceTree\fP class\&. For instance, you could use a ball bound instead of a rectangular bound:
+.PP
+.PP
+.nf
+// Construct a RangeSearch object with ball bounds\&.
+RangeSearch<
+  metric::EuclideanDistance,
+  tree::BinarySpaceTree<bound::BallBound<2>,
+                        EmptyStatistic>
+> rangeSearch(dataset);
+.fi
+.PP
+.PP
+Unlike the \fBNeighborSearch class\fP, the RangeSearch class does not make use of tree statistics; therefore, the EmptyStatistic class should be used for the StatisticType parameter of the BinarySpaceTree (but this is not technically necessary -- RangeSearch simply makes no use of the tree statistic)\&.
+.PP
+It is also possible to use a completely different type of tree\&. The example below shows the use of the RangeSearch class with the \fBmlpack::tree::CoverTree\fP class (which has the EmptyStatistic statistic type as a default, so we do not need to specify that)\&.
+.PP
+.PP
+.nf
+// Construct a RangeSearch object that uses cover trees\&.
+RangeSearch<tree::CoverTree<> > rangeSearch(dataset);
+.fi
+.PP
+.SH "Further documentation"
+.PP
+For further documentation on the RangeSearch class, consult the \fBcomplete API documentation\fP\&. 

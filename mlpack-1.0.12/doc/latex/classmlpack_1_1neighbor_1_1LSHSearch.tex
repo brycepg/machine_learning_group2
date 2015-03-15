@@ -1,0 +1,454 @@
+\section{mlpack\-:\-:neighbor\-:\-:L\-S\-H\-Search$<$ Sort\-Policy $>$ Class Template Reference}
+\label{classmlpack_1_1neighbor_1_1LSHSearch}\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search$<$ Sort\-Policy $>$@{mlpack\-::neighbor\-::\-L\-S\-H\-Search$<$ Sort\-Policy $>$}}
+
+
+The \doxyref{L\-S\-H\-Search}{p.}{classmlpack_1_1neighbor_1_1LSHSearch} class -- This class builds a hash on the reference set and uses this hash to compute the distance-\/approximate nearest-\/neighbors of the given queries.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf L\-S\-H\-Search} (const arma\-::mat \&{\bf reference\-Set}, const arma\-::mat \&{\bf query\-Set}, const size\-\_\-t {\bf num\-Proj}, const size\-\_\-t {\bf num\-Tables}, const double {\bf hash\-Width}=0.\-0, const size\-\_\-t {\bf second\-Hash\-Size}=99901, const size\-\_\-t {\bf bucket\-Size}=500)
+\begin{DoxyCompactList}\small\item\em This function initializes the L\-S\-H class. \end{DoxyCompactList}\item 
+{\bf L\-S\-H\-Search} (const arma\-::mat \&{\bf reference\-Set}, const size\-\_\-t {\bf num\-Proj}, const size\-\_\-t {\bf num\-Tables}, const double {\bf hash\-Width}=0.\-0, const size\-\_\-t {\bf second\-Hash\-Size}=99901, const size\-\_\-t {\bf bucket\-Size}=500)
+\begin{DoxyCompactList}\small\item\em This function initializes the L\-S\-H class. \end{DoxyCompactList}\item 
+void {\bf Search} (const size\-\_\-t k, arma\-::\-Mat$<$ size\-\_\-t $>$ \&resulting\-Neighbors, arma\-::mat \&distances, const size\-\_\-t num\-Tables\-To\-Search=0)
+\begin{DoxyCompactList}\small\item\em Compute the nearest neighbors and store the output in the given matrices. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf Base\-Case} (const size\-\_\-t query\-Index, const size\-\_\-t reference\-Index)
+\begin{DoxyCompactList}\small\item\em This is a helper function that computes the distance of the query to the neighbor candidates and appropriately stores the best 'k' candidates. \end{DoxyCompactList}\item 
+void {\bf Build\-Hash} ()
+\begin{DoxyCompactList}\small\item\em This function builds a hash table with two levels of hashing as presented in the paper. \end{DoxyCompactList}\item 
+void {\bf Insert\-Neighbor} (const size\-\_\-t query\-Index, const size\-\_\-t pos, const size\-\_\-t neighbor, const double distance)
+\begin{DoxyCompactList}\small\item\em This is a helper function that efficiently inserts better neighbor candidates into an existing set of neighbor candidates. \end{DoxyCompactList}\item 
+void {\bf Return\-Indices\-From\-Table} (const size\-\_\-t query\-Index, arma\-::uvec \&reference\-Indices, size\-\_\-t num\-Tables\-To\-Search)
+\begin{DoxyCompactList}\small\item\em This function takes a query and hashes it into each of the hash tables to get keys for the query and then the key is hashed to a bucket of the second hash table and all the points (if any) in those buckets are collected as the potential neighbor candidates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+arma\-::\-Col$<$ size\-\_\-t $>$ {\bf bucket\-Content\-Size}
+\begin{DoxyCompactList}\small\item\em The number of elements present in each hash bucket; should be second\-Hash\-Size. \end{DoxyCompactList}\item 
+arma\-::\-Col$<$ size\-\_\-t $>$ {\bf bucket\-Row\-In\-Hash\-Table}
+\begin{DoxyCompactList}\small\item\em For a particular hash value, points to the row in second\-Hash\-Table corresponding to this value. \end{DoxyCompactList}\item 
+const size\-\_\-t {\bf bucket\-Size}
+\begin{DoxyCompactList}\small\item\em The bucket size of the second hash. \end{DoxyCompactList}\item 
+arma\-::mat $\ast$ {\bf distance\-Ptr}
+\begin{DoxyCompactList}\small\item\em The pointer to the nearest neighbor distances. \end{DoxyCompactList}\item 
+double {\bf hash\-Width}
+\begin{DoxyCompactList}\small\item\em The hash width. \end{DoxyCompactList}\item 
+{\bf metric\-::\-Squared\-Euclidean\-Distance} {\bf metric}
+\begin{DoxyCompactList}\small\item\em Instantiation of the metric. \end{DoxyCompactList}\item 
+arma\-::\-Mat$<$ size\-\_\-t $>$ $\ast$ {\bf neighbor\-Ptr}
+\begin{DoxyCompactList}\small\item\em The pointer to the nearest neighbor indices. \end{DoxyCompactList}\item 
+const size\-\_\-t {\bf num\-Proj}
+\begin{DoxyCompactList}\small\item\em The number of projections. \end{DoxyCompactList}\item 
+const size\-\_\-t {\bf num\-Tables}
+\begin{DoxyCompactList}\small\item\em The number of hash tables. \end{DoxyCompactList}\item 
+arma\-::mat {\bf offsets}
+\begin{DoxyCompactList}\small\item\em The list of the offset 'b' for each of the projection for each table. \end{DoxyCompactList}\item 
+std\-::vector$<$ arma\-::mat $>$ {\bf projections}
+\begin{DoxyCompactList}\small\item\em The std\-::vector containing the projection matrix of each table. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf query\-Set}
+\begin{DoxyCompactList}\small\item\em Query dataset (may not be given). \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf reference\-Set}
+\begin{DoxyCompactList}\small\item\em Reference dataset. \end{DoxyCompactList}\item 
+const size\-\_\-t {\bf second\-Hash\-Size}
+\begin{DoxyCompactList}\small\item\em The big prime representing the size of the second hash. \end{DoxyCompactList}\item 
+arma\-::\-Mat$<$ size\-\_\-t $>$ {\bf second\-Hash\-Table}
+\begin{DoxyCompactList}\small\item\em The final hash table; should be ($<$ second\-Hash\-Size) x bucket\-Size. \end{DoxyCompactList}\item 
+arma\-::vec {\bf second\-Hash\-Weights}
+\begin{DoxyCompactList}\small\item\em The weights of the second hash. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Sort\-Policy = Nearest\-Neighbor\-Sort$>$class mlpack\-::neighbor\-::\-L\-S\-H\-Search$<$ Sort\-Policy $>$}
+
+The \doxyref{L\-S\-H\-Search}{p.}{classmlpack_1_1neighbor_1_1LSHSearch} class -- This class builds a hash on the reference set and uses this hash to compute the distance-\/approximate nearest-\/neighbors of the given queries. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Sort\-Policy} & The sort policy for distances; see \doxyref{Nearest\-Neighbor\-Sort}{p.}{classmlpack_1_1neighbor_1_1NearestNeighborSort}. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 51 of file lsh\-\_\-search.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!L\-S\-H\-Search@{L\-S\-H\-Search}}
+\index{L\-S\-H\-Search@{L\-S\-H\-Search}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{L\-S\-H\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::{\bf L\-S\-H\-Search} (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{reference\-Set, }
+\item[{const arma\-::mat \&}]{query\-Set, }
+\item[{const size\-\_\-t}]{num\-Proj, }
+\item[{const size\-\_\-t}]{num\-Tables, }
+\item[{const double}]{hash\-Width = {\ttfamily 0.0}, }
+\item[{const size\-\_\-t}]{second\-Hash\-Size = {\ttfamily 99901}, }
+\item[{const size\-\_\-t}]{bucket\-Size = {\ttfamily 500}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1neighbor_1_1LSHSearch_a9c6b79ee5ef7b966443151d33e2f9c1a}
+
+
+This function initializes the L\-S\-H class. 
+
+It builds the hash on the reference set with 2-\/stable distributions. See the individual functions performing the hashing for details on how the hashing is done.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reference\-Set} & Set of reference points. \\
+\hline
+{\em query\-Set} & Set of query points. \\
+\hline
+{\em num\-Proj} & Number of projections in each hash table (anything between 10-\/50 might be a decent choice). \\
+\hline
+{\em num\-Tables} & Total number of hash tables (anything between 10-\/20 should suffice). \\
+\hline
+{\em hash\-Width} & The width of hash for every table. If 0 (the default) is provided, then the hash width is automatically obtained by computing the average pairwise distance of 25 pairs. This should be a reasonable upper bound on the nearest-\/neighbor distance in general. \\
+\hline
+{\em second\-Hash\-Size} & The size of the second hash table. This should be a large prime number. \\
+\hline
+{\em bucket\-Size} & The size of the bucket in the second hash table. This is the maximum number of points that can be hashed into single bucket. Default values are already provided here. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!L\-S\-H\-Search@{L\-S\-H\-Search}}
+\index{L\-S\-H\-Search@{L\-S\-H\-Search}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{L\-S\-H\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::{\bf L\-S\-H\-Search} (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{reference\-Set, }
+\item[{const size\-\_\-t}]{num\-Proj, }
+\item[{const size\-\_\-t}]{num\-Tables, }
+\item[{const double}]{hash\-Width = {\ttfamily 0.0}, }
+\item[{const size\-\_\-t}]{second\-Hash\-Size = {\ttfamily 99901}, }
+\item[{const size\-\_\-t}]{bucket\-Size = {\ttfamily 500}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1neighbor_1_1LSHSearch_aa73976fa89f5358aa51e0640124d1947}
+
+
+This function initializes the L\-S\-H class. 
+
+It builds the hash on the reference set with 2-\/stable distributions. See the individual functions performing the hashing for details on how the hashing is done.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reference\-Set} & Set of reference points and the set of queries. \\
+\hline
+{\em num\-Proj} & Number of projections in each hash table (anything between 10-\/50 might be a decent choice). \\
+\hline
+{\em num\-Tables} & Total number of hash tables (anything between 10-\/20 should suffice). \\
+\hline
+{\em hash\-Width} & The width of hash for every table. If 0 (the default) is provided, then the hash width is automatically obtained by computing the average pairwise distance of 25 pairs. This should be a reasonable upper bound on the nearest-\/neighbor distance in general. \\
+\hline
+{\em second\-Hash\-Size} & The size of the second hash table. This should be a large prime number. \\
+\hline
+{\em bucket\-Size} & The size of the bucket in the second hash table. This is the maximum number of points that can be hashed into single bucket. Default values are already provided here. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!Base\-Case@{Base\-Case}}
+\index{Base\-Case@{Base\-Case}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{Base\-Case}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ double {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::Base\-Case (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{query\-Index, }
+\item[{const size\-\_\-t}]{reference\-Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_ac496747d6dd36c657653479038c48ad0}
+
+
+This is a helper function that computes the distance of the query to the neighbor candidates and appropriately stores the best 'k' candidates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query\-Index} & The index of the query in question \\
+\hline
+{\em reference\-Index} & The index of the neighbor candidate in question \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!Build\-Hash@{Build\-Hash}}
+\index{Build\-Hash@{Build\-Hash}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{Build\-Hash}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ void {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::Build\-Hash (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a9b43072b767998a55093d0ebbf52b2f4}
+
+
+This function builds a hash table with two levels of hashing as presented in the paper. 
+
+This function first hashes the points with 'num\-Proj' random projections to a single hash table creating (key, point I\-D) pairs where the key is a 'num\-Proj'-\/dimensional integer vector.
+
+Then each key in this hash table is hashed into a second hash table using a standard hash.
+
+This function does not have any parameters and relies on parameters which are private members of this class, intialized during the class intialization. \index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!Insert\-Neighbor@{Insert\-Neighbor}}
+\index{Insert\-Neighbor@{Insert\-Neighbor}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{Insert\-Neighbor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ void {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::Insert\-Neighbor (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{query\-Index, }
+\item[{const size\-\_\-t}]{pos, }
+\item[{const size\-\_\-t}]{neighbor, }
+\item[{const double}]{distance}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a25aad43904155a2cc2e962a2f11d5961}
+
+
+This is a helper function that efficiently inserts better neighbor candidates into an existing set of neighbor candidates. 
+
+This function is only called by the 'Base\-Case' function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em query\-Index} & This is the index of the query being processed currently \\
+\hline
+{\em pos} & The position of the neighbor candidate in the current list of neighbor candidates. \\
+\hline
+{\em neighbor} & The neighbor candidate that is being inserted into the list of the best 'k' candidates for the query in question. \\
+\hline
+{\em distance} & The distance of the query to the neighbor candidate. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!Return\-Indices\-From\-Table@{Return\-Indices\-From\-Table}}
+\index{Return\-Indices\-From\-Table@{Return\-Indices\-From\-Table}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{Return\-Indices\-From\-Table}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ void {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::Return\-Indices\-From\-Table (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{query\-Index, }
+\item[{arma\-::uvec \&}]{reference\-Indices, }
+\item[{size\-\_\-t}]{num\-Tables\-To\-Search}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a91cf403ebf6e0a0e760b7282b515f59c}
+
+
+This function takes a query and hashes it into each of the hash tables to get keys for the query and then the key is hashed to a bucket of the second hash table and all the points (if any) in those buckets are collected as the potential neighbor candidates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query\-Index} & The index of the query currently being processed. \\
+\hline
+{\em reference\-Indices} & The list of neighbor candidates obtained from hashing the query into all the hash tables and eventually into multiple buckets of the second hash table. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!Search@{Search}}
+\index{Search@{Search}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ void {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::Search (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{k, }
+\item[{arma\-::\-Mat$<$ size\-\_\-t $>$ \&}]{resulting\-Neighbors, }
+\item[{arma\-::mat \&}]{distances, }
+\item[{const size\-\_\-t}]{num\-Tables\-To\-Search = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1neighbor_1_1LSHSearch_afffe4f94e48025f4b832be8ad4a93ab9}
+
+
+Compute the nearest neighbors and store the output in the given matrices. 
+
+The matrices will be set to the size of n columns by k rows, where n is the number of points in the query dataset and k is the number of neighbors being searched for.
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & Number of neighbors to search for. \\
+\hline
+{\em resulting\-Neighbors} & Matrix storing lists of neighbors for each query point. \\
+\hline
+{\em distances} & Matrix storing distances of neighbors for each query point. \\
+\hline
+{\em num\-Tables\-To\-Search} & This parameter allows the user to have control over the number of hash tables to be searched. This allows the user to pick the number of tables it can afford for the time available without having to build hashing for every table size. By default, this is set to zero in which case all tables are considered. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ std\-::string {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1neighbor_1_1LSHSearch_ac13e12e86a6f356af3d03d75b71abd51}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!bucket\-Content\-Size@{bucket\-Content\-Size}}
+\index{bucket\-Content\-Size@{bucket\-Content\-Size}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{bucket\-Content\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ arma\-::\-Col$<$size\-\_\-t$>$ {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::bucket\-Content\-Size\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a4a19df9419a4d0c13840754dc32c133e}
+
+
+The number of elements present in each hash bucket; should be second\-Hash\-Size. 
+
+
+
+Definition at line 229 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!bucket\-Row\-In\-Hash\-Table@{bucket\-Row\-In\-Hash\-Table}}
+\index{bucket\-Row\-In\-Hash\-Table@{bucket\-Row\-In\-Hash\-Table}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{bucket\-Row\-In\-Hash\-Table}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ arma\-::\-Col$<$size\-\_\-t$>$ {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::bucket\-Row\-In\-Hash\-Table\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a0a3799ccf59d8b450c4695670a500835}
+
+
+For a particular hash value, points to the row in second\-Hash\-Table corresponding to this value. 
+
+Should be second\-Hash\-Size. 
+
+Definition at line 233 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!bucket\-Size@{bucket\-Size}}
+\index{bucket\-Size@{bucket\-Size}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{bucket\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ const size\-\_\-t {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::bucket\-Size\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a94b126a2f7beaf1cd73f104eaf33590b}
+
+
+The bucket size of the second hash. 
+
+
+
+Definition at line 219 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!distance\-Ptr@{distance\-Ptr}}
+\index{distance\-Ptr@{distance\-Ptr}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{distance\-Ptr}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ arma\-::mat$\ast$ {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::distance\-Ptr\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a6d34276cdfa3b6859e90dfbca0be9696}
+
+
+The pointer to the nearest neighbor distances. 
+
+
+
+Definition at line 236 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!hash\-Width@{hash\-Width}}
+\index{hash\-Width@{hash\-Width}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{hash\-Width}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ double {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::hash\-Width\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_ac765c095b3b77eb485f801bc3fbd7ca8}
+
+
+The hash width. 
+
+
+
+Definition at line 210 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!metric@{metric}}
+\index{metric@{metric}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ {\bf metric\-::\-Squared\-Euclidean\-Distance} {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::metric\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_af4ad4b3e9ffa5ab58ce71fac0fe354e9}
+
+
+Instantiation of the metric. 
+
+
+
+Definition at line 222 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!neighbor\-Ptr@{neighbor\-Ptr}}
+\index{neighbor\-Ptr@{neighbor\-Ptr}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{neighbor\-Ptr}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ arma\-::\-Mat$<$size\-\_\-t$>$$\ast$ {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::neighbor\-Ptr\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_af41c732f9f0880b97a26f5161c242291}
+
+
+The pointer to the nearest neighbor indices. 
+
+
+
+Definition at line 239 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!num\-Proj@{num\-Proj}}
+\index{num\-Proj@{num\-Proj}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{num\-Proj}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ const size\-\_\-t {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::num\-Proj\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_ab7dab6e9332c796c4ed53d4a33e259bc}
+
+
+The number of projections. 
+
+
+
+Definition at line 198 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!num\-Tables@{num\-Tables}}
+\index{num\-Tables@{num\-Tables}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{num\-Tables}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ const size\-\_\-t {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::num\-Tables\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a2c37e677f4c436da8ab4b4bbd720a163}
+
+
+The number of hash tables. 
+
+
+
+Definition at line 201 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!offsets@{offsets}}
+\index{offsets@{offsets}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{offsets}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ arma\-::mat {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::offsets\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_af4596a8eab77eb80e1c549471211ed9a}
+
+
+The list of the offset 'b' for each of the projection for each table. 
+
+
+
+Definition at line 207 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!projections@{projections}}
+\index{projections@{projections}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{projections}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ std\-::vector$<$arma\-::mat$>$ {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::projections\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a0721af49c63d320c3d5012f0326b8dd5}
+
+
+The std\-::vector containing the projection matrix of each table. 
+
+
+
+Definition at line 204 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!query\-Set@{query\-Set}}
+\index{query\-Set@{query\-Set}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{query\-Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ const arma\-::mat\& {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::query\-Set\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a5f7fc4131554abb442fedc67a75e079f}
+
+
+Query dataset (may not be given). 
+
+
+
+Definition at line 195 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!reference\-Set@{reference\-Set}}
+\index{reference\-Set@{reference\-Set}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{reference\-Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ const arma\-::mat\& {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::reference\-Set\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a21a127e7c20bcb1d73dff97276ff1640}
+
+
+Reference dataset. 
+
+
+
+Definition at line 192 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!second\-Hash\-Size@{second\-Hash\-Size}}
+\index{second\-Hash\-Size@{second\-Hash\-Size}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{second\-Hash\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ const size\-\_\-t {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::second\-Hash\-Size\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a61ae2f45f81390ac0124674923ca8ade}
+
+
+The big prime representing the size of the second hash. 
+
+
+
+Definition at line 213 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!second\-Hash\-Table@{second\-Hash\-Table}}
+\index{second\-Hash\-Table@{second\-Hash\-Table}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{second\-Hash\-Table}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ arma\-::\-Mat$<$size\-\_\-t$>$ {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::second\-Hash\-Table\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_a5190808c97a7e52d3f5344c5f5f4b035}
+
+
+The final hash table; should be ($<$ second\-Hash\-Size) x bucket\-Size. 
+
+
+
+Definition at line 225 of file lsh\-\_\-search.\-hpp.
+
+\index{mlpack\-::neighbor\-::\-L\-S\-H\-Search@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}!second\-Hash\-Weights@{second\-Hash\-Weights}}
+\index{second\-Hash\-Weights@{second\-Hash\-Weights}!mlpack::neighbor::LSHSearch@{mlpack\-::neighbor\-::\-L\-S\-H\-Search}}
+\subsubsection[{second\-Hash\-Weights}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort$>$ arma\-::vec {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search}$<$ Sort\-Policy $>$\-::second\-Hash\-Weights\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1neighbor_1_1LSHSearch_aabdc27407c4c6d722b6b39fd8988dea6}
+
+
+The weights of the second hash. 
+
+
+
+Definition at line 216 of file lsh\-\_\-search.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/lsh/{\bf lsh\-\_\-search.\-hpp}\end{DoxyCompactItemize}

@@ -1,0 +1,164 @@
+.TH "mlpack" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack \- 
+.PP
+Linear algebra utility functions, generally performed on matrices or vectors\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "\fBamf\fP"
+.br
+.RI "\fIAlternating Matrix Factorization\&. \fP"
+.ti -1c
+.RI "\fBbound\fP"
+.br
+.ti -1c
+.RI "\fBcf\fP"
+.br
+.RI "\fICollaborative filtering\&. \fP"
+.ti -1c
+.RI "\fBdata\fP"
+.br
+.RI "\fIFunctions to load and save matrices\&. \fP"
+.ti -1c
+.RI "\fBdecision_stump\fP"
+.br
+.ti -1c
+.RI "\fBdet\fP"
+.br
+.RI "\fIDensity Estimation Trees\&. \fP"
+.ti -1c
+.RI "\fBdistribution\fP"
+.br
+.RI "\fIProbability distributions\&. \fP"
+.ti -1c
+.RI "\fBemst\fP"
+.br
+.RI "\fIEuclidean Minimum Spanning Trees\&. \fP"
+.ti -1c
+.RI "\fBfastmks\fP"
+.br
+.RI "\fIFast max-kernel search\&. \fP"
+.ti -1c
+.RI "\fBgmm\fP"
+.br
+.RI "\fIGaussian Mixture Models\&. \fP"
+.ti -1c
+.RI "\fBhmm\fP"
+.br
+.RI "\fIHidden Markov Models\&. \fP"
+.ti -1c
+.RI "\fBkernel\fP"
+.br
+.RI "\fIKernel functions\&. \fP"
+.ti -1c
+.RI "\fBkmeans\fP"
+.br
+.RI "\fIK-Means clustering\&. \fP"
+.ti -1c
+.RI "\fBkpca\fP"
+.br
+.ti -1c
+.RI "\fBlcc\fP"
+.br
+.ti -1c
+.RI "\fBmath\fP"
+.br
+.RI "\fIMiscellaneous math routines\&. \fP"
+.ti -1c
+.RI "\fBmetric\fP"
+.br
+.ti -1c
+.RI "\fBmvu\fP"
+.br
+.ti -1c
+.RI "\fBnaive_bayes\fP"
+.br
+.RI "\fIThe Naive Bayes Classifier\&. \fP"
+.ti -1c
+.RI "\fBnca\fP"
+.br
+.RI "\fINeighborhood Components Analysis\&. \fP"
+.ti -1c
+.RI "\fBneighbor\fP"
+.br
+.RI "\fINeighbor-search routines\&. \fP"
+.ti -1c
+.RI "\fBnn\fP"
+.br
+.ti -1c
+.RI "\fBoptimization\fP"
+.br
+.ti -1c
+.RI "\fBpca\fP"
+.br
+.ti -1c
+.RI "\fBperceptron\fP"
+.br
+.ti -1c
+.RI "\fBradical\fP"
+.br
+.ti -1c
+.RI "\fBrange\fP"
+.br
+.RI "\fIRange-search routines\&. \fP"
+.ti -1c
+.RI "\fBregression\fP"
+.br
+.RI "\fIRegression methods\&. \fP"
+.ti -1c
+.RI "\fBsparse_coding\fP"
+.br
+.ti -1c
+.RI "\fBsvd\fP"
+.br
+.ti -1c
+.RI "\fBtree\fP"
+.br
+.RI "\fITrees and tree-building procedures\&. \fP"
+.ti -1c
+.RI "\fButil\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCLI\fP"
+.br
+.RI "\fIParses the command line for parameters and holds user-specified parameters\&. \fP"
+.ti -1c
+.RI "class \fBLog\fP"
+.br
+.RI "\fIProvides a convenient way to give formatted output\&. \fP"
+.ti -1c
+.RI "struct \fBParamData\fP"
+.br
+.RI "\fIAids in the extensibility of \fBCLI\fP by focusing potential changes into one structure\&. \fP"
+.ti -1c
+.RI "class \fBTimer\fP"
+.br
+.RI "\fIThe timer class provides a way for MLPACK methods to be timed\&. \fP"
+.ti -1c
+.RI "class \fBTimers\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Linear algebra utility functions, generally performed on matrices or vectors\&. 
+
+This class is used to update the weightVectors matrix according to the simple update rule as discussed by Rosenblatt:
+.PP
+if a vector x has been incorrectly classified by a weight w, then w = w - x and w'= w'+ x
+.PP
+where w' is the weight vector which correctly classifies x\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

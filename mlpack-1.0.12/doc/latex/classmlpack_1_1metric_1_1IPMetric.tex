@@ -1,0 +1,169 @@
+\section{mlpack\-:\-:metric\-:\-:I\-P\-Metric$<$ Kernel\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1metric_1_1IPMetric}\index{mlpack\-::metric\-::\-I\-P\-Metric$<$ Kernel\-Type $>$@{mlpack\-::metric\-::\-I\-P\-Metric$<$ Kernel\-Type $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf I\-P\-Metric} ()
+\begin{DoxyCompactList}\small\item\em Create the \doxyref{I\-P\-Metric}{p.}{classmlpack_1_1metric_1_1IPMetric} without an instantiated kernel. \end{DoxyCompactList}\item 
+{\bf I\-P\-Metric} (Kernel\-Type \&{\bf kernel})
+\begin{DoxyCompactList}\small\item\em Create the \doxyref{I\-P\-Metric}{p.}{classmlpack_1_1metric_1_1IPMetric} with an instantiated kernel. \end{DoxyCompactList}\item 
+{\bf $\sim$\-I\-P\-Metric} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxyref{I\-P\-Metric}{p.}{classmlpack_1_1metric_1_1IPMetric} object. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Vec1\-Type , typename Vec2\-Type $>$ }\\double {\bf Evaluate} (const Vec1\-Type \&a, const Vec2\-Type \&b)
+\begin{DoxyCompactList}\small\item\em Evaluate the metric. \end{DoxyCompactList}\item 
+const Kernel\-Type \& {\bf Kernel} () const 
+\begin{DoxyCompactList}\small\item\em Get the kernel. \end{DoxyCompactList}\item 
+Kernel\-Type \& {\bf Kernel} ()
+\begin{DoxyCompactList}\small\item\em Modify the kernel. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Returns a string representation of this object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Kernel\-Type \& {\bf kernel}
+\begin{DoxyCompactList}\small\item\em The reference to the kernel that is being used. \end{DoxyCompactList}\item 
+Kernel\-Type $\ast$ {\bf local\-Kernel}
+\begin{DoxyCompactList}\small\item\em The locally stored kernel, if it is necessary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Kernel\-Type$>$class mlpack\-::metric\-::\-I\-P\-Metric$<$ Kernel\-Type $>$}
+
+
+
+Definition at line 22 of file ip\-\_\-metric.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::metric\-::\-I\-P\-Metric@{mlpack\-::metric\-::\-I\-P\-Metric}!I\-P\-Metric@{I\-P\-Metric}}
+\index{I\-P\-Metric@{I\-P\-Metric}!mlpack::metric::IPMetric@{mlpack\-::metric\-::\-I\-P\-Metric}}
+\subsubsection[{I\-P\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kernel\-Type $>$ {\bf mlpack\-::metric\-::\-I\-P\-Metric}$<$ Kernel\-Type $>$\-::{\bf I\-P\-Metric} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1metric_1_1IPMetric_a22701e4059168a42152e496f4bde53db}
+
+
+Create the \doxyref{I\-P\-Metric}{p.}{classmlpack_1_1metric_1_1IPMetric} without an instantiated kernel. 
+
+\index{mlpack\-::metric\-::\-I\-P\-Metric@{mlpack\-::metric\-::\-I\-P\-Metric}!I\-P\-Metric@{I\-P\-Metric}}
+\index{I\-P\-Metric@{I\-P\-Metric}!mlpack::metric::IPMetric@{mlpack\-::metric\-::\-I\-P\-Metric}}
+\subsubsection[{I\-P\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kernel\-Type $>$ {\bf mlpack\-::metric\-::\-I\-P\-Metric}$<$ Kernel\-Type $>$\-::{\bf I\-P\-Metric} (
+\begin{DoxyParamCaption}
+\item[{Kernel\-Type \&}]{kernel}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1metric_1_1IPMetric_a069898c68e6cbc98622804b39de01185}
+
+
+Create the \doxyref{I\-P\-Metric}{p.}{classmlpack_1_1metric_1_1IPMetric} with an instantiated kernel. 
+
+\index{mlpack\-::metric\-::\-I\-P\-Metric@{mlpack\-::metric\-::\-I\-P\-Metric}!$\sim$\-I\-P\-Metric@{$\sim$\-I\-P\-Metric}}
+\index{$\sim$\-I\-P\-Metric@{$\sim$\-I\-P\-Metric}!mlpack::metric::IPMetric@{mlpack\-::metric\-::\-I\-P\-Metric}}
+\subsubsection[{$\sim$\-I\-P\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kernel\-Type $>$ {\bf mlpack\-::metric\-::\-I\-P\-Metric}$<$ Kernel\-Type $>$\-::$\sim${\bf I\-P\-Metric} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1metric_1_1IPMetric_a6bcc0236d53f2a071191de0ab6902e65}
+
+
+Destroy the \doxyref{I\-P\-Metric}{p.}{classmlpack_1_1metric_1_1IPMetric} object. 
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::metric\-::\-I\-P\-Metric@{mlpack\-::metric\-::\-I\-P\-Metric}!Evaluate@{Evaluate}}
+\index{Evaluate@{Evaluate}!mlpack::metric::IPMetric@{mlpack\-::metric\-::\-I\-P\-Metric}}
+\subsubsection[{Evaluate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kernel\-Type $>$ template$<$typename Vec1\-Type , typename Vec2\-Type $>$ double {\bf mlpack\-::metric\-::\-I\-P\-Metric}$<$ Kernel\-Type $>$\-::Evaluate (
+\begin{DoxyParamCaption}
+\item[{const Vec1\-Type \&}]{a, }
+\item[{const Vec2\-Type \&}]{b}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1metric_1_1IPMetric_a234ce55fbca50dcc5cd9e535783c026c}
+
+
+Evaluate the metric. 
+
+\index{mlpack\-::metric\-::\-I\-P\-Metric@{mlpack\-::metric\-::\-I\-P\-Metric}!Kernel@{Kernel}}
+\index{Kernel@{Kernel}!mlpack::metric::IPMetric@{mlpack\-::metric\-::\-I\-P\-Metric}}
+\subsubsection[{Kernel}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kernel\-Type $>$ const Kernel\-Type\& {\bf mlpack\-::metric\-::\-I\-P\-Metric}$<$ Kernel\-Type $>$\-::Kernel (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1metric_1_1IPMetric_a71c118f0e6039164d898b5063fc23f2e}
+
+
+Get the kernel. 
+
+
+
+Definition at line 41 of file ip\-\_\-metric.\-hpp.
+
+
+
+References mlpack\-::metric\-::\-I\-P\-Metric$<$ Kernel\-Type $>$\-::kernel.
+
+\index{mlpack\-::metric\-::\-I\-P\-Metric@{mlpack\-::metric\-::\-I\-P\-Metric}!Kernel@{Kernel}}
+\index{Kernel@{Kernel}!mlpack::metric::IPMetric@{mlpack\-::metric\-::\-I\-P\-Metric}}
+\subsubsection[{Kernel}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kernel\-Type $>$ Kernel\-Type\& {\bf mlpack\-::metric\-::\-I\-P\-Metric}$<$ Kernel\-Type $>$\-::Kernel (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1metric_1_1IPMetric_a83d7940700aa1b17486d5def5374ffef}
+
+
+Modify the kernel. 
+
+
+
+Definition at line 43 of file ip\-\_\-metric.\-hpp.
+
+
+
+References mlpack\-::metric\-::\-I\-P\-Metric$<$ Kernel\-Type $>$\-::kernel.
+
+\index{mlpack\-::metric\-::\-I\-P\-Metric@{mlpack\-::metric\-::\-I\-P\-Metric}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::metric::IPMetric@{mlpack\-::metric\-::\-I\-P\-Metric}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kernel\-Type $>$ std\-::string {\bf mlpack\-::metric\-::\-I\-P\-Metric}$<$ Kernel\-Type $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1metric_1_1IPMetric_acb87508358ff6736ac6769e903ef0cfc}
+
+
+Returns a string representation of this object. 
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::metric\-::\-I\-P\-Metric@{mlpack\-::metric\-::\-I\-P\-Metric}!kernel@{kernel}}
+\index{kernel@{kernel}!mlpack::metric::IPMetric@{mlpack\-::metric\-::\-I\-P\-Metric}}
+\subsubsection[{kernel}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kernel\-Type $>$ Kernel\-Type\& {\bf mlpack\-::metric\-::\-I\-P\-Metric}$<$ Kernel\-Type $>$\-::kernel\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1metric_1_1IPMetric_a574b8e408ce32f6cf1fcb7447d607037}
+
+
+The reference to the kernel that is being used. 
+
+
+
+Definition at line 52 of file ip\-\_\-metric.\-hpp.
+
+
+
+Referenced by mlpack\-::metric\-::\-I\-P\-Metric$<$ Kernel\-Type $>$\-::\-Kernel().
+
+\index{mlpack\-::metric\-::\-I\-P\-Metric@{mlpack\-::metric\-::\-I\-P\-Metric}!local\-Kernel@{local\-Kernel}}
+\index{local\-Kernel@{local\-Kernel}!mlpack::metric::IPMetric@{mlpack\-::metric\-::\-I\-P\-Metric}}
+\subsubsection[{local\-Kernel}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Kernel\-Type $>$ Kernel\-Type$\ast$ {\bf mlpack\-::metric\-::\-I\-P\-Metric}$<$ Kernel\-Type $>$\-::local\-Kernel\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1metric_1_1IPMetric_a8ddae66914766591f9fee08942bf67ea}
+
+
+The locally stored kernel, if it is necessary. 
+
+
+
+Definition at line 50 of file ip\-\_\-metric.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/metrics/{\bf ip\-\_\-metric.\-hpp}\end{DoxyCompactItemize}

@@ -1,0 +1,86 @@
+.TH "mlpack::ParamData" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::ParamData \- 
+.PP
+Aids in the extensibility of \fBCLI\fP by focusing potential changes into one structure\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBdesc\fP"
+.br
+.RI "\fIDescription of this parameter, if any\&. \fP"
+.ti -1c
+.RI "bool \fBisFlag\fP"
+.br
+.RI "\fITrue if the wasPassed value should not be ignored\&. \fP"
+.ti -1c
+.RI "std::string \fBname\fP"
+.br
+.RI "\fIName of this parameter\&. \fP"
+.ti -1c
+.RI "std::string \fBtname\fP"
+.br
+.RI "\fIType information of this parameter\&. \fP"
+.ti -1c
+.RI "boost::any \fBvalue\fP"
+.br
+.RI "\fIThe actual value of this parameter\&. \fP"
+.ti -1c
+.RI "bool \fBwasPassed\fP"
+.br
+.RI "\fITrue if this parameter was passed in via command line or file\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Aids in the extensibility of \fBCLI\fP by focusing potential changes into one structure\&. 
+.PP
+Definition at line 382 of file cli\&.hpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string mlpack::ParamData::desc"
+
+.PP
+Description of this parameter, if any\&. 
+.PP
+Definition at line 387 of file cli\&.hpp\&.
+.SS "bool mlpack::ParamData::isFlag"
+
+.PP
+True if the wasPassed value should not be ignored\&. 
+.PP
+Definition at line 395 of file cli\&.hpp\&.
+.SS "std::string mlpack::ParamData::name"
+
+.PP
+Name of this parameter\&. 
+.PP
+Definition at line 385 of file cli\&.hpp\&.
+.SS "std::string mlpack::ParamData::tname"
+
+.PP
+Type information of this parameter\&. 
+.PP
+Definition at line 389 of file cli\&.hpp\&.
+.SS "boost::any mlpack::ParamData::value"
+
+.PP
+The actual value of this parameter\&. 
+.PP
+Definition at line 391 of file cli\&.hpp\&.
+.SS "bool mlpack::ParamData::wasPassed"
+
+.PP
+True if this parameter was passed in via command line or file\&. 
+.PP
+Definition at line 393 of file cli\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

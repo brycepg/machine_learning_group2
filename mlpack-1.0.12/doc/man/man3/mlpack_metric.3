@@ -1,0 +1,60 @@
+.TH "mlpack::metric" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::metric \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBIPMetric\fP"
+.br
+.ti -1c
+.RI "class \fBLMetric\fP"
+.br
+.RI "\fIThe L_p metric for arbitrary integer p, with an option to take the root\&. \fP"
+.ti -1c
+.RI "class \fBMahalanobisDistance\fP"
+.br
+.RI "\fIThe Mahalanobis distance, which is essentially a stretched Euclidean distance\&. \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBLMetric\fP< INT_MAX, false > \fBChebyshevDistance\fP"
+.br
+.ti -1c
+.RI "typedef \fBLMetric\fP< 2, true > \fBEuclideanDistance\fP"
+.br
+.ti -1c
+.RI "typedef \fBLMetric\fP< 1, false > \fBManhattanDistance\fP"
+.br
+.ti -1c
+.RI "typedef \fBLMetric\fP< 2, false > \fBSquaredEuclideanDistance\fP"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef \fBLMetric\fP<INT_MAX, false> \fBmlpack::metric::ChebyshevDistance\fP"
+
+.PP
+Definition at line 102 of file lmetric\&.hpp\&.
+.SS "typedef \fBLMetric\fP<2, true> \fBmlpack::metric::EuclideanDistance\fP"
+
+.PP
+Definition at line 97 of file lmetric\&.hpp\&.
+.SS "typedef \fBLMetric\fP<1, false> \fBmlpack::metric::ManhattanDistance\fP"
+
+.PP
+Definition at line 87 of file lmetric\&.hpp\&.
+.SS "typedef \fBLMetric\fP<2, false> \fBmlpack::metric::SquaredEuclideanDistance\fP"
+
+.PP
+Definition at line 92 of file lmetric\&.hpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

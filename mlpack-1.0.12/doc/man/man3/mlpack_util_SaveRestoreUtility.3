@@ -1,0 +1,175 @@
+.TH "mlpack::util::SaveRestoreUtility" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::util::SaveRestoreUtility \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSaveRestoreUtility\fP ()"
+.br
+.ti -1c
+.RI "\fB~SaveRestoreUtility\fP ()"
+.br
+.ti -1c
+.RI "template<typename T > T & \fBLoadParameter\fP (T &t, const std::string &name)"
+.br
+.RI "\fILoadParameter loads a parameter from the parameters map\&. \fP"
+.ti -1c
+.RI "template<typename T > std::vector< T > & \fBLoadParameter\fP (std::vector< T > &v, const std::string &name)"
+.br
+.RI "\fILoadParameter loads a parameter from the parameters map\&. \fP"
+.ti -1c
+.RI "char \fBLoadParameter\fP (char c, const std::string &name)"
+.br
+.RI "\fILoadParameter loads a character from the parameters map\&. \fP"
+.ti -1c
+.RI "std::string \fBLoadParameter\fP (std::string &str, const std::string &name)"
+.br
+.RI "\fILoadParameter loads a string from the parameters map\&. \fP"
+.ti -1c
+.RI "arma::mat & \fBLoadParameter\fP (arma::mat &matrix, const std::string &name)"
+.br
+.RI "\fILoadParameter loads an arma::mat from the parameters map\&. \fP"
+.ti -1c
+.RI "template<> arma::vec & \fBLoadParameter\fP (arma::vec &t, const std::string &name)"
+.br
+.RI "\fISpecialization for arma::vec\&. \fP"
+.ti -1c
+.RI "bool \fBReadFile\fP (const std::string &filename)"
+.br
+.RI "\fIReadFile reads an XML tree from a file\&. \fP"
+.ti -1c
+.RI "template<typename T > void \fBSaveParameter\fP (const T &t, const std::string &name)"
+.br
+.RI "\fISaveParameter saves a parameter to the parameters map\&. \fP"
+.ti -1c
+.RI "template<typename T > void \fBSaveParameter\fP (const std::vector< T > &v, const std::string &name)"
+.br
+.RI "\fISaveParameter saves a parameter to the parameters map\&. \fP"
+.ti -1c
+.RI "void \fBSaveParameter\fP (const char c, const std::string &name)"
+.br
+.RI "\fISaveParameter saves a character to the parameters map\&. \fP"
+.ti -1c
+.RI "void \fBSaveParameter\fP (const arma::mat &mat, const std::string &name)"
+.br
+.RI "\fISaveParameter saves an arma::mat to the parameters map\&. \fP"
+.ti -1c
+.RI "template<> void \fBSaveParameter\fP (const arma::vec &t, const std::string &name)"
+.br
+.RI "\fISpecialization for arma::vec\&. \fP"
+.ti -1c
+.RI "bool \fBWriteFile\fP (const std::string &filename)"
+.br
+.RI "\fIWriteFile writes the XML tree to a file\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBRecurseOnNodes\fP (xmlNode *n)"
+.br
+.RI "\fIRecurseOnNodes performs a depth first search of the XML tree\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::map< std::string, 
+.br
+std::string > \fBparameters\fP"
+.br
+.RI "\fIparameters contains a list of names and parameters in string form\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 34 of file save_restore_utility\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::util::SaveRestoreUtility::SaveRestoreUtility ()\fC [inline]\fP"
+
+.PP
+Definition at line 48 of file save_restore_utility\&.hpp\&.
+.SS "mlpack::util::SaveRestoreUtility::~SaveRestoreUtility ()\fC [inline]\fP"
+
+.PP
+Definition at line 49 of file save_restore_utility\&.hpp\&.
+.PP
+References parameters\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T > T& mlpack::util::SaveRestoreUtility::LoadParameter (T &t, const std::string &name)"
+
+.PP
+LoadParameter loads a parameter from the parameters map\&. 
+.SS "template<typename T > std::vector<T>& mlpack::util::SaveRestoreUtility::LoadParameter (std::vector< T > &v, const std::string &name)"
+
+.PP
+LoadParameter loads a parameter from the parameters map\&. 
+.SS "char mlpack::util::SaveRestoreUtility::LoadParameter (charc, const std::string &name)"
+
+.PP
+LoadParameter loads a character from the parameters map\&. 
+.SS "std::string mlpack::util::SaveRestoreUtility::LoadParameter (std::string &str, const std::string &name)"
+
+.PP
+LoadParameter loads a string from the parameters map\&. 
+.SS "arma::mat& mlpack::util::SaveRestoreUtility::LoadParameter (arma::mat &matrix, const std::string &name)"
+
+.PP
+LoadParameter loads an arma::mat from the parameters map\&. 
+.SS "template<> arma::vec& mlpack::util::SaveRestoreUtility::LoadParameter (arma::vec &t, const std::string &name)"
+
+.PP
+Specialization for arma::vec\&. 
+.SS "bool mlpack::util::SaveRestoreUtility::ReadFile (const std::string &filename)"
+
+.PP
+ReadFile reads an XML tree from a file\&. 
+.SS "void mlpack::util::SaveRestoreUtility::RecurseOnNodes (xmlNode *n)\fC [private]\fP"
+
+.PP
+RecurseOnNodes performs a depth first search of the XML tree\&. 
+.SS "template<typename T > void mlpack::util::SaveRestoreUtility::SaveParameter (const T &t, const std::string &name)"
+
+.PP
+SaveParameter saves a parameter to the parameters map\&. 
+.SS "template<typename T > void mlpack::util::SaveRestoreUtility::SaveParameter (const std::vector< T > &v, const std::string &name)"
+
+.PP
+SaveParameter saves a parameter to the parameters map\&. 
+.SS "void mlpack::util::SaveRestoreUtility::SaveParameter (const charc, const std::string &name)"
+
+.PP
+SaveParameter saves a character to the parameters map\&. 
+.SS "void mlpack::util::SaveRestoreUtility::SaveParameter (const arma::mat &mat, const std::string &name)"
+
+.PP
+SaveParameter saves an arma::mat to the parameters map\&. 
+.SS "template<> void mlpack::util::SaveRestoreUtility::SaveParameter (const arma::vec &t, const std::string &name)"
+
+.PP
+Specialization for arma::vec\&. 
+.SS "bool mlpack::util::SaveRestoreUtility::WriteFile (const std::string &filename)"
+
+.PP
+WriteFile writes the XML tree to a file\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "std::map<std::string, std::string> mlpack::util::SaveRestoreUtility::parameters\fC [private]\fP"
+
+.PP
+parameters contains a list of names and parameters in string form\&. 
+.PP
+Definition at line 40 of file save_restore_utility\&.hpp\&.
+.PP
+Referenced by ~SaveRestoreUtility()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

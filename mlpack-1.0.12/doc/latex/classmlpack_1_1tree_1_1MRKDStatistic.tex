@@ -1,0 +1,454 @@
+\section{mlpack\-:\-:tree\-:\-:M\-R\-K\-D\-Statistic Class Reference}
+\label{classmlpack_1_1tree_1_1MRKDStatistic}\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+
+
+Statistic for multi-\/resolution kd-\/trees.  
+
+
+
+
+Collaboration diagram for mlpack\-:\-:tree\-:\-:M\-R\-K\-D\-Statistic\-:
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf M\-R\-K\-D\-Statistic} ()
+\begin{DoxyCompactList}\small\item\em Initialize an empty statistic. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Tree\-Type $>$ }\\{\bf M\-R\-K\-D\-Statistic} (const Tree\-Type \&)
+\begin{DoxyCompactList}\small\item\em This constructor is called when a node is finished initializing. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Begin} () const 
+\begin{DoxyCompactList}\small\item\em Get the index of the initial item in the dataset. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Begin} ()
+\begin{DoxyCompactList}\small\item\em Modify the index of the initial item in the dataset. \end{DoxyCompactList}\item 
+const arma\-::colvec \& {\bf Center\-Of\-Mass} () const 
+\begin{DoxyCompactList}\small\item\em Get the center of mass. \end{DoxyCompactList}\item 
+arma\-::colvec \& {\bf Center\-Of\-Mass} ()
+\begin{DoxyCompactList}\small\item\em Modify the center of mass. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Count} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of items in the dataset. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Count} ()
+\begin{DoxyCompactList}\small\item\em Modify the number of items in the dataset. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Dominating\-Centroid} () const 
+\begin{DoxyCompactList}\small\item\em Get the index of the dominating centroid. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Dominating\-Centroid} ()
+\begin{DoxyCompactList}\small\item\em Modify the index of the dominating centroid. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Returns a string representation of this object. \end{DoxyCompactList}\item 
+const std\-::vector$<$ size\-\_\-t $>$ \& {\bf Whitelist} () const 
+\begin{DoxyCompactList}\small\item\em Access the whitelist. \end{DoxyCompactList}\item 
+std\-::vector$<$ size\-\_\-t $>$ \& {\bf Whitelist} ()
+\begin{DoxyCompactList}\small\item\em Modify the whitelist. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\-\_\-t {\bf begin}
+\begin{DoxyCompactList}\small\item\em The initial item in the dataset, so we don't have to make a copy. \end{DoxyCompactList}\item 
+arma\-::colvec {\bf center\-Of\-Mass}
+\begin{DoxyCompactList}\small\item\em The center of mass for this dataset. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf count}
+\begin{DoxyCompactList}\small\item\em The number of items in the dataset. \end{DoxyCompactList}\item 
+const arma\-::mat $\ast$ {\bf dataset}
+\begin{DoxyCompactList}\small\item\em The data points this object contains. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf dominating\-Centroid}
+\begin{DoxyCompactList}\small\item\em The index of the dominating centroid of the associated hyperrectangle. \end{DoxyCompactList}\item 
+bool {\bf is\-Whitelist\-Valid}
+\begin{DoxyCompactList}\small\item\em Whether or not the whitelist is valid. \end{DoxyCompactList}\item 
+const {\bf M\-R\-K\-D\-Statistic} $\ast$ {\bf left\-Stat}
+\begin{DoxyCompactList}\small\item\em The left child. \end{DoxyCompactList}\item 
+const {\bf M\-R\-K\-D\-Statistic} $\ast$ {\bf parent\-Stat}
+\begin{DoxyCompactList}\small\item\em A link to the parent node; N\-U\-L\-L if this is the root. \end{DoxyCompactList}\item 
+const {\bf M\-R\-K\-D\-Statistic} $\ast$ {\bf right\-Stat}
+\begin{DoxyCompactList}\small\item\em The right child. \end{DoxyCompactList}\item 
+double {\bf sum\-Of\-Squared\-Norms}
+\begin{DoxyCompactList}\small\item\em The sum of the squared Euclidean norms for this dataset. \end{DoxyCompactList}\item 
+std\-::vector$<$ size\-\_\-t $>$ {\bf whitelist}
+\begin{DoxyCompactList}\small\item\em The list of centroids that cannot own this hyperrectangle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Statistic for multi-\/resolution kd-\/trees. 
+
+Definition at line 25 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!M\-R\-K\-D\-Statistic@{M\-R\-K\-D\-Statistic}}
+\index{M\-R\-K\-D\-Statistic@{M\-R\-K\-D\-Statistic}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{M\-R\-K\-D\-Statistic}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-M\-R\-K\-D\-Statistic (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1MRKDStatistic_acc9ea4d43d888905bfde6bc4b44b04ab}
+
+
+Initialize an empty statistic. 
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!M\-R\-K\-D\-Statistic@{M\-R\-K\-D\-Statistic}}
+\index{M\-R\-K\-D\-Statistic@{M\-R\-K\-D\-Statistic}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{M\-R\-K\-D\-Statistic}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Tree\-Type $>$ mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-M\-R\-K\-D\-Statistic (
+\begin{DoxyParamCaption}
+\item[{const Tree\-Type \&}]{}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1MRKDStatistic_a205ff4603803d95718c774f492acb7fe}
+
+
+This constructor is called when a node is finished initializing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The node that has been finished. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!Begin@{Begin}}
+\index{Begin@{Begin}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{Begin}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-Begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a05fd081ae7eac1100ade0800b8961ec7}
+
+
+Get the index of the initial item in the dataset. 
+
+
+
+Definition at line 45 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+References begin.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!Begin@{Begin}}
+\index{Begin@{Begin}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{Begin}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t\& mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-Begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a2dc3d8919b6f605d97a4ebd590b6be08}
+
+
+Modify the index of the initial item in the dataset. 
+
+
+
+Definition at line 47 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+References begin.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!Center\-Of\-Mass@{Center\-Of\-Mass}}
+\index{Center\-Of\-Mass@{Center\-Of\-Mass}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{Center\-Of\-Mass}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::colvec\& mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-Center\-Of\-Mass (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_ac24133ce4ec0564861597c27e95c428d}
+
+
+Get the center of mass. 
+
+
+
+Definition at line 55 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+References center\-Of\-Mass.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!Center\-Of\-Mass@{Center\-Of\-Mass}}
+\index{Center\-Of\-Mass@{Center\-Of\-Mass}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{Center\-Of\-Mass}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::colvec\& mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-Center\-Of\-Mass (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a307c4c94a6c634bf7c62a60afe398fcd}
+
+
+Modify the center of mass. 
+
+
+
+Definition at line 57 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+References center\-Of\-Mass.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!Count@{Count}}
+\index{Count@{Count}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{Count}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_af1910d525b4a29720f2c2dd25c09e32f}
+
+
+Get the number of items in the dataset. 
+
+
+
+Definition at line 50 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+References count.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!Count@{Count}}
+\index{Count@{Count}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{Count}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t\& mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a51ec17a7da571fc00d93959ffe45fe2e}
+
+
+Modify the number of items in the dataset. 
+
+
+
+Definition at line 52 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+References count.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!Dominating\-Centroid@{Dominating\-Centroid}}
+\index{Dominating\-Centroid@{Dominating\-Centroid}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{Dominating\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-Dominating\-Centroid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_aa928865ec18ef415279f4270e27628b2}
+
+
+Get the index of the dominating centroid. 
+
+
+
+Definition at line 60 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+References dominating\-Centroid.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!Dominating\-Centroid@{Dominating\-Centroid}}
+\index{Dominating\-Centroid@{Dominating\-Centroid}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{Dominating\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t\& mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-Dominating\-Centroid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_aa8ae6c5f63c88ca367d5b02e54a120eb}
+
+
+Modify the index of the dominating centroid. 
+
+
+
+Definition at line 62 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+References dominating\-Centroid.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1tree_1_1MRKDStatistic_a9b5a16d801bb3b324cde26f6e7b93c57}
+
+
+Returns a string representation of this object. 
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!Whitelist@{Whitelist}}
+\index{Whitelist@{Whitelist}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{Whitelist}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$size\-\_\-t$>$\& mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-Whitelist (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_ab153783b78831f56100059da70a455a0}
+
+
+Access the whitelist. 
+
+
+
+Definition at line 65 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+References whitelist.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!Whitelist@{Whitelist}}
+\index{Whitelist@{Whitelist}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{Whitelist}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$size\-\_\-t$>$\& mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::\-Whitelist (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_ab4258166671da9bc9db227a99fa0f453}
+
+
+Modify the whitelist. 
+
+
+
+Definition at line 67 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+References whitelist.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!begin@{begin}}
+\index{begin@{begin}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::begin\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a1d4dc6e6cc0f5dcede4fb8ff00cfde4c}
+
+
+The initial item in the dataset, so we don't have to make a copy. 
+
+
+
+Definition at line 73 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+Referenced by Begin().
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!center\-Of\-Mass@{center\-Of\-Mass}}
+\index{center\-Of\-Mass@{center\-Of\-Mass}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{center\-Of\-Mass}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::colvec mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::center\-Of\-Mass\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a9f94c59aa70794c2afd217dafe2ba1b3}
+
+
+The center of mass for this dataset. 
+
+
+
+Definition at line 85 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+Referenced by Center\-Of\-Mass().
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!count@{count}}
+\index{count@{count}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::count\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a2de2df81ba40b86bf0f5147be1af8a1e}
+
+
+The number of items in the dataset. 
+
+
+
+Definition at line 75 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+Referenced by Count().
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!dataset@{dataset}}
+\index{dataset@{dataset}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{dataset}]{\setlength{\rightskip}{0pt plus 5cm}const arma\-::mat$\ast$ mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::dataset\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a5c6d482529531005722a2344b36c3941}
+
+
+The data points this object contains. 
+
+
+
+Definition at line 71 of file mrkd\-\_\-statistic.\-hpp.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!dominating\-Centroid@{dominating\-Centroid}}
+\index{dominating\-Centroid@{dominating\-Centroid}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{dominating\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::dominating\-Centroid\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a964dda602d9cf8a6def8992eff8ed7e0}
+
+
+The index of the dominating centroid of the associated hyperrectangle. 
+
+
+
+Definition at line 91 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+Referenced by Dominating\-Centroid().
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!is\-Whitelist\-Valid@{is\-Whitelist\-Valid}}
+\index{is\-Whitelist\-Valid@{is\-Whitelist\-Valid}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{is\-Whitelist\-Valid}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::is\-Whitelist\-Valid\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a62c42d3cbf8c9abe50e4e94d84533a5b}
+
+
+Whether or not the whitelist is valid. 
+
+
+
+Definition at line 96 of file mrkd\-\_\-statistic.\-hpp.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!left\-Stat@{left\-Stat}}
+\index{left\-Stat@{left\-Stat}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{left\-Stat}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf M\-R\-K\-D\-Statistic}$\ast$ mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::left\-Stat\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a69620c8591b73c1e746b039cb7913491}
+
+
+The left child. 
+
+
+
+Definition at line 77 of file mrkd\-\_\-statistic.\-hpp.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!parent\-Stat@{parent\-Stat}}
+\index{parent\-Stat@{parent\-Stat}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{parent\-Stat}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf M\-R\-K\-D\-Statistic}$\ast$ mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::parent\-Stat\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a547bbee0feef635740be77c4b396b3af}
+
+
+A link to the parent node; N\-U\-L\-L if this is the root. 
+
+
+
+Definition at line 81 of file mrkd\-\_\-statistic.\-hpp.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!right\-Stat@{right\-Stat}}
+\index{right\-Stat@{right\-Stat}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{right\-Stat}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf M\-R\-K\-D\-Statistic}$\ast$ mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::right\-Stat\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a7800ca67a1c09c07cddb0394a389aea9}
+
+
+The right child. 
+
+
+
+Definition at line 79 of file mrkd\-\_\-statistic.\-hpp.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!sum\-Of\-Squared\-Norms@{sum\-Of\-Squared\-Norms}}
+\index{sum\-Of\-Squared\-Norms@{sum\-Of\-Squared\-Norms}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{sum\-Of\-Squared\-Norms}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::sum\-Of\-Squared\-Norms\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_ad28fc8dbf11f3e4e58bc3505cf1d90a9}
+
+
+The sum of the squared Euclidean norms for this dataset. 
+
+
+
+Definition at line 87 of file mrkd\-\_\-statistic.\-hpp.
+
+\index{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}!whitelist@{whitelist}}
+\index{whitelist@{whitelist}!mlpack::tree::MRKDStatistic@{mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic}}
+\subsubsection[{whitelist}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$size\-\_\-t$>$ mlpack\-::tree\-::\-M\-R\-K\-D\-Statistic\-::whitelist\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1MRKDStatistic_a653ab559b163e1769ef20d0ca8a73ccf}
+
+
+The list of centroids that cannot own this hyperrectangle. 
+
+
+
+Definition at line 94 of file mrkd\-\_\-statistic.\-hpp.
+
+
+
+Referenced by Whitelist().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/tree/{\bf mrkd\-\_\-statistic.\-hpp}\end{DoxyCompactItemize}

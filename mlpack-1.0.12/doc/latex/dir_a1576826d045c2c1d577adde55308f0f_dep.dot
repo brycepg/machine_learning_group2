@@ -1,0 +1,9 @@
+digraph "src/mlpack/core/tree/binary_space_tree" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_4aa60ae374a0cb1df2b77a4723eecc54 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="tree" fontname="Helvetica", fontsize="10", URL="dir_4aa60ae374a0cb1df2b77a4723eecc54.html"]
+  dir_a1576826d045c2c1d577adde55308f0f [shape=box, label="binary_space_tree", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_a1576826d045c2c1d577adde55308f0f.html"];
+  }
+}

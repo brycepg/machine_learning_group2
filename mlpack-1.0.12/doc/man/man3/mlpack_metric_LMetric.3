@@ -1,0 +1,85 @@
+.TH "mlpack::metric::LMetric< Power, TakeRoot >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::metric::LMetric< Power, TakeRoot > \- 
+.PP
+The L_p metric for arbitrary integer p, with an option to take the root\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLMetric\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename VecType1 , typename VecType2 > static double \fBEvaluate\fP (const VecType1 &a, const VecType2 &b)"
+.br
+.RI "\fIComputes the distance between two points\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<int Power, bool TakeRoot = true>class mlpack::metric::LMetric< Power, TakeRoot >"
+The L_p metric for arbitrary integer p, with an option to take the root\&. 
+
+This class implements the standard L_p metric for two arbitrary vectors $ x $ and $ y $ of dimensionality $ n $:
+.PP
+\[ d(x, y) = \left( \sum_{i = 1}^{n} | x_i - y_i |^p \right)^{\frac{1}{p}}. \].PP
+The value of p is given as a template parameter\&.
+.PP
+In addition, the function $ d(x, y) $ can be simplified, neglecting the p-root calculation\&. This is done by specifying the TakeRoot template parameter to be false\&. Then,
+.PP
+\[ d(x, y) = \sum_{i = 1}^{n} | x_i - y_i |^p \].PP
+It is faster to compute that distance, so TakeRoot is by default off\&. However, when TakeRoot is false, the distance given is not actually a true metric -- it does not satisfy the triangle inequality\&. Some MLPACK methods do not require the triangle inequality to operate correctly (such as the BinarySpaceTree), but setting TakeRoot = false in some cases will cause incorrect results\&.
+.PP
+A few convenience typedefs are given:
+.PP
+.IP "\(bu" 2
+ManhattanDistance
+.IP "\(bu" 2
+EuclideanDistance
+.IP "\(bu" 2
+SquaredEuclideanDistance
+.PP
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIPower\fP Power of metric; i\&.e\&. Power = 1 gives the L1-norm (Manhattan distance)\&. 
+.br
+\fITakeRoot\fP If true, the Power'th root of the result is taken before it is returned\&. Setting this to false causes the metric to not satisfy the Triangle Inequality (be careful!)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 65 of file lmetric\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<int Power, bool TakeRoot = true> \fBmlpack::metric::LMetric\fP< Power, TakeRoot >::\fBLMetric\fP ()\fC [inline]\fP"
+
+.PP
+Definition at line 72 of file lmetric\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<int Power, bool TakeRoot = true> template<typename VecType1 , typename VecType2 > static double \fBmlpack::metric::LMetric\fP< Power, TakeRoot >::Evaluate (const VecType1 &a, const VecType2 &b)\fC [static]\fP"
+
+.PP
+Computes the distance between two points\&. 
+.PP
+Referenced by mlpack::kernel::SphericalKernel::ConvolutionIntegral(), mlpack::kernel::GaussianKernel::ConvolutionIntegral(), mlpack::kernel::SphericalKernel::Evaluate(), mlpack::kernel::TriangularKernel::Evaluate(), mlpack::kernel::LaplacianKernel::Evaluate(), and mlpack::kernel::GaussianKernel::Evaluate()\&.
+.SS "template<int Power, bool TakeRoot = true> std::string \fBmlpack::metric::LMetric\fP< Power, TakeRoot >::ToString () const"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

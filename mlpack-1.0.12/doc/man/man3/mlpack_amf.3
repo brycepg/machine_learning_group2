@@ -1,0 +1,115 @@
+.TH "mlpack::amf" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::amf \- 
+.PP
+Alternating Matrix Factorization\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAMF\fP"
+.br
+.RI "\fIThis class implements \fBAMF\fP (alternating matrix factorization) on the given matrix V\&. \fP"
+.ti -1c
+.RI "class \fBAverageInitialization\fP"
+.br
+.RI "\fIThis initialization rule initializes matrix W and H to root of average of V with uniform noise\&. \fP"
+.ti -1c
+.RI "class \fBCompleteIncrementalTermination\fP"
+.br
+.ti -1c
+.RI "class \fBIncompleteIncrementalTermination\fP"
+.br
+.ti -1c
+.RI "class \fBNMFALSUpdate\fP"
+.br
+.RI "\fIThis class implements a method titled 'Alternating Least Squares' described in the paper 'Positive Matrix Factorization: A Non-negative Factor Model with Optimal Utilization of Error Estimates of Data Values' by P Paatero and U Tapper\&. \fP"
+.ti -1c
+.RI "class \fBNMFMultiplicativeDistanceUpdate\fP"
+.br
+.RI "\fIThe multiplicative distance update rules for matrices W and H\&. \fP"
+.ti -1c
+.RI "class \fBNMFMultiplicativeDivergenceUpdate\fP"
+.br
+.RI "\fIThis follows a method described in the paper 'Algorithms for Non-negative Matrix Factorization' by D\&. \fP"
+.ti -1c
+.RI "class \fBRandomAcolInitialization\fP"
+.br
+.RI "\fIThis class initializes the W matrix of the \fBAMF\fP algorithm by averaging p randomly chosen columns of V\&. \fP"
+.ti -1c
+.RI "class \fBRandomInitialization\fP"
+.br
+.ti -1c
+.RI "class \fBSimpleResidueTermination\fP"
+.br
+.RI "\fIThis class implements a simple residue-based termination policy\&. \fP"
+.ti -1c
+.RI "class \fBSimpleToleranceTermination\fP"
+.br
+.RI "\fIThis class implements residue tolerance termination policy\&. \fP"
+.ti -1c
+.RI "class \fBSVDBatchLearning\fP"
+.br
+.RI "\fIThis class implements SVD batch learning with momentum\&. \fP"
+.ti -1c
+.RI "class \fBSVDCompleteIncrementalLearning\fP"
+.br
+.ti -1c
+.RI "class \fBSVDCompleteIncrementalLearning< arma::sp_mat >\fP"
+.br
+.ti -1c
+.RI "class \fBSVDIncompleteIncrementalLearning\fP"
+.br
+.ti -1c
+.RI "class \fBValidationRMSETermination\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<> void \fBSVDBatchLearning::HUpdate< arma::sp_mat >\fP (const arma::sp_mat &V, const arma::mat &W, arma::mat &H)"
+.br
+.ti -1c
+.RI "template<> void \fBSVDBatchLearning::WUpdate< arma::sp_mat >\fP (const arma::sp_mat &V, arma::mat &W, const arma::mat &H)"
+.br
+.RI "\fITODO : Merge this template specialized function for sparse matrix using common row_col_iterator\&. \fP"
+.ti -1c
+.RI "template<> void \fBSVDIncompleteIncrementalLearning::HUpdate< arma::sp_mat >\fP (const arma::sp_mat &V, const arma::mat &W, arma::mat &H)"
+.br
+.ti -1c
+.RI "template<> void \fBSVDIncompleteIncrementalLearning::WUpdate< arma::sp_mat >\fP (const arma::sp_mat &V, arma::mat &W, const arma::mat &H)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Alternating Matrix Factorization\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<> void \fBmlpack::amf::SVDBatchLearning::HUpdate\fP< arma::sp_mat > (const arma::sp_mat &V, const arma::mat &W, arma::mat &H)\fC [inline]\fP"
+
+.PP
+Definition at line 189 of file svd_batch_learning\&.hpp\&.
+.SS "template<> void \fBmlpack::amf::SVDBatchLearning::WUpdate\fP< arma::sp_mat > (const arma::sp_mat &V, arma::mat &W, const arma::mat &H)\fC [inline]\fP"
+
+.PP
+TODO : Merge this template specialized function for sparse matrix using common row_col_iterator\&. WUpdate function specialization for sparse matrix 
+.PP
+Definition at line 158 of file svd_batch_learning\&.hpp\&.
+.SS "template<> void \fBmlpack::amf::SVDIncompleteIncrementalLearning::HUpdate\fP< arma::sp_mat > (const arma::sp_mat &V, const arma::mat &W, arma::mat &H)\fC [inline]\fP"
+
+.PP
+Definition at line 127 of file svd_incomplete_incremental_learning\&.hpp\&.
+.SS "template<> void \fBmlpack::amf::SVDIncompleteIncrementalLearning::WUpdate\fP< arma::sp_mat > (const arma::sp_mat &V, arma::mat &W, const arma::mat &H)\fC [inline]\fP"
+
+.PP
+Definition at line 106 of file svd_incomplete_incremental_learning\&.hpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

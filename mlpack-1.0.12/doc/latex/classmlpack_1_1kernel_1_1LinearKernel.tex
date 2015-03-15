@@ -1,0 +1,106 @@
+\section{mlpack\-:\-:kernel\-:\-:Linear\-Kernel Class Reference}
+\label{classmlpack_1_1kernel_1_1LinearKernel}\index{mlpack\-::kernel\-::\-Linear\-Kernel@{mlpack\-::kernel\-::\-Linear\-Kernel}}
+
+
+The simple linear kernel (dot product).  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Linear\-Kernel} ()
+\begin{DoxyCompactList}\small\item\em This constructor does nothing; the linear kernel has no parameters to store. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Return a string representation of the kernel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Vec\-Type $>$ }\\static double {\bf Evaluate} (const Vec\-Type \&a, const Vec\-Type \&b)
+\begin{DoxyCompactList}\small\item\em Simple evaluation of the dot product. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The simple linear kernel (dot product). 
+
+For any two vectors $ x $ and $ y $,
+
+\[ K(x, y) = x^T y \]
+
+This kernel has no parameters and therefore the evaluation can be static. 
+
+Definition at line 34 of file linear\-\_\-kernel.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::kernel\-::\-Linear\-Kernel@{mlpack\-::kernel\-::\-Linear\-Kernel}!Linear\-Kernel@{Linear\-Kernel}}
+\index{Linear\-Kernel@{Linear\-Kernel}!mlpack::kernel::LinearKernel@{mlpack\-::kernel\-::\-Linear\-Kernel}}
+\subsubsection[{Linear\-Kernel}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::kernel\-::\-Linear\-Kernel\-::\-Linear\-Kernel (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kernel_1_1LinearKernel_abdd497ce04db4e9b127590fd0ae0e955}
+
+
+This constructor does nothing; the linear kernel has no parameters to store. 
+
+
+
+Definition at line 41 of file linear\-\_\-kernel.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::kernel\-::\-Linear\-Kernel@{mlpack\-::kernel\-::\-Linear\-Kernel}!Evaluate@{Evaluate}}
+\index{Evaluate@{Evaluate}!mlpack::kernel::LinearKernel@{mlpack\-::kernel\-::\-Linear\-Kernel}}
+\subsubsection[{Evaluate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Vec\-Type $>$ static double mlpack\-::kernel\-::\-Linear\-Kernel\-::\-Evaluate (
+\begin{DoxyParamCaption}
+\item[{const Vec\-Type \&}]{a, }
+\item[{const Vec\-Type \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classmlpack_1_1kernel_1_1LinearKernel_a678a232ae982d08fdff7f3f28a0f0751}
+
+
+Simple evaluation of the dot product. 
+
+This evaluation uses Armadillo's dot() function.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Vec\-Type} & Type of vector (should be arma\-::vec or arma\-::spvec). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em a} & First vector. \\
+\hline
+{\em b} & Second vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+K(a, b). 
+\end{DoxyReturn}
+
+
+Definition at line 53 of file linear\-\_\-kernel.\-hpp.
+
+\index{mlpack\-::kernel\-::\-Linear\-Kernel@{mlpack\-::kernel\-::\-Linear\-Kernel}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::kernel::LinearKernel@{mlpack\-::kernel\-::\-Linear\-Kernel}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mlpack\-::kernel\-::\-Linear\-Kernel\-::\-To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kernel_1_1LinearKernel_a736760e5a5492d8f7665759c27b3dc0c}
+
+
+Return a string representation of the kernel. 
+
+
+
+Definition at line 59 of file linear\-\_\-kernel.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/kernels/{\bf linear\-\_\-kernel.\-hpp}\end{DoxyCompactItemize}

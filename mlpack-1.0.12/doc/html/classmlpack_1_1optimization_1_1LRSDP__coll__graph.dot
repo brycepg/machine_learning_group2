@@ -1,0 +1,33 @@
+digraph "mlpack::optimization::LRSDP"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="mlpack::optimization\l::LRSDP",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" augLag" ,fontname="Helvetica"];
+  Node2 [label="mlpack::optimization\l::AugLagrangian\< mlpack\l::optimization::LRSDPFunction \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1optimization_1_1AugLagrangian.html"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" lbfgs" ,fontname="Helvetica"];
+  Node3 [label="mlpack::optimization\l::L_BFGS\< FunctionType \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1optimization_1_1L__BFGS.html",tooltip="The generic L-BFGS optimizer, which uses a back-tracking line search algorithm to minimize a function..."];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" function" ,fontname="Helvetica"];
+  Node4 [label="FunctionType",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node5 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" lbfgsInternal" ,fontname="Helvetica"];
+  Node5 [label="mlpack::optimization\l::L_BFGS\< AugLagrangianFunction\l\< mlpack::optimization::LRSDPFunction \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1optimization_1_1L__BFGS.html"];
+  Node6 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" function" ,fontname="Helvetica"];
+  Node6 [label="mlpack::optimization\l::AugLagrangianFunction\l\< mlpack::optimization\l::LRSDPFunction \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1optimization_1_1AugLagrangianFunction.html"];
+  Node7 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" function" ,fontname="Helvetica"];
+  Node7 [label="mlpack::optimization\l::LRSDPFunction",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1optimization_1_1LRSDPFunction.html",tooltip="The objective function that LRSDP is trying to optimize. "];
+  Node8 -> Node6 [dir="back",color="orange",fontsize="10",style="dashed",label=" \< mlpack::optimization\l::LRSDPFunction \>" ,fontname="Helvetica"];
+  Node8 [label="mlpack::optimization\l::AugLagrangianFunction\l\< LagrangianFunction \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1optimization_1_1AugLagrangianFunction.html",tooltip="This is a utility class used by AugLagrangian, meant to wrap a LagrangianFunction into a function usa..."];
+  Node3 -> Node5 [dir="back",color="orange",fontsize="10",style="dashed",label=" \< AugLagrangianFunction\l\< mlpack::optimization\l::LRSDPFunction \> \>" ,fontname="Helvetica"];
+  Node7 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" function" ,fontname="Helvetica"];
+  Node6 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" augfunc" ,fontname="Helvetica"];
+  Node9 -> Node2 [dir="back",color="orange",fontsize="10",style="dashed",label=" \< mlpack::optimization\l::LRSDPFunction \>" ,fontname="Helvetica"];
+  Node9 [label="mlpack::optimization\l::AugLagrangian\< Lagrangian\lFunction \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1optimization_1_1AugLagrangian.html",tooltip="The AugLagrangian class implements the Augmented Lagrangian method of optimization. "];
+  Node3 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" lbfgs" ,fontname="Helvetica"];
+  Node10 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" lbfgsInternal" ,fontname="Helvetica"];
+  Node10 [label="mlpack::optimization\l::L_BFGS\< AugLagrangianFunction\l\< LagrangianFunction \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1optimization_1_1L__BFGS.html"];
+  Node3 -> Node10 [dir="back",color="orange",fontsize="10",style="dashed",label=" \< AugLagrangianFunction\l\< LagrangianFunction \> \>" ,fontname="Helvetica"];
+  Node11 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" function" ,fontname="Helvetica"];
+  Node11 [label="LagrangianFunction",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" function" ,fontname="Helvetica"];
+}

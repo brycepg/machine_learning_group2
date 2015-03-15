@@ -1,0 +1,9 @@
+digraph "src/mlpack/methods/perceptron/initialization_methods" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_d1be4479dffdf1b9f98978aa2d42ca89 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="perceptron" fontname="Helvetica", fontsize="10", URL="dir_d1be4479dffdf1b9f98978aa2d42ca89.html"]
+  dir_8c39302dd7470d3c525c480db4b4f594 [shape=box, label="initialization_methods", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_8c39302dd7470d3c525c480db4b4f594.html"];
+  }
+}

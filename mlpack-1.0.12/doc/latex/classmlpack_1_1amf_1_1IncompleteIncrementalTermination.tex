@@ -1,0 +1,178 @@
+\section{mlpack\-:\-:amf\-:\-:Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$ Class Template Reference}
+\label{classmlpack_1_1amf_1_1IncompleteIncrementalTermination}\index{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Incomplete\-Incremental\-Termination} (Termination\-Policy {\bf t\-\_\-policy}=Termination\-Policy())
+\begin{DoxyCompactList}\small\item\em Empty constructor. \end{DoxyCompactList}\item 
+const double \& {\bf Index} ()
+\item 
+{\footnotesize template$<$class Mat\-Type $>$ }\\void {\bf Initialize} (const Mat\-Type \&V)
+\item 
+bool {\bf Is\-Converged} (arma\-::mat \&W, arma\-::mat \&H)
+\item 
+const size\-\_\-t \& {\bf Iteration} ()
+\item 
+const size\-\_\-t \& {\bf Max\-Iterations} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\-\_\-t {\bf incremental\-Index}
+\item 
+size\-\_\-t {\bf iteration}
+\item 
+Termination\-Policy {\bf t\-\_\-policy}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Termination\-Policy$>$class mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$}
+
+
+
+Definition at line 21 of file incomplete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}!Incomplete\-Incremental\-Termination@{Incomplete\-Incremental\-Termination}}
+\index{Incomplete\-Incremental\-Termination@{Incomplete\-Incremental\-Termination}!mlpack::amf::IncompleteIncrementalTermination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}}
+\subsubsection[{Incomplete\-Incremental\-Termination}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ {\bf mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::{\bf Incomplete\-Incremental\-Termination} (
+\begin{DoxyParamCaption}
+\item[{Termination\-Policy}]{t\-\_\-policy = {\ttfamily TerminationPolicy()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1IncompleteIncrementalTermination_aa22c9311635585ad1b0f152352420fd7}
+
+
+Empty constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\-\_\-policy} & object of wrapped class. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 29 of file incomplete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}!Index@{Index}}
+\index{Index@{Index}!mlpack::amf::IncompleteIncrementalTermination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}}
+\subsubsection[{Index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ const double\& {\bf mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1IncompleteIncrementalTermination_adf1df7693af5ef96b91ca149f4cb8c2e}
+
+
+Definition at line 49 of file incomplete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::t\-\_\-policy.
+
+\index{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!mlpack::amf::IncompleteIncrementalTermination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}}
+\subsubsection[{Initialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ template$<$class Mat\-Type $>$ void {\bf mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::Initialize (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{V}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1IncompleteIncrementalTermination_a9d3c0b319c81132dfed73bfd922de3e1}
+
+
+Definition at line 33 of file incomplete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::incremental\-Index, mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::iteration, and mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::t\-\_\-policy.
+
+\index{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}!Is\-Converged@{Is\-Converged}}
+\index{Is\-Converged@{Is\-Converged}!mlpack::amf::IncompleteIncrementalTermination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}}
+\subsubsection[{Is\-Converged}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ bool {\bf mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::Is\-Converged (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{W, }
+\item[{arma\-::mat \&}]{H}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1IncompleteIncrementalTermination_aac91b9d954fe7a74e8a2f69431051773}
+
+
+Definition at line 41 of file incomplete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::incremental\-Index, mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::iteration, and mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::t\-\_\-policy.
+
+\index{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}!Iteration@{Iteration}}
+\index{Iteration@{Iteration}!mlpack::amf::IncompleteIncrementalTermination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}}
+\subsubsection[{Iteration}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ const size\-\_\-t\& {\bf mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::Iteration (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1IncompleteIncrementalTermination_a4370e2dcc3b930b8579a9c62229ccdb3}
+
+
+Definition at line 53 of file incomplete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::iteration.
+
+\index{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}!Max\-Iterations@{Max\-Iterations}}
+\index{Max\-Iterations@{Max\-Iterations}!mlpack::amf::IncompleteIncrementalTermination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}}
+\subsubsection[{Max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ const size\-\_\-t\& {\bf mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::Max\-Iterations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1IncompleteIncrementalTermination_a0b8070790849e0630fd9d20740613879}
+
+
+Definition at line 57 of file incomplete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::t\-\_\-policy.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}!incremental\-Index@{incremental\-Index}}
+\index{incremental\-Index@{incremental\-Index}!mlpack::amf::IncompleteIncrementalTermination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}}
+\subsubsection[{incremental\-Index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ size\-\_\-t {\bf mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::incremental\-Index\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1IncompleteIncrementalTermination_a7aee60a3571596649ab225775b4dbeee}
+
+
+Definition at line 65 of file incomplete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Initialize(), and mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Is\-Converged().
+
+\index{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}!iteration@{iteration}}
+\index{iteration@{iteration}!mlpack::amf::IncompleteIncrementalTermination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}}
+\subsubsection[{iteration}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ size\-\_\-t {\bf mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::iteration\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1IncompleteIncrementalTermination_a42f846ef9926a4dcdd6d8fa2f69abd51}
+
+
+Definition at line 66 of file incomplete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Initialize(), mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Is\-Converged(), and mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Iteration().
+
+\index{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}!t\-\_\-policy@{t\-\_\-policy}}
+\index{t\-\_\-policy@{t\-\_\-policy}!mlpack::amf::IncompleteIncrementalTermination@{mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}}
+\subsubsection[{t\-\_\-policy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Termination\-Policy $>$ Termination\-Policy {\bf mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination}$<$ Termination\-Policy $>$\-::t\-\_\-policy\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1IncompleteIncrementalTermination_ad8a69e55fb2b57bb2664a0c43e5cadc9}
+
+
+Definition at line 63 of file incomplete\-\_\-incremental\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Index(), mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Initialize(), mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Is\-Converged(), and mlpack\-::amf\-::\-Incomplete\-Incremental\-Termination$<$ Termination\-Policy $>$\-::\-Max\-Iterations().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/amf/termination\-\_\-policies/{\bf incomplete\-\_\-incremental\-\_\-termination.\-hpp}\end{DoxyCompactItemize}

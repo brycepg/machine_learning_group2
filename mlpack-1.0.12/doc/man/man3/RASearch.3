@@ -1,0 +1,375 @@
+.TH "RASearch< SortPolicy, MetricType, TreeType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RASearch< SortPolicy, MetricType, TreeType > \- 
+.PP
+The \fBRASearch\fP class: This class provides a generic manner to perform rank-approximate search via random-sampling\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRASearch\fP (const typename TreeType::Mat &\fBreferenceSet\fP, const typename TreeType::Mat &\fBquerySet\fP, const bool \fBnaive\fP=false, const bool \fBsingleMode\fP=false, const MetricType \fBmetric\fP=MetricType())"
+.br
+.RI "\fIInitialize the \fBRASearch\fP object, passing both a query and reference dataset\&. \fP"
+.ti -1c
+.RI "\fBRASearch\fP (const typename TreeType::Mat &\fBreferenceSet\fP, const bool \fBnaive\fP=false, const bool \fBsingleMode\fP=false, const MetricType \fBmetric\fP=MetricType())"
+.br
+.RI "\fIInitialize the \fBRASearch\fP object, passing only one dataset, which is used as both the query and the reference dataset\&. \fP"
+.ti -1c
+.RI "\fBRASearch\fP (TreeType *\fBreferenceTree\fP, TreeType *\fBqueryTree\fP, const typename TreeType::Mat &\fBreferenceSet\fP, const typename TreeType::Mat &\fBquerySet\fP, const bool \fBsingleMode\fP=false, const MetricType \fBmetric\fP=MetricType())"
+.br
+.RI "\fIInitialize the \fBRASearch\fP object with the given datasets and pre-constructed trees\&. \fP"
+.ti -1c
+.RI "\fBRASearch\fP (TreeType *\fBreferenceTree\fP, const typename TreeType::Mat &\fBreferenceSet\fP, const bool \fBsingleMode\fP=false, const MetricType \fBmetric\fP=MetricType())"
+.br
+.RI "\fIInitialize the \fBRASearch\fP object with the given reference dataset and pre-constructed tree\&. \fP"
+.ti -1c
+.RI "\fB~RASearch\fP ()"
+.br
+.RI "\fIDelete the \fBRASearch\fP object\&. \fP"
+.ti -1c
+.RI "void \fBResetQueryTree\fP ()"
+.br
+.RI "\fIThis function recursively resets the RAQueryStat of the queryTree to set 'bound' to WorstDistance and the 'numSamplesMade' to 0\&. \fP"
+.ti -1c
+.RI "void \fBSearch\fP (const size_t k, arma::Mat< size_t > &resultingNeighbors, arma::mat &distances, const double tau=5, const double \fBalpha\fP=0\&.95, const bool sampleAtLeaves=false, const bool firstLeafExact=false, const size_t singleSampleLimit=20)"
+.br
+.RI "\fICompute the rank approximate nearest neighbors and store the output in the given matrices\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBResetRAQueryStat\fP (TreeType *treeNode)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBhasQuerySet\fP"
+.br
+.RI "\fIIndicates if a separate query set was passed\&. \fP"
+.ti -1c
+.RI "MetricType \fBmetric\fP"
+.br
+.RI "\fIInstantiation of kernel\&. \fP"
+.ti -1c
+.RI "bool \fBnaive\fP"
+.br
+.RI "\fIIndicates if naive random sampling on the set is being used\&. \fP"
+.ti -1c
+.RI "size_t \fBnumberOfPrunes\fP"
+.br
+.RI "\fITotal number of pruned nodes during the neighbor search\&. \fP"
+.ti -1c
+.RI "std::vector< size_t > \fBoldFromNewQueries\fP"
+.br
+.RI "\fIPermutations of query points during tree building\&. \fP"
+.ti -1c
+.RI "std::vector< size_t > \fBoldFromNewReferences\fP"
+.br
+.RI "\fIPermutations of reference points during tree building\&. \fP"
+.ti -1c
+.RI "arma::mat \fBqueryCopy\fP"
+.br
+.RI "\fICopy of query dataset (if we need it, because tree building modifies it)\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBquerySet\fP"
+.br
+.RI "\fIQuery dataset (may not be given)\&. \fP"
+.ti -1c
+.RI "TreeType * \fBqueryTree\fP"
+.br
+.RI "\fIPointer to the root of the query tree (might not exist)\&. \fP"
+.ti -1c
+.RI "arma::mat \fBreferenceCopy\fP"
+.br
+.RI "\fICopy of reference dataset (if we need it, because tree building modifies it)\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBreferenceSet\fP"
+.br
+.RI "\fIReference dataset\&. \fP"
+.ti -1c
+.RI "TreeType * \fBreferenceTree\fP"
+.br
+.RI "\fIPointer to the root of the reference tree\&. \fP"
+.ti -1c
+.RI "bool \fBsingleMode\fP"
+.br
+.RI "\fIIndicates if single-tree search is being used (opposed to dual-tree)\&. \fP"
+.ti -1c
+.RI "bool \fBtreeOwner\fP"
+.br
+.RI "\fIIf true, this object created the trees and is responsible for them\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >>class RASearch< SortPolicy, MetricType, TreeType >"
+The \fBRASearch\fP class: This class provides a generic manner to perform rank-approximate search via random-sampling\&. 
+
+If the 'naive' option is chosen, this rank-approximate search will be done by randomly sampled from the whole set\&. If the 'naive' option is not chosen, the sampling is done in a stratified manner in the tree as mentioned in the algorithms in Figure 2 of the following paper:
+.PP
+{ram2009rank, title={{Rank-Approximate Nearest Neighbor Search: Retaining Meaning and Speed in High Dimensions}}, author={{Ram, P\&. and Lee, D\&. and Ouyang, H\&. and Gray, A\&. G\&.}}, booktitle={{Advances of Neural Information Processing Systems}}, year={2009} }
+.PP
+\fBRASearch\fP is currently known to not work with ball trees (#356)\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISortPolicy\fP The sort policy for distances; see NearestNeighborSort\&. 
+.br
+\fIMetricType\fP The metric to use for computation\&. 
+.br
+\fITreeType\fP The tree type to use\&. 
+.RE
+.PP
+
+.PP
+Definition at line 63 of file ra_search\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> \fBRASearch\fP< SortPolicy, MetricType, TreeType >::\fBRASearch\fP (const typename TreeType::Mat &referenceSet, const typename TreeType::Mat &querySet, const boolnaive = \fCfalse\fP, const boolsingleMode = \fCfalse\fP, const MetricTypemetric = \fCMetricType()\fP)"
+
+.PP
+Initialize the \fBRASearch\fP object, passing both a query and reference dataset\&. Optionally, perform the computation in naive mode or single-tree mode, and set the leaf size used for tree-building\&. An initialized distance metric can be given, for cases where the metric has internal data (i\&.e\&. the distance::MahalanobisDistance class)\&.
+.PP
+This method will copy the matrices to internal copies, which are rearranged during tree-building\&. You can avoid this extra copy by pre-constructing the trees and passing them using a diferent constructor\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceSet\fP Set of reference points\&. 
+.br
+\fIquerySet\fP Set of query points\&. 
+.br
+\fInaive\fP If true, the rank-approximate search will be performed by directly sampling the whole set instead of using the stratified sampling on the tree\&. 
+.br
+\fIsingleMode\fP If true, single-tree search will be used (as opposed to dual-tree search)\&. 
+.br
+\fIleafSize\fP Leaf size for tree construction (ignored if tree is given)\&. 
+.br
+\fImetric\fP An optional instance of the MetricType class\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> \fBRASearch\fP< SortPolicy, MetricType, TreeType >::\fBRASearch\fP (const typename TreeType::Mat &referenceSet, const boolnaive = \fCfalse\fP, const boolsingleMode = \fCfalse\fP, const MetricTypemetric = \fCMetricType()\fP)"
+
+.PP
+Initialize the \fBRASearch\fP object, passing only one dataset, which is used as both the query and the reference dataset\&. Optionally, perform the computation in naive mode or single-tree mode, and set the leaf size used for tree-building\&. An initialized distance metric can be given, for cases where the metric has internal data (i\&.e\&. the distance::MahalanobisDistance class)\&.
+.PP
+If naive mode is being used and a pre-built tree is given, it may not work: naive mode operates by building a one-node tree (the root node holds all the points)\&. If that condition is not satisfied with the pre-built tree, then naive mode will not work\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceSet\fP Set of reference points\&. 
+.br
+\fInaive\fP If true, the rank-approximate search will be performed by directly sampling the whole set instead of using the stratified sampling on the tree\&. 
+.br
+\fIsingleMode\fP If true, single-tree search will be used (as opposed to dual-tree search)\&. 
+.br
+\fIleafSize\fP Leaf size for tree construction (ignored if tree is given)\&. 
+.br
+\fImetric\fP An optional instance of the MetricType class\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> \fBRASearch\fP< SortPolicy, MetricType, TreeType >::\fBRASearch\fP (TreeType *referenceTree, TreeType *queryTree, const typename TreeType::Mat &referenceSet, const typename TreeType::Mat &querySet, const boolsingleMode = \fCfalse\fP, const MetricTypemetric = \fCMetricType()\fP)"
+
+.PP
+Initialize the \fBRASearch\fP object with the given datasets and pre-constructed trees\&. It is assumed that the points in referenceSet and querySet correspond to the points in referenceTree and queryTree, respectively\&. Optionally, choose to use single-tree mode\&. Naive mode is not available as an option for this constructor; instead, to run naive computation, construct a tree with all of the points in one leaf (i\&.e\&. leafSize = number of points)\&. Additionally, an instantiated distance metric can be given, for cases where the distance metric holds data\&.
+.PP
+There is no copying of the data matrices in this constructor (because tree-building is not necessary), so this is the constructor to use when copies absolutely must be avoided\&.
+.PP
+\fBNote:\fP
+.RS 4
+Because tree-building (at least with BinarySpaceTree) modifies the ordering of a matrix, be sure you pass the modified matrix to this object! In addition, mapping the points of the matrix back to their original indices is not done when this constructor is used\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceTree\fP Pre-built tree for reference points\&. 
+.br
+\fIqueryTree\fP Pre-built tree for query points\&. 
+.br
+\fIreferenceSet\fP Set of reference points corresponding to referenceTree\&. 
+.br
+\fIquerySet\fP Set of query points corresponding to queryTree\&. 
+.br
+\fIsingleMode\fP Whether single-tree computation should be used (as opposed to dual-tree computation)\&. 
+.br
+\fImetric\fP Instantiated distance metric\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> \fBRASearch\fP< SortPolicy, MetricType, TreeType >::\fBRASearch\fP (TreeType *referenceTree, const typename TreeType::Mat &referenceSet, const boolsingleMode = \fCfalse\fP, const MetricTypemetric = \fCMetricType()\fP)"
+
+.PP
+Initialize the \fBRASearch\fP object with the given reference dataset and pre-constructed tree\&. It is assumed that the points in referenceSet correspond to the points in referenceTree\&. Optionally, choose to use single-tree mode\&. Naive mode is not available as an option for this constructor; instead, to run naive computation, construct a tree with all the points in one leaf (i\&.e\&. leafSize = number of points)\&. Additionally, an instantiated distance metric can be given, for the case where the distance metric holds data\&.
+.PP
+There is no copying of the data matrices in this constructor (because tree-building is not necessary), so this is the constructor to use when copies absolutely must be avoided\&.
+.PP
+\fBNote:\fP
+.RS 4
+Because tree-building (at least with BinarySpaceTree) modifies the ordering of a matrix, be sure you pass the modified matrix to this object! In addition, mapping the points of the matrix back to their original indices is not done when this constructor is used\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceTree\fP Pre-built tree for reference points\&. 
+.br
+\fIreferenceSet\fP Set of reference points corresponding to referenceTree\&. 
+.br
+\fIsingleMode\fP Whether single-tree computation should be used (as opposed to dual-tree computation)\&. 
+.br
+\fImetric\fP Instantiated distance metric\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> \fBRASearch\fP< SortPolicy, MetricType, TreeType >::~\fBRASearch\fP ()"
+
+.PP
+Delete the \fBRASearch\fP object\&. The tree is the only member we are responsible for deleting\&. The others will take care of themselves\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> void \fBRASearch\fP< SortPolicy, MetricType, TreeType >::ResetQueryTree ()"
+
+.PP
+This function recursively resets the RAQueryStat of the queryTree to set 'bound' to WorstDistance and the 'numSamplesMade' to 0\&. This allows a user to perform multiple searches on the same pair of trees, possibly with different levels of approximation without requiring to build a new pair of trees for every new (approximate) search\&. 
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> void \fBRASearch\fP< SortPolicy, MetricType, TreeType >::ResetRAQueryStat (TreeType *treeNode)\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fItreeNode\fP The node of the tree whose RAQueryStat is reset and whose children are to be explored recursively\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> void \fBRASearch\fP< SortPolicy, MetricType, TreeType >::Search (const size_tk, arma::Mat< size_t > &resultingNeighbors, arma::mat &distances, const doubletau = \fC5\fP, const doublealpha = \fC0\&.95\fP, const boolsampleAtLeaves = \fCfalse\fP, const boolfirstLeafExact = \fCfalse\fP, const size_tsingleSampleLimit = \fC20\fP)"
+
+.PP
+Compute the rank approximate nearest neighbors and store the output in the given matrices\&. The matrices will be set to the size of n columns by k rows, where n is the number of points in the query dataset and k is the number of neighbors being searched for\&.
+.PP
+Note that tau, the rank-approximation parameter, specifies that we are looking for k neighbors with probability alpha of being in the top tau percent of nearest neighbors\&. So, as an example, if our dataset has 1000 points, and we want 5 nearest neighbors with 95% probability of being in the top 5% of nearest neighbors (or, the top 50 nearest neighbors), we set k = 5, tau = 5, and alpha = 0\&.95\&.
+.PP
+The method will fail (and issue a failure message) if the value of tau is too low: tau must be set such that the number of points in the corresponding percentile of the data is greater than k\&. Thus, if we choose tau = 0\&.1 with a dataset of 1000 points and k = 5, then we are attempting to choose 5 nearest neighbors out of the closest 1 point -- this is invalid\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP Number of neighbors to search for\&. 
+.br
+\fIresultingNeighbors\fP Matrix storing lists of neighbors for each query point\&. 
+.br
+\fIdistances\fP Matrix storing distances of neighbors for each query point\&. 
+.br
+\fItau\fP The rank-approximation in percentile of the data\&. The default value is 5%\&. 
+.br
+\fIalpha\fP The desired success probability\&. The default value is 0\&.95\&. 
+.br
+\fIsampleAtLeaves\fP Sample at leaves for faster but less accurate computation\&. This defaults to 'false'\&. 
+.br
+\fIfirstLeafExact\fP Traverse to the first leaf without approximation\&. This can ensure that the query definitely finds its (near) duplicate if there exists one\&. This defaults to 'false' for now\&. 
+.br
+\fIsingleSampleLimit\fP The limit on the largest node that can be approximated by sampling\&. This defaults to 20\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> std::string \fBRASearch\fP< SortPolicy, MetricType, TreeType >::ToString () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> bool \fBRASearch\fP< SortPolicy, MetricType, TreeType >::hasQuerySet\fC [private]\fP"
+
+.PP
+Indicates if a separate query set was passed\&. 
+.PP
+Definition at line 271 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> MetricType \fBRASearch\fP< SortPolicy, MetricType, TreeType >::metric\fC [private]\fP"
+
+.PP
+Instantiation of kernel\&. 
+.PP
+Definition at line 279 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> bool \fBRASearch\fP< SortPolicy, MetricType, TreeType >::naive\fC [private]\fP"
+
+.PP
+Indicates if naive random sampling on the set is being used\&. 
+.PP
+Definition at line 274 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> size_t \fBRASearch\fP< SortPolicy, MetricType, TreeType >::numberOfPrunes\fC [private]\fP"
+
+.PP
+Total number of pruned nodes during the neighbor search\&. 
+.PP
+Definition at line 287 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> std::vector<size_t> \fBRASearch\fP< SortPolicy, MetricType, TreeType >::oldFromNewQueries\fC [private]\fP"
+
+.PP
+Permutations of query points during tree building\&. 
+.PP
+Definition at line 284 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> std::vector<size_t> \fBRASearch\fP< SortPolicy, MetricType, TreeType >::oldFromNewReferences\fC [private]\fP"
+
+.PP
+Permutations of reference points during tree building\&. 
+.PP
+Definition at line 282 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> arma::mat \fBRASearch\fP< SortPolicy, MetricType, TreeType >::queryCopy\fC [private]\fP"
+
+.PP
+Copy of query dataset (if we need it, because tree building modifies it)\&. 
+.PP
+Definition at line 256 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> const arma::mat& \fBRASearch\fP< SortPolicy, MetricType, TreeType >::querySet\fC [private]\fP"
+
+.PP
+Query dataset (may not be given)\&. 
+.PP
+Definition at line 261 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> TreeType* \fBRASearch\fP< SortPolicy, MetricType, TreeType >::queryTree\fC [private]\fP"
+
+.PP
+Pointer to the root of the query tree (might not exist)\&. 
+.PP
+Definition at line 266 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> arma::mat \fBRASearch\fP< SortPolicy, MetricType, TreeType >::referenceCopy\fC [private]\fP"
+
+.PP
+Copy of reference dataset (if we need it, because tree building modifies it)\&. 
+.PP
+Definition at line 254 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> const arma::mat& \fBRASearch\fP< SortPolicy, MetricType, TreeType >::referenceSet\fC [private]\fP"
+
+.PP
+Reference dataset\&. 
+.PP
+Definition at line 259 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> TreeType* \fBRASearch\fP< SortPolicy, MetricType, TreeType >::referenceTree\fC [private]\fP"
+
+.PP
+Pointer to the root of the reference tree\&. 
+.PP
+Definition at line 264 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> bool \fBRASearch\fP< SortPolicy, MetricType, TreeType >::singleMode\fC [private]\fP"
+
+.PP
+Indicates if single-tree search is being used (opposed to dual-tree)\&. 
+.PP
+Definition at line 276 of file ra_search\&.hpp\&.
+.SS "template<typename SortPolicy  = NearestNeighborSort, typename MetricType  = mlpack::metric::SquaredEuclideanDistance, typename TreeType  = tree::BinarySpaceTree<bound::HRectBound<2, false>,                                                   RAQueryStat<SortPolicy> >> bool \fBRASearch\fP< SortPolicy, MetricType, TreeType >::treeOwner\fC [private]\fP"
+
+.PP
+If true, this object created the trees and is responsible for them\&. 
+.PP
+Definition at line 269 of file ra_search\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

@@ -1,0 +1,210 @@
+\section{mlpack\-:\-:amf\-:\-:S\-V\-D\-Incomplete\-Incremental\-Learning Class Reference}
+\label{classmlpack_1_1amf_1_1SVDIncompleteIncrementalLearning}\index{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf S\-V\-D\-Incomplete\-Incremental\-Learning} (double {\bf u}=0.\-001, double {\bf kw}=0, double {\bf kh}=0)
+\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\void {\bf H\-Update} (const Mat\-Type \&V, const arma\-::mat \&W, arma\-::mat \&H)
+\begin{DoxyCompactList}\small\item\em The update rule for the encoding matrix H. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\void {\bf Initialize} (const Mat\-Type \&dataset, const size\-\_\-t rank)
+\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\void {\bf W\-Update} (const Mat\-Type \&V, arma\-::mat \&W, const arma\-::mat \&H)
+\begin{DoxyCompactList}\small\item\em The update rule for the basis matrix W. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\-\_\-t {\bf current\-User\-Index}
+\item 
+double {\bf kh}
+\item 
+double {\bf kw}
+\item 
+size\-\_\-t {\bf m}
+\item 
+size\-\_\-t {\bf n}
+\item 
+double {\bf u}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 8 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}!S\-V\-D\-Incomplete\-Incremental\-Learning@{S\-V\-D\-Incomplete\-Incremental\-Learning}}
+\index{S\-V\-D\-Incomplete\-Incremental\-Learning@{S\-V\-D\-Incomplete\-Incremental\-Learning}!mlpack::amf::SVDIncompleteIncrementalLearning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}}
+\subsubsection[{S\-V\-D\-Incomplete\-Incremental\-Learning}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning (
+\begin{DoxyParamCaption}
+\item[{double}]{u = {\ttfamily 0.001}, }
+\item[{double}]{kw = {\ttfamily 0}, }
+\item[{double}]{kh = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1SVDIncompleteIncrementalLearning_a2db9d35f7cecdf1b1245c5b8dd2ea399}
+
+
+Definition at line 11 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}!H\-Update@{H\-Update}}
+\index{H\-Update@{H\-Update}!mlpack::amf::SVDIncompleteIncrementalLearning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}}
+\subsubsection[{H\-Update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type $>$ void mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-H\-Update (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{V, }
+\item[{const arma\-::mat \&}]{W, }
+\item[{arma\-::mat \&}]{H}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1SVDIncompleteIncrementalLearning_a16a86dc84685cc29941afa0dea170779}
+
+
+The update rule for the encoding matrix H. 
+
+The function takes in all the matrices and only changes the value of the H matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em V} & Input matrix to be factorized. \\
+\hline
+{\em W} & Basis matrix. \\
+\hline
+{\em H} & Encoding matrix to be updated. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 73 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+
+
+
+References current\-User\-Index, kh, m, n, and u.
+
+\index{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!mlpack::amf::SVDIncompleteIncrementalLearning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}}
+\subsubsection[{Initialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type $>$ void mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-Initialize (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{dataset, }
+\item[{const size\-\_\-t}]{rank}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1SVDIncompleteIncrementalLearning_afb47a34749a36aadb9773e3456d97a64}
+
+
+Definition at line 18 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+
+
+
+References current\-User\-Index, m, and n.
+
+\index{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}!W\-Update@{W\-Update}}
+\index{W\-Update@{W\-Update}!mlpack::amf::SVDIncompleteIncrementalLearning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}}
+\subsubsection[{W\-Update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type $>$ void mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning\-::\-W\-Update (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{V, }
+\item[{arma\-::mat \&}]{W, }
+\item[{const arma\-::mat \&}]{H}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1SVDIncompleteIncrementalLearning_a289e4f0f252a8287503fa53751b1c57a}
+
+
+The update rule for the basis matrix W. 
+
+The function takes in all the matrices and only changes the value of the W matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em V} & Input matrix to be factorized. \\
+\hline
+{\em W} & Basis matrix to be updated. \\
+\hline
+{\em H} & Encoding matrix.\\
+\hline
+\end{DoxyParams}
+This file is part of mlpack 1.\-0.\-12.
+
+mlpack is free software; you may redstribute it and/or modify it under the terms of the 3-\/clause B\-S\-D license. You should have received a copy of the 3-\/clause B\-S\-D license along with mlpack. If not, see {\tt http\-://www.\-opensource.\-org/licenses/\-B\-S\-D-\/3-\/\-Clause} for more information. 
+
+Definition at line 45 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+
+
+
+References current\-User\-Index, kw, n, and u.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}!current\-User\-Index@{current\-User\-Index}}
+\index{current\-User\-Index@{current\-User\-Index}!mlpack::amf::SVDIncompleteIncrementalLearning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}}
+\subsubsection[{current\-User\-Index}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning\-::current\-User\-Index\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1SVDIncompleteIncrementalLearning_a7122b39b6451f9c4cd1d1f083c675a1b}
+
+
+Definition at line 101 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+
+
+
+Referenced by H\-Update(), Initialize(), and W\-Update().
+
+\index{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}!kh@{kh}}
+\index{kh@{kh}!mlpack::amf::SVDIncompleteIncrementalLearning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}}
+\subsubsection[{kh}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning\-::kh\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1SVDIncompleteIncrementalLearning_a266431544e21ae146fe840d218c811a9}
+
+
+Definition at line 96 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+
+
+
+Referenced by H\-Update().
+
+\index{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}!kw@{kw}}
+\index{kw@{kw}!mlpack::amf::SVDIncompleteIncrementalLearning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}}
+\subsubsection[{kw}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning\-::kw\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1SVDIncompleteIncrementalLearning_a78d9b969ba33ebe917282ca0984fcf96}
+
+
+Definition at line 95 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+
+
+
+Referenced by W\-Update().
+
+\index{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}!m@{m}}
+\index{m@{m}!mlpack::amf::SVDIncompleteIncrementalLearning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}}
+\subsubsection[{m}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning\-::m\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1SVDIncompleteIncrementalLearning_ac302b1783ab31072f9cd7b4f5e726741}
+
+
+Definition at line 99 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+
+
+
+Referenced by H\-Update(), and Initialize().
+
+\index{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}!n@{n}}
+\index{n@{n}!mlpack::amf::SVDIncompleteIncrementalLearning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning\-::n\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1SVDIncompleteIncrementalLearning_a253bf56378da5cde9d5bd9938a20f664}
+
+
+Definition at line 98 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+
+
+
+Referenced by H\-Update(), Initialize(), and W\-Update().
+
+\index{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}!u@{u}}
+\index{u@{u}!mlpack::amf::SVDIncompleteIncrementalLearning@{mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning}}
+\subsubsection[{u}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::amf\-::\-S\-V\-D\-Incomplete\-Incremental\-Learning\-::u\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1SVDIncompleteIncrementalLearning_ae86a953f3f95fc58ad25ef1618d53f58}
+
+
+Definition at line 94 of file svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp.
+
+
+
+Referenced by H\-Update(), and W\-Update().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/amf/update\-\_\-rules/{\bf svd\-\_\-incomplete\-\_\-incremental\-\_\-learning.\-hpp}\end{DoxyCompactItemize}

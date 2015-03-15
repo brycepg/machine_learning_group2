@@ -1,0 +1,289 @@
+\section{mlpack\-:\-:tree\-:\-:Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-:\-:Dual\-Tree\-Traverser$<$ Rule\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser}\index{mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Dual\-Tree\-Traverser$<$ Rule\-Type $>$@{mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Dual\-Tree\-Traverser$<$ Rule\-Type $>$}}
+
+
+A dual-\/tree traverser for binary space trees; see dual\-\_\-tree\-\_\-traverser.\-hpp.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Dual\-Tree\-Traverser} (Rule\-Type \&{\bf rule})
+\begin{DoxyCompactList}\small\item\em Instantiate the dual-\/tree traverser with the given rule set. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Base\-Cases} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of times a base case was calculated. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Num\-Base\-Cases} ()
+\begin{DoxyCompactList}\small\item\em Modify the number of times a base case was calculated. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Prunes} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of prunes. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Num\-Prunes} ()
+\begin{DoxyCompactList}\small\item\em Modify the number of prunes. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Scores} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of times a node combination was scored. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Num\-Scores} ()
+\begin{DoxyCompactList}\small\item\em Modify the number of times a node combination was scored. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Visited} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of visited combinations. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Num\-Visited} ()
+\begin{DoxyCompactList}\small\item\em Modify the number of visited combinations. \end{DoxyCompactList}\item 
+void {\bf Traverse} ({\bf Binary\-Space\-Tree} \&query\-Node, {\bf Binary\-Space\-Tree} \&reference\-Node)
+\begin{DoxyCompactList}\small\item\em Traverse the two trees. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\-\_\-t {\bf num\-Base\-Cases}
+\begin{DoxyCompactList}\small\item\em The number of times a base case was calculated. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf num\-Prunes}
+\begin{DoxyCompactList}\small\item\em The number of prunes. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf num\-Scores}
+\begin{DoxyCompactList}\small\item\em The number of times a node combination was scored. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf num\-Visited}
+\begin{DoxyCompactList}\small\item\em The number of node combinations that have been visited during traversal. \end{DoxyCompactList}\item 
+Rule\-Type \& {\bf rule}
+\begin{DoxyCompactList}\small\item\em Reference to the rules with which the trees will be traversed. \end{DoxyCompactList}\item 
+Rule\-Type\-::\-Traversal\-Info\-Type {\bf traversal\-Info}
+\begin{DoxyCompactList}\small\item\em Traversal information, held in the class so that it isn't continually being reallocated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Bound\-Type, typename Statistic\-Type = Empty\-Statistic, typename Mat\-Type = arma\-::mat, typename Split\-Type = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$template$<$typename Rule\-Type$>$class mlpack\-::tree\-::\-Binary\-Space\-Tree$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::\-Dual\-Tree\-Traverser$<$ Rule\-Type $>$}
+
+A dual-\/tree traverser for binary space trees; see dual\-\_\-tree\-\_\-traverser.\-hpp. 
+
+Definition at line 95 of file binary\-\_\-space\-\_\-tree.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!Dual\-Tree\-Traverser@{Dual\-Tree\-Traverser}}
+\index{Dual\-Tree\-Traverser@{Dual\-Tree\-Traverser}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Dual\-Tree\-Traverser}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::{\bf Dual\-Tree\-Traverser} (
+\begin{DoxyParamCaption}
+\item[{Rule\-Type \&}]{rule}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_a590682449dc7075c2046c81b182d7962}
+
+
+Instantiate the dual-\/tree traverser with the given rule set. 
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Base\-Cases@{Num\-Base\-Cases}}
+\index{Num\-Base\-Cases@{Num\-Base\-Cases}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Base\-Cases}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Base\-Cases (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_a66df33fb68d26544989c2f2a99b9b33f}
+
+
+Get the number of times a base case was calculated. 
+
+
+
+Definition at line 67 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Base\-Cases@{Num\-Base\-Cases}}
+\index{Num\-Base\-Cases@{Num\-Base\-Cases}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Base\-Cases}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ size\-\_\-t\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Base\-Cases (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_a59c5e188377e08cb65705957588d8117}
+
+
+Modify the number of times a base case was calculated. 
+
+
+
+Definition at line 69 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Prunes@{Num\-Prunes}}
+\index{Num\-Prunes@{Num\-Prunes}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Prunes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Prunes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_af3b649fa18030939f97ec6343e538a87}
+
+
+Get the number of prunes. 
+
+
+
+Definition at line 52 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Prunes@{Num\-Prunes}}
+\index{Num\-Prunes@{Num\-Prunes}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Prunes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ size\-\_\-t\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Prunes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_a5ceb3dd3ba3283a8fd6c5c22043e5908}
+
+
+Modify the number of prunes. 
+
+
+
+Definition at line 54 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Scores@{Num\-Scores}}
+\index{Num\-Scores@{Num\-Scores}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Scores}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Scores (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_a26c1bb64eb077e62b2a9b9c600dc48f2}
+
+
+Get the number of times a node combination was scored. 
+
+
+
+Definition at line 62 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Scores@{Num\-Scores}}
+\index{Num\-Scores@{Num\-Scores}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Scores}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ size\-\_\-t\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Scores (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_a093e86cba1d55be372075c86d2577688}
+
+
+Modify the number of times a node combination was scored. 
+
+
+
+Definition at line 64 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Visited@{Num\-Visited}}
+\index{Num\-Visited@{Num\-Visited}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Visited}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Visited (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_acfe0c7a8e026fb248ec6e4fac151176b}
+
+
+Get the number of visited combinations. 
+
+
+
+Definition at line 57 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!Num\-Visited@{Num\-Visited}}
+\index{Num\-Visited@{Num\-Visited}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Num\-Visited}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ size\-\_\-t\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Visited (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_a696fbe0d6cf2b5aa122f5e387cb06478}
+
+
+Modify the number of visited combinations. 
+
+
+
+Definition at line 59 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!Traverse@{Traverse}}
+\index{Traverse@{Traverse}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{Traverse}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ void {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Traverse (
+\begin{DoxyParamCaption}
+\item[{{\bf Binary\-Space\-Tree} \&}]{query\-Node, }
+\item[{{\bf Binary\-Space\-Tree} \&}]{reference\-Node}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_aed48d2aafd120d9748809a4d93ba86ed}
+
+
+Traverse the two trees. 
+
+This does not reset the number of prunes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em query\-Node} & The query node to be traversed. \\
+\hline
+{\em reference\-Node} & The reference node to be traversed. \\
+\hline
+{\em score} & The score of the current node combination. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!num\-Base\-Cases@{num\-Base\-Cases}}
+\index{num\-Base\-Cases@{num\-Base\-Cases}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{num\-Base\-Cases}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::num\-Base\-Cases\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_a271ee1191ed2dc57e8a7c5b68bd8cd41}
+
+
+The number of times a base case was calculated. 
+
+
+
+Definition at line 85 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!num\-Prunes@{num\-Prunes}}
+\index{num\-Prunes@{num\-Prunes}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{num\-Prunes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::num\-Prunes\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_ac154da7a7213d0477f7b9259818f7392}
+
+
+The number of prunes. 
+
+
+
+Definition at line 76 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!num\-Scores@{num\-Scores}}
+\index{num\-Scores@{num\-Scores}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{num\-Scores}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::num\-Scores\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_abf9b31faa63fd922615af123d645f45f}
+
+
+The number of times a node combination was scored. 
+
+
+
+Definition at line 82 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!num\-Visited@{num\-Visited}}
+\index{num\-Visited@{num\-Visited}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{num\-Visited}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::num\-Visited\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_a78bc3e243b86439b9572b7608f25c2b5}
+
+
+The number of node combinations that have been visited during traversal. 
+
+
+
+Definition at line 79 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!rule@{rule}}
+\index{rule@{rule}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{rule}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ Rule\-Type\& {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::rule\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_a2ca4ff447421dab63f16cb3ea6d5a3c7}
+
+
+Reference to the rules with which the trees will be traversed. 
+
+
+
+Definition at line 73 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}!traversal\-Info@{traversal\-Info}}
+\index{traversal\-Info@{traversal\-Info}!mlpack::tree::BinarySpaceTree::DualTreeTraverser@{mlpack\-::tree\-::\-Binary\-Space\-Tree\-::\-Dual\-Tree\-Traverser}}
+\subsubsection[{traversal\-Info}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Bound\-Type , typename Statistic\-Type  = Empty\-Statistic, typename Mat\-Type  = arma\-::mat, typename Split\-Type  = Mean\-Split$<$\-Bound\-Type, Mat\-Type$>$$>$ template$<$typename Rule\-Type $>$ Rule\-Type\-::\-Traversal\-Info\-Type {\bf mlpack\-::tree\-::\-Binary\-Space\-Tree}$<$ Bound\-Type, Statistic\-Type, Mat\-Type, Split\-Type $>$\-::{\bf Dual\-Tree\-Traverser}$<$ Rule\-Type $>$\-::traversal\-Info\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1BinarySpaceTree_1_1DualTreeTraverser_a094bc9ebc23928f2559f75ea51c586f0}
+
+
+Traversal information, held in the class so that it isn't continually being reallocated. 
+
+
+
+Definition at line 89 of file dual\-\_\-tree\-\_\-traverser.\-hpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/tree/binary\-\_\-space\-\_\-tree/{\bf binary\-\_\-space\-\_\-tree.\-hpp}\item 
+src/mlpack/core/tree/binary\-\_\-space\-\_\-tree/{\bf dual\-\_\-tree\-\_\-traverser.\-hpp}\end{DoxyCompactItemize}

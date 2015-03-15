@@ -1,0 +1,325 @@
+.TH "mlpack::neighbor::NeighborSearch< SortPolicy, MetricType, TreeType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::neighbor::NeighborSearch< SortPolicy, MetricType, TreeType > \- 
+.PP
+The \fBNeighborSearch\fP class is a template class for performing distance-based neighbor searches\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNeighborSearch\fP (const typename TreeType::Mat &\fBreferenceSet\fP, const typename TreeType::Mat &\fBquerySet\fP, const bool \fBnaive\fP=false, const bool \fBsingleMode\fP=false, const MetricType \fBmetric\fP=MetricType())"
+.br
+.RI "\fIInitialize the \fBNeighborSearch\fP object, passing both a query and reference dataset\&. \fP"
+.ti -1c
+.RI "\fBNeighborSearch\fP (const typename TreeType::Mat &\fBreferenceSet\fP, const bool \fBnaive\fP=false, const bool \fBsingleMode\fP=false, const MetricType \fBmetric\fP=MetricType())"
+.br
+.RI "\fIInitialize the \fBNeighborSearch\fP object, passing only one dataset, which is used as both the query and the reference dataset\&. \fP"
+.ti -1c
+.RI "\fBNeighborSearch\fP (TreeType *\fBreferenceTree\fP, TreeType *\fBqueryTree\fP, const typename TreeType::Mat &\fBreferenceSet\fP, const typename TreeType::Mat &\fBquerySet\fP, const bool \fBsingleMode\fP=false, const MetricType \fBmetric\fP=MetricType())"
+.br
+.RI "\fIInitialize the \fBNeighborSearch\fP object with the given datasets and pre-constructed trees\&. \fP"
+.ti -1c
+.RI "\fBNeighborSearch\fP (TreeType *\fBreferenceTree\fP, const typename TreeType::Mat &\fBreferenceSet\fP, const bool \fBsingleMode\fP=false, const MetricType \fBmetric\fP=MetricType())"
+.br
+.RI "\fIInitialize the \fBNeighborSearch\fP object with the given reference dataset and pre-constructed tree\&. \fP"
+.ti -1c
+.RI "\fB~NeighborSearch\fP ()"
+.br
+.RI "\fIDelete the \fBNeighborSearch\fP object\&. \fP"
+.ti -1c
+.RI "void \fBSearch\fP (const size_t k, arma::Mat< size_t > &resultingNeighbors, arma::mat &distances)"
+.br
+.RI "\fICompute the nearest neighbors and store the output in the given matrices\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBhasQuerySet\fP"
+.br
+.RI "\fIIndicates if a separate query set was passed\&. \fP"
+.ti -1c
+.RI "MetricType \fBmetric\fP"
+.br
+.RI "\fIInstantiation of metric\&. \fP"
+.ti -1c
+.RI "bool \fBnaive\fP"
+.br
+.RI "\fIIndicates if O(n^2) naive search is being used\&. \fP"
+.ti -1c
+.RI "std::vector< size_t > \fBoldFromNewQueries\fP"
+.br
+.RI "\fIPermutations of query points during tree building\&. \fP"
+.ti -1c
+.RI "std::vector< size_t > \fBoldFromNewReferences\fP"
+.br
+.RI "\fIPermutations of reference points during tree building\&. \fP"
+.ti -1c
+.RI "TreeType::Mat \fBqueryCopy\fP"
+.br
+.RI "\fICopy of query dataset (if we need it, because tree building modifies it)\&. \fP"
+.ti -1c
+.RI "const TreeType::Mat & \fBquerySet\fP"
+.br
+.RI "\fIQuery dataset (may not be given)\&. \fP"
+.ti -1c
+.RI "TreeType * \fBqueryTree\fP"
+.br
+.RI "\fIPointer to the root of the query tree (might not exist)\&. \fP"
+.ti -1c
+.RI "TreeType::Mat \fBreferenceCopy\fP"
+.br
+.RI "\fICopy of reference dataset (if we need it, because tree building modifies it)\&. \fP"
+.ti -1c
+.RI "const TreeType::Mat & \fBreferenceSet\fP"
+.br
+.RI "\fIReference dataset\&. \fP"
+.ti -1c
+.RI "TreeType * \fBreferenceTree\fP"
+.br
+.RI "\fIPointer to the root of the reference tree\&. \fP"
+.ti -1c
+.RI "bool \fBsingleMode\fP"
+.br
+.RI "\fIIndicates if single-tree search is being used (opposed to dual-tree)\&. \fP"
+.ti -1c
+.RI "bool \fBtreeOwner\fP"
+.br
+.RI "\fIIf true, this object created the trees and is responsible for them\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >>class mlpack::neighbor::NeighborSearch< SortPolicy, MetricType, TreeType >"
+The \fBNeighborSearch\fP class is a template class for performing distance-based neighbor searches\&. 
+
+It takes a query dataset and a reference dataset (or just a reference dataset) and, for each point in the query dataset, finds the k neighbors in the reference dataset which have the 'best' distance according to a given sorting policy\&. A constructor is given which takes only a reference dataset, and if that constructor is used, the given reference dataset is also used as the query dataset\&.
+.PP
+The template parameters SortPolicy and Metric define the sort function used and the metric (distance function) used\&. More information on those classes can be found in the \fBNearestNeighborSort\fP class and the \fBkernel::ExampleKernel\fP class\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISortPolicy\fP The sort policy for distances; see \fBNearestNeighborSort\fP\&. 
+.br
+\fIMetricType\fP The metric to use for computation\&. 
+.br
+\fITreeType\fP The tree type to use\&. 
+.RE
+.PP
+
+.PP
+Definition at line 55 of file neighbor_search\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::\fBNeighborSearch\fP (const typename TreeType::Mat &referenceSet, const typename TreeType::Mat &querySet, const boolnaive = \fCfalse\fP, const boolsingleMode = \fCfalse\fP, const MetricTypemetric = \fCMetricType()\fP)"
+
+.PP
+Initialize the \fBNeighborSearch\fP object, passing both a query and reference dataset\&. Optionally, perform the computation in naive mode or single-tree mode, and set the leaf size used for tree-building\&. An initialized distance metric can be given, for cases where the metric has internal data (i\&.e\&. the distance::MahalanobisDistance class)\&.
+.PP
+This method will copy the matrices to internal copies, which are rearranged during tree-building\&. You can avoid this extra copy by pre-constructing the trees and passing them using a diferent constructor\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceSet\fP Set of reference points\&. 
+.br
+\fIquerySet\fP Set of query points\&. 
+.br
+\fInaive\fP If true, O(n^2) naive search will be used (as opposed to dual-tree search)\&. This overrides singleMode (if it is set to true)\&. 
+.br
+\fIsingleMode\fP If true, single-tree search will be used (as opposed to dual-tree search)\&. 
+.br
+\fIleafSize\fP Leaf size for tree construction (ignored if tree is given)\&. 
+.br
+\fImetric\fP An optional instance of the MetricType class\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::\fBNeighborSearch\fP (const typename TreeType::Mat &referenceSet, const boolnaive = \fCfalse\fP, const boolsingleMode = \fCfalse\fP, const MetricTypemetric = \fCMetricType()\fP)"
+
+.PP
+Initialize the \fBNeighborSearch\fP object, passing only one dataset, which is used as both the query and the reference dataset\&. Optionally, perform the computation in naive mode or single-tree mode, and set the leaf size used for tree-building\&. An initialized distance metric can be given, for cases where the metric has internal data (i\&.e\&. the distance::MahalanobisDistance class)\&.
+.PP
+If naive mode is being used and a pre-built tree is given, it may not work: naive mode operates by building a one-node tree (the root node holds all the points)\&. If that condition is not satisfied with the pre-built tree, then naive mode will not work\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceSet\fP Set of reference points\&. 
+.br
+\fInaive\fP If true, O(n^2) naive search will be used (as opposed to dual-tree search)\&. This overrides singleMode (if it is set to true)\&. 
+.br
+\fIsingleMode\fP If true, single-tree search will be used (as opposed to dual-tree search)\&. 
+.br
+\fIleafSize\fP Leaf size for tree construction (ignored if tree is given)\&. 
+.br
+\fImetric\fP An optional instance of the MetricType class\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::\fBNeighborSearch\fP (TreeType *referenceTree, TreeType *queryTree, const typename TreeType::Mat &referenceSet, const typename TreeType::Mat &querySet, const boolsingleMode = \fCfalse\fP, const MetricTypemetric = \fCMetricType()\fP)"
+
+.PP
+Initialize the \fBNeighborSearch\fP object with the given datasets and pre-constructed trees\&. It is assumed that the points in referenceSet and querySet correspond to the points in referenceTree and queryTree, respectively\&. Optionally, choose to use single-tree mode\&. Naive mode is not available as an option for this constructor; instead, to run naive computation, construct a tree with all of the points in one leaf (i\&.e\&. leafSize = number of points)\&. Additionally, an instantiated distance metric can be given, for cases where the distance metric holds data\&.
+.PP
+There is no copying of the data matrices in this constructor (because tree-building is not necessary), so this is the constructor to use when copies absolutely must be avoided\&.
+.PP
+\fBNote:\fP
+.RS 4
+Because tree-building (at least with BinarySpaceTree) modifies the ordering of a matrix, be sure you pass the modified matrix to this object! In addition, mapping the points of the matrix back to their original indices is not done when this constructor is used\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceTree\fP Pre-built tree for reference points\&. 
+.br
+\fIqueryTree\fP Pre-built tree for query points\&. 
+.br
+\fIreferenceSet\fP Set of reference points corresponding to referenceTree\&. 
+.br
+\fIquerySet\fP Set of query points corresponding to queryTree\&. 
+.br
+\fIsingleMode\fP Whether single-tree computation should be used (as opposed to dual-tree computation)\&. 
+.br
+\fImetric\fP Instantiated distance metric\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::\fBNeighborSearch\fP (TreeType *referenceTree, const typename TreeType::Mat &referenceSet, const boolsingleMode = \fCfalse\fP, const MetricTypemetric = \fCMetricType()\fP)"
+
+.PP
+Initialize the \fBNeighborSearch\fP object with the given reference dataset and pre-constructed tree\&. It is assumed that the points in referenceSet correspond to the points in referenceTree\&. Optionally, choose to use single-tree mode\&. Naive mode is not available as an option for this constructor; instead, to run naive computation, construct a tree with all the points in one leaf (i\&.e\&. leafSize = number of points)\&. Additionally, an instantiated distance metric can be given, for the case where the distance metric holds data\&.
+.PP
+There is no copying of the data matrices in this constructor (because tree-building is not necessary), so this is the constructor to use when copies absolutely must be avoided\&.
+.PP
+\fBNote:\fP
+.RS 4
+Because tree-building (at least with BinarySpaceTree) modifies the ordering of a matrix, be sure you pass the modified matrix to this object! In addition, mapping the points of the matrix back to their original indices is not done when this constructor is used\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreferenceTree\fP Pre-built tree for reference points\&. 
+.br
+\fIreferenceSet\fP Set of reference points corresponding to referenceTree\&. 
+.br
+\fIsingleMode\fP Whether single-tree computation should be used (as opposed to dual-tree computation)\&. 
+.br
+\fImetric\fP Instantiated distance metric\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::~\fBNeighborSearch\fP ()"
+
+.PP
+Delete the \fBNeighborSearch\fP object\&. The tree is the only member we are responsible for deleting\&. The others will take care of themselves\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> void \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::Search (const size_tk, arma::Mat< size_t > &resultingNeighbors, arma::mat &distances)"
+
+.PP
+Compute the nearest neighbors and store the output in the given matrices\&. The matrices will be set to the size of n columns by k rows, where n is the number of points in the query dataset and k is the number of neighbors being searched for\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP Number of neighbors to search for\&. 
+.br
+\fIresultingNeighbors\fP Matrix storing lists of neighbors for each query point\&. 
+.br
+\fIdistances\fP Matrix storing distances of neighbors for each query point\&. 
+.RE
+.PP
+
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> std::string \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::ToString () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> bool \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::hasQuerySet\fC [private]\fP"
+
+.PP
+Indicates if a separate query set was passed\&. 
+.PP
+Definition at line 224 of file neighbor_search\&.hpp\&.
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> MetricType \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::metric\fC [private]\fP"
+
+.PP
+Instantiation of metric\&. 
+.PP
+Definition at line 232 of file neighbor_search\&.hpp\&.
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> bool \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::naive\fC [private]\fP"
+
+.PP
+Indicates if O(n^2) naive search is being used\&. 
+.PP
+Definition at line 227 of file neighbor_search\&.hpp\&.
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> std::vector<size_t> \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::oldFromNewQueries\fC [private]\fP"
+
+.PP
+Permutations of query points during tree building\&. 
+.PP
+Definition at line 237 of file neighbor_search\&.hpp\&.
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> std::vector<size_t> \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::oldFromNewReferences\fC [private]\fP"
+
+.PP
+Permutations of reference points during tree building\&. 
+.PP
+Definition at line 235 of file neighbor_search\&.hpp\&.
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> TreeType::Mat \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::queryCopy\fC [private]\fP"
+
+.PP
+Copy of query dataset (if we need it, because tree building modifies it)\&. 
+.PP
+Definition at line 209 of file neighbor_search\&.hpp\&.
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> const TreeType::Mat& \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::querySet\fC [private]\fP"
+
+.PP
+Query dataset (may not be given)\&. 
+.PP
+Definition at line 214 of file neighbor_search\&.hpp\&.
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> TreeType* \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::queryTree\fC [private]\fP"
+
+.PP
+Pointer to the root of the query tree (might not exist)\&. 
+.PP
+Definition at line 219 of file neighbor_search\&.hpp\&.
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> TreeType::Mat \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::referenceCopy\fC [private]\fP"
+
+.PP
+Copy of reference dataset (if we need it, because tree building modifies it)\&. 
+.PP
+Definition at line 207 of file neighbor_search\&.hpp\&.
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> const TreeType::Mat& \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::referenceSet\fC [private]\fP"
+
+.PP
+Reference dataset\&. 
+.PP
+Definition at line 212 of file neighbor_search\&.hpp\&.
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> TreeType* \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::referenceTree\fC [private]\fP"
+
+.PP
+Pointer to the root of the reference tree\&. 
+.PP
+Definition at line 217 of file neighbor_search\&.hpp\&.
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> bool \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::singleMode\fC [private]\fP"
+
+.PP
+Indicates if single-tree search is being used (opposed to dual-tree)\&. 
+.PP
+Definition at line 229 of file neighbor_search\&.hpp\&.
+.SS "template<typename SortPolicy = NearestNeighborSort, typename MetricType = mlpack::metric::SquaredEuclideanDistance, typename TreeType = tree::BinarySpaceTree<bound::HRectBound<2>,             NeighborSearchStat<SortPolicy> >> bool \fBmlpack::neighbor::NeighborSearch\fP< SortPolicy, MetricType, TreeType >::treeOwner\fC [private]\fP"
+
+.PP
+If true, this object created the trees and is responsible for them\&. 
+.PP
+Definition at line 222 of file neighbor_search\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

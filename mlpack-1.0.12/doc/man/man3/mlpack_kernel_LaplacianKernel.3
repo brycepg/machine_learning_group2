@@ -1,0 +1,169 @@
+.TH "mlpack::kernel::LaplacianKernel" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::kernel::LaplacianKernel \- 
+.PP
+The standard Laplacian kernel\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLaplacianKernel\fP ()"
+.br
+.RI "\fIDefault constructor; sets bandwidth to 1\&.0\&. \fP"
+.ti -1c
+.RI "\fBLaplacianKernel\fP (double \fBbandwidth\fP)"
+.br
+.RI "\fIConstruct the Laplacian kernel with a custom bandwidth\&. \fP"
+.ti -1c
+.RI "double \fBBandwidth\fP () const "
+.br
+.RI "\fIGet the bandwidth\&. \fP"
+.ti -1c
+.RI "double & \fBBandwidth\fP ()"
+.br
+.RI "\fIModify the bandwidth\&. \fP"
+.ti -1c
+.RI "template<typename VecType > double \fBEvaluate\fP (const VecType &a, const VecType &b) const "
+.br
+.RI "\fIEvaluation of the Laplacian kernel\&. \fP"
+.ti -1c
+.RI "double \fBEvaluate\fP (const double t) const "
+.br
+.RI "\fIEvaluation of the Laplacian kernel given the distance between two points\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturn a string representation of the kernel\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBbandwidth\fP"
+.br
+.RI "\fIKernel bandwidth\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The standard Laplacian kernel\&. 
+
+Given two vectors $ x $, $ y $, and a bandwidth $ \mu $ (set in the constructor),
+.PP
+\[ K(x, y) = \exp(-\frac{|| x - y ||}{\mu}). \].PP
+The implementation is all in the header file because it is so simple\&. 
+.PP
+Definition at line 32 of file laplacian_kernel\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::kernel::LaplacianKernel::LaplacianKernel ()\fC [inline]\fP"
+
+.PP
+Default constructor; sets bandwidth to 1\&.0\&. 
+.PP
+Definition at line 38 of file laplacian_kernel\&.hpp\&.
+.SS "mlpack::kernel::LaplacianKernel::LaplacianKernel (doublebandwidth)\fC [inline]\fP"
+
+.PP
+Construct the Laplacian kernel with a custom bandwidth\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbandwidth\fP The bandwidth of the kernel ( $\mu$)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 46 of file laplacian_kernel\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double mlpack::kernel::LaplacianKernel::Bandwidth () const\fC [inline]\fP"
+
+.PP
+Get the bandwidth\&. 
+.PP
+Definition at line 83 of file laplacian_kernel\&.hpp\&.
+.PP
+References bandwidth\&.
+.SS "double& mlpack::kernel::LaplacianKernel::Bandwidth ()\fC [inline]\fP"
+
+.PP
+Modify the bandwidth\&. 
+.PP
+Definition at line 85 of file laplacian_kernel\&.hpp\&.
+.PP
+References bandwidth\&.
+.SS "template<typename VecType > double mlpack::kernel::LaplacianKernel::Evaluate (const VecType &a, const VecType &b) const\fC [inline]\fP"
+
+.PP
+Evaluation of the Laplacian kernel\&. This could be generalized to use any distance metric, not the Euclidean distance, but for now, the Euclidean distance is used\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVecType\fP Type of vector (likely arma::vec or arma::spvec)\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP First vector\&. 
+.br
+\fIb\fP Second vector\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+K(a, b) using the bandwidth ( $\mu$) specified in the constructor\&. 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file laplacian_kernel\&.hpp\&.
+.PP
+References bandwidth, and mlpack::metric::LMetric< Power, TakeRoot >::Evaluate()\&.
+.SS "double mlpack::kernel::LaplacianKernel::Evaluate (const doublet) const\fC [inline]\fP"
+
+.PP
+Evaluation of the Laplacian kernel given the distance between two points\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt\fP The distance between the two points the kernel should be evaluated on\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+K(t) using the bandwidth ( $\mu$) specified in the constructor\&. 
+.RE
+.PP
+
+.PP
+Definition at line 76 of file laplacian_kernel\&.hpp\&.
+.PP
+References bandwidth\&.
+.SS "std::string mlpack::kernel::LaplacianKernel::ToString () const\fC [inline]\fP"
+
+.PP
+Return a string representation of the kernel\&. 
+.PP
+Definition at line 88 of file laplacian_kernel\&.hpp\&.
+.PP
+References bandwidth\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "double mlpack::kernel::LaplacianKernel::bandwidth\fC [private]\fP"
+
+.PP
+Kernel bandwidth\&. 
+.PP
+Definition at line 98 of file laplacian_kernel\&.hpp\&.
+.PP
+Referenced by Bandwidth(), Evaluate(), and ToString()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

@@ -1,0 +1,47 @@
+.TH "src/mlpack/core/data/load.hpp" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/mlpack/core/data/load.hpp \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "\fBmlpack\fP"
+.br
+.RI "\fILinear algebra utility functions, generally performed on matrices or vectors\&. \fP"
+.ti -1c
+.RI "\fBmlpack::data\fP"
+.br
+.RI "\fIFunctions to load and save matrices\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename eT > bool \fBmlpack::data::Load\fP (const std::string &filename, arma::Mat< eT > &matrix, bool fatal=false, bool transpose=true)"
+.br
+.RI "\fILoads a matrix from file, guessing the filetype from the extension\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+\fBAuthor:\fP
+.RS 4
+Ryan Curtin
+.RE
+.PP
+Load an Armadillo matrix from file\&. This is necessary because Armadillo does not transpose matrices on input, and it allows us to give better error output\&.
+.PP
+This file is part of mlpack 1\&.0\&.12\&.
+.PP
+mlpack is free software; you may redstribute it and/or modify it under the terms of the 3-clause BSD license\&. You should have received a copy of the 3-clause BSD license along with mlpack\&. If not, see http://www.opensource.org/licenses/BSD-3-Clause for more information\&. 
+.PP
+Definition in file \fBload\&.hpp\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

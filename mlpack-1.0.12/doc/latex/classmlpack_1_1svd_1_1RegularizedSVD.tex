@@ -1,0 +1,159 @@
+\section{mlpack\-:\-:svd\-:\-:Regularized\-S\-V\-D$<$ Optimizer\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1svd_1_1RegularizedSVD}\index{mlpack\-::svd\-::\-Regularized\-S\-V\-D$<$ Optimizer\-Type $>$@{mlpack\-::svd\-::\-Regularized\-S\-V\-D$<$ Optimizer\-Type $>$}}
+
+
+Collaboration diagram for mlpack\-:\-:svd\-:\-:Regularized\-S\-V\-D$<$ Optimizer\-Type $>$\-:
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Regularized\-S\-V\-D} (const arma\-::mat \&{\bf data}, arma\-::mat \&u, arma\-::mat \&v, const size\-\_\-t {\bf rank}, const size\-\_\-t {\bf iterations}=10, const double {\bf alpha}=0.\-01, const double {\bf lambda}=0.\-02)
+\begin{DoxyCompactList}\small\item\em Constructor for Regularized S\-V\-D. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf alpha}
+\begin{DoxyCompactList}\small\item\em Learning rate for the S\-G\-D optimizer. \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf data}
+\begin{DoxyCompactList}\small\item\em Rating data. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf iterations}
+\begin{DoxyCompactList}\small\item\em Number of optimization iterations. \end{DoxyCompactList}\item 
+double {\bf lambda}
+\begin{DoxyCompactList}\small\item\em Regularization parameter for the optimization. \end{DoxyCompactList}\item 
+{\bf mlpack\-::optimization\-::\-S\-G\-D}\\*
+$<$ {\bf Regularized\-S\-V\-D\-Function} $>$ {\bf optimizer}
+\begin{DoxyCompactList}\small\item\em Default S\-G\-D optimizer for the class. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf rank}
+\begin{DoxyCompactList}\small\item\em Rank used for matrix factorization. \end{DoxyCompactList}\item 
+{\bf Regularized\-S\-V\-D\-Function} {\bf r\-S\-V\-D\-Func}
+\begin{DoxyCompactList}\small\item\em Function that will be held by the optimizer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$template$<$ typename $>$ class Optimizer\-Type = mlpack\-::optimization\-::\-S\-G\-D$>$class mlpack\-::svd\-::\-Regularized\-S\-V\-D$<$ Optimizer\-Type $>$}
+
+
+
+Definition at line 29 of file regularized\-\_\-svd.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::svd\-::\-Regularized\-S\-V\-D@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}!Regularized\-S\-V\-D@{Regularized\-S\-V\-D}}
+\index{Regularized\-S\-V\-D@{Regularized\-S\-V\-D}!mlpack::svd::RegularizedSVD@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}}
+\subsubsection[{Regularized\-S\-V\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename $>$ class Optimizer\-Type = mlpack\-::optimization\-::\-S\-G\-D$>$ {\bf mlpack\-::svd\-::\-Regularized\-S\-V\-D}$<$ Optimizer\-Type $>$\-::{\bf Regularized\-S\-V\-D} (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{data, }
+\item[{arma\-::mat \&}]{u, }
+\item[{arma\-::mat \&}]{v, }
+\item[{const size\-\_\-t}]{rank, }
+\item[{const size\-\_\-t}]{iterations = {\ttfamily 10}, }
+\item[{const double}]{alpha = {\ttfamily 0.01}, }
+\item[{const double}]{lambda = {\ttfamily 0.02}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1svd_1_1RegularizedSVD_ab46ce644537742e6a686412d43a1873e}
+
+
+Constructor for Regularized S\-V\-D. 
+
+Obtains the user and item matrices after training on the passed data. The constructor initiates an object of class \doxyref{Regularized\-S\-V\-D\-Function}{p.}{classmlpack_1_1svd_1_1RegularizedSVDFunction} for optimization. It uses the S\-G\-D optimizer by default. The optimizer uses a template specialization of Optimize().
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset for which S\-V\-D is calculated. \\
+\hline
+{\em u} & User matrix in the matrix decomposition. \\
+\hline
+{\em v} & Item matrix in the matrix decomposition. \\
+\hline
+{\em rank} & Rank used for matrix factorization. \\
+\hline
+{\em iterations} & Number of optimization iterations. \\
+\hline
+{\em lambda} & Regularization parameter for the optimization. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::svd\-::\-Regularized\-S\-V\-D@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}!alpha@{alpha}}
+\index{alpha@{alpha}!mlpack::svd::RegularizedSVD@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}}
+\subsubsection[{alpha}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename $>$ class Optimizer\-Type = mlpack\-::optimization\-::\-S\-G\-D$>$ double {\bf mlpack\-::svd\-::\-Regularized\-S\-V\-D}$<$ Optimizer\-Type $>$\-::alpha\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1svd_1_1RegularizedSVD_a709a8efda1c03b99a70a168fb70dd747}
+
+
+Learning rate for the S\-G\-D optimizer. 
+
+
+
+Definition at line 62 of file regularized\-\_\-svd.\-hpp.
+
+\index{mlpack\-::svd\-::\-Regularized\-S\-V\-D@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}!data@{data}}
+\index{data@{data}!mlpack::svd::RegularizedSVD@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename $>$ class Optimizer\-Type = mlpack\-::optimization\-::\-S\-G\-D$>$ const arma\-::mat\& {\bf mlpack\-::svd\-::\-Regularized\-S\-V\-D}$<$ Optimizer\-Type $>$\-::data\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1svd_1_1RegularizedSVD_a9cdabe33984df5201e93c6ac1e1d498e}
+
+
+Rating data. 
+
+
+
+Definition at line 56 of file regularized\-\_\-svd.\-hpp.
+
+\index{mlpack\-::svd\-::\-Regularized\-S\-V\-D@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}!iterations@{iterations}}
+\index{iterations@{iterations}!mlpack::svd::RegularizedSVD@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}}
+\subsubsection[{iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename $>$ class Optimizer\-Type = mlpack\-::optimization\-::\-S\-G\-D$>$ size\-\_\-t {\bf mlpack\-::svd\-::\-Regularized\-S\-V\-D}$<$ Optimizer\-Type $>$\-::iterations\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1svd_1_1RegularizedSVD_a215f1ecdb0d2e604895c3fb9fb0fddf8}
+
+
+Number of optimization iterations. 
+
+
+
+Definition at line 60 of file regularized\-\_\-svd.\-hpp.
+
+\index{mlpack\-::svd\-::\-Regularized\-S\-V\-D@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}!lambda@{lambda}}
+\index{lambda@{lambda}!mlpack::svd::RegularizedSVD@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}}
+\subsubsection[{lambda}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename $>$ class Optimizer\-Type = mlpack\-::optimization\-::\-S\-G\-D$>$ double {\bf mlpack\-::svd\-::\-Regularized\-S\-V\-D}$<$ Optimizer\-Type $>$\-::lambda\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1svd_1_1RegularizedSVD_a03711c74a3b7edf9d11ec2b8cb7fbb87}
+
+
+Regularization parameter for the optimization. 
+
+
+
+Definition at line 64 of file regularized\-\_\-svd.\-hpp.
+
+\index{mlpack\-::svd\-::\-Regularized\-S\-V\-D@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}!optimizer@{optimizer}}
+\index{optimizer@{optimizer}!mlpack::svd::RegularizedSVD@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}}
+\subsubsection[{optimizer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename $>$ class Optimizer\-Type = mlpack\-::optimization\-::\-S\-G\-D$>$ {\bf mlpack\-::optimization\-::\-S\-G\-D}$<${\bf Regularized\-S\-V\-D\-Function}$>$ {\bf mlpack\-::svd\-::\-Regularized\-S\-V\-D}$<$ Optimizer\-Type $>$\-::optimizer\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1svd_1_1RegularizedSVD_a46e56f1450d509a994c0a9e351824a12}
+
+
+Default S\-G\-D optimizer for the class. 
+
+
+
+Definition at line 68 of file regularized\-\_\-svd.\-hpp.
+
+\index{mlpack\-::svd\-::\-Regularized\-S\-V\-D@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}!rank@{rank}}
+\index{rank@{rank}!mlpack::svd::RegularizedSVD@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}}
+\subsubsection[{rank}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename $>$ class Optimizer\-Type = mlpack\-::optimization\-::\-S\-G\-D$>$ size\-\_\-t {\bf mlpack\-::svd\-::\-Regularized\-S\-V\-D}$<$ Optimizer\-Type $>$\-::rank\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1svd_1_1RegularizedSVD_a254f38fbeb69407b21a14b9362caeb21}
+
+
+Rank used for matrix factorization. 
+
+
+
+Definition at line 58 of file regularized\-\_\-svd.\-hpp.
+
+\index{mlpack\-::svd\-::\-Regularized\-S\-V\-D@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}!r\-S\-V\-D\-Func@{r\-S\-V\-D\-Func}}
+\index{r\-S\-V\-D\-Func@{r\-S\-V\-D\-Func}!mlpack::svd::RegularizedSVD@{mlpack\-::svd\-::\-Regularized\-S\-V\-D}}
+\subsubsection[{r\-S\-V\-D\-Func}]{\setlength{\rightskip}{0pt plus 5cm}template$<$template$<$ typename $>$ class Optimizer\-Type = mlpack\-::optimization\-::\-S\-G\-D$>$ {\bf Regularized\-S\-V\-D\-Function} {\bf mlpack\-::svd\-::\-Regularized\-S\-V\-D}$<$ Optimizer\-Type $>$\-::r\-S\-V\-D\-Func\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1svd_1_1RegularizedSVD_a24a6a6310fbcc79fc6c6f8ea782211fe}
+
+
+Function that will be held by the optimizer. 
+
+
+
+Definition at line 66 of file regularized\-\_\-svd.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/regularized\-\_\-svd/{\bf regularized\-\_\-svd.\-hpp}\end{DoxyCompactItemize}

@@ -1,0 +1,421 @@
+\section{mlpack\-:\-:range\-:\-:Range\-Search$<$ Metric\-Type, Tree\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1range_1_1RangeSearch}\index{mlpack\-::range\-::\-Range\-Search$<$ Metric\-Type, Tree\-Type $>$@{mlpack\-::range\-::\-Range\-Search$<$ Metric\-Type, Tree\-Type $>$}}
+
+
+The \doxyref{Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch} class is a template class for performing range searches.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Range\-Search} (const typename Tree\-Type\-::\-Mat \&{\bf reference\-Set}, const typename Tree\-Type\-::\-Mat \&{\bf query\-Set}, const bool {\bf naive}=false, const bool {\bf single\-Mode}=false, const Metric\-Type {\bf metric}=Metric\-Type())
+\begin{DoxyCompactList}\small\item\em Initialize the \doxyref{Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch} object with a different reference set and a query set. \end{DoxyCompactList}\item 
+{\bf Range\-Search} (const typename Tree\-Type\-::\-Mat \&{\bf reference\-Set}, const bool {\bf naive}=false, const bool {\bf single\-Mode}=false, const Metric\-Type {\bf metric}=Metric\-Type())
+\begin{DoxyCompactList}\small\item\em Initialize the \doxyref{Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch} object with only a reference set, which will also be used as a query set. \end{DoxyCompactList}\item 
+{\bf Range\-Search} (Tree\-Type $\ast${\bf reference\-Tree}, Tree\-Type $\ast${\bf query\-Tree}, const typename Tree\-Type\-::\-Mat \&{\bf reference\-Set}, const typename Tree\-Type\-::\-Mat \&{\bf query\-Set}, const bool {\bf single\-Mode}=false, const Metric\-Type {\bf metric}=Metric\-Type())
+\begin{DoxyCompactList}\small\item\em Initialize the \doxyref{Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch} object with the given datasets and pre-\/constructed trees. \end{DoxyCompactList}\item 
+{\bf Range\-Search} (Tree\-Type $\ast${\bf reference\-Tree}, const typename Tree\-Type\-::\-Mat \&{\bf reference\-Set}, const bool {\bf single\-Mode}=false, const Metric\-Type {\bf metric}=Metric\-Type())
+\begin{DoxyCompactList}\small\item\em Initialize the \doxyref{Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch} object with the given reference dataset and pre-\/constructed tree. \end{DoxyCompactList}\item 
+{\bf $\sim$\-Range\-Search} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxyref{Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch} object. \end{DoxyCompactList}\item 
+void {\bf Search} (const {\bf math\-::\-Range} \&range, std\-::vector$<$ std\-::vector$<$ size\-\_\-t $>$ $>$ \&neighbors, std\-::vector$<$ std\-::vector$<$ double $>$ $>$ \&distances)
+\begin{DoxyCompactList}\small\item\em Search for all points in the given range, returning the results in the neighbors and distances objects. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf has\-Query\-Set}
+\begin{DoxyCompactList}\small\item\em If true, a query set was passed; if false, the query set is the reference set. \end{DoxyCompactList}\item 
+Metric\-Type {\bf metric}
+\begin{DoxyCompactList}\small\item\em Instantiated distance metric. \end{DoxyCompactList}\item 
+bool {\bf naive}
+\begin{DoxyCompactList}\small\item\em If true, O(n$^\wedge$2) naive computation is used. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf num\-Prunes}
+\begin{DoxyCompactList}\small\item\em The number of pruned nodes during computation. \end{DoxyCompactList}\item 
+std\-::vector$<$ size\-\_\-t $>$ {\bf old\-From\-New\-Queries}
+\begin{DoxyCompactList}\small\item\em Mappings to old query indices (used when this object builds trees). \end{DoxyCompactList}\item 
+std\-::vector$<$ size\-\_\-t $>$ {\bf old\-From\-New\-References}
+\begin{DoxyCompactList}\small\item\em Mappings to old reference indices (used when this object builds trees). \end{DoxyCompactList}\item 
+Tree\-Type\-::\-Mat {\bf query\-Copy}
+\begin{DoxyCompactList}\small\item\em Copy of query matrix; used when a tree is built internally. \end{DoxyCompactList}\item 
+const Tree\-Type\-::\-Mat \& {\bf query\-Set}
+\begin{DoxyCompactList}\small\item\em Query set (data should be accessed using this). \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf query\-Tree}
+\begin{DoxyCompactList}\small\item\em Query tree (may be N\-U\-L\-L). \end{DoxyCompactList}\item 
+Tree\-Type\-::\-Mat {\bf reference\-Copy}
+\begin{DoxyCompactList}\small\item\em Copy of reference matrix; used when a tree is built internally. \end{DoxyCompactList}\item 
+const Tree\-Type\-::\-Mat \& {\bf reference\-Set}
+\begin{DoxyCompactList}\small\item\em Reference set (data should be accessed using this). \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf reference\-Tree}
+\begin{DoxyCompactList}\small\item\em Reference tree. \end{DoxyCompactList}\item 
+bool {\bf single\-Mode}
+\begin{DoxyCompactList}\small\item\em If true, single-\/tree computation is used. \end{DoxyCompactList}\item 
+bool {\bf tree\-Owner}
+\begin{DoxyCompactList}\small\item\em If true, this object is responsible for deleting the trees. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$class mlpack\-::range\-::\-Range\-Search$<$ Metric\-Type, Tree\-Type $>$}
+
+The \doxyref{Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch} class is a template class for performing range searches. 
+
+It is implemented in the style of a generalized tree-\/independent dual-\/tree algorithm; for more details on the actual algorithm, see the \doxyref{Range\-Search\-Rules}{p.}{classmlpack_1_1range_1_1RangeSearchRules} class. 
+
+Definition at line 35 of file range\-\_\-search.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!Range\-Search@{Range\-Search}}
+\index{Range\-Search@{Range\-Search}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{Range\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::{\bf Range\-Search} (
+\begin{DoxyParamCaption}
+\item[{const typename Tree\-Type\-::\-Mat \&}]{reference\-Set, }
+\item[{const typename Tree\-Type\-::\-Mat \&}]{query\-Set, }
+\item[{const bool}]{naive = {\ttfamily false}, }
+\item[{const bool}]{single\-Mode = {\ttfamily false}, }
+\item[{const Metric\-Type}]{metric = {\ttfamily MetricType()}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1range_1_1RangeSearch_ac222b59f3ea2ed8e953bd1022856dc2f}
+
+
+Initialize the \doxyref{Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch} object with a different reference set and a query set. 
+
+Optionally, perform the computation in naive mode or single-\/tree mode, and set the leaf size used for tree-\/building. Additionally, an instantiated metric can be given, for cases where the distance metric holds data.
+
+This method will copy the matrices to internal copies, which are rearranged during tree-\/building. You can avoid this extra copy by pre-\/constructing the trees and passing them using a different constructor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reference\-Set} & Reference dataset. \\
+\hline
+{\em query\-Set} & Query dataset. \\
+\hline
+{\em naive} & Whether the computation should be done in O(n$^\wedge$2) naive mode. \\
+\hline
+{\em single\-Mode} & Whether single-\/tree computation should be used (as opposed to dual-\/tree computation). \\
+\hline
+{\em leaf\-Size} & The leaf size to be used during tree construction. \\
+\hline
+{\em metric} & Instantiated distance metric. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!Range\-Search@{Range\-Search}}
+\index{Range\-Search@{Range\-Search}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{Range\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::{\bf Range\-Search} (
+\begin{DoxyParamCaption}
+\item[{const typename Tree\-Type\-::\-Mat \&}]{reference\-Set, }
+\item[{const bool}]{naive = {\ttfamily false}, }
+\item[{const bool}]{single\-Mode = {\ttfamily false}, }
+\item[{const Metric\-Type}]{metric = {\ttfamily MetricType()}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1range_1_1RangeSearch_ad5753b8d1bbd36a0f54b1cc2fc2ae5f4}
+
+
+Initialize the \doxyref{Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch} object with only a reference set, which will also be used as a query set. 
+
+Optionally, perform the computation in naive mode or single-\/tree mode, and set the leaf size used for tree-\/building. Additionally an instantiated metric can be given, for cases where the distance metric holds data.
+
+This method will copy the reference matrix to an internal copy, which is rearranged during tree-\/building. You can avoid this extra copy by pre-\/constructing the reference tree and passing it using a different constructor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reference\-Set} & Reference dataset. \\
+\hline
+{\em naive} & Whether the computation should be done in O(n$^\wedge$2) naive mode. \\
+\hline
+{\em single\-Mode} & Whether single-\/tree computation should be used (as opposed to dual-\/tree computation). \\
+\hline
+{\em leaf\-Size} & The leaf size to be used during tree construction. \\
+\hline
+{\em metric} & Instantiated distance metric. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!Range\-Search@{Range\-Search}}
+\index{Range\-Search@{Range\-Search}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{Range\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::{\bf Range\-Search} (
+\begin{DoxyParamCaption}
+\item[{Tree\-Type $\ast$}]{reference\-Tree, }
+\item[{Tree\-Type $\ast$}]{query\-Tree, }
+\item[{const typename Tree\-Type\-::\-Mat \&}]{reference\-Set, }
+\item[{const typename Tree\-Type\-::\-Mat \&}]{query\-Set, }
+\item[{const bool}]{single\-Mode = {\ttfamily false}, }
+\item[{const Metric\-Type}]{metric = {\ttfamily MetricType()}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1range_1_1RangeSearch_a8c9aa30b3db4bade776bf53e9dcfd577}
+
+
+Initialize the \doxyref{Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch} object with the given datasets and pre-\/constructed trees. 
+
+It is assumed that the points in reference\-Set and query\-Set correspond to the points in reference\-Tree and query\-Tree, respectively. Optionally, choose to use single-\/tree mode. Naive mode is not available as an option for this constructor; instead, to run naive computation, construct a tree with all the points in one leaf (i.\-e. leaf\-Size = number of points). Additionally, an instantiated distance metric can be given, for cases where the distance metric holds data.
+
+There is no copying of the data matrices in this constructor (because tree-\/building is not necessary), so this is the constructor to use when copies absolutely must be avoided.
+
+\begin{DoxyNote}{Note}
+Because tree-\/building (at least with Binary\-Space\-Tree) modifies the ordering of a matrix, be sure you pass the modified matrix to this object! In addition, mapping the points of the matrix back to their original indices is not done when this constructor is used. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em reference\-Tree} & Pre-\/built tree for reference points. \\
+\hline
+{\em query\-Tree} & Pre-\/built tree for query points. \\
+\hline
+{\em reference\-Set} & Set of reference points corresponding to reference\-Tree. \\
+\hline
+{\em query\-Set} & Set of query points corresponding to query\-Tree. \\
+\hline
+{\em single\-Mode} & Whether single-\/tree computation should be used (as opposed to dual-\/tree computation). \\
+\hline
+{\em metric} & Instantiated distance metric. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!Range\-Search@{Range\-Search}}
+\index{Range\-Search@{Range\-Search}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{Range\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::{\bf Range\-Search} (
+\begin{DoxyParamCaption}
+\item[{Tree\-Type $\ast$}]{reference\-Tree, }
+\item[{const typename Tree\-Type\-::\-Mat \&}]{reference\-Set, }
+\item[{const bool}]{single\-Mode = {\ttfamily false}, }
+\item[{const Metric\-Type}]{metric = {\ttfamily MetricType()}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1range_1_1RangeSearch_a3896ec77295847c36a83756c3ed27fad}
+
+
+Initialize the \doxyref{Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch} object with the given reference dataset and pre-\/constructed tree. 
+
+It is assumed that the points in reference\-Set correspond to the points in reference\-Tree. Optionally, choose to use single-\/tree mode. Naive mode is not available as an option for this constructor; instead, to run naive computation, construct a tree with all the points in one leaf (i.\-e. leaf\-Size = number of points). Additionally, an instantiated distance metric can be given, for the case where the distance metric holds data.
+
+There is no copying of the data matrices in this constructor (because tree-\/building is not necessary), so this is the constructor to use when copies absolutely must be avoided.
+
+\begin{DoxyNote}{Note}
+Because tree-\/building (at least with Binary\-Space\-Tree) modifies the ordering of a matrix, be sure you pass the modified matrix to this object! In addition, mapping the points of the matrix back to their original indices is not done when this constructor is used. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em reference\-Tree} & Pre-\/built tree for reference points. \\
+\hline
+{\em reference\-Set} & Set of reference points corresponding to reference\-Tree. \\
+\hline
+{\em single\-Mode} & Whether single-\/tree computation should be used (as opposed to dual-\/tree computation). \\
+\hline
+{\em metric} & Instantiated distance metric. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!$\sim$\-Range\-Search@{$\sim$\-Range\-Search}}
+\index{$\sim$\-Range\-Search@{$\sim$\-Range\-Search}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{$\sim$\-Range\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::$\sim${\bf Range\-Search} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1range_1_1RangeSearch_ae46f2db1fe42bf3b997a19c13a6443c8}
+
+
+Destroy the \doxyref{Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch} object. 
+
+If trees were created, they will be deleted. 
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!Search@{Search}}
+\index{Search@{Search}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ void {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::Search (
+\begin{DoxyParamCaption}
+\item[{const {\bf math\-::\-Range} \&}]{range, }
+\item[{std\-::vector$<$ std\-::vector$<$ size\-\_\-t $>$ $>$ \&}]{neighbors, }
+\item[{std\-::vector$<$ std\-::vector$<$ double $>$ $>$ \&}]{distances}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1range_1_1RangeSearch_a7720febcbdafd0534a8a4d2980d0b2b8}
+
+
+Search for all points in the given range, returning the results in the neighbors and distances objects. 
+
+Each entry in the external vector corresponds to a query point. Each of these entries holds a vector which contains the indices and distances of the reference points falling into the given range.
+
+That is\-:
+
+
+\begin{DoxyItemize}
+\item neighbors.\-size() and distances.\-size() both equal the number of query points.
+\item neighbors[i] contains the indices of all the points in the reference set which have distances inside the given range to query point i.
+\item distances[i] contains all of the distances corresponding to the indices contained in neighbors[i].
+\item neighbors[i] and distances[i] are not sorted in any particular order.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em range} & Range of distances in which to search. \\
+\hline
+{\em neighbors} & Object which will hold the list of neighbors for each point which fell into the given range, for each query point. \\
+\hline
+{\em distances} & Object which will hold the list of distances for each point which fell into the given range, for each query point. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ std\-::string {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1range_1_1RangeSearch_a9dc3176caf8a66c68278b8aa86352913}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!has\-Query\-Set@{has\-Query\-Set}}
+\index{has\-Query\-Set@{has\-Query\-Set}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{has\-Query\-Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ bool {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::has\-Query\-Set\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_a6003dfcb91776853a3fc091e1041aeca}
+
+
+If true, a query set was passed; if false, the query set is the reference set. 
+
+
+
+Definition at line 219 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!metric@{metric}}
+\index{metric@{metric}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ Metric\-Type {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::metric\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_aa216589f87d18248e19b535743cb4ef1}
+
+
+Instantiated distance metric. 
+
+
+
+Definition at line 227 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!naive@{naive}}
+\index{naive@{naive}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{naive}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ bool {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::naive\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_a06e1c686f9d7a84d40f7953433d93b31}
+
+
+If true, O(n$^\wedge$2) naive computation is used. 
+
+
+
+Definition at line 222 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!num\-Prunes@{num\-Prunes}}
+\index{num\-Prunes@{num\-Prunes}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{num\-Prunes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ size\-\_\-t {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::num\-Prunes\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_a6b3bb129cccbdfa394da83de3432ebdd}
+
+
+The number of pruned nodes during computation. 
+
+
+
+Definition at line 230 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!old\-From\-New\-Queries@{old\-From\-New\-Queries}}
+\index{old\-From\-New\-Queries@{old\-From\-New\-Queries}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{old\-From\-New\-Queries}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ std\-::vector$<$size\-\_\-t$>$ {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::old\-From\-New\-Queries\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_a578c3892cb6a4c846234c035bc4116af}
+
+
+Mappings to old query indices (used when this object builds trees). 
+
+
+
+Definition at line 213 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!old\-From\-New\-References@{old\-From\-New\-References}}
+\index{old\-From\-New\-References@{old\-From\-New\-References}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{old\-From\-New\-References}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ std\-::vector$<$size\-\_\-t$>$ {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::old\-From\-New\-References\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_a4320ebdfec42dedac1ec660012008c0c}
+
+
+Mappings to old reference indices (used when this object builds trees). 
+
+
+
+Definition at line 211 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!query\-Copy@{query\-Copy}}
+\index{query\-Copy@{query\-Copy}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{query\-Copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ Tree\-Type\-::\-Mat {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::query\-Copy\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_a76929d908e58db0268c14094a87ac3af}
+
+
+Copy of query matrix; used when a tree is built internally. 
+
+
+
+Definition at line 198 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!query\-Set@{query\-Set}}
+\index{query\-Set@{query\-Set}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{query\-Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ const Tree\-Type\-::\-Mat\& {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::query\-Set\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_a2ffbfd3f145a0d3e9a7390d562cad497}
+
+
+Query set (data should be accessed using this). 
+
+
+
+Definition at line 203 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!query\-Tree@{query\-Tree}}
+\index{query\-Tree@{query\-Tree}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{query\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ Tree\-Type$\ast$ {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::query\-Tree\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_a33a7b81a09237dd4e5235b53d70580a4}
+
+
+Query tree (may be N\-U\-L\-L). 
+
+
+
+Definition at line 208 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!reference\-Copy@{reference\-Copy}}
+\index{reference\-Copy@{reference\-Copy}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{reference\-Copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ Tree\-Type\-::\-Mat {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::reference\-Copy\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_a09080f559c0dd9ff0077ab6365969108}
+
+
+Copy of reference matrix; used when a tree is built internally. 
+
+
+
+Definition at line 196 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!reference\-Set@{reference\-Set}}
+\index{reference\-Set@{reference\-Set}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{reference\-Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ const Tree\-Type\-::\-Mat\& {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::reference\-Set\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_afe60d04db75dec6225b96c2cbddfb8da}
+
+
+Reference set (data should be accessed using this). 
+
+
+
+Definition at line 201 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!reference\-Tree@{reference\-Tree}}
+\index{reference\-Tree@{reference\-Tree}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{reference\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ Tree\-Type$\ast$ {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::reference\-Tree\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_aca140c256a7bc52d36cb9b7456c6643c}
+
+
+Reference tree. 
+
+
+
+Definition at line 206 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!single\-Mode@{single\-Mode}}
+\index{single\-Mode@{single\-Mode}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{single\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ bool {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::single\-Mode\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_ad4236bfdb00aebcd72575ba4511cfca9}
+
+
+If true, single-\/tree computation is used. 
+
+
+
+Definition at line 224 of file range\-\_\-search.\-hpp.
+
+\index{mlpack\-::range\-::\-Range\-Search@{mlpack\-::range\-::\-Range\-Search}!tree\-Owner@{tree\-Owner}}
+\index{tree\-Owner@{tree\-Owner}!mlpack::range::RangeSearch@{mlpack\-::range\-::\-Range\-Search}}
+\subsubsection[{tree\-Owner}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type = mlpack\-::metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$,                                                   Range\-Search\-Stat$>$$>$ bool {\bf mlpack\-::range\-::\-Range\-Search}$<$ Metric\-Type, Tree\-Type $>$\-::tree\-Owner\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1range_1_1RangeSearch_aff9bbd89191f03f0f6fc2c6d3f1c9804}
+
+
+If true, this object is responsible for deleting the trees. 
+
+
+
+Definition at line 216 of file range\-\_\-search.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/range\-\_\-search/{\bf range\-\_\-search.\-hpp}\end{DoxyCompactItemize}

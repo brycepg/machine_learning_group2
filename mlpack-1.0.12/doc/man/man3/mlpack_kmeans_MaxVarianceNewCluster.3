@@ -1,0 +1,75 @@
+.TH "mlpack::kmeans::MaxVarianceNewCluster" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::kmeans::MaxVarianceNewCluster \- 
+.PP
+When an empty cluster is detected, this class takes the point furthest from the centroid of the cluster with maximum variance as a new cluster\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMaxVarianceNewCluster\fP ()"
+.br
+.RI "\fIDefault constructor required by EmptyClusterPolicy\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename MatType > static size_t \fBEmptyCluster\fP (const MatType &data, const size_t emptyCluster, const MatType &centroids, arma::Col< size_t > &clusterCounts, arma::Col< size_t > &assignments)"
+.br
+.RI "\fITake the point furthest from the centroid of the cluster with maximum variance to be a new cluster\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+When an empty cluster is detected, this class takes the point furthest from the centroid of the cluster with maximum variance as a new cluster\&. 
+.PP
+Definition at line 28 of file max_variance_new_cluster\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::kmeans::MaxVarianceNewCluster::MaxVarianceNewCluster ()\fC [inline]\fP"
+
+.PP
+Default constructor required by EmptyClusterPolicy\&. 
+.PP
+Definition at line 32 of file max_variance_new_cluster\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename MatType > static size_t mlpack::kmeans::MaxVarianceNewCluster::EmptyCluster (const MatType &data, const size_temptyCluster, const MatType &centroids, arma::Col< size_t > &clusterCounts, arma::Col< size_t > &assignments)\fC [static]\fP"
+
+.PP
+Take the point furthest from the centroid of the cluster with maximum variance to be a new cluster\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMatType\fP Type of data (arma::mat or arma::sp_mat)\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset on which clustering is being performed\&. 
+.br
+\fIemptyCluster\fP Index of cluster which is empty\&. 
+.br
+\fIcentroids\fP Centroids of each cluster (one per column)\&. 
+.br
+\fIclusterCounts\fP Number of points in each cluster\&. 
+.br
+\fIassignments\fP Cluster assignments of each point\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of points changed\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

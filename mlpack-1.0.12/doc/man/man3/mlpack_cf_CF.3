@@ -1,0 +1,377 @@
+.TH "mlpack::cf::CF< FactorizerType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::cf::CF< FactorizerType > \- 
+.PP
+This class implements Collaborative Filtering (\fBCF\fP)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCF\fP (arma::mat &\fBdata\fP, const size_t \fBnumUsersForSimilarity\fP=5, const size_t \fBrank\fP=0)"
+.br
+.RI "\fIInitialize the \fBCF\fP object\&. \fP"
+.ti -1c
+.RI "const arma::sp_mat & \fBCleanedData\fP () const "
+.br
+.RI "\fIGet the cleaned data matrix\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBData\fP () const "
+.br
+.RI "\fIGet the data matrix\&. \fP"
+.ti -1c
+.RI "void \fBFactorizer\fP (const FactorizerType &f)"
+.br
+.RI "\fISets factorizer for NMF\&. \fP"
+.ti -1c
+.RI "void \fBGetRecommendations\fP (const size_t numRecs, arma::Mat< size_t > &recommendations)"
+.br
+.RI "\fIGenerates the given number of recommendations for all users\&. \fP"
+.ti -1c
+.RI "void \fBGetRecommendations\fP (const size_t numRecs, arma::Mat< size_t > &recommendations, arma::Col< size_t > &users)"
+.br
+.RI "\fIGenerates the given number of recommendations for the specified users\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBH\fP () const "
+.br
+.RI "\fIGet the Item Matrix\&. \fP"
+.ti -1c
+.RI "void \fBNumUsersForSimilarity\fP (const size_t num)"
+.br
+.RI "\fISets number of users for calculating similarity\&. \fP"
+.ti -1c
+.RI "size_t \fBNumUsersForSimilarity\fP () const "
+.br
+.RI "\fIGets number of users for calculating similarity\&. \fP"
+.ti -1c
+.RI "void \fBRank\fP (const size_t rankValue)"
+.br
+.RI "\fISets rank parameter for matrix factorization\&. \fP"
+.ti -1c
+.RI "size_t \fBRank\fP () const "
+.br
+.RI "\fIGets rank parameter for matrix factorization\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBRating\fP () const "
+.br
+.RI "\fIGet the Rating Matrix\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturns a string representation of this object\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBW\fP () const "
+.br
+.RI "\fIGet the User Matrix\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCleanData\fP ()"
+.br
+.RI "\fIConverts the User, Item, Value Matrix to User-Item Table\&. \fP"
+.ti -1c
+.RI "void \fBInsertNeighbor\fP (const size_t queryIndex, const size_t pos, const size_t neighbor, const double value, arma::Mat< size_t > &recommendations, arma::mat &values) const "
+.br
+.RI "\fIHelper function to insert a point into the recommendation matrices\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "arma::sp_mat \fBcleanedData\fP"
+.br
+.RI "\fICleaned data matrix\&. \fP"
+.ti -1c
+.RI "arma::mat \fBdata\fP"
+.br
+.RI "\fIInitial data matrix\&. \fP"
+.ti -1c
+.RI "FactorizerType \fBfactorizer\fP"
+.br
+.RI "\fIInstantiated factorizer object\&. \fP"
+.ti -1c
+.RI "arma::mat \fBh\fP"
+.br
+.RI "\fIItem matrix\&. \fP"
+.ti -1c
+.RI "size_t \fBnumUsersForSimilarity\fP"
+.br
+.RI "\fINumber of users for similarity\&. \fP"
+.ti -1c
+.RI "size_t \fBrank\fP"
+.br
+.RI "\fIRank used for matrix factorization\&. \fP"
+.ti -1c
+.RI "arma::mat \fBrating\fP"
+.br
+.RI "\fIRating matrix\&. \fP"
+.ti -1c
+.RI "arma::mat \fBw\fP"
+.br
+.RI "\fIUser matrix\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename FactorizerType = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>>class mlpack::cf::CF< FactorizerType >"
+This class implements Collaborative Filtering (\fBCF\fP)\&. 
+
+This implementation presently supports Alternating Least Squares (ALS) for collaborative filtering\&.
+.PP
+A simple example of how to run Collaborative Filtering is shown below\&.
+.PP
+.PP
+.nf
+extern arma::mat data; // (user, item, rating) table
+extern arma::Col<size_t> users; // users seeking recommendations
+arma::Mat<size_t> recommendations; // Recommendations
+
+CF<> cf(data); // Default options\&.
+
+// Generate 10 recommendations for all users\&.
+cf\&.GetRecommendations(10, recommendations);
+
+// Generate 10 recommendations for specified users\&.
+cf\&.GetRecommendations(10, recommendations, users);
+.fi
+.PP
+.PP
+The data matrix is a (user, item, rating) table\&. Each column in the matrix should have three rows\&. The first represents the user; the second represents the item; and the third represents the rating\&. The user and item, while they are in a matrix that holds doubles, should hold integer (or size_t) values\&. The user and item indices are assumed to start at 0\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFactorizerType\fP The type of matrix factorization to use to decompose the rating matrix (a W and H matrix)\&. This must implement the method Apply(arma::sp_mat& data, size_t rank, arma::mat& W, arma::mat& H)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 68 of file cf\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> \fBmlpack::cf::CF\fP< FactorizerType >::\fBCF\fP (arma::mat &data, const size_tnumUsersForSimilarity = \fC5\fP, const size_trank = \fC0\fP)"
+
+.PP
+Initialize the \fBCF\fP object\&. Store a reference to the data that we will be using\&. There are parameters that can be set; default values are provided for each of them\&. If the rank is left unset (or is set to 0), a simple density-based heuristic will be used to choose a rank\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Initial (user, item, rating) matrix\&. 
+.br
+\fInumUsersForSimilarity\fP Size of the neighborhood\&. 
+.br
+\fIrank\fP Rank parameter for matrix factorization\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> void \fBmlpack::cf::CF\fP< FactorizerType >::CleanData ()\fC [private]\fP"
+
+.PP
+Converts the User, Item, Value Matrix to User-Item Table\&. 
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> const arma::sp_mat& \fBmlpack::cf::CF\fP< FactorizerType >::CleanedData () const\fC [inline]\fP"
+
+.PP
+Get the cleaned data matrix\&. 
+.PP
+Definition at line 130 of file cf\&.hpp\&.
+.PP
+References mlpack::cf::CF< FactorizerType >::cleanedData\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> const arma::mat& \fBmlpack::cf::CF\fP< FactorizerType >::Data () const\fC [inline]\fP"
+
+.PP
+Get the data matrix\&. 
+.PP
+Definition at line 128 of file cf\&.hpp\&.
+.PP
+References mlpack::cf::CF< FactorizerType >::data\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> void \fBmlpack::cf::CF\fP< FactorizerType >::Factorizer (const FactorizerType &f)\fC [inline]\fP"
+
+.PP
+Sets factorizer for NMF\&. 
+.PP
+Definition at line 116 of file cf\&.hpp\&.
+.PP
+References mlpack::cf::CF< FactorizerType >::factorizer\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> void \fBmlpack::cf::CF\fP< FactorizerType >::GetRecommendations (const size_tnumRecs, arma::Mat< size_t > &recommendations)"
+
+.PP
+Generates the given number of recommendations for all users\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumRecs\fP Number of Recommendations 
+.br
+\fIrecommendations\fP Matrix to save recommendations into\&. 
+.RE
+.PP
+
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> void \fBmlpack::cf::CF\fP< FactorizerType >::GetRecommendations (const size_tnumRecs, arma::Mat< size_t > &recommendations, arma::Col< size_t > &users)"
+
+.PP
+Generates the given number of recommendations for the specified users\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumRecs\fP Number of Recommendations 
+.br
+\fIrecommendations\fP Matrix to save recommendations 
+.br
+\fIusers\fP Users for which recommendations are to be generated 
+.RE
+.PP
+
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> const arma::mat& \fBmlpack::cf::CF\fP< FactorizerType >::H () const\fC [inline]\fP"
+
+.PP
+Get the Item Matrix\&. 
+.PP
+Definition at line 124 of file cf\&.hpp\&.
+.PP
+References mlpack::cf::CF< FactorizerType >::h\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> void \fBmlpack::cf::CF\fP< FactorizerType >::InsertNeighbor (const size_tqueryIndex, const size_tpos, const size_tneighbor, const doublevalue, arma::Mat< size_t > &recommendations, arma::mat &values) const\fC [private]\fP"
+
+.PP
+Helper function to insert a point into the recommendation matrices\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP Index of point whose recommendations we are inserting into\&. 
+.br
+\fIpos\fP Position in list to insert into\&. 
+.br
+\fIneighbor\fP Index of item being inserted as a recommendation\&. 
+.br
+\fIvalue\fP Value of recommendation\&. 
+.RE
+.PP
+
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> void \fBmlpack::cf::CF\fP< FactorizerType >::NumUsersForSimilarity (const size_tnum)\fC [inline]\fP"
+
+.PP
+Sets number of users for calculating similarity\&. 
+.PP
+Definition at line 86 of file cf\&.hpp\&.
+.PP
+References mlpack::cf::CF< FactorizerType >::numUsersForSimilarity, and mlpack::Log::Warn\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> size_t \fBmlpack::cf::CF\fP< FactorizerType >::NumUsersForSimilarity () const\fC [inline]\fP"
+
+.PP
+Gets number of users for calculating similarity\&. 
+.PP
+Definition at line 98 of file cf\&.hpp\&.
+.PP
+References mlpack::cf::CF< FactorizerType >::numUsersForSimilarity\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> void \fBmlpack::cf::CF\fP< FactorizerType >::Rank (const size_trankValue)\fC [inline]\fP"
+
+.PP
+Sets rank parameter for matrix factorization\&. 
+.PP
+Definition at line 104 of file cf\&.hpp\&.
+.PP
+References mlpack::cf::CF< FactorizerType >::rank\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> size_t \fBmlpack::cf::CF\fP< FactorizerType >::Rank () const\fC [inline]\fP"
+
+.PP
+Gets rank parameter for matrix factorization\&. 
+.PP
+Definition at line 110 of file cf\&.hpp\&.
+.PP
+References mlpack::cf::CF< FactorizerType >::rank\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> const arma::mat& \fBmlpack::cf::CF\fP< FactorizerType >::Rating () const\fC [inline]\fP"
+
+.PP
+Get the Rating Matrix\&. 
+.PP
+Definition at line 126 of file cf\&.hpp\&.
+.PP
+References mlpack::cf::CF< FactorizerType >::rating\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> std::string \fBmlpack::cf::CF\fP< FactorizerType >::ToString () const"
+
+.PP
+Returns a string representation of this object\&. 
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> const arma::mat& \fBmlpack::cf::CF\fP< FactorizerType >::W () const\fC [inline]\fP"
+
+.PP
+Get the User Matrix\&. 
+.PP
+Definition at line 122 of file cf\&.hpp\&.
+.PP
+References mlpack::cf::CF< FactorizerType >::w\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> arma::sp_mat \fBmlpack::cf::CF\fP< FactorizerType >::cleanedData\fC [private]\fP"
+
+.PP
+Cleaned data matrix\&. 
+.PP
+Definition at line 173 of file cf\&.hpp\&.
+.PP
+Referenced by mlpack::cf::CF< FactorizerType >::CleanedData()\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> arma::mat \fBmlpack::cf::CF\fP< FactorizerType >::data\fC [private]\fP"
+
+.PP
+Initial data matrix\&. 
+.PP
+Definition at line 159 of file cf\&.hpp\&.
+.PP
+Referenced by mlpack::cf::CF< FactorizerType >::Data()\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> FactorizerType \fBmlpack::cf::CF\fP< FactorizerType >::factorizer\fC [private]\fP"
+
+.PP
+Instantiated factorizer object\&. 
+.PP
+Definition at line 165 of file cf\&.hpp\&.
+.PP
+Referenced by mlpack::cf::CF< FactorizerType >::Factorizer()\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> arma::mat \fBmlpack::cf::CF\fP< FactorizerType >::h\fC [private]\fP"
+
+.PP
+Item matrix\&. 
+.PP
+Definition at line 169 of file cf\&.hpp\&.
+.PP
+Referenced by mlpack::cf::CF< FactorizerType >::H()\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> size_t \fBmlpack::cf::CF\fP< FactorizerType >::numUsersForSimilarity\fC [private]\fP"
+
+.PP
+Number of users for similarity\&. 
+.PP
+Definition at line 161 of file cf\&.hpp\&.
+.PP
+Referenced by mlpack::cf::CF< FactorizerType >::NumUsersForSimilarity()\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> size_t \fBmlpack::cf::CF\fP< FactorizerType >::rank\fC [private]\fP"
+
+.PP
+Rank used for matrix factorization\&. 
+.PP
+Definition at line 163 of file cf\&.hpp\&.
+.PP
+Referenced by mlpack::cf::CF< FactorizerType >::Rank()\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> arma::mat \fBmlpack::cf::CF\fP< FactorizerType >::rating\fC [private]\fP"
+
+.PP
+Rating matrix\&. 
+.PP
+Definition at line 171 of file cf\&.hpp\&.
+.PP
+Referenced by mlpack::cf::CF< FactorizerType >::Rating()\&.
+.SS "template<typename FactorizerType  = amf::AMF<amf::SimpleResidueTermination,                                       amf::RandomInitialization,                                        amf::NMFALSUpdate>> arma::mat \fBmlpack::cf::CF\fP< FactorizerType >::w\fC [private]\fP"
+
+.PP
+User matrix\&. 
+.PP
+Definition at line 167 of file cf\&.hpp\&.
+.PP
+Referenced by mlpack::cf::CF< FactorizerType >::W()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

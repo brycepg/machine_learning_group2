@@ -1,0 +1,11 @@
+digraph "mlpack::optimization::test::RosenbrockWoodFunction"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="mlpack::optimization\l::test::RosenbrockWoodFunction",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" wf" ];
+  Node2 [label="mlpack::optimization\l::test::WoodFunction",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1optimization_1_1test_1_1WoodFunction.html",tooltip="The Wood function, defined by f(x) = f1(x) + f2(x) + f3(x) + f4(x) + f5(x) + f6(x) f1(x) = 100 (x2 - ..."];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" rf" ];
+  Node3 [label="mlpack::optimization\l::test::GeneralizedRosenbrock\lFunction",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1optimization_1_1test_1_1GeneralizedRosenbrockFunction.html",tooltip="The Generalized Rosenbrock function in n dimensions, defined by f(x) = sum_i^{n - 1} (f(i)(x)) f_i(x)..."];
+}

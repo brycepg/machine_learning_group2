@@ -1,0 +1,105 @@
+\section{Introduction}\label{build_buildintro}
+M\-L\-P\-A\-C\-K uses C\-Make as a build system and allows several flexible build configuration options. One can consult any of numerous C\-Make tutorials for further documentation, but this tutorial should be enough to get M\-L\-P\-A\-C\-K built and installed.\section{latest mlpack build}\label{build_Download}
+Download latest mlpack build from here \-: {\tt mlpack-\/1.\-0.\-12}\section{Creating Build Directory}\label{build_builddir}
+Once the M\-L\-P\-A\-C\-K source is unpacked, you should create a build directory.
+
+
+\begin{DoxyCode}
+$ cd mlpack-1.0.12
+$ mkdir build
+\end{DoxyCode}
+
+
+The directory can have any name, not just 'build', but 'build' is sufficient enough.\section{Dependencies of M\-L\-P\-A\-C\-K}\label{build_dep}
+M\-L\-P\-A\-C\-K depends on the following libraries, which need to be installed on the system and have headers present\-:
+
+
+\begin{DoxyItemize}
+\item Armadillo $>$= 3.\-6.\-0 (with L\-A\-P\-A\-C\-K support)
+\item Lib\-X\-M\-L2 $>$= 2.\-6.\-0
+\item Boost (math\-\_\-c99, program\-\_\-options, unit\-\_\-test\-\_\-framework, random, heap) $>$= 1.\-49
+\end{DoxyItemize}
+
+In Ubuntu and Debian, you can get all of these dependencies through apt\-:
+
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{# apt-get install libboost-math-dev libboost-program-options-dev}
+\textcolor{preprocessor}{  libboost-random-dev libboost-test-dev libxml2-dev libarmadillo-dev}
+\end{DoxyCode}
+
+
+If you are using an Ubuntu version older than 13.\-10 (\char`\"{}\-Saucy Salamander\char`\"{}) or Debian older than Jessie, you will have to compile Armadillo from source. See the R\-E\-A\-D\-M\-E.\-txt distributed with Armadillo for more information.
+
+On Fedora, Red Hat, or Cent\-O\-S, these same dependencies can be obtained via yum\-:
+
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{# yum install boost-devel boost-random boost-test boost-program-options}
+\textcolor{preprocessor}{  boost-math libxml2-devel armadillo-devel}
+\end{DoxyCode}
+
+
+On Red Hat Enterprise Linux 5 and older (as well as Cent\-O\-S 5), the Armadillo version available is too old and must be compiled by hand. The same applies for Fedora 16 and older.\section{Configuring C\-Make}\label{build_config}
+Running C\-Make is the equivalent to running {\ttfamily ./configure} with autotools. If you run C\-Make with no options, it will configure the project to build with debugging symbols and profiling information\-:
+
+
+\begin{DoxyCode}
+$ cd build
+$ cmake ../
+\end{DoxyCode}
+
+
+You can specify options to compile without debugging information and profiling information (i.\-e. as fast as possible)\-:
+
+
+\begin{DoxyCode}
+$ cd build
+$ cmake -D DEBUG=OFF -D PROFILE=OFF ../
+\end{DoxyCode}
+
+
+The full list of options M\-L\-P\-A\-C\-K allows\-:
+
+
+\begin{DoxyItemize}
+\item D\-E\-B\-U\-G=(O\-N/\-O\-F\-F)\-: compile with debugging symbols (default O\-N)
+\item P\-R\-O\-F\-I\-L\-E=(O\-N/\-O\-F\-F)\-: compile with profiling symbols (default O\-N)
+\item A\-R\-M\-A\-\_\-\-E\-X\-T\-R\-A\-\_\-\-D\-E\-B\-U\-G=(O\-N/\-O\-F\-F)\-: compile with extra Armadillo debugging symbols (default O\-F\-F)
+\end{DoxyItemize}
+
+Each option can be specified to C\-Make with the '-\/\-D' flag. Other tools can also be used to configure C\-Make, but those are not documented here.\section{Building M\-L\-P\-A\-C\-K From Source}\label{build_build}
+Once C\-Make is configured, building the library is as simple as typing 'make'. This will build all library components as well as 'mlpack\-\_\-test'.
+
+
+\begin{DoxyCode}
+$ make
+Scanning dependencies of target mlpack
+[  1%] Building CXX \textcolor{keywordtype}{object}
+src/mlpack/CMakeFiles/mlpack.dir/core/optimizers/aug\_lagrangian/aug\_lagrangian\_test\_functions.cpp.o
+<...>
+\end{DoxyCode}
+
+
+You can specify individual components which you want to build, if you do not want to build everything in the library\-:
+
+
+\begin{DoxyCode}
+$ make pca allknn allkfn
+\end{DoxyCode}
+
+
+If the build fails and you cannot figure out why, register an account on Trac and submit a ticket and the M\-L\-P\-A\-C\-K developers will quickly help you figure it out\-:
+
+{\tt http\-://mlpack.\-org/}
+
+Alternately, M\-L\-P\-A\-C\-K help can be found in I\-R\-C at \#mlpack on irc.\-freenode.\-net.\section{Installing M\-L\-P\-A\-C\-K}\label{build_install}
+If you wish to install M\-L\-P\-A\-C\-K to /usr/include/mlpack/ and /usr/lib/ and /usr/bin/, once it has built, make sure you have root privileges (or write permissions to those two directories), and simply type
+
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{# make install}
+\end{DoxyCode}
+
+
+You can now run the executables by name; you can link against M\-L\-P\-A\-C\-K with -\/lmlpack, and the M\-L\-P\-A\-C\-K headers are found in /usr/include/mlpack/. 

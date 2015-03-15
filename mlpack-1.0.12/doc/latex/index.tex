@@ -1,0 +1,113 @@
+\section{Introduction}\label{index_intro_sec}
+M\-L\-P\-A\-C\-K is an intuitive, fast, scalable C++ machine learning library, meant to be a machine learning analog to L\-A\-P\-A\-C\-K. It aims to implement a wide array of machine learning methods and function as a \char`\"{}swiss army knife\char`\"{} for machine learning researchers. The M\-L\-P\-A\-C\-K development website can be found at {\tt http\-://mlpack.\-org}.
+
+M\-L\-P\-A\-C\-K uses the Armadillo C++ matrix library ({\tt http\-://arma.\-sourceforge.\-net}) for general matrix, vector, and linear algebra support. M\-L\-P\-A\-C\-K also uses the program\-\_\-options, math\-\_\-c99, and unit\-\_\-test\-\_\-framework components of the Boost library; in addition, Lib\-Xml2 is used.\section{How To Use This Documentation}\label{index_howto}
+This documentation is A\-P\-I documentation similar to Javadoc. It isn't necessarily a tutorial, but it does provide detailed documentation on every namespace, method, and class.
+
+Each M\-L\-P\-A\-C\-K namespace generally refers to one machine learning method, so browsing the list of namespaces provides some insight as to the breadth of the methods contained in the library.
+
+To generate this documentation in your own local copy of M\-L\-P\-A\-C\-K, you can simply use Doxygen, from the root directory ({\ttfamily /mlpack/trunk/} )\-:
+
+
+\begin{DoxyCode}
+$ doxygen
+\end{DoxyCode}
+\section{Executables}\label{index_executables}
+M\-L\-P\-A\-C\-K provides several executables so that M\-L\-P\-A\-C\-K methods can be used without any need for knowledge of C++. These executables are all self-\/documented, and that documentation can be accessed by running the executables with the '-\/h' or '--help' flag.
+
+A full list of executables is given below\-:
+
+allkfn, allknn, emst, gmm, hmm\-\_\-train, hmm\-\_\-loglik, hmm\-\_\-viterbi, hmm\-\_\-generate, kernel\-\_\-pca, kmeans, lars, linear\-\_\-regression, local\-\_\-coordinate\-\_\-coding, mvu, nbc, nca, pca, radical, sparse\-\_\-coding\section{Tutorials}\label{index_tutorial}
+A few short tutorials on how to use M\-L\-P\-A\-C\-K are given below.
+
+
+\begin{DoxyItemize}
+\item \doxyref{Building M\-L\-P\-A\-C\-K From Source}{p.}{build}
+\item \doxyref{Matrices in M\-L\-P\-A\-C\-K}{p.}{matrices}
+\item \doxyref{M\-L\-P\-A\-C\-K Input and Output}{p.}{iodoc}
+\item \doxyref{M\-L\-P\-A\-C\-K Timers}{p.}{timer}
+\item \doxyref{Simple Sample M\-L\-P\-A\-C\-K Programs}{p.}{sample}
+\item \doxyref{mlpack version information}{p.}{verinfo}
+\end{DoxyItemize}
+
+Tutorials on specific methods are also available.
+
+
+\begin{DoxyItemize}
+\item \doxyref{Neighbor\-Search tutorial (k-\/nearest-\/neighbors)}{p.}{nstutorial}
+\item \doxyref{Linear/ridge regression tutorial (linear\-\_\-regression)}{p.}{lrtutorial}
+\item \doxyref{Range\-Search tutorial (range\-\_\-search)}{p.}{rstutorial}
+\item \doxyref{Density Estimation Tree (D\-E\-T) tutorial}{p.}{dettutorial}
+\item \doxyref{E\-M\-S\-T Tutorial}{p.}{emst_tutorial}
+\item \doxyref{K-\/\-Means tutorial (kmeans)}{p.}{kmtutorial}
+\item \doxyref{Fast max-\/kernel search tutorial (fastmks)}{p.}{fmkstutorial}
+\end{DoxyItemize}\section{Methods in M\-L\-P\-A\-C\-K}\label{index_methods}
+The following methods are included in M\-L\-P\-A\-C\-K\-:
+
+
+\begin{DoxyItemize}
+\item Decision Stump -\/ \doxyref{mlpack\-::decision\-\_\-stump\-::\-Decision\-Stump}{p.}{classmlpack_1_1decision__stump_1_1DecisionStump}
+\item Density Estimation Trees -\/ \doxyref{mlpack\-::det\-::\-D\-Tree}{p.}{classmlpack_1_1det_1_1DTree}
+\item Euclidean Minimum Spanning Trees -\/ \doxyref{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}{p.}{classmlpack_1_1emst_1_1DualTreeBoruvka}
+\item Gaussian Mixture Models (G\-M\-Ms) -\/ \doxyref{mlpack\-::gmm\-::\-G\-M\-M}{p.}{classmlpack_1_1gmm_1_1GMM}
+\item Hidden Markov Models (H\-M\-Ms) -\/ \doxyref{mlpack\-::hmm\-::\-H\-M\-M}{p.}{classmlpack_1_1hmm_1_1HMM}
+\item Kernel P\-C\-A -\/ \doxyref{mlpack\-::kpca\-::\-Kernel\-P\-C\-A}{p.}{classmlpack_1_1kpca_1_1KernelPCA}
+\item K-\/\-Means Clustering -\/ \doxyref{mlpack\-::kmeans\-::\-K\-Means}{p.}{classmlpack_1_1kmeans_1_1KMeans}
+\item Least-\/\-Angle Regression (L\-A\-R\-S/\-L\-A\-S\-S\-O) -\/ \doxyref{mlpack\-::regression\-::\-L\-A\-R\-S}{p.}{classmlpack_1_1regression_1_1LARS}
+\item Local Coordinate Coding -\/ \doxyref{mlpack\-::lcc\-::\-Local\-Coordinate\-Coding}{p.}{classmlpack_1_1lcc_1_1LocalCoordinateCoding}
+\item Locality-\/\-Sensitive Hashing -\/ \doxyref{mlpack\-::neighbor\-::\-L\-S\-H\-Search}{p.}{classmlpack_1_1neighbor_1_1LSHSearch}
+\item Naive Bayes Classifier -\/ \doxyref{mlpack\-::naive\-\_\-bayes\-::\-Naive\-Bayes\-Classifier}{p.}{classmlpack_1_1naive__bayes_1_1NaiveBayesClassifier}
+\item Neighborhood Components Analysis (N\-C\-A) -\/ \doxyref{mlpack\-::nca\-::\-N\-C\-A}{p.}{classmlpack_1_1nca_1_1NCA}
+\item Nonnegative Matrix Factorization (N\-M\-F) -\/ mlpack\-::amf\-::\-A\-M\-F$<$$>$
+\item Nystroem Method -\/ \doxyref{mlpack\-::kernel\-::\-Nystroem\-Method}{p.}{classmlpack_1_1kernel_1_1NystroemMethod}
+\item Perceptron -\/ \doxyref{mlpack\-::perceptron\-::\-Perceptron}{p.}{classmlpack_1_1perceptron_1_1Perceptron}
+\item Principal Components Analysis (P\-C\-A) -\/ \doxyref{mlpack\-::pca\-::\-P\-C\-A}{p.}{classmlpack_1_1pca_1_1PCA}
+\item Q\-U\-I\-C-\/\-S\-V\-D -\/ \doxyref{mlpack\-::svd\-::\-Q\-U\-I\-C\-\_\-\-S\-V\-D}{p.}{classmlpack_1_1svd_1_1QUIC__SVD}
+\item R\-A\-D\-I\-C\-A\-L (I\-C\-A) -\/ \doxyref{mlpack\-::radical\-::\-Radical}{p.}{classmlpack_1_1radical_1_1Radical}
+\item Regularized S\-V\-D -\/ \doxyref{mlpack\-::svd\-::\-Regularized\-S\-V\-D}{p.}{classmlpack_1_1svd_1_1RegularizedSVD}
+\item Simple Least-\/\-Squares Linear Regression -\/ \doxyref{mlpack\-::regression\-::\-Linear\-Regression}{p.}{classmlpack_1_1regression_1_1LinearRegression}
+\item Sparse Autoencoding -\/ \doxyref{mlpack\-::nn\-::\-Sparse\-Autoencoder}{p.}{classmlpack_1_1nn_1_1SparseAutoencoder}
+\item Sparse Coding -\/ \doxyref{mlpack\-::sparse\-\_\-coding\-::\-Sparse\-Coding}{p.}{classmlpack_1_1sparse__coding_1_1SparseCoding}
+\item Tree-\/based neighbor search (Allk\-N\-N, Allk\-F\-N) -\/ \doxyref{mlpack\-::neighbor\-::\-Neighbor\-Search}{p.}{classmlpack_1_1neighbor_1_1NeighborSearch}
+\item Tree-\/based range search -\/ \doxyref{mlpack\-::range\-::\-Range\-Search}{p.}{classmlpack_1_1range_1_1RangeSearch}
+\end{DoxyItemize}\section{Final Remarks}\label{index_remarks}
+M\-L\-P\-A\-C\-K contributors include\-:
+
+
+\begin{DoxyItemize}
+\item Ryan Curtin {\tt gth671b@mail.\-gatech.\-edu}
+\item James Cline {\tt james.\-cline@gatech.\-edu}
+\item Neil Slagle {\tt nslagle3@gatech.\-edu}
+\item Matthew Amidon {\tt mamidon@gatech.\-edu}
+\item Vlad Grantcharov {\tt vlad321@gatech.\-edu}
+\item Ajinkya Kale {\tt kaleajinkya@gmail.\-com}
+\item Bill March {\tt march@gatech.\-edu}
+\item Dongryeol Lee {\tt dongryel@cc.\-gatech.\-edu}
+\item Nishant Mehta {\tt niche@cc.\-gatech.\-edu}
+\item Parikshit Ram {\tt p.\-ram@gatech.\-edu}
+\item Rajendran Mohan {\tt rmohan88@gatech.\-edu}
+\item Trironk Kiatkungwanglai {\tt trironk@gmail.\-com}
+\item Patrick Mason {\tt patrick.\-s.\-mason@gmail.\-com}
+\item Chip Mappus {\tt cmappus@gatech.\-edu}
+\item Hua Ouyang {\tt houyang@gatech.\-edu}
+\item Long Quoc Tran {\tt tqlong@gmail.\-com}
+\item Noah Kauffman {\tt notoriousnoah@gmail.\-com}
+\item Guillermo Colon {\tt gcolon7@mail.\-gatech.\-edu}
+\item Wei Guan {\tt wguan@cc.\-gatech.\-edu}
+\item Ryan Riegel {\tt rriegel@cc.\-gatech.\-edu}
+\item Nikolaos Vasiloglou {\tt nvasil@ieee.\-org}
+\item Garry Boyer {\tt garryb@gmail.\-com}
+\item Andreas Löf {\tt andreas.\-lof@cs.\-waikato.\-ac.\-nz}
+\item Marcus Edel {\tt marcus.\-edel@fu-\/berlin.\-de}
+\item Mudit Raj Gupta {\tt mudit.\-raaj.\-gupta@gmail.\-com}
+\item Sumedh Ghaisas {\tt sumedhghaisas@gmail.\-com}
+\item Michael Fox {\tt michaelfox99@gmail.\-com}
+\item Ryan Birmingham {\tt birm@gatech.\-edu}
+\item Siddharth Agrawal {\tt siddharth.\-950@gmail.\-com}
+\item Saheb Motiani {\tt saheb210692@gmail.\-com}
+\item Yash Vadalia {\tt yashdv@gmail.\-com}
+\item Abhishek Laddha {\tt laddhaabhishek11@gmail.\-com}
+\item Vahab Akbarzadeh {\tt v.\-akbarzadeh@gmail.\-com}
+\item Andrew Wells {\tt andrewmw94@gmail.\-com}
+\item Zhihao Lou {\tt lzh1984@gmail.\-com} 
+\end{DoxyItemize}

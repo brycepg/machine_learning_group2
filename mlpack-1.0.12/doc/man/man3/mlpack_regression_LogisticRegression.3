@@ -1,0 +1,244 @@
+.TH "mlpack::regression::LogisticRegression< OptimizerType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::regression::LogisticRegression< OptimizerType > \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLogisticRegression\fP (const arma::mat &predictors, const arma::vec &responses, const double \fBlambda\fP=0)"
+.br
+.RI "\fIConstruct the \fBLogisticRegression\fP class with the given labeled training data\&. \fP"
+.ti -1c
+.RI "\fBLogisticRegression\fP (const arma::mat &predictors, const arma::vec &responses, const arma::mat &initialPoint, const double \fBlambda\fP=0)"
+.br
+.RI "\fIConstruct the \fBLogisticRegression\fP class with the given labeled training data\&. \fP"
+.ti -1c
+.RI "\fBLogisticRegression\fP (OptimizerType< \fBLogisticRegressionFunction\fP > &optimizer)"
+.br
+.RI "\fIConstruct the \fBLogisticRegression\fP class with the given labeled training data\&. \fP"
+.ti -1c
+.RI "\fBLogisticRegression\fP (const arma::vec &\fBparameters\fP, const double \fBlambda\fP=0)"
+.br
+.RI "\fIConstruct a logistic regression model from the given parameters, without performing any training\&. \fP"
+.ti -1c
+.RI "double \fBComputeAccuracy\fP (const arma::mat &predictors, const arma::vec &responses, const double decisionBoundary=0\&.5) const "
+.br
+.RI "\fICompute the accuracy of the model on the given predictors and responses, optionally using the given decision boundary\&. \fP"
+.ti -1c
+.RI "double \fBComputeError\fP (const arma::mat &predictors, const arma::vec &responses) const "
+.br
+.RI "\fICompute the error of the model\&. \fP"
+.ti -1c
+.RI "const double & \fBLambda\fP () const "
+.br
+.RI "\fIReturn the lambda value for L2-regularization\&. \fP"
+.ti -1c
+.RI "double & \fBLambda\fP ()"
+.br
+.RI "\fIModify the lambda value for L2-regularization\&. \fP"
+.ti -1c
+.RI "const arma::vec & \fBParameters\fP () const "
+.br
+.RI "\fIReturn the parameters (the b vector)\&. \fP"
+.ti -1c
+.RI "arma::vec & \fBParameters\fP ()"
+.br
+.RI "\fIModify the parameters (the b vector)\&. \fP"
+.ti -1c
+.RI "void \fBPredict\fP (const arma::mat &predictors, arma::vec &responses, const double decisionBoundary=0\&.5) const "
+.br
+.RI "\fIPredict the responses to a given set of predictors\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBlambda\fP"
+.br
+.RI "\fIL2-regularization penalty parameter\&. \fP"
+.ti -1c
+.RI "arma::vec \fBparameters\fP"
+.br
+.RI "\fIVector of trained parameters\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS>class mlpack::regression::LogisticRegression< OptimizerType >"
+
+.PP
+Definition at line 29 of file logistic_regression\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::\fBLogisticRegression\fP (const arma::mat &predictors, const arma::vec &responses, const doublelambda = \fC0\fP)"
+
+.PP
+Construct the \fBLogisticRegression\fP class with the given labeled training data\&. This will train the model\&. Optionally, specify lambda, which is the penalty parameter for L2-regularization\&. If not specified, it is set to 0, which results in standard (unregularized) logistic regression\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpredictors\fP Input training variables\&. 
+.br
+\fIresponses\fP Outputs resulting from input training variables\&. 
+.br
+\fIlambda\fP L2-regularization parameter\&. 
+.RE
+.PP
+
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::\fBLogisticRegression\fP (const arma::mat &predictors, const arma::vec &responses, const arma::mat &initialPoint, const doublelambda = \fC0\fP)"
+
+.PP
+Construct the \fBLogisticRegression\fP class with the given labeled training data\&. This will train the model\&. Optionally, specify lambda, which is the penalty parameter for L2-regularization\&. If not specified, it is set to 0, which results in standard (unregularized) logistic regression\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpredictors\fP Input training variables\&. 
+.br
+\fIresponses\fP Outputs results from input training variables\&. 
+.br
+\fIinitialPoint\fP Initial model to train with\&. 
+.br
+\fIlambda\fP L2-regularization parameter\&. 
+.RE
+.PP
+
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::\fBLogisticRegression\fP (OptimizerType< \fBLogisticRegressionFunction\fP > &optimizer)"
+
+.PP
+Construct the \fBLogisticRegression\fP class with the given labeled training data\&. This will train the model\&. This overload takes an already instantiated optimizer (which holds the \fBLogisticRegressionFunction\fP error function, which must also be instantiated), so that the optimizer can be configured before the training is run by this constructor\&. The predictors and responses and initial point are all taken from the error function contained in the optimizer\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoptimizer\fP Instantiated optimizer with instantiated error function\&. 
+.RE
+.PP
+
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::\fBLogisticRegression\fP (const arma::vec &parameters, const doublelambda = \fC0\fP)"
+
+.PP
+Construct a logistic regression model from the given parameters, without performing any training\&. The lambda parameter is used for the \fBComputeAccuracy()\fP and \fBComputeError()\fP functions; this constructor does not train the model itself\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameters\fP Parameters making up the model\&. 
+.br
+\fIlambda\fP L2-regularization penalty parameter\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> double \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::ComputeAccuracy (const arma::mat &predictors, const arma::vec &responses, const doubledecisionBoundary = \fC0\&.5\fP) const"
+
+.PP
+Compute the accuracy of the model on the given predictors and responses, optionally using the given decision boundary\&. The responses should be either 0 or 1\&. Logistic regression returns a value between 0 and 1\&. If the value is greater than the decision boundary, the response is taken to be 1; otherwise, it is 0\&. By default, the decision boundary is 0\&.5\&.
+.PP
+The accuracy is returned as a percentage, between 0 and 100\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpredictors\fP Input predictors\&. 
+.br
+\fIresponses\fP Vector of responses\&. 
+.br
+\fIdecisionBoundary\fP Decision boundary (default 0\&.5)\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Percentage of responses that are predicted correctly\&. 
+.RE
+.PP
+
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> double \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::ComputeError (const arma::mat &predictors, const arma::vec &responses) const"
+
+.PP
+Compute the error of the model\&. This returns the negative objective function of the logistic regression log-likelihood function\&. For the model to be optimal, the negative log-likelihood function should be minimized\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpredictors\fP Input predictors\&. 
+.br
+\fIresponses\fP Vector of responses\&. 
+.RE
+.PP
+
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> const double& \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::Lambda () const\fC [inline]\fP"
+
+.PP
+Return the lambda value for L2-regularization\&. 
+.PP
+Definition at line 92 of file logistic_regression\&.hpp\&.
+.PP
+References mlpack::regression::LogisticRegression< OptimizerType >::lambda\&.
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> double& \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::Lambda ()\fC [inline]\fP"
+
+.PP
+Modify the lambda value for L2-regularization\&. 
+.PP
+Definition at line 94 of file logistic_regression\&.hpp\&.
+.PP
+References mlpack::regression::LogisticRegression< OptimizerType >::lambda\&.
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> const arma::vec& \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::Parameters () const\fC [inline]\fP"
+
+.PP
+Return the parameters (the b vector)\&. 
+.PP
+Definition at line 87 of file logistic_regression\&.hpp\&.
+.PP
+References mlpack::regression::LogisticRegression< OptimizerType >::parameters\&.
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> arma::vec& \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::Parameters ()\fC [inline]\fP"
+
+.PP
+Modify the parameters (the b vector)\&. 
+.PP
+Definition at line 89 of file logistic_regression\&.hpp\&.
+.PP
+References mlpack::regression::LogisticRegression< OptimizerType >::parameters\&.
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> void \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::Predict (const arma::mat &predictors, arma::vec &responses, const doubledecisionBoundary = \fC0\&.5\fP) const"
+
+.PP
+Predict the responses to a given set of predictors\&. The responses will be either 0 or 1\&. Optionally, specify the decision boundary; logistic regression returns a value between 0 and 1\&. If the value is greater than the decision boundary, the response is taken to be 1; otherwise, it is 0\&. By default the decision boundary is 0\&.5\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpredictors\fP Input predictors\&. 
+.br
+\fIresponses\fP Vector to put output predictions of responses into\&. 
+.br
+\fIdecisionBoundary\fP Decision boundary (default 0\&.5)\&. 
+.RE
+.PP
+
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> std::string \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::ToString () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> double \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::lambda\fC [private]\fP"
+
+.PP
+L2-regularization penalty parameter\&. 
+.PP
+Definition at line 147 of file logistic_regression\&.hpp\&.
+.PP
+Referenced by mlpack::regression::LogisticRegression< OptimizerType >::Lambda()\&.
+.SS "template<template< typename > class OptimizerType = mlpack::optimization::L_BFGS> arma::vec \fBmlpack::regression::LogisticRegression\fP< OptimizerType >::parameters\fC [private]\fP"
+
+.PP
+Vector of trained parameters\&. 
+.PP
+Definition at line 145 of file logistic_regression\&.hpp\&.
+.PP
+Referenced by mlpack::regression::LogisticRegression< OptimizerType >::Parameters()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

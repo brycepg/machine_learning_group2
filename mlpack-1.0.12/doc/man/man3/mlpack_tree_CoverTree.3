@@ -1,0 +1,949 @@
+.TH "mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType > \- 
+.PP
+A cover tree is a tree specifically designed to speed up nearest-neighbor computation in high-dimensional spaces\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBDualTreeTraverser\fP"
+.br
+.RI "\fIA dual-tree cover tree traverser; see dual_tree_traverser\&.hpp\&. \fP"
+.ti -1c
+.RI "class \fBSingleTreeTraverser\fP"
+.br
+.RI "\fIA single-tree cover tree traverser; see single_tree_traverser\&.hpp for implementation\&. \fP"
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef arma::mat \fBMat\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCoverTree\fP (const arma::mat &\fBdataset\fP, const double \fBbase\fP=2\&.0, MetricType *\fBmetric\fP=NULL)"
+.br
+.RI "\fICreate the cover tree with the given dataset and given base\&. \fP"
+.ti -1c
+.RI "\fBCoverTree\fP (const arma::mat &\fBdataset\fP, MetricType &\fBmetric\fP, const double \fBbase\fP=2\&.0)"
+.br
+.RI "\fICreate the cover tree with the given dataset and the given instantiated metric\&. \fP"
+.ti -1c
+.RI "\fBCoverTree\fP (const arma::mat &\fBdataset\fP, const double \fBbase\fP, const size_t pointIndex, const int \fBscale\fP, \fBCoverTree\fP *\fBparent\fP, const double \fBparentDistance\fP, arma::Col< size_t > &indices, arma::vec &distances, size_t nearSetSize, size_t &farSetSize, size_t &usedSetSize, MetricType &\fBmetric\fP=NULL)"
+.br
+.RI "\fIConstruct a child cover tree node\&. \fP"
+.ti -1c
+.RI "\fBCoverTree\fP (const arma::mat &\fBdataset\fP, const double \fBbase\fP, const size_t pointIndex, const int \fBscale\fP, \fBCoverTree\fP *\fBparent\fP, const double \fBparentDistance\fP, const double \fBfurthestDescendantDistance\fP, MetricType *\fBmetric\fP=NULL)"
+.br
+.RI "\fIManually construct a cover tree node; no tree assembly is done in this constructor, and children must be added manually (use \fBChildren()\fP)\&. \fP"
+.ti -1c
+.RI "\fBCoverTree\fP (const \fBCoverTree\fP &other)"
+.br
+.RI "\fICreate a cover tree from another tree\&. \fP"
+.ti -1c
+.RI "\fB~CoverTree\fP ()"
+.br
+.RI "\fIDelete this cover tree node and its children\&. \fP"
+.ti -1c
+.RI "double \fBBase\fP () const "
+.br
+.RI "\fIGet the base\&. \fP"
+.ti -1c
+.RI "double & \fBBase\fP ()"
+.br
+.RI "\fIModify the base; don't do this, you'll break everything\&. \fP"
+.ti -1c
+.RI "void \fBCentroid\fP (arma::vec &centroid) const "
+.br
+.RI "\fIGet the centroid of the node and store it in the given vector\&. \fP"
+.ti -1c
+.RI "const \fBCoverTree\fP & \fBChild\fP (const size_t index) const "
+.br
+.RI "\fIGet a particular child node\&. \fP"
+.ti -1c
+.RI "\fBCoverTree\fP & \fBChild\fP (const size_t index)"
+.br
+.RI "\fIModify a particular child node\&. \fP"
+.ti -1c
+.RI "const std::vector< \fBCoverTree\fP * > & \fBChildren\fP () const "
+.br
+.RI "\fIGet the children\&. \fP"
+.ti -1c
+.RI "std::vector< \fBCoverTree\fP * > & \fBChildren\fP ()"
+.br
+.RI "\fIModify the children manually (maybe not a great idea)\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBDataset\fP () const "
+.br
+.RI "\fIGet a reference to the dataset\&. \fP"
+.ti -1c
+.RI "size_t \fBDescendant\fP (const size_t index) const "
+.br
+.RI "\fIGet the index of a particular descendant point\&. \fP"
+.ti -1c
+.RI "size_t \fBDistanceComps\fP () const "
+.br
+.ti -1c
+.RI "size_t & \fBDistanceComps\fP ()"
+.br
+.ti -1c
+.RI "double \fBFurthestDescendantDistance\fP () const "
+.br
+.RI "\fIGet the distance from the center of the node to the furthest descendant\&. \fP"
+.ti -1c
+.RI "double & \fBFurthestDescendantDistance\fP ()"
+.br
+.RI "\fIModify the distance from the center of the node to the furthest descendant\&. \fP"
+.ti -1c
+.RI "double \fBFurthestPointDistance\fP () const "
+.br
+.RI "\fIGet the distance to the furthest point\&. This is always 0 for cover trees\&. \fP"
+.ti -1c
+.RI "bool \fBIsLeaf\fP () const "
+.br
+.ti -1c
+.RI "double \fBMaxDistance\fP (const \fBCoverTree\fP *other) const "
+.br
+.RI "\fIReturn the maximum distance to another node\&. \fP"
+.ti -1c
+.RI "double \fBMaxDistance\fP (const \fBCoverTree\fP *other, const double distance) const "
+.br
+.RI "\fIReturn the maximum distance to another node given that the point-to-point distance has already been calculated\&. \fP"
+.ti -1c
+.RI "double \fBMaxDistance\fP (const arma::vec &other) const "
+.br
+.RI "\fIReturn the maximum distance to another point\&. \fP"
+.ti -1c
+.RI "double \fBMaxDistance\fP (const arma::vec &other, const double distance) const "
+.br
+.RI "\fIReturn the maximum distance to another point given that the distance from the center to the point has already been calculated\&. \fP"
+.ti -1c
+.RI "MetricType & \fBMetric\fP () const "
+.br
+.RI "\fIGet the instantiated metric\&. \fP"
+.ti -1c
+.RI "double \fBMinDistance\fP (const \fBCoverTree\fP *other) const "
+.br
+.RI "\fIReturn the minimum distance to another node\&. \fP"
+.ti -1c
+.RI "double \fBMinDistance\fP (const \fBCoverTree\fP *other, const double distance) const "
+.br
+.RI "\fIReturn the minimum distance to another node given that the point-to-point distance has already been calculated\&. \fP"
+.ti -1c
+.RI "double \fBMinDistance\fP (const arma::vec &other) const "
+.br
+.RI "\fIReturn the minimum distance to another point\&. \fP"
+.ti -1c
+.RI "double \fBMinDistance\fP (const arma::vec &other, const double distance) const "
+.br
+.RI "\fIReturn the minimum distance to another point given that the distance from the center to the point has already been calculated\&. \fP"
+.ti -1c
+.RI "double \fBMinimumBoundDistance\fP () const "
+.br
+.RI "\fIGet the minimum distance from the center to any bound edge (this is the same as furthestDescendantDistance)\&. \fP"
+.ti -1c
+.RI "size_t \fBNumChildren\fP () const "
+.br
+.RI "\fIGet the number of children\&. \fP"
+.ti -1c
+.RI "size_t \fBNumDescendants\fP () const "
+.br
+.RI "\fIGet the number of descendant points\&. \fP"
+.ti -1c
+.RI "size_t \fBNumPoints\fP () const "
+.br
+.ti -1c
+.RI "\fBCoverTree\fP * \fBParent\fP () const "
+.br
+.RI "\fIGet the parent node\&. \fP"
+.ti -1c
+.RI "\fBCoverTree\fP *& \fBParent\fP ()"
+.br
+.RI "\fIModify the parent node\&. \fP"
+.ti -1c
+.RI "double \fBParentDistance\fP () const "
+.br
+.RI "\fIGet the distance to the parent\&. \fP"
+.ti -1c
+.RI "double & \fBParentDistance\fP ()"
+.br
+.RI "\fIModify the distance to the parent\&. \fP"
+.ti -1c
+.RI "size_t \fBPoint\fP () const "
+.br
+.RI "\fIGet the index of the point which this node represents\&. \fP"
+.ti -1c
+.RI "size_t \fBPoint\fP (const size_t) const "
+.br
+.RI "\fIFor compatibility with other trees; the argument is ignored\&. \fP"
+.ti -1c
+.RI "\fBmath::Range\fP \fBRangeDistance\fP (const \fBCoverTree\fP *other) const "
+.br
+.RI "\fIReturn the minimum and maximum distance to another node\&. \fP"
+.ti -1c
+.RI "\fBmath::Range\fP \fBRangeDistance\fP (const \fBCoverTree\fP *other, const double distance) const "
+.br
+.RI "\fIReturn the minimum and maximum distance to another node given that the point-to-point distance has already been calculated\&. \fP"
+.ti -1c
+.RI "\fBmath::Range\fP \fBRangeDistance\fP (const arma::vec &other) const "
+.br
+.RI "\fIReturn the minimum and maximum distance to another point\&. \fP"
+.ti -1c
+.RI "\fBmath::Range\fP \fBRangeDistance\fP (const arma::vec &other, const double distance) const "
+.br
+.RI "\fIReturn the minimum and maximum distance to another point given that the point-to-point distance has already been calculated\&. \fP"
+.ti -1c
+.RI "int \fBScale\fP () const "
+.br
+.RI "\fIGet the scale of this node\&. \fP"
+.ti -1c
+.RI "int & \fBScale\fP ()"
+.br
+.RI "\fIModify the scale of this node\&. Be careful\&.\&.\&. \fP"
+.ti -1c
+.RI "const StatisticType & \fBStat\fP () const "
+.br
+.RI "\fIGet the statistic for this node\&. \fP"
+.ti -1c
+.RI "StatisticType & \fBStat\fP ()"
+.br
+.RI "\fIModify the statistic for this node\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturns a string representation of this object\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBHasSelfChildren\fP ()"
+.br
+.RI "\fIReturns true: this tree does have self-children\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBComputeDistances\fP (const size_t pointIndex, const arma::Col< size_t > &indices, arma::vec &distances, const size_t pointSetSize)"
+.br
+.RI "\fIFill the vector of distances with the distances between the point specified by pointIndex and each point in the indices array\&. \fP"
+.ti -1c
+.RI "void \fBCreateChildren\fP (arma::Col< size_t > &indices, arma::vec &distances, size_t nearSetSize, size_t &farSetSize, size_t &usedSetSize)"
+.br
+.RI "\fICreate the children for this node\&. \fP"
+.ti -1c
+.RI "void \fBMoveToUsedSet\fP (arma::Col< size_t > &indices, arma::vec &distances, size_t &nearSetSize, size_t &farSetSize, size_t &usedSetSize, arma::Col< size_t > &childIndices, const size_t childFarSetSize, const size_t childUsedSetSize)"
+.br
+.ti -1c
+.RI "size_t \fBPruneFarSet\fP (arma::Col< size_t > &indices, arma::vec &distances, const double bound, const size_t nearSetSize, const size_t pointSetSize)"
+.br
+.ti -1c
+.RI "void \fBRemoveNewImplicitNodes\fP ()"
+.br
+.RI "\fITake a look at the last child (the most recently created one) and remove any implicit nodes that have been created\&. \fP"
+.ti -1c
+.RI "size_t \fBSortPointSet\fP (arma::Col< size_t > &indices, arma::vec &distances, const size_t childFarSetSize, const size_t childUsedSetSize, const size_t farSetSize)"
+.br
+.RI "\fIAssuming that the list of indices and distances is sorted as [ childFarSet | childUsedSet | farSet | usedSet ], resort the sets so the organization is [ childFarSet | farSet | childUsedSet | usedSet ]\&. \fP"
+.ti -1c
+.RI "size_t \fBSplitNearFar\fP (arma::Col< size_t > &indices, arma::vec &distances, const double bound, const size_t pointSetSize)"
+.br
+.RI "\fISplit the given indices and distances into a near and a far set, returning the number of points in the near set\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBbase\fP"
+.br
+.RI "\fIThe base used to construct the tree\&. \fP"
+.ti -1c
+.RI "std::vector< \fBCoverTree\fP * > \fBchildren\fP"
+.br
+.RI "\fIThe list of children; the first is the self-child\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBdataset\fP"
+.br
+.RI "\fIReference to the matrix which this tree is built on\&. \fP"
+.ti -1c
+.RI "size_t \fBdistanceComps\fP"
+.br
+.ti -1c
+.RI "double \fBfurthestDescendantDistance\fP"
+.br
+.RI "\fIDistance to the furthest descendant\&. \fP"
+.ti -1c
+.RI "bool \fBlocalMetric\fP"
+.br
+.RI "\fIWhether or not we need to destroy the metric in the destructor\&. \fP"
+.ti -1c
+.RI "MetricType * \fBmetric\fP"
+.br
+.RI "\fIThe metric used for this tree\&. \fP"
+.ti -1c
+.RI "size_t \fBnumDescendants\fP"
+.br
+.RI "\fIThe number of descendant points\&. \fP"
+.ti -1c
+.RI "\fBCoverTree\fP * \fBparent\fP"
+.br
+.RI "\fIThe parent node (NULL if this is the root of the tree)\&. \fP"
+.ti -1c
+.RI "double \fBparentDistance\fP"
+.br
+.RI "\fIDistance to the parent\&. \fP"
+.ti -1c
+.RI "size_t \fBpoint\fP"
+.br
+.RI "\fIIndex of the point in the matrix which this node represents\&. \fP"
+.ti -1c
+.RI "int \fBscale\fP"
+.br
+.RI "\fIScale level of the node\&. \fP"
+.ti -1c
+.RI "StatisticType \fBstat\fP"
+.br
+.RI "\fIThe instantiated statistic\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename MetricType = metric::LMetric<2, true>, typename RootPointPolicy = FirstPointIsRoot, typename StatisticType = EmptyStatistic>class mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >"
+A cover tree is a tree specifically designed to speed up nearest-neighbor computation in high-dimensional spaces\&. 
+
+Each non-leaf node references a point and has a nonzero number of children, including a 'self-child' which references the same point\&. A leaf node represents only one point\&.
+.PP
+The tree can be thought of as a hierarchy with the root node at the top level and the leaf nodes at the bottom level\&. Each level in the tree has an assigned 'scale' i\&. The tree follows these three conditions:
+.PP
+.IP "\(bu" 2
+nesting: the level C_i is a subset of the level C_{i - 1}\&.
+.IP "\(bu" 2
+covering: all node in level C_{i - 1} have at least one node in the level C_i with distance less than or equal to b^i (exactly one of these is a parent of the point in level C_{i - 1}\&.
+.IP "\(bu" 2
+separation: all nodes in level C_i have distance greater than b^i to all other nodes in level C_i\&.
+.PP
+.PP
+The value 'b' refers to the base, which is a parameter of the tree\&. These three properties make the cover tree very good for fast, high-dimensional nearest-neighbor search\&.
+.PP
+The theoretical structure of the tree contains many 'implicit' nodes which only have a 'self-child' (a child referencing the same point, but at a lower scale level)\&. This practical implementation only constructs explicit nodes -- non-leaf nodes with more than one child\&. A leaf node has no children, and its scale level is INT_MIN\&.
+.PP
+For more information on cover trees, see
+.PP
+.PP
+.nf
+@inproceedings{
+  author = {Beygelzimer, Alina and Kakade, Sham and Langford, John},
+  title = {Cover trees for nearest neighbor},
+  booktitle = {Proceedings of the 23rd International Conference on Machine
+    Learning},
+  series = {ICML '06},
+  year = {2006},
+  pages = {97--104]
+}
+.fi
+.PP
+.PP
+For information on runtime bounds of the nearest-neighbor computation using cover trees, see the following paper, presented at NIPS 2009:
+.PP
+.PP
+.nf
+@inproceedings{
+  author = {Ram, P\&., and Lee, D\&., and March, W\&.B\&., and Gray, A\&.G\&.},
+  title = {Linear-time Algorithms for Pairwise Statistical Problems},
+  booktitle = {Advances in Neural Information Processing Systems 22},
+  editor = {Y\&. Bengio and D\&. Schuurmans and J\&. Lafferty and C\&.K\&.I\&. Williams
+    and A\&. Culotta},
+  pages = {1527--1535},
+  year = {2009}
+}
+.fi
+.PP
+.PP
+The \fBCoverTree\fP class offers three template parameters; a custom metric type can be used with MetricType (this class defaults to the L2-squared metric)\&. The root node's point can be chosen with the RootPointPolicy; by default, the \fBFirstPointIsRoot\fP policy is used, meaning the first point in the dataset is used\&. The StatisticType policy allows you to define statistics which can be gathered during the creation of the tree\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMetricType\fP Metric type to use during tree construction\&. 
+.br
+\fIRootPointPolicy\fP Determines which point to use as the root node\&. 
+.br
+\fIStatisticType\fP Statistic to be used during tree creation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 95 of file cover_tree\&.hpp\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> typedef arma::mat \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::\fBMat\fP"
+
+.PP
+Definition at line 98 of file cover_tree\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::\fBCoverTree\fP (const arma::mat &dataset, const doublebase = \fC2\&.0\fP, MetricType *metric = \fCNULL\fP)"
+
+.PP
+Create the cover tree with the given dataset and given base\&. The dataset will not be modified during the building procedure (unlike \fBBinarySpaceTree\fP)\&.
+.PP
+The last argument will be removed in mlpack 1\&.1\&.0 (see #274 and #273)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataset\fP Reference to the dataset to build a tree on\&. 
+.br
+\fIbase\fP Base to use during tree building (default 2\&.0)\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::\fBCoverTree\fP (const arma::mat &dataset, MetricType &metric, const doublebase = \fC2\&.0\fP)"
+
+.PP
+Create the cover tree with the given dataset and the given instantiated metric\&. Optionally, set the base\&. The dataset will not be modified during the building procedure (unlike \fBBinarySpaceTree\fP)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataset\fP Reference to the dataset to build a tree on\&. 
+.br
+\fImetric\fP Instantiated metric to use during tree building\&. 
+.br
+\fIbase\fP Base to use during tree building (default 2\&.0)\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::\fBCoverTree\fP (const arma::mat &dataset, const doublebase, const size_tpointIndex, const intscale, \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > *parent, const doubleparentDistance, arma::Col< size_t > &indices, arma::vec &distances, size_tnearSetSize, size_t &farSetSize, size_t &usedSetSize, MetricType &metric = \fCNULL\fP)"
+
+.PP
+Construct a child cover tree node\&. This constructor is not meant to be used externally, but it could be used to insert another node into a tree\&. This procedure uses only one vector for the near set, the far set, and the used set (this is to prevent unnecessary memory allocation in recursive calls to this constructor)\&. Therefore, the size of the near set, far set, and used set must be passed in\&. The near set will be entirely used up, and some of the far set may be used\&. The value of usedSetSize will be set to the number of points used in the construction of this node, and the value of farSetSize will be modified to reflect the number of points in the far set \fIafter\fP the construction of this node\&.
+.PP
+If you are calling this manually, be careful that the given scale is as small as possible, or you may be creating an implicit node in your tree\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataset\fP Reference to the dataset to build a tree on\&. 
+.br
+\fIbase\fP Base to use during tree building\&. 
+.br
+\fIpointIndex\fP Index of the point this node references\&. 
+.br
+\fIscale\fP Scale of this level in the tree\&. 
+.br
+\fIparent\fP Parent of this node (NULL indicates no parent)\&. 
+.br
+\fIparentDistance\fP Distance to the parent node\&. 
+.br
+\fIindices\fP Array of indices, ordered [ nearSet | farSet | usedSet ]; will be modified to [ farSet | usedSet ]\&. 
+.br
+\fIdistances\fP Array of distances, ordered the same way as the indices\&. These represent the distances between the point specified by pointIndex and each point in the indices array\&. 
+.br
+\fInearSetSize\fP Size of the near set; if 0, this will be a leaf\&. 
+.br
+\fIfarSetSize\fP Size of the far set; may be modified (if this node uses any points in the far set)\&. 
+.br
+\fIusedSetSize\fP The number of points used will be added to this number\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::\fBCoverTree\fP (const arma::mat &dataset, const doublebase, const size_tpointIndex, const intscale, \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > *parent, const doubleparentDistance, const doublefurthestDescendantDistance, MetricType *metric = \fCNULL\fP)"
+
+.PP
+Manually construct a cover tree node; no tree assembly is done in this constructor, and children must be added manually (use \fBChildren()\fP)\&. This constructor is useful when the tree is being 'imported' into the \fBCoverTree\fP class after being created in some other manner\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataset\fP Reference to the dataset this node is a part of\&. 
+.br
+\fIbase\fP Base that was used for tree building\&. 
+.br
+\fIpointIndex\fP Index of the point in the dataset which this node refers to\&. 
+.br
+\fIscale\fP Scale of this node's level in the tree\&. 
+.br
+\fIparent\fP Parent node (NULL indicates no parent)\&. 
+.br
+\fIparentDistance\fP Distance to parent node point\&. 
+.br
+\fIfurthestDescendantDistance\fP Distance to furthest descendant point\&. 
+.br
+\fImetric\fP Instantiated metric (optional)\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::\fBCoverTree\fP (const \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > &other)"
+
+.PP
+Create a cover tree from another tree\&. Be careful! This may use a lot of memory and take a lot of time\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP Cover tree to copy from\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::~\fBCoverTree\fP ()"
+
+.PP
+Delete this cover tree node and its children\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Base () const\fC [inline]\fP"
+
+.PP
+Get the base\&. 
+.PP
+Definition at line 254 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::base\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Base ()\fC [inline]\fP"
+
+.PP
+Modify the base; don't do this, you'll break everything\&. 
+.PP
+Definition at line 256 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::base\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> void \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Centroid (arma::vec &centroid) const\fC [inline]\fP"
+
+.PP
+Get the centroid of the node and store it in the given vector\&. 
+.PP
+Definition at line 335 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::dataset, and mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::point\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> const \fBCoverTree\fP& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Child (const size_tindex) const\fC [inline]\fP"
+
+.PP
+Get a particular child node\&. 
+.PP
+Definition at line 230 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::children\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBCoverTree\fP& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Child (const size_tindex)\fC [inline]\fP"
+
+.PP
+Modify a particular child node\&. 
+.PP
+Definition at line 232 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::children\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> const std::vector<\fBCoverTree\fP*>& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Children () const\fC [inline]\fP"
+
+.PP
+Get the children\&. 
+.PP
+Definition at line 238 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::children\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> std::vector<\fBCoverTree\fP*>& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Children ()\fC [inline]\fP"
+
+.PP
+Modify the children manually (maybe not a great idea)\&. 
+.PP
+Definition at line 240 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::children\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> void \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::ComputeDistances (const size_tpointIndex, const arma::Col< size_t > &indices, arma::vec &distances, const size_tpointSetSize)\fC [private]\fP"
+
+.PP
+Fill the vector of distances with the distances between the point specified by pointIndex and each point in the indices array\&. The distances of the first pointSetSize points in indices are calculated (so, this does not necessarily need to use all of the points in the arrays)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpointIndex\fP Point to build the distances for\&. 
+.br
+\fIindices\fP List of indices to compute distances for\&. 
+.br
+\fIdistances\fP Vector to store calculated distances in\&. 
+.br
+\fIpointSetSize\fP Number of points in arrays to calculate distances for\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> void \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::CreateChildren (arma::Col< size_t > &indices, arma::vec &distances, size_tnearSetSize, size_t &farSetSize, size_t &usedSetSize)\fC [private]\fP"
+
+.PP
+Create the children for this node\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> const arma::mat& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Dataset () const\fC [inline]\fP"
+
+.PP
+Get a reference to the dataset\&. 
+.PP
+Definition at line 219 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::dataset\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Descendant (const size_tindex) const"
+
+.PP
+Get the index of a particular descendant point\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::DistanceComps () const\fC [inline]\fP"
+
+.PP
+Definition at line 471 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::distanceComps\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::DistanceComps ()\fC [inline]\fP"
+
+.PP
+Definition at line 472 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::distanceComps\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::FurthestDescendantDistance () const\fC [inline]\fP"
+
+.PP
+Get the distance from the center of the node to the furthest descendant\&. 
+.PP
+Definition at line 324 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::furthestDescendantDistance\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::FurthestDescendantDistance ()\fC [inline]\fP"
+
+.PP
+Modify the distance from the center of the node to the furthest descendant\&. 
+.PP
+Definition at line 328 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::furthestDescendantDistance\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::FurthestPointDistance () const\fC [inline]\fP"
+
+.PP
+Get the distance to the furthest point\&. This is always 0 for cover trees\&. 
+.PP
+Definition at line 321 of file cover_tree\&.hpp\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> static bool \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::HasSelfChildren ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Returns true: this tree does have self-children\&. 
+.PP
+Definition at line 308 of file cover_tree\&.hpp\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> bool \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::IsLeaf () const\fC [inline]\fP"
+
+.PP
+Definition at line 226 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::children\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::MaxDistance (const \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > *other) const"
+
+.PP
+Return the maximum distance to another node\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::MaxDistance (const \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > *other, const doubledistance) const"
+
+.PP
+Return the maximum distance to another node given that the point-to-point distance has already been calculated\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::MaxDistance (const arma::vec &other) const"
+
+.PP
+Return the maximum distance to another point\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::MaxDistance (const arma::vec &other, const doubledistance) const"
+
+.PP
+Return the maximum distance to another point given that the distance from the center to the point has already been calculated\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> MetricType& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Metric () const\fC [inline]\fP"
+
+.PP
+Get the instantiated metric\&. 
+.PP
+Definition at line 338 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::metric\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::MinDistance (const \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > *other) const"
+
+.PP
+Return the minimum distance to another node\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::MinDistance (const \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > *other, const doubledistance) const"
+
+.PP
+Return the minimum distance to another node given that the point-to-point distance has already been calculated\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::MinDistance (const arma::vec &other) const"
+
+.PP
+Return the minimum distance to another point\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::MinDistance (const arma::vec &other, const doubledistance) const"
+
+.PP
+Return the minimum distance to another point given that the distance from the center to the point has already been calculated\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::MinimumBoundDistance () const\fC [inline]\fP"
+
+.PP
+Get the minimum distance from the center to any bound edge (this is the same as furthestDescendantDistance)\&. 
+.PP
+Definition at line 332 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::furthestDescendantDistance\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> void \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::MoveToUsedSet (arma::Col< size_t > &indices, arma::vec &distances, size_t &nearSetSize, size_t &farSetSize, size_t &usedSetSize, arma::Col< size_t > &childIndices, const size_tchildFarSetSize, const size_tchildUsedSetSize)\fC [private]\fP"
+
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::NumChildren () const\fC [inline]\fP"
+
+.PP
+Get the number of children\&. 
+.PP
+Definition at line 235 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::children\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::NumDescendants () const"
+
+.PP
+Get the number of descendant points\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::NumPoints () const\fC [inline]\fP"
+
+.PP
+Definition at line 227 of file cover_tree\&.hpp\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBCoverTree\fP* \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Parent () const\fC [inline]\fP"
+
+.PP
+Get the parent node\&. 
+.PP
+Definition at line 311 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::parent\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBCoverTree\fP*& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Parent ()\fC [inline]\fP"
+
+.PP
+Modify the parent node\&. 
+.PP
+Definition at line 313 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::parent\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::ParentDistance () const\fC [inline]\fP"
+
+.PP
+Get the distance to the parent\&. 
+.PP
+Definition at line 316 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::parentDistance\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::ParentDistance ()\fC [inline]\fP"
+
+.PP
+Modify the distance to the parent\&. 
+.PP
+Definition at line 318 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::parentDistance\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Point () const\fC [inline]\fP"
+
+.PP
+Get the index of the point which this node represents\&. 
+.PP
+Definition at line 222 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::point\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Point (const size_t) const\fC [inline]\fP"
+
+.PP
+For compatibility with other trees; the argument is ignored\&. 
+.PP
+Definition at line 224 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::point\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::PruneFarSet (arma::Col< size_t > &indices, arma::vec &distances, const doublebound, const size_tnearSetSize, const size_tpointSetSize)\fC [private]\fP"
+
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBmath::Range\fP \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::RangeDistance (const \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > *other) const"
+
+.PP
+Return the minimum and maximum distance to another node\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBmath::Range\fP \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::RangeDistance (const \fBCoverTree\fP< MetricType, RootPointPolicy, StatisticType > *other, const doubledistance) const"
+
+.PP
+Return the minimum and maximum distance to another node given that the point-to-point distance has already been calculated\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBmath::Range\fP \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::RangeDistance (const arma::vec &other) const"
+
+.PP
+Return the minimum and maximum distance to another point\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBmath::Range\fP \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::RangeDistance (const arma::vec &other, const doubledistance) const"
+
+.PP
+Return the minimum and maximum distance to another point given that the point-to-point distance has already been calculated\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> void \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::RemoveNewImplicitNodes ()\fC [private]\fP"
+
+.PP
+Take a look at the last child (the most recently created one) and remove any implicit nodes that have been created\&. 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> int \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Scale () const\fC [inline]\fP"
+
+.PP
+Get the scale of this node\&. 
+.PP
+Definition at line 249 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::scale\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> int& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Scale ()\fC [inline]\fP"
+
+.PP
+Modify the scale of this node\&. Be careful\&.\&.\&. 
+.PP
+Definition at line 251 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::scale\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::SortPointSet (arma::Col< size_t > &indices, arma::vec &distances, const size_tchildFarSetSize, const size_tchildUsedSetSize, const size_tfarSetSize)\fC [private]\fP"
+
+.PP
+Assuming that the list of indices and distances is sorted as [ childFarSet | childUsedSet | farSet | usedSet ], resort the sets so the organization is [ childFarSet | farSet | childUsedSet | usedSet ]\&. The size_t parameters specify the sizes of each set in the array\&. Only the ordering of the indices and distances arrays will be modified (not their actual contents)\&.
+.PP
+The size of any of the four sets can be zero and this method will handle that case accordingly\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindices\fP List of indices to sort\&. 
+.br
+\fIdistances\fP List of distances to sort\&. 
+.br
+\fIchildFarSetSize\fP Number of points in child far set (childFarSet)\&. 
+.br
+\fIchildUsedSetSize\fP Number of points in child used set (childUsedSet)\&. 
+.br
+\fIfarSetSize\fP Number of points in far set (farSet)\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::SplitNearFar (arma::Col< size_t > &indices, arma::vec &distances, const doublebound, const size_tpointSetSize)\fC [private]\fP"
+
+.PP
+Split the given indices and distances into a near and a far set, returning the number of points in the near set\&. The distances must already be initialized\&. This will order the indices and distances such that the points in the near set make up the first part of the array and the far set makes up the rest: [ nearSet | farSet ]\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindices\fP List of indices; will be reordered\&. 
+.br
+\fIdistances\fP List of distances; will be reordered\&. 
+.br
+\fIbound\fP If the distance is less than or equal to this bound, the point is placed into the near set\&. 
+.br
+\fIpointSetSize\fP Size of point set (because we may be sorting a smaller list than the indices vector will hold)\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> const StatisticType& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Stat () const\fC [inline]\fP"
+
+.PP
+Get the statistic for this node\&. 
+.PP
+Definition at line 259 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::stat\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> StatisticType& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::Stat ()\fC [inline]\fP"
+
+.PP
+Modify the statistic for this node\&. 
+.PP
+Definition at line 261 of file cover_tree\&.hpp\&.
+.PP
+References mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::stat\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> std::string \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::ToString () const"
+
+.PP
+Returns a string representation of this object\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::base\fC [private]\fP"
+
+.PP
+The base used to construct the tree\&. 
+.PP
+Definition at line 354 of file cover_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::Base()\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> std::vector<\fBCoverTree\fP*> \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::children\fC [private]\fP"
+
+.PP
+The list of children; the first is the self-child\&. 
+.PP
+Definition at line 348 of file cover_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::Child(), mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::Children(), mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::IsLeaf(), and mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::NumChildren()\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> const arma::mat& \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::dataset\fC [private]\fP"
+
+.PP
+Reference to the matrix which this tree is built on\&. 
+.PP
+Definition at line 342 of file cover_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::Centroid(), and mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::Dataset()\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::distanceComps\fC [private]\fP"
+
+.PP
+Definition at line 475 of file cover_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::DistanceComps()\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::furthestDescendantDistance\fC [private]\fP"
+
+.PP
+Distance to the furthest descendant\&. 
+.PP
+Definition at line 369 of file cover_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::FurthestDescendantDistance(), and mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::MinimumBoundDistance()\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> bool \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::localMetric\fC [private]\fP"
+
+.PP
+Whether or not we need to destroy the metric in the destructor\&. 
+.PP
+Definition at line 372 of file cover_tree\&.hpp\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> MetricType* \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::metric\fC [private]\fP"
+
+.PP
+The metric used for this tree\&. 
+.PP
+Definition at line 375 of file cover_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::Metric()\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::numDescendants\fC [private]\fP"
+
+.PP
+The number of descendant points\&. 
+.PP
+Definition at line 360 of file cover_tree\&.hpp\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> \fBCoverTree\fP* \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::parent\fC [private]\fP"
+
+.PP
+The parent node (NULL if this is the root of the tree)\&. 
+.PP
+Definition at line 363 of file cover_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::Parent()\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> double \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::parentDistance\fC [private]\fP"
+
+.PP
+Distance to the parent\&. 
+.PP
+Definition at line 366 of file cover_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::ParentDistance()\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> size_t \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::point\fC [private]\fP"
+
+.PP
+Index of the point in the matrix which this node represents\&. 
+.PP
+Definition at line 345 of file cover_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::Centroid(), and mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::Point()\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> int \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::scale\fC [private]\fP"
+
+.PP
+Scale level of the node\&. 
+.PP
+Definition at line 351 of file cover_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::Scale()\&.
+.SS "template<typename MetricType  = metric::LMetric<2, true>, typename RootPointPolicy  = FirstPointIsRoot, typename StatisticType  = EmptyStatistic> StatisticType \fBmlpack::tree::CoverTree\fP< MetricType, RootPointPolicy, StatisticType >::stat\fC [private]\fP"
+
+.PP
+The instantiated statistic\&. 
+.PP
+Definition at line 357 of file cover_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::CoverTree< MetricType, RootPointPolicy, StatisticType >::Stat()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

@@ -1,0 +1,16 @@
+digraph "mlpack::optimization::AugLagrangian&lt; LagrangianFunction &gt;"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="mlpack::optimization\l::AugLagrangian\< Lagrangian\lFunction \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" lbfgs" ];
+  Node2 [label="mlpack::optimization\l::L_BFGS\< FunctionType \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1optimization_1_1L__BFGS.html",tooltip="The generic L-BFGS optimizer, which uses a back-tracking line search algorithm to minimize a function..."];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" function" ];
+  Node3 [label="FunctionType",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" lbfgsInternal" ];
+  Node4 [label="mlpack::optimization\l::L_BFGS\< AugLagrangianFunction\l\< LagrangianFunction \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1optimization_1_1L__BFGS.html"];
+  Node2 -> Node4 [dir="back",color="orange",fontsize="10",style="dashed",label=" \< AugLagrangianFunction\l\< LagrangianFunction \> \>" ];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" function" ];
+  Node5 [label="LagrangianFunction",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

@@ -1,0 +1,118 @@
+.TH "mlpack::kernel" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::kernel \- 
+.PP
+Kernel functions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCosineDistance\fP"
+.br
+.RI "\fIThe cosine distance (or cosine similarity)\&. \fP"
+.ti -1c
+.RI "class \fBEpanechnikovKernel\fP"
+.br
+.RI "\fIThe Epanechnikov kernel, defined as\&. \fP"
+.ti -1c
+.RI "class \fBExampleKernel\fP"
+.br
+.RI "\fIAn example kernel function\&. \fP"
+.ti -1c
+.RI "class \fBGaussianKernel\fP"
+.br
+.RI "\fIThe standard Gaussian kernel\&. \fP"
+.ti -1c
+.RI "class \fBHyperbolicTangentKernel\fP"
+.br
+.RI "\fIHyperbolic tangent kernel\&. \fP"
+.ti -1c
+.RI "class \fBKernelTraits\fP"
+.br
+.RI "\fIThis is a template class that can provide information about various kernels\&. \fP"
+.ti -1c
+.RI "class \fBKernelTraits< CosineDistance >\fP"
+.br
+.RI "\fIKernel traits for the cosine distance\&. \fP"
+.ti -1c
+.RI "class \fBKernelTraits< EpanechnikovKernel >\fP"
+.br
+.RI "\fIKernel traits for the Epanechnikov kernel\&. \fP"
+.ti -1c
+.RI "class \fBKernelTraits< GaussianKernel >\fP"
+.br
+.RI "\fIKernel traits for the Gaussian kernel\&. \fP"
+.ti -1c
+.RI "class \fBKernelTraits< LaplacianKernel >\fP"
+.br
+.RI "\fIKernel traits of the Laplacian kernel\&. \fP"
+.ti -1c
+.RI "class \fBKernelTraits< SphericalKernel >\fP"
+.br
+.RI "\fIKernel traits for the spherical kernel\&. \fP"
+.ti -1c
+.RI "class \fBKernelTraits< TriangularKernel >\fP"
+.br
+.RI "\fIKernel traits for the triangular kernel\&. \fP"
+.ti -1c
+.RI "class \fBKMeansSelection\fP"
+.br
+.ti -1c
+.RI "class \fBLaplacianKernel\fP"
+.br
+.RI "\fIThe standard Laplacian kernel\&. \fP"
+.ti -1c
+.RI "class \fBLinearKernel\fP"
+.br
+.RI "\fIThe simple linear kernel (dot product)\&. \fP"
+.ti -1c
+.RI "class \fBNystroemMethod\fP"
+.br
+.ti -1c
+.RI "class \fBOrderedSelection\fP"
+.br
+.ti -1c
+.RI "class \fBPolynomialKernel\fP"
+.br
+.RI "\fIThe simple polynomial kernel\&. \fP"
+.ti -1c
+.RI "class \fBPSpectrumStringKernel\fP"
+.br
+.RI "\fIThe p-spectrum string kernel\&. \fP"
+.ti -1c
+.RI "class \fBRandomSelection\fP"
+.br
+.ti -1c
+.RI "class \fBSphericalKernel\fP"
+.br
+.ti -1c
+.RI "class \fBTriangularKernel\fP"
+.br
+.RI "\fIThe trivially simple triangular kernel, defined by\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Kernel functions\&. 
+
+This namespace contains kernel functions, which evaluate some kernel function $ K(x, y) $ for some arbitrary vectors $ x $ and $ y $ of the same dimension\&. The single restriction on the function $ K(x, y) $ is that it must satisfy Mercer's condition:
+.PP
+\[ \int \int K(x, y) g(x) g(y) dx dy \ge 0 \].PP
+for all square integrable functions $ g(x) $\&.
+.PP
+The kernels in this namespace all implement the same methods as the \fBExampleKernel\fP class\&. Any additional custom kernels should implement all the methods that class implements; in addition, any method using a kernel should rely on any arbitrary kernel function class having a default constructor and a function
+.PP
+.PP
+.nf
+double Evaluate(arma::vec&, arma::vec&);
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

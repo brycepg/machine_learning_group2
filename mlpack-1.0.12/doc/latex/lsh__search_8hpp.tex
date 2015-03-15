@@ -1,0 +1,33 @@
+\section{src/mlpack/methods/lsh/lsh\-\_\-search.hpp File Reference}
+\label{lsh__search_8hpp}\index{src/mlpack/methods/lsh/lsh\-\_\-search.\-hpp@{src/mlpack/methods/lsh/lsh\-\_\-search.\-hpp}}
+Include dependency graph for lsh\-\_\-search.\-hpp\-:
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf mlpack\-::neighbor\-::\-L\-S\-H\-Search$<$ Sort\-Policy $>$}
+\begin{DoxyCompactList}\small\item\em The \doxyref{L\-S\-H\-Search}{p.}{classmlpack_1_1neighbor_1_1LSHSearch} class -- This class builds a hash on the reference set and uses this hash to compute the distance-\/approximate nearest-\/neighbors of the given queries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+{\bf mlpack}
+\begin{DoxyCompactList}\small\item\em Linear algebra utility functions, generally performed on matrices or vectors. \end{DoxyCompactList}\item 
+{\bf mlpack\-::neighbor}
+\begin{DoxyCompactList}\small\item\em Neighbor-\/search routines. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Parikshit Ram
+\end{DoxyAuthor}
+Defines the L\-S\-H\-Search class, which performs an approximate nearest neighbor search for a queries in a query set over a given dataset using Locality-\/sensitive hashing with 2-\/stable distributions.
+
+The details of this method can be found in the following paper\-:
+
+\{datar2004locality, title=\{Locality-\/sensitive hashing scheme based on p-\/stable distributions\}, author=\{Datar, M. and Immorlica, N. and Indyk, P. and Mirrokni, V.\-S.\}, booktitle= \{Proceedings of the 12th Annual Symposium on Computational Geometry\}, pages=\{253--262\}, year=\{2004\}, organization=\{A\-C\-M\} \}
+
+This file is part of mlpack 1.\-0.\-12.
+
+mlpack is free software; you may redstribute it and/or modify it under the terms of the 3-\/clause B\-S\-D license. You should have received a copy of the 3-\/clause B\-S\-D license along with mlpack. If not, see {\tt http\-://www.\-opensource.\-org/licenses/\-B\-S\-D-\/3-\/\-Clause} for more information. 
+
+Definition in file {\bf lsh\-\_\-search.\-hpp}.
+

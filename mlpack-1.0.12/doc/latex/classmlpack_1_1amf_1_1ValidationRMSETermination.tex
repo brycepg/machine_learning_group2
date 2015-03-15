@@ -1,0 +1,316 @@
+\section{mlpack\-:\-:amf\-:\-:Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1amf_1_1ValidationRMSETermination}\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Validation\-R\-M\-S\-E\-Termination} (Mat\-Type \&V, size\-\_\-t {\bf num\-\_\-test\-\_\-points}, double {\bf tolerance}=1e-\/5, size\-\_\-t max\-Iterations=10000, size\-\_\-t reverse\-Step\-Tolerance=3)
+\item 
+const double \& {\bf Index} ()
+\item 
+void {\bf Initialize} (const Mat\-Type \&)
+\item 
+bool {\bf Is\-Converged} (arma\-::mat \&{\bf W}, arma\-::mat \&{\bf H})
+\item 
+const size\-\_\-t \& {\bf Iteration} ()
+\item 
+const size\-\_\-t \& {\bf Max\-Iterations} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf c\-\_\-index}
+\item 
+double {\bf c\-\_\-index\-Old}
+\item 
+arma\-::mat {\bf H}
+\item 
+bool {\bf is\-Copy}
+\item 
+size\-\_\-t {\bf iteration}
+\item 
+size\-\_\-t {\bf max\-Iterations}
+\item 
+size\-\_\-t {\bf num\-\_\-test\-\_\-points}
+\item 
+size\-\_\-t {\bf reverse\-Step\-Count}
+\item 
+size\-\_\-t {\bf reverse\-Step\-Tolerance}
+\item 
+double {\bf rmse}
+\item 
+double {\bf rmse\-Old}
+\item 
+arma\-::\-Mat$<$ double $>$ {\bf test\-\_\-points}
+\item 
+double {\bf tolerance}
+\item 
+arma\-::mat {\bf W}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Mat\-Type$>$class mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$}
+
+
+
+Definition at line 24 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!Validation\-R\-M\-S\-E\-Termination@{Validation\-R\-M\-S\-E\-Termination}}
+\index{Validation\-R\-M\-S\-E\-Termination@{Validation\-R\-M\-S\-E\-Termination}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{Validation\-R\-M\-S\-E\-Termination}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::{\bf Validation\-R\-M\-S\-E\-Termination} (
+\begin{DoxyParamCaption}
+\item[{Mat\-Type \&}]{V, }
+\item[{size\-\_\-t}]{num\-\_\-test\-\_\-points, }
+\item[{double}]{tolerance = {\ttfamily 1e-\/5}, }
+\item[{size\-\_\-t}]{max\-Iterations = {\ttfamily 10000}, }
+\item[{size\-\_\-t}]{reverse\-Step\-Tolerance = {\ttfamily 3}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_ad72912145f6aaa5f0e82010a1b6c92a4}
+
+
+Definition at line 27 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::num\-\_\-test\-\_\-points, and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::test\-\_\-points.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!Index@{Index}}
+\index{Index@{Index}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{Index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ const double\& {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_a82cbbde68d06180e8c3f05207a071933}
+
+
+Definition at line 134 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::rmse.
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{Initialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ void {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::Initialize (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_a56471b093e612e0ba23780dc59d4fb81}
+
+
+Definition at line 60 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::c\-\_\-index, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::c\-\_\-index\-Old, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::is\-Copy, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::iteration, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::reverse\-Step\-Count, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::rmse, and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::rmse\-Old.
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!Is\-Converged@{Is\-Converged}}
+\index{Is\-Converged@{Is\-Converged}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{Is\-Converged}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ bool {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::Is\-Converged (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{W, }
+\item[{arma\-::mat \&}]{H}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_a8b3f6ab15f0daedfed822879576bbefa}
+
+
+Definition at line 74 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::c\-\_\-index, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::c\-\_\-index\-Old, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-H, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::is\-Copy, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::iteration, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::max\-Iterations, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::num\-\_\-test\-\_\-points, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::reverse\-Step\-Count, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::reverse\-Step\-Tolerance, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::rmse, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::rmse\-Old, mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::test\-\_\-points, and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-W.
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!Iteration@{Iteration}}
+\index{Iteration@{Iteration}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{Iteration}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ const size\-\_\-t\& {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::Iteration (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_a96b8752f2f9bbd3befde983d4960956a}
+
+
+Definition at line 136 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::iteration.
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!Max\-Iterations@{Max\-Iterations}}
+\index{Max\-Iterations@{Max\-Iterations}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{Max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ const size\-\_\-t\& {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::Max\-Iterations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_ae76052c014866943144a3b53c046474a}
+
+
+Definition at line 138 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+References mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::max\-Iterations.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!c\-\_\-index@{c\-\_\-index}}
+\index{c\-\_\-index@{c\-\_\-index}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{c\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ double {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::c\-\_\-index\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_ab3f28da1cbdce64962526cb8d42c7b35}
+
+
+Definition at line 158 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Initialize(), and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged().
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!c\-\_\-index\-Old@{c\-\_\-index\-Old}}
+\index{c\-\_\-index\-Old@{c\-\_\-index\-Old}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{c\-\_\-index\-Old}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ double {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::c\-\_\-index\-Old\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_ad77132ce1ebf4e46a8c379f0550ccf75}
+
+
+Definition at line 157 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Initialize(), and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged().
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!H@{H}}
+\index{H@{H}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{H}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ arma\-::mat {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::H\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_a7de46b1fac0f9dd2c4abcee499523f95}
+
+
+Definition at line 156 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged().
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!is\-Copy@{is\-Copy}}
+\index{is\-Copy@{is\-Copy}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{is\-Copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ bool {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::is\-Copy\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_a7ac5f10fb48d1c594f2f015455cc6116}
+
+
+Definition at line 154 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Initialize(), and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged().
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!iteration@{iteration}}
+\index{iteration@{iteration}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{iteration}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ size\-\_\-t {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::iteration\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_af078313ea13a6a640428cd71d5ee476d}
+
+
+Definition at line 144 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Initialize(), mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged(), and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Iteration().
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!max\-Iterations@{max\-Iterations}}
+\index{max\-Iterations@{max\-Iterations}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ size\-\_\-t {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::max\-Iterations\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_ae7ab2e014d372e9156af93ad38b68629}
+
+
+Definition at line 142 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged(), and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Max\-Iterations().
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!num\-\_\-test\-\_\-points@{num\-\_\-test\-\_\-points}}
+\index{num\-\_\-test\-\_\-points@{num\-\_\-test\-\_\-points}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{num\-\_\-test\-\_\-points}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ size\-\_\-t {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::num\-\_\-test\-\_\-points\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_a374e464e94ebebf15e927b5ecac5636f}
+
+
+Definition at line 143 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged(), and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Validation\-R\-M\-S\-E\-Termination().
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!reverse\-Step\-Count@{reverse\-Step\-Count}}
+\index{reverse\-Step\-Count@{reverse\-Step\-Count}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{reverse\-Step\-Count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ size\-\_\-t {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::reverse\-Step\-Count\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_a64fb4214dbd7910232440b016a98644b}
+
+
+Definition at line 152 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Initialize(), and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged().
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!reverse\-Step\-Tolerance@{reverse\-Step\-Tolerance}}
+\index{reverse\-Step\-Tolerance@{reverse\-Step\-Tolerance}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{reverse\-Step\-Tolerance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ size\-\_\-t {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::reverse\-Step\-Tolerance\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_aa9c814c6c353ee046e0eed93b16074b8}
+
+
+Definition at line 151 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged().
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!rmse@{rmse}}
+\index{rmse@{rmse}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{rmse}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ double {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::rmse\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_a1c6e6532e567aa2001403fd9f58c769f}
+
+
+Definition at line 149 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Index(), mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Initialize(), and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged().
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!rmse\-Old@{rmse\-Old}}
+\index{rmse\-Old@{rmse\-Old}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{rmse\-Old}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ double {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::rmse\-Old\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_a5a5bdd5602605056d6d225ab31c9db1c}
+
+
+Definition at line 148 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Initialize(), and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged().
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!test\-\_\-points@{test\-\_\-points}}
+\index{test\-\_\-points@{test\-\_\-points}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{test\-\_\-points}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ arma\-::\-Mat$<$double$>$ {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::test\-\_\-points\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_a626a6619cd7388888b7b410779dddd64}
+
+
+Definition at line 146 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged(), and mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Validation\-R\-M\-S\-E\-Termination().
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!tolerance@{tolerance}}
+\index{tolerance@{tolerance}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{tolerance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ double {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::tolerance\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_a8c24c251ad318a5ebd84500e3f685813}
+
+
+Definition at line 141 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+\index{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}!W@{W}}
+\index{W@{W}!mlpack::amf::ValidationRMSETermination@{mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}}
+\subsubsection[{W}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Mat\-Type $>$ arma\-::mat {\bf mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination}$<$ Mat\-Type $>$\-::W\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1amf_1_1ValidationRMSETermination_abd7ae3704f27e121e05367c6d16415e7}
+
+
+Definition at line 155 of file validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp.
+
+
+
+Referenced by mlpack\-::amf\-::\-Validation\-R\-M\-S\-E\-Termination$<$ Mat\-Type $>$\-::\-Is\-Converged().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/amf/termination\-\_\-policies/{\bf validation\-\_\-\-R\-M\-S\-E\-\_\-termination.\-hpp}\end{DoxyCompactItemize}

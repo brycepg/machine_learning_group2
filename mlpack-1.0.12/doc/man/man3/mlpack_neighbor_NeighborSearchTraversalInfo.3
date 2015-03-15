@@ -1,0 +1,194 @@
+.TH "mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::neighbor::NeighborSearchTraversalInfo< TreeType > \- 
+.PP
+Traversal information for \fBNeighborSearch\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNeighborSearchTraversalInfo\fP ()"
+.br
+.RI "\fICreate the \fBTraversalInfo\fP object and initialize the pointers to NULL\&. \fP"
+.ti -1c
+.RI "double \fBLastBaseCase\fP () const "
+.br
+.RI "\fIGet the base case associated with the last node combination\&. \fP"
+.ti -1c
+.RI "double & \fBLastBaseCase\fP ()"
+.br
+.RI "\fIModify the base case associated with the last node combination\&. \fP"
+.ti -1c
+.RI "TreeType * \fBLastQueryNode\fP () const "
+.br
+.RI "\fIGet the last query node\&. \fP"
+.ti -1c
+.RI "TreeType *& \fBLastQueryNode\fP ()"
+.br
+.RI "\fIModify the last query node\&. \fP"
+.ti -1c
+.RI "TreeType * \fBLastReferenceNode\fP () const "
+.br
+.RI "\fIGet the last reference node\&. \fP"
+.ti -1c
+.RI "TreeType *& \fBLastReferenceNode\fP ()"
+.br
+.RI "\fIModify the last reference node\&. \fP"
+.ti -1c
+.RI "double \fBLastScore\fP () const "
+.br
+.RI "\fIGet the score associated with the last query and reference nodes\&. \fP"
+.ti -1c
+.RI "double & \fBLastScore\fP ()"
+.br
+.RI "\fIModify the score associated with the last query and reference nodes\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBlastBaseCase\fP"
+.br
+.RI "\fIThe last base case\&. \fP"
+.ti -1c
+.RI "TreeType * \fBlastQueryNode\fP"
+.br
+.RI "\fIThe last query node\&. \fP"
+.ti -1c
+.RI "TreeType * \fBlastReferenceNode\fP"
+.br
+.RI "\fIThe last reference node\&. \fP"
+.ti -1c
+.RI "double \fBlastScore\fP"
+.br
+.RI "\fIThe last distance\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename TreeType>class mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >"
+Traversal information for \fBNeighborSearch\fP\&. 
+
+This information is used to make parent-child prunes or parent-parent prunes in Score() without needing to evaluate the distance between two nodes\&.
+.PP
+The information held by this class is the last node combination visited before the current node combination was recursed into and the distance between the node centroids\&. 
+.PP
+Definition at line 31 of file ns_traversal_info\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename TreeType > \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::\fBNeighborSearchTraversalInfo\fP ()\fC [inline]\fP"
+
+.PP
+Create the \fBTraversalInfo\fP object and initialize the pointers to NULL\&. 
+.PP
+Definition at line 37 of file ns_traversal_info\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename TreeType > double \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::LastBaseCase () const\fC [inline]\fP"
+
+.PP
+Get the base case associated with the last node combination\&. 
+.PP
+Definition at line 59 of file ns_traversal_info\&.hpp\&.
+.PP
+References mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >::lastBaseCase\&.
+.SS "template<typename TreeType > double& \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::LastBaseCase ()\fC [inline]\fP"
+
+.PP
+Modify the base case associated with the last node combination\&. 
+.PP
+Definition at line 61 of file ns_traversal_info\&.hpp\&.
+.PP
+References mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >::lastBaseCase\&.
+.SS "template<typename TreeType > TreeType* \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::LastQueryNode () const\fC [inline]\fP"
+
+.PP
+Get the last query node\&. 
+.PP
+Definition at line 44 of file ns_traversal_info\&.hpp\&.
+.PP
+References mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >::lastQueryNode\&.
+.SS "template<typename TreeType > TreeType*& \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::LastQueryNode ()\fC [inline]\fP"
+
+.PP
+Modify the last query node\&. 
+.PP
+Definition at line 46 of file ns_traversal_info\&.hpp\&.
+.PP
+References mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >::lastQueryNode\&.
+.SS "template<typename TreeType > TreeType* \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::LastReferenceNode () const\fC [inline]\fP"
+
+.PP
+Get the last reference node\&. 
+.PP
+Definition at line 49 of file ns_traversal_info\&.hpp\&.
+.PP
+References mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >::lastReferenceNode\&.
+.SS "template<typename TreeType > TreeType*& \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::LastReferenceNode ()\fC [inline]\fP"
+
+.PP
+Modify the last reference node\&. 
+.PP
+Definition at line 51 of file ns_traversal_info\&.hpp\&.
+.PP
+References mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >::lastReferenceNode\&.
+.SS "template<typename TreeType > double \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::LastScore () const\fC [inline]\fP"
+
+.PP
+Get the score associated with the last query and reference nodes\&. 
+.PP
+Definition at line 54 of file ns_traversal_info\&.hpp\&.
+.PP
+References mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >::lastScore\&.
+.SS "template<typename TreeType > double& \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::LastScore ()\fC [inline]\fP"
+
+.PP
+Modify the score associated with the last query and reference nodes\&. 
+.PP
+Definition at line 56 of file ns_traversal_info\&.hpp\&.
+.PP
+References mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >::lastScore\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename TreeType > double \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::lastBaseCase\fC [private]\fP"
+
+.PP
+The last base case\&. 
+.PP
+Definition at line 71 of file ns_traversal_info\&.hpp\&.
+.PP
+Referenced by mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >::LastBaseCase()\&.
+.SS "template<typename TreeType > TreeType* \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::lastQueryNode\fC [private]\fP"
+
+.PP
+The last query node\&. 
+.PP
+Definition at line 65 of file ns_traversal_info\&.hpp\&.
+.PP
+Referenced by mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >::LastQueryNode()\&.
+.SS "template<typename TreeType > TreeType* \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::lastReferenceNode\fC [private]\fP"
+
+.PP
+The last reference node\&. 
+.PP
+Definition at line 67 of file ns_traversal_info\&.hpp\&.
+.PP
+Referenced by mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >::LastReferenceNode()\&.
+.SS "template<typename TreeType > double \fBmlpack::neighbor::NeighborSearchTraversalInfo\fP< TreeType >::lastScore\fC [private]\fP"
+
+.PP
+The last distance\&. 
+.PP
+Definition at line 69 of file ns_traversal_info\&.hpp\&.
+.PP
+Referenced by mlpack::neighbor::NeighborSearchTraversalInfo< TreeType >::LastScore()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

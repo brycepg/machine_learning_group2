@@ -1,0 +1,75 @@
+\section{mlpack\-:\-:amf\-:\-:Random\-Acol\-Initialization$<$ p $>$ Class Template Reference}
+\label{classmlpack_1_1amf_1_1RandomAcolInitialization}\index{mlpack\-::amf\-::\-Random\-Acol\-Initialization$<$ p $>$@{mlpack\-::amf\-::\-Random\-Acol\-Initialization$<$ p $>$}}
+
+
+This class initializes the W matrix of the \doxyref{A\-M\-F}{p.}{classmlpack_1_1amf_1_1AMF} algorithm by averaging p randomly chosen columns of V.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Random\-Acol\-Initialization} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\static void {\bf Initialize} (const Mat\-Type \&V, const size\-\_\-t r, arma\-::mat \&W, arma\-::mat \&H)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$int p = 5$>$class mlpack\-::amf\-::\-Random\-Acol\-Initialization$<$ p $>$}
+
+This class initializes the W matrix of the \doxyref{A\-M\-F}{p.}{classmlpack_1_1amf_1_1AMF} algorithm by averaging p randomly chosen columns of V. 
+
+In this case, p is a template parameter. H is then set randomly This simple initialization is performed by the random Acol initialization introduced in the paper 'Algorithms, Initializations and Convergence' by Langville et al.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em The} & number of random columns to average for each column of W. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 32 of file random\-\_\-acol\-\_\-init.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::amf\-::\-Random\-Acol\-Initialization@{mlpack\-::amf\-::\-Random\-Acol\-Initialization}!Random\-Acol\-Initialization@{Random\-Acol\-Initialization}}
+\index{Random\-Acol\-Initialization@{Random\-Acol\-Initialization}!mlpack::amf::RandomAcolInitialization@{mlpack\-::amf\-::\-Random\-Acol\-Initialization}}
+\subsubsection[{Random\-Acol\-Initialization}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int p = 5$>$ {\bf mlpack\-::amf\-::\-Random\-Acol\-Initialization}$<$ p $>$\-::{\bf Random\-Acol\-Initialization} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1amf_1_1RandomAcolInitialization_ad1fff6c922d7a322fb54eecf09872899}
+
+
+Definition at line 36 of file random\-\_\-acol\-\_\-init.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::amf\-::\-Random\-Acol\-Initialization@{mlpack\-::amf\-::\-Random\-Acol\-Initialization}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!mlpack::amf::RandomAcolInitialization@{mlpack\-::amf\-::\-Random\-Acol\-Initialization}}
+\subsubsection[{Initialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int p = 5$>$ template$<$typename Mat\-Type $>$ static void {\bf mlpack\-::amf\-::\-Random\-Acol\-Initialization}$<$ p $>$\-::Initialize (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{V, }
+\item[{const size\-\_\-t}]{r, }
+\item[{arma\-::mat \&}]{W, }
+\item[{arma\-::mat \&}]{H}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{classmlpack_1_1amf_1_1RandomAcolInitialization_a9cc9241787742dbf89649f3bdef8490e}
+
+
+Definition at line 40 of file random\-\_\-acol\-\_\-init.\-hpp.
+
+
+
+References mlpack\-::math\-::\-Rand\-Int(), and mlpack\-::\-Log\-::\-Warn.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/amf/init\-\_\-rules/{\bf random\-\_\-acol\-\_\-init.\-hpp}\end{DoxyCompactItemize}

@@ -1,0 +1,273 @@
+\section{mlpack\-:\-:util\-:\-:Save\-Restore\-Utility Class Reference}
+\label{classmlpack_1_1util_1_1SaveRestoreUtility}\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Save\-Restore\-Utility} ()
+\item 
+{\bf $\sim$\-Save\-Restore\-Utility} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \& {\bf Load\-Parameter} (T \&t, const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Load\-Parameter loads a parameter from the parameters map. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\std\-::vector$<$ T $>$ \& {\bf Load\-Parameter} (std\-::vector$<$ T $>$ \&v, const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Load\-Parameter loads a parameter from the parameters map. \end{DoxyCompactList}\item 
+char {\bf Load\-Parameter} (char c, const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Load\-Parameter loads a character from the parameters map. \end{DoxyCompactList}\item 
+std\-::string {\bf Load\-Parameter} (std\-::string \&str, const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Load\-Parameter loads a string from the parameters map. \end{DoxyCompactList}\item 
+arma\-::mat \& {\bf Load\-Parameter} (arma\-::mat \&matrix, const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Load\-Parameter loads an arma\-::mat from the parameters map. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\arma\-::vec \& {\bf Load\-Parameter} (arma\-::vec \&t, const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Specialization for arma\-::vec. \end{DoxyCompactList}\item 
+bool {\bf Read\-File} (const std\-::string \&filename)
+\begin{DoxyCompactList}\small\item\em Read\-File reads an X\-M\-L tree from a file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void {\bf Save\-Parameter} (const T \&t, const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Save\-Parameter saves a parameter to the parameters map. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void {\bf Save\-Parameter} (const std\-::vector$<$ T $>$ \&v, const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Save\-Parameter saves a parameter to the parameters map. \end{DoxyCompactList}\item 
+void {\bf Save\-Parameter} (const char c, const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Save\-Parameter saves a character to the parameters map. \end{DoxyCompactList}\item 
+void {\bf Save\-Parameter} (const arma\-::mat \&mat, const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Save\-Parameter saves an arma\-::mat to the parameters map. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void {\bf Save\-Parameter} (const arma\-::vec \&t, const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Specialization for arma\-::vec. \end{DoxyCompactList}\item 
+bool {\bf Write\-File} (const std\-::string \&filename)
+\begin{DoxyCompactList}\small\item\em Write\-File writes the X\-M\-L tree to a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Recurse\-On\-Nodes} (xml\-Node $\ast$n)
+\begin{DoxyCompactList}\small\item\em Recurse\-On\-Nodes performs a depth first search of the X\-M\-L tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::map$<$ std\-::string, \\*
+std\-::string $>$ {\bf parameters}
+\begin{DoxyCompactList}\small\item\em parameters contains a list of names and parameters in string form. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 34 of file save\-\_\-restore\-\_\-utility.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Save\-Restore\-Utility@{Save\-Restore\-Utility}}
+\index{Save\-Restore\-Utility@{Save\-Restore\-Utility}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Save\-Restore\-Utility}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Save\-Restore\-Utility (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1util_1_1SaveRestoreUtility_a3b7ae2465478530c0adc713bf32a8c18}
+
+
+Definition at line 48 of file save\-\_\-restore\-\_\-utility.\-hpp.
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!$\sim$\-Save\-Restore\-Utility@{$\sim$\-Save\-Restore\-Utility}}
+\index{$\sim$\-Save\-Restore\-Utility@{$\sim$\-Save\-Restore\-Utility}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{$\sim$\-Save\-Restore\-Utility}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::util\-::\-Save\-Restore\-Utility\-::$\sim$\-Save\-Restore\-Utility (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1util_1_1SaveRestoreUtility_a769302698244970653cb42d12c758f14}
+
+
+Definition at line 49 of file save\-\_\-restore\-\_\-utility.\-hpp.
+
+
+
+References parameters.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Load\-Parameter@{Load\-Parameter}}
+\index{Load\-Parameter@{Load\-Parameter}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Load\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T\& mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Load\-Parameter (
+\begin{DoxyParamCaption}
+\item[{T \&}]{t, }
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_a77fa33302a034fde11f84cf7e3a915a7}
+
+
+Load\-Parameter loads a parameter from the parameters map. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Load\-Parameter@{Load\-Parameter}}
+\index{Load\-Parameter@{Load\-Parameter}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Load\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ std\-::vector$<$T$>$\& mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Load\-Parameter (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ T $>$ \&}]{v, }
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_abce02141b72f2a499f8fa86781a25fb7}
+
+
+Load\-Parameter loads a parameter from the parameters map. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Load\-Parameter@{Load\-Parameter}}
+\index{Load\-Parameter@{Load\-Parameter}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Load\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}char mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Load\-Parameter (
+\begin{DoxyParamCaption}
+\item[{char}]{c, }
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_a6dd30bc01c7f561fa0e6fc440f4cc081}
+
+
+Load\-Parameter loads a character from the parameters map. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Load\-Parameter@{Load\-Parameter}}
+\index{Load\-Parameter@{Load\-Parameter}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Load\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Load\-Parameter (
+\begin{DoxyParamCaption}
+\item[{std\-::string \&}]{str, }
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_a1554abad2376cf7bc62132b4ae351209}
+
+
+Load\-Parameter loads a string from the parameters map. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Load\-Parameter@{Load\-Parameter}}
+\index{Load\-Parameter@{Load\-Parameter}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Load\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}arma\-::mat\& mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Load\-Parameter (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{matrix, }
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_a593640700ea021b81a2be2a85348e9ac}
+
+
+Load\-Parameter loads an arma\-::mat from the parameters map. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Load\-Parameter@{Load\-Parameter}}
+\index{Load\-Parameter@{Load\-Parameter}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Load\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}template$<$$>$ arma\-::vec\& mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Load\-Parameter (
+\begin{DoxyParamCaption}
+\item[{arma\-::vec \&}]{t, }
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_adf31dae5dc078e1bb3b55f437092c394}
+
+
+Specialization for arma\-::vec. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Read\-File@{Read\-File}}
+\index{Read\-File@{Read\-File}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Read\-File}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Read\-File (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_a574c3b1f350821939f4d2d6865c17b36}
+
+
+Read\-File reads an X\-M\-L tree from a file. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Recurse\-On\-Nodes@{Recurse\-On\-Nodes}}
+\index{Recurse\-On\-Nodes@{Recurse\-On\-Nodes}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Recurse\-On\-Nodes}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Recurse\-On\-Nodes (
+\begin{DoxyParamCaption}
+\item[{xml\-Node $\ast$}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1util_1_1SaveRestoreUtility_aa58fdf6fdf2d6d06099f9415b3bbac98}
+
+
+Recurse\-On\-Nodes performs a depth first search of the X\-M\-L tree. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Save\-Parameter@{Save\-Parameter}}
+\index{Save\-Parameter@{Save\-Parameter}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Save\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Save\-Parameter (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{t, }
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_ac2a9f62d487450167b986c3371fd48b2}
+
+
+Save\-Parameter saves a parameter to the parameters map. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Save\-Parameter@{Save\-Parameter}}
+\index{Save\-Parameter@{Save\-Parameter}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Save\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Save\-Parameter (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ T $>$ \&}]{v, }
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_ae8706d2fc54acf6cf0ec8b49eee00327}
+
+
+Save\-Parameter saves a parameter to the parameters map. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Save\-Parameter@{Save\-Parameter}}
+\index{Save\-Parameter@{Save\-Parameter}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Save\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Save\-Parameter (
+\begin{DoxyParamCaption}
+\item[{const char}]{c, }
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_a1302c75a4a3cb638f4c5c25c19c0d949}
+
+
+Save\-Parameter saves a character to the parameters map. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Save\-Parameter@{Save\-Parameter}}
+\index{Save\-Parameter@{Save\-Parameter}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Save\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}void mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Save\-Parameter (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{mat, }
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_a59d0b950fe8ecefc6c9fe1c191f85f92}
+
+
+Save\-Parameter saves an arma\-::mat to the parameters map. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Save\-Parameter@{Save\-Parameter}}
+\index{Save\-Parameter@{Save\-Parameter}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Save\-Parameter}]{\setlength{\rightskip}{0pt plus 5cm}template$<$$>$ void mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Save\-Parameter (
+\begin{DoxyParamCaption}
+\item[{const arma\-::vec \&}]{t, }
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_acb02c66d3d24bf384c2e81cb58e1f7cb}
+
+
+Specialization for arma\-::vec. 
+
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!Write\-File@{Write\-File}}
+\index{Write\-File@{Write\-File}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{Write\-File}]{\setlength{\rightskip}{0pt plus 5cm}bool mlpack\-::util\-::\-Save\-Restore\-Utility\-::\-Write\-File (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1util_1_1SaveRestoreUtility_ae56d8b67754723f14ae119d88bf6aad3}
+
+
+Write\-File writes the X\-M\-L tree to a file. 
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::util\-::\-Save\-Restore\-Utility@{mlpack\-::util\-::\-Save\-Restore\-Utility}!parameters@{parameters}}
+\index{parameters@{parameters}!mlpack::util::SaveRestoreUtility@{mlpack\-::util\-::\-Save\-Restore\-Utility}}
+\subsubsection[{parameters}]{\setlength{\rightskip}{0pt plus 5cm}std\-::map$<$std\-::string, std\-::string$>$ mlpack\-::util\-::\-Save\-Restore\-Utility\-::parameters\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1util_1_1SaveRestoreUtility_aa2a4243bfd61c4b02f36fcb32c2aa505}
+
+
+parameters contains a list of names and parameters in string form. 
+
+
+
+Definition at line 40 of file save\-\_\-restore\-\_\-utility.\-hpp.
+
+
+
+Referenced by $\sim$\-Save\-Restore\-Utility().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/util/{\bf save\-\_\-restore\-\_\-utility.\-hpp}\end{DoxyCompactItemize}

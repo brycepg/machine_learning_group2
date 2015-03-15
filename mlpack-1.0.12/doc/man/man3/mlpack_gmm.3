@@ -1,0 +1,175 @@
+.TH "mlpack::gmm" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::gmm \- 
+.PP
+Gaussian Mixture Models\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBDiagonalConstraint\fP"
+.br
+.RI "\fIForce a covariance matrix to be diagonal\&. \fP"
+.ti -1c
+.RI "class \fBEigenvalueRatioConstraint\fP"
+.br
+.RI "\fIGiven a vector of eigenvalue ratios, ensure that the covariance matrix always has those eigenvalue ratios\&. \fP"
+.ti -1c
+.RI "class \fBEMFit\fP"
+.br
+.RI "\fIThis class contains methods which can fit a \fBGMM\fP to observations using the EM algorithm\&. \fP"
+.ti -1c
+.RI "class \fBGMM\fP"
+.br
+.RI "\fIA Gaussian Mixture Model (\fBGMM\fP)\&. \fP"
+.ti -1c
+.RI "class \fBNoConstraint\fP"
+.br
+.RI "\fIThis class enforces no constraint on the covariance matrix\&. \fP"
+.ti -1c
+.RI "class \fBPositiveDefiniteConstraint\fP"
+.br
+.RI "\fIGiven a covariance matrix, force the matrix to be positive definite\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBphi\fP (const double x, const double mean, const double var)"
+.br
+.RI "\fICalculates the univariate Gaussian probability density function\&. \fP"
+.ti -1c
+.RI "double \fBphi\fP (const arma::vec &x, const arma::vec &mean, const arma::mat &cov)"
+.br
+.RI "\fICalculates the multivariate Gaussian probability density function\&. \fP"
+.ti -1c
+.RI "double \fBphi\fP (const arma::vec &x, const arma::vec &mean, const arma::mat &cov, const std::vector< arma::mat > &d_cov, arma::vec &g_mean, arma::vec &g_cov)"
+.br
+.RI "\fICalculates the multivariate Gaussian probability density function and also the gradients with respect to the mean and the variance\&. \fP"
+.ti -1c
+.RI "void \fBphi\fP (const arma::mat &x, const arma::vec &mean, const arma::mat &cov, arma::vec &probabilities)"
+.br
+.RI "\fICalculates the multivariate Gaussian probability density function for each data point (column) in the given matrix, with respect to the given mean and variance\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Gaussian Mixture Models\&. 
+
+
+.SH "Function Documentation"
+.PP 
+.SS "double mlpack::gmm::phi (const doublex, const doublemean, const doublevar)\fC [inline]\fP"
+
+.PP
+Calculates the univariate Gaussian probability density function\&. Example use: 
+.PP
+.nf
+double x, mean, var;
+\&.\&.\&.\&.
+double f = phi(x, mean, var);
+
+.fi
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Observation\&. 
+.br
+\fImean\fP Mean of univariate Gaussian\&. 
+.br
+\fIvar\fP Variance of univariate Gaussian\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Probability of x being observed from the given univariate Gaussian\&. 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file phi\&.hpp\&.
+.PP
+References M_PI\&.
+.PP
+Referenced by mlpack::distribution::GaussianDistribution::Probability()\&.
+.SS "double mlpack::gmm::phi (const arma::vec &x, const arma::vec &mean, const arma::mat &cov)\fC [inline]\fP"
+
+.PP
+Calculates the multivariate Gaussian probability density function\&. Example use: 
+.PP
+.nf
+extern arma::vec x, mean;
+extern arma::mat cov;
+\&.\&.\&.\&.
+double f = phi(x, mean, cov);
+
+.fi
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Observation\&. 
+.br
+\fImean\fP Mean of multivariate Gaussian\&. 
+.br
+\fIcov\fP Covariance of multivariate Gaussian\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Probability of x being observed from the given multivariate Gaussian\&. 
+.RE
+.PP
+
+.PP
+Definition at line 60 of file phi\&.hpp\&.
+.PP
+References M_PI\&.
+.SS "double mlpack::gmm::phi (const arma::vec &x, const arma::vec &mean, const arma::mat &cov, const std::vector< arma::mat > &d_cov, arma::vec &g_mean, arma::vec &g_cov)\fC [inline]\fP"
+
+.PP
+Calculates the multivariate Gaussian probability density function and also the gradients with respect to the mean and the variance\&. Example use: 
+.PP
+.nf
+extern arma::vec x, mean, g_mean, g_cov;
+std::vector<arma::mat> d_cov; // the dSigma
+\&.\&.\&.\&.
+double f = phi(x, mean, cov, d_cov, &g_mean, &g_cov);
+
+.fi
+.PP
+ 
+.PP
+Definition at line 86 of file phi\&.hpp\&.
+.PP
+References M_PI\&.
+.SS "void mlpack::gmm::phi (const arma::mat &x, const arma::vec &mean, const arma::mat &cov, arma::vec &probabilities)\fC [inline]\fP"
+
+.PP
+Calculates the multivariate Gaussian probability density function for each data point (column) in the given matrix, with respect to the given mean and variance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP List of observations\&. 
+.br
+\fImean\fP Mean of multivariate Gaussian\&. 
+.br
+\fIcov\fP Covariance of multivariate Gaussian\&. 
+.br
+\fIprobabilities\fP Output probabilities for each input observation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 130 of file phi\&.hpp\&.
+.PP
+References M_PI\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

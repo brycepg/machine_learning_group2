@@ -1,0 +1,31 @@
+\section{src/mlpack/methods/mvu/mvu.hpp File Reference}
+\label{mvu_8hpp}\index{src/mlpack/methods/mvu/mvu.\-hpp@{src/mlpack/methods/mvu/mvu.\-hpp}}
+Include dependency graph for mvu.\-hpp\-:
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf mlpack\-::mvu\-::\-M\-V\-U}
+\begin{DoxyCompactList}\small\item\em The \doxyref{M\-V\-U}{p.}{classmlpack_1_1mvu_1_1MVU} class is meant to provide a good abstraction for users. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+{\bf mlpack}
+\begin{DoxyCompactList}\small\item\em Linear algebra utility functions, generally performed on matrices or vectors. \end{DoxyCompactList}\item 
+{\bf mlpack\-::mvu}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ryan Curtin
+\end{DoxyAuthor}
+An implementation of Maximum Variance Unfolding. This file defines an M\-V\-U class as well as a class representing the objective function (a semidefinite program) which M\-V\-U seeks to minimize. Minimization is performed by the Augmented Lagrangian optimizer (which in turn uses the L-\/\-B\-F\-G\-S optimizer).
+
+Note\-: this implementation of M\-V\-U does not work. See \#189.
+
+This file is part of mlpack 1.\-0.\-12.
+
+mlpack is free software; you may redstribute it and/or modify it under the terms of the 3-\/clause B\-S\-D license. You should have received a copy of the 3-\/clause B\-S\-D license along with mlpack. If not, see {\tt http\-://www.\-opensource.\-org/licenses/\-B\-S\-D-\/3-\/\-Clause} for more information. 
+
+Definition in file {\bf mvu.\-hpp}.
+

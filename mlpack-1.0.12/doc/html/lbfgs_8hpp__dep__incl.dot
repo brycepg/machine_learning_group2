@@ -1,0 +1,17 @@
+digraph "src/mlpack/core/optimizers/lbfgs/lbfgs.hpp"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="src/mlpack/core/optimizers\l/lbfgs/lbfgs.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="src/mlpack/core/optimizers\l/aug_lagrangian/aug_lagrangian.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$aug__lagrangian_8hpp.html"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="src/mlpack/core/optimizers\l/lrsdp/lrsdp.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lrsdp_8hpp.html"];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="src/mlpack/core/optimizers\l/lrsdp/lrsdp_function.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$lrsdp__function_8hpp.html"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="src/mlpack/methods\l/logistic_regression\l/logistic_regression.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$logistic__regression_8hpp.html"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="src/mlpack/methods\l/sparse_autoencoder\l/sparse_autoencoder.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$sparse__autoencoder_8hpp.html"];
+}

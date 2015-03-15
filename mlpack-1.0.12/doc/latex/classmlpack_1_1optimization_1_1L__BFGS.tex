@@ -1,0 +1,825 @@
+\section{mlpack\-:\-:optimization\-:\-:L\-\_\-\-B\-F\-G\-S$<$ Function\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1optimization_1_1L__BFGS}\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S$<$ Function\-Type $>$@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S$<$ Function\-Type $>$}}
+
+
+The generic L-\/\-B\-F\-G\-S optimizer, which uses a back-\/tracking line search algorithm to minimize a function.  
+
+
+
+
+Inheritance diagram for mlpack\-:\-:optimization\-:\-:L\-\_\-\-B\-F\-G\-S$<$ Function\-Type $>$\-:
+
+
+Collaboration diagram for mlpack\-:\-:optimization\-:\-:L\-\_\-\-B\-F\-G\-S$<$ Function\-Type $>$\-:
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf L\-\_\-\-B\-F\-G\-S} (Function\-Type \&{\bf function}, const size\-\_\-t {\bf num\-Basis}=5, const size\-\_\-t {\bf max\-Iterations}=0, const double {\bf armijo\-Constant}=1e-\/4, const double wolfe=0.\-9, const double min\-Gradient\-Norm=1e-\/10, const size\-\_\-t max\-Line\-Search\-Trials=50, const double min\-Step=1e-\/20, const double max\-Step=1e20)
+\begin{DoxyCompactList}\small\item\em Initialize the L-\/\-B\-F\-G\-S object. \end{DoxyCompactList}\item 
+double {\bf Armijo\-Constant} () const 
+\begin{DoxyCompactList}\small\item\em Get the Armijo condition constant. \end{DoxyCompactList}\item 
+double \& {\bf Armijo\-Constant} ()
+\begin{DoxyCompactList}\small\item\em Modify the Armijo condition constant. \end{DoxyCompactList}\item 
+const Function\-Type \& {\bf Function} () const 
+\begin{DoxyCompactList}\small\item\em Return the function that is being optimized. \end{DoxyCompactList}\item 
+Function\-Type \& {\bf Function} ()
+\begin{DoxyCompactList}\small\item\em Modify the function that is being optimized. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Max\-Iterations} () const 
+\begin{DoxyCompactList}\small\item\em Get the maximum number of iterations. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Max\-Iterations} ()
+\begin{DoxyCompactList}\small\item\em Modify the maximum number of iterations. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Max\-Line\-Search\-Trials} () const 
+\begin{DoxyCompactList}\small\item\em Get the maximum number of line search trials. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Max\-Line\-Search\-Trials} ()
+\begin{DoxyCompactList}\small\item\em Modify the maximum number of line search trials. \end{DoxyCompactList}\item 
+double {\bf Max\-Step} () const 
+\begin{DoxyCompactList}\small\item\em Return the maximum line search step size. \end{DoxyCompactList}\item 
+double \& {\bf Max\-Step} ()
+\begin{DoxyCompactList}\small\item\em Modify the maximum line search step size. \end{DoxyCompactList}\item 
+double {\bf Min\-Gradient\-Norm} () const 
+\begin{DoxyCompactList}\small\item\em Get the minimum gradient norm. \end{DoxyCompactList}\item 
+double \& {\bf Min\-Gradient\-Norm} ()
+\begin{DoxyCompactList}\small\item\em Modify the minimum gradient norm. \end{DoxyCompactList}\item 
+const std\-::pair$<$ arma\-::mat, \\*
+double $>$ \& {\bf Min\-Point\-Iterate} () const 
+\begin{DoxyCompactList}\small\item\em Return the point where the lowest function value has been found. \end{DoxyCompactList}\item 
+double {\bf Min\-Step} () const 
+\begin{DoxyCompactList}\small\item\em Return the minimum line search step size. \end{DoxyCompactList}\item 
+double \& {\bf Min\-Step} ()
+\begin{DoxyCompactList}\small\item\em Modify the minimum line search step size. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Basis} () const 
+\begin{DoxyCompactList}\small\item\em Get the memory size. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Num\-Basis} ()
+\begin{DoxyCompactList}\small\item\em Modify the memory size. \end{DoxyCompactList}\item 
+double {\bf Optimize} (arma\-::mat \&iterate)
+\begin{DoxyCompactList}\small\item\em Use L-\/\-B\-F\-G\-S to optimize the given function, starting at the given iterate point and finding the minimum. \end{DoxyCompactList}\item 
+double {\bf Optimize} (arma\-::mat \&iterate, const size\-\_\-t {\bf max\-Iterations})
+\begin{DoxyCompactList}\small\item\em Use L-\/\-B\-F\-G\-S to optimize (minimize) the given function, starting at the given iterate point, and performing no more than the given maximum number of iterations (the class variable max\-Iterations is ignored for this run, but not modified). \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\item 
+double {\bf Wolfe} () const 
+\begin{DoxyCompactList}\small\item\em Get the Wolfe parameter. \end{DoxyCompactList}\item 
+double \& {\bf Wolfe} ()
+\begin{DoxyCompactList}\small\item\em Modify the Wolfe parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf Choose\-Scaling\-Factor} (const size\-\_\-t iteration\-Num, const arma\-::mat \&gradient)
+\begin{DoxyCompactList}\small\item\em Calculate the scaling factor, gamma, which is used to scale the Hessian approximation matrix. \end{DoxyCompactList}\item 
+double {\bf Evaluate} (const arma\-::mat \&iterate)
+\begin{DoxyCompactList}\small\item\em Evaluate the function at the given iterate point and store the result if it is a new minimum. \end{DoxyCompactList}\item 
+bool {\bf Gradient\-Norm\-Too\-Small} (const arma\-::mat \&gradient)
+\begin{DoxyCompactList}\small\item\em Check to make sure that the norm of the gradient is not smaller than 1e-\/5. \end{DoxyCompactList}\item 
+bool {\bf Line\-Search} (double \&function\-Value, arma\-::mat \&iterate, arma\-::mat \&gradient, const arma\-::mat \&search\-Direction)
+\begin{DoxyCompactList}\small\item\em Perform a back-\/tracking line search along the search direction to calculate a step size satisfying the Wolfe conditions. \end{DoxyCompactList}\item 
+void {\bf Search\-Direction} (const arma\-::mat \&gradient, const size\-\_\-t iteration\-Num, const double scaling\-Factor, arma\-::mat \&search\-Direction)
+\begin{DoxyCompactList}\small\item\em Find the L-\/\-B\-F\-G\-S search direction. \end{DoxyCompactList}\item 
+void {\bf Update\-Basis\-Set} (const size\-\_\-t iteration\-Num, const arma\-::mat \&iterate, const arma\-::mat \&old\-Iterate, const arma\-::mat \&gradient, const arma\-::mat \&old\-Gradient)
+\begin{DoxyCompactList}\small\item\em Update the y and s matrices, which store the differences between the iterate and old iterate and the differences between the gradient and the old gradient, respectively. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf armijo\-Constant}
+\begin{DoxyCompactList}\small\item\em Parameter for determining the Armijo condition. \end{DoxyCompactList}\item 
+Function\-Type \& {\bf function}
+\begin{DoxyCompactList}\small\item\em Internal reference to the function we are optimizing. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf max\-Iterations}
+\begin{DoxyCompactList}\small\item\em Maximum number of iterations. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf max\-Line\-Search\-Trials}
+\begin{DoxyCompactList}\small\item\em Maximum number of trials for the line search. \end{DoxyCompactList}\item 
+double {\bf max\-Step}
+\begin{DoxyCompactList}\small\item\em Maximum step of the line search. \end{DoxyCompactList}\item 
+double {\bf min\-Gradient\-Norm}
+\begin{DoxyCompactList}\small\item\em Minimum gradient norm required to continue the optimization. \end{DoxyCompactList}\item 
+std\-::pair$<$ arma\-::mat, double $>$ {\bf min\-Point\-Iterate}
+\begin{DoxyCompactList}\small\item\em Best point found so far. \end{DoxyCompactList}\item 
+double {\bf min\-Step}
+\begin{DoxyCompactList}\small\item\em Minimum step of the line search. \end{DoxyCompactList}\item 
+arma\-::mat {\bf new\-Iterate\-Tmp}
+\begin{DoxyCompactList}\small\item\em Position of the new iterate. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf num\-Basis}
+\begin{DoxyCompactList}\small\item\em Size of memory for this L-\/\-B\-F\-G\-S optimizer. \end{DoxyCompactList}\item 
+arma\-::cube {\bf s}
+\begin{DoxyCompactList}\small\item\em Stores all the s matrices in memory. \end{DoxyCompactList}\item 
+double {\bf wolfe}
+\begin{DoxyCompactList}\small\item\em Parameter for detecting the Wolfe condition. \end{DoxyCompactList}\item 
+arma\-::cube {\bf y}
+\begin{DoxyCompactList}\small\item\em Stores all the y matrices in memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Function\-Type$>$class mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S$<$ Function\-Type $>$}
+
+The generic L-\/\-B\-F\-G\-S optimizer, which uses a back-\/tracking line search algorithm to minimize a function. 
+
+The parameters for the algorithm (number of memory points, maximum step size, and so forth) are all configurable via either the constructor or standalone modifier functions. A function which can be optimized by this class must implement the following methods\-:
+
+
+\begin{DoxyItemize}
+\item a default constructor
+\item double \doxyref{Evaluate(const arma\-::mat\& coordinates)}{p.}{classmlpack_1_1optimization_1_1L__BFGS_a338c699a69cc169675b586485559376b};
+\item void Gradient(const arma\-::mat\& coordinates, arma\-::mat\& gradient);
+\item arma\-::mat\& Get\-Initial\-Point(); 
+\end{DoxyItemize}
+
+Definition at line 36 of file lbfgs.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!L\-\_\-\-B\-F\-G\-S@{L\-\_\-\-B\-F\-G\-S}}
+\index{L\-\_\-\-B\-F\-G\-S@{L\-\_\-\-B\-F\-G\-S}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{L\-\_\-\-B\-F\-G\-S}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::{\bf L\-\_\-\-B\-F\-G\-S} (
+\begin{DoxyParamCaption}
+\item[{Function\-Type \&}]{function, }
+\item[{const size\-\_\-t}]{num\-Basis = {\ttfamily 5}, }
+\item[{const size\-\_\-t}]{max\-Iterations = {\ttfamily 0}, }
+\item[{const double}]{armijo\-Constant = {\ttfamily 1e-\/4}, }
+\item[{const double}]{wolfe = {\ttfamily 0.9}, }
+\item[{const double}]{min\-Gradient\-Norm = {\ttfamily 1e-\/10}, }
+\item[{const size\-\_\-t}]{max\-Line\-Search\-Trials = {\ttfamily 50}, }
+\item[{const double}]{min\-Step = {\ttfamily 1e-\/20}, }
+\item[{const double}]{max\-Step = {\ttfamily 1e20}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1optimization_1_1L__BFGS_a674dc24d2de449e704fe6bfa6e1acbf4}
+
+
+Initialize the L-\/\-B\-F\-G\-S object. 
+
+Store a reference to the function we will be optimizing and set the size of the memory for the algorithm. There are many parameters that can be set for the optimization, but default values are given for each of them.
+
+
+\begin{DoxyParams}{Parameters}
+{\em function} & Instance of function to be optimized. \\
+\hline
+{\em num\-Basis} & Number of memory points to be stored (default 5). \\
+\hline
+{\em max\-Iterations} & Maximum number of iterations for the optimization (default 0 -- may run indefinitely). \\
+\hline
+{\em armijo\-Constant} & Controls the accuracy of the line search routine for determining the Armijo condition. \\
+\hline
+{\em wolfe} & Parameter for detecting the Wolfe condition. \\
+\hline
+{\em min\-Gradient\-Norm} & Minimum gradient norm required to continue the optimization. \\
+\hline
+{\em max\-Line\-Search\-Trials} & The maximum number of trials for the line search (before giving up). \\
+\hline
+{\em min\-Step} & The minimum step of the line search. \\
+\hline
+{\em max\-Step} & The maximum step of the line search. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Armijo\-Constant@{Armijo\-Constant}}
+\index{Armijo\-Constant@{Armijo\-Constant}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Armijo\-Constant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Armijo\-Constant (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a4bd75dcc4f33cca7e270508bca2f625d}
+
+
+Get the Armijo condition constant. 
+
+
+
+Definition at line 120 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Armijo\-Constant@{Armijo\-Constant}}
+\index{Armijo\-Constant@{Armijo\-Constant}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Armijo\-Constant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double\& {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Armijo\-Constant (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_af86f1143b5fd16c852c2f1a1e7630d2d}
+
+
+Modify the Armijo condition constant. 
+
+
+
+Definition at line 122 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Choose\-Scaling\-Factor@{Choose\-Scaling\-Factor}}
+\index{Choose\-Scaling\-Factor@{Choose\-Scaling\-Factor}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Choose\-Scaling\-Factor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Choose\-Scaling\-Factor (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{iteration\-Num, }
+\item[{const arma\-::mat \&}]{gradient}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_aeb28615573ccf46d9b52a20dbb9391fb}
+
+
+Calculate the scaling factor, gamma, which is used to scale the Hessian approximation matrix. 
+
+See method M3 in Section 4 of Liu and Nocedal (1989).
+
+\begin{DoxyReturn}{Returns}
+The calculated scaling factor. 
+\end{DoxyReturn}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Evaluate@{Evaluate}}
+\index{Evaluate@{Evaluate}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Evaluate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Evaluate (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{iterate}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a338c699a69cc169675b586485559376b}
+
+
+Evaluate the function at the given iterate point and store the result if it is a new minimum. 
+
+\begin{DoxyReturn}{Returns}
+The value of the function. 
+\end{DoxyReturn}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Function@{Function}}
+\index{Function@{Function}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Function}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ const Function\-Type\& {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Function (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a01e4142d1905967a2dfa46fc2c21be14}
+
+
+Return the function that is being optimized. 
+
+
+
+Definition at line 105 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Function@{Function}}
+\index{Function@{Function}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Function}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ Function\-Type\& {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Function (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a42bf0ea3949d58ad7ee167d09a9d8b80}
+
+
+Modify the function that is being optimized. 
+
+
+
+Definition at line 107 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Gradient\-Norm\-Too\-Small@{Gradient\-Norm\-Too\-Small}}
+\index{Gradient\-Norm\-Too\-Small@{Gradient\-Norm\-Too\-Small}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Gradient\-Norm\-Too\-Small}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ bool {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Gradient\-Norm\-Too\-Small (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{gradient}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a51a735258080d2fe2c36d547a8b359fc}
+
+
+Check to make sure that the norm of the gradient is not smaller than 1e-\/5. 
+
+Currently that value is not configurable.
+
+\begin{DoxyReturn}{Returns}
+(norm $<$ min\-Gradient\-Norm). 
+\end{DoxyReturn}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Line\-Search@{Line\-Search}}
+\index{Line\-Search@{Line\-Search}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Line\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ bool {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Line\-Search (
+\begin{DoxyParamCaption}
+\item[{double \&}]{function\-Value, }
+\item[{arma\-::mat \&}]{iterate, }
+\item[{arma\-::mat \&}]{gradient, }
+\item[{const arma\-::mat \&}]{search\-Direction}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a5f6fcb0bde9fd5b2521c006834ce0577}
+
+
+Perform a back-\/tracking line search along the search direction to calculate a step size satisfying the Wolfe conditions. 
+
+The parameter iterate will be modified if the method is successful.
+
+
+\begin{DoxyParams}{Parameters}
+{\em function\-Value} & Value of the function at the initial point \\
+\hline
+{\em iterate} & The initial point to begin the line search from \\
+\hline
+{\em gradient} & The gradient at the initial point \\
+\hline
+{\em search\-Direction} & A vector specifying the search direction \\
+\hline
+{\em step\-Size} & Variable the calculated step size will be stored in\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if no step size is suitable, true otherwise. 
+\end{DoxyReturn}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Max\-Iterations@{Max\-Iterations}}
+\index{Max\-Iterations@{Max\-Iterations}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ size\-\_\-t {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Max\-Iterations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_ae54a21b7df3af91ca57f2593e227d299}
+
+
+Get the maximum number of iterations. 
+
+
+
+Definition at line 115 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Max\-Iterations@{Max\-Iterations}}
+\index{Max\-Iterations@{Max\-Iterations}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ size\-\_\-t\& {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Max\-Iterations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_adade97ab73aa61b07565a56e664fb69c}
+
+
+Modify the maximum number of iterations. 
+
+
+
+Definition at line 117 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Max\-Line\-Search\-Trials@{Max\-Line\-Search\-Trials}}
+\index{Max\-Line\-Search\-Trials@{Max\-Line\-Search\-Trials}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Max\-Line\-Search\-Trials}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ size\-\_\-t {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Max\-Line\-Search\-Trials (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a1359171e3ead467dfec6f0592501bc3d}
+
+
+Get the maximum number of line search trials. 
+
+
+
+Definition at line 135 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Max\-Line\-Search\-Trials@{Max\-Line\-Search\-Trials}}
+\index{Max\-Line\-Search\-Trials@{Max\-Line\-Search\-Trials}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Max\-Line\-Search\-Trials}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ size\-\_\-t\& {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Max\-Line\-Search\-Trials (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_aaff04412528cf012680c144410950968}
+
+
+Modify the maximum number of line search trials. 
+
+
+
+Definition at line 137 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Max\-Step@{Max\-Step}}
+\index{Max\-Step@{Max\-Step}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Max\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Max\-Step (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a8756ee7f153b85aa29f32fdab0404915}
+
+
+Return the maximum line search step size. 
+
+
+
+Definition at line 145 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Max\-Step@{Max\-Step}}
+\index{Max\-Step@{Max\-Step}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Max\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double\& {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Max\-Step (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_af6671c6452b24dba0a95bd3733a54754}
+
+
+Modify the maximum line search step size. 
+
+
+
+Definition at line 147 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Min\-Gradient\-Norm@{Min\-Gradient\-Norm}}
+\index{Min\-Gradient\-Norm@{Min\-Gradient\-Norm}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Min\-Gradient\-Norm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Min\-Gradient\-Norm (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_adf7139850ce9e93a58f3576a5de0e6f2}
+
+
+Get the minimum gradient norm. 
+
+
+
+Definition at line 130 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Min\-Gradient\-Norm@{Min\-Gradient\-Norm}}
+\index{Min\-Gradient\-Norm@{Min\-Gradient\-Norm}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Min\-Gradient\-Norm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double\& {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Min\-Gradient\-Norm (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_ac19562b8330e99121f80f1adbced00ea}
+
+
+Modify the minimum gradient norm. 
+
+
+
+Definition at line 132 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Min\-Point\-Iterate@{Min\-Point\-Iterate}}
+\index{Min\-Point\-Iterate@{Min\-Point\-Iterate}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Min\-Point\-Iterate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ const std\-::pair$<$arma\-::mat, double$>$\& {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Min\-Point\-Iterate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1optimization_1_1L__BFGS_a29dcbb9163d442a7746e61e9b594eb0d}
+
+
+Return the point where the lowest function value has been found. 
+
+\begin{DoxyReturn}{Returns}
+arma\-::vec representing the point and a double with the function value at that point. 
+\end{DoxyReturn}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Min\-Step@{Min\-Step}}
+\index{Min\-Step@{Min\-Step}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Min\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Min\-Step (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a3dbc87a28f0567fc383512e4d37b0836}
+
+
+Return the minimum line search step size. 
+
+
+
+Definition at line 140 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Min\-Step@{Min\-Step}}
+\index{Min\-Step@{Min\-Step}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Min\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double\& {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Min\-Step (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a7d96460bbdca77db674a1a92147cabf7}
+
+
+Modify the minimum line search step size. 
+
+
+
+Definition at line 142 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Num\-Basis@{Num\-Basis}}
+\index{Num\-Basis@{Num\-Basis}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Num\-Basis}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ size\-\_\-t {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Num\-Basis (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a4546301d10255497e0193789a8d22a4b}
+
+
+Get the memory size. 
+
+
+
+Definition at line 110 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Num\-Basis@{Num\-Basis}}
+\index{Num\-Basis@{Num\-Basis}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Num\-Basis}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ size\-\_\-t\& {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Num\-Basis (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_aef0d1fc8479a13f7d0187d6dbf087ce9}
+
+
+Modify the memory size. 
+
+
+
+Definition at line 112 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Optimize@{Optimize}}
+\index{Optimize@{Optimize}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Optimize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Optimize (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{iterate}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1optimization_1_1L__BFGS_a7db644a7dbaae2e8961e0bfca9a5ced1}
+
+
+Use L-\/\-B\-F\-G\-S to optimize the given function, starting at the given iterate point and finding the minimum. 
+
+The maximum number of iterations is set in the constructor (or with \doxyref{Max\-Iterations()}{p.}{classmlpack_1_1optimization_1_1L__BFGS_adade97ab73aa61b07565a56e664fb69c}). Alternately, another overload is provided which takes a maximum number of iterations as a parameter. The given starting point will be modified to store the finishing point of the algorithm, and the final objective value is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em iterate} & Starting point (will be modified). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Objective value of the final point. 
+\end{DoxyReturn}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Optimize@{Optimize}}
+\index{Optimize@{Optimize}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Optimize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Optimize (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{iterate, }
+\item[{const size\-\_\-t}]{max\-Iterations}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1optimization_1_1L__BFGS_a9e96ada8f0c92d37fbd9c430a8581839}
+
+
+Use L-\/\-B\-F\-G\-S to optimize (minimize) the given function, starting at the given iterate point, and performing no more than the given maximum number of iterations (the class variable max\-Iterations is ignored for this run, but not modified). 
+
+The given starting point will be modified to store the finishing point of the algorithm, and the final objective value is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em iterate} & Starting point (will be modified). \\
+\hline
+{\em max\-Iterations} & Maximum number of iterations (0 specifies no limit). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Objective value of the final point. 
+\end{DoxyReturn}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Search\-Direction@{Search\-Direction}}
+\index{Search\-Direction@{Search\-Direction}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Search\-Direction}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ void {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Search\-Direction (
+\begin{DoxyParamCaption}
+\item[{const arma\-::mat \&}]{gradient, }
+\item[{const size\-\_\-t}]{iteration\-Num, }
+\item[{const double}]{scaling\-Factor, }
+\item[{arma\-::mat \&}]{search\-Direction}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a214df285379ee5d9981fe7d70c97f43f}
+
+
+Find the L-\/\-B\-F\-G\-S search direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gradient} & The gradient at the current point \\
+\hline
+{\em iteration\-\_\-num} & The iteration number \\
+\hline
+{\em scaling\-\_\-factor} & Scaling factor to use (see Choose\-Scaling\-Factor\-\_\-()) \\
+\hline
+{\em search\-\_\-direction} & Vector to store search direction in \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ std\-::string {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1optimization_1_1L__BFGS_ad832c9508cd8310e11747dc639d205c5}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Update\-Basis\-Set@{Update\-Basis\-Set}}
+\index{Update\-Basis\-Set@{Update\-Basis\-Set}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Update\-Basis\-Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ void {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Update\-Basis\-Set (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{iteration\-Num, }
+\item[{const arma\-::mat \&}]{iterate, }
+\item[{const arma\-::mat \&}]{old\-Iterate, }
+\item[{const arma\-::mat \&}]{gradient, }
+\item[{const arma\-::mat \&}]{old\-Gradient}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a9e59a301476a408b688641c83b22ba2b}
+
+
+Update the y and s matrices, which store the differences between the iterate and old iterate and the differences between the gradient and the old gradient, respectively. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iteration\-Num} & Iteration number \\
+\hline
+{\em iterate} & Current point \\
+\hline
+{\em old\-Iterate} & Point at last iteration \\
+\hline
+{\em gradient} & Gradient at current point (iterate) \\
+\hline
+{\em old\-Gradient} & Gradient at last iteration point (old\-Iterate) \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Wolfe@{Wolfe}}
+\index{Wolfe@{Wolfe}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Wolfe}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Wolfe (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_aa0d9aefff7d1454356435ad300bc8f54}
+
+
+Get the Wolfe parameter. 
+
+
+
+Definition at line 125 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!Wolfe@{Wolfe}}
+\index{Wolfe@{Wolfe}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{Wolfe}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double\& {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::Wolfe (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a1092156374efcc590408ff4d9ef04d01}
+
+
+Modify the Wolfe parameter. 
+
+
+
+Definition at line 127 of file lbfgs.\-hpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!armijo\-Constant@{armijo\-Constant}}
+\index{armijo\-Constant@{armijo\-Constant}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{armijo\-Constant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::armijo\-Constant\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a911a687f907869fd707eda7dfb353d5a}
+
+
+Parameter for determining the Armijo condition. 
+
+
+
+Definition at line 168 of file lbfgs.\-hpp.
+
+
+
+Referenced by mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S$<$ Aug\-Lagrangian\-Function$<$ mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function $>$ $>$\-::\-Armijo\-Constant().
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!function@{function}}
+\index{function@{function}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{function}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ Function\-Type\& {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::function\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a08c4b9f04e368172c7f2268ba9f751b2}
+
+
+Internal reference to the function we are optimizing. 
+
+
+
+Definition at line 154 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!max\-Iterations@{max\-Iterations}}
+\index{max\-Iterations@{max\-Iterations}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ size\-\_\-t {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::max\-Iterations\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_aadae4ce105073ad958afdf2f463ae627}
+
+
+Maximum number of iterations. 
+
+
+
+Definition at line 166 of file lbfgs.\-hpp.
+
+
+
+Referenced by mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S$<$ Aug\-Lagrangian\-Function$<$ mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function $>$ $>$\-::\-Max\-Iterations().
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!max\-Line\-Search\-Trials@{max\-Line\-Search\-Trials}}
+\index{max\-Line\-Search\-Trials@{max\-Line\-Search\-Trials}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{max\-Line\-Search\-Trials}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ size\-\_\-t {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::max\-Line\-Search\-Trials\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a70903febd714374b31cdb1a4fd5568fc}
+
+
+Maximum number of trials for the line search. 
+
+
+
+Definition at line 174 of file lbfgs.\-hpp.
+
+
+
+Referenced by mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S$<$ Aug\-Lagrangian\-Function$<$ mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function $>$ $>$\-::\-Max\-Line\-Search\-Trials().
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!max\-Step@{max\-Step}}
+\index{max\-Step@{max\-Step}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{max\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::max\-Step\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_acbe7b76e61c6e5fbf2aedf7cd0c2f0ac}
+
+
+Maximum step of the line search. 
+
+
+
+Definition at line 178 of file lbfgs.\-hpp.
+
+
+
+Referenced by mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S$<$ Aug\-Lagrangian\-Function$<$ mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function $>$ $>$\-::\-Max\-Step().
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!min\-Gradient\-Norm@{min\-Gradient\-Norm}}
+\index{min\-Gradient\-Norm@{min\-Gradient\-Norm}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{min\-Gradient\-Norm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::min\-Gradient\-Norm\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a70d0c0a53c4331dc1eb919824baa5643}
+
+
+Minimum gradient norm required to continue the optimization. 
+
+
+
+Definition at line 172 of file lbfgs.\-hpp.
+
+
+
+Referenced by mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S$<$ Aug\-Lagrangian\-Function$<$ mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function $>$ $>$\-::\-Min\-Gradient\-Norm().
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!min\-Point\-Iterate@{min\-Point\-Iterate}}
+\index{min\-Point\-Iterate@{min\-Point\-Iterate}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{min\-Point\-Iterate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ std\-::pair$<$arma\-::mat, double$>$ {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::min\-Point\-Iterate\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a3838e4e4811c1c607f5806d295a52aa4}
+
+
+Best point found so far. 
+
+
+
+Definition at line 181 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!min\-Step@{min\-Step}}
+\index{min\-Step@{min\-Step}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{min\-Step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::min\-Step\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_aa1ea6f4fe6d1842b14244c2621a5ca7f}
+
+
+Minimum step of the line search. 
+
+
+
+Definition at line 176 of file lbfgs.\-hpp.
+
+
+
+Referenced by mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S$<$ Aug\-Lagrangian\-Function$<$ mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function $>$ $>$\-::\-Min\-Step().
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!new\-Iterate\-Tmp@{new\-Iterate\-Tmp}}
+\index{new\-Iterate\-Tmp@{new\-Iterate\-Tmp}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{new\-Iterate\-Tmp}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ arma\-::mat {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::new\-Iterate\-Tmp\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a0de8f00eef5c927d871f2477f8483685}
+
+
+Position of the new iterate. 
+
+
+
+Definition at line 157 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!num\-Basis@{num\-Basis}}
+\index{num\-Basis@{num\-Basis}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{num\-Basis}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ size\-\_\-t {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::num\-Basis\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_af8f4986beac9dc6152cb3493a8117983}
+
+
+Size of memory for this L-\/\-B\-F\-G\-S optimizer. 
+
+
+
+Definition at line 164 of file lbfgs.\-hpp.
+
+
+
+Referenced by mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S$<$ Aug\-Lagrangian\-Function$<$ mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function $>$ $>$\-::\-Num\-Basis().
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!s@{s}}
+\index{s@{s}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{s}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ arma\-::cube {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::s\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a74984bff9783d25cec41d5105713f145}
+
+
+Stores all the s matrices in memory. 
+
+
+
+Definition at line 159 of file lbfgs.\-hpp.
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!wolfe@{wolfe}}
+\index{wolfe@{wolfe}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{wolfe}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::wolfe\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_aa5e89990077485966cb04e687298df1c}
+
+
+Parameter for detecting the Wolfe condition. 
+
+
+
+Definition at line 170 of file lbfgs.\-hpp.
+
+
+
+Referenced by mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S$<$ Aug\-Lagrangian\-Function$<$ mlpack\-::optimization\-::\-L\-R\-S\-D\-P\-Function $>$ $>$\-::\-Wolfe().
+
+\index{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}!y@{y}}
+\index{y@{y}!mlpack::optimization::L_BFGS@{mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}}
+\subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Function\-Type$>$ arma\-::cube {\bf mlpack\-::optimization\-::\-L\-\_\-\-B\-F\-G\-S}$<$ Function\-Type $>$\-::y\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1L__BFGS_a50b11d2a87c84f6a999a34a29eacf0ca}
+
+
+Stores all the y matrices in memory. 
+
+
+
+Definition at line 161 of file lbfgs.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/optimizers/lbfgs/{\bf lbfgs.\-hpp}\end{DoxyCompactItemize}

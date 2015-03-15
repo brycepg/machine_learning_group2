@@ -1,0 +1,623 @@
+.TH "mlpack::gmm::GMM< FittingType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::gmm::GMM< FittingType > \- 
+.PP
+A Gaussian Mixture Model (\fBGMM\fP)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGMM\fP ()"
+.br
+.RI "\fICreate an empty Gaussian Mixture Model, with zero gaussians\&. \fP"
+.ti -1c
+.RI "\fBGMM\fP (const size_t \fBgaussians\fP, const size_t \fBdimensionality\fP)"
+.br
+.RI "\fICreate a \fBGMM\fP with the given number of Gaussians, each of which have the specified dimensionality\&. \fP"
+.ti -1c
+.RI "\fBGMM\fP (const size_t \fBgaussians\fP, const size_t \fBdimensionality\fP, FittingType &\fBfitter\fP)"
+.br
+.RI "\fICreate a \fBGMM\fP with the given number of Gaussians, each of which have the specified dimensionality\&. \fP"
+.ti -1c
+.RI "\fBGMM\fP (const std::vector< arma::vec > &\fBmeans\fP, const std::vector< arma::mat > &\fBcovariances\fP, const arma::vec &\fBweights\fP)"
+.br
+.RI "\fICreate a \fBGMM\fP with the given means, covariances, and weights\&. \fP"
+.ti -1c
+.RI "\fBGMM\fP (const std::vector< arma::vec > &\fBmeans\fP, const std::vector< arma::mat > &\fBcovariances\fP, const arma::vec &\fBweights\fP, FittingType &\fBfitter\fP)"
+.br
+.RI "\fICreate a \fBGMM\fP with the given means, covariances, and weights, and use the given initialized FittingType class\&. \fP"
+.ti -1c
+.RI "template<typename OtherFittingType > \fBGMM\fP (const \fBGMM\fP< OtherFittingType > &other)"
+.br
+.RI "\fICopy constructor for GMMs which use different fitting types\&. \fP"
+.ti -1c
+.RI "\fBGMM\fP (const \fBGMM\fP &other)"
+.br
+.RI "\fICopy constructor for GMMs using the same fitting type\&. \fP"
+.ti -1c
+.RI "void \fBClassify\fP (const arma::mat &observations, arma::Col< size_t > &labels) const "
+.br
+.RI "\fIClassify the given observations as being from an individual component in this \fBGMM\fP\&. \fP"
+.ti -1c
+.RI "const std::vector< arma::mat > & \fBCovariances\fP () const "
+.br
+.RI "\fIReturn a const reference to the vector of covariance matrices (sigma)\&. \fP"
+.ti -1c
+.RI "std::vector< arma::mat > & \fBCovariances\fP ()"
+.br
+.RI "\fIReturn a reference to the vector of covariance matrices (sigma)\&. \fP"
+.ti -1c
+.RI "size_t \fBDimensionality\fP () const "
+.br
+.RI "\fIReturn the dimensionality of the model\&. \fP"
+.ti -1c
+.RI "size_t & \fBDimensionality\fP ()"
+.br
+.RI "\fIModify the dimensionality of the model\&. \fP"
+.ti -1c
+.RI "double \fBEstimate\fP (const arma::mat &observations, const size_t trials=1, const bool useExistingModel=false)"
+.br
+.RI "\fIEstimate the probability distribution directly from the given observations, using the given algorithm in the FittingType class to fit the data\&. \fP"
+.ti -1c
+.RI "double \fBEstimate\fP (const arma::mat &observations, const arma::vec &probabilities, const size_t trials=1, const bool useExistingModel=false)"
+.br
+.RI "\fIEstimate the probability distribution directly from the given observations, taking into account the probability of each observation actually being from this distribution, and using the given algorithm in the FittingType class to fit the data\&. \fP"
+.ti -1c
+.RI "const FittingType & \fBFitter\fP () const "
+.br
+.RI "\fIReturn a const reference to the fitting type\&. \fP"
+.ti -1c
+.RI "FittingType & \fBFitter\fP ()"
+.br
+.RI "\fIReturn a reference to the fitting type\&. \fP"
+.ti -1c
+.RI "size_t \fBGaussians\fP () const "
+.br
+.RI "\fIReturn the number of gaussians in the model\&. \fP"
+.ti -1c
+.RI "size_t & \fBGaussians\fP ()"
+.br
+.RI "\fIModify the number of gaussians in the model\&. \fP"
+.ti -1c
+.RI "void \fBLoad\fP (const std::string &filename)"
+.br
+.RI "\fILoad a \fBGMM\fP from an XML file\&. \fP"
+.ti -1c
+.RI "const std::vector< arma::vec > & \fBMeans\fP () const "
+.br
+.RI "\fIReturn a const reference to the vector of means (mu)\&. \fP"
+.ti -1c
+.RI "std::vector< arma::vec > & \fBMeans\fP ()"
+.br
+.RI "\fIReturn a reference to the vector of means (mu)\&. \fP"
+.ti -1c
+.RI "template<typename OtherFittingType > \fBGMM\fP & \fBoperator=\fP (const \fBGMM\fP< OtherFittingType > &other)"
+.br
+.RI "\fICopy operator for GMMs which use different fitting types\&. \fP"
+.ti -1c
+.RI "\fBGMM\fP & \fBoperator=\fP (const \fBGMM\fP &other)"
+.br
+.RI "\fICopy operator for GMMs which use the same fitting type\&. \fP"
+.ti -1c
+.RI "double \fBProbability\fP (const arma::vec &observation) const "
+.br
+.RI "\fIReturn the probability that the given observation came from this distribution\&. \fP"
+.ti -1c
+.RI "double \fBProbability\fP (const arma::vec &observation, const size_t component) const "
+.br
+.RI "\fIReturn the probability that the given observation came from the given Gaussian component in this distribution\&. \fP"
+.ti -1c
+.RI "arma::vec \fBRandom\fP () const "
+.br
+.RI "\fIReturn a randomly generated observation according to the probability distribution defined by this object\&. \fP"
+.ti -1c
+.RI "void \fBSave\fP (const std::string &filename) const "
+.br
+.RI "\fISave a \fBGMM\fP to an XML file\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturns a string representation of this object\&. \fP"
+.ti -1c
+.RI "const arma::vec & \fBWeights\fP () const "
+.br
+.RI "\fIReturn a const reference to the a priori weights of each Gaussian\&. \fP"
+.ti -1c
+.RI "arma::vec & \fBWeights\fP ()"
+.br
+.RI "\fIReturn a reference to the a priori weights of each Gaussian\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBLogLikelihood\fP (const arma::mat &dataPoints, const std::vector< arma::vec > &\fBmeans\fP, const std::vector< arma::mat > &covars, const arma::vec &\fBweights\fP) const "
+.br
+.RI "\fIThis function computes the loglikelihood of the given model\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< arma::mat > \fBcovariances\fP"
+.br
+.RI "\fIVector of covariances; one for each Gaussian\&. \fP"
+.ti -1c
+.RI "size_t \fBdimensionality\fP"
+.br
+.RI "\fIThe dimensionality of the model\&. \fP"
+.ti -1c
+.RI "FittingType & \fBfitter\fP"
+.br
+.RI "\fIReference to the fitting object we should use\&. \fP"
+.ti -1c
+.RI "size_t \fBgaussians\fP"
+.br
+.RI "\fIThe number of Gaussians in the model\&. \fP"
+.ti -1c
+.RI "FittingType \fBlocalFitter\fP"
+.br
+.RI "\fILocally-stored fitting object; in case the user did not pass one\&. \fP"
+.ti -1c
+.RI "std::vector< arma::vec > \fBmeans\fP"
+.br
+.RI "\fIVector of means; one for each Gaussian\&. \fP"
+.ti -1c
+.RI "arma::vec \fBweights\fP"
+.br
+.RI "\fIVector of a priori weights for each Gaussian\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename FittingType = EMFit<>>class mlpack::gmm::GMM< FittingType >"
+A Gaussian Mixture Model (\fBGMM\fP)\&. 
+
+This class uses maximum likelihood loss functions to estimate the parameters of the \fBGMM\fP on a given dataset via the given fitting mechanism, defined by the FittingType template parameter\&. The \fBGMM\fP can be trained using normal data, or data with probabilities of being from this \fBGMM\fP (see \fBGMM::Estimate()\fP for more information)\&.
+.PP
+The FittingType template class must provide a way for the \fBGMM\fP to train on data\&. It must provide the following two functions:
+.PP
+.PP
+.nf
+void Estimate(const arma::mat& observations,
+              std::vector<arma::vec>& means,
+              std::vector<arma::mat>& covariances,
+              arma::vec& weights);
+
+void Estimate(const arma::mat& observations,
+              const arma::vec& probabilities,
+              std::vector<arma::vec>& means,
+              std::vector<arma::mat>& covariances,
+              arma::vec& weights);
+.fi
+.PP
+.PP
+These functions should produce a trained \fBGMM\fP from the given observations and probabilities\&. These may modify the size of the model (by increasing the size of the mean and covariance vectors as well as the weight vectors), but the method should expect that these vectors are already set to the size of the \fBGMM\fP as specified in the constructor\&.
+.PP
+For a sample implementation, see the \fBEMFit\fP class; this class uses the EM algorithm to train a \fBGMM\fP, and is the default fitting type\&.
+.PP
+The \fBGMM\fP, once trained, can be used to generate random points from the distribution and estimate the probability of points being from the distribution\&. The parameters of the \fBGMM\fP can be obtained through the accessors and mutators\&.
+.PP
+Example use:
+.PP
+.PP
+.nf
+// Set up a mixture of 5 gaussians in a 4-dimensional space (uses the default
+// EM fitting mechanism)\&.
+GMM<> g(5, 4);
+
+// Train the GMM given the data observations\&.
+g\&.Estimate(data);
+
+// Get the probability of 'observation' being observed from this GMM\&.
+double probability = g\&.Probability(observation);
+
+// Get a random observation from the GMM\&.
+arma::vec observation = g\&.Random();
+.fi
+.PP
+ 
+.PP
+Definition at line 81 of file gmm\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename FittingType = EMFit<>> \fBmlpack::gmm::GMM\fP< FittingType >::\fBGMM\fP ()\fC [inline]\fP"
+
+.PP
+Create an empty Gaussian Mixture Model, with zero gaussians\&. 
+.PP
+Definition at line 99 of file gmm\&.hpp\&.
+.PP
+References mlpack::Log::Debug\&.
+.SS "template<typename FittingType = EMFit<>> \fBmlpack::gmm::GMM\fP< FittingType >::\fBGMM\fP (const size_tgaussians, const size_tdimensionality)"
+
+.PP
+Create a \fBGMM\fP with the given number of Gaussians, each of which have the specified dimensionality\&. The means and covariances will be set to 0\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgaussians\fP Number of Gaussians in this \fBGMM\fP\&. 
+.br
+\fIdimensionality\fP Dimensionality of each Gaussian\&. 
+.RE
+.PP
+
+.SS "template<typename FittingType = EMFit<>> \fBmlpack::gmm::GMM\fP< FittingType >::\fBGMM\fP (const size_tgaussians, const size_tdimensionality, FittingType &fitter)"
+
+.PP
+Create a \fBGMM\fP with the given number of Gaussians, each of which have the specified dimensionality\&. Also, pass in an initialized FittingType class; this is useful in cases where the FittingType class needs to store some state\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgaussians\fP Number of Gaussians in this \fBGMM\fP\&. 
+.br
+\fIdimensionality\fP Dimensionality of each Gaussian\&. 
+.br
+\fIfitter\fP Initialized fitting mechanism\&. 
+.RE
+.PP
+
+.SS "template<typename FittingType = EMFit<>> \fBmlpack::gmm::GMM\fP< FittingType >::\fBGMM\fP (const std::vector< arma::vec > &means, const std::vector< arma::mat > &covariances, const arma::vec &weights)\fC [inline]\fP"
+
+.PP
+Create a \fBGMM\fP with the given means, covariances, and weights\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImeans\fP Means of the model\&. 
+.br
+\fIcovariances\fP Covariances of the model\&. 
+.br
+\fIweights\fP Weights of the model\&. 
+.RE
+.PP
+
+.PP
+Definition at line 142 of file gmm\&.hpp\&.
+.SS "template<typename FittingType = EMFit<>> \fBmlpack::gmm::GMM\fP< FittingType >::\fBGMM\fP (const std::vector< arma::vec > &means, const std::vector< arma::mat > &covariances, const arma::vec &weights, FittingType &fitter)\fC [inline]\fP"
+
+.PP
+Create a \fBGMM\fP with the given means, covariances, and weights, and use the given initialized FittingType class\&. This is useful in cases where the FittingType class needs to store some state\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImeans\fP Means of the model\&. 
+.br
+\fIcovariances\fP Covariances of the model\&. 
+.br
+\fIweights\fP Weights of the model\&. 
+.RE
+.PP
+
+.PP
+Definition at line 162 of file gmm\&.hpp\&.
+.SS "template<typename FittingType = EMFit<>> template<typename OtherFittingType > \fBmlpack::gmm::GMM\fP< FittingType >::\fBGMM\fP (const \fBGMM\fP< OtherFittingType > &other)"
+
+.PP
+Copy constructor for GMMs which use different fitting types\&. 
+.SS "template<typename FittingType = EMFit<>> \fBmlpack::gmm::GMM\fP< FittingType >::\fBGMM\fP (const \fBGMM\fP< FittingType > &other)"
+
+.PP
+Copy constructor for GMMs using the same fitting type\&. This also copies the fitter\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename FittingType = EMFit<>> void \fBmlpack::gmm::GMM\fP< FittingType >::Classify (const arma::mat &observations, arma::Col< size_t > &labels) const"
+
+.PP
+Classify the given observations as being from an individual component in this \fBGMM\fP\&. The resultant classifications are stored in the 'labels' object, and each label will be between 0 and (\fBGaussians()\fP - 1)\&. Supposing that a point was classified with label 2, and that our \fBGMM\fP object was called 'gmm', one could access the relevant Gaussian distribution as follows:
+.PP
+.PP
+.nf
+arma::vec mean = gmm\&.Means()[2];
+arma::mat covariance = gmm\&.Covariances()[2];
+double priorWeight = gmm\&.Weights()[2];
+.fi
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobservations\fP List of observations to classify\&. 
+.br
+\fIlabels\fP Object which will be filled with labels\&. 
+.RE
+.PP
+
+.SS "template<typename FittingType = EMFit<>> const std::vector<arma::mat>& \fBmlpack::gmm::GMM\fP< FittingType >::Covariances () const\fC [inline]\fP"
+
+.PP
+Return a const reference to the vector of covariance matrices (sigma)\&. 
+.PP
+Definition at line 230 of file gmm\&.hpp\&.
+.PP
+References mlpack::gmm::GMM< FittingType >::covariances\&.
+.SS "template<typename FittingType = EMFit<>> std::vector<arma::mat>& \fBmlpack::gmm::GMM\fP< FittingType >::Covariances ()\fC [inline]\fP"
+
+.PP
+Return a reference to the vector of covariance matrices (sigma)\&. 
+.PP
+Definition at line 232 of file gmm\&.hpp\&.
+.PP
+References mlpack::gmm::GMM< FittingType >::covariances\&.
+.SS "template<typename FittingType = EMFit<>> size_t \fBmlpack::gmm::GMM\fP< FittingType >::Dimensionality () const\fC [inline]\fP"
+
+.PP
+Return the dimensionality of the model\&. 
+.PP
+Definition at line 219 of file gmm\&.hpp\&.
+.PP
+References mlpack::gmm::GMM< FittingType >::dimensionality\&.
+.SS "template<typename FittingType = EMFit<>> size_t& \fBmlpack::gmm::GMM\fP< FittingType >::Dimensionality ()\fC [inline]\fP"
+
+.PP
+Modify the dimensionality of the model\&. Careful! You will have to update each mean and covariance matrix yourself\&. 
+.PP
+Definition at line 222 of file gmm\&.hpp\&.
+.PP
+References mlpack::gmm::GMM< FittingType >::dimensionality\&.
+.SS "template<typename FittingType = EMFit<>> double \fBmlpack::gmm::GMM\fP< FittingType >::Estimate (const arma::mat &observations, const size_ttrials = \fC1\fP, const booluseExistingModel = \fCfalse\fP)"
+
+.PP
+Estimate the probability distribution directly from the given observations, using the given algorithm in the FittingType class to fit the data\&. The fitting will be performed 'trials' times; from these trials, the model with the greatest log-likelihood will be selected\&. By default, only one trial is performed\&. The log-likelihood of the best fitting is returned\&.
+.PP
+Optionally, the existing model can be used as an initial model for the estimation by setting 'useExistingModel' to true\&. If the fitting procedure is deterministic after the initial position is given, then 'trials' should be set to 1\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIFittingType\fP The type of fitting method which should be used (EMFit<> is suggested)\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobservations\fP Observations of the model\&. 
+.br
+\fItrials\fP Number of trials to perform; the model in these trials with the greatest log-likelihood will be selected\&. 
+.br
+\fIuseExistingModel\fP If true, the existing model is used as an initial model for the estimation\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The log-likelihood of the best fit\&. 
+.RE
+.PP
+
+.SS "template<typename FittingType = EMFit<>> double \fBmlpack::gmm::GMM\fP< FittingType >::Estimate (const arma::mat &observations, const arma::vec &probabilities, const size_ttrials = \fC1\fP, const booluseExistingModel = \fCfalse\fP)"
+
+.PP
+Estimate the probability distribution directly from the given observations, taking into account the probability of each observation actually being from this distribution, and using the given algorithm in the FittingType class to fit the data\&. The fitting will be performed 'trials' times; from these trials, the model with the greatest log-likelihood will be selected\&. By default, only one trial is performed\&. The log-likelihood of the best fitting is returned\&.
+.PP
+Optionally, the existing model can be used as an initial model for the estimation by setting 'useExistingModel' to true\&. If the fitting procedure is deterministic after the initial position is given, then 'trials' should be set to 1\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobservations\fP Observations of the model\&. 
+.br
+\fIprobabilities\fP Probability of each observation being from this distribution\&. 
+.br
+\fItrials\fP Number of trials to perform; the model in these trials with the greatest log-likelihood will be selected\&. 
+.br
+\fIuseExistingModel\fP If true, the existing model is used as an initial model for the estimation\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The log-likelihood of the best fit\&. 
+.RE
+.PP
+
+.SS "template<typename FittingType = EMFit<>> const FittingType& \fBmlpack::gmm::GMM\fP< FittingType >::Fitter () const\fC [inline]\fP"
+
+.PP
+Return a const reference to the fitting type\&. 
+.PP
+Definition at line 240 of file gmm\&.hpp\&.
+.PP
+References mlpack::gmm::GMM< FittingType >::fitter\&.
+.SS "template<typename FittingType = EMFit<>> FittingType& \fBmlpack::gmm::GMM\fP< FittingType >::Fitter ()\fC [inline]\fP"
+
+.PP
+Return a reference to the fitting type\&. 
+.PP
+Definition at line 242 of file gmm\&.hpp\&.
+.PP
+References mlpack::gmm::GMM< FittingType >::fitter\&.
+.SS "template<typename FittingType = EMFit<>> size_t \fBmlpack::gmm::GMM\fP< FittingType >::Gaussians () const\fC [inline]\fP"
+
+.PP
+Return the number of gaussians in the model\&. 
+.PP
+Definition at line 213 of file gmm\&.hpp\&.
+.PP
+References mlpack::gmm::GMM< FittingType >::gaussians\&.
+.SS "template<typename FittingType = EMFit<>> size_t& \fBmlpack::gmm::GMM\fP< FittingType >::Gaussians ()\fC [inline]\fP"
+
+.PP
+Modify the number of gaussians in the model\&. Careful! You will have to resize the means, covariances, and weights yourself\&. 
+.PP
+Definition at line 216 of file gmm\&.hpp\&.
+.PP
+References mlpack::gmm::GMM< FittingType >::gaussians\&.
+.SS "template<typename FittingType = EMFit<>> void \fBmlpack::gmm::GMM\fP< FittingType >::Load (const std::string &filename)"
+
+.PP
+Load a \fBGMM\fP from an XML file\&. The format of the XML file should be the same as is generated by the \fBSave()\fP method\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP Name of XML file containing model to be loaded\&. 
+.RE
+.PP
+
+.SS "template<typename FittingType = EMFit<>> double \fBmlpack::gmm::GMM\fP< FittingType >::LogLikelihood (const arma::mat &dataPoints, const std::vector< arma::vec > &means, const std::vector< arma::mat > &covars, const arma::vec &weights) const\fC [private]\fP"
+
+.PP
+This function computes the loglikelihood of the given model\&. This function is used by \fBGMM::Estimate()\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataPoints\fP Observations to calculate the likelihood for\&. 
+.br
+\fImeans\fP Means of the given mixture model\&. 
+.br
+\fIcovars\fP Covariances of the given mixture model\&. 
+.br
+\fIweights\fP Weights of the given mixture model\&. 
+.RE
+.PP
+
+.SS "template<typename FittingType = EMFit<>> const std::vector<arma::vec>& \fBmlpack::gmm::GMM\fP< FittingType >::Means () const\fC [inline]\fP"
+
+.PP
+Return a const reference to the vector of means (mu)\&. 
+.PP
+Definition at line 225 of file gmm\&.hpp\&.
+.PP
+References mlpack::gmm::GMM< FittingType >::means\&.
+.SS "template<typename FittingType = EMFit<>> std::vector<arma::vec>& \fBmlpack::gmm::GMM\fP< FittingType >::Means ()\fC [inline]\fP"
+
+.PP
+Return a reference to the vector of means (mu)\&. 
+.PP
+Definition at line 227 of file gmm\&.hpp\&.
+.PP
+References mlpack::gmm::GMM< FittingType >::means\&.
+.SS "template<typename FittingType = EMFit<>> template<typename OtherFittingType > \fBGMM\fP& \fBmlpack::gmm::GMM\fP< FittingType >::operator= (const \fBGMM\fP< OtherFittingType > &other)"
+
+.PP
+Copy operator for GMMs which use different fitting types\&. 
+.SS "template<typename FittingType = EMFit<>> \fBGMM\fP& \fBmlpack::gmm::GMM\fP< FittingType >::operator= (const \fBGMM\fP< FittingType > &other)"
+
+.PP
+Copy operator for GMMs which use the same fitting type\&. This also copies the fitter\&. 
+.SS "template<typename FittingType = EMFit<>> double \fBmlpack::gmm::GMM\fP< FittingType >::Probability (const arma::vec &observation) const"
+
+.PP
+Return the probability that the given observation came from this distribution\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobservation\fP Observation to evaluate the probability of\&. 
+.RE
+.PP
+
+.SS "template<typename FittingType = EMFit<>> double \fBmlpack::gmm::GMM\fP< FittingType >::Probability (const arma::vec &observation, const size_tcomponent) const"
+
+.PP
+Return the probability that the given observation came from the given Gaussian component in this distribution\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobservation\fP Observation to evaluate the probability of\&. 
+.br
+\fIcomponent\fP Index of the component of the \fBGMM\fP to be considered\&. 
+.RE
+.PP
+
+.SS "template<typename FittingType = EMFit<>> arma::vec \fBmlpack::gmm::GMM\fP< FittingType >::Random () const"
+
+.PP
+Return a randomly generated observation according to the probability distribution defined by this object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Random observation from this \fBGMM\fP\&. 
+.RE
+.PP
+
+.SS "template<typename FittingType = EMFit<>> void \fBmlpack::gmm::GMM\fP< FittingType >::Save (const std::string &filename) const"
+
+.PP
+Save a \fBGMM\fP to an XML file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP Name of XML file to write to\&. 
+.RE
+.PP
+
+.SS "template<typename FittingType = EMFit<>> std::string \fBmlpack::gmm::GMM\fP< FittingType >::ToString () const"
+
+.PP
+Returns a string representation of this object\&. 
+.SS "template<typename FittingType = EMFit<>> const arma::vec& \fBmlpack::gmm::GMM\fP< FittingType >::Weights () const\fC [inline]\fP"
+
+.PP
+Return a const reference to the a priori weights of each Gaussian\&. 
+.PP
+Definition at line 235 of file gmm\&.hpp\&.
+.PP
+References mlpack::gmm::GMM< FittingType >::weights\&.
+.SS "template<typename FittingType = EMFit<>> arma::vec& \fBmlpack::gmm::GMM\fP< FittingType >::Weights ()\fC [inline]\fP"
+
+.PP
+Return a reference to the a priori weights of each Gaussian\&. 
+.PP
+Definition at line 237 of file gmm\&.hpp\&.
+.PP
+References mlpack::gmm::GMM< FittingType >::weights\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename FittingType = EMFit<>> std::vector<arma::mat> \fBmlpack::gmm::GMM\fP< FittingType >::covariances\fC [private]\fP"
+
+.PP
+Vector of covariances; one for each Gaussian\&. 
+.PP
+Definition at line 91 of file gmm\&.hpp\&.
+.PP
+Referenced by mlpack::gmm::GMM< FittingType >::Covariances()\&.
+.SS "template<typename FittingType = EMFit<>> size_t \fBmlpack::gmm::GMM\fP< FittingType >::dimensionality\fC [private]\fP"
+
+.PP
+The dimensionality of the model\&. 
+.PP
+Definition at line 87 of file gmm\&.hpp\&.
+.PP
+Referenced by mlpack::gmm::GMM< FittingType >::Dimensionality()\&.
+.SS "template<typename FittingType = EMFit<>> FittingType& \fBmlpack::gmm::GMM\fP< FittingType >::fitter\fC [private]\fP"
+
+.PP
+Reference to the fitting object we should use\&. 
+.PP
+Definition at line 368 of file gmm\&.hpp\&.
+.PP
+Referenced by mlpack::gmm::GMM< FittingType >::Fitter()\&.
+.SS "template<typename FittingType = EMFit<>> size_t \fBmlpack::gmm::GMM\fP< FittingType >::gaussians\fC [private]\fP"
+
+.PP
+The number of Gaussians in the model\&. 
+.PP
+Definition at line 85 of file gmm\&.hpp\&.
+.PP
+Referenced by mlpack::gmm::GMM< FittingType >::Gaussians()\&.
+.SS "template<typename FittingType = EMFit<>> FittingType \fBmlpack::gmm::GMM\fP< FittingType >::localFitter\fC [private]\fP"
+
+.PP
+Locally-stored fitting object; in case the user did not pass one\&. 
+.PP
+Definition at line 365 of file gmm\&.hpp\&.
+.SS "template<typename FittingType = EMFit<>> std::vector<arma::vec> \fBmlpack::gmm::GMM\fP< FittingType >::means\fC [private]\fP"
+
+.PP
+Vector of means; one for each Gaussian\&. 
+.PP
+Definition at line 89 of file gmm\&.hpp\&.
+.PP
+Referenced by mlpack::gmm::GMM< FittingType >::Means()\&.
+.SS "template<typename FittingType = EMFit<>> arma::vec \fBmlpack::gmm::GMM\fP< FittingType >::weights\fC [private]\fP"
+
+.PP
+Vector of a priori weights for each Gaussian\&. 
+.PP
+Definition at line 93 of file gmm\&.hpp\&.
+.PP
+Referenced by mlpack::gmm::GMM< FittingType >::Weights()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

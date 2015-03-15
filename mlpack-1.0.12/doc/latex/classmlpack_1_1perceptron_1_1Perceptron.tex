@@ -1,0 +1,198 @@
+\section{mlpack\-:\-:perceptron\-:\-:Perceptron$<$ Learn\-Policy, Weight\-Initialization\-Policy, Mat\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1perceptron_1_1Perceptron}\index{mlpack\-::perceptron\-::\-Perceptron$<$ Learn\-Policy, Weight\-Initialization\-Policy, Mat\-Type $>$@{mlpack\-::perceptron\-::\-Perceptron$<$ Learn\-Policy, Weight\-Initialization\-Policy, Mat\-Type $>$}}
+
+
+This class implements a simple perceptron (i.\-e., a single layer neural network).  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Perceptron} (const Mat\-Type \&data, const arma\-::\-Row$<$ size\-\_\-t $>$ \&labels, int iterations)
+\begin{DoxyCompactList}\small\item\em Constructor -\/ constructs the perceptron by building the weight\-Vectors matrix, which is later used in Classification. \end{DoxyCompactList}\item 
+{\bf Perceptron} (const {\bf Perceptron}$<$$>$ \&other, Mat\-Type \&data, const arma\-::rowvec \&D, const arma\-::\-Row$<$ size\-\_\-t $>$ \&labels)
+\begin{DoxyCompactList}\small\item\em Alternate constructor which copies parameters from an already initiated perceptron. \end{DoxyCompactList}\item 
+void {\bf Classify} (const Mat\-Type \&test, arma\-::\-Row$<$ size\-\_\-t $>$ \&predicted\-Labels)
+\begin{DoxyCompactList}\small\item\em Classification function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Train} (const arma\-::rowvec \&D)
+\begin{DoxyCompactList}\small\item\em Training Function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+arma\-::\-Row$<$ size\-\_\-t $>$ {\bf class\-Labels}
+\begin{DoxyCompactList}\small\item\em Stores the class labels for the input data. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf iter}
+\begin{DoxyCompactList}\small\item\em To store the number of iterations. \end{DoxyCompactList}\item 
+arma\-::mat {\bf train\-Data}
+\begin{DoxyCompactList}\small\item\em Stores the training data to be used later on in Update\-Weights. \end{DoxyCompactList}\item 
+arma\-::mat {\bf weight\-Vectors}
+\begin{DoxyCompactList}\small\item\em Stores the weight vectors for each of the input class labels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Learn\-Policy = Simple\-Weight\-Update, typename Weight\-Initialization\-Policy = Zero\-Initialization, typename Mat\-Type = arma\-::mat$>$class mlpack\-::perceptron\-::\-Perceptron$<$ Learn\-Policy, Weight\-Initialization\-Policy, Mat\-Type $>$}
+
+This class implements a simple perceptron (i.\-e., a single layer neural network). 
+
+It converges if the supplied training dataset is linearly separable.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Learn\-Policy} & Options of \doxyref{Simple\-Weight\-Update}{p.}{classmlpack_1_1perceptron_1_1SimpleWeightUpdate} and Gradient\-Descent. \\
+\hline
+{\em Weight\-Initialization\-Policy} & Option of \doxyref{Zero\-Initialization}{p.}{classmlpack_1_1perceptron_1_1ZeroInitialization} and \doxyref{Random\-Initialization}{p.}{classmlpack_1_1perceptron_1_1RandomInitialization}. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 38 of file perceptron.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::perceptron\-::\-Perceptron@{mlpack\-::perceptron\-::\-Perceptron}!Perceptron@{Perceptron}}
+\index{Perceptron@{Perceptron}!mlpack::perceptron::Perceptron@{mlpack\-::perceptron\-::\-Perceptron}}
+\subsubsection[{Perceptron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Learn\-Policy = Simple\-Weight\-Update, typename Weight\-Initialization\-Policy = Zero\-Initialization, typename Mat\-Type = arma\-::mat$>$ {\bf mlpack\-::perceptron\-::\-Perceptron}$<$ Learn\-Policy, Weight\-Initialization\-Policy, Mat\-Type $>$\-::{\bf Perceptron} (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{data, }
+\item[{const arma\-::\-Row$<$ size\-\_\-t $>$ \&}]{labels, }
+\item[{int}]{iterations}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1perceptron_1_1Perceptron_a78b3304f0eb5c273b53a4a3ca6572d3a}
+
+
+Constructor -\/ constructs the perceptron by building the weight\-Vectors matrix, which is later used in Classification. 
+
+It adds a bias input vector of 1 to the input data to take care of the bias weights.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Input, training data. \\
+\hline
+{\em labels} & Labels of dataset. \\
+\hline
+{\em iterations} & Maximum number of iterations for the perceptron learning algorithm. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::perceptron\-::\-Perceptron@{mlpack\-::perceptron\-::\-Perceptron}!Perceptron@{Perceptron}}
+\index{Perceptron@{Perceptron}!mlpack::perceptron::Perceptron@{mlpack\-::perceptron\-::\-Perceptron}}
+\subsubsection[{Perceptron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Learn\-Policy = Simple\-Weight\-Update, typename Weight\-Initialization\-Policy = Zero\-Initialization, typename Mat\-Type = arma\-::mat$>$ {\bf mlpack\-::perceptron\-::\-Perceptron}$<$ Learn\-Policy, Weight\-Initialization\-Policy, Mat\-Type $>$\-::{\bf Perceptron} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Perceptron}$<$$>$ \&}]{other, }
+\item[{Mat\-Type \&}]{data, }
+\item[{const arma\-::rowvec \&}]{D, }
+\item[{const arma\-::\-Row$<$ size\-\_\-t $>$ \&}]{labels}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1perceptron_1_1Perceptron_a8ecced65aafee21c6981d6fccb8d90ce}
+
+
+Alternate constructor which copies parameters from an already initiated perceptron. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other initiated \doxyref{Perceptron}{p.}{classmlpack_1_1perceptron_1_1Perceptron} object from which we copy the values from. \\
+\hline
+{\em data} & The data on which to train this \doxyref{Perceptron}{p.}{classmlpack_1_1perceptron_1_1Perceptron} object on. \\
+\hline
+{\em D} & Weight vector to use while training. For boosting purposes. \\
+\hline
+{\em labels} & The labels of data. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::perceptron\-::\-Perceptron@{mlpack\-::perceptron\-::\-Perceptron}!Classify@{Classify}}
+\index{Classify@{Classify}!mlpack::perceptron::Perceptron@{mlpack\-::perceptron\-::\-Perceptron}}
+\subsubsection[{Classify}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Learn\-Policy = Simple\-Weight\-Update, typename Weight\-Initialization\-Policy = Zero\-Initialization, typename Mat\-Type = arma\-::mat$>$ void {\bf mlpack\-::perceptron\-::\-Perceptron}$<$ Learn\-Policy, Weight\-Initialization\-Policy, Mat\-Type $>$\-::Classify (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{test, }
+\item[{arma\-::\-Row$<$ size\-\_\-t $>$ \&}]{predicted\-Labels}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1perceptron_1_1Perceptron_a19e5eecfc78e1dff4b2a60f61a0a62fb}
+
+
+Classification function. 
+
+After training, use the weight\-Vectors matrix to classify test, and put the predicted classes in predicted\-Labels.
+
+
+\begin{DoxyParams}{Parameters}
+{\em test} & Testing data or data to classify. \\
+\hline
+{\em predicted\-Labels} & Vector to store the predicted classes after classifying test. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::perceptron\-::\-Perceptron@{mlpack\-::perceptron\-::\-Perceptron}!Train@{Train}}
+\index{Train@{Train}!mlpack::perceptron::Perceptron@{mlpack\-::perceptron\-::\-Perceptron}}
+\subsubsection[{Train}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Learn\-Policy = Simple\-Weight\-Update, typename Weight\-Initialization\-Policy = Zero\-Initialization, typename Mat\-Type = arma\-::mat$>$ void {\bf mlpack\-::perceptron\-::\-Perceptron}$<$ Learn\-Policy, Weight\-Initialization\-Policy, Mat\-Type $>$\-::Train (
+\begin{DoxyParamCaption}
+\item[{const arma\-::rowvec \&}]{D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1perceptron_1_1Perceptron_a454e8af3c9dcc7959b664a0e4b70c2a2}
+
+
+Training Function. 
+
+It trains on train\-Data using the cost matrix D
+
+
+\begin{DoxyParams}{Parameters}
+{\em D} & Cost matrix. Stores the cost of mispredicting instances \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::perceptron\-::\-Perceptron@{mlpack\-::perceptron\-::\-Perceptron}!class\-Labels@{class\-Labels}}
+\index{class\-Labels@{class\-Labels}!mlpack::perceptron::Perceptron@{mlpack\-::perceptron\-::\-Perceptron}}
+\subsubsection[{class\-Labels}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Learn\-Policy = Simple\-Weight\-Update, typename Weight\-Initialization\-Policy = Zero\-Initialization, typename Mat\-Type = arma\-::mat$>$ arma\-::\-Row$<$size\-\_\-t$>$ {\bf mlpack\-::perceptron\-::\-Perceptron}$<$ Learn\-Policy, Weight\-Initialization\-Policy, Mat\-Type $>$\-::class\-Labels\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1perceptron_1_1Perceptron_acf7102824625e1792915bf73acfe1a19}
+
+
+Stores the class labels for the input data. 
+
+
+
+Definition at line 80 of file perceptron.\-hpp.
+
+\index{mlpack\-::perceptron\-::\-Perceptron@{mlpack\-::perceptron\-::\-Perceptron}!iter@{iter}}
+\index{iter@{iter}!mlpack::perceptron::Perceptron@{mlpack\-::perceptron\-::\-Perceptron}}
+\subsubsection[{iter}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Learn\-Policy = Simple\-Weight\-Update, typename Weight\-Initialization\-Policy = Zero\-Initialization, typename Mat\-Type = arma\-::mat$>$ size\-\_\-t {\bf mlpack\-::perceptron\-::\-Perceptron}$<$ Learn\-Policy, Weight\-Initialization\-Policy, Mat\-Type $>$\-::iter\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1perceptron_1_1Perceptron_a9b0b2892c6c3dd5a0bee6e40ea90bc55}
+
+
+To store the number of iterations. 
+
+
+
+Definition at line 77 of file perceptron.\-hpp.
+
+\index{mlpack\-::perceptron\-::\-Perceptron@{mlpack\-::perceptron\-::\-Perceptron}!train\-Data@{train\-Data}}
+\index{train\-Data@{train\-Data}!mlpack::perceptron::Perceptron@{mlpack\-::perceptron\-::\-Perceptron}}
+\subsubsection[{train\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Learn\-Policy = Simple\-Weight\-Update, typename Weight\-Initialization\-Policy = Zero\-Initialization, typename Mat\-Type = arma\-::mat$>$ arma\-::mat {\bf mlpack\-::perceptron\-::\-Perceptron}$<$ Learn\-Policy, Weight\-Initialization\-Policy, Mat\-Type $>$\-::train\-Data\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1perceptron_1_1Perceptron_a4d0ca569a9d48472ecd1e6c288455d75}
+
+
+Stores the training data to be used later on in Update\-Weights. 
+
+
+
+Definition at line 86 of file perceptron.\-hpp.
+
+\index{mlpack\-::perceptron\-::\-Perceptron@{mlpack\-::perceptron\-::\-Perceptron}!weight\-Vectors@{weight\-Vectors}}
+\index{weight\-Vectors@{weight\-Vectors}!mlpack::perceptron::Perceptron@{mlpack\-::perceptron\-::\-Perceptron}}
+\subsubsection[{weight\-Vectors}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Learn\-Policy = Simple\-Weight\-Update, typename Weight\-Initialization\-Policy = Zero\-Initialization, typename Mat\-Type = arma\-::mat$>$ arma\-::mat {\bf mlpack\-::perceptron\-::\-Perceptron}$<$ Learn\-Policy, Weight\-Initialization\-Policy, Mat\-Type $>$\-::weight\-Vectors\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1perceptron_1_1Perceptron_a1d93aa20a7677252d9e0a149efb3ece8}
+
+
+Stores the weight vectors for each of the input class labels. 
+
+
+
+Definition at line 83 of file perceptron.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/perceptron/{\bf perceptron.\-hpp}\end{DoxyCompactItemize}

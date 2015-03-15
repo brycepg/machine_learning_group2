@@ -1,0 +1,11 @@
+digraph "mlpack::CLI"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="mlpack::CLI",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" singleton" ,fontname="Helvetica"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" doc" ,fontname="Helvetica"];
+  Node2 [label="mlpack::util::ProgramDoc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1util_1_1ProgramDoc.html",tooltip="A static object whose constructor registers program documentation with the CLI class. "];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" timer" ,fontname="Helvetica"];
+  Node3 [label="mlpack::Timers",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmlpack_1_1Timers.html"];
+}

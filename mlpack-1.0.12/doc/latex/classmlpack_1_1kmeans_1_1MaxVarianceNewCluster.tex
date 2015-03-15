@@ -1,0 +1,86 @@
+\section{mlpack\-:\-:kmeans\-:\-:Max\-Variance\-New\-Cluster Class Reference}
+\label{classmlpack_1_1kmeans_1_1MaxVarianceNewCluster}\index{mlpack\-::kmeans\-::\-Max\-Variance\-New\-Cluster@{mlpack\-::kmeans\-::\-Max\-Variance\-New\-Cluster}}
+
+
+When an empty cluster is detected, this class takes the point furthest from the centroid of the cluster with maximum variance as a new cluster.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Max\-Variance\-New\-Cluster} ()
+\begin{DoxyCompactList}\small\item\em Default constructor required by Empty\-Cluster\-Policy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\static size\-\_\-t {\bf Empty\-Cluster} (const Mat\-Type \&data, const size\-\_\-t empty\-Cluster, const Mat\-Type \&centroids, arma\-::\-Col$<$ size\-\_\-t $>$ \&cluster\-Counts, arma\-::\-Col$<$ size\-\_\-t $>$ \&assignments)
+\begin{DoxyCompactList}\small\item\em Take the point furthest from the centroid of the cluster with maximum variance to be a new cluster. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+When an empty cluster is detected, this class takes the point furthest from the centroid of the cluster with maximum variance as a new cluster. 
+
+Definition at line 28 of file max\-\_\-variance\-\_\-new\-\_\-cluster.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::kmeans\-::\-Max\-Variance\-New\-Cluster@{mlpack\-::kmeans\-::\-Max\-Variance\-New\-Cluster}!Max\-Variance\-New\-Cluster@{Max\-Variance\-New\-Cluster}}
+\index{Max\-Variance\-New\-Cluster@{Max\-Variance\-New\-Cluster}!mlpack::kmeans::MaxVarianceNewCluster@{mlpack\-::kmeans\-::\-Max\-Variance\-New\-Cluster}}
+\subsubsection[{Max\-Variance\-New\-Cluster}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::kmeans\-::\-Max\-Variance\-New\-Cluster\-::\-Max\-Variance\-New\-Cluster (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1MaxVarianceNewCluster_a44e417460f632365dcf7de278b8dd84b}
+
+
+Default constructor required by Empty\-Cluster\-Policy. 
+
+
+
+Definition at line 32 of file max\-\_\-variance\-\_\-new\-\_\-cluster.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::kmeans\-::\-Max\-Variance\-New\-Cluster@{mlpack\-::kmeans\-::\-Max\-Variance\-New\-Cluster}!Empty\-Cluster@{Empty\-Cluster}}
+\index{Empty\-Cluster@{Empty\-Cluster}!mlpack::kmeans::MaxVarianceNewCluster@{mlpack\-::kmeans\-::\-Max\-Variance\-New\-Cluster}}
+\subsubsection[{Empty\-Cluster}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type $>$ static size\-\_\-t mlpack\-::kmeans\-::\-Max\-Variance\-New\-Cluster\-::\-Empty\-Cluster (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{data, }
+\item[{const size\-\_\-t}]{empty\-Cluster, }
+\item[{const Mat\-Type \&}]{centroids, }
+\item[{arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{cluster\-Counts, }
+\item[{arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{assignments}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classmlpack_1_1kmeans_1_1MaxVarianceNewCluster_aaf65bd4ddc2cd5e03debfc7d775e2fb4}
+
+
+Take the point furthest from the centroid of the cluster with maximum variance to be a new cluster. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Mat\-Type} & Type of data (arma\-::mat or arma\-::sp\-\_\-mat). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset on which clustering is being performed. \\
+\hline
+{\em empty\-Cluster} & Index of cluster which is empty. \\
+\hline
+{\em centroids} & Centroids of each cluster (one per column). \\
+\hline
+{\em cluster\-Counts} & Number of points in each cluster. \\
+\hline
+{\em assignments} & Cluster assignments of each point.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of points changed. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/kmeans/{\bf max\-\_\-variance\-\_\-new\-\_\-cluster.\-hpp}\end{DoxyCompactItemize}

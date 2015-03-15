@@ -1,0 +1,71 @@
+.TH "mlpack::tree::EmptyStatistic" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::tree::EmptyStatistic \- 
+.PP
+Empty statistic if you are not interested in storing statistics in your tree\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEmptyStatistic\fP ()"
+.br
+.ti -1c
+.RI "template<typename TreeType > \fBEmptyStatistic\fP (TreeType &)"
+.br
+.RI "\fIThis constructor is called when a node is finished being created\&. \fP"
+.ti -1c
+.RI "\fB~EmptyStatistic\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturns a string representation of this object\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Empty statistic if you are not interested in storing statistics in your tree\&. 
+
+Use this as a template for your own\&. 
+.PP
+Definition at line 26 of file statistic\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::tree::EmptyStatistic::EmptyStatistic ()\fC [inline]\fP"
+
+.PP
+Definition at line 29 of file statistic\&.hpp\&.
+.SS "mlpack::tree::EmptyStatistic::~EmptyStatistic ()\fC [inline]\fP"
+
+.PP
+Definition at line 30 of file statistic\&.hpp\&.
+.SS "template<typename TreeType > mlpack::tree::EmptyStatistic::EmptyStatistic (TreeType &)\fC [inline]\fP"
+
+.PP
+This constructor is called when a node is finished being created\&. The node is finished, and its children are finished, but it is not necessarily true that the statistics of other nodes are initialized yet\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInode\fP Node which this corresponds to\&. 
+.RE
+.PP
+
+.PP
+Definition at line 40 of file statistic\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string mlpack::tree::EmptyStatistic::ToString () const\fC [inline]\fP"
+
+.PP
+Returns a string representation of this object\&. 
+.PP
+Definition at line 46 of file statistic\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

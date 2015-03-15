@@ -1,0 +1,1014 @@
+.TH "mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType > \- 
+.PP
+A binary space partitioning tree, such as a KD-tree or a ball tree\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBDualTreeTraverser\fP"
+.br
+.RI "\fIA dual-tree traverser for binary space trees; see dual_tree_traverser\&.hpp\&. \fP"
+.ti -1c
+.RI "class \fBSingleTreeTraverser\fP"
+.br
+.RI "\fIA single-tree traverser for binary space trees; see single_tree_traverser\&.hpp for implementation\&. \fP"
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef MatType \fBMat\fP"
+.br
+.RI "\fISo other classes can use TreeType::Mat\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBinarySpaceTree\fP (MatType &data, const size_t \fBmaxLeafSize\fP=20)"
+.br
+.RI "\fIConstruct this as the root node of a binary space tree using the given dataset\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP (MatType &data, std::vector< size_t > &oldFromNew, const size_t \fBmaxLeafSize\fP=20)"
+.br
+.RI "\fIConstruct this as the root node of a binary space tree using the given dataset\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP (MatType &data, std::vector< size_t > &oldFromNew, std::vector< size_t > &newFromOld, const size_t \fBmaxLeafSize\fP=20)"
+.br
+.RI "\fIConstruct this as the root node of a binary space tree using the given dataset\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP (MatType &data, const size_t \fBbegin\fP, const size_t \fBcount\fP, \fBBinarySpaceTree\fP *\fBparent\fP=NULL, const size_t \fBmaxLeafSize\fP=20)"
+.br
+.RI "\fIConstruct this node on a subset of the given matrix, starting at column begin and using count points\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP (MatType &data, const size_t \fBbegin\fP, const size_t \fBcount\fP, std::vector< size_t > &oldFromNew, \fBBinarySpaceTree\fP *\fBparent\fP=NULL, const size_t \fBmaxLeafSize\fP=20)"
+.br
+.RI "\fIConstruct this node on a subset of the given matrix, starting at column begin_in and using count_in points\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP (MatType &data, const size_t \fBbegin\fP, const size_t \fBcount\fP, std::vector< size_t > &oldFromNew, std::vector< size_t > &newFromOld, \fBBinarySpaceTree\fP *\fBparent\fP=NULL, const size_t \fBmaxLeafSize\fP=20)"
+.br
+.RI "\fIConstruct this node on a subset of the given matrix, starting at column begin_in and using count_in points\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP (const \fBBinarySpaceTree\fP &other)"
+.br
+.RI "\fICreate a binary space tree by copying the other tree\&. \fP"
+.ti -1c
+.RI "\fB~BinarySpaceTree\fP ()"
+.br
+.RI "\fIDeletes this node, deallocating the memory for the children and calling their destructors in turn\&. \fP"
+.ti -1c
+.RI "size_t \fBBegin\fP () const "
+.br
+.RI "\fIReturn the index of the beginning point of this subset\&. \fP"
+.ti -1c
+.RI "size_t & \fBBegin\fP ()"
+.br
+.RI "\fIModify the index of the beginning point of this subset\&. \fP"
+.ti -1c
+.RI "const BoundType & \fBBound\fP () const "
+.br
+.RI "\fIReturn the bound object for this node\&. \fP"
+.ti -1c
+.RI "BoundType & \fBBound\fP ()"
+.br
+.RI "\fIReturn the bound object for this node\&. \fP"
+.ti -1c
+.RI "void \fBCentroid\fP (arma::vec &centroid)"
+.br
+.RI "\fIGet the centroid of the node and store it in the given vector\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP & \fBChild\fP (const size_t child) const "
+.br
+.RI "\fIReturn the specified child (0 will be left, 1 will be right)\&. \fP"
+.ti -1c
+.RI "size_t \fBCount\fP () const "
+.br
+.RI "\fIReturn the number of points in this subset\&. \fP"
+.ti -1c
+.RI "size_t & \fBCount\fP ()"
+.br
+.RI "\fIModify the number of points in this subset\&. \fP"
+.ti -1c
+.RI "const MatType & \fBDataset\fP () const "
+.br
+.RI "\fIGet the dataset which the tree is built on\&. \fP"
+.ti -1c
+.RI "MatType & \fBDataset\fP ()"
+.br
+.RI "\fIModify the dataset which the tree is built on\&. Be careful! \fP"
+.ti -1c
+.RI "size_t \fBDescendant\fP (const size_t index) const "
+.br
+.RI "\fIReturn the index (with reference to the dataset) of a particular descendant of this node\&. \fP"
+.ti -1c
+.RI "size_t \fBEnd\fP () const "
+.br
+.RI "\fIGets the index one beyond the last index in the subset\&. \fP"
+.ti -1c
+.RI "size_t \fBExtendTree\fP (const size_t level)"
+.br
+.RI "\fIFills the tree to the specified level\&. \fP"
+.ti -1c
+.RI "const \fBBinarySpaceTree\fP * \fBFindByBeginCount\fP (size_t \fBbegin\fP, size_t \fBcount\fP) const "
+.br
+.RI "\fIFind a node in this tree by its begin and count (const)\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP * \fBFindByBeginCount\fP (size_t \fBbegin\fP, size_t \fBcount\fP)"
+.br
+.RI "\fIFind a node in this tree by its begin and count\&. \fP"
+.ti -1c
+.RI "double \fBFurthestDescendantDistance\fP () const "
+.br
+.RI "\fIReturn the furthest possible descendant distance\&. \fP"
+.ti -1c
+.RI "double \fBFurthestPointDistance\fP () const "
+.br
+.RI "\fIReturn the furthest distance to a point held in this node\&. \fP"
+.ti -1c
+.RI "size_t \fBGetSplitDimension\fP () const "
+.br
+.RI "\fIReturns the dimension this parent's children are split on\&. \fP"
+.ti -1c
+.RI "bool \fBIsLeaf\fP () const "
+.br
+.RI "\fIReturn whether or not this node is a leaf (true if it has no children)\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP * \fBLeft\fP () const "
+.br
+.RI "\fIGets the left child of this node\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP *& \fBLeft\fP ()"
+.br
+.RI "\fIModify the left child of this node\&. \fP"
+.ti -1c
+.RI "double \fBMaxDistance\fP (const \fBBinarySpaceTree\fP *other) const "
+.br
+.RI "\fIReturn the maximum distance to another node\&. \fP"
+.ti -1c
+.RI "template<typename VecType > double \fBMaxDistance\fP (const VecType &point, typename boost::enable_if< \fBIsVector\fP< VecType > >::type *=0) const "
+.br
+.RI "\fIReturn the maximum distance to another point\&. \fP"
+.ti -1c
+.RI "size_t \fBMaxLeafSize\fP () const "
+.br
+.RI "\fIReturn the max leaf size\&. \fP"
+.ti -1c
+.RI "size_t & \fBMaxLeafSize\fP ()"
+.br
+.RI "\fIModify the max leaf size\&. \fP"
+.ti -1c
+.RI "BoundType::MetricType \fBMetric\fP () const "
+.br
+.RI "\fIGet the metric which the tree uses\&. \fP"
+.ti -1c
+.RI "double \fBMinDistance\fP (const \fBBinarySpaceTree\fP *other) const "
+.br
+.RI "\fIReturn the minimum distance to another node\&. \fP"
+.ti -1c
+.RI "template<typename VecType > double \fBMinDistance\fP (const VecType &point, typename boost::enable_if< \fBIsVector\fP< VecType > >::type *=0) const "
+.br
+.RI "\fIReturn the minimum distance to another point\&. \fP"
+.ti -1c
+.RI "double \fBMinimumBoundDistance\fP () const "
+.br
+.RI "\fIReturn the minimum distance from the center of the node to any bound edge\&. \fP"
+.ti -1c
+.RI "size_t \fBNumChildren\fP () const "
+.br
+.RI "\fIReturn the number of children in this node\&. \fP"
+.ti -1c
+.RI "size_t \fBNumDescendants\fP () const "
+.br
+.RI "\fIReturn the number of descendants of this node\&. \fP"
+.ti -1c
+.RI "size_t \fBNumPoints\fP () const "
+.br
+.RI "\fIReturn the number of points in this node (0 if not a leaf)\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP * \fBParent\fP () const "
+.br
+.RI "\fIGets the parent of this node\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP *& \fBParent\fP ()"
+.br
+.RI "\fIModify the parent of this node\&. \fP"
+.ti -1c
+.RI "double \fBParentDistance\fP () const "
+.br
+.RI "\fIReturn the distance from the center of this node to the center of the parent node\&. \fP"
+.ti -1c
+.RI "double & \fBParentDistance\fP ()"
+.br
+.RI "\fIModify the distance from the center of this node to the center of the parent node\&. \fP"
+.ti -1c
+.RI "size_t \fBPoint\fP (const size_t index) const "
+.br
+.RI "\fIReturn the index (with reference to the dataset) of a particular point in this node\&. \fP"
+.ti -1c
+.RI "\fBmath::Range\fP \fBRangeDistance\fP (const \fBBinarySpaceTree\fP *other) const "
+.br
+.RI "\fIReturn the minimum and maximum distance to another node\&. \fP"
+.ti -1c
+.RI "template<typename VecType > \fBmath::Range\fP \fBRangeDistance\fP (const VecType &point, typename boost::enable_if< \fBIsVector\fP< VecType > >::type *=0) const "
+.br
+.RI "\fIReturn the minimum and maximum distance to another point\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP * \fBRight\fP () const "
+.br
+.RI "\fIGets the right child of this node\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP *& \fBRight\fP ()"
+.br
+.RI "\fIModify the right child of this node\&. \fP"
+.ti -1c
+.RI "size_t \fBSplitDimension\fP () const "
+.br
+.RI "\fIGet the split dimension for this node\&. \fP"
+.ti -1c
+.RI "size_t & \fBSplitDimension\fP ()"
+.br
+.RI "\fIModify the split dimension for this node\&. \fP"
+.ti -1c
+.RI "const StatisticType & \fBStat\fP () const "
+.br
+.RI "\fIReturn the statistic object for this node\&. \fP"
+.ti -1c
+.RI "StatisticType & \fBStat\fP ()"
+.br
+.RI "\fIReturn the statistic object for this node\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturns a string representation of this object\&. \fP"
+.ti -1c
+.RI "size_t \fBTreeDepth\fP () const "
+.br
+.RI "\fIObtains the number of levels below this node in the tree, starting with this\&. \fP"
+.ti -1c
+.RI "size_t \fBTreeSize\fP () const "
+.br
+.RI "\fIObtains the number of nodes in the tree, starting with this\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBHasSelfChildren\fP ()"
+.br
+.RI "\fIReturns false: this tree type does not have self children\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBinarySpaceTree\fP (const size_t \fBbegin\fP, const size_t \fBcount\fP, BoundType \fBbound\fP, StatisticType \fBstat\fP, const int \fBmaxLeafSize\fP=20)"
+.br
+.RI "\fIPrivate copy constructor, available only to fill (pad) the tree to a specified level\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP * \fBCopyMe\fP ()"
+.br
+.ti -1c
+.RI "void \fBSplitNode\fP (MatType &data)"
+.br
+.RI "\fISplits the current node, assigning its left and right children recursively\&. \fP"
+.ti -1c
+.RI "void \fBSplitNode\fP (MatType &data, std::vector< size_t > &oldFromNew)"
+.br
+.RI "\fISplits the current node, assigning its left and right children recursively\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBbegin\fP"
+.br
+.RI "\fIThe index of the first point in the dataset contained in this node (and its children)\&. \fP"
+.ti -1c
+.RI "BoundType \fBbound\fP"
+.br
+.RI "\fIThe bound object for this node\&. \fP"
+.ti -1c
+.RI "size_t \fBcount\fP"
+.br
+.RI "\fIThe number of points of the dataset contained in this node (and its children)\&. \fP"
+.ti -1c
+.RI "MatType & \fBdataset\fP"
+.br
+.RI "\fIThe dataset\&. \fP"
+.ti -1c
+.RI "double \fBfurthestDescendantDistance\fP"
+.br
+.RI "\fIThe worst possible distance to the furthest descendant, cached to speed things up\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP * \fBleft\fP"
+.br
+.RI "\fIThe left child node\&. \fP"
+.ti -1c
+.RI "size_t \fBmaxLeafSize\fP"
+.br
+.RI "\fIThe max leaf size\&. \fP"
+.ti -1c
+.RI "double \fBminimumBoundDistance\fP"
+.br
+.RI "\fIThe minimum distance from the center to any edge of the bound\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP * \fBparent\fP"
+.br
+.RI "\fIThe parent node (NULL if this is the root of the tree)\&. \fP"
+.ti -1c
+.RI "double \fBparentDistance\fP"
+.br
+.RI "\fIThe distance from the centroid of this node to the centroid of the parent\&. \fP"
+.ti -1c
+.RI "\fBBinarySpaceTree\fP * \fBright\fP"
+.br
+.RI "\fIThe right child node\&. \fP"
+.ti -1c
+.RI "size_t \fBsplitDimension\fP"
+.br
+.RI "\fIThe dimension this node split on if it is a parent\&. \fP"
+.ti -1c
+.RI "StatisticType \fBstat\fP"
+.br
+.RI "\fIAny extra data contained in the node\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename BoundType, typename StatisticType = EmptyStatistic, typename MatType = arma::mat, typename SplitType = MeanSplit<BoundType, MatType>>class mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >"
+A binary space partitioning tree, such as a KD-tree or a ball tree\&. 
+
+Once the bound and type of dataset is defined, the tree will construct itself\&. Call the constructor with the dataset to build the tree on, and the entire tree will be built\&.
+.PP
+This particular tree does not allow growth, so you cannot add or delete nodes from it\&. If you need to add or delete a node, the better procedure is to rebuild the tree entirely\&.
+.PP
+This tree does take one runtime parameter in the constructor, which is the max leaf size to be used\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIBoundType\fP The bound used for each node\&. The valid types of bounds and the necessary skeleton interface for this class can be found in bounds/\&. 
+.br
+\fIStatisticType\fP Extra data contained in the node\&. See \fBstatistic\&.hpp\fP for the necessary skeleton interface\&. 
+.br
+\fIMatType\fP The dataset class\&. 
+.br
+\fISplitType\fP The class that partitions the dataset/points at a particular node into two parts\&. Its definition decides the way this split is done\&. 
+.RE
+.PP
+
+.PP
+Definition at line 51 of file binary_space_tree\&.hpp\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> typedef MatType \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::\fBMat\fP"
+
+.PP
+So other classes can use TreeType::Mat\&. 
+.PP
+Definition at line 86 of file binary_space_tree\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::\fBBinarySpaceTree\fP (MatType &data, const size_tmaxLeafSize = \fC20\fP)"
+
+.PP
+Construct this as the root node of a binary space tree using the given dataset\&. This will modify the ordering of the points in the dataset!
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset to create tree from\&. This will be modified! 
+.br
+\fImaxLeafSize\fP Size of each leaf in the tree\&. 
+.RE
+.PP
+
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::CopyMe()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::\fBBinarySpaceTree\fP (MatType &data, std::vector< size_t > &oldFromNew, const size_tmaxLeafSize = \fC20\fP)"
+
+.PP
+Construct this as the root node of a binary space tree using the given dataset\&. This will modify the ordering of points in the dataset! A mapping of the old point indices to the new point indices is filled\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset to create tree from\&. This will be modified! 
+.br
+\fIoldFromNew\fP Vector which will be filled with the old positions for each new point\&. 
+.br
+\fImaxLeafSize\fP Size of each leaf in the tree\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::\fBBinarySpaceTree\fP (MatType &data, std::vector< size_t > &oldFromNew, std::vector< size_t > &newFromOld, const size_tmaxLeafSize = \fC20\fP)"
+
+.PP
+Construct this as the root node of a binary space tree using the given dataset\&. This will modify the ordering of points in the dataset! A mapping of the old point indices to the new point indices is filled, as well as a mapping of the new point indices to the old point indices\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset to create tree from\&. This will be modified! 
+.br
+\fIoldFromNew\fP Vector which will be filled with the old positions for each new point\&. 
+.br
+\fInewFromOld\fP Vector which will be filled with the new positions for each old point\&. 
+.br
+\fImaxLeafSize\fP Size of each leaf in the tree\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::\fBBinarySpaceTree\fP (MatType &data, const size_tbegin, const size_tcount, \fBBinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType > *parent = \fCNULL\fP, const size_tmaxLeafSize = \fC20\fP)"
+
+.PP
+Construct this node on a subset of the given matrix, starting at column begin and using count points\&. The ordering of that subset of points will be modified! This is used for recursive tree-building by the other constructors which don't specify point indices\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset to create tree from\&. This will be modified! 
+.br
+\fIbegin\fP Index of point to start tree construction with\&. 
+.br
+\fIcount\fP Number of points to use to construct tree\&. 
+.br
+\fImaxLeafSize\fP Size of each leaf in the tree\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::\fBBinarySpaceTree\fP (MatType &data, const size_tbegin, const size_tcount, std::vector< size_t > &oldFromNew, \fBBinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType > *parent = \fCNULL\fP, const size_tmaxLeafSize = \fC20\fP)"
+
+.PP
+Construct this node on a subset of the given matrix, starting at column begin_in and using count_in points\&. The ordering of that subset of points will be modified! This is used for recursive tree-building by the other constructors which don't specify point indices\&.
+.PP
+A mapping of the old point indices to the new point indices is filled, but it is expected that the vector is already allocated with size greater than or equal to (begin_in + count_in), and if that is not true, invalid memory reads (and writes) will occur\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset to create tree from\&. This will be modified! 
+.br
+\fIbegin\fP Index of point to start tree construction with\&. 
+.br
+\fIcount\fP Number of points to use to construct tree\&. 
+.br
+\fIoldFromNew\fP Vector which will be filled with the old positions for each new point\&. 
+.br
+\fImaxLeafSize\fP Size of each leaf in the tree\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::\fBBinarySpaceTree\fP (MatType &data, const size_tbegin, const size_tcount, std::vector< size_t > &oldFromNew, std::vector< size_t > &newFromOld, \fBBinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType > *parent = \fCNULL\fP, const size_tmaxLeafSize = \fC20\fP)"
+
+.PP
+Construct this node on a subset of the given matrix, starting at column begin_in and using count_in points\&. The ordering of that subset of points will be modified! This is used for recursive tree-building by the other constructors which don't specify point indices\&.
+.PP
+A mapping of the old point indices to the new point indices is filled, as well as a mapping of the new point indices to the old point indices\&. It is expected that the vector is already allocated with size greater than or equal to (begin_in + count_in), and if that is not true, invalid memory reads (and writes) will occur\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset to create tree from\&. This will be modified! 
+.br
+\fIbegin\fP Index of point to start tree construction with\&. 
+.br
+\fIcount\fP Number of points to use to construct tree\&. 
+.br
+\fIoldFromNew\fP Vector which will be filled with the old positions for each new point\&. 
+.br
+\fInewFromOld\fP Vector which will be filled with the new positions for each old point\&. 
+.br
+\fImaxLeafSize\fP Size of each leaf in the tree\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::\fBBinarySpaceTree\fP (const \fBBinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType > &other)"
+
+.PP
+Create a binary space tree by copying the other tree\&. Be careful! This can take a long time and use a lot of memory\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP Tree to be replicated\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::~\fBBinarySpaceTree\fP ()"
+
+.PP
+Deletes this node, deallocating the memory for the children and calling their destructors in turn\&. This will invalidate any pointers or references to any nodes which are children of this one\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::\fBBinarySpaceTree\fP (const size_tbegin, const size_tcount, BoundTypebound, StatisticTypestat, const intmaxLeafSize = \fC20\fP)\fC [inline]\fP, \fC [private]\fP"
+
+.PP
+Private copy constructor, available only to fill (pad) the tree to a specified level\&. 
+.PP
+Definition at line 452 of file binary_space_tree\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Begin () const\fC [inline]\fP"
+
+.PP
+Return the index of the beginning point of this subset\&. 
+.PP
+Definition at line 430 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::begin\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Begin ()\fC [inline]\fP"
+
+.PP
+Modify the index of the beginning point of this subset\&. 
+.PP
+Definition at line 432 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::begin\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> const BoundType& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Bound () const\fC [inline]\fP"
+
+.PP
+Return the bound object for this node\&. 
+.PP
+Definition at line 252 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::bound\&.
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::MaxDistance(), mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::MinDistance(), and mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::RangeDistance()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> BoundType& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Bound ()\fC [inline]\fP"
+
+.PP
+Return the bound object for this node\&. 
+.PP
+Definition at line 254 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::bound\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> void \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Centroid (arma::vec &centroid)\fC [inline]\fP"
+
+.PP
+Get the centroid of the node and store it in the given vector\&. 
+.PP
+Definition at line 301 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::bound\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBBinarySpaceTree\fP& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Child (const size_tchild) const"
+
+.PP
+Return the specified child (0 will be left, 1 will be right)\&. If the index is greater than 1, this will return the right child\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchild\fP Index of child to return\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBBinarySpaceTree\fP* \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::CopyMe ()\fC [inline]\fP, \fC [private]\fP"
+
+.PP
+Definition at line 465 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::begin, mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::BinarySpaceTree(), mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::bound, mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::count, mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::maxLeafSize, and mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::stat\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Count () const\fC [inline]\fP"
+
+.PP
+Return the number of points in this subset\&. 
+.PP
+Definition at line 440 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::count\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Count ()\fC [inline]\fP"
+
+.PP
+Modify the number of points in this subset\&. 
+.PP
+Definition at line 442 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::count\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> const MatType& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Dataset () const\fC [inline]\fP"
+
+.PP
+Get the dataset which the tree is built on\&. 
+.PP
+Definition at line 293 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::dataset\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> MatType& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Dataset ()\fC [inline]\fP"
+
+.PP
+Modify the dataset which the tree is built on\&. Be careful! 
+.PP
+Definition at line 295 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::dataset\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Descendant (const size_tindex) const"
+
+.PP
+Return the index (with reference to the dataset) of a particular descendant of this node\&. The index should be greater than zero but less than the number of descendants\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP Index of the descendant\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::End () const"
+
+.PP
+Gets the index one beyond the last index in the subset\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::ExtendTree (const size_tlevel)"
+
+.PP
+Fills the tree to the specified level\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> const \fBBinarySpaceTree\fP* \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::FindByBeginCount (size_tbegin, size_tcount) const"
+
+.PP
+Find a node in this tree by its begin and count (const)\&. Every node is uniquely identified by these two numbers\&. This is useful for communicating position over the network, when pointers would be invalid\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbegin\fP The \fBbegin()\fP of the node to find\&. 
+.br
+\fIcount\fP The \fBcount()\fP of the node to find\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The found node, or NULL if not found\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBBinarySpaceTree\fP* \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::FindByBeginCount (size_tbegin, size_tcount)"
+
+.PP
+Find a node in this tree by its begin and count\&. Every node is uniquely identified by these two numbers\&. This is useful for communicating position over the network, when pointers would be invalid\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbegin\fP The \fBbegin()\fP of the node to find\&. 
+.br
+\fIcount\fP The \fBcount()\fP of the node to find\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The found node, or NULL if not found\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> double \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::FurthestDescendantDistance () const"
+
+.PP
+Return the furthest possible descendant distance\&. This returns the maximum distance from the centroid to the edge of the bound and not the empirical quantity which is the actual furthest descendant distance\&. So the actual furthest descendant distance may be less than what this method returns (but it will never be greater than this)\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> double \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::FurthestPointDistance () const"
+
+.PP
+Return the furthest distance to a point held in this node\&. If this is not a leaf node, then the distance is 0 because the node holds no points\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::GetSplitDimension () const"
+
+.PP
+Returns the dimension this parent's children are split on\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> static bool \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::HasSelfChildren ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Returns false: this tree type does not have self children\&. 
+.PP
+Definition at line 445 of file binary_space_tree\&.hpp\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> bool \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::IsLeaf () const"
+
+.PP
+Return whether or not this node is a leaf (true if it has no children)\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBBinarySpaceTree\fP* \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Left () const\fC [inline]\fP"
+
+.PP
+Gets the left child of this node\&. 
+.PP
+Definition at line 273 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::left\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBBinarySpaceTree\fP*& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Left ()\fC [inline]\fP"
+
+.PP
+Modify the left child of this node\&. 
+.PP
+Definition at line 275 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::left\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> double \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::MaxDistance (const \fBBinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType > *other) const\fC [inline]\fP"
+
+.PP
+Return the maximum distance to another node\&. 
+.PP
+Definition at line 375 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::bound, and mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Bound()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> template<typename VecType > double \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::MaxDistance (const VecType &point, typename boost::enable_if< \fBIsVector\fP< VecType > >::type * = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Return the maximum distance to another point\&. 
+.PP
+Definition at line 397 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::bound\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::MaxLeafSize () const\fC [inline]\fP"
+
+.PP
+Return the max leaf size\&. 
+.PP
+Definition at line 265 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::maxLeafSize\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::MaxLeafSize ()\fC [inline]\fP"
+
+.PP
+Modify the max leaf size\&. 
+.PP
+Definition at line 267 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::maxLeafSize\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> BoundType::MetricType \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Metric () const\fC [inline]\fP"
+
+.PP
+Get the metric which the tree uses\&. 
+.PP
+Definition at line 298 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::bound\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> double \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::MinDistance (const \fBBinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType > *other) const\fC [inline]\fP"
+
+.PP
+Return the minimum distance to another node\&. 
+.PP
+Definition at line 369 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::bound, and mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Bound()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> template<typename VecType > double \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::MinDistance (const VecType &point, typename boost::enable_if< \fBIsVector\fP< VecType > >::type * = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Return the minimum distance to another point\&. 
+.PP
+Definition at line 388 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::bound\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> double \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::MinimumBoundDistance () const"
+
+.PP
+Return the minimum distance from the center of the node to any bound edge\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::NumChildren () const"
+
+.PP
+Return the number of children in this node\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::NumDescendants () const"
+
+.PP
+Return the number of descendants of this node\&. For a non-leaf in a binary space tree, this is the number of points at the descendant leaves\&. For a leaf, this is the number of points in the leaf\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::NumPoints () const"
+
+.PP
+Return the number of points in this node (0 if not a leaf)\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBBinarySpaceTree\fP* \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Parent () const\fC [inline]\fP"
+
+.PP
+Gets the parent of this node\&. 
+.PP
+Definition at line 283 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::parent\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBBinarySpaceTree\fP*& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Parent ()\fC [inline]\fP"
+
+.PP
+Modify the parent of this node\&. 
+.PP
+Definition at line 285 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::parent\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> double \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::ParentDistance () const\fC [inline]\fP"
+
+.PP
+Return the distance from the center of this node to the center of the parent node\&. 
+.PP
+Definition at line 326 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::parentDistance\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> double& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::ParentDistance ()\fC [inline]\fP"
+
+.PP
+Modify the distance from the center of this node to the center of the parent node\&. 
+.PP
+Definition at line 329 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::parentDistance\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Point (const size_tindex) const"
+
+.PP
+Return the index (with reference to the dataset) of a particular point in this node\&. This will happily return invalid indices if the given index is greater than the number of points in this node (obtained with \fBNumPoints()\fP) -- be careful\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP Index of point for which a dataset index is wanted\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBmath::Range\fP \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::RangeDistance (const \fBBinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType > *other) const\fC [inline]\fP"
+
+.PP
+Return the minimum and maximum distance to another node\&. 
+.PP
+Definition at line 381 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::bound, and mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Bound()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> template<typename VecType > \fBmath::Range\fP \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::RangeDistance (const VecType &point, typename boost::enable_if< \fBIsVector\fP< VecType > >::type * = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Return the minimum and maximum distance to another point\&. 
+.PP
+Definition at line 407 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::bound\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBBinarySpaceTree\fP* \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Right () const\fC [inline]\fP"
+
+.PP
+Gets the right child of this node\&. 
+.PP
+Definition at line 278 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::right\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBBinarySpaceTree\fP*& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Right ()\fC [inline]\fP"
+
+.PP
+Modify the right child of this node\&. 
+.PP
+Definition at line 280 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::right\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::SplitDimension () const\fC [inline]\fP"
+
+.PP
+Get the split dimension for this node\&. 
+.PP
+Definition at line 288 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::splitDimension\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::SplitDimension ()\fC [inline]\fP"
+
+.PP
+Modify the split dimension for this node\&. 
+.PP
+Definition at line 290 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::splitDimension\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> void \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::SplitNode (MatType &data)\fC [private]\fP"
+
+.PP
+Splits the current node, assigning its left and right children recursively\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset which we are using\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> void \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::SplitNode (MatType &data, std::vector< size_t > &oldFromNew)\fC [private]\fP"
+
+.PP
+Splits the current node, assigning its left and right children recursively\&. Also returns a list of the changed indices\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset which we are using\&. 
+.br
+\fIoldFromNew\fP Vector holding permuted indices\&. 
+.RE
+.PP
+
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> const StatisticType& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Stat () const\fC [inline]\fP"
+
+.PP
+Return the statistic object for this node\&. 
+.PP
+Definition at line 257 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::stat\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> StatisticType& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::Stat ()\fC [inline]\fP"
+
+.PP
+Return the statistic object for this node\&. 
+.PP
+Definition at line 259 of file binary_space_tree\&.hpp\&.
+.PP
+References mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::stat\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> std::string \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::ToString () const"
+
+.PP
+Returns a string representation of this object\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::TreeDepth () const"
+
+.PP
+Obtains the number of levels below this node in the tree, starting with this\&. 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::TreeSize () const"
+
+.PP
+Obtains the number of nodes in the tree, starting with this\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::begin\fC [private]\fP"
+
+.PP
+The index of the first point in the dataset contained in this node (and its children)\&. 
+.PP
+Definition at line 62 of file binary_space_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Begin(), and mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::CopyMe()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> BoundType \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::bound\fC [private]\fP"
+
+.PP
+The bound object for this node\&. 
+.PP
+Definition at line 69 of file binary_space_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Bound(), mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Centroid(), mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::CopyMe(), mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::MaxDistance(), mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Metric(), mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::MinDistance(), and mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::RangeDistance()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::count\fC [private]\fP"
+
+.PP
+The number of points of the dataset contained in this node (and its children)\&. 
+.PP
+Definition at line 65 of file binary_space_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::CopyMe(), and mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Count()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> MatType& \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::dataset\fC [private]\fP"
+
+.PP
+The dataset\&. 
+.PP
+Definition at line 82 of file binary_space_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Dataset()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> double \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::furthestDescendantDistance\fC [private]\fP"
+
+.PP
+The worst possible distance to the furthest descendant, cached to speed things up\&. 
+.PP
+Definition at line 78 of file binary_space_tree\&.hpp\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBBinarySpaceTree\fP* \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::left\fC [private]\fP"
+
+.PP
+The left child node\&. 
+.PP
+Definition at line 55 of file binary_space_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Left()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::maxLeafSize\fC [private]\fP"
+
+.PP
+The max leaf size\&. 
+.PP
+Definition at line 67 of file binary_space_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::CopyMe(), and mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::MaxLeafSize()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> double \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::minimumBoundDistance\fC [private]\fP"
+
+.PP
+The minimum distance from the center to any edge of the bound\&. 
+.PP
+Definition at line 80 of file binary_space_tree\&.hpp\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBBinarySpaceTree\fP* \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::parent\fC [private]\fP"
+
+.PP
+The parent node (NULL if this is the root of the tree)\&. 
+.PP
+Definition at line 59 of file binary_space_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Parent()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> double \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::parentDistance\fC [private]\fP"
+
+.PP
+The distance from the centroid of this node to the centroid of the parent\&. 
+.PP
+Definition at line 75 of file binary_space_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::ParentDistance()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> \fBBinarySpaceTree\fP* \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::right\fC [private]\fP"
+
+.PP
+The right child node\&. 
+.PP
+Definition at line 57 of file binary_space_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Right()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> size_t \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::splitDimension\fC [private]\fP"
+
+.PP
+The dimension this node split on if it is a parent\&. 
+.PP
+Definition at line 73 of file binary_space_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::SplitDimension()\&.
+.SS "template<typename BoundType , typename StatisticType  = EmptyStatistic, typename MatType  = arma::mat, typename SplitType  = MeanSplit<BoundType, MatType>> StatisticType \fBmlpack::tree::BinarySpaceTree\fP< BoundType, StatisticType, MatType, SplitType >::stat\fC [private]\fP"
+
+.PP
+Any extra data contained in the node\&. 
+.PP
+Definition at line 71 of file binary_space_tree\&.hpp\&.
+.PP
+Referenced by mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::CopyMe(), and mlpack::tree::BinarySpaceTree< BoundType, StatisticType, MatType, SplitType >::Stat()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

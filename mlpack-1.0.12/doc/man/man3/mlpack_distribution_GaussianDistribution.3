@@ -1,0 +1,206 @@
+.TH "mlpack::distribution::GaussianDistribution" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::distribution::GaussianDistribution \- 
+.PP
+A single multivariate Gaussian distribution\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGaussianDistribution\fP ()"
+.br
+.RI "\fIDefault constructor, which creates a Gaussian with zero dimension\&. \fP"
+.ti -1c
+.RI "\fBGaussianDistribution\fP (const size_t dimension)"
+.br
+.RI "\fICreate a Gaussian distribution with zero mean and identity covariance with the given dimensionality\&. \fP"
+.ti -1c
+.RI "\fBGaussianDistribution\fP (const arma::vec &\fBmean\fP, const arma::mat &\fBcovariance\fP)"
+.br
+.RI "\fICreate a Gaussian distribution with the given mean and covariance\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBCovariance\fP () const "
+.br
+.RI "\fIReturn the covariance matrix\&. \fP"
+.ti -1c
+.RI "arma::mat & \fBCovariance\fP ()"
+.br
+.RI "\fIReturn a modifiable copy of the covariance\&. \fP"
+.ti -1c
+.RI "size_t \fBDimensionality\fP () const "
+.br
+.RI "\fIReturn the dimensionality of this distribution\&. \fP"
+.ti -1c
+.RI "void \fBEstimate\fP (const arma::mat &observations)"
+.br
+.RI "\fIEstimate the Gaussian distribution directly from the given observations\&. \fP"
+.ti -1c
+.RI "void \fBEstimate\fP (const arma::mat &observations, const arma::vec &probabilities)"
+.br
+.RI "\fIEstimate the Gaussian distribution from the given observations, taking into account the probability of each observation actually being from this distribution\&. \fP"
+.ti -1c
+.RI "const arma::vec & \fBMean\fP () const "
+.br
+.RI "\fIReturn the mean\&. \fP"
+.ti -1c
+.RI "arma::vec & \fBMean\fP ()"
+.br
+.RI "\fIReturn a modifiable copy of the mean\&. \fP"
+.ti -1c
+.RI "double \fBProbability\fP (const arma::vec &observation) const "
+.br
+.RI "\fIReturn the probability of the given observation\&. \fP"
+.ti -1c
+.RI "arma::vec \fBRandom\fP () const "
+.br
+.RI "\fIReturn a randomly generated observation according to the probability distribution defined by this object\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturns a string representation of this object\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "arma::mat \fBcovariance\fP"
+.br
+.RI "\fICovariance of the distribution\&. \fP"
+.ti -1c
+.RI "arma::vec \fBmean\fP"
+.br
+.RI "\fIMean of the distribution\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A single multivariate Gaussian distribution\&. 
+.PP
+Definition at line 27 of file gaussian_distribution\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::distribution::GaussianDistribution::GaussianDistribution ()\fC [inline]\fP"
+
+.PP
+Default constructor, which creates a Gaussian with zero dimension\&. 
+.PP
+Definition at line 39 of file gaussian_distribution\&.hpp\&.
+.SS "mlpack::distribution::GaussianDistribution::GaussianDistribution (const size_tdimension)\fC [inline]\fP"
+
+.PP
+Create a Gaussian distribution with zero mean and identity covariance with the given dimensionality\&. 
+.PP
+Definition at line 45 of file gaussian_distribution\&.hpp\&.
+.SS "mlpack::distribution::GaussianDistribution::GaussianDistribution (const arma::vec &mean, const arma::mat &covariance)\fC [inline]\fP"
+
+.PP
+Create a Gaussian distribution with the given mean and covariance\&. 
+.PP
+Definition at line 53 of file gaussian_distribution\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const arma::mat& mlpack::distribution::GaussianDistribution::Covariance () const\fC [inline]\fP"
+
+.PP
+Return the covariance matrix\&. 
+.PP
+Definition at line 96 of file gaussian_distribution\&.hpp\&.
+.PP
+References covariance\&.
+.SS "arma::mat& mlpack::distribution::GaussianDistribution::Covariance ()\fC [inline]\fP"
+
+.PP
+Return a modifiable copy of the covariance\&. 
+.PP
+Definition at line 98 of file gaussian_distribution\&.hpp\&.
+.PP
+References covariance\&.
+.SS "size_t mlpack::distribution::GaussianDistribution::Dimensionality () const\fC [inline]\fP"
+
+.PP
+Return the dimensionality of this distribution\&. 
+.PP
+Definition at line 57 of file gaussian_distribution\&.hpp\&.
+.PP
+References mean\&.
+.SS "void mlpack::distribution::GaussianDistribution::Estimate (const arma::mat &observations)"
+
+.PP
+Estimate the Gaussian distribution directly from the given observations\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobservations\fP List of observations\&. 
+.RE
+.PP
+
+.SS "void mlpack::distribution::GaussianDistribution::Estimate (const arma::mat &observations, const arma::vec &probabilities)"
+
+.PP
+Estimate the Gaussian distribution from the given observations, taking into account the probability of each observation actually being from this distribution\&. 
+.SS "const arma::vec& mlpack::distribution::GaussianDistribution::Mean () const\fC [inline]\fP"
+
+.PP
+Return the mean\&. 
+.PP
+Definition at line 91 of file gaussian_distribution\&.hpp\&.
+.PP
+References mean\&.
+.SS "arma::vec& mlpack::distribution::GaussianDistribution::Mean ()\fC [inline]\fP"
+
+.PP
+Return a modifiable copy of the mean\&. 
+.PP
+Definition at line 93 of file gaussian_distribution\&.hpp\&.
+.PP
+References mean\&.
+.SS "double mlpack::distribution::GaussianDistribution::Probability (const arma::vec &observation) const\fC [inline]\fP"
+
+.PP
+Return the probability of the given observation\&. 
+.PP
+Definition at line 62 of file gaussian_distribution\&.hpp\&.
+.PP
+References covariance, mean, and mlpack::gmm::phi()\&.
+.SS "arma::vec mlpack::distribution::GaussianDistribution::Random () const"
+
+.PP
+Return a randomly generated observation according to the probability distribution defined by this object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Random observation from this Gaussian distribution\&. 
+.RE
+.PP
+
+.SS "std::string mlpack::distribution::GaussianDistribution::ToString () const"
+
+.PP
+Returns a string representation of this object\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "arma::mat mlpack::distribution::GaussianDistribution::covariance\fC [private]\fP"
+
+.PP
+Covariance of the distribution\&. 
+.PP
+Definition at line 33 of file gaussian_distribution\&.hpp\&.
+.PP
+Referenced by Covariance(), and Probability()\&.
+.SS "arma::vec mlpack::distribution::GaussianDistribution::mean\fC [private]\fP"
+
+.PP
+Mean of the distribution\&. 
+.PP
+Definition at line 31 of file gaussian_distribution\&.hpp\&.
+.PP
+Referenced by Dimensionality(), Mean(), and Probability()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

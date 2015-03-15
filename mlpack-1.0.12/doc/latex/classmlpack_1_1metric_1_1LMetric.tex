@@ -1,0 +1,103 @@
+\section{mlpack\-:\-:metric\-:\-:L\-Metric$<$ Power, Take\-Root $>$ Class Template Reference}
+\label{classmlpack_1_1metric_1_1LMetric}\index{mlpack\-::metric\-::\-L\-Metric$<$ Power, Take\-Root $>$@{mlpack\-::metric\-::\-L\-Metric$<$ Power, Take\-Root $>$}}
+
+
+The L\-\_\-p metric for arbitrary integer p, with an option to take the root.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf L\-Metric} ()
+\item 
+std\-::string {\bf To\-String} () const 
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Vec\-Type1 , typename Vec\-Type2 $>$ }\\static double {\bf Evaluate} (const Vec\-Type1 \&a, const Vec\-Type2 \&b)
+\begin{DoxyCompactList}\small\item\em Computes the distance between two points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$int Power, bool Take\-Root = true$>$class mlpack\-::metric\-::\-L\-Metric$<$ Power, Take\-Root $>$}
+
+The L\-\_\-p metric for arbitrary integer p, with an option to take the root. 
+
+This class implements the standard L\-\_\-p metric for two arbitrary vectors $ x $ and $ y $ of dimensionality $ n $\-:
+
+\[ d(x, y) = \left( \sum_{i = 1}^{n} | x_i - y_i |^p \right)^{\frac{1}{p}}. \]
+
+The value of p is given as a template parameter.
+
+In addition, the function $ d(x, y) $ can be simplified, neglecting the p-\/root calculation. This is done by specifying the Take\-Root template parameter to be false. Then,
+
+\[ d(x, y) = \sum_{i = 1}^{n} | x_i - y_i |^p \]
+
+It is faster to compute that distance, so Take\-Root is by default off. However, when Take\-Root is false, the distance given is not actually a true metric -- it does not satisfy the triangle inequality. Some M\-L\-P\-A\-C\-K methods do not require the triangle inequality to operate correctly (such as the Binary\-Space\-Tree), but setting Take\-Root = false in some cases will cause incorrect results.
+
+A few convenience typedefs are given\-:
+
+
+\begin{DoxyItemize}
+\item Manhattan\-Distance
+\item Euclidean\-Distance
+\item Squared\-Euclidean\-Distance
+\end{DoxyItemize}
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Power} & Power of metric; i.\-e. Power = 1 gives the L1-\/norm (Manhattan distance). \\
+\hline
+{\em Take\-Root} & If true, the Power'th root of the result is taken before it is returned. Setting this to false causes the metric to not satisfy the Triangle Inequality (be careful!). \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 65 of file lmetric.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::metric\-::\-L\-Metric@{mlpack\-::metric\-::\-L\-Metric}!L\-Metric@{L\-Metric}}
+\index{L\-Metric@{L\-Metric}!mlpack::metric::LMetric@{mlpack\-::metric\-::\-L\-Metric}}
+\subsubsection[{L\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power, bool Take\-Root = true$>$ {\bf mlpack\-::metric\-::\-L\-Metric}$<$ Power, Take\-Root $>$\-::{\bf L\-Metric} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1metric_1_1LMetric_a74c484e0defe63e4224a4593a9c0a0ab}
+
+
+Definition at line 72 of file lmetric.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::metric\-::\-L\-Metric@{mlpack\-::metric\-::\-L\-Metric}!Evaluate@{Evaluate}}
+\index{Evaluate@{Evaluate}!mlpack::metric::LMetric@{mlpack\-::metric\-::\-L\-Metric}}
+\subsubsection[{Evaluate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power, bool Take\-Root = true$>$ template$<$typename Vec\-Type1 , typename Vec\-Type2 $>$ static double {\bf mlpack\-::metric\-::\-L\-Metric}$<$ Power, Take\-Root $>$\-::Evaluate (
+\begin{DoxyParamCaption}
+\item[{const Vec\-Type1 \&}]{a, }
+\item[{const Vec\-Type2 \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classmlpack_1_1metric_1_1LMetric_ab7be2e7a216dc964554e5436535d879b}
+
+
+Computes the distance between two points. 
+
+
+
+Referenced by mlpack\-::kernel\-::\-Spherical\-Kernel\-::\-Convolution\-Integral(), mlpack\-::kernel\-::\-Gaussian\-Kernel\-::\-Convolution\-Integral(), mlpack\-::kernel\-::\-Spherical\-Kernel\-::\-Evaluate(), mlpack\-::kernel\-::\-Triangular\-Kernel\-::\-Evaluate(), mlpack\-::kernel\-::\-Laplacian\-Kernel\-::\-Evaluate(), and mlpack\-::kernel\-::\-Gaussian\-Kernel\-::\-Evaluate().
+
+\index{mlpack\-::metric\-::\-L\-Metric@{mlpack\-::metric\-::\-L\-Metric}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::metric::LMetric@{mlpack\-::metric\-::\-L\-Metric}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int Power, bool Take\-Root = true$>$ std\-::string {\bf mlpack\-::metric\-::\-L\-Metric}$<$ Power, Take\-Root $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1metric_1_1LMetric_a0cd081e5f1186543757d367bef128cad}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/metrics/{\bf lmetric.\-hpp}\end{DoxyCompactItemize}

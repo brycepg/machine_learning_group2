@@ -1,0 +1,341 @@
+.TH "mlpack::emst::DTBRules< MetricType, TreeType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::emst::DTBRules< MetricType, TreeType > \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef 
+.br
+\fBneighbor::NeighborSearchTraversalInfo\fP
+.br
+< TreeType > \fBTraversalInfoType\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDTBRules\fP (const arma::mat &\fBdataSet\fP, \fBUnionFind\fP &\fBconnections\fP, arma::vec &\fBneighborsDistances\fP, arma::Col< size_t > &\fBneighborsInComponent\fP, arma::Col< size_t > &\fBneighborsOutComponent\fP, MetricType &\fBmetric\fP)"
+.br
+.ti -1c
+.RI "double \fBBaseCase\fP (const size_t queryIndex, const size_t referenceIndex)"
+.br
+.ti -1c
+.RI "size_t \fBBaseCases\fP () const "
+.br
+.RI "\fIGet the number of base cases performed\&. \fP"
+.ti -1c
+.RI "size_t & \fBBaseCases\fP ()"
+.br
+.RI "\fIModify the number of base cases performed\&. \fP"
+.ti -1c
+.RI "double \fBRescore\fP (const size_t queryIndex, TreeType &referenceNode, const double oldScore)"
+.br
+.RI "\fIRe-evaluate the score for recursion order\&. \fP"
+.ti -1c
+.RI "double \fBRescore\fP (TreeType &queryNode, TreeType &referenceNode, const double oldScore) const "
+.br
+.RI "\fIRe-evaluate the score for recursion order\&. \fP"
+.ti -1c
+.RI "double \fBScore\fP (const size_t queryIndex, TreeType &referenceNode)"
+.br
+.RI "\fIGet the score for recursion order\&. \fP"
+.ti -1c
+.RI "double \fBScore\fP (const size_t queryIndex, TreeType &referenceNode, const double baseCaseResult)"
+.br
+.RI "\fIGet the score for recursion order, passing the base case result (in the situation where it may be needed to calculate the recursion order)\&. \fP"
+.ti -1c
+.RI "double \fBScore\fP (TreeType &queryNode, TreeType &referenceNode)"
+.br
+.RI "\fIGet the score for recursion order\&. \fP"
+.ti -1c
+.RI "double \fBScore\fP (TreeType &queryNode, TreeType &referenceNode, const double baseCaseResult)"
+.br
+.RI "\fIGet the score for recursion order, passing the base case result (in the situation where it may be needed to calculate the recursion order)\&. \fP"
+.ti -1c
+.RI "size_t \fBScores\fP () const "
+.br
+.RI "\fIGet the number of node combinations that have been scored\&. \fP"
+.ti -1c
+.RI "size_t & \fBScores\fP ()"
+.br
+.RI "\fIModify the number of node combinations that have been scored\&. \fP"
+.ti -1c
+.RI "const \fBTraversalInfoType\fP & \fBTraversalInfo\fP () const "
+.br
+.ti -1c
+.RI "\fBTraversalInfoType\fP & \fBTraversalInfo\fP ()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBCalculateBound\fP (TreeType &queryNode) const "
+.br
+.RI "\fIUpdate the bound for the given query node\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBbaseCases\fP"
+.br
+.RI "\fIThe number of base cases calculated\&. \fP"
+.ti -1c
+.RI "\fBUnionFind\fP & \fBconnections\fP"
+.br
+.RI "\fIStores the tree structure so far\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBdataSet\fP"
+.br
+.RI "\fIThe data points\&. \fP"
+.ti -1c
+.RI "MetricType & \fBmetric\fP"
+.br
+.RI "\fIThe instantiated metric\&. \fP"
+.ti -1c
+.RI "arma::vec & \fBneighborsDistances\fP"
+.br
+.RI "\fIThe distance to the candidate nearest neighbor for each component\&. \fP"
+.ti -1c
+.RI "arma::Col< size_t > & \fBneighborsInComponent\fP"
+.br
+.RI "\fIThe index of the point in the component that is an endpoint of the candidate edge\&. \fP"
+.ti -1c
+.RI "arma::Col< size_t > & \fBneighborsOutComponent\fP"
+.br
+.RI "\fIThe index of the point outside of the component that is an endpoint of the candidate edge\&. \fP"
+.ti -1c
+.RI "size_t \fBscores\fP"
+.br
+.RI "\fIThe number of node combinations that have been scored\&. \fP"
+.ti -1c
+.RI "\fBTraversalInfoType\fP \fBtraversalInfo\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename MetricType, typename TreeType>class mlpack::emst::DTBRules< MetricType, TreeType >"
+
+.PP
+Definition at line 25 of file dtb_rules\&.hpp\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<typename MetricType , typename TreeType > typedef \fBneighbor::NeighborSearchTraversalInfo\fP<TreeType> \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::\fBTraversalInfoType\fP"
+
+.PP
+Definition at line 115 of file dtb_rules\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename MetricType , typename TreeType > \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::\fBDTBRules\fP (const arma::mat &dataSet, \fBUnionFind\fP &connections, arma::vec &neighborsDistances, arma::Col< size_t > &neighborsInComponent, arma::Col< size_t > &neighborsOutComponent, MetricType &metric)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename MetricType , typename TreeType > double \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::BaseCase (const size_tqueryIndex, const size_treferenceIndex)"
+
+.SS "template<typename MetricType , typename TreeType > size_t \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::BaseCases () const\fC [inline]\fP"
+
+.PP
+Get the number of base cases performed\&. 
+.PP
+Definition at line 121 of file dtb_rules\&.hpp\&.
+.PP
+References mlpack::emst::DTBRules< MetricType, TreeType >::baseCases\&.
+.SS "template<typename MetricType , typename TreeType > size_t& \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::BaseCases ()\fC [inline]\fP"
+
+.PP
+Modify the number of base cases performed\&. 
+.PP
+Definition at line 123 of file dtb_rules\&.hpp\&.
+.PP
+References mlpack::emst::DTBRules< MetricType, TreeType >::baseCases\&.
+.SS "template<typename MetricType , typename TreeType > double \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::CalculateBound (TreeType &queryNode) const\fC [inline]\fP, \fC [private]\fP"
+
+.PP
+Update the bound for the given query node\&. 
+.SS "template<typename MetricType , typename TreeType > double \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::Rescore (const size_tqueryIndex, TreeType &referenceNode, const doubleoldScore)"
+
+.PP
+Re-evaluate the score for recursion order\&. A low score indicates priority for recursion, while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&. This is used when the score has already been calculated, but another recursion may have modified the bounds for pruning\&. So the old score is checked against the new pruning bound\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP Index of query point\&. 
+.br
+\fIreferenceNode\fP Candidate node to be recursed into\&. 
+.br
+\fIoldScore\fP Old score produced by \fBScore()\fP (or \fBRescore()\fP)\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType , typename TreeType > double \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::Rescore (TreeType &queryNode, TreeType &referenceNode, const doubleoldScore) const"
+
+.PP
+Re-evaluate the score for recursion order\&. A low score indicates priority for recursion, while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&. This is used when the score has already been calculated, but another recursion may have modified the bounds for pruning\&. So the old score is checked against the new pruning bound\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryNode\fP Candidate query node to recurse into\&. 
+.br
+\fIreferenceNode\fP Candidate reference node to recurse into\&. 
+.br
+\fIoldScore\fP Old score produced by Socre() (or \fBRescore()\fP)\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType , typename TreeType > double \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::Score (const size_tqueryIndex, TreeType &referenceNode)"
+
+.PP
+Get the score for recursion order\&. A low score indicates priority for recursion, while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP Index of query point\&. 
+.br
+\fIreferenceNode\fP Candidate node to be recursed into\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType , typename TreeType > double \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::Score (const size_tqueryIndex, TreeType &referenceNode, const doublebaseCaseResult)"
+
+.PP
+Get the score for recursion order, passing the base case result (in the situation where it may be needed to calculate the recursion order)\&. A low score indicates priority for recursion, while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIndex\fP Index of query point\&. 
+.br
+\fIreferenceNode\fP Candidate node to be recursed into\&. 
+.br
+\fIbaseCaseResult\fP Result of BaseCase(queryIndex, referenceNode)\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType , typename TreeType > double \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::Score (TreeType &queryNode, TreeType &referenceNode)"
+
+.PP
+Get the score for recursion order\&. A low score indicates priority for recursionm while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryNode\fP Candidate query node to recurse into\&. 
+.br
+\fIreferenceNode\fP Candidate reference node to recurse into\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType , typename TreeType > double \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::Score (TreeType &queryNode, TreeType &referenceNode, const doublebaseCaseResult)"
+
+.PP
+Get the score for recursion order, passing the base case result (in the situation where it may be needed to calculate the recursion order)\&. A low score indicates priority for recursion, while DBL_MAX indicates that the node should not be recursed into at all (it should be pruned)\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryNode\fP Candidate query node to recurse into\&. 
+.br
+\fIreferenceNode\fP Candidate reference node to recurse into\&. 
+.br
+\fIbaseCaseResult\fP Result of BaseCase(queryIndex, referenceNode)\&. 
+.RE
+.PP
+
+.SS "template<typename MetricType , typename TreeType > size_t \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::Scores () const\fC [inline]\fP"
+
+.PP
+Get the number of node combinations that have been scored\&. 
+.PP
+Definition at line 126 of file dtb_rules\&.hpp\&.
+.PP
+References mlpack::emst::DTBRules< MetricType, TreeType >::scores\&.
+.SS "template<typename MetricType , typename TreeType > size_t& \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::Scores ()\fC [inline]\fP"
+
+.PP
+Modify the number of node combinations that have been scored\&. 
+.PP
+Definition at line 128 of file dtb_rules\&.hpp\&.
+.PP
+References mlpack::emst::DTBRules< MetricType, TreeType >::scores\&.
+.SS "template<typename MetricType , typename TreeType > const \fBTraversalInfoType\fP& \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::\fBTraversalInfo\fP () const\fC [inline]\fP"
+
+.PP
+Definition at line 117 of file dtb_rules\&.hpp\&.
+.PP
+References mlpack::emst::DTBRules< MetricType, TreeType >::traversalInfo\&.
+.SS "template<typename MetricType , typename TreeType > \fBTraversalInfoType\fP& \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::\fBTraversalInfo\fP ()\fC [inline]\fP"
+
+.PP
+Definition at line 118 of file dtb_rules\&.hpp\&.
+.PP
+References mlpack::emst::DTBRules< MetricType, TreeType >::traversalInfo\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename MetricType , typename TreeType > size_t \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::baseCases\fC [private]\fP"
+
+.PP
+The number of base cases calculated\&. 
+.PP
+Definition at line 159 of file dtb_rules\&.hpp\&.
+.PP
+Referenced by mlpack::emst::DTBRules< MetricType, TreeType >::BaseCases()\&.
+.SS "template<typename MetricType , typename TreeType > \fBUnionFind\fP& \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::connections\fC [private]\fP"
+
+.PP
+Stores the tree structure so far\&. 
+.PP
+Definition at line 135 of file dtb_rules\&.hpp\&.
+.SS "template<typename MetricType , typename TreeType > const arma::mat& \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::dataSet\fC [private]\fP"
+
+.PP
+The data points\&. 
+.PP
+Definition at line 132 of file dtb_rules\&.hpp\&.
+.SS "template<typename MetricType , typename TreeType > MetricType& \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::metric\fC [private]\fP"
+
+.PP
+The instantiated metric\&. 
+.PP
+Definition at line 149 of file dtb_rules\&.hpp\&.
+.SS "template<typename MetricType , typename TreeType > arma::vec& \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::neighborsDistances\fC [private]\fP"
+
+.PP
+The distance to the candidate nearest neighbor for each component\&. 
+.PP
+Definition at line 138 of file dtb_rules\&.hpp\&.
+.SS "template<typename MetricType , typename TreeType > arma::Col<size_t>& \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::neighborsInComponent\fC [private]\fP"
+
+.PP
+The index of the point in the component that is an endpoint of the candidate edge\&. 
+.PP
+Definition at line 142 of file dtb_rules\&.hpp\&.
+.SS "template<typename MetricType , typename TreeType > arma::Col<size_t>& \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::neighborsOutComponent\fC [private]\fP"
+
+.PP
+The index of the point outside of the component that is an endpoint of the candidate edge\&. 
+.PP
+Definition at line 146 of file dtb_rules\&.hpp\&.
+.SS "template<typename MetricType , typename TreeType > size_t \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::scores\fC [private]\fP"
+
+.PP
+The number of node combinations that have been scored\&. 
+.PP
+Definition at line 161 of file dtb_rules\&.hpp\&.
+.PP
+Referenced by mlpack::emst::DTBRules< MetricType, TreeType >::Scores()\&.
+.SS "template<typename MetricType , typename TreeType > \fBTraversalInfoType\fP \fBmlpack::emst::DTBRules\fP< MetricType, TreeType >::traversalInfo\fC [private]\fP"
+
+.PP
+Definition at line 156 of file dtb_rules\&.hpp\&.
+.PP
+Referenced by mlpack::emst::DTBRules< MetricType, TreeType >::TraversalInfo()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

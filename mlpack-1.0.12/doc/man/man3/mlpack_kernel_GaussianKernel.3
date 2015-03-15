@@ -1,0 +1,247 @@
+.TH "mlpack::kernel::GaussianKernel" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::kernel::GaussianKernel \- 
+.PP
+The standard Gaussian kernel\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGaussianKernel\fP ()"
+.br
+.RI "\fIDefault constructor; sets bandwidth to 1\&.0\&. \fP"
+.ti -1c
+.RI "\fBGaussianKernel\fP (const double \fBbandwidth\fP)"
+.br
+.RI "\fIConstruct the Gaussian kernel with a custom bandwidth\&. \fP"
+.ti -1c
+.RI "double \fBBandwidth\fP () const "
+.br
+.RI "\fIGet the bandwidth\&. \fP"
+.ti -1c
+.RI "void \fBBandwidth\fP (const double \fBbandwidth\fP)"
+.br
+.RI "\fIModify the bandwidth\&. \fP"
+.ti -1c
+.RI "template<typename VecType > double \fBConvolutionIntegral\fP (const VecType &a, const VecType &b)"
+.br
+.RI "\fIObtain a convolution integral of the Gaussian kernel\&. \fP"
+.ti -1c
+.RI "template<typename VecType > double \fBEvaluate\fP (const VecType &a, const VecType &b) const "
+.br
+.RI "\fIEvaluation of the Gaussian kernel\&. \fP"
+.ti -1c
+.RI "double \fBEvaluate\fP (const double t) const "
+.br
+.RI "\fIEvaluation of the Gaussian kernel given the distance between two points\&. \fP"
+.ti -1c
+.RI "double \fBGamma\fP () const "
+.br
+.RI "\fIGet the precalculated constant\&. \fP"
+.ti -1c
+.RI "double \fBNormalizer\fP (const size_t dimension)"
+.br
+.RI "\fIObtain the normalization constant of the Gaussian kernel\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIConvert object to string\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBbandwidth\fP"
+.br
+.RI "\fIKernel bandwidth\&. \fP"
+.ti -1c
+.RI "double \fBgamma\fP"
+.br
+.RI "\fIPrecalculated constant depending on the bandwidth; $ \gamma = -\frac{1}{2 \mu^2} $\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The standard Gaussian kernel\&. 
+
+Given two vectors $ x $, $ y $, and a bandwidth $ \mu $ (set in the constructor),
+.PP
+\[ K(x, y) = \exp(-\frac{|| x - y ||^2}{2 \mu^2}). \].PP
+The implementation is all in the header file because it is so simple\&. 
+.PP
+Definition at line 35 of file gaussian_kernel\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::kernel::GaussianKernel::GaussianKernel ()\fC [inline]\fP"
+
+.PP
+Default constructor; sets bandwidth to 1\&.0\&. 
+.PP
+Definition at line 41 of file gaussian_kernel\&.hpp\&.
+.SS "mlpack::kernel::GaussianKernel::GaussianKernel (const doublebandwidth)\fC [inline]\fP"
+
+.PP
+Construct the Gaussian kernel with a custom bandwidth\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbandwidth\fP The bandwidth of the kernel ( $\mu$)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 49 of file gaussian_kernel\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double mlpack::kernel::GaussianKernel::Bandwidth () const\fC [inline]\fP"
+
+.PP
+Get the bandwidth\&. 
+.PP
+Definition at line 112 of file gaussian_kernel\&.hpp\&.
+.PP
+References bandwidth\&.
+.SS "void mlpack::kernel::GaussianKernel::Bandwidth (const doublebandwidth)\fC [inline]\fP"
+
+.PP
+Modify the bandwidth\&. This takes an argument because we must update the precalculated constant (gamma)\&. 
+.PP
+Definition at line 116 of file gaussian_kernel\&.hpp\&.
+.PP
+References bandwidth, and gamma\&.
+.SS "template<typename VecType > double mlpack::kernel::GaussianKernel::ConvolutionIntegral (const VecType &a, const VecType &b)\fC [inline]\fP"
+
+.PP
+Obtain a convolution integral of the Gaussian kernel\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa,first\fP vector 
+.br
+\fIb,second\fP vector 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the convolution integral 
+.RE
+.PP
+
+.PP
+Definition at line 104 of file gaussian_kernel\&.hpp\&.
+.PP
+References Evaluate(), mlpack::metric::LMetric< Power, TakeRoot >::Evaluate(), and Normalizer()\&.
+.SS "template<typename VecType > double mlpack::kernel::GaussianKernel::Evaluate (const VecType &a, const VecType &b) const\fC [inline]\fP"
+
+.PP
+Evaluation of the Gaussian kernel\&. This could be generalized to use any distance metric, not the Euclidean distance, but for now, the Euclidean distance is used\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIVecType\fP Type of vector (likely arma::vec or arma::spvec)\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP First vector\&. 
+.br
+\fIb\fP Second vector\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+K(a, b) using the bandwidth ( $\mu$) specified in the constructor\&. 
+.RE
+.PP
+
+.PP
+Definition at line 66 of file gaussian_kernel\&.hpp\&.
+.PP
+References mlpack::metric::LMetric< Power, TakeRoot >::Evaluate(), and gamma\&.
+.PP
+Referenced by ConvolutionIntegral()\&.
+.SS "double mlpack::kernel::GaussianKernel::Evaluate (const doublet) const\fC [inline]\fP"
+
+.PP
+Evaluation of the Gaussian kernel given the distance between two points\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt\fP The distance between the two points the kernel is evaluated on\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+K(t) using the bandwidth ( $\mu$) specified in the constructor\&. 
+.RE
+.PP
+
+.PP
+Definition at line 79 of file gaussian_kernel\&.hpp\&.
+.PP
+References gamma\&.
+.SS "double mlpack::kernel::GaussianKernel::Gamma () const\fC [inline]\fP"
+
+.PP
+Get the precalculated constant\&. 
+.PP
+Definition at line 123 of file gaussian_kernel\&.hpp\&.
+.PP
+References gamma\&.
+.SS "double mlpack::kernel::GaussianKernel::Normalizer (const size_tdimension)\fC [inline]\fP"
+
+.PP
+Obtain the normalization constant of the Gaussian kernel\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdimension\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the normalization constant 
+.RE
+.PP
+
+.PP
+Definition at line 91 of file gaussian_kernel\&.hpp\&.
+.PP
+References bandwidth, and M_PI\&.
+.PP
+Referenced by ConvolutionIntegral()\&.
+.SS "std::string mlpack::kernel::GaussianKernel::ToString () const\fC [inline]\fP"
+
+.PP
+Convert object to string\&. 
+.PP
+Definition at line 126 of file gaussian_kernel\&.hpp\&.
+.PP
+References bandwidth\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "double mlpack::kernel::GaussianKernel::bandwidth\fC [private]\fP"
+
+.PP
+Kernel bandwidth\&. 
+.PP
+Definition at line 136 of file gaussian_kernel\&.hpp\&.
+.PP
+Referenced by Bandwidth(), Normalizer(), and ToString()\&.
+.SS "double mlpack::kernel::GaussianKernel::gamma\fC [private]\fP"
+
+.PP
+Precalculated constant depending on the bandwidth; $ \gamma = -\frac{1}{2 \mu^2} $\&. 
+.PP
+Definition at line 140 of file gaussian_kernel\&.hpp\&.
+.PP
+Referenced by Bandwidth(), Evaluate(), and Gamma()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

@@ -1,0 +1,133 @@
+\section{mlpack\-:\-:tree\-:\-:Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-:\-:Single\-Tree\-Traverser$<$ Rule\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1tree_1_1CoverTree_1_1SingleTreeTraverser}\index{mlpack\-::tree\-::\-Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::\-Single\-Tree\-Traverser$<$ Rule\-Type $>$@{mlpack\-::tree\-::\-Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::\-Single\-Tree\-Traverser$<$ Rule\-Type $>$}}
+
+
+A single-\/tree cover tree traverser; see single\-\_\-tree\-\_\-traverser.\-hpp for implementation.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Single\-Tree\-Traverser} (Rule\-Type \&{\bf rule})
+\begin{DoxyCompactList}\small\item\em Initialize the single tree traverser with the given rule. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Num\-Prunes} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of prunes so far. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Num\-Prunes} ()
+\begin{DoxyCompactList}\small\item\em Set the number of prunes (good for a reset to 0). \end{DoxyCompactList}\item 
+void {\bf Traverse} (const size\-\_\-t query\-Index, {\bf Cover\-Tree} \&reference\-Node)
+\begin{DoxyCompactList}\small\item\em Traverse the tree with the given point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\-\_\-t {\bf num\-Prunes}
+\begin{DoxyCompactList}\small\item\em The number of nodes which have been pruned during traversal. \end{DoxyCompactList}\item 
+Rule\-Type \& {\bf rule}
+\begin{DoxyCompactList}\small\item\em Reference to the rules with which the tree will be traversed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Metric\-Type = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy = First\-Point\-Is\-Root, typename Statistic\-Type = Empty\-Statistic$>$template$<$typename Rule\-Type$>$class mlpack\-::tree\-::\-Cover\-Tree$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::\-Single\-Tree\-Traverser$<$ Rule\-Type $>$}
+
+A single-\/tree cover tree traverser; see single\-\_\-tree\-\_\-traverser.\-hpp for implementation. 
+
+
+
+Definition at line 212 of file cover\-\_\-tree.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser}!Single\-Tree\-Traverser@{Single\-Tree\-Traverser}}
+\index{Single\-Tree\-Traverser@{Single\-Tree\-Traverser}!mlpack::tree::CoverTree::SingleTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser}}
+\subsubsection[{Single\-Tree\-Traverser}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Single\-Tree\-Traverser}$<$ Rule\-Type $>$\-::{\bf Single\-Tree\-Traverser} (
+\begin{DoxyParamCaption}
+\item[{Rule\-Type \&}]{rule}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1CoverTree_1_1SingleTreeTraverser_a8cf83b453fc5ddc0c9195fac16095e2b}
+
+
+Initialize the single tree traverser with the given rule. 
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser}!Num\-Prunes@{Num\-Prunes}}
+\index{Num\-Prunes@{Num\-Prunes}!mlpack::tree::CoverTree::SingleTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser}}
+\subsubsection[{Num\-Prunes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Single\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Prunes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1SingleTreeTraverser_ac0bfd86f6af6b0cb826d7908e4684a51}
+
+
+Get the number of prunes so far. 
+
+
+
+Definition at line 46 of file single\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser}!Num\-Prunes@{Num\-Prunes}}
+\index{Num\-Prunes@{Num\-Prunes}!mlpack::tree::CoverTree::SingleTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser}}
+\subsubsection[{Num\-Prunes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ size\-\_\-t\& {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Single\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Num\-Prunes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1SingleTreeTraverser_a0ad8fbe8afd9ed6e05492a723efd7c60}
+
+
+Set the number of prunes (good for a reset to 0). 
+
+
+
+Definition at line 48 of file single\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser}!Traverse@{Traverse}}
+\index{Traverse@{Traverse}!mlpack::tree::CoverTree::SingleTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser}}
+\subsubsection[{Traverse}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ void {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Single\-Tree\-Traverser}$<$ Rule\-Type $>$\-::Traverse (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{query\-Index, }
+\item[{{\bf Cover\-Tree} \&}]{reference\-Node}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1tree_1_1CoverTree_1_1SingleTreeTraverser_ad38b4db06ecd5a3a9b2f841dec4309b2}
+
+
+Traverse the tree with the given point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query\-Index} & The index of the point in the query set which is used as the query point. \\
+\hline
+{\em reference\-Node} & The tree node to be traversed. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser}!num\-Prunes@{num\-Prunes}}
+\index{num\-Prunes@{num\-Prunes}!mlpack::tree::CoverTree::SingleTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser}}
+\subsubsection[{num\-Prunes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ size\-\_\-t {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Single\-Tree\-Traverser}$<$ Rule\-Type $>$\-::num\-Prunes\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1SingleTreeTraverser_abc2c26566f4af2c4eda10734c5ee37c1}
+
+
+The number of nodes which have been pruned during traversal. 
+
+
+
+Definition at line 55 of file single\-\_\-tree\-\_\-traverser.\-hpp.
+
+\index{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser}!rule@{rule}}
+\index{rule@{rule}!mlpack::tree::CoverTree::SingleTreeTraverser@{mlpack\-::tree\-::\-Cover\-Tree\-::\-Single\-Tree\-Traverser}}
+\subsubsection[{rule}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-L\-Metric$<$2, true$>$, typename Root\-Point\-Policy  = First\-Point\-Is\-Root, typename Statistic\-Type  = Empty\-Statistic$>$ template$<$typename Rule\-Type $>$ Rule\-Type\& {\bf mlpack\-::tree\-::\-Cover\-Tree}$<$ Metric\-Type, Root\-Point\-Policy, Statistic\-Type $>$\-::{\bf Single\-Tree\-Traverser}$<$ Rule\-Type $>$\-::rule\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1tree_1_1CoverTree_1_1SingleTreeTraverser_a34d096e41f60869f43bad96775cc9aec}
+
+
+Reference to the rules with which the tree will be traversed. 
+
+
+
+Definition at line 52 of file single\-\_\-tree\-\_\-traverser.\-hpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/tree/cover\-\_\-tree/{\bf cover\-\_\-tree.\-hpp}\item 
+src/mlpack/core/tree/cover\-\_\-tree/{\bf single\-\_\-tree\-\_\-traverser.\-hpp}\end{DoxyCompactItemize}

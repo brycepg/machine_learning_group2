@@ -1,0 +1,475 @@
+\section{R\-A\-Search$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$ Class Template Reference}
+\label{classRASearch}\index{R\-A\-Search$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$@{R\-A\-Search$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$}}
+
+
+The \doxyref{R\-A\-Search}{p.}{classRASearch} class\-: This class provides a generic manner to perform rank-\/approximate search via random-\/sampling.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf R\-A\-Search} (const typename Tree\-Type\-::\-Mat \&{\bf reference\-Set}, const typename Tree\-Type\-::\-Mat \&{\bf query\-Set}, const bool {\bf naive}=false, const bool {\bf single\-Mode}=false, const Metric\-Type {\bf metric}=Metric\-Type())
+\begin{DoxyCompactList}\small\item\em Initialize the \doxyref{R\-A\-Search}{p.}{classRASearch} object, passing both a query and reference dataset. \end{DoxyCompactList}\item 
+{\bf R\-A\-Search} (const typename Tree\-Type\-::\-Mat \&{\bf reference\-Set}, const bool {\bf naive}=false, const bool {\bf single\-Mode}=false, const Metric\-Type {\bf metric}=Metric\-Type())
+\begin{DoxyCompactList}\small\item\em Initialize the \doxyref{R\-A\-Search}{p.}{classRASearch} object, passing only one dataset, which is used as both the query and the reference dataset. \end{DoxyCompactList}\item 
+{\bf R\-A\-Search} (Tree\-Type $\ast${\bf reference\-Tree}, Tree\-Type $\ast${\bf query\-Tree}, const typename Tree\-Type\-::\-Mat \&{\bf reference\-Set}, const typename Tree\-Type\-::\-Mat \&{\bf query\-Set}, const bool {\bf single\-Mode}=false, const Metric\-Type {\bf metric}=Metric\-Type())
+\begin{DoxyCompactList}\small\item\em Initialize the \doxyref{R\-A\-Search}{p.}{classRASearch} object with the given datasets and pre-\/constructed trees. \end{DoxyCompactList}\item 
+{\bf R\-A\-Search} (Tree\-Type $\ast${\bf reference\-Tree}, const typename Tree\-Type\-::\-Mat \&{\bf reference\-Set}, const bool {\bf single\-Mode}=false, const Metric\-Type {\bf metric}=Metric\-Type())
+\begin{DoxyCompactList}\small\item\em Initialize the \doxyref{R\-A\-Search}{p.}{classRASearch} object with the given reference dataset and pre-\/constructed tree. \end{DoxyCompactList}\item 
+{\bf $\sim$\-R\-A\-Search} ()
+\begin{DoxyCompactList}\small\item\em Delete the \doxyref{R\-A\-Search}{p.}{classRASearch} object. \end{DoxyCompactList}\item 
+void {\bf Reset\-Query\-Tree} ()
+\begin{DoxyCompactList}\small\item\em This function recursively resets the R\-A\-Query\-Stat of the query\-Tree to set 'bound' to Worst\-Distance and the 'num\-Samples\-Made' to 0. \end{DoxyCompactList}\item 
+void {\bf Search} (const size\-\_\-t k, arma\-::\-Mat$<$ size\-\_\-t $>$ \&resulting\-Neighbors, arma\-::mat \&distances, const double tau=5, const double {\bf alpha}=0.\-95, const bool sample\-At\-Leaves=false, const bool first\-Leaf\-Exact=false, const size\-\_\-t single\-Sample\-Limit=20)
+\begin{DoxyCompactList}\small\item\em Compute the rank approximate nearest neighbors and store the output in the given matrices. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Reset\-R\-A\-Query\-Stat} (Tree\-Type $\ast$tree\-Node)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf has\-Query\-Set}
+\begin{DoxyCompactList}\small\item\em Indicates if a separate query set was passed. \end{DoxyCompactList}\item 
+Metric\-Type {\bf metric}
+\begin{DoxyCompactList}\small\item\em Instantiation of kernel. \end{DoxyCompactList}\item 
+bool {\bf naive}
+\begin{DoxyCompactList}\small\item\em Indicates if naive random sampling on the set is being used. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf number\-Of\-Prunes}
+\begin{DoxyCompactList}\small\item\em Total number of pruned nodes during the neighbor search. \end{DoxyCompactList}\item 
+std\-::vector$<$ size\-\_\-t $>$ {\bf old\-From\-New\-Queries}
+\begin{DoxyCompactList}\small\item\em Permutations of query points during tree building. \end{DoxyCompactList}\item 
+std\-::vector$<$ size\-\_\-t $>$ {\bf old\-From\-New\-References}
+\begin{DoxyCompactList}\small\item\em Permutations of reference points during tree building. \end{DoxyCompactList}\item 
+arma\-::mat {\bf query\-Copy}
+\begin{DoxyCompactList}\small\item\em Copy of query dataset (if we need it, because tree building modifies it). \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf query\-Set}
+\begin{DoxyCompactList}\small\item\em Query dataset (may not be given). \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf query\-Tree}
+\begin{DoxyCompactList}\small\item\em Pointer to the root of the query tree (might not exist). \end{DoxyCompactList}\item 
+arma\-::mat {\bf reference\-Copy}
+\begin{DoxyCompactList}\small\item\em Copy of reference dataset (if we need it, because tree building modifies it). \end{DoxyCompactList}\item 
+const arma\-::mat \& {\bf reference\-Set}
+\begin{DoxyCompactList}\small\item\em Reference dataset. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf reference\-Tree}
+\begin{DoxyCompactList}\small\item\em Pointer to the root of the reference tree. \end{DoxyCompactList}\item 
+bool {\bf single\-Mode}
+\begin{DoxyCompactList}\small\item\em Indicates if single-\/tree search is being used (opposed to dual-\/tree). \end{DoxyCompactList}\item 
+bool {\bf tree\-Owner}
+\begin{DoxyCompactList}\small\item\em If true, this object created the trees and is responsible for them. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Sort\-Policy = Nearest\-Neighbor\-Sort, typename Metric\-Type = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$class R\-A\-Search$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$}
+
+The \doxyref{R\-A\-Search}{p.}{classRASearch} class\-: This class provides a generic manner to perform rank-\/approximate search via random-\/sampling. 
+
+If the 'naive' option is chosen, this rank-\/approximate search will be done by randomly sampled from the whole set. If the 'naive' option is not chosen, the sampling is done in a stratified manner in the tree as mentioned in the algorithms in Figure 2 of the following paper\-:
+
+\{ram2009rank, title=\{\{Rank-\/\-Approximate Nearest Neighbor Search\-: Retaining Meaning and Speed in High Dimensions\}\}, author=\{\{Ram, P. and Lee, D. and Ouyang, H. and Gray, A. G.\}\}, booktitle=\{\{Advances of Neural Information Processing Systems\}\}, year=\{2009\} \}
+
+\doxyref{R\-A\-Search}{p.}{classRASearch} is currently known to not work with ball trees (\#356).
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Sort\-Policy} & The sort policy for distances; see Nearest\-Neighbor\-Sort. \\
+\hline
+{\em Metric\-Type} & The metric to use for computation. \\
+\hline
+{\em Tree\-Type} & The tree type to use. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 63 of file ra\-\_\-search.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{R\-A\-Search@{R\-A\-Search}!R\-A\-Search@{R\-A\-Search}}
+\index{R\-A\-Search@{R\-A\-Search}!RASearch@{R\-A\-Search}}
+\subsubsection[{R\-A\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::{\bf R\-A\-Search} (
+\begin{DoxyParamCaption}
+\item[{const typename Tree\-Type\-::\-Mat \&}]{reference\-Set, }
+\item[{const typename Tree\-Type\-::\-Mat \&}]{query\-Set, }
+\item[{const bool}]{naive = {\ttfamily false}, }
+\item[{const bool}]{single\-Mode = {\ttfamily false}, }
+\item[{const Metric\-Type}]{metric = {\ttfamily MetricType()}}
+\end{DoxyParamCaption}
+)}\label{classRASearch_abdf3d31fec849ba7fc3a94b8f2c5c03c}
+
+
+Initialize the \doxyref{R\-A\-Search}{p.}{classRASearch} object, passing both a query and reference dataset. 
+
+Optionally, perform the computation in naive mode or single-\/tree mode, and set the leaf size used for tree-\/building. An initialized distance metric can be given, for cases where the metric has internal data (i.\-e. the distance\-::\-Mahalanobis\-Distance class).
+
+This method will copy the matrices to internal copies, which are rearranged during tree-\/building. You can avoid this extra copy by pre-\/constructing the trees and passing them using a diferent constructor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reference\-Set} & Set of reference points. \\
+\hline
+{\em query\-Set} & Set of query points. \\
+\hline
+{\em naive} & If true, the rank-\/approximate search will be performed by directly sampling the whole set instead of using the stratified sampling on the tree. \\
+\hline
+{\em single\-Mode} & If true, single-\/tree search will be used (as opposed to dual-\/tree search). \\
+\hline
+{\em leaf\-Size} & Leaf size for tree construction (ignored if tree is given). \\
+\hline
+{\em metric} & An optional instance of the Metric\-Type class. \\
+\hline
+\end{DoxyParams}
+\index{R\-A\-Search@{R\-A\-Search}!R\-A\-Search@{R\-A\-Search}}
+\index{R\-A\-Search@{R\-A\-Search}!RASearch@{R\-A\-Search}}
+\subsubsection[{R\-A\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::{\bf R\-A\-Search} (
+\begin{DoxyParamCaption}
+\item[{const typename Tree\-Type\-::\-Mat \&}]{reference\-Set, }
+\item[{const bool}]{naive = {\ttfamily false}, }
+\item[{const bool}]{single\-Mode = {\ttfamily false}, }
+\item[{const Metric\-Type}]{metric = {\ttfamily MetricType()}}
+\end{DoxyParamCaption}
+)}\label{classRASearch_ae48a702667a025a5b310f71e46f8484c}
+
+
+Initialize the \doxyref{R\-A\-Search}{p.}{classRASearch} object, passing only one dataset, which is used as both the query and the reference dataset. 
+
+Optionally, perform the computation in naive mode or single-\/tree mode, and set the leaf size used for tree-\/building. An initialized distance metric can be given, for cases where the metric has internal data (i.\-e. the distance\-::\-Mahalanobis\-Distance class).
+
+If naive mode is being used and a pre-\/built tree is given, it may not work\-: naive mode operates by building a one-\/node tree (the root node holds all the points). If that condition is not satisfied with the pre-\/built tree, then naive mode will not work.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reference\-Set} & Set of reference points. \\
+\hline
+{\em naive} & If true, the rank-\/approximate search will be performed by directly sampling the whole set instead of using the stratified sampling on the tree. \\
+\hline
+{\em single\-Mode} & If true, single-\/tree search will be used (as opposed to dual-\/tree search). \\
+\hline
+{\em leaf\-Size} & Leaf size for tree construction (ignored if tree is given). \\
+\hline
+{\em metric} & An optional instance of the Metric\-Type class. \\
+\hline
+\end{DoxyParams}
+\index{R\-A\-Search@{R\-A\-Search}!R\-A\-Search@{R\-A\-Search}}
+\index{R\-A\-Search@{R\-A\-Search}!RASearch@{R\-A\-Search}}
+\subsubsection[{R\-A\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::{\bf R\-A\-Search} (
+\begin{DoxyParamCaption}
+\item[{Tree\-Type $\ast$}]{reference\-Tree, }
+\item[{Tree\-Type $\ast$}]{query\-Tree, }
+\item[{const typename Tree\-Type\-::\-Mat \&}]{reference\-Set, }
+\item[{const typename Tree\-Type\-::\-Mat \&}]{query\-Set, }
+\item[{const bool}]{single\-Mode = {\ttfamily false}, }
+\item[{const Metric\-Type}]{metric = {\ttfamily MetricType()}}
+\end{DoxyParamCaption}
+)}\label{classRASearch_a4be75cb23bdc52e3ee47b46a60dea3d4}
+
+
+Initialize the \doxyref{R\-A\-Search}{p.}{classRASearch} object with the given datasets and pre-\/constructed trees. 
+
+It is assumed that the points in reference\-Set and query\-Set correspond to the points in reference\-Tree and query\-Tree, respectively. Optionally, choose to use single-\/tree mode. Naive mode is not available as an option for this constructor; instead, to run naive computation, construct a tree with all of the points in one leaf (i.\-e. leaf\-Size = number of points). Additionally, an instantiated distance metric can be given, for cases where the distance metric holds data.
+
+There is no copying of the data matrices in this constructor (because tree-\/building is not necessary), so this is the constructor to use when copies absolutely must be avoided.
+
+\begin{DoxyNote}{Note}
+Because tree-\/building (at least with Binary\-Space\-Tree) modifies the ordering of a matrix, be sure you pass the modified matrix to this object! In addition, mapping the points of the matrix back to their original indices is not done when this constructor is used. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em reference\-Tree} & Pre-\/built tree for reference points. \\
+\hline
+{\em query\-Tree} & Pre-\/built tree for query points. \\
+\hline
+{\em reference\-Set} & Set of reference points corresponding to reference\-Tree. \\
+\hline
+{\em query\-Set} & Set of query points corresponding to query\-Tree. \\
+\hline
+{\em single\-Mode} & Whether single-\/tree computation should be used (as opposed to dual-\/tree computation). \\
+\hline
+{\em metric} & Instantiated distance metric. \\
+\hline
+\end{DoxyParams}
+\index{R\-A\-Search@{R\-A\-Search}!R\-A\-Search@{R\-A\-Search}}
+\index{R\-A\-Search@{R\-A\-Search}!RASearch@{R\-A\-Search}}
+\subsubsection[{R\-A\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::{\bf R\-A\-Search} (
+\begin{DoxyParamCaption}
+\item[{Tree\-Type $\ast$}]{reference\-Tree, }
+\item[{const typename Tree\-Type\-::\-Mat \&}]{reference\-Set, }
+\item[{const bool}]{single\-Mode = {\ttfamily false}, }
+\item[{const Metric\-Type}]{metric = {\ttfamily MetricType()}}
+\end{DoxyParamCaption}
+)}\label{classRASearch_ac61146806a6873c4e512b519c4a756d4}
+
+
+Initialize the \doxyref{R\-A\-Search}{p.}{classRASearch} object with the given reference dataset and pre-\/constructed tree. 
+
+It is assumed that the points in reference\-Set correspond to the points in reference\-Tree. Optionally, choose to use single-\/tree mode. Naive mode is not available as an option for this constructor; instead, to run naive computation, construct a tree with all the points in one leaf (i.\-e. leaf\-Size = number of points). Additionally, an instantiated distance metric can be given, for the case where the distance metric holds data.
+
+There is no copying of the data matrices in this constructor (because tree-\/building is not necessary), so this is the constructor to use when copies absolutely must be avoided.
+
+\begin{DoxyNote}{Note}
+Because tree-\/building (at least with Binary\-Space\-Tree) modifies the ordering of a matrix, be sure you pass the modified matrix to this object! In addition, mapping the points of the matrix back to their original indices is not done when this constructor is used. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em reference\-Tree} & Pre-\/built tree for reference points. \\
+\hline
+{\em reference\-Set} & Set of reference points corresponding to reference\-Tree. \\
+\hline
+{\em single\-Mode} & Whether single-\/tree computation should be used (as opposed to dual-\/tree computation). \\
+\hline
+{\em metric} & Instantiated distance metric. \\
+\hline
+\end{DoxyParams}
+\index{R\-A\-Search@{R\-A\-Search}!$\sim$\-R\-A\-Search@{$\sim$\-R\-A\-Search}}
+\index{$\sim$\-R\-A\-Search@{$\sim$\-R\-A\-Search}!RASearch@{R\-A\-Search}}
+\subsubsection[{$\sim$\-R\-A\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::$\sim${\bf R\-A\-Search} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classRASearch_a0942565ab0054bf9673ff069ce66d646}
+
+
+Delete the \doxyref{R\-A\-Search}{p.}{classRASearch} object. 
+
+The tree is the only member we are responsible for deleting. The others will take care of themselves. 
+
+\subsection{Member Function Documentation}
+\index{R\-A\-Search@{R\-A\-Search}!Reset\-Query\-Tree@{Reset\-Query\-Tree}}
+\index{Reset\-Query\-Tree@{Reset\-Query\-Tree}!RASearch@{R\-A\-Search}}
+\subsubsection[{Reset\-Query\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ void {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::Reset\-Query\-Tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classRASearch_a695d8c05864753c3dacff469f6fcb77d}
+
+
+This function recursively resets the R\-A\-Query\-Stat of the query\-Tree to set 'bound' to Worst\-Distance and the 'num\-Samples\-Made' to 0. 
+
+This allows a user to perform multiple searches on the same pair of trees, possibly with different levels of approximation without requiring to build a new pair of trees for every new (approximate) search. \index{R\-A\-Search@{R\-A\-Search}!Reset\-R\-A\-Query\-Stat@{Reset\-R\-A\-Query\-Stat}}
+\index{Reset\-R\-A\-Query\-Stat@{Reset\-R\-A\-Query\-Stat}!RASearch@{R\-A\-Search}}
+\subsubsection[{Reset\-R\-A\-Query\-Stat}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ void {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::Reset\-R\-A\-Query\-Stat (
+\begin{DoxyParamCaption}
+\item[{Tree\-Type $\ast$}]{tree\-Node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_ae08644e7536b1d520218453bf7cd01d9}
+
+\begin{DoxyParams}{Parameters}
+{\em tree\-Node} & The node of the tree whose R\-A\-Query\-Stat is reset and whose children are to be explored recursively. \\
+\hline
+\end{DoxyParams}
+\index{R\-A\-Search@{R\-A\-Search}!Search@{Search}}
+\index{Search@{Search}!RASearch@{R\-A\-Search}}
+\subsubsection[{Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ void {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::Search (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{k, }
+\item[{arma\-::\-Mat$<$ size\-\_\-t $>$ \&}]{resulting\-Neighbors, }
+\item[{arma\-::mat \&}]{distances, }
+\item[{const double}]{tau = {\ttfamily 5}, }
+\item[{const double}]{alpha = {\ttfamily 0.95}, }
+\item[{const bool}]{sample\-At\-Leaves = {\ttfamily false}, }
+\item[{const bool}]{first\-Leaf\-Exact = {\ttfamily false}, }
+\item[{const size\-\_\-t}]{single\-Sample\-Limit = {\ttfamily 20}}
+\end{DoxyParamCaption}
+)}\label{classRASearch_a7a59fb9d942be39dc21c65dfb199810d}
+
+
+Compute the rank approximate nearest neighbors and store the output in the given matrices. 
+
+The matrices will be set to the size of n columns by k rows, where n is the number of points in the query dataset and k is the number of neighbors being searched for.
+
+Note that tau, the rank-\/approximation parameter, specifies that we are looking for k neighbors with probability alpha of being in the top tau percent of nearest neighbors. So, as an example, if our dataset has 1000 points, and we want 5 nearest neighbors with 95\% probability of being in the top 5\% of nearest neighbors (or, the top 50 nearest neighbors), we set k = 5, tau = 5, and alpha = 0.\-95.
+
+The method will fail (and issue a failure message) if the value of tau is too low\-: tau must be set such that the number of points in the corresponding percentile of the data is greater than k. Thus, if we choose tau = 0.\-1 with a dataset of 1000 points and k = 5, then we are attempting to choose 5 nearest neighbors out of the closest 1 point -- this is invalid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & Number of neighbors to search for. \\
+\hline
+{\em resulting\-Neighbors} & Matrix storing lists of neighbors for each query point. \\
+\hline
+{\em distances} & Matrix storing distances of neighbors for each query point. \\
+\hline
+{\em tau} & The rank-\/approximation in percentile of the data. The default value is 5\%. \\
+\hline
+{\em alpha} & The desired success probability. The default value is 0.\-95. \\
+\hline
+{\em sample\-At\-Leaves} & Sample at leaves for faster but less accurate computation. This defaults to 'false'. \\
+\hline
+{\em first\-Leaf\-Exact} & Traverse to the first leaf without approximation. This can ensure that the query definitely finds its (near) duplicate if there exists one. This defaults to 'false' for now. \\
+\hline
+{\em single\-Sample\-Limit} & The limit on the largest node that can be approximated by sampling. This defaults to 20. \\
+\hline
+\end{DoxyParams}
+\index{R\-A\-Search@{R\-A\-Search}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!RASearch@{R\-A\-Search}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ std\-::string {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classRASearch_a31bd60f7350f2b17ee997b57914eda9f}
+
+
+\subsection{Member Data Documentation}
+\index{R\-A\-Search@{R\-A\-Search}!has\-Query\-Set@{has\-Query\-Set}}
+\index{has\-Query\-Set@{has\-Query\-Set}!RASearch@{R\-A\-Search}}
+\subsubsection[{has\-Query\-Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ bool {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::has\-Query\-Set\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_a632e352bfe285af54cff136b26cbb555}
+
+
+Indicates if a separate query set was passed. 
+
+
+
+Definition at line 271 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!metric@{metric}}
+\index{metric@{metric}!RASearch@{R\-A\-Search}}
+\subsubsection[{metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ Metric\-Type {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::metric\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_a36e707cc3f40ebe185ba4d8edc8d090d}
+
+
+Instantiation of kernel. 
+
+
+
+Definition at line 279 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!naive@{naive}}
+\index{naive@{naive}!RASearch@{R\-A\-Search}}
+\subsubsection[{naive}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ bool {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::naive\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_adb60a873b173ad6f340a6df5602c93c2}
+
+
+Indicates if naive random sampling on the set is being used. 
+
+
+
+Definition at line 274 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!number\-Of\-Prunes@{number\-Of\-Prunes}}
+\index{number\-Of\-Prunes@{number\-Of\-Prunes}!RASearch@{R\-A\-Search}}
+\subsubsection[{number\-Of\-Prunes}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ size\-\_\-t {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::number\-Of\-Prunes\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_a68680d60312d94d4e286f14bf985d276}
+
+
+Total number of pruned nodes during the neighbor search. 
+
+
+
+Definition at line 287 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!old\-From\-New\-Queries@{old\-From\-New\-Queries}}
+\index{old\-From\-New\-Queries@{old\-From\-New\-Queries}!RASearch@{R\-A\-Search}}
+\subsubsection[{old\-From\-New\-Queries}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ std\-::vector$<$size\-\_\-t$>$ {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::old\-From\-New\-Queries\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_a489baf765070590645b5bdcc049ac8b0}
+
+
+Permutations of query points during tree building. 
+
+
+
+Definition at line 284 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!old\-From\-New\-References@{old\-From\-New\-References}}
+\index{old\-From\-New\-References@{old\-From\-New\-References}!RASearch@{R\-A\-Search}}
+\subsubsection[{old\-From\-New\-References}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ std\-::vector$<$size\-\_\-t$>$ {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::old\-From\-New\-References\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_ad44313942c4e18195636232456f6589a}
+
+
+Permutations of reference points during tree building. 
+
+
+
+Definition at line 282 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!query\-Copy@{query\-Copy}}
+\index{query\-Copy@{query\-Copy}!RASearch@{R\-A\-Search}}
+\subsubsection[{query\-Copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ arma\-::mat {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::query\-Copy\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_ac581120dbca3da12b41f3cdc2eaef08f}
+
+
+Copy of query dataset (if we need it, because tree building modifies it). 
+
+
+
+Definition at line 256 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!query\-Set@{query\-Set}}
+\index{query\-Set@{query\-Set}!RASearch@{R\-A\-Search}}
+\subsubsection[{query\-Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ const arma\-::mat\& {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::query\-Set\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_a635061cc7a5c20fbf58a4e0e2b13e1b8}
+
+
+Query dataset (may not be given). 
+
+
+
+Definition at line 261 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!query\-Tree@{query\-Tree}}
+\index{query\-Tree@{query\-Tree}!RASearch@{R\-A\-Search}}
+\subsubsection[{query\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ Tree\-Type$\ast$ {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::query\-Tree\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_ac16fd58d1ede1ca913901fb555008efc}
+
+
+Pointer to the root of the query tree (might not exist). 
+
+
+
+Definition at line 266 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!reference\-Copy@{reference\-Copy}}
+\index{reference\-Copy@{reference\-Copy}!RASearch@{R\-A\-Search}}
+\subsubsection[{reference\-Copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ arma\-::mat {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::reference\-Copy\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_aa7072df7a37c643adc9a0c145df878fa}
+
+
+Copy of reference dataset (if we need it, because tree building modifies it). 
+
+
+
+Definition at line 254 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!reference\-Set@{reference\-Set}}
+\index{reference\-Set@{reference\-Set}!RASearch@{R\-A\-Search}}
+\subsubsection[{reference\-Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ const arma\-::mat\& {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::reference\-Set\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_a52cbbc8aab491764285fb5f5cf00c519}
+
+
+Reference dataset. 
+
+
+
+Definition at line 259 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!reference\-Tree@{reference\-Tree}}
+\index{reference\-Tree@{reference\-Tree}!RASearch@{R\-A\-Search}}
+\subsubsection[{reference\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ Tree\-Type$\ast$ {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::reference\-Tree\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_a32de031b2b7e58f7bec6e9b4722e293d}
+
+
+Pointer to the root of the reference tree. 
+
+
+
+Definition at line 264 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!single\-Mode@{single\-Mode}}
+\index{single\-Mode@{single\-Mode}!RASearch@{R\-A\-Search}}
+\subsubsection[{single\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ bool {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::single\-Mode\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_a7b75653a8e120b8411ee1471f2b45538}
+
+
+Indicates if single-\/tree search is being used (opposed to dual-\/tree). 
+
+
+
+Definition at line 276 of file ra\-\_\-search.\-hpp.
+
+\index{R\-A\-Search@{R\-A\-Search}!tree\-Owner@{tree\-Owner}}
+\index{tree\-Owner@{tree\-Owner}!RASearch@{R\-A\-Search}}
+\subsubsection[{tree\-Owner}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Sort\-Policy  = Nearest\-Neighbor\-Sort, typename Metric\-Type  = mlpack\-::metric\-::\-Squared\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2, false$>$,                                                   R\-A\-Query\-Stat$<$\-Sort\-Policy$>$ $>$$>$ bool {\bf R\-A\-Search}$<$ Sort\-Policy, Metric\-Type, Tree\-Type $>$\-::tree\-Owner\hspace{0.3cm}{\ttfamily [private]}}\label{classRASearch_a8c5dc1e052a2eb452fe9301a68bf8e7f}
+
+
+If true, this object created the trees and is responsible for them. 
+
+
+
+Definition at line 269 of file ra\-\_\-search.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/rann/{\bf ra\-\_\-search.\-hpp}\end{DoxyCompactItemize}

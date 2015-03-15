@@ -1,0 +1,485 @@
+\section{mlpack\-:\-:kmeans\-:\-:K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$ Class Template Reference}
+\label{classmlpack_1_1kmeans_1_1KMeans}\index{mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$@{mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$}}
+
+
+This class implements K-\/\-Means clustering.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf K\-Means} (const size\-\_\-t {\bf max\-Iterations}=1000, const double {\bf overclustering\-Factor}=1.\-0, const Metric\-Type {\bf metric}=Metric\-Type(), const Initial\-Partition\-Policy {\bf partitioner}=Initial\-Partition\-Policy(), const Empty\-Cluster\-Policy {\bf empty\-Cluster\-Action}=Empty\-Cluster\-Policy())
+\begin{DoxyCompactList}\small\item\em Create a K-\/\-Means object and (optionally) set the parameters which K-\/\-Means will be run with. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\void {\bf Cluster} (const Mat\-Type \&data, const size\-\_\-t clusters, arma\-::\-Col$<$ size\-\_\-t $>$ \&assignments, const bool initial\-Guess=false) const 
+\begin{DoxyCompactList}\small\item\em Perform k-\/means clustering on the data, returning a list of cluster assignments. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\void {\bf Cluster} (const Mat\-Type \&data, const size\-\_\-t clusters, arma\-::\-Col$<$ size\-\_\-t $>$ \&assignments, Mat\-Type \&centroids, const bool initial\-Assignment\-Guess=false, const bool initial\-Centroid\-Guess=false) const 
+\begin{DoxyCompactList}\small\item\em Perform k-\/means clustering on the data, returning a list of cluster assignments and also the centroids of each cluster. \end{DoxyCompactList}\item 
+const Empty\-Cluster\-Policy \& {\bf Empty\-Cluster\-Action} () const 
+\begin{DoxyCompactList}\small\item\em Get the empty cluster policy. \end{DoxyCompactList}\item 
+Empty\-Cluster\-Policy \& {\bf Empty\-Cluster\-Action} ()
+\begin{DoxyCompactList}\small\item\em Modify the empty cluster policy. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Max\-Iterations} () const 
+\begin{DoxyCompactList}\small\item\em Get the maximum number of iterations. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Max\-Iterations} ()
+\begin{DoxyCompactList}\small\item\em Set the maximum number of iterations. \end{DoxyCompactList}\item 
+const Metric\-Type \& {\bf Metric} () const 
+\begin{DoxyCompactList}\small\item\em Get the distance metric. \end{DoxyCompactList}\item 
+Metric\-Type \& {\bf Metric} ()
+\begin{DoxyCompactList}\small\item\em Modify the distance metric. \end{DoxyCompactList}\item 
+double {\bf Overclustering\-Factor} () const 
+\begin{DoxyCompactList}\small\item\em Return the overclustering factor. \end{DoxyCompactList}\item 
+double \& {\bf Overclustering\-Factor} ()
+\begin{DoxyCompactList}\small\item\em Set the overclustering factor. Must be greater than 1. \end{DoxyCompactList}\item 
+const Initial\-Partition\-Policy \& {\bf Partitioner} () const 
+\begin{DoxyCompactList}\small\item\em Get the initial partitioning policy. \end{DoxyCompactList}\item 
+Initial\-Partition\-Policy \& {\bf Partitioner} ()
+\begin{DoxyCompactList}\small\item\em Modify the initial partitioning policy. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Empty\-Cluster\-Policy {\bf empty\-Cluster\-Action}
+\begin{DoxyCompactList}\small\item\em Instantiated empty cluster policy. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf max\-Iterations}
+\begin{DoxyCompactList}\small\item\em Maximum number of iterations before giving up. \end{DoxyCompactList}\item 
+Metric\-Type {\bf metric}
+\begin{DoxyCompactList}\small\item\em Instantiated distance metric. \end{DoxyCompactList}\item 
+double {\bf overclustering\-Factor}
+\begin{DoxyCompactList}\small\item\em Factor controlling how many clusters are actually found. \end{DoxyCompactList}\item 
+Initial\-Partition\-Policy {\bf partitioner}
+\begin{DoxyCompactList}\small\item\em Instantiated initial partitioning policy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Metric\-Type = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy = Random\-Partition, typename Empty\-Cluster\-Policy = Max\-Variance\-New\-Cluster$>$class mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$}
+
+This class implements K-\/\-Means clustering. 
+
+This implementation supports overclustering, which means that more clusters than are requested will be found; then, those clusters will be merged together to produce the desired number of clusters.
+
+Two template parameters can (optionally) be supplied\-: the policy for how to find the initial partition of the data, and the actions to be taken when an empty cluster is encountered, as well as the distance metric to be used.
+
+A simple example of how to run K-\/\-Means clustering is shown below.
+
+
+\begin{DoxyCode}
+\textcolor{keyword}{extern} arma::mat data; \textcolor{comment}{// Dataset we want to run K-Means on.}
+arma::Col<size\_t> assignments; \textcolor{comment}{// Cluster assignments.}
+
+KMeans<> k; \textcolor{comment}{// Default options.}
+k.Cluster(data, 3, assignments); \textcolor{comment}{// 3 clusters.}
+
+\textcolor{comment}{// Cluster using the Manhattan distance, 100 iterations maximum, and an}
+\textcolor{comment}{// overclustering factor of 4.0.}
+KMeans<metric::ManhattanDistance> k(100, 4.0);
+k.Cluster(data, 6, assignments); \textcolor{comment}{// 6 clusters.}
+\end{DoxyCode}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Metric\-Type} & The distance metric to use for this \doxyref{K\-Means}{p.}{classmlpack_1_1kmeans_1_1KMeans}; see \doxyref{metric\-::\-L\-Metric}{p.}{classmlpack_1_1metric_1_1LMetric} for an example. \\
+\hline
+{\em Initial\-Partition\-Policy} & Initial partitioning policy; must implement a default constructor and 'void Cluster(const arma\-::mat\&, const size\-\_\-t, arma\-::\-Col$<$size\-\_\-t$>$\&)'. \\
+\hline
+{\em Empty\-Cluster\-Policy} & Policy for what to do on an empty cluster; must implement a default constructor and 'void Empty\-Cluster(const arma\-::mat\&, arma\-::\-Col$<$size\-\_\-t\&)'.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{Random\-Partition}{p.}{classmlpack_1_1kmeans_1_1RandomPartition}, \doxyref{Refined\-Start}{p.}{classmlpack_1_1kmeans_1_1RefinedStart}, \doxyref{Allow\-Empty\-Clusters}{p.}{classmlpack_1_1kmeans_1_1AllowEmptyClusters}, \doxyref{Max\-Variance\-New\-Cluster}{p.}{classmlpack_1_1kmeans_1_1MaxVarianceNewCluster} 
+\end{DoxySeeAlso}
+
+
+Definition at line 67 of file kmeans.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!K\-Means@{K\-Means}}
+\index{K\-Means@{K\-Means}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{K\-Means}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::{\bf K\-Means} (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{max\-Iterations = {\ttfamily 1000}, }
+\item[{const double}]{overclustering\-Factor = {\ttfamily 1.0}, }
+\item[{const Metric\-Type}]{metric = {\ttfamily MetricType()}, }
+\item[{const Initial\-Partition\-Policy}]{partitioner = {\ttfamily InitialPartitionPolicy()}, }
+\item[{const Empty\-Cluster\-Policy}]{empty\-Cluster\-Action = {\ttfamily EmptyClusterPolicy()}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1kmeans_1_1KMeans_ae43b64ea9ef61b7a12f748c29999cf64}
+
+
+Create a K-\/\-Means object and (optionally) set the parameters which K-\/\-Means will be run with. 
+
+This implementation allows a few strategies to improve the performance of K-\/\-Means, including \char`\"{}overclustering\char`\"{} and disallowing empty clusters.
+
+The overclustering factor controls how many clusters are actually found; for instance, with an overclustering factor of 4, if K-\/\-Means is run to find 3 clusters, it will actually find 12, then merge the nearest clusters until only 3 are left.
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\-Iterations} & Maximum number of iterations allowed before giving up (0 is valid, but the algorithm may never terminate). \\
+\hline
+{\em overclustering\-Factor} & Factor controlling how many extra clusters are found and then merged to get the desired number of clusters. \\
+\hline
+{\em metric} & Optional Metric\-Type object; for when the metric has state it needs to store. \\
+\hline
+{\em partitioner} & Optional Initial\-Partition\-Policy object; for when a specially initialized partitioning policy is required. \\
+\hline
+{\em empty\-Cluster\-Action} & Optional Empty\-Cluster\-Policy object; for when a specially initialized empty cluster policy is required. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!Cluster@{Cluster}}
+\index{Cluster@{Cluster}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{Cluster}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ template$<$typename Mat\-Type $>$ void {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::Cluster (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{data, }
+\item[{const size\-\_\-t}]{clusters, }
+\item[{arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{assignments, }
+\item[{const bool}]{initial\-Guess = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1kmeans_1_1KMeans_ae5642a48d27b4ebd2da2ec5696394467}
+
+
+Perform k-\/means clustering on the data, returning a list of cluster assignments. 
+
+Optionally, the vector of assignments can be set to an initial guess of the cluster assignments; to do this, set initial\-Guess to true.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Mat\-Type} & Type of matrix (arma\-::mat or arma\-::sp\-\_\-mat). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to cluster. \\
+\hline
+{\em clusters} & Number of clusters to compute. \\
+\hline
+{\em assignments} & Vector to store cluster assignments in. \\
+\hline
+{\em initial\-Guess} & If true, then it is assumed that assignments has a list of initial cluster assignments. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!Cluster@{Cluster}}
+\index{Cluster@{Cluster}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{Cluster}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ template$<$typename Mat\-Type $>$ void {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::Cluster (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{data, }
+\item[{const size\-\_\-t}]{clusters, }
+\item[{arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{assignments, }
+\item[{Mat\-Type \&}]{centroids, }
+\item[{const bool}]{initial\-Assignment\-Guess = {\ttfamily false}, }
+\item[{const bool}]{initial\-Centroid\-Guess = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1kmeans_1_1KMeans_ad6bc1cae17cd8c2b7ca83c823f0b7f9e}
+
+
+Perform k-\/means clustering on the data, returning a list of cluster assignments and also the centroids of each cluster. 
+
+Optionally, the vector of assignments can be set to an initial guess of the cluster assignments; to do this, set initial\-Assignment\-Guess to true. Another way to set initial cluster guesses is to fill the centroids matrix with the centroid guesses, and then set initial\-Centroid\-Guess to true. initial\-Assignment\-Guess supersedes initial\-Centroid\-Guess, so if both are set to true, the assignments vector is used.
+
+Note that if the overclustering factor is greater than 1, the centroids matrix will be resized in the method. Regardless of the overclustering factor, the centroid guess matrix (if initial\-Centroid\-Guess is set to true) should have the same number of rows as the data matrix, and number of columns equal to 'clusters'.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Mat\-Type} & Type of matrix (arma\-::mat or arma\-::sp\-\_\-mat). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to cluster. \\
+\hline
+{\em clusters} & Number of clusters to compute. \\
+\hline
+{\em assignments} & Vector to store cluster assignments in. \\
+\hline
+{\em centroids} & Matrix in which centroids are stored. \\
+\hline
+{\em initial\-Assignment\-Guess} & If true, then it is assumed that assignments has a list of initial cluster assignments. \\
+\hline
+{\em initial\-Centroid\-Guess} & If true, then it is assumed that centroids contains the initial centroids of each cluster. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!Empty\-Cluster\-Action@{Empty\-Cluster\-Action}}
+\index{Empty\-Cluster\-Action@{Empty\-Cluster\-Action}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{Empty\-Cluster\-Action}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ const Empty\-Cluster\-Policy\& {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::Empty\-Cluster\-Action (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1KMeans_a957ad8fac8fb50d4f803466827aa7306}
+
+
+Get the empty cluster policy. 
+
+
+
+Definition at line 173 of file kmeans.\-hpp.
+
+
+
+References mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::empty\-Cluster\-Action.
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!Empty\-Cluster\-Action@{Empty\-Cluster\-Action}}
+\index{Empty\-Cluster\-Action@{Empty\-Cluster\-Action}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{Empty\-Cluster\-Action}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ Empty\-Cluster\-Policy\& {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::Empty\-Cluster\-Action (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1KMeans_aa7e22ac78a9d91ce58a27ee31d9f6e18}
+
+
+Modify the empty cluster policy. 
+
+
+
+Definition at line 176 of file kmeans.\-hpp.
+
+
+
+References mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::empty\-Cluster\-Action.
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!Max\-Iterations@{Max\-Iterations}}
+\index{Max\-Iterations@{Max\-Iterations}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{Max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ size\-\_\-t {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::Max\-Iterations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1KMeans_adef43052b1869c74e3dd81a89c97dac2}
+
+
+Get the maximum number of iterations. 
+
+
+
+Definition at line 158 of file kmeans.\-hpp.
+
+
+
+References mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::max\-Iterations.
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!Max\-Iterations@{Max\-Iterations}}
+\index{Max\-Iterations@{Max\-Iterations}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{Max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ size\-\_\-t\& {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::Max\-Iterations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1KMeans_a7c4f491968923b67399399dcbf58b07b}
+
+
+Set the maximum number of iterations. 
+
+
+
+Definition at line 160 of file kmeans.\-hpp.
+
+
+
+References mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::max\-Iterations.
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!Metric@{Metric}}
+\index{Metric@{Metric}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{Metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ const Metric\-Type\& {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::Metric (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1KMeans_a0709c2b85571d04003fd66ab2291876c}
+
+
+Get the distance metric. 
+
+
+
+Definition at line 163 of file kmeans.\-hpp.
+
+
+
+References mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::metric.
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!Metric@{Metric}}
+\index{Metric@{Metric}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{Metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ Metric\-Type\& {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::Metric (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1KMeans_ab338813a9416c5485e790657b66c9ab4}
+
+
+Modify the distance metric. 
+
+
+
+Definition at line 165 of file kmeans.\-hpp.
+
+
+
+References mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::metric.
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!Overclustering\-Factor@{Overclustering\-Factor}}
+\index{Overclustering\-Factor@{Overclustering\-Factor}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{Overclustering\-Factor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ double {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::Overclustering\-Factor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1KMeans_af8b71486315acccc41770bab869878cb}
+
+
+Return the overclustering factor. 
+
+
+
+Definition at line 153 of file kmeans.\-hpp.
+
+
+
+References mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::overclustering\-Factor.
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!Overclustering\-Factor@{Overclustering\-Factor}}
+\index{Overclustering\-Factor@{Overclustering\-Factor}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{Overclustering\-Factor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ double\& {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::Overclustering\-Factor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1KMeans_ad87c25c4fb5f98d118d62d553b6359c4}
+
+
+Set the overclustering factor. Must be greater than 1. 
+
+
+
+Definition at line 155 of file kmeans.\-hpp.
+
+
+
+References mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::overclustering\-Factor.
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!Partitioner@{Partitioner}}
+\index{Partitioner@{Partitioner}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{Partitioner}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ const Initial\-Partition\-Policy\& {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::Partitioner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1KMeans_a6ed52152da8d5f1d04e9f4afdb27f601}
+
+
+Get the initial partitioning policy. 
+
+
+
+Definition at line 168 of file kmeans.\-hpp.
+
+
+
+References mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::partitioner.
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!Partitioner@{Partitioner}}
+\index{Partitioner@{Partitioner}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{Partitioner}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ Initial\-Partition\-Policy\& {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::Partitioner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1KMeans_ae6729b846705c69f6323df6cbff64d2b}
+
+
+Modify the initial partitioning policy. 
+
+
+
+Definition at line 170 of file kmeans.\-hpp.
+
+
+
+References mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::partitioner.
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ std\-::string {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1kmeans_1_1KMeans_a25841daf125817f4b786b596d47d03a7}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!empty\-Cluster\-Action@{empty\-Cluster\-Action}}
+\index{empty\-Cluster\-Action@{empty\-Cluster\-Action}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{empty\-Cluster\-Action}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ Empty\-Cluster\-Policy {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::empty\-Cluster\-Action\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1kmeans_1_1KMeans_a1d8767b1f129f4eb1cdbb3fead95c02d}
+
+
+Instantiated empty cluster policy. 
+
+
+
+Definition at line 191 of file kmeans.\-hpp.
+
+
+
+Referenced by mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::\-Empty\-Cluster\-Action().
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!max\-Iterations@{max\-Iterations}}
+\index{max\-Iterations@{max\-Iterations}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ size\-\_\-t {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::max\-Iterations\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1kmeans_1_1KMeans_abc6a0b9b6ea97faf64842ff7d7f4d7d7}
+
+
+Maximum number of iterations before giving up. 
+
+
+
+Definition at line 185 of file kmeans.\-hpp.
+
+
+
+Referenced by mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::\-Max\-Iterations().
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!metric@{metric}}
+\index{metric@{metric}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ Metric\-Type {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::metric\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1kmeans_1_1KMeans_aee1e16cd42a4f0e929de4425eae2608c}
+
+
+Instantiated distance metric. 
+
+
+
+Definition at line 187 of file kmeans.\-hpp.
+
+
+
+Referenced by mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::\-Metric().
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!overclustering\-Factor@{overclustering\-Factor}}
+\index{overclustering\-Factor@{overclustering\-Factor}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{overclustering\-Factor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ double {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::overclustering\-Factor\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1kmeans_1_1KMeans_a9059afc2188f2f4c7e4f19037fd50e64}
+
+
+Factor controlling how many clusters are actually found. 
+
+
+
+Definition at line 183 of file kmeans.\-hpp.
+
+
+
+Referenced by mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::\-Overclustering\-Factor().
+
+\index{mlpack\-::kmeans\-::\-K\-Means@{mlpack\-::kmeans\-::\-K\-Means}!partitioner@{partitioner}}
+\index{partitioner@{partitioner}!mlpack::kmeans::KMeans@{mlpack\-::kmeans\-::\-K\-Means}}
+\subsubsection[{partitioner}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Squared\-Euclidean\-Distance, typename Initial\-Partition\-Policy  = Random\-Partition, typename Empty\-Cluster\-Policy  = Max\-Variance\-New\-Cluster$>$ Initial\-Partition\-Policy {\bf mlpack\-::kmeans\-::\-K\-Means}$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::partitioner\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1kmeans_1_1KMeans_abd03566ab1e18f5b80ae2949549d49c3}
+
+
+Instantiated initial partitioning policy. 
+
+
+
+Definition at line 189 of file kmeans.\-hpp.
+
+
+
+Referenced by mlpack\-::kmeans\-::\-K\-Means$<$ Metric\-Type, Initial\-Partition\-Policy, Empty\-Cluster\-Policy $>$\-::\-Partitioner().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/kmeans/{\bf kmeans.\-hpp}\end{DoxyCompactItemize}

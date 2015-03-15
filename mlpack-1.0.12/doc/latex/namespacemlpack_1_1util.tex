@@ -1,0 +1,73 @@
+\section{mlpack\-:\-:util Namespace Reference}
+\label{namespacemlpack_1_1util}\index{mlpack\-::util@{mlpack\-::util}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf C\-L\-I\-Deleter}
+\begin{DoxyCompactList}\small\item\em Extremely simple class whose only job is to delete the existing \doxyref{C\-L\-I}{p.}{classmlpack_1_1CLI} object at the end of execution. \end{DoxyCompactList}\item 
+class {\bf Null\-Out\-Stream}
+\begin{DoxyCompactList}\small\item\em Used for \doxyref{Log\-::\-Debug}{p.}{classmlpack_1_1Log_a771c6107b594176ffae1a036c253ca93} when not compiled with debugging symbols. \end{DoxyCompactList}\item 
+class {\bf Option}
+\begin{DoxyCompactList}\small\item\em A static object whose constructor registers a parameter with the \doxyref{C\-L\-I}{p.}{classmlpack_1_1CLI} class. \end{DoxyCompactList}\item 
+class {\bf Prefixed\-Out\-Stream}
+\begin{DoxyCompactList}\small\item\em Allows us to output to an ostream with a prefix at the beginning of each line, in the same way we would output to cout or cerr. \end{DoxyCompactList}\item 
+class {\bf Program\-Doc}
+\begin{DoxyCompactList}\small\item\em A static object whose constructor registers program documentation with the \doxyref{C\-L\-I}{p.}{classmlpack_1_1CLI} class. \end{DoxyCompactList}\item 
+class {\bf Save\-Restore\-Utility}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\-::string {\bf Get\-Version} ()
+\begin{DoxyCompactList}\small\item\em This will return either \char`\"{}mlpack x.\-y.\-z\char`\"{} or \char`\"{}mlpack trunk-\/r\-X\-X\-X\-X\-X\char`\"{} depending on whether or not this is a stable version of mlpack or an svn revision. \end{DoxyCompactList}\item 
+std\-::string {\bf Indent} (std\-::string input, const size\-\_\-t how\-Many\-Tabs=1)
+\begin{DoxyCompactList}\small\item\em A utility function that replaces all all newlines with a number of spaces depending on the indentation level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf C\-L\-I\-Deleter} {\bf cli\-Deleter}
+\begin{DoxyCompactList}\small\item\em Declare the deleter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{mlpack\-::util@{mlpack\-::util}!Get\-Version@{Get\-Version}}
+\index{Get\-Version@{Get\-Version}!mlpack::util@{mlpack\-::util}}
+\subsubsection[{Get\-Version}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mlpack\-::util\-::\-Get\-Version (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{namespacemlpack_1_1util_a5463728499ca94746d779a6863df5c20}
+
+
+This will return either \char`\"{}mlpack x.\-y.\-z\char`\"{} or \char`\"{}mlpack trunk-\/r\-X\-X\-X\-X\-X\char`\"{} depending on whether or not this is a stable version of mlpack or an svn revision. 
+
+\index{mlpack\-::util@{mlpack\-::util}!Indent@{Indent}}
+\index{Indent@{Indent}!mlpack::util@{mlpack\-::util}}
+\subsubsection[{Indent}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string mlpack\-::util\-::\-Indent (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{input, }
+\item[{const size\-\_\-t}]{how\-Many\-Tabs = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\label{namespacemlpack_1_1util_a0197596cc532ff8e1f5227b299d8dd0f}
+
+
+A utility function that replaces all all newlines with a number of spaces depending on the indentation level. 
+
+
+
+Referenced by mlpack\-::kernel\-::\-P\-Spectrum\-String\-Kernel\-::\-To\-String().
+
+
+
+\subsection{Variable Documentation}
+\index{mlpack\-::util@{mlpack\-::util}!cli\-Deleter@{cli\-Deleter}}
+\index{cli\-Deleter@{cli\-Deleter}!mlpack::util@{mlpack\-::util}}
+\subsubsection[{cli\-Deleter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\-L\-I\-Deleter} mlpack\-::util\-::cli\-Deleter\hspace{0.3cm}{\ttfamily [static]}}\label{namespacemlpack_1_1util_a1aac3eca4b81e3e22e0e5461026f258a}
+
+
+Declare the deleter. 
+
+
+
+Definition at line 35 of file cli\-\_\-deleter.\-hpp.
+

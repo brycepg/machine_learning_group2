@@ -1,0 +1,262 @@
+.TH "mlpack::optimization::LRSDPFunction" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::optimization::LRSDPFunction \- 
+.PP
+The objective function that \fBLRSDP\fP is trying to optimize\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLRSDPFunction\fP (const size_t numConstraints, const arma::mat &\fBinitialPoint\fP)"
+.br
+.RI "\fIConstruct the \fBLRSDPFunction\fP with the given initial point and number of constraints\&. \fP"
+.ti -1c
+.RI "const std::vector< arma::mat > & \fBA\fP () const "
+.br
+.RI "\fIReturn the vector of A matrices (which correspond to the constraints)\&. \fP"
+.ti -1c
+.RI "std::vector< arma::mat > & \fBA\fP ()"
+.br
+.RI "\fIModify the veector of A matrices (which correspond to the constraints)\&. \fP"
+.ti -1c
+.RI "const arma::uvec & \fBAModes\fP () const "
+.br
+.RI "\fIReturn the vector of modes for the A matrices\&. \fP"
+.ti -1c
+.RI "arma::uvec & \fBAModes\fP ()"
+.br
+.RI "\fIModify the vector of modes for the A matrices\&. \fP"
+.ti -1c
+.RI "const arma::vec & \fBB\fP () const "
+.br
+.RI "\fIReturn the vector of B values\&. \fP"
+.ti -1c
+.RI "arma::vec & \fBB\fP ()"
+.br
+.RI "\fIModify the vector of B values\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBC\fP () const "
+.br
+.RI "\fIReturn the objective function matrix (C)\&. \fP"
+.ti -1c
+.RI "arma::mat & \fBC\fP ()"
+.br
+.RI "\fIModify the objective function matrix (C)\&. \fP"
+.ti -1c
+.RI "double \fBEvaluate\fP (const arma::mat &coordinates) const "
+.br
+.RI "\fIEvaluate the objective function of the \fBLRSDP\fP (no constraints) at the given coordinates\&. \fP"
+.ti -1c
+.RI "double \fBEvaluateConstraint\fP (const size_t index, const arma::mat &coordinates) const "
+.br
+.RI "\fIEvaluate a particular constraint of the \fBLRSDP\fP at the given coordinates\&. \fP"
+.ti -1c
+.RI "const arma::mat & \fBGetInitialPoint\fP () const "
+.br
+.RI "\fIGet the initial point of the \fBLRSDP\fP\&. \fP"
+.ti -1c
+.RI "void \fBGradient\fP (const arma::mat &coordinates, arma::mat &gradient) const "
+.br
+.RI "\fIEvaluate the gradient of the \fBLRSDP\fP (no constraints) at the given coordinates\&. \fP"
+.ti -1c
+.RI "void \fBGradientConstraint\fP (const size_t index, const arma::mat &coordinates, arma::mat &gradient) const "
+.br
+.RI "\fIEvaluate the gradient of a particular constraint of the \fBLRSDP\fP at the given coordinates\&. \fP"
+.ti -1c
+.RI "size_t \fBNumConstraints\fP () const "
+.br
+.RI "\fIGet the number of constraints in the \fBLRSDP\fP\&. \fP"
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.RI "\fIReturn string representation of object\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< arma::mat > \fBa\fP"
+.br
+.RI "\fIA_i for each constraint\&. \fP"
+.ti -1c
+.RI "arma::uvec \fBaModes\fP"
+.br
+.RI "\fI1 if entries in matrix, 0 for normal\&. \fP"
+.ti -1c
+.RI "arma::vec \fBb\fP"
+.br
+.RI "\fIb_i for each constraint\&. \fP"
+.ti -1c
+.RI "arma::mat \fBc\fP"
+.br
+.RI "\fIObjective function matrix c\&. \fP"
+.ti -1c
+.RI "arma::mat \fBinitialPoint\fP"
+.br
+.RI "\fIInitial point\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The objective function that \fBLRSDP\fP is trying to optimize\&. 
+.PP
+Definition at line 27 of file lrsdp_function\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::optimization::LRSDPFunction::LRSDPFunction (const size_tnumConstraints, const arma::mat &initialPoint)"
+
+.PP
+Construct the \fBLRSDPFunction\fP with the given initial point and number of constraints\&. Set the A, B, and C matrices for each constraint using the \fBA()\fP, \fBB()\fP, and \fBC()\fP functions\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "const std::vector<arma::mat>& mlpack::optimization::LRSDPFunction::A () const\fC [inline]\fP"
+
+.PP
+Return the vector of A matrices (which correspond to the constraints)\&. 
+.PP
+Definition at line 75 of file lrsdp_function\&.hpp\&.
+.PP
+References a\&.
+.SS "std::vector<arma::mat>& mlpack::optimization::LRSDPFunction::A ()\fC [inline]\fP"
+
+.PP
+Modify the veector of A matrices (which correspond to the constraints)\&. 
+.PP
+Definition at line 77 of file lrsdp_function\&.hpp\&.
+.PP
+References a\&.
+.SS "const arma::uvec& mlpack::optimization::LRSDPFunction::AModes () const\fC [inline]\fP"
+
+.PP
+Return the vector of modes for the A matrices\&. 
+.PP
+Definition at line 80 of file lrsdp_function\&.hpp\&.
+.PP
+References aModes\&.
+.SS "arma::uvec& mlpack::optimization::LRSDPFunction::AModes ()\fC [inline]\fP"
+
+.PP
+Modify the vector of modes for the A matrices\&. 
+.PP
+Definition at line 82 of file lrsdp_function\&.hpp\&.
+.PP
+References aModes\&.
+.SS "const arma::vec& mlpack::optimization::LRSDPFunction::B () const\fC [inline]\fP"
+
+.PP
+Return the vector of B values\&. 
+.PP
+Definition at line 85 of file lrsdp_function\&.hpp\&.
+.PP
+References b\&.
+.SS "arma::vec& mlpack::optimization::LRSDPFunction::B ()\fC [inline]\fP"
+
+.PP
+Modify the vector of B values\&. 
+.PP
+Definition at line 87 of file lrsdp_function\&.hpp\&.
+.PP
+References b\&.
+.SS "const arma::mat& mlpack::optimization::LRSDPFunction::C () const\fC [inline]\fP"
+
+.PP
+Return the objective function matrix (C)\&. 
+.PP
+Definition at line 70 of file lrsdp_function\&.hpp\&.
+.PP
+References c\&.
+.SS "arma::mat& mlpack::optimization::LRSDPFunction::C ()\fC [inline]\fP"
+
+.PP
+Modify the objective function matrix (C)\&. 
+.PP
+Definition at line 72 of file lrsdp_function\&.hpp\&.
+.PP
+References c\&.
+.SS "double mlpack::optimization::LRSDPFunction::Evaluate (const arma::mat &coordinates) const"
+
+.PP
+Evaluate the objective function of the \fBLRSDP\fP (no constraints) at the given coordinates\&. 
+.SS "double mlpack::optimization::LRSDPFunction::EvaluateConstraint (const size_tindex, const arma::mat &coordinates) const"
+
+.PP
+Evaluate a particular constraint of the \fBLRSDP\fP at the given coordinates\&. 
+.SS "const arma::mat& mlpack::optimization::LRSDPFunction::GetInitialPoint () const\fC [inline]\fP"
+
+.PP
+Get the initial point of the \fBLRSDP\fP\&. 
+.PP
+Definition at line 67 of file lrsdp_function\&.hpp\&.
+.PP
+References initialPoint\&.
+.SS "void mlpack::optimization::LRSDPFunction::Gradient (const arma::mat &coordinates, arma::mat &gradient) const"
+
+.PP
+Evaluate the gradient of the \fBLRSDP\fP (no constraints) at the given coordinates\&. 
+.SS "void mlpack::optimization::LRSDPFunction::GradientConstraint (const size_tindex, const arma::mat &coordinates, arma::mat &gradient) const"
+
+.PP
+Evaluate the gradient of a particular constraint of the \fBLRSDP\fP at the given coordinates\&. 
+.SS "size_t mlpack::optimization::LRSDPFunction::NumConstraints () const\fC [inline]\fP"
+
+.PP
+Get the number of constraints in the \fBLRSDP\fP\&. 
+.PP
+Definition at line 64 of file lrsdp_function\&.hpp\&.
+.PP
+References b\&.
+.SS "std::string mlpack::optimization::LRSDPFunction::ToString () const"
+
+.PP
+Return string representation of object\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<arma::mat> mlpack::optimization::LRSDPFunction::a\fC [private]\fP"
+
+.PP
+A_i for each constraint\&. 
+.PP
+Definition at line 96 of file lrsdp_function\&.hpp\&.
+.PP
+Referenced by A()\&.
+.SS "arma::uvec mlpack::optimization::LRSDPFunction::aModes\fC [private]\fP"
+
+.PP
+1 if entries in matrix, 0 for normal\&. 
+.PP
+Definition at line 103 of file lrsdp_function\&.hpp\&.
+.PP
+Referenced by AModes()\&.
+.SS "arma::vec mlpack::optimization::LRSDPFunction::b\fC [private]\fP"
+
+.PP
+b_i for each constraint\&. 
+.PP
+Definition at line 98 of file lrsdp_function\&.hpp\&.
+.PP
+Referenced by B(), and NumConstraints()\&.
+.SS "arma::mat mlpack::optimization::LRSDPFunction::c\fC [private]\fP"
+
+.PP
+Objective function matrix c\&. 
+.PP
+Definition at line 94 of file lrsdp_function\&.hpp\&.
+.PP
+Referenced by C()\&.
+.SS "arma::mat mlpack::optimization::LRSDPFunction::initialPoint\fC [private]\fP"
+
+.PP
+Initial point\&. 
+.PP
+Definition at line 101 of file lrsdp_function\&.hpp\&.
+.PP
+Referenced by GetInitialPoint()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

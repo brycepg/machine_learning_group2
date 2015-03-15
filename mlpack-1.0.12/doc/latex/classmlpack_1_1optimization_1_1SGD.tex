@@ -1,0 +1,390 @@
+\section{mlpack\-:\-:optimization\-:\-:S\-G\-D$<$ Decomposable\-Function\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1optimization_1_1SGD}\index{mlpack\-::optimization\-::\-S\-G\-D$<$ Decomposable\-Function\-Type $>$@{mlpack\-::optimization\-::\-S\-G\-D$<$ Decomposable\-Function\-Type $>$}}
+
+
+Stochastic Gradient Descent is a technique for minimizing a function which can be expressed as a sum of other functions.  
+
+
+
+
+Inheritance diagram for mlpack\-:\-:optimization\-:\-:S\-G\-D$<$ Decomposable\-Function\-Type $>$\-:
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf S\-G\-D} (Decomposable\-Function\-Type \&{\bf function}, const double {\bf step\-Size}=0.\-01, const size\-\_\-t {\bf max\-Iterations}=100000, const double {\bf tolerance}=1e-\/5, const bool shuffle=true)
+\begin{DoxyCompactList}\small\item\em Construct the \doxyref{S\-G\-D}{p.}{classmlpack_1_1optimization_1_1SGD} optimizer with the given function and parameters. \end{DoxyCompactList}\item 
+const Decomposable\-Function\-Type \& {\bf Function} () const 
+\begin{DoxyCompactList}\small\item\em Get the instantiated function to be optimized. \end{DoxyCompactList}\item 
+Decomposable\-Function\-Type \& {\bf Function} ()
+\begin{DoxyCompactList}\small\item\em Modify the instantiated function. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Max\-Iterations} () const 
+\begin{DoxyCompactList}\small\item\em Get the maximum number of iterations (0 indicates no limit). \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Max\-Iterations} ()
+\begin{DoxyCompactList}\small\item\em Modify the maximum number of iterations (0 indicates no limit). \end{DoxyCompactList}\item 
+double {\bf Optimize} (arma\-::mat \&iterate)
+\begin{DoxyCompactList}\small\item\em Optimize the given function using stochastic gradient descent. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\double {\bf Optimize} (arma\-::mat \&parameters)
+\item 
+bool {\bf Shuffle} () const 
+\begin{DoxyCompactList}\small\item\em Get whether or not the individual functions are shuffled. \end{DoxyCompactList}\item 
+bool \& {\bf Shuffle} ()
+\begin{DoxyCompactList}\small\item\em Modify whether or not the individual functions are shuffled. \end{DoxyCompactList}\item 
+double {\bf Step\-Size} () const 
+\begin{DoxyCompactList}\small\item\em Get the step size. \end{DoxyCompactList}\item 
+double \& {\bf Step\-Size} ()
+\begin{DoxyCompactList}\small\item\em Modify the step size. \end{DoxyCompactList}\item 
+double {\bf Tolerance} () const 
+\begin{DoxyCompactList}\small\item\em Get the tolerance for termination. \end{DoxyCompactList}\item 
+double \& {\bf Tolerance} ()
+\begin{DoxyCompactList}\small\item\em Modify the tolerance for termination. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Decomposable\-Function\-Type \& {\bf function}
+\begin{DoxyCompactList}\small\item\em The instantiated function. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf max\-Iterations}
+\begin{DoxyCompactList}\small\item\em The maximum number of allowed iterations. \end{DoxyCompactList}\item 
+bool {\bf shuffle}
+\begin{DoxyCompactList}\small\item\em Controls whether or not the individual functions are shuffled when iterating. \end{DoxyCompactList}\item 
+double {\bf step\-Size}
+\begin{DoxyCompactList}\small\item\em The step size for each example. \end{DoxyCompactList}\item 
+double {\bf tolerance}
+\begin{DoxyCompactList}\small\item\em The tolerance for termination. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Decomposable\-Function\-Type$>$class mlpack\-::optimization\-::\-S\-G\-D$<$ Decomposable\-Function\-Type $>$}
+
+Stochastic Gradient Descent is a technique for minimizing a function which can be expressed as a sum of other functions. 
+
+That is, suppose we have
+
+\[ f(A) = \sum_{i = 0}^{n} f_i(A) \]
+
+and our task is to minimize $ A $. Stochastic gradient descent iterates over each function $ f_i(A) $, producing the following update scheme\-:
+
+\[ A_{j + 1} = A_j + \alpha \nabla f_i(A) \]
+
+where $ \alpha $ is a parameter which specifies the step size. $ i $ is chosen according to $ j $ (the iteration number). The \doxyref{S\-G\-D}{p.}{classmlpack_1_1optimization_1_1SGD} class supports either scanning through each of the $ n $ functions $ f_i(A) $ linearly, or in a random sequence. The algorithm continues until $ j $ reaches the maximum number of iterations -- or when a full sequence of updates through each of the $ n $ functions $ f_i(A) $ produces an improvement within a certain tolerance $ \epsilon $. That is,
+
+\[ | f(A_{j + n}) - f(A_j) | < \epsilon. \]
+
+The parameter $\epsilon$ is specified by the tolerance parameter to the constructor; $n$ is specified by the max\-Iterations parameter.
+
+This class is useful for data-\/dependent functions whose objective function can be expressed as a sum of objective functions operating on an individual point. Then, \doxyref{S\-G\-D}{p.}{classmlpack_1_1optimization_1_1SGD} considers the gradient of the objective function operating on an individual point in its update of $ A $.
+
+For \doxyref{S\-G\-D}{p.}{classmlpack_1_1optimization_1_1SGD} to work, a Decomposable\-Function\-Type template parameter is required. This class must implement the following function\-:
+
+size\-\_\-t Num\-Functions(); double Evaluate(const arma\-::mat\& coordinates, const size\-\_\-t i); void Gradient(const arma\-::mat\& coordinates, const size\-\_\-t i, arma\-::mat\& gradient);
+
+Num\-Functions() should return the number of functions ( $n$), and in the other two functions, the parameter i refers to which individual function (or gradient) is being evaluated. So, for the case of a data-\/dependent function, such as N\-C\-A (see \doxyref{mlpack\-::nca\-::\-N\-C\-A}{p.}{classmlpack_1_1nca_1_1NCA}), Num\-Functions() should return the number of points in the dataset, and Evaluate(coordinates, 0) will evaluate the objective function on the first point in the dataset (presumably, the dataset is held internally in the Decomposable\-Function\-Type).
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Decomposable\-Function\-Type} & Decomposable objective function type to be minimized. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 78 of file sgd.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!S\-G\-D@{S\-G\-D}}
+\index{S\-G\-D@{S\-G\-D}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{S\-G\-D}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::{\bf S\-G\-D} (
+\begin{DoxyParamCaption}
+\item[{Decomposable\-Function\-Type \&}]{function, }
+\item[{const double}]{step\-Size = {\ttfamily 0.01}, }
+\item[{const size\-\_\-t}]{max\-Iterations = {\ttfamily 100000}, }
+\item[{const double}]{tolerance = {\ttfamily 1e-\/5}, }
+\item[{const bool}]{shuffle = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1optimization_1_1SGD_a2509c2b6defccc353337af8f509ae462}
+
+
+Construct the \doxyref{S\-G\-D}{p.}{classmlpack_1_1optimization_1_1SGD} optimizer with the given function and parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em function} & Function to be optimized (minimized). \\
+\hline
+{\em step\-Size} & Step size for each iteration. \\
+\hline
+{\em max\-Iterations} & Maximum number of iterations allowed (0 means no limit). \\
+\hline
+{\em tolerance} & Maximum absolute tolerance to terminate algorithm. \\
+\hline
+{\em shuffle} & If true, the function order is shuffled; otherwise, each function is visited in linear order. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!Function@{Function}}
+\index{Function@{Function}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{Function}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ const Decomposable\-Function\-Type\& {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::Function (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1SGD_ac6acb696206af2a547bbc55522bcb48c}
+
+
+Get the instantiated function to be optimized. 
+
+
+
+Definition at line 109 of file sgd.\-hpp.
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!Function@{Function}}
+\index{Function@{Function}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{Function}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ Decomposable\-Function\-Type\& {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::Function (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1SGD_afe953fad48c275cb61a58954e5e52640}
+
+
+Modify the instantiated function. 
+
+
+
+Definition at line 111 of file sgd.\-hpp.
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!Max\-Iterations@{Max\-Iterations}}
+\index{Max\-Iterations@{Max\-Iterations}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{Max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ size\-\_\-t {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::Max\-Iterations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1SGD_a785f08d7167bd1f1c3f8a62b1e9668a1}
+
+
+Get the maximum number of iterations (0 indicates no limit). 
+
+
+
+Definition at line 119 of file sgd.\-hpp.
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!Max\-Iterations@{Max\-Iterations}}
+\index{Max\-Iterations@{Max\-Iterations}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{Max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ size\-\_\-t\& {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::Max\-Iterations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1SGD_abf30e35e91c214465bf0193e3e909f81}
+
+
+Modify the maximum number of iterations (0 indicates no limit). 
+
+
+
+Definition at line 121 of file sgd.\-hpp.
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!Optimize@{Optimize}}
+\index{Optimize@{Optimize}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{Optimize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::Optimize (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{iterate}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1optimization_1_1SGD_aca378ff7057471e345108eb003861240}
+
+
+Optimize the given function using stochastic gradient descent. 
+
+The given starting point will be modified to store the finishing point of the algorithm, and the final objective value is returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em iterate} & Starting point (will be modified). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Objective value of the final point. 
+\end{DoxyReturn}
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!Optimize@{Optimize}}
+\index{Optimize@{Optimize}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{Optimize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$$>$ double {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ {\bf mlpack\-::svd\-::\-Regularized\-S\-V\-D\-Function} $>$\-::Optimize (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{parameters}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1optimization_1_1SGD_a824b3c4b1af71a365d64af11c2b0f88b}
+Used because the gradient affects only a small number of parameters per example, and thus the normal abstraction does not work as fast as we might like it to. \index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!Shuffle@{Shuffle}}
+\index{Shuffle@{Shuffle}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{Shuffle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ bool {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::Shuffle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1SGD_aea1d57a2879870b3d1d46d8b16a2ef3b}
+
+
+Get whether or not the individual functions are shuffled. 
+
+
+
+Definition at line 129 of file sgd.\-hpp.
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!Shuffle@{Shuffle}}
+\index{Shuffle@{Shuffle}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{Shuffle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ bool\& {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::Shuffle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1SGD_a851c1e8156ad72983c9f6f190d25b4e6}
+
+
+Modify whether or not the individual functions are shuffled. 
+
+
+
+Definition at line 131 of file sgd.\-hpp.
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!Step\-Size@{Step\-Size}}
+\index{Step\-Size@{Step\-Size}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{Step\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::Step\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1SGD_a1df4b778a2d55e1cfbd31cfd43d696e0}
+
+
+Get the step size. 
+
+
+
+Definition at line 114 of file sgd.\-hpp.
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!Step\-Size@{Step\-Size}}
+\index{Step\-Size@{Step\-Size}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{Step\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ double\& {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::Step\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1SGD_a9ac3e4c94f87abb5db78a25f935c3f08}
+
+
+Modify the step size. 
+
+
+
+Definition at line 116 of file sgd.\-hpp.
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!Tolerance@{Tolerance}}
+\index{Tolerance@{Tolerance}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{Tolerance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::Tolerance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1SGD_a460f482e82d59c3cb4b4515891de3d9f}
+
+
+Get the tolerance for termination. 
+
+
+
+Definition at line 124 of file sgd.\-hpp.
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!Tolerance@{Tolerance}}
+\index{Tolerance@{Tolerance}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{Tolerance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ double\& {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::Tolerance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1optimization_1_1SGD_a6461539cf63912ea6d237cee24693fb4}
+
+
+Modify the tolerance for termination. 
+
+
+
+Definition at line 126 of file sgd.\-hpp.
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ std\-::string {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1optimization_1_1SGD_a4251a5b6b1645c5d52298826b6a5c8a4}
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!function@{function}}
+\index{function@{function}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{function}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ Decomposable\-Function\-Type\& {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::function\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1SGD_a3ade7289aecf97336e7ab4269ef194ca}
+
+
+The instantiated function. 
+
+
+
+Definition at line 138 of file sgd.\-hpp.
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!max\-Iterations@{max\-Iterations}}
+\index{max\-Iterations@{max\-Iterations}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ size\-\_\-t {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::max\-Iterations\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1SGD_ad444f10ae45d737f4baa6ef33d6593a1}
+
+
+The maximum number of allowed iterations. 
+
+
+
+Definition at line 144 of file sgd.\-hpp.
+
+
+
+Referenced by mlpack\-::optimization\-::\-S\-G\-D$<$ mlpack\-::svd\-::\-Regularized\-S\-V\-D\-Function $>$\-::\-Max\-Iterations().
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!shuffle@{shuffle}}
+\index{shuffle@{shuffle}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{shuffle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ bool {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::shuffle\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1SGD_a4f6bcb4069b5b52dea2b7701ed982c54}
+
+
+Controls whether or not the individual functions are shuffled when iterating. 
+
+
+
+Definition at line 151 of file sgd.\-hpp.
+
+
+
+Referenced by mlpack\-::optimization\-::\-S\-G\-D$<$ mlpack\-::svd\-::\-Regularized\-S\-V\-D\-Function $>$\-::\-Shuffle().
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!step\-Size@{step\-Size}}
+\index{step\-Size@{step\-Size}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{step\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::step\-Size\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1SGD_a1a5345e76954f8c0b8f0f7fa42af4e33}
+
+
+The step size for each example. 
+
+
+
+Definition at line 141 of file sgd.\-hpp.
+
+
+
+Referenced by mlpack\-::optimization\-::\-S\-G\-D$<$ mlpack\-::svd\-::\-Regularized\-S\-V\-D\-Function $>$\-::\-Step\-Size().
+
+\index{mlpack\-::optimization\-::\-S\-G\-D@{mlpack\-::optimization\-::\-S\-G\-D}!tolerance@{tolerance}}
+\index{tolerance@{tolerance}!mlpack::optimization::SGD@{mlpack\-::optimization\-::\-S\-G\-D}}
+\subsubsection[{tolerance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Decomposable\-Function\-Type$>$ double {\bf mlpack\-::optimization\-::\-S\-G\-D}$<$ Decomposable\-Function\-Type $>$\-::tolerance\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1optimization_1_1SGD_aafd8f20423903a663b71cb8b28949051}
+
+
+The tolerance for termination. 
+
+
+
+Definition at line 147 of file sgd.\-hpp.
+
+
+
+Referenced by mlpack\-::optimization\-::\-S\-G\-D$<$ mlpack\-::svd\-::\-Regularized\-S\-V\-D\-Function $>$\-::\-Tolerance().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/core/optimizers/sgd/{\bf sgd.\-hpp}\end{DoxyCompactItemize}

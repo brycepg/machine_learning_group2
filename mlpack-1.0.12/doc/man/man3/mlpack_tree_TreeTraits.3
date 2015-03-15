@@ -1,0 +1,115 @@
+.TH "mlpack::tree::TreeTraits< TreeType >" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::tree::TreeTraits< TreeType > \- 
+.PP
+The \fBTreeTraits\fP class provides compile-time information on the characteristics of a given tree type\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const bool \fBFirstPointIsCentroid\fP = false"
+.br
+.RI "\fIThis is true if Point(0) is the centroid of the node\&. \fP"
+.ti -1c
+.RI "static const bool \fBHasOverlappingChildren\fP = true"
+.br
+.RI "\fIThis is true if the subspaces represented by the children of a node can overlap\&. \fP"
+.ti -1c
+.RI "static const bool \fBHasSelfChildren\fP = false"
+.br
+.RI "\fIThis is true if the points contained in the first child of a node (Child(0)) are also contained in that node\&. \fP"
+.ti -1c
+.RI "static const bool \fBRearrangesDataset\fP = false"
+.br
+.RI "\fIThis is true if the tree rearranges points in the dataset when it is built\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename TreeType>class mlpack::tree::TreeTraits< TreeType >"
+The \fBTreeTraits\fP class provides compile-time information on the characteristics of a given tree type\&. 
+
+These include traits such as whether or not a node knows the distance to its parent node, or whether or not the subspaces represented by children can overlap\&.
+.PP
+These traits can be used for static compile-time optimization:
+.PP
+.PP
+.nf
+// This if statement will be optimized out at compile time!
+if (TreeTraits<TreeType>::HasOverlappingChildren == false)
+{
+  // Do a simpler computation because no children overlap\&.
+}
+else
+{
+  // Do the full, complex calculation\&.
+}
+.fi
+.PP
+.PP
+The traits can also be used in conjunction with SFINAE to write specialized versions of functions:
+.PP
+.PP
+.nf
+template<typename TreeType>
+void Compute(TreeType& node,
+             boost::enable_if<
+                 TreeTraits<TreeType>::RearrangesDataset>::type*)
+{
+  // Computation where special dataset-rearranging tree constructor is
+  // called\&.
+}
+
+template<typename TreeType>
+void Compute(TreeType& node,
+             boost::enable_if<
+                 !TreeTraits<TreeType>::RearrangesDataset>::type*)
+{
+  // Computation where normal tree constructor is called\&.
+}
+.fi
+.PP
+.PP
+In those two examples, the boost::enable_if<> class takes a boolean template parameter which allows that function to be called when the boolean is true\&.
+.PP
+Each trait must be a static const value and not a function; only const values can be used as template parameters (with the exception of constexprs, which are a C++11 feature; but MLPACK is not using C++11)\&. By default (the unspecialized implementation of \fBTreeTraits\fP), each parameter is set to make as few assumptions about the tree as possible; so, even if \fBTreeTraits\fP is not specialized for a particular tree type, tree-based algorithms should still work\&.
+.PP
+When you write your own tree, you must specialize the \fBTreeTraits\fP class to your tree type and set the corresponding values appropriately\&. See \fBmlpack/core/tree/binary_space_tree/traits\&.hpp\fP for an example\&. 
+.PP
+Definition at line 80 of file tree_traits\&.hpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename TreeType > const bool \fBmlpack::tree::TreeTraits\fP< TreeType >::FirstPointIsCentroid = false\fC [static]\fP"
+
+.PP
+This is true if Point(0) is the centroid of the node\&. 
+.PP
+Definition at line 92 of file tree_traits\&.hpp\&.
+.SS "template<typename TreeType > const bool \fBmlpack::tree::TreeTraits\fP< TreeType >::HasOverlappingChildren = true\fC [static]\fP"
+
+.PP
+This is true if the subspaces represented by the children of a node can overlap\&. 
+.PP
+Definition at line 87 of file tree_traits\&.hpp\&.
+.SS "template<typename TreeType > const bool \fBmlpack::tree::TreeTraits\fP< TreeType >::HasSelfChildren = false\fC [static]\fP"
+
+.PP
+This is true if the points contained in the first child of a node (Child(0)) are also contained in that node\&. 
+.PP
+Definition at line 98 of file tree_traits\&.hpp\&.
+.SS "template<typename TreeType > const bool \fBmlpack::tree::TreeTraits\fP< TreeType >::RearrangesDataset = false\fC [static]\fP"
+
+.PP
+This is true if the tree rearranges points in the dataset when it is built\&. 
+.PP
+Definition at line 103 of file tree_traits\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

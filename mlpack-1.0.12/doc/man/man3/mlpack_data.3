@@ -1,0 +1,161 @@
+.TH "mlpack::data" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::data \- 
+.PP
+Functions to load and save matrices\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename eT > bool \fBLoad\fP (const std::string &filename, arma::Mat< eT > &matrix, bool fatal=false, bool transpose=true)"
+.br
+.RI "\fILoads a matrix from file, guessing the filetype from the extension\&. \fP"
+.ti -1c
+.RI "template<typename eT > void \fBNormalizeLabels\fP (const arma::Col< eT > &labelsIn, arma::Col< size_t > &labels, arma::Col< eT > &mapping)"
+.br
+.RI "\fIGiven a set of labels of a particular datatype, convert them to unsigned labels in the range [0, n) where n is the number of different labels\&. \fP"
+.ti -1c
+.RI "template<typename eT > void \fBRevertLabels\fP (const arma::Col< size_t > &labels, const arma::Col< eT > &mapping, arma::Col< eT > &labelsOut)"
+.br
+.RI "\fIGiven a set of labels that have been mapped to the range [0, n), map them back to the original labels given by the 'mapping' vector\&. \fP"
+.ti -1c
+.RI "template<typename eT > bool \fBSave\fP (const std::string &filename, const arma::Mat< eT > &matrix, bool fatal=false, bool transpose=true)"
+.br
+.RI "\fISaves a matrix to file, guessing the filetype from the extension\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Functions to load and save matrices\&. 
+
+
+.SH "Function Documentation"
+.PP 
+.SS "template<typename eT > bool mlpack::data::Load (const std::string &filename, arma::Mat< eT > &matrix, boolfatal = \fCfalse\fP, booltranspose = \fCtrue\fP)"
+
+.PP
+Loads a matrix from file, guessing the filetype from the extension\&. This will transpose the matrix at load time\&. If the filetype cannot be determined, an error will be given\&.
+.PP
+The supported types of files are the same as found in Armadillo:
+.PP
+.IP "\(bu" 2
+CSV (csv_ascii), denoted by \&.csv, or optionally \&.txt
+.IP "\(bu" 2
+ASCII (raw_ascii), denoted by \&.txt
+.IP "\(bu" 2
+Armadillo ASCII (arma_ascii), also denoted by \&.txt
+.IP "\(bu" 2
+PGM (pgm_binary), denoted by \&.pgm
+.IP "\(bu" 2
+PPM (ppm_binary), denoted by \&.ppm
+.IP "\(bu" 2
+Raw binary (raw_binary), denoted by \&.bin
+.IP "\(bu" 2
+Armadillo binary (arma_binary), denoted by \&.bin
+.IP "\(bu" 2
+HDF5, denoted by \&.hdf, \&.hdf5, \&.h5, or \&.he5
+.PP
+.PP
+If the file extension is not one of those types, an error will be given\&. This is preferable to Armadillo's default behavior of loading an unknown filetype as raw_binary, which can have very confusing effects\&.
+.PP
+If the parameter 'fatal' is set to true, the program will exit with an error if the matrix does not load successfully\&. The parameter 'transpose' controls whether or not the matrix is transposed after loading\&. In most cases, because data is generally stored in a row-major format and MLPACK requires column-major matrices, this should be left at its default value of 'true'\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP Name of file to load\&. 
+.br
+\fImatrix\fP Matrix to load contents of file into\&. 
+.br
+\fIfatal\fP If an error should be reported as fatal (default false)\&. 
+.br
+\fItranspose\fP If true, transpose the matrix after loading\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean value indicating success or failure of load\&. 
+.RE
+.PP
+
+.SS "template<typename eT > void mlpack::data::NormalizeLabels (const arma::Col< eT > &labelsIn, arma::Col< size_t > &labels, arma::Col< eT > &mapping)"
+
+.PP
+Given a set of labels of a particular datatype, convert them to unsigned labels in the range [0, n) where n is the number of different labels\&. Also, a reverse mapping from the new label to the old value is stored in the 'mapping' vector\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlabelsIn\fP Input labels of arbitrary datatype\&. 
+.br
+\fIlabels\fP Vector that unsigned labels will be stored in\&. 
+.br
+\fImapping\fP Reverse mapping to convert new labels back to old labels\&. 
+.RE
+.PP
+
+.SS "template<typename eT > void mlpack::data::RevertLabels (const arma::Col< size_t > &labels, const arma::Col< eT > &mapping, arma::Col< eT > &labelsOut)"
+
+.PP
+Given a set of labels that have been mapped to the range [0, n), map them back to the original labels given by the 'mapping' vector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlabels\fP Set of normalized labels to convert\&. 
+.br
+\fImapping\fP Mapping to use to convert labels\&. 
+.br
+\fIlabelsOut\fP Vector to store new labels in\&. 
+.RE
+.PP
+
+.SS "template<typename eT > bool mlpack::data::Save (const std::string &filename, const arma::Mat< eT > &matrix, boolfatal = \fCfalse\fP, booltranspose = \fCtrue\fP)"
+
+.PP
+Saves a matrix to file, guessing the filetype from the extension\&. This will transpose the matrix at save time\&. If the filetype cannot be determined, an error will be given\&.
+.PP
+The supported types of files are the same as found in Armadillo:
+.PP
+.IP "\(bu" 2
+CSV (csv_ascii), denoted by \&.csv, or optionally \&.txt
+.IP "\(bu" 2
+ASCII (raw_ascii), denoted by \&.txt
+.IP "\(bu" 2
+Armadillo ASCII (arma_ascii), also denoted by \&.txt
+.IP "\(bu" 2
+PGM (pgm_binary), denoted by \&.pgm
+.IP "\(bu" 2
+PPM (ppm_binary), denoted by \&.ppm
+.IP "\(bu" 2
+Raw binary (raw_binary), denoted by \&.bin
+.IP "\(bu" 2
+Armadillo binary (arma_binary), denoted by \&.bin
+.IP "\(bu" 2
+HDF5 (hdf5_binary), denoted by \&.hdf5, \&.hdf, \&.h5, or \&.he5
+.PP
+.PP
+If the file extension is not one of those types, an error will be given\&. If the 'fatal' parameter is set to true, an error will cause the program to exit\&. If the 'transpose' parameter is set to true, the matrix will be transposed before saving\&. Generally, because MLPACK stores matrices in a column-major format and most datasets are stored on disk as row-major, this parameter should be left at its default value of 'true'\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP Name of file to save to\&. 
+.br
+\fImatrix\fP Matrix to save into file\&. 
+.br
+\fIfatal\fP If an error should be reported as fatal (default false)\&. 
+.br
+\fItranspose\fP If true, transpose the matrix before saving\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean value indicating success or failure of save\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

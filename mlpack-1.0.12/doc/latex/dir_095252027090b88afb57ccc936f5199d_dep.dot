@@ -1,0 +1,9 @@
+digraph "src/mlpack/tests" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_6eb49727f7e0b689ddabdbdfc4e541ff {
+    graph [ bgcolor="#ddddee", pencolor="black", label="mlpack" fontname="Helvetica", fontsize="10", URL="dir_6eb49727f7e0b689ddabdbdfc4e541ff.html"]
+  dir_095252027090b88afb57ccc936f5199d [shape=box, label="tests", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_095252027090b88afb57ccc936f5199d.html"];
+  }
+}

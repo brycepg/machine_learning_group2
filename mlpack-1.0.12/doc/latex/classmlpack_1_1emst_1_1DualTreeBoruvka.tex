@@ -1,0 +1,428 @@
+\section{mlpack\-:\-:emst\-:\-:Dual\-Tree\-Boruvka$<$ Metric\-Type, Tree\-Type $>$ Class Template Reference}
+\label{classmlpack_1_1emst_1_1DualTreeBoruvka}\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka$<$ Metric\-Type, Tree\-Type $>$@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka$<$ Metric\-Type, Tree\-Type $>$}}
+
+
+Performs the M\-S\-T calculation using the Dual-\/\-Tree Boruvka algorithm, using any type of tree.  
+
+
+
+
+Collaboration diagram for mlpack\-:\-:emst\-:\-:Dual\-Tree\-Boruvka$<$ Metric\-Type, Tree\-Type $>$\-:
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf Sort\-Edges\-Helper}
+\begin{DoxyCompactList}\small\item\em For sorting the edge list after the computation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Dual\-Tree\-Boruvka} (const typename Tree\-Type\-::\-Mat \&dataset, const bool {\bf naive}=false, const Metric\-Type {\bf metric}=Metric\-Type())
+\begin{DoxyCompactList}\small\item\em Create the tree from the given dataset. \end{DoxyCompactList}\item 
+{\bf Dual\-Tree\-Boruvka} (Tree\-Type $\ast${\bf tree}, const typename Tree\-Type\-::\-Mat \&dataset, const Metric\-Type {\bf metric}=Metric\-Type())
+\begin{DoxyCompactList}\small\item\em Create the \doxyref{Dual\-Tree\-Boruvka}{p.}{classmlpack_1_1emst_1_1DualTreeBoruvka} object with an already initialized tree. \end{DoxyCompactList}\item 
+{\bf $\sim$\-Dual\-Tree\-Boruvka} ()
+\begin{DoxyCompactList}\small\item\em Delete the tree, if it was created inside the object. \end{DoxyCompactList}\item 
+void {\bf Compute\-M\-S\-T} (arma\-::mat \&results)
+\begin{DoxyCompactList}\small\item\em Iteratively find the nearest neighbor of each component until the M\-S\-T is complete. \end{DoxyCompactList}\item 
+std\-::string {\bf To\-String} () const 
+\begin{DoxyCompactList}\small\item\em Returns a string representation of this object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Add\-All\-Edges} ()
+\begin{DoxyCompactList}\small\item\em Adds all the edges found in one iteration to the list of neighbors. \end{DoxyCompactList}\item 
+void {\bf Add\-Edge} (const size\-\_\-t e1, const size\-\_\-t e2, const double distance)
+\begin{DoxyCompactList}\small\item\em Adds a single edge to the edge list. \end{DoxyCompactList}\item 
+void {\bf Cleanup} ()
+\begin{DoxyCompactList}\small\item\em The values stored in the tree must be reset on each iteration. \end{DoxyCompactList}\item 
+void {\bf Cleanup\-Helper} (Tree\-Type $\ast${\bf tree})
+\begin{DoxyCompactList}\small\item\em This function resets the values in the nodes of the tree nearest neighbor distance, and checks for fully connected nodes. \end{DoxyCompactList}\item 
+void {\bf Emit\-Results} (arma\-::mat \&results)
+\begin{DoxyCompactList}\small\item\em Unpermute the edge list and output it to results. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Union\-Find} {\bf connections}
+\begin{DoxyCompactList}\small\item\em Connections. \end{DoxyCompactList}\item 
+const Tree\-Type\-::\-Mat \& {\bf data}
+\begin{DoxyCompactList}\small\item\em Reference to the data (this is what should be used for accessing data). \end{DoxyCompactList}\item 
+Tree\-Type\-::\-Mat {\bf data\-Copy}
+\begin{DoxyCompactList}\small\item\em Copy of the data (if necessary). \end{DoxyCompactList}\item 
+std\-::vector$<$ {\bf Edge\-Pair} $>$ {\bf edges}
+\begin{DoxyCompactList}\small\item\em Edges. \end{DoxyCompactList}\item 
+Metric\-Type {\bf metric}
+\begin{DoxyCompactList}\small\item\em The instantiated metric. \end{DoxyCompactList}\item 
+bool {\bf naive}
+\begin{DoxyCompactList}\small\item\em Indicates whether or not O(n$^\wedge$2) naive mode will be used. \end{DoxyCompactList}\item 
+arma\-::vec {\bf neighbors\-Distances}
+\begin{DoxyCompactList}\small\item\em List of edge distances. \end{DoxyCompactList}\item 
+arma\-::\-Col$<$ size\-\_\-t $>$ {\bf neighbors\-In\-Component}
+\begin{DoxyCompactList}\small\item\em List of edge nodes. \end{DoxyCompactList}\item 
+arma\-::\-Col$<$ size\-\_\-t $>$ {\bf neighbors\-Out\-Component}
+\begin{DoxyCompactList}\small\item\em List of edge nodes. \end{DoxyCompactList}\item 
+std\-::vector$<$ size\-\_\-t $>$ {\bf old\-From\-New}
+\begin{DoxyCompactList}\small\item\em Permutations of points during tree building. \end{DoxyCompactList}\item 
+bool {\bf own\-Tree}
+\begin{DoxyCompactList}\small\item\em Indicates whether or not we \char`\"{}own\char`\"{} the tree. \end{DoxyCompactList}\item 
+struct \\*
+{\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka\-::\-Sort\-Edges\-Helper} {\bf Sort\-Fun}
+\item 
+double {\bf total\-Dist}
+\begin{DoxyCompactList}\small\item\em Total distance of the tree. \end{DoxyCompactList}\item 
+Tree\-Type $\ast$ {\bf tree}
+\begin{DoxyCompactList}\small\item\em Pointer to the root of the tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Metric\-Type = metric\-::\-Euclidean\-Distance, typename Tree\-Type = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$class mlpack\-::emst\-::\-Dual\-Tree\-Boruvka$<$ Metric\-Type, Tree\-Type $>$}
+
+Performs the M\-S\-T calculation using the Dual-\/\-Tree Boruvka algorithm, using any type of tree. 
+
+For more information on the algorithm, see the following citation\-:
+
+
+\begin{DoxyCode}
+@inproceedings\{
+  author = \{March, W.B., Ram, P., and Gray, A.G.\},
+  title = \{\{Fast Euclidean Minimum Spanning Tree: Algorithm, Analysis,
+     Applications.\}\},
+  booktitle = \{Proceedings of the 16th ACM SIGKDD International Conference
+     on Knowledge Discovery and Data Mining\}
+  series = \{KDD 2010\},
+  year = \{2010\}
+\}
+\end{DoxyCode}
+
+
+General usage of this class might be like this\-:
+
+
+\begin{DoxyCode}
+\textcolor{keyword}{extern} arma::mat data; \textcolor{comment}{// We want to find the MST of this dataset.}
+DualTreeBoruvka<> dtb(data); \textcolor{comment}{// Create the tree with default options.}
+
+\textcolor{comment}{// Find the MST.}
+arma::mat mstResults;
+dtb.ComputeMST(mstResults);
+\end{DoxyCode}
+
+
+More advanced usage of the class can use different types of trees, pass in an already-\/built tree, or compute the M\-S\-T using the O(n$^\wedge$2) naive algorithm.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Metric\-Type} & The metric to use. I\-M\-P\-O\-R\-T\-A\-N\-T\-: this hasn't really been tested with anything other than the L2 metric, so user beware. Note that the tree type needs to compute bounds using the same metric as the type specified here. \\
+\hline
+{\em Tree\-Type} & Type of tree to use. Should use \doxyref{D\-T\-B\-Stat}{p.}{classmlpack_1_1emst_1_1DTBStat} as a statistic. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 83 of file dtb.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!Dual\-Tree\-Boruvka@{Dual\-Tree\-Boruvka}}
+\index{Dual\-Tree\-Boruvka@{Dual\-Tree\-Boruvka}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{Dual\-Tree\-Boruvka}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::{\bf Dual\-Tree\-Boruvka} (
+\begin{DoxyParamCaption}
+\item[{const typename Tree\-Type\-::\-Mat \&}]{dataset, }
+\item[{const bool}]{naive = {\ttfamily false}, }
+\item[{const Metric\-Type}]{metric = {\ttfamily MetricType()}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a0d23c7760ec6af9c4ea6b928d393f226}
+
+
+Create the tree from the given dataset. 
+
+This copies the dataset to an internal copy, because tree-\/building modifies the dataset.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to build a tree for. \\
+\hline
+{\em naive} & Whether the computation should be done in O(n$^\wedge$2) naive mode. \\
+\hline
+{\em leaf\-Size} & The leaf size to be used during tree construction. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!Dual\-Tree\-Boruvka@{Dual\-Tree\-Boruvka}}
+\index{Dual\-Tree\-Boruvka@{Dual\-Tree\-Boruvka}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{Dual\-Tree\-Boruvka}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::{\bf Dual\-Tree\-Boruvka} (
+\begin{DoxyParamCaption}
+\item[{Tree\-Type $\ast$}]{tree, }
+\item[{const typename Tree\-Type\-::\-Mat \&}]{dataset, }
+\item[{const Metric\-Type}]{metric = {\ttfamily MetricType()}}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_ac53980094c0f5ba1e5611e6a52aa604b}
+
+
+Create the \doxyref{Dual\-Tree\-Boruvka}{p.}{classmlpack_1_1emst_1_1DualTreeBoruvka} object with an already initialized tree. 
+
+This will not copy the dataset, and can save a little processing power. Naive mode is not available as an option for this constructor; instead, to run naive computation, construct a tree with all the points in one leaf (i.\-e. leaf\-Size = number of points).
+
+\begin{DoxyNote}{Note}
+Because tree-\/building (at least with Binary\-Space\-Tree) modifies the ordering of a matrix, be sure you pass the modified matrix to this object! In addition, mapping the points of the matrix back to their original indices is not done when this constructor is used. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em tree} & Pre-\/built tree. \\
+\hline
+{\em dataset} & Dataset corresponding to the pre-\/built tree. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!$\sim$\-Dual\-Tree\-Boruvka@{$\sim$\-Dual\-Tree\-Boruvka}}
+\index{$\sim$\-Dual\-Tree\-Boruvka@{$\sim$\-Dual\-Tree\-Boruvka}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{$\sim$\-Dual\-Tree\-Boruvka}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::$\sim${\bf Dual\-Tree\-Boruvka} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a674d8be55147be3c42363e0218467c69}
+
+
+Delete the tree, if it was created inside the object. 
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!Add\-All\-Edges@{Add\-All\-Edges}}
+\index{Add\-All\-Edges@{Add\-All\-Edges}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{Add\-All\-Edges}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ void {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::Add\-All\-Edges (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a53b84a76fb86d23a0dc590332033ba5e}
+
+
+Adds all the edges found in one iteration to the list of neighbors. 
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!Add\-Edge@{Add\-Edge}}
+\index{Add\-Edge@{Add\-Edge}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{Add\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ void {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::Add\-Edge (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{e1, }
+\item[{const size\-\_\-t}]{e2, }
+\item[{const double}]{distance}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a1129f38bd77ccf63008280716b2a4f28}
+
+
+Adds a single edge to the edge list. 
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!Cleanup@{Cleanup}}
+\index{Cleanup@{Cleanup}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ void {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::Cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a887f3c5a9f777da73eaab38f60b49230}
+
+
+The values stored in the tree must be reset on each iteration. 
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!Cleanup\-Helper@{Cleanup\-Helper}}
+\index{Cleanup\-Helper@{Cleanup\-Helper}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{Cleanup\-Helper}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ void {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::Cleanup\-Helper (
+\begin{DoxyParamCaption}
+\item[{Tree\-Type $\ast$}]{tree}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_afff5bb3bad3ab5c0e6048556763f49ef}
+
+
+This function resets the values in the nodes of the tree nearest neighbor distance, and checks for fully connected nodes. 
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!Compute\-M\-S\-T@{Compute\-M\-S\-T}}
+\index{Compute\-M\-S\-T@{Compute\-M\-S\-T}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{Compute\-M\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ void {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::Compute\-M\-S\-T (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{results}
+\end{DoxyParamCaption}
+)}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a2ffa3cd544e7c529383c0b2e9b137c83}
+
+
+Iteratively find the nearest neighbor of each component until the M\-S\-T is complete. 
+
+The results will be a 3x\-N matrix (with N equal to the number of edges in the minimum spanning tree). The first row will contain the lesser index of the edge; the second row will contain the greater index of the edge; and the third row will contain the distance between the two edges.
+
+
+\begin{DoxyParams}{Parameters}
+{\em results} & Matrix which results will be stored in. \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!Emit\-Results@{Emit\-Results}}
+\index{Emit\-Results@{Emit\-Results}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{Emit\-Results}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ void {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::Emit\-Results (
+\begin{DoxyParamCaption}
+\item[{arma\-::mat \&}]{results}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_ae0b2d5bfa2549c5b23e0a92633284ac8}
+
+
+Unpermute the edge list and output it to results. 
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!To\-String@{To\-String}}
+\index{To\-String@{To\-String}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{To\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ std\-::string {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::To\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a60392537cd5ed84635fc1b8e23663b70}
+
+
+Returns a string representation of this object. 
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!connections@{connections}}
+\index{connections@{connections}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{connections}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ {\bf Union\-Find} {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::connections\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a3ad589c00c8cc142dc5847f6250dfbd5}
+
+
+Connections. 
+
+
+
+Definition at line 103 of file dtb.\-hpp.
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!data@{data}}
+\index{data@{data}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ const Tree\-Type\-::\-Mat\& {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::data\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_aa4151be09d75f896cca7da5a2b6f3854}
+
+
+Reference to the data (this is what should be used for accessing data). 
+
+
+
+Definition at line 89 of file dtb.\-hpp.
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!data\-Copy@{data\-Copy}}
+\index{data\-Copy@{data\-Copy}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{data\-Copy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ Tree\-Type\-::\-Mat {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::data\-Copy\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a5b7e7b6e82bc167e9c8a8ddefe1bf26b}
+
+
+Copy of the data (if necessary). 
+
+
+
+Definition at line 87 of file dtb.\-hpp.
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!edges@{edges}}
+\index{edges@{edges}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{edges}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ std\-::vector$<${\bf Edge\-Pair}$>$ {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::edges\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a83a4215f4f7f8fb98d3961b46a0a976d}
+
+
+Edges. 
+
+
+
+Definition at line 100 of file dtb.\-hpp.
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!metric@{metric}}
+\index{metric@{metric}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{metric}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ Metric\-Type {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::metric\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_acc6aab774f8cda304853cbd911a3728b}
+
+
+The instantiated metric. 
+
+
+
+Definition at line 118 of file dtb.\-hpp.
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!naive@{naive}}
+\index{naive@{naive}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{naive}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ bool {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::naive\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a752b67b447bf604f7cb035d37f765906}
+
+
+Indicates whether or not O(n$^\wedge$2) naive mode will be used. 
+
+
+
+Definition at line 97 of file dtb.\-hpp.
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!neighbors\-Distances@{neighbors\-Distances}}
+\index{neighbors\-Distances@{neighbors\-Distances}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{neighbors\-Distances}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ arma\-::vec {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::neighbors\-Distances\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a4cefcc80d367f24473f5045bd5c32534}
+
+
+List of edge distances. 
+
+
+
+Definition at line 112 of file dtb.\-hpp.
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!neighbors\-In\-Component@{neighbors\-In\-Component}}
+\index{neighbors\-In\-Component@{neighbors\-In\-Component}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{neighbors\-In\-Component}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ arma\-::\-Col$<$size\-\_\-t$>$ {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::neighbors\-In\-Component\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a3791bb3e209f0b0a8e61badea0aefbaa}
+
+
+List of edge nodes. 
+
+
+
+Definition at line 108 of file dtb.\-hpp.
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!neighbors\-Out\-Component@{neighbors\-Out\-Component}}
+\index{neighbors\-Out\-Component@{neighbors\-Out\-Component}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{neighbors\-Out\-Component}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ arma\-::\-Col$<$size\-\_\-t$>$ {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::neighbors\-Out\-Component\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a78118f31667352f93e9e82a0d319fc6a}
+
+
+List of edge nodes. 
+
+
+
+Definition at line 110 of file dtb.\-hpp.
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!old\-From\-New@{old\-From\-New}}
+\index{old\-From\-New@{old\-From\-New}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{old\-From\-New}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ std\-::vector$<$size\-\_\-t$>$ {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::old\-From\-New\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a3aa60a21f94845c4fabd23722f8b8cf2}
+
+
+Permutations of points during tree building. 
+
+
+
+Definition at line 106 of file dtb.\-hpp.
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!own\-Tree@{own\-Tree}}
+\index{own\-Tree@{own\-Tree}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{own\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ bool {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::own\-Tree\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a3ee4352d8728a98280d321d89eca752d}
+
+
+Indicates whether or not we \char`\"{}own\char`\"{} the tree. 
+
+
+
+Definition at line 94 of file dtb.\-hpp.
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!Sort\-Fun@{Sort\-Fun}}
+\index{Sort\-Fun@{Sort\-Fun}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{Sort\-Fun}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ struct {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka\-::\-Sort\-Edges\-Helper}  {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::Sort\-Fun\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a9576231ae4ed2185daa518a9c4882dc7}
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!total\-Dist@{total\-Dist}}
+\index{total\-Dist@{total\-Dist}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{total\-Dist}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ double {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::total\-Dist\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a87d4e21600400e1bbcb6b87612b1e3ec}
+
+
+Total distance of the tree. 
+
+
+
+Definition at line 115 of file dtb.\-hpp.
+
+\index{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}!tree@{tree}}
+\index{tree@{tree}!mlpack::emst::DualTreeBoruvka@{mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}}
+\subsubsection[{tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Metric\-Type  = metric\-::\-Euclidean\-Distance, typename Tree\-Type  = tree\-::\-Binary\-Space\-Tree$<$bound\-::\-H\-Rect\-Bound$<$2$>$, D\-T\-B\-Stat$>$$>$ Tree\-Type$\ast$ {\bf mlpack\-::emst\-::\-Dual\-Tree\-Boruvka}$<$ Metric\-Type, Tree\-Type $>$\-::tree\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1emst_1_1DualTreeBoruvka_a88d2bfd53bf7f8ff090392a2c88bcfe9}
+
+
+Pointer to the root of the tree. 
+
+
+
+Definition at line 92 of file dtb.\-hpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/emst/{\bf dtb.\-hpp}\end{DoxyCompactItemize}

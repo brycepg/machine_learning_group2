@@ -1,0 +1,70 @@
+.TH "mlpack::kmeans::RandomPartition" 3 "Sat Mar 14 2015" "Version 1.0.12" "mlpack" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mlpack::kmeans::RandomPartition \- 
+.PP
+A very simple partitioner which partitions the data randomly into the number of desired clusters\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRandomPartition\fP ()"
+.br
+.RI "\fIEmpty constructor, required by the InitialPartitionPolicy policy\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename MatType > static void \fBCluster\fP (const MatType &data, const size_t clusters, arma::Col< size_t > &assignments)"
+.br
+.RI "\fIPartition the given dataset into the given number of clusters\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A very simple partitioner which partitions the data randomly into the number of desired clusters\&. 
+
+It has no parameters, and so an instance of the class is not even necessary\&. 
+.PP
+Definition at line 28 of file random_partition\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mlpack::kmeans::RandomPartition::RandomPartition ()\fC [inline]\fP"
+
+.PP
+Empty constructor, required by the InitialPartitionPolicy policy\&. 
+.PP
+Definition at line 32 of file random_partition\&.hpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename MatType > static void mlpack::kmeans::RandomPartition::Cluster (const MatType &data, const size_tclusters, arma::Col< size_t > &assignments)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Partition the given dataset into the given number of clusters\&. Assignments are random, and the number of points in each cluster should be equal (or approximately equal)\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIMatType\fP Type of data (arma::mat or arma::sp_mat)\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Dataset to partition\&. 
+.br
+\fIclusters\fP Number of clusters to split dataset into\&. 
+.br
+\fIassignments\fP Vector to store cluster assignments into\&. Values will be between 0 and (clusters - 1)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 46 of file random_partition\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for mlpack from the source code\&.

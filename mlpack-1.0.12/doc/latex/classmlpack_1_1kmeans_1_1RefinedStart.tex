@@ -1,0 +1,203 @@
+\section{mlpack\-:\-:kmeans\-:\-:Refined\-Start Class Reference}
+\label{classmlpack_1_1kmeans_1_1RefinedStart}\index{mlpack\-::kmeans\-::\-Refined\-Start@{mlpack\-::kmeans\-::\-Refined\-Start}}
+
+
+A refined approach for choosing initial points for k-\/means clustering.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Refined\-Start} (const size\-\_\-t {\bf samplings}=100, const double {\bf percentage}=0.\-02)
+\begin{DoxyCompactList}\small\item\em Create the \doxyref{Refined\-Start}{p.}{classmlpack_1_1kmeans_1_1RefinedStart} object, optionally specifying parameters for the number of samplings to perform and the percentage of the dataset to use in each sampling. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Mat\-Type $>$ }\\void {\bf Cluster} (const Mat\-Type \&data, const size\-\_\-t clusters, arma\-::\-Col$<$ size\-\_\-t $>$ \&assignments) const 
+\begin{DoxyCompactList}\small\item\em Partition the given dataset into the given number of clusters according to the random sampling scheme outlined in Bradley and Fayyad's paper. \end{DoxyCompactList}\item 
+double {\bf Percentage} () const 
+\begin{DoxyCompactList}\small\item\em Get the percentage of the data used by each subsampling. \end{DoxyCompactList}\item 
+double \& {\bf Percentage} ()
+\begin{DoxyCompactList}\small\item\em Modify the percentage of the data used by each subsampling. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf Samplings} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of samplings that will be performed. \end{DoxyCompactList}\item 
+size\-\_\-t \& {\bf Samplings} ()
+\begin{DoxyCompactList}\small\item\em Modify the number of samplings that will be performed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf percentage}
+\begin{DoxyCompactList}\small\item\em The percentage of the data to use for each subsampling. \end{DoxyCompactList}\item 
+size\-\_\-t {\bf samplings}
+\begin{DoxyCompactList}\small\item\em The number of samplings to perform. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A refined approach for choosing initial points for k-\/means clustering. 
+
+This approach runs k-\/means several times on random subsets of the data, and then clusters those solutions to select refined initial cluster assignments. It is an implementation of the following paper\-:
+
+\{bradley1998refining, title=\{Refining initial points for k-\/means clustering\}, author=\{Bradley, Paul S and Fayyad, Usama M\}, booktitle=\{Proceedings of the Fifteenth International Conference on Machine Learning (I\-C\-M\-L 1998)\}, volume=\{66\}, year=\{1998\} \} 
+
+Definition at line 39 of file refined\-\_\-start.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mlpack\-::kmeans\-::\-Refined\-Start@{mlpack\-::kmeans\-::\-Refined\-Start}!Refined\-Start@{Refined\-Start}}
+\index{Refined\-Start@{Refined\-Start}!mlpack::kmeans::RefinedStart@{mlpack\-::kmeans\-::\-Refined\-Start}}
+\subsubsection[{Refined\-Start}]{\setlength{\rightskip}{0pt plus 5cm}mlpack\-::kmeans\-::\-Refined\-Start\-::\-Refined\-Start (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{samplings = {\ttfamily 100}, }
+\item[{const double}]{percentage = {\ttfamily 0.02}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1RefinedStart_adde167739b1f6a60b818ecba61b36075}
+
+
+Create the \doxyref{Refined\-Start}{p.}{classmlpack_1_1kmeans_1_1RefinedStart} object, optionally specifying parameters for the number of samplings to perform and the percentage of the dataset to use in each sampling. 
+
+
+
+Definition at line 47 of file refined\-\_\-start.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{mlpack\-::kmeans\-::\-Refined\-Start@{mlpack\-::kmeans\-::\-Refined\-Start}!Cluster@{Cluster}}
+\index{Cluster@{Cluster}!mlpack::kmeans::RefinedStart@{mlpack\-::kmeans\-::\-Refined\-Start}}
+\subsubsection[{Cluster}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Mat\-Type $>$ void mlpack\-::kmeans\-::\-Refined\-Start\-::\-Cluster (
+\begin{DoxyParamCaption}
+\item[{const Mat\-Type \&}]{data, }
+\item[{const size\-\_\-t}]{clusters, }
+\item[{arma\-::\-Col$<$ size\-\_\-t $>$ \&}]{assignments}
+\end{DoxyParamCaption}
+) const}\label{classmlpack_1_1kmeans_1_1RefinedStart_a2cf093d48ddc39659ceb2182080375ac}
+
+
+Partition the given dataset into the given number of clusters according to the random sampling scheme outlined in Bradley and Fayyad's paper. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Mat\-Type} & Type of data (arma\-::mat or arma\-::sp\-\_\-mat). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dataset to partition. \\
+\hline
+{\em clusters} & Number of clusters to split dataset into. \\
+\hline
+{\em assignments} & Vector to store cluster assignments into. Values will be between 0 and (clusters -\/ 1). \\
+\hline
+\end{DoxyParams}
+\index{mlpack\-::kmeans\-::\-Refined\-Start@{mlpack\-::kmeans\-::\-Refined\-Start}!Percentage@{Percentage}}
+\index{Percentage@{Percentage}!mlpack::kmeans::RefinedStart@{mlpack\-::kmeans\-::\-Refined\-Start}}
+\subsubsection[{Percentage}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::kmeans\-::\-Refined\-Start\-::\-Percentage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1RefinedStart_aedb68e69d98b83790dcf86d5ce0b898a}
+
+
+Get the percentage of the data used by each subsampling. 
+
+
+
+Definition at line 72 of file refined\-\_\-start.\-hpp.
+
+
+
+References percentage.
+
+\index{mlpack\-::kmeans\-::\-Refined\-Start@{mlpack\-::kmeans\-::\-Refined\-Start}!Percentage@{Percentage}}
+\index{Percentage@{Percentage}!mlpack::kmeans::RefinedStart@{mlpack\-::kmeans\-::\-Refined\-Start}}
+\subsubsection[{Percentage}]{\setlength{\rightskip}{0pt plus 5cm}double\& mlpack\-::kmeans\-::\-Refined\-Start\-::\-Percentage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1RefinedStart_a43b1e93b34096dab2168f59e9b996e22}
+
+
+Modify the percentage of the data used by each subsampling. 
+
+
+
+Definition at line 74 of file refined\-\_\-start.\-hpp.
+
+
+
+References percentage.
+
+\index{mlpack\-::kmeans\-::\-Refined\-Start@{mlpack\-::kmeans\-::\-Refined\-Start}!Samplings@{Samplings}}
+\index{Samplings@{Samplings}!mlpack::kmeans::RefinedStart@{mlpack\-::kmeans\-::\-Refined\-Start}}
+\subsubsection[{Samplings}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::kmeans\-::\-Refined\-Start\-::\-Samplings (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1RefinedStart_af3e5baee99d8a819727a4dc4de3de832}
+
+
+Get the number of samplings that will be performed. 
+
+
+
+Definition at line 67 of file refined\-\_\-start.\-hpp.
+
+
+
+References samplings.
+
+\index{mlpack\-::kmeans\-::\-Refined\-Start@{mlpack\-::kmeans\-::\-Refined\-Start}!Samplings@{Samplings}}
+\index{Samplings@{Samplings}!mlpack::kmeans::RefinedStart@{mlpack\-::kmeans\-::\-Refined\-Start}}
+\subsubsection[{Samplings}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t\& mlpack\-::kmeans\-::\-Refined\-Start\-::\-Samplings (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classmlpack_1_1kmeans_1_1RefinedStart_a6ea1474663b9ab0a81ced2618da4088f}
+
+
+Modify the number of samplings that will be performed. 
+
+
+
+Definition at line 69 of file refined\-\_\-start.\-hpp.
+
+
+
+References samplings.
+
+
+
+\subsection{Member Data Documentation}
+\index{mlpack\-::kmeans\-::\-Refined\-Start@{mlpack\-::kmeans\-::\-Refined\-Start}!percentage@{percentage}}
+\index{percentage@{percentage}!mlpack::kmeans::RefinedStart@{mlpack\-::kmeans\-::\-Refined\-Start}}
+\subsubsection[{percentage}]{\setlength{\rightskip}{0pt plus 5cm}double mlpack\-::kmeans\-::\-Refined\-Start\-::percentage\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1kmeans_1_1RefinedStart_a12e904e46c1c8d2b38c9f4e4a2c95477}
+
+
+The percentage of the data to use for each subsampling. 
+
+
+
+Definition at line 80 of file refined\-\_\-start.\-hpp.
+
+
+
+Referenced by Percentage().
+
+\index{mlpack\-::kmeans\-::\-Refined\-Start@{mlpack\-::kmeans\-::\-Refined\-Start}!samplings@{samplings}}
+\index{samplings@{samplings}!mlpack::kmeans::RefinedStart@{mlpack\-::kmeans\-::\-Refined\-Start}}
+\subsubsection[{samplings}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t mlpack\-::kmeans\-::\-Refined\-Start\-::samplings\hspace{0.3cm}{\ttfamily [private]}}\label{classmlpack_1_1kmeans_1_1RefinedStart_a61b896a0eac690c67f258bf127beab15}
+
+
+The number of samplings to perform. 
+
+
+
+Definition at line 78 of file refined\-\_\-start.\-hpp.
+
+
+
+Referenced by Samplings().
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/mlpack/methods/kmeans/{\bf refined\-\_\-start.\-hpp}\end{DoxyCompactItemize}
