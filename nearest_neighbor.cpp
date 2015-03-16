@@ -19,9 +19,7 @@ int main(int argc, char** argv) {
     arma::mat distances;
 
     nn.Search(1, neighbors, distances);
-
-    const int SIZE = data.n_rows;
-    std::cout << SIZE;
+    const int SIZE = data.n_rows    ;
 
     for(size_t i = 0, j = 0; i < neighbors.n_elem; i++, j+=2) {
     std::cout << "Nearest neighbor of point (" << data[j] << ", " << data[j+1] << ") at " << i << " is point "
