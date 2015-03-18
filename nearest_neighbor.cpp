@@ -7,8 +7,6 @@ using namespace mlpack::neighbor;
 using namespace mlpack::metric;
 
 int main(int argc, char** argv) {
-    //CLI::ParseCommandLine(argc, argv);
-
     // Our dataset matrix, which is column-major
     arma::mat data;
     data::Load("data.csv", data, true);
@@ -25,4 +23,7 @@ int main(int argc, char** argv) {
     std::cout << "Nearest neighbor of point (" << data[j] << ", " << data[j+1] << ") at " << i << " is point "
         << neighbors[i] << " at (" << data[neighbors[i] * SIZE] << ", " << data[neighbors[i] * SIZE + 1] <<  ") and the distance is " << distances[i] << ".\n";
     }
+
+    data::Save("neighbors.csv", neighbors, true);
+    data::Save("distances.csv", distances, true);
 }
