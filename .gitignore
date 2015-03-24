@@ -1,4 +1,6 @@
 .DS_Store
 a.out
-*.csv
+data.csv
+assignments.csv
+centroids.csv
 *.out
