@@ -3,7 +3,7 @@ CFLAGS=--std=c++11
 INCLUDES=-I/usr/include/libxml2/
 LDLIBS=-lmlpack -larmadillo
 LDOPTIONS=-Wl,-rpath=/usr/local/lib
-SOURCES=test.cpp 2d_1neighbor_nearest_neighbor.cpp nd_nearest_neighbor.cpp randcsv.cpp
+SOURCES=test.cpp 2d_1neighbor_nearest_neighbor.cpp nd_nearest_neighbor.cpp randcsv.cpp kmeans_graph/kmeans.cpp
 EXECUTABLES=$(SOURCES:.cpp=.out)
 
 all: $(EXECUTABLES)
@@ -19,6 +19,9 @@ nd_nearest_neighbor.out: nd_nearest_neighbor.cpp
 
 randcsv.out: randcsv.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) randcsv.cpp -o randcsv.out $(LDLIBS) $(LDOPTIONS)
+
+kmeans_graph/kmeans.out : kmeans_graph/kmeans.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) kmeans_graph/kmeans.cpp -o kmeans_graph/kmeans.out $(LDLIBS) $(LDOPTIONS)
 
 
 clean:
