@@ -9,4 +9,5 @@ pause -1
 
 set term png
 set output "tmp_plot.png"
-replot set termx11
+replot
+set term x11
