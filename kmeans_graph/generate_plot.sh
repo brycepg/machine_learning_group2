@@ -17,4 +17,5 @@ else
     $EXEC_FILE 10
 fi
 
-gnuplot plot.gp
+#gnuplot plot.gp
+python3 plot.py
