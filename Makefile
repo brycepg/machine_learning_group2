@@ -20,8 +20,8 @@ nd_nearest_neighbor.out: nd_nearest_neighbor.cpp
 randcsv.out: randcsv.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) randcsv.cpp -o randcsv.out $(LDLIBS) $(LDOPTIONS)
 
-kmeans_graph/kmeans.out : kmeans_graph/kmeans.cpp
-	$(CC) $(CFLAGS) $(INCLUDES) kmeans_graph/kmeans.cpp -o kmeans_graph/kmeans.out $(LDLIBS) $(LDOPTIONS)
+kmeans_graph/kmeans.out : kmeans_graph/kmeans_generate_assignments.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) kmeans_graph/kmeans_generate_assignments.cpp -o kmeans_graph/kmeans_generate_assignments.out $(LDLIBS) $(LDOPTIONS)
 
 
 clean:
