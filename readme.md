@@ -1,3 +1,17 @@
+#installation
+
+
+## Mac
+
+`brew install cmake libxml2 armadillo`
+    
+## Linux
+
+`sudo apt-get install libxml2-dev libarmadillo-dev libboost1.55-dev`
+
+Download and unzip mlpack
+Follow instructions on mlpack website
+
 #kmeans.cpp
 
 Note all commands are from the root directory of this repository
