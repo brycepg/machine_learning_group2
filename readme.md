@@ -4,10 +4,10 @@ from a set of data, based on the number of centroids as input,
 calculates which points in the data belong to which centroids and where 
 those centroids are
 
-./kmeans.out 
+`./kmeans.out`
 reads from data.csv
-./kmeans.out <filename>
-reads the data from <filename>
+`./kmeans.out <filename>`
+reads the data from `<filename>`
 
 
 
@@ -15,9 +15,12 @@ reads the data from <filename>
 
 Generate a euclidean minimum spanning tree based on sets of points as input. Outputs each edge and its length corresponding to two points
 
-./EMST.out
+to compile
+`./mlcompile EMST.cpp`
+
+`./EMST.out`
 reads from data.csv
-./EMST.out <filename>
+`./EMST.out <filename>`
 reads the data from <filename>
 
 #nearest_neighbor.cpp
