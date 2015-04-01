@@ -8,14 +8,14 @@ using namespace mlpack::emst;
 using namespace std;
 
 int main(int argc, char *argv[]){
-	if(argc != 2){
-		cout << "This program needs one file input, and only one input!\n";
-		return 1;
-	}
-
 	// Our dataset matrix, which is column-major
     	arma::mat data;
+    if(argc == 2) {
     	data::Load(argv[1], data, true);
+    } else {
+    	data::Load("data.csv", data, true);
+    }
+
 	
 	//set up variables
 	arma::mat tree;

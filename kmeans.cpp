@@ -7,11 +7,15 @@ using namespace mlpack::metric;
 using namespace mlpack::kmeans;
 using namespace std;
 
-int main(){
+int main(int argc, char **argv){
 	
 	// Our dataset matrix, which is column-major
     	arma::mat data;
-    	data::Load("data.csv", data, true);
+        if(argc == 2) {
+            data::Load(argv[1], data, true);
+        } else {
+            data::Load("data.csv", data, true);
+        }
 	
 	// Get the number of clusters, and make sure it is more than 0 and less than the number of entities in the data
 	size_t clusters = 0;
