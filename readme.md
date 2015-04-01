@@ -75,4 +75,4 @@ Uses python3, python3-matplotlib, and python3-numpy to generate a graph from fil
 should display a graph is kmeans_generate_assignments is compiled and ran with valid data
 
 ### Example graph
-[!kmeans graph](./kmeans_graph/matplotlib_example_graph.png)
+[!kmeans graph](https://github.com/brycepg/machine_learning_group2/blob/master/kmeans_graph/matplotlib_example_graph.png?raw=true)
