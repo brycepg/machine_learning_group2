@@ -50,14 +50,14 @@ Generates a graph of colorized 2d data points, differing for each centroid.
 
 ## kmeans_generate_assignments
 
-to compile
-`./mlcompile kmeans_graph/kmeans_generate_assignments.cpp`
 
 Using input data, generate a file with data points and their corresponding centroid assignment as well as a file for centroid location.
 Output is `kmeans_graph/data_n_assignments.csv` and `kmeans_graph/centroids.csv`
 
-compile kmeans_graph/kmeans_generate_assignments.cpp
+to compile
+`./mlcompile kmeans_graph/kmeans_generate_assignments.cpp`
 
+to run
 `./kmeans_graph/kmeans_generate_assignments.out`
 use data.example.csv as input for 3 centroids
 
@@ -69,10 +69,10 @@ Use <filename> as input for <n> centroids
 
 ## plot.py
 
-Uses python3, python3-matplotlib, and python3-numpy to generate a graph from files kmeans_graph/data_n_assignments.csv and kmeans_graph/centroids.csv
+Uses python3, python3-matplotlib, and python3-numpy to generate a graph from files `kmeans_graph/data_n_assignments.csv` and `kmeans_graph/centroids.csv`
 
 `python3 plot.py`
-should display a graph is kmeans_generate_assignments is compiled and ran with valid data
+should display a graph once kmeans_generate_assignments is compiled and ran with valid data
 
 ### Example graph
 ![kmeans graph](ttps://github.com/brycepg/machine_learning_group2/blob/master/kmeans_graph/matplotlib_example_graph.png)
