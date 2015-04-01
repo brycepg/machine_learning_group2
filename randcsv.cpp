@@ -16,11 +16,16 @@ using namespace std;
 
 int main()
 {
+	//seed random function
 	srand(time(NULL));
+	//create random number variable
 	double number=0;
+	//create matrix parameters
 	int rows=0, cols=0, rangeMin=0, rangeMax=0;
-	//double number, between, rangeMin, rangeMax;
+	//name to save the CSV file under
 	string fileName;
+
+	//ask for and store data
 	cout << "How many rows are there?: ";
 	cin >> rows;
 	cout << "How many columns are there?: ";
@@ -31,17 +36,22 @@ int main()
 	cin >> rangeMax;
 	cout << "Enter a filename to save this data under: ";
 	cin >> fileName;
-	fileName = fileName + '.' + "csv";
 
+	//add .csv to the end of the filename
+	fileName = fileName + ".csv";
 
+	//create a file to save data to
 	ofstream outFile;
 	outFile.open(fileName.c_str());
 
+	//write comma separated values to file
 	for(int count1 = 0; count1 < rows; count1++)
 	{
 		for(int count2 = 0; count2 < cols; count2++)
 		{
+			//store random value in the number variable
 			number = rand() %(rangeMax-rangeMin) + rangeMin;
+			//write the random number to file
 			if(count2 == cols-1)
 			{
 				outFile << number;
@@ -56,6 +66,3 @@ int main()
 	}
 	outFile.close();
 }
-
-
-
