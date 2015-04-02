@@ -25,9 +25,16 @@ int main(int argc, char *argv[]){
 	//do the calculations
 	dtb.ComputeMST(tree);
 
-	//prints the centroids
-	for(size_t i = 0; i < tree.n_cols; i++) {
-    		cout << "Line " << i << " connects points " << tree(0, i) << " and " << tree(1, i)  << " and the line is " << tree(2, i) << " units long.\n";
+	//prints the tree structure
+	for(size_t i = 0, j = 0, l = 0; i < tree.n_cols; i++) {
+    		cout << "Line " << i << " connects points " << tree(0, i);
+		cout << "(" << data[tree(0 , i) * SIZE];
+                for(j = tree(0 , i) * SIZE, l = 1; l < SIZE; l++)
+                        cout << ", " << data[j+l];
+ 		cout << ") and point " << tree(1, i) << "(" << data[tree(1, i) * SIZE];
+                for(j = tree(1 , i) * SIZE, l = 1; l < SIZE; l++)
+                        cout << ", " << data[j+l];
+		cout << ") and the line is " << tree(2, i) << " units long.\n";
 
 	}	
 	return 0;

@@ -3,10 +3,10 @@
 # $1 - cluster amount
 # $2 - input file
 
-EXEC_FILE="./kmeans.out"
+EXEC_FILE="./kmeans_generate_assignments.out"
 
-if [ ! -e kmeans.out ]; then
-    ../mlcompile.sh kmeans.cpp
+if [ ! -e kmeans_generate_assignments.out ]; then
+    ../mlcompile.sh kmeans_generate_assignments.cpp
 fi
 
 if (( ${#@} > 1 )); then
